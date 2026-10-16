@@ -1,0 +1,118 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "p1_label": "Help",
+        "p1_link": "echo:help",
+        "current": "Size and care guide"
+      }
+    },
+    "sizes": {
+      "type": "echo-size-table",
+      "settings": {},
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "product": "Blankets",
+            "size": "100 × 150 to 120 × 160 cm [confirm per design]",
+            "note": "[Weight]"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "product": "Cushion covers",
+            "size": "45 × 45 cm",
+            "note": "Inner not included"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "product": "Bags",
+            "size": "[Size per design]",
+            "note": "[Strap length]"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "product": "Beanies",
+            "size": "One size",
+            "note": "Bottom circumference 59 cm"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "product": "Scarves",
+            "size": "160 × 40 cm",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5"
+      ]
+    },
+    "care": {
+      "type": "echo-steps",
+      "settings": {
+        "spacing": "tight",
+        "heading": "Care by yarn",
+        "heading_size": "h3",
+        "gap": 16,
+        "link_label": "How to wash a lambswool blanket",
+        "link": "echo:journal/how-to-wash-a-lambswool-blanket"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Lambswool blends",
+            "text": "Hand wash cold, press the water out, dry flat. Do not tumble dry."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Cotton blends",
+            "text": "[Machine wash 30°C on a wool cycle in a wash bag. Confirm.]"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Wool",
+            "text": "[Hand wash or dry clean. Confirm.]"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Pilling",
+            "text": "Small bobbles are normal on new knitwear. Remove them with a knit comb."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    }
+  },
+  "order": [
+    "crumbs",
+    "sizes",
+    "care"
+  ]
+}
