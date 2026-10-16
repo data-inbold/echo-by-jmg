@@ -179,10 +179,10 @@ footer.site a:hover{text-decoration:underline}
 .payments span{border:1px solid #444;padding:4px 8px;font-size:11px;color:#EDECE8}
 .payments span.first{border-color:var(--mobile);background:var(--mobile);color:#fff}
 .tablewrap{overflow-x:auto}
-.certlogo{display:block;width:auto;object-fit:contain}
+.certlogo{display:block;width:auto;aspect-ratio:1/1;object-fit:contain;border-radius:50%}
 .certlogo.mb{mix-blend-mode:multiply}
 .certrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.certrow a:has(.certlogo){background:#fff;border-radius:50%;padding:4px;display:inline-flex}
+.certrow a:has(.certlogo){background:#fff;border-radius:50%;padding:3px;display:inline-flex;line-height:0}
 .pcerts{display:flex;flex-direction:column;gap:10px;margin-top:4px}
 .pcerts .it{display:flex;gap:10px;align-items:center}
 .pcerts .it .certlogo{background:#fff;border-radius:50%;padding:3px}
