@@ -1,0 +1,29 @@
+{%- comment -%}
+  Photo box. Params: image (Shopify image), asset (fallback asset file name), alt, ar, cls, label (placeholder text when no image), tint, h, sizes, eager
+  Order: picked image, then the bundled wireframe photo, then the hatched placeholder.
+{%- endcomment -%}
+{%- liquid
+  assign st = ''
+  if ar != blank
+    assign st = 'aspect-ratio:' | append: ar | append: ';min-height:0;'
+  endif
+  if h != blank
+    assign st = st | append: 'height:' | append: h | append: ';'
+  endif
+  assign sz = sizes | default: '(min-width: 900px) 50vw, 100vw'
+  assign load = 'lazy'
+  if eager
+    assign load = 'eager'
+  endif
+-%}
+{%- if image != blank -%}
+  <div class="ph pic{% if cls != blank %} {{ cls }}{% endif %}" style="{{ st }}">
+    {{- image | image_url: width: 1600 | image_tag: alt: alt, loading: load, sizes: sz, widths: '360, 540, 720, 960, 1200, 1600' -}}
+  </div>
+{%- elsif asset != blank and asset != 'none' -%}
+  <div class="ph pic{% if cls != blank %} {{ cls }}{% endif %}" style="{{ st }}">
+    <img src="{{ asset | asset_url }}" alt="{{ alt | escape }}" loading="{{ load }}" width="1200" height="900">
+  </div>
+{%- else -%}
+  {%- render 'echo-ph', label: label, ar: ar, tint: tint, cls: cls, h: h -%}
+{%- endif -%}

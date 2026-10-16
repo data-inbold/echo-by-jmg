@@ -1,0 +1,12 @@
+{%- comment -%} Discount / gift card code field for bag and cart. Param: k {%- endcomment -%}
+{%- assign applied = cart.discount_codes | where: 'applicable', true -%}
+{%- if applied.size > 0 -%}
+  {%- for d in applied -%}
+    <div class="row" data-dcbox style="justify-content:space-between;font-size:14px"><span>Code <b>{{ d.code | escape }}</b> applied</span><button class="textbtn" data-rmcode="{{ d.code | escape }}">Remove</button></div>
+  {%- endfor -%}
+{%- else -%}
+  <div class="stack" style="gap:6px" data-dcbox>
+    <div class="inline-form"><label for="dc-{{ k }}" class="visually-hidden">Discount code</label><input id="dc-{{ k }}" class="dc" placeholder="Discount code" autocomplete="off"><button class="btn ghost" type="button" data-applycode>Apply</button></div>
+    <span class="muted" style="font-size:12px" data-dcmsg>Gift cards are added at checkout.</span>
+  </div>
+{%- endif -%}
