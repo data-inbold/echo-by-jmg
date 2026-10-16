@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64, height: 64 }}">
+  {%- endif -%}
+  <title>
+    {{- page_title -}}
+    {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+  {%- render 'meta-tags' -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,500&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+  {{ 'echo.css' | asset_url | stylesheet_tag }}
+  <script>
+    window.Echo = {
+      routes: {
+        root: {{ routes.root_url | json }},
+        cart: {{ routes.cart_url | json }},
+        cartAdd: {{ routes.cart_add_url | json }},
+        cartChange: {{ routes.cart_change_url | json }},
+        cartUpdate: {{ routes.cart_update_url | json }},
+        search: {{ routes.search_url | json }},
+        predictive: {{ routes.predictive_search_url | json }}
+      },
+      currency: {{ cart.currency.iso_code | json }},
+      moneyFormat: {{ shop.money_format | json }}
+    };
+  </script>
+  <script src="{{ 'echo.js' | asset_url }}" defer></script>
+  {{ content_for_header }}
+</head>
+<body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.suffix | handle }}{% endif %}">
+  <a class="visually-hidden" href="#app">Skip to content</a>
+  {% sections 'echo-header-group' %}
+  <main id="app" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+  {% sections 'echo-footer-group' %}
+  <div id="overlays"></div>
+  {% section 'echo-bag' %}
+  {% section 'echo-search-overlay' %}
+</body>
+</html>
