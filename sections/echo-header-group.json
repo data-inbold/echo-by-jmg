@@ -1,0 +1,8 @@
+{
+  "type": "header",
+  "name": "EchoByJMG header",
+  "sections": {
+    "header": { "type": "echo-header", "settings": {} }
+  },
+  "order": ["header"]
+}

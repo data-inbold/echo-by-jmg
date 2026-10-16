@@ -1,0 +1,42 @@
+{%- capture echo_out -%}
+{%- liquid
+  capture u_home
+    render 'echo-url', key: 'home'
+  endcapture
+  assign cur = section.settings.current
+  if cur == blank
+    if page
+      assign cur = page.title
+    elsif collection
+      assign cur = collection.title
+    elsif article
+      assign cur = article.title
+    elsif blog
+      assign cur = blog.title
+    endif
+  endif
+  assign list = 'Home::' | append: u_home
+  if section.settings.p1_label != blank
+    assign list = list | append: '||' | append: section.settings.p1_label | append: '::' | append: section.settings.p1_link
+  endif
+  if section.settings.p2_label != blank
+    assign list = list | append: '||' | append: section.settings.p2_label | append: '::' | append: section.settings.p2_link
+  endif
+  assign list = list | append: '||' | append: cur
+-%}
+{%- render 'echo-crumbs', list: list -%}
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Breadcrumbs",
+  "settings": [
+    { "type": "text", "id": "p1_label", "label": "Parent 1 label" },
+    { "type": "text", "id": "p1_link", "label": "Parent 1 link" },
+    { "type": "text", "id": "p2_label", "label": "Parent 2 label" },
+    { "type": "text", "id": "p2_link", "label": "Parent 2 link" },
+    { "type": "text", "id": "current", "label": "Current page label", "info": "Empty = the page title" }
+  ],
+  "presets": [{ "name": "Breadcrumbs" }]
+}
+{% endschema %}

@@ -1,0 +1,29 @@
+{%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
+{%- assign cl = 'Home::' | append: u_home | append: '||Account::' | append: routes.account_url | append: '||Addresses' -%}
+{%- render 'echo-crumbs', list: cl -%}
+<section class="section tight"><div class="wrap grid g2" style="align-items:start">
+  <div class="stack" style="gap:14px"><h1 class="h2">Your addresses</h1>
+    {%- paginate customer.addresses by 10 -%}
+    {%- for a in customer.addresses -%}
+      <div class="review stack" style="gap:8px"><span>{{ a | format_address }}</span>{% if a == customer.default_address %}<span class="badge" style="align-self:flex-start">Default</span>{% endif %}
+        {%- form 'customer_address', a -%}<input type="hidden" name="_method" value="delete"><button class="textbtn" type="submit">Delete</button>{%- endform -%}
+      </div>
+    {%- endfor -%}
+    {%- endpaginate -%}
+  </div>
+  {%- form 'customer_address', customer.new_address, class: 'stack', style: 'gap:14px' -%}
+    <h2 class="h3">Add an address</h2>
+    {%- if form.errors -%}<div class="err">{{ form.errors | default_errors }}</div>{%- endif -%}
+    <div class="field"><label for="a-first">First name</label><input id="a-first" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name"></div>
+    <div class="field"><label for="a-last">Last name</label><input id="a-last" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name"></div>
+    <div class="field"><label for="a-addr">Address</label><input id="a-addr" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1"></div>
+    <div class="row" style="gap:12px"><div class="field" style="flex:1 1 120px"><label for="a-zip">Postcode</label><input id="a-zip" name="address[zip]" value="{{ form.zip }}" autocomplete="postal-code"></div><div class="field" style="flex:2 1 180px"><label for="a-city">City</label><input id="a-city" name="address[city]" value="{{ form.city }}" autocomplete="address-level2"></div></div>
+    <div class="field"><label for="a-country">Country</label><select id="a-country" name="address[country]">{{ all_country_option_tags }}</select></div>
+    <div class="field"><label for="a-phone">Phone</label><input id="a-phone" name="address[phone]" value="{{ form.phone }}" autocomplete="tel"></div>
+    <label class="row" style="gap:8px;font-size:14px">{{ form.set_as_default_checkbox }} Use as default</label>
+    <button class="btn" type="submit">Save address</button>
+  {%- endform -%}
+</div></section>
+{% schema %}
+{ "name": "Addresses", "settings": [] }
+{% endschema %}

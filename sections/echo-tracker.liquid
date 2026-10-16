@@ -1,0 +1,114 @@
+{%- comment -%}
+  Rescued yarn tracker. One block per batch. "Became" links to the products picked on the batch;
+  pieces and status come from each product's edition size and live stock.
+{%- endcomment -%}
+{%- liquid
+  assign months = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec' | split: ','
+  assign total_pieces = 0
+  assign open_count = 0
+  capture rows
+    for b in section.blocks
+      assign pcs = 0
+      assign left = 0
+      assign has_last = false
+      capture became
+        if b.settings.closed
+          echo b.settings.closed_name | escape
+        else
+          assign tseen = ','
+          assign tfirst = true
+          for p in b.settings.products
+            assign thk = ',' | append: p.handle | append: ','
+            if tseen contains thk
+              continue
+            endif
+            for sib in p.metafields.custom.linked_products.value
+              assign tseen = tseen | append: sib.handle | append: ','
+            endfor
+            assign tseen = tseen | append: p.handle | append: ','
+            capture raw
+              render 'echo-pinfo', product: p
+            endcapture
+            assign pi = raw | strip | split: '~'
+            assign pcs = pcs | plus: pi[2]
+            assign left = left | plus: pi[3]
+            if pi[4] == 'last'
+              assign has_last = true
+            endif
+            unless tfirst
+              echo '<br>'
+            endunless
+            assign tfirst = false
+            echo '<a class="link" href="' | append: p.url | append: '">' | append: pi[8] | append: '</a>'
+          endfor
+        endif
+      endcapture
+      if b.settings.closed
+        assign pcs = b.settings.closed_pieces
+        assign left = 0
+      endif
+      if b.settings.pieces_override > 0
+        assign pcs = b.settings.pieces_override
+      endif
+      assign total_pieces = total_pieces | plus: pcs
+      if left > 0
+        assign open_count = open_count | plus: 1
+      endif
+      assign d = b.settings.date | split: '-'
+      assign mi = d[1] | plus: 0 | minus: 1
+      echo '<tr ' | append: b.shopify_attributes | append: '><td class="mono" style="text-transform:none;letter-spacing:0;color:var(--ink)">' | append: b.settings.id | append: '</td><td>'
+      if d.size > 1 and mi >= 0
+        echo months[mi] | append: ' ' | append: d[0]
+      else
+        echo b.settings.date
+      endif
+      echo '</td><td>' | append: b.settings.fibre | append: '</td><td class="num">' | append: b.settings.kg | append: ' kg</td><td>' | append: became | append: '</td><td class="num">' | append: pcs | append: '</td><td>'
+      if b.settings.closed or left == 0
+        echo '<span class="tstat closed">Closed</span>'
+      elsif has_last
+        echo '<span class="tstat last">Last pieces</span>'
+      else
+        echo '<span class="tstat">Open · ' | append: left | append: ' left</span>'
+      endif
+      echo '</td></tr>'
+    endfor
+  endcapture
+-%}
+<section class="section tight"><div class="wrap stack" style="gap:14px"><span class="mono">{{ section.settings.eyebrow }}</span><h1 class="h1">{{ section.settings.heading }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p></div></section>
+<section class="section band tight"><div class="wrap stats">
+  <div class="stat"><div class="n">{{ settings.echo_rescued_kg }}</div><p>yarn rescued to date</p></div>
+  <div class="stat"><div class="n">{{ settings.echo_editions }}</div><p>batches and editions</p></div>
+  <div class="stat"><div class="n">{{ total_pieces }}</div><p>numbered pieces made</p></div>
+  <div class="stat"><div class="n">{{ open_count }}</div><p>editions still open</p></div>
+</div></section>
+<section class="section"><div class="wrap stack" style="gap:16px">
+  <div class="row" style="justify-content:space-between"><h2 class="h2">The batch log</h2><a class="btn" href="{% render 'echo-url', key: 'open' %}">Shop open editions</a></div>
+  <div class="tablewrap"><table class="tracker"><thead><tr><th>Batch</th><th>Logged</th><th>Fibre</th><th class="num">Yarn</th><th>Became</th><th class="num">Pieces</th><th>Status</th></tr></thead><tbody>{{ rows }}</tbody></table></div>
+  {%- if section.settings.note != blank -%}<p class="muted" style="font-size:13px;margin:0">{{ section.settings.note }}</p>{%- endif -%}
+</div></section>
+{% schema %}
+{
+  "name": "Rescued yarn tracker",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Updated each time a batch is logged" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Rescued yarn tracker" },
+    { "type": "textarea", "id": "lead", "label": "Intro", "default": "Every batch of leftover yarn we have saved, what it became and whether you can still buy it. Each row matches the batch ID on a Yarn Passport." },
+    { "type": "text", "id": "note", "label": "Note under table", "default": "[Example figures. The real log is kept by the factory team and updated per batch.]" },
+    { "type": "paragraph", "content": "Totals for yarn rescued and editions are in Theme settings › EchoByJMG." }
+  ],
+  "blocks": [
+    { "type": "batch", "name": "Batch", "settings": [
+      { "type": "text", "id": "id", "label": "Batch ID", "default": "HV-2417" },
+      { "type": "text", "id": "date", "label": "Logged (YYYY-MM)", "default": "2026-09" },
+      { "type": "text", "id": "fibre", "label": "Fibre", "default": "80% lambswool, 20% nylon" },
+      { "type": "number", "id": "kg", "label": "Yarn (kg)", "default": 14 },
+      { "type": "product_list", "id": "products", "label": "Became (products)", "limit": 10 },
+      { "type": "number", "id": "pieces_override", "label": "Pieces made (optional override)", "default": 0 },
+      { "type": "checkbox", "id": "closed", "label": "Edition closed (no longer sold)", "default": false },
+      { "type": "text", "id": "closed_name", "label": "Closed: what it became" },
+      { "type": "number", "id": "closed_pieces", "label": "Closed: pieces made", "default": 12 }
+    ] }
+  ],
+  "presets": [{ "name": "Rescued yarn tracker" }]
+}
+{% endschema %}

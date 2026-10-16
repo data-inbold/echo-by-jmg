@@ -1,0 +1,35 @@
+{%- capture u_all -%}{%- render 'echo-url', key: 'shop-all' -%}{%- endcapture -%}
+{%- if cart.item_count == 0 -%}
+  <section class="section"><div class="wrap stack" style="max-width:640px"><h1 class="h2">Your bag is empty</h1><div><a class="btn" href="{{ u_all }}">Shop the editions</a></div></div></section>
+{%- else -%}
+  {%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
+  {%- assign cl = 'Home::' | append: u_home | append: '||Bag' -%}
+  {%- render 'echo-crumbs', list: cl -%}
+  <section class="section tight">
+    <div class="wrap grid g2" style="align-items:start">
+      <div class="stack" style="gap:18px">
+        <h1 class="h2">Bag ({{ cart.item_count }})</h1>
+        <div>{%- for item in cart.items -%}{%- render 'echo-line', item: item, line: forloop.index -%}{%- endfor -%}</div>
+        <a class="link" style="align-self:flex-start" href="{{ u_all }}">Continue shopping</a>
+      </div>
+      <form action="{{ routes.cart_url }}" method="post" class="review stack" style="gap:12px">
+        <h2 class="h3">Order summary</h2>
+        {%- render 'echo-discount-box', k: 'c' -%}
+        <div>{%- render 'echo-sum-rows' -%}</div>
+        <span class="muted" style="font-size:13px">{{ section.settings.note }}</span>
+        <button class="btn block" type="submit" name="checkout">Go to checkout</button>
+        {%- if additional_checkout_buttons and section.settings.express -%}<div class="pdp-buttons">{{ content_for_additional_checkout_buttons }}</div>{%- endif -%}
+        <span class="muted" style="font-size:13px">By paying you accept our <a class="link" href="{% render 'echo-url', key: 'terms' %}">terms of sale</a>. Read how we handle your data in our <a class="link" href="{% render 'echo-url', key: 'privacy' %}">privacy policy</a>.</span>
+      </form>
+    </div>
+  </section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Bag page",
+  "settings": [
+    { "type": "text", "id": "note", "label": "Note", "default": "Free delivery to your door or a parcel shop. Free 14-day returns." },
+    { "type": "checkbox", "id": "express", "label": "Show express checkout buttons", "default": true }
+  ]
+}
+{% endschema %}

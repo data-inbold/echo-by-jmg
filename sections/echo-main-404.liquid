@@ -1,0 +1,12 @@
+<section class="section"><div class="wrap stack" style="gap:18px;max-width:760px"><span class="mono">Page not found</span><h1 class="h1">{{ section.settings.heading }}</h1>
+<p class="lead" style="margin:0">{{ section.settings.lead }}</p>
+<div class="row"><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">Shop the editions</a><a class="btn ghost" href="{% render 'echo-url', key: 'home' %}">Go to the homepage</a><button class="btn ghost" data-act="search">Search</button></div></div></section>
+{% schema %}
+{
+  "name": "Page not found",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "This page has been unravelled." },
+    { "type": "textarea", "id": "lead", "label": "Text", "default": "The page you were looking for has moved or no longer exists. Old product links are sent to the current edition where we can." }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,268 @@
+{%- liquid
+  capture u_home
+    render 'echo-url', key: 'home'
+  endcapture
+  capture u_all
+    render 'echo-url', key: 'shop-all'
+  endcapture
+  capture u_gifts
+    render 'echo-url', key: 'gifts'
+  endcapture
+  capture u_help
+    render 'echo-url', key: 'help'
+  endcapture
+  capture u_story
+    render 'echo-url', key: 'story'
+  endcapture
+  capture u_passport
+    render 'echo-url', key: 'passport'
+  endcapture
+  capture u_factory
+    render 'echo-url', key: 'factory'
+  endcapture
+  capture u_tracker
+    render 'echo-url', key: 'tracker'
+  endcapture
+  capture u_journal
+    render 'echo-url', key: 'journal'
+  endcapture
+  capture u_sets
+    render 'echo-url', key: 'sets'
+  endcapture
+  capture u_happy
+    render 'echo-url', key: 'happy-habitat'
+  endcapture
+  capture u_last
+    render 'echo-url', key: 'last-pieces'
+  endcapture
+  capture u_gc
+    render 'echo-url', key: 'gift-card'
+  endcapture
+  capture u_contact
+    render 'echo-url', key: 'contact'
+  endcapture
+  capture u_track
+    render 'echo-url', key: 'track'
+  endcapture
+  capture u_returns
+    render 'echo-url', key: 'returns'
+  endcapture
+
+  assign shop_cur = false
+  if request.page_type == 'collection' or request.page_type == 'product'
+    assign shop_cur = true
+  endif
+  assign story_cur = false
+  assign sfx = template.suffix | default: ''
+  if request.page_type == 'blog' or request.page_type == 'article' or sfx == 'our-story' or sfx == 'about' or sfx == 'yarn-passport' or sfx == 'factory' or sfx == 'tracker'
+    assign story_cur = true
+  endif
+  assign design_total = 0
+  assign seen_all = ','
+-%}
+<div class="util">
+  {%- if section.settings.util_link != blank -%}<a href="{{ section.settings.util_link }}">{{ section.settings.util_text }}</a>{%- else -%}{{ section.settings.util_text }}{%- endif -%}
+</div>
+<header class="site" id="hdr">
+  <div class="wrap nav">
+    <button class="burger x" aria-label="Menu" aria-expanded="false" data-act="menu">☰</button>
+    <a class="logo" href="{{ u_home }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 400 | image_tag: alt: shop.name, style: 'height:28px;width:auto;display:block' }}{% else %}{{ section.settings.logo_text | default: shop.name }}{% endif %}</a>
+    <nav class="main" aria-label="Main">
+      <button data-act="mega" aria-expanded="false"{% if shop_cur %} aria-current="page"{% endif %}>Shop ▾</button>
+      <a href="{{ u_gifts }}"{% if template.suffix == 'gifts' %} aria-current="page"{% endif %}>Gifts</a>
+      <button data-act="story" aria-expanded="false"{% if story_cur %} aria-current="page"{% endif %}>Our Story ▾</button>
+      <a href="{{ u_help }}"{% if template.suffix == 'help' or template.suffix == 'faq' %} aria-current="page"{% endif %}>Help</a>
+    </nav>
+    <div class="tools">
+      {%- if localization.available_languages.size > 1 -%}
+        {%- form 'localization', class: 'hide-s' -%}
+          {%- for lang in localization.available_languages -%}
+            <button type="submit" name="locale_code" value="{{ lang.iso_code }}" style="padding:10px 4px;{% if lang.iso_code == localization.language.iso_code %}font-weight:600;{% else %}opacity:.75;{% endif %}" aria-label="{{ lang.endonym_name }}">{{ lang.iso_code | upcase }}</button>{% unless forloop.last %}<span aria-hidden="true">/</span>{% endunless %}
+          {%- endfor -%}
+        {%- endform -%}
+      {%- endif -%}
+      <button data-act="search">Search</button>
+      <a class="hide-s" href="{{ routes.account_url }}">Account</a>
+      <button data-act="bag" data-bag-label aria-label="Bag, {{ cart.item_count }} items"><b>Bag (<span data-bag-count>{{ cart.item_count }}</span>)</b></button>
+    </div>
+  </div>
+
+  <div class="mega" data-panel="mega" hidden>
+    <div class="wrap shopmega">
+      <div class="tiles">
+        {%- for k in (1..4) -%}
+          {%- liquid
+            case k
+              when 1
+                assign col = settings.echo_col_blankets
+                assign key = 'blankets'
+                assign nm = 'Blankets'
+                assign fb = 'echo-twister-outdoor.jpg'
+              when 2
+                assign col = settings.echo_col_cushions
+                assign key = 'cushions'
+                assign nm = 'Cushion covers'
+                assign fb = 'echo-cushion-brown.jpg'
+              when 3
+                assign col = settings.echo_col_bags
+                assign key = 'bags'
+                assign nm = 'Bags'
+                assign fb = 'echo-bag-cable.jpg'
+              else
+                assign col = settings.echo_col_accessories
+                assign key = 'accessories'
+                assign nm = 'Accessories'
+                assign fb = 'echo-acc-scarf.jpg'
+            endcase
+            capture curl
+              render 'echo-url', key: key
+            endcapture
+            if col != blank
+              assign curl = col.url
+              assign nm = col.title
+            endif
+            assign seen = ','
+            assign designs = 0
+            assign minp = 999999999
+            if col != blank
+              assign plist = col.products
+            else
+              assign plist = collections.all.products
+            endif
+            if true
+              for p in plist limit: 250
+                if col == blank
+                  capture pc
+                    render 'echo-cat', product: p
+                  endcapture
+                  assign pc = pc | strip
+                  if pc != key
+                    continue
+                  endif
+                endif
+                assign hk = ',' | append: p.handle | append: ','
+                unless seen contains hk
+                  assign designs = designs | plus: 1
+                  for s in p.metafields.custom.linked_products.value
+                    assign seen = seen | append: s.handle | append: ','
+                  endfor
+                  assign seen = seen | append: p.handle | append: ','
+                endunless
+                unless seen_all contains hk
+                  assign design_total = design_total | plus: 1
+                  for s in p.metafields.custom.linked_products.value
+                    assign seen_all = seen_all | append: s.handle | append: ','
+                  endfor
+                  assign seen_all = seen_all | append: p.handle | append: ','
+                endunless
+                if p.price < minp
+                  assign minp = p.price
+                endif
+              endfor
+            endif
+            assign tk = 'tile_' | append: key
+            assign tile_img = section.settings[tk]
+            if tile_img == blank and col != blank
+              assign tile_img = col.featured_image
+            endif
+          -%}
+          <a class="mtile" href="{{ curl }}">
+            {%- if section.settings[tk] != blank -%}
+              {%- render 'echo-pic', image: tile_img, alt: nm, ar: '1/1', sizes: '200px' -%}
+            {%- else -%}
+              {%- render 'echo-pic', asset: fb, alt: nm, ar: '1/1' -%}
+            {%- endif -%}
+            <span class="mname">{{ nm }}</span>
+            <span class="mmeta">{% if designs > 0 %}{{ designs }} designs · from {% render 'echo-money', price: minp %}{% else %}Shop {{ nm | downcase }}{% endif %}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+      <div class="mside">
+        <h4 class="mono">Edits</h4>
+        <a href="{{ u_sets }}">Pillow Talk sets</a>
+        <a href="{{ u_happy }}">Happy Habitat (kids’ rooms)</a>
+        <a href="{{ u_last }}">Last pieces</a>
+        <a href="{{ u_gc }}">Gift card</a>
+        <a class="link" href="{{ u_all }}" style="display:inline-block;margin-top:14px;padding:0">Shop all{% if design_total > 0 %} {{ design_total }} designs{% endif %}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mega" data-panel="story" hidden>
+    <div class="wrap storymega">
+      <a href="{{ u_story }}">The family and the factory</a>
+      <a href="{{ u_passport }}">The Yarn Passport</a>
+      <a href="{{ u_factory }}">Factory and certificates</a>
+      <a href="{{ u_tracker }}">Rescued yarn tracker</a>
+      <a href="{{ u_journal }}">Journal</a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" data-panel="menu" hidden>
+    <div class="wrap">
+      <a href="{{ u_all }}"><b>Shop all</b></a>
+      <div class="sub">
+        {%- assign cat_keys = 'blankets,cushions,bags,accessories' | split: ',' -%}
+        {%- for key in cat_keys -%}
+          {%- liquid
+            case key
+              when 'blankets'
+                assign col = settings.echo_col_blankets
+                assign nm = 'Blankets'
+              when 'cushions'
+                assign col = settings.echo_col_cushions
+                assign nm = 'Cushion covers'
+              when 'bags'
+                assign col = settings.echo_col_bags
+                assign nm = 'Bags'
+              else
+                assign col = settings.echo_col_accessories
+                assign nm = 'Accessories'
+            endcase
+            capture curl
+              render 'echo-url', key: key
+            endcapture
+            if col != blank
+              assign curl = col.url
+              assign nm = col.title
+            endif
+          -%}
+          <a href="{{ curl }}">{{ nm }}</a>
+        {%- endfor -%}
+        <a href="{{ u_sets }}">Pillow Talk sets</a><a href="{{ u_happy }}">Happy Habitat</a><a href="{{ u_last }}">Last pieces</a><a href="{{ u_gc }}">Gift card</a>
+      </div>
+      <a href="{{ u_gifts }}">Gifts</a>
+      <a href="{{ u_story }}">Our Story</a>
+      <div class="sub"><a href="{{ u_passport }}">The Yarn Passport</a><a href="{{ u_factory }}">Factory and certificates</a><a href="{{ u_tracker }}">Rescued yarn tracker</a><a href="{{ u_journal }}">Journal</a></div>
+      <a href="{{ u_help }}">Help</a><a href="{{ u_contact }}">Contact</a><a href="{{ routes.account_url }}">Account</a><a href="{{ u_track }}">Track your order</a><a href="{{ u_returns }}">Returns</a>
+      {%- if localization.available_languages.size > 1 -%}
+        {%- form 'localization' -%}
+          <div class="row" style="padding:12px 0;gap:14px">
+            {%- for lang in localization.available_languages -%}
+              <button type="submit" name="locale_code" value="{{ lang.iso_code }}" style="background:none;border:0;padding:0;font-size:13px;letter-spacing:.04em;{% if lang.iso_code == localization.language.iso_code %}font-weight:600{% else %}opacity:.7{% endif %}">{{ lang.endonym_name }}</button>
+            {%- endfor -%}
+          </div>
+        {%- endform -%}
+      {%- endif -%}
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header (EchoByJMG)",
+  "class": "echo-header",
+  "settings": [
+    { "type": "text", "id": "util_text", "label": "Top bar text", "default": "Free delivery in Denmark · Free 14-day returns to a Danish address · ★ 4.8 on Trustpilot" },
+    { "type": "url", "id": "util_link", "label": "Top bar link" },
+    { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to show the text logo, as in the design." },
+    { "type": "text", "id": "logo_text", "label": "Text logo", "default": "EchoByJMG" },
+    { "type": "header", "content": "Shop menu tiles" },
+    { "type": "paragraph", "content": "Tiles link to the category collections set in Theme settings › EchoByJMG. Images below override the bundled photos." },
+    { "type": "image_picker", "id": "tile_blankets", "label": "Blankets tile image" },
+    { "type": "image_picker", "id": "tile_cushions", "label": "Cushion covers tile image" },
+    { "type": "image_picker", "id": "tile_bags", "label": "Bags tile image" },
+    { "type": "image_picker", "id": "tile_accessories", "label": "Accessories tile image" }
+  ]
+}
+{% endschema %}
