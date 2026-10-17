@@ -2,8 +2,16 @@
 {%- assign totp = tot | strip | split: '|' -%}
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap stats">
+    {%- comment -%} The {kg} / {batches} tokens are built with append: a "}" inside an output tag ends the tag early in Shopify's parser. {%- endcomment -%}
+    {%- liquid
+      assign tok_kg = '{' | append: 'kg' | append: '}'
+      assign tok_ed = '{' | append: 'batches' | append: '}'
+      assign kg_out = totp[0] | default: ''
+      assign ed_out = totp[1] | default: ''
+    -%}
     {%- for b in section.blocks -%}
-      <div class="stat" {{ b.shopify_attributes }}><div class="n">{{ b.settings.n | replace: '{kg}', totp[0] | replace: '{batches}', totp[1] }}</div><p>{{ b.settings.text }}</p></div>
+      {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out -%}
+      <div class="stat" {{ b.shopify_attributes }}><div class="n">{{ n }}</div><p>{{ b.settings.text }}</p></div>
     {%- endfor -%}
   </div>
   {%- if section.settings.link_label != blank -%}
