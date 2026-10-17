@@ -15,6 +15,7 @@
       "settings": {
         "eyebrow": "Our Story",
         "heading": "We are the family knitter European brands describe but never name. This time we sign our own work.",
+        "video": "shopify://files/videos/gemini_generated_video_91f90f4d.mp4",
         "photo": "none",
         "alt": "",
         "label": "FULL-WIDTH FILM STILL OR LOOP: the factory floor, knitting machines running, a family member at work. Sound off, captioned."
@@ -200,6 +201,7 @@
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
+        "video": "shopify://files/videos/gemini_generated_video_212d6d68.mp4",
         "photo": "echo-twister-sofa-small.jpg",
         "alt": "Close-up of the Twister Rope cable knit",
         "label": "",
