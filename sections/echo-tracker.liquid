@@ -23,7 +23,19 @@
       assign keys = keys | split: ',' | sort | reverse
       for k in keys
         assign idx = k | split: '#' | last | plus: 0
-        assign yb = vals[idx]
+        comment
+          Shopify's metaobject list can only be looped over, not indexed (vals[idx] is empty), so find the entry by position.
+        endcomment
+        assign yb = nil
+        for cand in vals
+          if forloop.index0 == idx
+            assign yb = cand
+            break
+          endif
+        endfor
+        if yb == nil
+          continue
+        endif
         assign kgv = yb.kg.value | default: 0
         assign kgr = kgv | round
         if kgr == kgv
