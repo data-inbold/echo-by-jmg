@@ -34,6 +34,30 @@
   }
   function closeMenus() { if (hdr) { $$('[data-panel]', hdr).forEach(function (p) { p.hidden = true; }); $$('[aria-expanded]', hdr).forEach(function (b) { b.setAttribute('aria-expanded', 'false'); }); } }
 
+  /* Desktop: Shop and Our Story also open on hover (mouse only; touch keeps tap-to-open). */
+  var hoverOpenedAt = 0;
+  if (hdr && window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var openT = null, closeT = null;
+    var isOpen = function (k) { var p = $('[data-panel="' + k + '"]', hdr); return p && !p.hidden; };
+    var showMenu = function (k) { if (!isOpen(k)) { setMenu(k); hoverOpenedAt = Date.now(); } };
+    var cancel = function () { clearTimeout(openT); clearTimeout(closeT); };
+    var scheduleClose = function () {
+      clearTimeout(openT); clearTimeout(closeT);
+      closeT = setTimeout(function () { if (isOpen('mega') || isOpen('story')) closeMenus(); }, 250);
+    };
+    ['mega', 'story'].forEach(function (k) {
+      var btn = $('[data-act="' + k + '"]', hdr), panel = $('[data-panel="' + k + '"]', hdr);
+      if (!btn || !panel) return;
+      btn.addEventListener('mouseenter', function () {
+        cancel();
+        openT = setTimeout(function () { showMenu(k); }, (isOpen('mega') || isOpen('story')) ? 0 : 120);
+      });
+      btn.addEventListener('mouseleave', scheduleClose);
+      panel.addEventListener('mouseenter', cancel);
+      panel.addEventListener('mouseleave', scheduleClose);
+    });
+  }
+
   /* ---------- overlays: bag and search ---------- */
   var scrimHtml = '<div class="scrim" data-close></div>';
   function openBag() {
@@ -228,7 +252,12 @@
     var b = t.closest('button,[data-act]');
     if (!b) { if (hdr && !hdr.contains(t)) closeMenus(); return; }
     var act = b.getAttribute('data-act');
-    if (act === 'mega' || act === 'story' || act === 'menu') { e.preventDefault(); setMenu(act); return; }
+    if (act === 'mega' || act === 'story' || act === 'menu') {
+      e.preventDefault();
+      // A click right after hover opened this menu should keep it open, not toggle it shut.
+      if (act !== 'menu' && Date.now() - hoverOpenedAt < 600) return;
+      setMenu(act); return;
+    }
     if (act === 'bag') { e.preventDefault(); openBag(); return; }
     if (act === 'search') { e.preventDefault(); openSearch(); return; }
     if (b.hasAttribute('data-lq')) { e.preventDefault(); changeLine(+b.getAttribute('data-line'), Math.max(0, +b.getAttribute('data-q') + (+b.getAttribute('data-lq')))); return; }
