@@ -46,7 +46,7 @@
         "id": "echo_batches",
         "label": "Batch per product",
         "default": "HV-2417 | 14 | hills-valleys-throw, hills-valleys-throw-oat, hills-valleys-knitted-cushion-cover-vertiver-green, hills-valleys-cushion-cover\nTR-2611 | 14 | twister-rope-blanket-doe, twister-rope-blanket, twister-rope-knitted-cushion-cover-doe, twister-rope-knitted-cushion-cover\nRO-2612 | 14 | rollercoaster-tracks-blanket-black, rollercoaster-tracks-blanket-linen, rollercoaster-tracks-knitted-cushion-cover-black, rollercoaster-tracks-knitted-cushion-cover\nHS-2613 | 10 | happy-sunshine-throw-cloud, happy-sunshine-throw-cloud-smoky-mauve, happy-sunshine-throw\nCA-2614 | 14 | carousel-stripes-knitted-throw-violet-blue, carousel-stripes-throw, carousel-stripes-knitted-cushion-cover-violet-blue, carousel-stripes-knitted-cushion-cover\nSS-2615 | 14 | stripey-spy-throw, stripey-spy-cushion-cover\nBP-2616 | 14 | bonjour-pup-throw, bonjour-pup-cushion-cover\nCC-2617 | 10 | checkerboard-chase-blanket\nBP-2618 | 14 | bubble-pop-blanket, bubble-pop-knitted-cushion-cover\nLA-2519 | 14 | lucky-arrow-throw, lucky-arrow-knitted-cushion-cover\nTB-2520 | 14 | ticket-booth-throw-dk-royal, ticket-booth-knitted-cushion-cover\nCC-2521 | 14 | cotton-candy-cloud-throw-cloud, cotton-candy-cloud-knitted-cushion-cover\nPF-2522 | 4 | puff-friends-cushion-cover\nFP-2523 | 4 | fluff-paws-cushion-cover\nPP-2524 | 4 | purrfect-peek-cushion-cover\nSF-2525 | 4 | sky-fence-knitted-cushion-cover\nJR-2526 | 4 | joyful-rainbow-knitted-cushion-cover\nSP-2527 | 4 | star-pop-knitted-bag-bottle-green, star-pop-knitted-bag\nHS-2528 | 4 | happy-stripe-lunch-bag-tomato, happy-stripe-lunch-bag-egg-yolk, happy-stripe-lunch-bag\nPD-2529 | 4 | popcorn-dumpling-bag-pumpkin, popcorn-dumpling-bag\nWD-2430 | 4 | wavetrack-dumpling-bag-olive, wavetrack-dumpling-bag\nTS-2431 | 4 | textured-stripes-tote-black, textured-stripes-tote\nDD-2432 | 4 | denim-diamond-knitted-tote\nCR-2433 | 4 | cable-rope-knitted-tote\nPO-2434 | 6 | fun-stripes-knitted-pcase-seaweed, fun-stripes-knitted-pcase, booth-ticket-knitted-pcase-ash, booth-ticket-knitted-pcase-forest, booth-ticket-knitted-pcase-red, booth-ticket-knitted-pcase, geo-diamond-knitted-pcase\nAC-2435 | 6 | joyful-pompom-beanie-dk-royal, joyful-pompom-beanie-fennel, joyful-pompom-beanie-creamy, joyful-pompom-beanie-candy-pink, joyful-pompom-beanie-ash, rainbow-crossing-knitted-scarf-after-rain, rainbow-crossing-knitted-scarf-before-rain, rainbow-crossing-knitted-scarf",
-        "info": "One batch per line: BATCH ID | kg | product handles separated by commas. Feeds the Yarn Passport on product pages. A product tag batch:ID or the custom.batch_id metafield overrides this."
+        "info": "Only used while Content › Metaobjects › Yarn batch has no entries. One batch per line: BATCH ID | kg | product handles separated by commas."
       },
       {
         "type": "header",
@@ -139,13 +139,15 @@
         "type": "text",
         "id": "echo_rescued_kg",
         "label": "Yarn rescued (total)",
-        "default": "250 kg"
+        "default": "250 kg",
+        "info": "Only used while the Yarn batch list is empty; otherwise calculated from it."
       },
       {
         "type": "text",
         "id": "echo_editions",
         "label": "Editions released (total)",
-        "default": "28"
+        "default": "28",
+        "info": "Only used while the Yarn batch list is empty; otherwise calculated from it."
       }
     ]
   },

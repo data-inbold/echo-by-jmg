@@ -6,7 +6,11 @@
   assign i = raw | strip | split: '~'
   assign comp = product.metafields.custom.composition.value | default: '[Composition]'
   assign cl = comp | downcase
-  assign origin = product.metafields.custom.yarn_origin.value | default: section.settings.origin
+  assign origin = i[12] | default: section.settings.origin
+  if comp == '[Composition]' and i[13] != blank
+    assign comp = i[13]
+    assign cl = comp | downcase
+  endif
 -%}
 <section class="section dark">
   <div class="wrap">
@@ -32,7 +36,7 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Label", "default": "Yarn Passport" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "This yarn was headed for waste. Here is the batch it came from." },
-    { "type": "textarea", "id": "origin", "label": "Where it came from (default)", "info": "A product can override this with the custom.yarn_origin metafield.", "default": "Left over from a [season] production run for a [luxury or high-street] fashion house, knitted in our factory. Never worn, never recycled fibre." },
+    { "type": "textarea", "id": "origin", "label": "Where it came from (default)", "info": "Shown when the product's Yarn batch entry (Content > Metaobjects) has no 'Where it came from' text.", "default": "Left over from a [season] production run for a [luxury or high-street] fashion house, knitted in our factory. Never worn, never recycled fibre." },
     { "type": "text", "id": "bsci_no", "label": "BSCI number", "default": "amfori ID 156-020420-000" },
     { "type": "text", "id": "ocs_no", "label": "OCS line", "default": "Certificate [no.] · [confirm this product is in scope]" },
     { "type": "text", "id": "rcs_no", "label": "RCS line", "default": "Certificate [no.] · [confirm this product is in scope]" }

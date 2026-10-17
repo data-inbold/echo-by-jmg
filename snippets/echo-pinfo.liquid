@@ -3,10 +3,12 @@
   0 cat key (blankets|cushions|bags|accessories|gift)  1 singular name  2 edition size
   3 pieces left  4 state (open|last|sold)  5 colour label  6 colour hex  7 colour family
   8 display name (title without the colour suffix)  9 batch id  10 batch kg  11 colour key
+  12 yarn origin text (may be empty)  13 batch fibre (may be empty)
 
-  Sources, in order: product tags (colour:, family:, edition:, batch:, batch-kg:),
-  product metafields (custom.edition_size, custom.batch_id, custom.batch_kg),
-  then the store data (variant colour option, product type, product category).
+  Batch sources, first match wins: product tags (batch:, batch-kg:, edition:) and product
+  metafields (custom.batch_id, custom.batch_kg, custom.edition_size, custom.yarn_origin),
+  then the "Yarn batch" metaobject list (Content > Metaobjects) that includes this product,
+  then the "Batch per product" list in Theme settings > EchoByJMG.
 {%- endcomment -%}
 {%- liquid
   capture cat
@@ -35,8 +37,12 @@
   assign fam = ''
   assign batch = product.metafields.custom.batch_id.value | default: ''
   assign kg = product.metafields.custom.batch_kg.value | default: ''
+  assign origin = product.metafields.custom.yarn_origin.value | default: ''
+  assign bfibre = ''
+  assign ed_set = false
   if product.metafields.custom.edition_size.value
     assign ed = product.metafields.custom.edition_size.value
+    assign ed_set = true
   endif
   for tag in product.tags
     assign tl = tag | downcase
@@ -46,12 +52,43 @@
       assign fam = tag | split: ':' | last | strip | downcase
     elsif tl contains 'edition:'
       assign ed = tag | split: ':' | last | strip | plus: 0
+      assign ed_set = true
     elsif tl contains 'batch-kg:'
       assign kg = tag | split: ':' | last | strip
     elsif tl contains 'batch:'
       assign batch = tag | split: ':' | last | strip
     endif
   endfor
+  if batch == '' and product.gift_card? == false
+    for yb in shop.metaobjects.yarn_batch.values
+      assign hit = false
+      for yp in yb.products.value
+        if yp.id == product.id
+          assign hit = true
+          break
+        endif
+      endfor
+      if hit
+        assign batch = yb.batch_id.value | default: ''
+        if kg == '' and yb.kg.value != blank
+          assign kgr = yb.kg.value | round
+          if kgr == yb.kg.value
+            assign kg = kgr
+          else
+            assign kg = yb.kg.value
+          endif
+        endif
+        if origin == ''
+          assign origin = yb.origin.value | default: ''
+        endif
+        assign bfibre = yb.fibre.value | default: ''
+        if ed_set == false and yb.edition_size.value
+          assign ed = yb.edition_size.value
+        endif
+        break
+      endif
+    endfor
+  endif
   if batch == '' and settings.echo_batches != blank
     assign hk = ',' | append: product.handle | append: ','
     assign blines = settings.echo_batches | newline_to_br | split: '<br />'
@@ -131,11 +168,13 @@
   elsif tracked and left <= thr
     assign state = 'last'
   endif
+  assign origin_clean = origin | replace: '~', '-' | strip_newlines
+  assign fibre_clean = bfibre | replace: '~', '-' | newline_to_br | replace: '<br />', ', '
   if batch == ''
     assign batch = '[ID]'
   endif
   if kg == ''
     assign kg = '[x]'
   endif
-  echo cat | append: '~' | append: single | append: '~' | append: ed | append: '~' | append: left | append: '~' | append: state | append: '~' | append: label | append: '~' | append: hex | append: '~' | append: fam | append: '~' | append: name | append: '~' | append: batch | append: '~' | append: kg | append: '~' | append: ckey
+  echo cat | append: '~' | append: single | append: '~' | append: ed | append: '~' | append: left | append: '~' | append: state | append: '~' | append: label | append: '~' | append: hex | append: '~' | append: fam | append: '~' | append: name | append: '~' | append: batch | append: '~' | append: kg | append: '~' | append: ckey | append: '~' | append: origin_clean | append: '~' | append: fibre_clean
 -%}

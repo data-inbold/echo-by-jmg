@@ -63,14 +63,14 @@
         "stat_1": {
           "type": "stat",
           "settings": {
-            "n": "250 kg",
+            "n": "{kg}",
             "text": "yarn rescued to date"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
-            "n": "28",
+            "n": "{batches}",
             "text": "numbered editions released"
           }
         },

@@ -1,7 +1,9 @@
+{%- capture tot -%}{%- render 'echo-batch-totals' -%}{%- endcapture -%}
+{%- assign totp = tot | strip | split: '|' -%}
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap stats">
     {%- for b in section.blocks -%}
-      <div class="stat" {{ b.shopify_attributes }}><div class="n">{{ b.settings.n }}</div><p>{{ b.settings.text }}</p></div>
+      <div class="stat" {{ b.shopify_attributes }}><div class="n">{{ b.settings.n | replace: '{kg}', totp[0] | replace: '{batches}', totp[1] }}</div><p>{{ b.settings.text }}</p></div>
     {%- endfor -%}
   </div>
   {%- if section.settings.link_label != blank -%}
@@ -19,7 +21,7 @@
   ],
   "blocks": [
     { "type": "stat", "name": "Number", "settings": [
-      { "type": "text", "id": "n", "label": "Number", "default": "250 kg" },
+      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, both counted from the Yarn batch list." },
       { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued to date" }
     ] }
   ],
