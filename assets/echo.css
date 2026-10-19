@@ -70,6 +70,8 @@ h1,h2,h3{text-wrap:balance}
 header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:#000;color:#fff}
 .nav{display:flex;align-items:center;gap:22px;min-height:72px}
 .logo{font:800 18px/1 var(--display);letter-spacing:.005em;text-decoration:none;margin-right:14px}
+.logo img{display:block;height:var(--logo-h,28px);width:auto;max-width:none}
+@media(min-width:980px){.logo img{height:var(--logo-h-d,40px)}}
 .nav .main{display:none;gap:4px;align-items:center}
 .nav .main>a,.nav .main>button{background:none;border:0;padding:10px 10px;text-decoration:none;font-size:13px;letter-spacing:.03em;text-transform:uppercase;border-bottom:1px solid transparent}
 .nav .main [aria-current="page"],.nav .main [aria-expanded="true"]{border-bottom-color:#fff}

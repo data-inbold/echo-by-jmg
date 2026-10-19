@@ -66,7 +66,7 @@
 <header class="site" id="hdr">
   <div class="wrap nav">
     <button class="burger x" aria-label="Menu" aria-expanded="false" data-act="menu">☰</button>
-    <a class="logo" href="{{ u_home }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 400 | image_tag: alt: shop.name, style: 'height:28px;width:auto;display:block' }}{% else %}{{ section.settings.logo_text | default: shop.name }}{% endif %}</a>
+    <a class="logo" href="{{ u_home }}"{% if section.settings.logo != blank %} style="--logo-h:{{ section.settings.logo_height_mobile }}px;--logo-h-d:{{ section.settings.logo_height }}px"{% endif %}>{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 480 | image_tag: alt: shop.name, widths: '160, 240, 360, 480', sizes: '(min-width: 980px) 160px, 100px' }}{% else %}{{ section.settings.logo_text | default: shop.name }}{% endif %}</a>
     <nav class="main" aria-label="Main">
       <button data-act="mega" aria-expanded="false"{% if shop_cur %} aria-current="page"{% endif %}>Shop ▾</button>
       <a href="{{ u_gifts }}"{% if template.suffix == 'gifts' %} aria-current="page"{% endif %}>Gifts</a>
@@ -255,7 +255,9 @@
   "settings": [
     { "type": "text", "id": "util_text", "label": "Top bar text", "default": "Free delivery in Denmark · Free 14-day returns to a Danish address · ★ 4.8 on Trustpilot" },
     { "type": "url", "id": "util_link", "label": "Top bar link" },
-    { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to show the text logo, as in the design." },
+    { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to show the text logo, as in the design. The header is black, so use a white or light logo file." },
+    { "type": "range", "id": "logo_height", "label": "Logo image height, desktop", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 40 },
+    { "type": "range", "id": "logo_height_mobile", "label": "Logo image height, mobile", "min": 16, "max": 48, "step": 2, "unit": "px", "default": 28 },
     { "type": "text", "id": "logo_text", "label": "Text logo", "default": "EchoByJMG" },
     { "type": "header", "content": "Shop menu tiles" },
     { "type": "paragraph", "content": "Tiles link to the category collections set in Theme settings › EchoByJMG. Images below override the bundled photos." },
