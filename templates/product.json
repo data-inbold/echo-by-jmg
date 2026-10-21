@@ -1,0 +1,87 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-product",
+      "settings": {}
+    },
+    "passport": {
+      "type": "echo-product-passport",
+      "settings": {}
+    },
+    "qa": {
+      "type": "echo-product-faq-reviews",
+      "settings": {},
+      "blocks": {
+        "q_1": {
+          "type": "q",
+          "settings": {
+            "q": "What do you mean by leftover yarn?",
+            "a": "<p>Premium, unused yarn left over from earlier production runs for fashion brands. It is not waste and not used fibre. It is high-quality yarn that was never worn or used, simply left in limited quantities.</p>"
+          }
+        },
+        "q_2": {
+          "type": "q",
+          "settings": {
+            "q": "Does leftover yarn mean lower quality?",
+            "a": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>"
+          }
+        },
+        "q_3": {
+          "type": "q",
+          "settings": {
+            "q": "Will items be restocked?",
+            "a": "<p>Some items may return in a new colourway or updated design, but once sold out they are not restocked exactly the same. If a piece speaks to you, it may be best to make it yours while it is available.</p>"
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "quote": "So soft, you felt it immediately. It feels like it’s always belonged in the room.",
+            "name": "Aija"
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "quote": "Got the black and white pup cushion cover. It’s super cute, and thicker than I thought, which is good!",
+            "name": "Aneta"
+          }
+        }
+      },
+      "block_order": [
+        "q_1",
+        "q_2",
+        "q_3",
+        "review_4",
+        "review_5"
+      ]
+    },
+    "related": {
+      "type": "echo-product-related",
+      "settings": {}
+    },
+    "factory": {
+      "type": "echo-split",
+      "settings": {
+        "hide_on_gift": true,
+        "media_first": true,
+        "gap": 12,
+        "eyebrow": "From the factory",
+        "heading": "Made where it was always made",
+        "caption": "Knitted in our family factory, on the machines that made it for fashion brands.",
+        "btn1_label": "Meet the people",
+        "btn1_link": "echo:story",
+        "label": "15 sec clip: this design on the knitting machine, from the factory shoot",
+        "ar": "16/9"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "passport",
+    "qa",
+    "related",
+    "factory"
+  ]
+}

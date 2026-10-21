@@ -1,0 +1,13 @@
+{%- comment -%} Cozy Club sign-up (Shopify customer newsletter form). Param: k (unique id) {%- endcomment -%}
+{%- assign fid = 'club-form-' | append: k -%}
+{%- form 'customer', class: 'inline-form', id: fid -%}
+  {%- if form.posted_successfully? -%}
+    <div class="ok" role="status" style="color:var(--ink);flex:1 1 100%">Welcome to the Cozy Club. Your 10% code is on its way by email.</div>
+  {%- else -%}
+    <input type="hidden" name="contact[tags]" value="newsletter,cozy-club">
+    <label class="visually-hidden" for="club-{{ k }}">Email</label>
+    <input id="club-{{ k }}" type="email" name="contact[email]" required placeholder="Your email" autocomplete="email">
+    <button class="btn" type="submit">Join</button>
+    {%- if form.errors -%}<span class="err" style="flex:1 1 100%">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</span>{%- endif -%}
+  {%- endif -%}
+{%- endform -%}

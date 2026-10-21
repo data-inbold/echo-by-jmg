@@ -1,0 +1,202 @@
+{%- comment -%}
+  Collection page: intro, sticky colour-family filter bar, product grid with the Yarn Passport tile.
+  One card per product (client decision 21 Oct). Grouping colour siblings is an option in the section settings.
+{%- endcomment -%}
+{%- liquid
+  capture u_home
+    render 'echo-url', key: 'home'
+  endcapture
+  capture u_all
+    render 'echo-url', key: 'shop-all'
+  endcapture
+  capture u_passport
+    render 'echo-url', key: 'passport'
+  endcapture
+  assign h1 = section.settings.h1 | default: collection.title
+  if collection.handle == 'all' and section.settings.h1 == blank
+    assign h1 = 'Everything we make'
+  endif
+  assign intro = section.settings.intro
+  if intro == blank
+    assign intro = collection.description | strip_html
+  endif
+  if intro == blank and collection.handle == 'all'
+    assign intro = 'Blankets, cushion covers, bags and accessories, all knitted from rescued premium yarn in numbered editions.'
+  endif
+  assign title = collection.title
+  if collection.handle == 'all'
+    assign title = 'Shop all'
+  endif
+  if section.settings.crumb != blank
+    assign title = section.settings.crumb
+  endif
+  assign only = section.settings.only
+  assign picks = ','
+  for pp in section.settings.picks
+    assign picks = picks | append: pp.handle | append: ','
+  endfor
+  if only == 'sets'
+    assign bl_designs = ','
+    assign cu_designs = ','
+    for p in collection.products
+      assign dk = p.title | split: ' Knitted' | first | handle
+      capture pc
+        render 'echo-cat', product: p
+      endcapture
+      assign pc = pc | strip
+      if pc == 'blankets'
+        assign bl_designs = bl_designs | append: dk | append: ','
+      elsif pc == 'cushions'
+        assign cu_designs = cu_designs | append: dk | append: ','
+      endif
+    endfor
+  endif
+  assign mode = section.settings.mode
+  assign sort = collection.sort_by | default: collection.default_sort_by
+-%}
+{%- assign cl = 'Home::' | append: u_home | append: '||Shop::' | append: u_all | append: '||' | append: title -%}
+{%- render 'echo-crumbs', list: cl -%}
+<section class="section tight">
+  <div class="wrap split" style="align-items:start">
+    <div class="stack" style="gap:14px"><h1 class="h1">{{ h1 }}</h1><p class="lead" style="margin:0">{{ intro }}</p></div>
+    {%- assign cimg = section.settings.image | default: collection.image -%}
+    {%- render 'echo-media', video: section.settings.video, image: cimg, asset: section.settings.photo, alt: collection.title, label: section.settings.label, ar: '16/9', eager: true -%}
+  </div>
+</section>
+
+<section class="section tight alt" style="padding-block:16px;position:sticky;top:66px;z-index:5;border-block:1px solid var(--line)">
+  <div class="wrap row" style="justify-content:space-between">
+    <div class="row" style="gap:6px">
+      <button class="chip" data-fam="" aria-pressed="true">All colours</button>
+      {%- assign fams = 'green:#6E7559,neutral:#D8CCB4,blue:#3D5BA9,black:#2A2826,bright:#E0763C,pink:#D6A0B4' | split: ',' -%}
+      {%- for f in fams -%}
+        {%- assign fp = f | split: ':' -%}
+        <button class="chip" data-fam="{{ fp[0] }}" aria-pressed="false"><span class="dot" style="background:{{ fp[1] }}"></span>{{ fp[0] | capitalize }}</button>
+      {%- endfor -%}
+      {%- if mode != 'last' -%}<button class="chip" data-last aria-pressed="false">Last pieces</button>{%- endif -%}
+    </div>
+    <label class="row" style="gap:8px;font-size:13px" for="sort">Sort
+      <select id="sort" style="border:1px solid var(--line);background:#fff;min-height:36px;padding:0 8px">
+        <option value="created-descending"{% if sort == 'created-descending' %} selected{% endif %}>Newest editions</option>
+        <option value="price-ascending"{% if sort == 'price-ascending' %} selected{% endif %}>Price, low to high</option>
+        <option value="price-descending"{% if sort == 'price-descending' %} selected{% endif %}>Price, high to low</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap stack" style="gap:20px">
+    {%- paginate collection.products by 96 -%}
+      {%- liquid
+        assign seen = ','
+        assign n = 0
+        capture cards_last
+        endcapture
+        capture cards
+          for p in collection.products
+            if p.gift_card?
+              continue
+            endif
+            capture raw
+              render 'echo-pinfo', product: p
+            endcapture
+            assign st = raw | strip | split: '~' | slice: 4 | first
+            if only == 'picks'
+              assign phk = ',' | append: p.handle | append: ','
+              unless picks contains phk
+                continue
+              endunless
+            elsif only == 'sets'
+              assign dk = p.title | split: ' Knitted' | first | handle
+              assign dkk = ',' | append: dk | append: ','
+              unless bl_designs contains dkk and cu_designs contains dkk
+                continue
+              endunless
+            elsif only != 'all'
+              assign pcat = raw | strip | split: '~' | first
+              if pcat != only
+                continue
+              endif
+            endif
+            if mode == 'last' and st != 'last'
+              continue
+            endif
+            if mode == 'open' and st == 'sold'
+              continue
+            endif
+            assign hk = ',' | append: p.handle | append: ','
+            if mode != 'last' and seen contains hk and section.settings.group
+              continue
+            endif
+            for s in p.metafields.custom.linked_products.value
+              assign seen = seen | append: s.handle | append: ','
+            endfor
+            assign seen = seen | append: p.handle | append: ','
+            assign n = n | plus: 1
+            if mode == 'open' and st == 'last'
+              capture one
+                render 'echo-card', product: p, eager: forloop.first
+              endcapture
+              assign cards_last = cards_last | append: one
+            else
+              render 'echo-card', product: p, eager: forloop.first
+            endif
+          endfor
+        endcapture
+      -%}
+      <span class="muted" style="font-size:14px" data-shop-count>{{ n }} product{% if n != 1 %}s{% endif %}</span>
+      <div class="grid g4" data-shop-grid{% if n == 0 %} hidden{% endif %}>
+        {{ cards_last }}{{ cards }}
+        {%- if section.settings.show_tile -%}
+          <a class="edit-tile" href="{{ section.settings.tile_link | default: u_passport }}" hidden><span class="mono">{{ section.settings.tile_eyebrow }}</span><span class="t">{{ section.settings.tile_heading }}</span><span style="font-size:14px;color:#CFCDC8">{{ section.settings.tile_text }}</span></a>
+        {%- endif -%}
+      </div>
+      <div class="review" data-shop-empty{% if n > 0 %} hidden{% endif %}>No products match these filters. <button class="textbtn" data-fam="">Clear filters</button></div>
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Pages">
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- elsif part.title == paginate.current_page -%}<span class="current">{{ part.title }}</span>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "checkbox", "id": "group", "label": "Show one card per design (group colours)", "default": false, "info": "Off: every colour is its own card, as agreed with the client." },
+    { "type": "select", "id": "mode", "label": "Show", "options": [
+      { "value": "all", "label": "All products in the collection" },
+      { "value": "open", "label": "Open editions (in stock, last pieces first)" },
+      { "value": "last", "label": "Last pieces only" }
+    ], "default": "all" },
+    { "type": "select", "id": "only", "label": "Limit to", "options": [
+      { "value": "all", "label": "Everything in the collection" },
+      { "value": "blankets", "label": "Blankets (by product category)" },
+      { "value": "cushions", "label": "Cushion covers (by product category)" },
+      { "value": "bags", "label": "Bags (by product category)" },
+      { "value": "accessories", "label": "Accessories (by product category)" },
+      { "value": "sets", "label": "Designs with a blanket and a cushion cover" },
+      { "value": "picks", "label": "Products picked below" }
+    ], "default": "all", "info": "Lets the page work on /collections/all without creating collections." },
+    { "type": "product_list", "id": "picks", "label": "Picked products", "limit": 50 },
+    { "type": "text", "id": "crumb", "label": "Breadcrumb name", "info": "Empty = collection title" },
+    { "type": "text", "id": "h1", "label": "Page heading", "info": "Empty = collection title" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "info": "Empty = collection description" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Empty = collection image" },
+    { "type": "video", "id": "video", "label": "Short clip (plays muted)" },
+    { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
+    { "type": "textarea", "id": "label", "label": "Placeholder text", "default": "Edit image or short clip" },
+    { "type": "header", "content": "Yarn Passport tile" },
+    { "type": "checkbox", "id": "show_tile", "label": "Show tile after the 4th product", "default": true },
+    { "type": "text", "id": "tile_eyebrow", "label": "Label", "default": "The Yarn Passport" },
+    { "type": "text", "id": "tile_heading", "label": "Heading", "default": "Why is every piece numbered?" },
+    { "type": "text", "id": "tile_text", "label": "Text", "default": "The yarn decides the edition size. Read how it works." },
+    { "type": "url", "id": "tile_link", "label": "Link" }
+  ]
+}
+{% endschema %}

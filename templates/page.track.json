@@ -1,0 +1,19 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Track your order"
+      }
+    },
+    "main": {
+      "type": "echo-track",
+      "settings": {}
+    }
+  },
+  "order": [
+    "crumbs",
+    "main"
+  ]
+}
