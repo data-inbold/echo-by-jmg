@@ -1,0 +1,14 @@
+{%- comment -%} Hatched placeholder box from the wireframe. Params: label, ar (e.g. '4/3'), tint, cls, h {%- endcomment -%}
+{%- liquid
+  assign st = ''
+  if tint != blank
+    assign st = st | append: '--tint:' | append: tint | append: ';'
+  endif
+  if h != blank
+    assign st = st | append: 'height:' | append: h | append: ';'
+  endif
+  if ar != blank
+    assign st = st | append: 'aspect-ratio:' | append: ar | append: ';min-height:0;'
+  endif
+-%}
+<div class="ph{% if tint != blank %} tint{% endif %}{% if cls != blank %} {{ cls }}{% endif %}" style="{{ st }}"><span>{{ label }}</span></div>

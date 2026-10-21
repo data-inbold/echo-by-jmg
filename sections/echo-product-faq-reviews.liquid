@@ -1,0 +1,48 @@
+{%- capture echo_out -%}
+{%- unless product.gift_card? -%}
+{%- liquid
+  capture raw
+    render 'echo-pinfo', product: product
+  endcapture
+  assign i = raw | strip | split: '~'
+  assign rcount = product.metafields.reviews.rating_count | default: 0
+  assign qs = section.blocks | where: 'type', 'q'
+  assign apps = section.blocks | where: 'type', '@app'
+  assign quotes = section.blocks | where: 'type', 'review'
+-%}
+<section class="section">
+  <div class="wrap grid g2" style="align-items:start">
+    <div><h2 class="h2" style="margin-bottom:16px">Questions about this {{ i[1] }}</h2>
+      {%- for b in qs -%}<details class="acc" {{ b.shopify_attributes }}><summary>{{ b.settings.q }}</summary><div class="body">{{ b.settings.a }}</div></details>{%- endfor -%}
+    </div>
+    <div id="reviews"><h2 class="h2" style="margin-bottom:16px">Reviews{% if rcount > 0 %} ({{ rcount }}){% endif %}</h2>
+      <div class="stack">
+        {%- for b in apps -%}{% render b %}{%- endfor -%}
+        {%- if apps.size == 0 -%}
+          {%- for b in quotes -%}<div class="review" {{ b.shopify_attributes }}>★★★★★ “{{ b.settings.quote }}”<br><span class="muted">{{ b.settings.name }}</span></div>{%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endunless -%}
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Product Q&A + reviews",
+  "settings": [],
+  "blocks": [
+    { "type": "q", "name": "Question", "settings": [
+      { "type": "text", "id": "q", "label": "Question", "default": "What do you mean by leftover yarn?" },
+      { "type": "richtext", "id": "a", "label": "Answer", "default": "<p>Premium, unused yarn left over from earlier production runs for fashion brands.</p>" }
+    ] },
+    { "type": "review", "name": "Quote", "settings": [
+      { "type": "paragraph", "content": "Shown until a reviews app block is added." },
+      { "type": "textarea", "id": "quote", "label": "Quote", "default": "So soft, you felt it immediately." },
+      { "type": "text", "id": "name", "label": "Name", "default": "Aija" }
+    ] },
+    { "type": "@app" }
+  ]
+}
+{% endschema %}

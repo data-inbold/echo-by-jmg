@@ -1,0 +1,12 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-list-collections",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

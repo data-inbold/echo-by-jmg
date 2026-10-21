@@ -1,0 +1,27 @@
+{%- comment -%} One bag line. Params: item (line item), line (1-based index) {%- endcomment -%}
+{%- liquid
+  capture raw
+    render 'echo-pinfo', product: item.product
+  endcapture
+  assign i = raw | strip | split: '~'
+  assign img = item.image | default: item.product.featured_media.preview_image
+  assign label = i[5]
+  if item.product.gift_card?
+    assign label = item.variant.title | append: ' by email'
+  endif
+-%}
+<div class="line">
+  {%- if img -%}{%- render 'echo-pic', image: img, alt: '', sizes: '72px' -%}{%- else -%}{%- render 'echo-ph', label: '', tint: i[6] -%}{%- endif -%}
+  <div class="stack" style="gap:4px;font-size:14px">
+    <a href="{{ item.url }}" style="font-weight:600;text-decoration:none">{{ i[8] }}</a>
+    <span class="muted">{{ label }}</span>
+    {%- for p in item.properties -%}{%- unless p.last == blank or p.first contains '_' -%}<span class="muted">{{ p.first }}: {{ p.last }}</span>{%- endunless -%}{%- endfor -%}
+    <div class="row" style="justify-content:space-between">
+      <div class="qty" style="transform:scale(.85);transform-origin:left">
+        <button data-lq="-1" data-line="{{ line }}" data-q="{{ item.quantity }}" aria-label="Fewer">−</button><span>{{ item.quantity }}</span><button data-lq="1" data-line="{{ line }}" data-q="{{ item.quantity }}" aria-label="More">+</button>
+      </div>
+      <span>{% render 'echo-money', price: item.final_line_price %}</span>
+    </div>
+    <button class="textbtn" data-rm="{{ line }}" style="align-self:flex-start">Remove</button>
+  </div>
+</div>

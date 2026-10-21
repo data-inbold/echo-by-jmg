@@ -1,0 +1,303 @@
+{% doc %}
+  @prompt
+    Create a floating "Back to Top" button that is always visible in the bottom-right corner of the screen as the customer scrolls down the page. The button should: smoothly scroll the page back to the top when clicked, only appear after the customer has scrolled down a certain amount (e.g. 300px), fade in/out smoothly, match a minimal elegant style suitable for a premium home textiles brand, and work on both desktop and mobile.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-back-to-top-{{ ai_gen_id }} {
+    position: fixed;
+    bottom: {{ block.settings.bottom_position }}px;
+    right: {{ block.settings.right_position }}px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    display: block;
+  }
+
+  .ai-back-to-top-{{ ai_gen_id }}.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .ai-back-to-top-button-{{ ai_gen_id }} {
+    width: {{ block.settings.button_size }}px;
+    height: {{ block.settings.button_size }}px;
+    background-color: {{ block.settings.button_background }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.button_border }};
+    border-radius: {{ block.settings.border_radius }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, {{ block.settings.shadow_opacity | divided_by: 100.0 }});
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .ai-back-to-top-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_background_hover }};
+    border-color: {{ block.settings.button_border_hover }};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, {{ block.settings.shadow_opacity | divided_by: 100.0 | times: 1.5 }});
+  }
+
+  .ai-back-to-top-icon-{{ ai_gen_id }} {
+    width: calc({{ block.settings.button_size }}px * 0.5);
+    height: calc({{ block.settings.button_size }}px * 0.5);
+    stroke: {{ block.settings.icon_color }};
+    transition: stroke 0.3s ease;
+  }
+
+  .ai-back-to-top-button-{{ ai_gen_id }}:hover .ai-back-to-top-icon-{{ ai_gen_id }} {
+    stroke: {{ block.settings.icon_color_hover }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-back-to-top-{{ ai_gen_id }} {
+      bottom: {{ block.settings.bottom_position_mobile }}px;
+      right: {{ block.settings.right_position_mobile }}px;
+    }
+
+    .ai-back-to-top-button-{{ ai_gen_id }} {
+      width: {{ block.settings.button_size_mobile }}px;
+      height: {{ block.settings.button_size_mobile }}px;
+    }
+
+    .ai-back-to-top-icon-{{ ai_gen_id }} {
+      width: calc({{ block.settings.button_size_mobile }}px * 0.5);
+      height: calc({{ block.settings.button_size_mobile }}px * 0.5);
+    }
+  }
+{% endstyle %}
+
+<back-to-top-{{ ai_gen_id }} class="ai-back-to-top-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <button
+    class="ai-back-to-top-button-{{ ai_gen_id }}"
+    aria-label="Back to top"
+    type="button"
+  >
+    <svg
+      class="ai-back-to-top-icon-{{ ai_gen_id }}"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+</back-to-top-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class BackToTop{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.button = this.querySelector('.ai-back-to-top-button-{{ ai_gen_id }}');
+        this.scrollThreshold = {{ block.settings.scroll_threshold }};
+      }
+
+      connectedCallback() {
+        this.setupEventListeners();
+        this.checkScroll();
+      }
+
+      setupEventListeners() {
+        this.button.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+
+        window.addEventListener('scroll', () => {
+          this.checkScroll();
+        });
+      }
+
+      checkScroll() {
+        if (window.pageYOffset > this.scrollThreshold) {
+          this.classList.add('visible');
+        } else {
+          this.classList.remove('visible');
+        }
+      }
+    }
+
+    customElements.define('back-to-top-{{ ai_gen_id }}', BackToTop{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Back to top button",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "range",
+      "id": "scroll_threshold",
+      "label": "Show after scrolling",
+      "min": 100,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Button size (desktop)",
+      "min": 40,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "label": "Button size (mobile)",
+      "min": 40,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_background_hover",
+      "label": "Background (hover)",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "button_border",
+      "label": "Border",
+      "default": "#282828"
+    },
+    {
+      "type": "color",
+      "id": "button_border_hover",
+      "label": "Border (hover)",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon",
+      "default": "#282828"
+    },
+    {
+      "type": "color",
+      "id": "icon_color_hover",
+      "label": "Icon (hover)",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Position"
+    },
+    {
+      "type": "range",
+      "id": "bottom_position",
+      "label": "Bottom spacing (desktop)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "right_position",
+      "label": "Right spacing (desktop)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "bottom_position_mobile",
+      "label": "Bottom spacing (mobile)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "right_position_mobile",
+      "label": "Right spacing (mobile)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Shadow"
+    },
+    {
+      "type": "range",
+      "id": "shadow_opacity",
+      "label": "Shadow opacity",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "default": 15
+    }
+  ],
+  "presets": [
+    {
+      "name": "Back to top button"
+    }
+  ]
+}
+{% endschema %}
