@@ -1,0 +1,18 @@
+{%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
+{%- assign cl = 'Home::' | append: u_home | append: '||Account::' | append: routes.account_url | append: '||Create account' -%}
+{%- render 'echo-crumbs', list: cl -%}
+<section class="section tight"><div class="wrap" style="max-width:560px">
+  {%- form 'create_customer', class: 'stack', style: 'gap:14px' -%}
+    <h1 class="h2">Create account</h1>
+    {%- if form.errors -%}<div class="err">{{ form.errors | default_errors }}</div>{%- endif -%}
+    <div class="field"><label for="r-name">Name</label><input id="r-name" name="customer[first_name]" required autocomplete="name"></div>
+    <div class="field"><label for="r-email">Email</label><input id="r-email" type="email" name="customer[email]" required autocomplete="email"></div>
+    <div class="field"><label for="r-pw">Password</label><input id="r-pw" type="password" name="customer[password]" required minlength="6" autocomplete="new-password"></div>
+    <label class="row" style="gap:8px;font-size:14px"><input type="checkbox" name="customer[accepts_marketing]" value="true" id="r-club"> Join the Cozy Club for 10% off your first order</label>
+    <button class="btn" type="submit">Create account</button>
+    <span class="muted" style="font-size:13px">Read how we handle your data in our <a class="link" href="{% render 'echo-url', key: 'privacy' %}">privacy policy</a>.</span>
+  {%- endform -%}
+</div></section>
+{% schema %}
+{ "name": "Create account", "settings": [] }
+{% endschema %}

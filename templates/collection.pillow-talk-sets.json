@@ -1,0 +1,17 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-collection",
+      "settings": {
+        "crumb": "Pillow Talk sets",
+        "only": "sets",
+        "h1": "Pillow Talk: blanket and cushion sets",
+        "intro": "Designs that come as a blanket and matching cushion covers, knitted from the same yarn batch. [Set price to confirm.]"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

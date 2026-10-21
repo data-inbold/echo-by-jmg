@@ -1,0 +1,213 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Gifts"
+      }
+    },
+    "intro": {
+      "type": "echo-split",
+      "settings": {
+        "spacing": "tight",
+        "media_first": false,
+        "gap": 14,
+        "heading": "A gift that tells its own story",
+        "heading_tag": true,
+        "heading_size": "h1",
+        "lead": "Every piece arrives with its edition number and where its yarn came from, so you never have to explain why you chose it.",
+        "label": "Unboxing: tissue paper, edition card, small surprise inside",
+        "ar": "4/3"
+      }
+    },
+    "finder": {
+      "type": "echo-gift-finder",
+      "settings": {
+        "popular": [
+          "hills-valleys-throw",
+          "twister-rope-blanket-doe",
+          "hills-valleys-cushion-cover",
+          "cable-rope-knitted-tote",
+          "carousel-stripes-knitted-throw-violet-blue",
+          "puff-friends-cushion-cover",
+          "joyful-pompom-beanie-candy-pink",
+          "happy-sunshine-throw-cloud-smoky-mauve"
+        ]
+      },
+      "blocks": {
+        "occasion_1": {
+          "type": "occasion",
+          "settings": {
+            "title": "Housewarming",
+            "ph": "new home",
+            "products": [
+              "hills-valleys-throw",
+              "twister-rope-blanket-doe",
+              "hills-valleys-cushion-cover",
+              "twister-rope-knitted-cushion-cover-doe",
+              "textured-stripes-tote"
+            ]
+          }
+        },
+        "occasion_2": {
+          "type": "occasion",
+          "settings": {
+            "title": "New baby",
+            "ph": "nursery",
+            "products": [
+              "bonjour-pup-throw",
+              "bubble-pop-blanket",
+              "happy-sunshine-throw-cloud",
+              "puff-friends-cushion-cover",
+              "bonjour-pup-cushion-cover"
+            ]
+          }
+        },
+        "occasion_3": {
+          "type": "occasion",
+          "settings": {
+            "title": "Host gift",
+            "ph": "table",
+            "products": [
+              "star-pop-knitted-bag",
+              "happy-stripe-lunch-bag",
+              "popcorn-dumpling-bag",
+              "carousel-stripes-knitted-cushion-cover-violet-blue",
+              "lucky-arrow-knitted-cushion-cover"
+            ]
+          }
+        },
+        "occasion_4": {
+          "type": "occasion",
+          "settings": {
+            "title": "Christmas",
+            "ph": "winter",
+            "products": [
+              "joyful-pompom-beanie-candy-pink",
+              "rainbow-crossing-knitted-scarf",
+              "cotton-candy-cloud-throw-cloud",
+              "rollercoaster-tracks-blanket-black",
+              "wavetrack-dumpling-bag"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "occasion_1",
+        "occasion_2",
+        "occasion_3",
+        "occasion_4"
+      ]
+    },
+    "why": {
+      "type": "echo-steps",
+      "settings": {
+        "bg": "alt",
+        "heading": "Why it makes a good gift",
+        "gap": 24
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "No price on the slip",
+            "text": "Receipts go to you, by email."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Wrapped already",
+            "text": "In our own tissue paper, with a small surprise."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "A number and a story",
+            "text": "Edition card and Yarn Passport in the box."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "[Gift exchanges]",
+            "text": "[Confirm: can the recipient exchange?]"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "giftcard": {
+      "type": "echo-split",
+      "settings": {
+        "media_first": true,
+        "gap": 12,
+        "heading": "Let them choose",
+        "caption": "Sent by email, no expiry. DKK 100, 250, 500 or 1,000.",
+        "btn1_label": "Buy a gift card",
+        "btn1_link": "echo:gift-card",
+        "btn1_ghost": false,
+        "label": "eGift card visual",
+        "ar": "16/10"
+      }
+    },
+    "faq": {
+      "type": "echo-faq",
+      "settings": {
+        "bg": "alt",
+        "heading": "Gift questions"
+      },
+      "blocks": {
+        "q_1": {
+          "type": "q",
+          "settings": {
+            "q": "Is the price shown in the package?",
+            "a": "<p>No. No prices are printed in the order. Confirmations and receipts are sent to the buyer by email.</p>"
+          }
+        },
+        "q_2": {
+          "type": "q",
+          "settings": {
+            "q": "Do you offer gift wrapping?",
+            "a": "<p>Every order is wrapped in our own tissue paper, with a little surprise gift inside.</p>"
+          }
+        },
+        "q_3": {
+          "type": "q",
+          "settings": {
+            "q": "Can I send it straight to the recipient?",
+            "a": "<p>Yes. Enter their address at checkout. [Gift message option to confirm.]</p>"
+          }
+        },
+        "q_4": {
+          "type": "q",
+          "settings": {
+            "q": "When do I need to order for Christmas?",
+            "a": "<p>Order by [date] for delivery before Christmas Eve.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q_1",
+        "q_2",
+        "q_3",
+        "q_4"
+      ]
+    }
+  },
+  "order": [
+    "crumbs",
+    "intro",
+    "finder",
+    "why",
+    "giftcard",
+    "faq"
+  ]
+}

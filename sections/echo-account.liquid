@@ -1,0 +1,28 @@
+{%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
+{%- assign cl = 'Home::' | append: u_home | append: '||Account' -%}
+{%- render 'echo-crumbs', list: cl -%}
+<section class="section tight"><div class="wrap stack" style="gap:28px">
+  <div class="row" style="justify-content:space-between"><h1 class="h1">Hello, {{ customer.first_name | default: customer.name }}</h1><a class="btn ghost" href="{{ routes.account_logout_url }}">Log out</a></div>
+  <div><h2 class="h3" style="margin-bottom:12px">Your orders</h2>
+    {%- if customer.orders.size > 0 -%}
+      {%- paginate customer.orders by 20 -%}
+      <div class="tablewrap"><table class="plain" style="min-width:560px">
+        <thead><tr><th>Order</th><th>Date</th><th>Items</th><th style="text-align:right">Total</th><th>Status</th><th></th></tr></thead><tbody>
+        {%- for o in customer.orders -%}
+          <tr><td>{{ o.name }}</td><td>{{ o.created_at | date: '%-d %b %Y' }}</td><td>{{ o.line_items.first.title }}{% if o.line_items.size > 1 %} + {{ o.line_items.size | minus: 1 }} more{% endif %}</td><td style="text-align:right;font-variant-numeric:tabular-nums">{% render 'echo-money', price: o.total_price %}</td><td>{{ o.fulfillment_status_label }}</td><td style="text-align:right"><a class="link" href="{{ o.customer_url }}">View</a></td></tr>
+        {%- endfor -%}
+        </tbody></table></div>
+      {%- endpaginate -%}
+    {%- else -%}
+      <div class="review muted">No orders yet. <a class="link" href="{% render 'echo-url', key: 'shop-all' %}">Shop the editions</a></div>
+    {%- endif -%}
+  </div>
+  <div class="grid g3">
+    <div class="review stack" style="gap:8px"><h2 class="h3">Address</h2><span class="muted">{{ customer.default_address | format_address | default: 'No address saved yet.' }}</span><a class="textbtn" style="align-self:flex-start" href="{{ routes.account_addresses_url }}">Edit</a></div>
+    <div class="review stack" style="gap:8px"><h2 class="h3">Your Yarn Passports</h2><span class="muted">Every piece you own, with its batch and edition number.</span>{% if customer.orders.size > 0 %}<a class="link" style="align-self:flex-start" href="{{ customer.orders.first.customer_url }}">See passports</a>{% endif %}</div>
+    <div class="review stack" style="gap:8px"><h2 class="h3">Cozy Club</h2><span class="muted">{% if customer.accepts_marketing %}You get emails about new editions.{% else %}Join for first access to new editions.{% endif %}</span><a class="link" style="align-self:flex-start" href="{% render 'echo-url', key: 'returns' %}">Start a return</a></div>
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Account", "settings": [] }
+{% endschema %}

@@ -1,0 +1,45 @@
+{%- capture echo_out -%}
+{%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
+{%- assign cl = 'Home::' | append: u_home | append: '||' | append: blog.title -%}
+{%- render 'echo-crumbs', list: cl -%}
+<section class="section tight"><div class="wrap stack" style="gap:14px"><h1 class="h1">{{ blog.title }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p></div></section>
+<section class="section tight">
+  {%- paginate blog.articles by 24 -%}
+  <div class="wrap grid g3">
+    {%- for a in blog.articles -%}
+      {%- assign kind = a.tags.first | default: section.settings.default_kind -%}
+      <a class="card" href="{{ a.url }}">
+        {%- render 'echo-pic', image: a.image, alt: a.title, label: kind, ar: '4/3' -%}
+        <div class="meta"><span class="mono">{{ kind }}</span><span class="name" style="font-size:18px">{{ a.title }}</span><span class="muted">{{ a.excerpt_or_content | strip_html | truncatewords: 22 }}</span></div>
+      </a>
+    {%- endfor -%}
+    {%- for b in section.blocks -%}
+      <a class="card" href="{{ b.settings.link }}" {{ b.shopify_attributes }}>
+        {%- render 'echo-pic', image: b.settings.image, alt: b.settings.title, label: b.settings.kind, ar: '4/3' -%}
+        <div class="meta"><span class="mono">{{ b.settings.kind }}</span><span class="name" style="font-size:18px">{{ b.settings.title }}</span><span class="muted">{{ b.settings.dek }}</span></div>
+      </a>
+    {%- endfor -%}
+  </div>
+  {%- if paginate.pages > 1 -%}<nav class="pagination wrap">{{ paginate | default_pagination }}</nav>{%- endif -%}
+  {%- endpaginate -%}
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Journal",
+  "settings": [
+    { "type": "textarea", "id": "lead", "label": "Intro", "default": "Guides to choosing and caring for knitwear, and short stories from our factory." },
+    { "type": "text", "id": "default_kind", "label": "Label when an article has no tag", "default": "Guide", "info": "The first tag of an article is shown as its label (Guide, From the factory…)." }
+  ],
+  "blocks": [
+    { "type": "link", "name": "Link card", "settings": [
+      { "type": "text", "id": "kind", "label": "Label", "default": "Rescued yarn tracker" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Rescued yarn tracker" },
+      { "type": "text", "id": "dek", "label": "Text", "default": "250 kg rescued so far, 28 editions released. Updated per batch." },
+      { "type": "text", "id": "link", "label": "Link" },
+      { "type": "image_picker", "id": "image", "label": "Image" }
+    ] }
+  ]
+}
+{% endschema %}

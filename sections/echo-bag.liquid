@@ -1,0 +1,37 @@
+{%- comment -%} Bag drawer. Re-rendered through the Section Rendering API after every change. {%- endcomment -%}
+<div id="echo-bag" hidden data-count="{{ cart.item_count }}">
+  <div class="scrim" data-close></div>
+  <aside class="drawer" role="dialog" aria-modal="true" aria-label="Bag">
+    <header><b>Bag ({{ cart.item_count }})</b><button class="x" data-close aria-label="Close bag">×</button></header>
+    <div class="items">
+      {%- if cart.item_count > 0 -%}
+        {%- for item in cart.items -%}
+          {%- render 'echo-line', item: item, line: forloop.index -%}
+        {%- endfor -%}
+      {%- else -%}
+        <p class="muted" style="padding-top:16px">Your bag is empty.</p>
+      {%- endif -%}
+    </div>
+    <footer>
+      {%- if cart.item_count > 0 -%}
+        {%- render 'echo-discount-box', k: 'b' -%}
+        <div>{%- render 'echo-sum-rows' -%}</div>
+        <span class="muted" style="font-size:13px">{{ section.settings.note }}</span>
+        {%- if section.settings.show_mobilepay -%}<a class="btn mp block" href="{{ routes.root_url | append: '/checkout' | replace: '//', '/' }}">MobilePay</a>{%- endif -%}
+        <a class="btn block" href="{{ routes.root_url | append: '/checkout' | replace: '//', '/' }}">Go to checkout</a>
+      {%- else -%}
+        <a class="btn block" href="{% render 'echo-url', key: 'shop-all' %}" data-close-nav>Shop the editions</a>
+      {%- endif -%}
+    </footer>
+  </aside>
+</div>
+
+{% schema %}
+{
+  "name": "Bag drawer",
+  "settings": [
+    { "type": "text", "id": "note", "label": "Note under total", "default": "Free delivery to your door or a parcel shop. Free 14-day returns." },
+    { "type": "checkbox", "id": "show_mobilepay", "label": "Show MobilePay button", "default": true, "info": "Sends the shopper to checkout, where MobilePay is offered as a payment method." }
+  ]
+}
+{% endschema %}

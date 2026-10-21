@@ -1,0 +1,12 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-article",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
