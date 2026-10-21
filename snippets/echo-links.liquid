@@ -1,0 +1,32 @@
+{%- comment -%}
+  Resolves link tokens in section text: href="echo:story" → the right URL (preview or live).
+  Article links: echo:journal/<handle>. Keys are listed in snippets/echo-url.liquid.
+{%- endcomment -%}
+{%- liquid
+  assign out = html
+  if out contains 'echo:'
+    if out contains 'echo:journal/'
+      capture ju
+        render 'echo-url', key: 'journal'
+      endcapture
+      assign ju = ju | strip | append: '/'
+      assign out = out | replace: 'echo:journal/', ju
+    endif
+    assign keys = 'shop-all,blankets,cushions,bags,accessories,sets,happy-habitat,last-pieces,open,gift-card,gifts,story,passport,factory,tracker,journal,help,contact,track,returns,care,gc-balance,corporate,terms,privacy,cookies,company,home' | split: ','
+    for k in keys
+      assign tok = 'echo:' | append: k
+      assign t1 = tok | append: '"'
+      assign t2 = tok | append: '#'
+      if out contains t1 or out contains t2
+        capture u
+          render 'echo-url', key: k
+        endcapture
+        assign u = u | strip
+        assign u1 = u | append: '"'
+        assign u2 = u | append: '#'
+        assign out = out | replace: t1, u1 | replace: t2, u2
+      endif
+    endfor
+  endif
+  echo out
+-%}

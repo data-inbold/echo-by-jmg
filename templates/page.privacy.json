@@ -1,0 +1,82 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Privacy policy"
+      }
+    },
+    "main": {
+      "type": "echo-legal",
+      "settings": {
+        "heading": "Privacy policy",
+        "lead": "How EchoByJMG collects and uses your personal data, and the rights you have."
+      },
+      "blocks": {
+        "part_1": {
+          "type": "part",
+          "settings": {
+            "title": "Data controller",
+            "text": "<p>JM Group Limited, Suite F, 4th Floor, Yip Cheung Centre, 10 Fung Yip Street, Chai Wan, Hong Kong. Contact for data questions: hello@echobyjmg.com. [EU representative, if required: name and address.]</p>"
+          }
+        },
+        "part_2": {
+          "type": "part",
+          "settings": {
+            "title": "What we collect",
+            "text": "<p>Name, address, email and phone when you order. Order and payment history. Your email if you join the Cozy Club. How you use the site, if you accept cookies.</p>"
+          }
+        },
+        "part_3": {
+          "type": "part",
+          "settings": {
+            "title": "Why, and on what legal basis",
+            "text": "<p>To deliver your order (contract). To meet bookkeeping rules (legal obligation). To send the Cozy Club newsletter (consent). To improve the shop and our marketing (consent through cookies).</p>"
+          }
+        },
+        "part_4": {
+          "type": "part",
+          "settings": {
+            "title": "Who we share it with",
+            "text": "<p>Shopify (shop platform), payment providers, our Danish warehouse and carriers, our email platform and our review service. [Confirm the full list of processors.]</p>"
+          }
+        },
+        "part_5": {
+          "type": "part",
+          "settings": {
+            "title": "How long we keep it",
+            "text": "<p>Order data for 5 years after the end of the financial year, as Danish bookkeeping rules require. Newsletter data until you unsubscribe. [Confirm.]</p>"
+          }
+        },
+        "part_6": {
+          "type": "part",
+          "settings": {
+            "title": "Your rights",
+            "text": "<p>You can ask to see, correct or delete your data, object to its use, and take it with you. Write to [email].</p>"
+          }
+        },
+        "part_7": {
+          "type": "part",
+          "settings": {
+            "title": "Complaints",
+            "text": "<p>You can complain to Datatilsynet, the Danish Data Protection Agency, at datatilsynet.dk.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "part_1",
+        "part_2",
+        "part_3",
+        "part_4",
+        "part_5",
+        "part_6",
+        "part_7"
+      ]
+    }
+  },
+  "order": [
+    "crumbs",
+    "main"
+  ]
+}

@@ -1,0 +1,23 @@
+<section class="section tight"><div class="wrap stack" style="gap:28px">
+  <div class="stack" style="gap:14px"><h1 class="h1">{{ section.settings.heading }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p></div>
+  <div><h2 class="h3" style="margin-bottom:12px">Sizes</h2><div class="tablewrap"><table class="plain" style="min-width:480px"><thead><tr><th>Product</th><th>Size</th><th>Note</th></tr></thead><tbody>
+    {%- for b in section.blocks -%}<tr {{ b.shopify_attributes }}><td>{{ b.settings.product }}</td><td>{{ b.settings.size }}</td><td class="muted">{{ b.settings.note }}</td></tr>{%- endfor -%}
+  </tbody></table></div></div>
+</div></section>
+{% schema %}
+{
+  "name": "Size table",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Size and care guide" },
+    { "type": "textarea", "id": "lead", "label": "Intro", "default": "Sizes for every product type, and how to look after each yarn so it lasts." }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Row", "settings": [
+      { "type": "text", "id": "product", "label": "Product", "default": "Blankets" },
+      { "type": "text", "id": "size", "label": "Size", "default": "100 × 150 to 120 × 160 cm" },
+      { "type": "text", "id": "note", "label": "Note" }
+    ] }
+  ],
+  "presets": [{ "name": "Size table" }]
+}
+{% endschema %}

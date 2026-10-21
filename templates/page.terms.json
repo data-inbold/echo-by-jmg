@@ -1,0 +1,90 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Terms of sale"
+      }
+    },
+    "main": {
+      "type": "echo-legal",
+      "settings": {
+        "heading": "Terms of sale",
+        "lead": "The terms that apply when you buy from echobyjmg.com as a consumer in Denmark."
+      },
+      "blocks": {
+        "part_1": {
+          "type": "part",
+          "settings": {
+            "title": "Who you buy from",
+            "text": "<p>JM Group Limited, Suite F, 4th Floor, Yip Cheung Centre, 10 Fung Yip Street, Chai Wan, Hong Kong. Company registration no. [no.]. Email hello@echobyjmg.com. Phone +852 3500 3911. JM Group Limited is the legal seller and is responsible for all transactions, payments and customer service. Orders delivered in Denmark are fulfilled locally through our logistics partner, Parcel Feeder in Brøndby.</p>"
+          }
+        },
+        "part_2": {
+          "type": "part",
+          "settings": {
+            "title": "Prices and payment",
+            "text": "<p>All prices are in Danish kroner and include 25% VAT. We accept MobilePay, Visa, Mastercard, Apple Pay and Google Pay [and Klarna]. Your card is charged when [the order ships].</p>"
+          }
+        },
+        "part_3": {
+          "type": "part",
+          "settings": {
+            "title": "Delivery",
+            "text": "<p>We deliver in Denmark only. Delivery is free to a parcel shop, a locker or your door, normally within 1 to 2 working days. Orders placed before [cut-off time] on weekdays ship the same day.</p>"
+          }
+        },
+        "part_4": {
+          "type": "part",
+          "settings": {
+            "title": "Your right to cancel (fortrydelsesret)",
+            "text": "<p>You can cancel your purchase within 14 days of receiving the goods, without giving a reason. Tell us by email or use the form below or our <a href=\"echo:returns\">returns page</a>.</p><p>Return the goods within 14 days of telling us. Returns are free with our label. We refund the full amount, including original delivery, within 14 days of receiving your cancellation. We may wait until we have the goods back.</p><p>You may handle the goods as you would in a shop. If they lose value because they were used more than that, we may deduct the difference. [Gift cards and personalised items: confirm exceptions.]</p>"
+          }
+        },
+        "part_5": {
+          "type": "part",
+          "settings": {
+            "title": "Standard cancellation form",
+            "text": "<p>To: JM Group Limited, Suite F, 4th Floor, Yip Cheung Centre, 10 Fung Yip Street, Chai Wan, Hong Kong, hello@echobyjmg.com</p><p>I hereby give notice that I cancel my contract for the sale of the following goods: [ ]. Ordered on [ ] / received on [ ]. Name: [ ]. Address: [ ]. Date: [ ].</p>"
+          }
+        },
+        "part_6": {
+          "type": "part",
+          "settings": {
+            "title": "Complaints (reklamation)",
+            "text": "<p>You have 2 years to complain about faults in goods under the Danish Sale of Goods Act. Contact us and we will repair, replace or refund. [Complaint body for disputes to confirm with lawyer.]</p>"
+          }
+        },
+        "part_7": {
+          "type": "part",
+          "settings": {
+            "title": "Gift cards",
+            "text": "<p>Gift cards are sent by email, can be used for all products and do not expire.</p>"
+          }
+        },
+        "part_8": {
+          "type": "part",
+          "settings": {
+            "title": "Personal data",
+            "text": "<p>Read how we handle your data in our <a href=\"echo:privacy\">privacy policy</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "part_1",
+        "part_2",
+        "part_3",
+        "part_4",
+        "part_5",
+        "part_6",
+        "part_7",
+        "part_8"
+      ]
+    }
+  },
+  "order": [
+    "crumbs",
+    "main"
+  ]
+}

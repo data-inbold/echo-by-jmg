@@ -1,0 +1,19 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Returns"
+      }
+    },
+    "main": {
+      "type": "echo-returns",
+      "settings": {}
+    }
+  },
+  "order": [
+    "crumbs",
+    "main"
+  ]
+}

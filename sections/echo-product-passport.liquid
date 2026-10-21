@@ -1,0 +1,46 @@
+{%- unless product.gift_card? -%}
+{%- liquid
+  capture raw
+    render 'echo-pinfo', product: product
+  endcapture
+  assign i = raw | strip | split: '~'
+  assign comp = product.metafields.custom.composition.value | default: '[Composition]'
+  assign cl = comp | downcase
+  assign origin = i[12] | default: section.settings.origin
+  if comp == '[Composition]' and i[13] != blank
+    assign comp = i[13]
+    assign cl = comp | downcase
+  endif
+-%}
+<section class="section dark passport-band">
+  <div class="knit-divider" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="row" style="justify-content:space-between"><span class="eyebrow-row"><span class="ic i-yarn-passport big" aria-hidden="true"></span><span class="mono">{{ section.settings.eyebrow }}</span></span><a href="{% render 'echo-url', key: 'passport' %}" style="color:#CFC9BF;font-size:14px">What is the Yarn Passport?</a></div>
+    <h2 class="serif" style="font:500 italic clamp(24px,3vw,32px)/1.25 var(--display);margin:14px 0 0;max-width:30ch">{{ section.settings.heading }}</h2>
+    <div class="passport">
+      <div><span class="ic i-yarn-rescued" aria-hidden="true"></span><b>Where it came from</b><span>{{ origin }}</span></div>
+      <div><span class="ic i-skein" aria-hidden="true"></span><b>Fibre and batch</b><span>{{ comp | newline_to_br }}<br>Batch {{ i[9] }} · {{ i[10] }} kg rescued · edition of {{ i[2] }}<br><a href="{% render 'echo-url', key: 'tracker' %}" style="color:#CFC9BF;font-size:13px">See it in the tracker</a></span></div>
+      <div><span class="ic i-edition-label" aria-hidden="true"></span><b>Your number</b><span>Every piece carries a woven label “Edition __ of {{ i[2] }}”. Your number is assigned at packing.</span></div>
+      <div><span class="ic i-certificate" aria-hidden="true"></span><b>Certificates for this product</b><span class="pcerts">
+        <span class="it">{% render 'echo-cert-logo', k: 'bsci', h: 40 %}<span>BSCI compliance<br><span style="opacity:.75;font-size:13px">{{ section.settings.bsci_no }} · factory level</span></span></span>
+        {%- if cl contains 'organic' -%}<span class="it">{% render 'echo-cert-logo', k: 'ocs', h: 40 %}<span>Organic Content Standard<br><span style="opacity:.75;font-size:13px">{{ section.settings.ocs_no }}</span></span></span>{%- endif -%}
+        {%- if cl contains 'recycl' -%}<span class="it">{% render 'echo-cert-logo', k: 'rcs', h: 40 %}<span>Recycled Claim Standard<br><span style="opacity:.75;font-size:13px">{{ section.settings.rcs_no }}</span></span></span>{%- endif -%}
+        <a href="{% render 'echo-url', key: 'factory' %}" style="color:#CFC9BF;font-size:13px">About our certificates</a>
+      </span></div>
+    </div>
+  </div>
+</section>
+{%- endunless -%}
+{% schema %}
+{
+  "name": "Product Yarn Passport",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label", "default": "Yarn Passport" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "This yarn was headed for waste. Here is the batch it came from." },
+    { "type": "textarea", "id": "origin", "label": "Where it came from (default)", "info": "Shown when the product's Yarn batch entry (Content > Metaobjects) has no 'Where it came from' text.", "default": "Left over from a [season] production run for a [luxury or high-street] fashion house, knitted in our factory. Never worn, never recycled fibre." },
+    { "type": "text", "id": "bsci_no", "label": "BSCI number", "default": "amfori ID 156-020420-000" },
+    { "type": "text", "id": "ocs_no", "label": "OCS line", "default": "Certificate [no.] · [confirm this product is in scope]" },
+    { "type": "text", "id": "rcs_no", "label": "RCS line", "default": "Certificate [no.] · [confirm this product is in scope]" }
+  ]
+}
+{% endschema %}

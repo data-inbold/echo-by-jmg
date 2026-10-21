@@ -1,0 +1,45 @@
+{%- capture tot -%}{%- render 'echo-batch-totals' -%}{%- endcapture -%}
+{%- assign totp = tot | strip | split: '|' -%}
+<section class="section numbers knitbox {{ section.settings.spacing }} {{ section.settings.bg }}">
+  <span class="tx tx-chart" aria-hidden="true"></span>
+  <div class="wrap stats">
+    {%- comment -%} The {kg} / {batches} tokens are built with append: a "}" inside an output tag ends the tag early in Shopify's parser. {%- endcomment -%}
+    {%- liquid
+      assign tok_kg = '{' | append: 'kg' | append: '}'
+      assign tok_ed = '{' | append: 'batches' | append: '}'
+      assign kg_out = totp[0] | default: ''
+      assign ed_out = totp[1] | default: ''
+    -%}
+    {%- for b in section.blocks -%}
+      {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out -%}
+      <div class="stat" {{ b.shopify_attributes }}>{% if b.settings.icon != blank and b.settings.icon != 'none' %}<span class="ic i-{{ b.settings.icon }}" aria-hidden="true"></span>{% endif %}<div class="n">{{ n }}</div><p>{{ b.settings.text }}</p></div>
+    {%- endfor -%}
+  </div>
+  {%- if section.settings.link_label != blank -%}
+    <div class="wrap" style="margin-top:18px"><a class="link" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'tracker' %}{% endif %}">{{ section.settings.link_label }}</a></div>
+  {%- endif -%}
+</section>
+{% schema %}
+{
+  "name": "Numbers",
+  "settings": [
+    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "tight"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "band"},
+    { "type": "text", "id": "link_label", "label": "Link text", "default": "See every batch in the rescued yarn tracker" },
+    { "type": "url", "id": "link", "label": "Link", "info": "Empty = Rescued yarn tracker page" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Number", "settings": [
+      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, both counted from the Yarn batch list." },
+      { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued to date" },
+      {"type": "select", "id": "icon", "label": "Icon", "options": [{"value": "none", "label": "None"}, {"value": "yarn-rescued", "label": "Yarn rescued"}, {"value": "yarn-passport", "label": "Yarn Passport"}, {"value": "knitted-with-care", "label": "Knitted with care"}, {"value": "echo-thread", "label": "The Echo thread"}, {"value": "skein", "label": "Skein"}, {"value": "needles-ball", "label": "Needles and ball"}, {"value": "stitch", "label": "Stitch"}, {"value": "edition-label", "label": "Edition label"}, {"value": "heritage", "label": "Heritage (factory, 1946)"}, {"value": "certificate", "label": "Certificate"}, {"value": "delivery", "label": "Delivery"}, {"value": "returns", "label": "Returns"}, {"value": "gift", "label": "Gift"}, {"value": "bag", "label": "Bag"}, {"value": "search", "label": "Search"}, {"value": "account", "label": "Account"}, {"value": "care-wash", "label": "Care: wash"}, {"value": "care-no-tumble", "label": "Care: no tumble dry"}, {"value": "care-dry-flat", "label": "Care: dry flat"}, {"value": "care-iron-low", "label": "Care: iron low"}], "default": "skein"}
+    ] }
+  ],
+  "presets": [{ "name": "Numbers", "blocks": [
+    { "type": "stat", "settings": { "n": "250 kg", "text": "yarn rescued to date" } },
+    { "type": "stat", "settings": { "n": "28", "text": "numbered editions released" } },
+    { "type": "stat", "settings": { "n": "1946", "text": "family knitwear since" } },
+    { "type": "stat", "settings": { "n": "0", "text": "restocks. When an edition is gone, it is gone." } }
+  ] }]
+}
+{% endschema %}

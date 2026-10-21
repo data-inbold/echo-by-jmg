@@ -1,0 +1,65 @@
+{%- comment -%}
+  Product card. Round 1 (client decision 21 Oct 2026): every colour is its own product and its own card,
+  so the card names the colour instead of showing colour dots. The colours stay linked on the product page.
+  Image: the product's first image (studio shot) on the card ground with a multiply blend; the next image shows on hover.
+  The same markup carries all three looks: Heritage Ink (edition dot), Swatch Studio (sticker, colour pill),
+  Quiet Gallery (museum label: No., batch, edition).
+  Params: product, eager
+{%- endcomment -%}
+{%- liquid
+  capture raw
+    render 'echo-pinfo', product: product
+  endcapture
+  assign i = raw | strip | split: '~'
+  assign state = i[4]
+  assign grp = product.handle
+  for s in product.metafields.custom.linked_products.value
+    assign grp = grp | append: ' ' | append: s.handle
+  endfor
+  assign alt = i[8] | append: ', ' | append: i[5]
+  assign imgs = product.media | where: 'media_type', 'image'
+  assign comp = product.metafields.custom.composition.value | default: '' | strip_newlines
+  assign comp_short = comp | split: ',' | first | strip
+-%}
+<a class="card pcard" href="{{ product.url }}" data-family="{{ i[7] }}" data-state="{{ state }}" data-price="{{ product.price }}" data-handle="{{ product.handle }}" data-group="{{ grp }}" data-cat="{{ i[0] }}"{% if state == 'sold' %} data-sold{% endif %}>
+  <div class="card-img">
+    {%- if product.featured_media -%}
+      {%- render 'echo-pic', image: product.featured_media.preview_image, alt: alt, eager: eager, cls: 'studio', sizes: '(min-width: 1240px) 300px, (min-width: 720px) 33vw, 50vw' -%}
+      {%- if imgs.size > 1 -%}
+        <div class="ph pic hover" aria-hidden="true">{{ imgs[1].preview_image | image_url: width: 720 | image_tag: alt: '', loading: 'lazy', sizes: '(min-width: 1240px) 300px, 50vw', widths: '360, 540, 720' }}</div>
+      {%- endif -%}
+    {%- elsif state == 'sold' -%}
+      {%- render 'echo-ph', label: 'Edition sold out', tint: i[6] -%}
+    {%- else -%}
+      {%- render 'echo-ph', label: i[1], tint: i[6] -%}
+    {%- endif -%}
+    {%- if i[0] != 'gift' -%}
+      {%- if state == 'last' -%}
+        <span class="sticker last">Last pieces</span>
+      {%- elsif state == 'open' and i[2] != blank and i[2] != '0' -%}
+        <span class="sticker">Edition<br>of {{ i[2] }}</span>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+  <div class="meta">
+    {%- if i[0] != 'gift' -%}
+      <span class="lab"><span class="ic i-edition-label" aria-hidden="true"></span>{% if state == 'last' %}Last pieces{% elsif i[9] != blank %}No. {{ i[9] }}{% else %}Limited{% endif %} · Edition of {{ i[2] }}</span>
+    {%- endif -%}
+    <span class="name">{{ i[8] }}</span>
+    {%- if i[0] != 'gift' -%}
+      <span class="sub"><span class="colour" style="--c:{{ i[6] }}">{{ i[5] }}</span>{% if comp_short != blank %}<span class="comp"> · {{ comp_short }}</span>{% endif %}</span>
+    {%- endif -%}
+    <span class="price-row">
+      {%- if i[0] == 'gift' -%}
+        <span class="ed">Sent by email · no expiry</span>
+      {%- elsif state == 'sold' -%}
+        <span class="ed">Sold out · get notified about the next edition</span>
+      {%- elsif state == 'last' -%}
+        <span class="ed"><span class="edot" aria-hidden="true"></span>Last pieces · {{ i[3] }} of {{ i[2] }} left</span>
+      {%- else -%}
+        <span class="ed"><span class="edot" aria-hidden="true"></span>Edition of {{ i[2] }}</span>
+      {%- endif -%}
+      <b class="price">{% if product.price_varies %}from {% endif %}{% render 'echo-money', price: product.price %}</b>
+    </span>
+  </div>
+</a>

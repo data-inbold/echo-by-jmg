@@ -1,0 +1,16 @@
+{%- comment -%} Category key for a product: blankets | cushions | bags | accessories | gift. Uses product type, then Shopify product category. {%- endcomment -%}
+{%- liquid
+  assign t = product.type | downcase
+  assign c = product.category.name | downcase
+  if product.gift_card?
+    echo 'gift'
+  elsif t contains 'blanket' or t contains 'throw' or c contains 'blanket'
+    echo 'blankets'
+  elsif t contains 'cushion' or c contains 'cushion'
+    echo 'cushions'
+  elsif t contains 'bag' or t contains 'pouch' or t contains 'tote' or c contains 'bag' or c contains 'case' or c contains 'tote'
+    echo 'bags'
+  else
+    echo 'accessories'
+  endif
+-%}
