@@ -1,0 +1,60 @@
+{%- comment -%}
+  Product card from the wireframe: photo, name, colour dots, price, edition line.
+  Colour dots come from the product's linked colour siblings (custom.linked_products).
+  Params: product, eager
+{%- endcomment -%}
+{%- liquid
+  capture raw
+    render 'echo-pinfo', product: product
+  endcapture
+  assign i = raw | strip | split: '~'
+  assign state = i[4]
+  assign siblings = product.metafields.custom.linked_products.value
+  assign fams = i[7]
+  assign grp = product.handle
+  assign ncol = 0
+  capture dots
+    if siblings != blank
+      for s in siblings
+        capture sraw
+          render 'echo-pinfo', product: s
+        endcapture
+        assign si = sraw | strip | split: '~'
+        assign fams = fams | append: ' ' | append: si[7]
+        assign grp = grp | append: ' ' | append: s.handle
+        assign ncol = ncol | plus: 1
+        assign stitle = si[5] | escape
+        echo '<span class="dot" style="background:' | append: si[6] | append: '" title="' | append: stitle | append: '"></span>'
+      endfor
+    else
+      assign ncol = 1
+      echo '<span class="dot" style="background:' | append: i[6] | append: '" title="' | append: i[5] | append: '"></span>'
+    endif
+  endcapture
+  assign alt = i[8] | append: ', ' | append: i[5]
+-%}
+<a class="card" href="{{ product.url }}" data-family="{{ fams }}" data-state="{{ state }}" data-price="{{ product.price }}" data-handle="{{ product.handle }}" data-group="{{ grp }}"{% if state == 'sold' %} style="opacity:.6"{% endif %}>
+  {%- if product.featured_media -%}
+    {%- render 'echo-pic', image: product.featured_media.preview_image, alt: alt, eager: eager, sizes: '(min-width: 1240px) 300px, (min-width: 720px) 33vw, 50vw' -%}
+  {%- elsif state == 'sold' -%}
+    {%- render 'echo-ph', label: 'Edition sold out', tint: i[6] -%}
+  {%- else -%}
+    {%- render 'echo-ph', label: i[1], tint: i[6] -%}
+  {%- endif -%}
+  <div class="meta">
+    <span class="name">{{ i[8] }}</span>
+    {%- if i[0] != 'gift' -%}
+      <span class="swatches">{{ dots }}{% if ncol > 1 %}<span class="muted" style="font-size:12px;margin-left:4px">{{ ncol }} colours</span>{% endif %}</span>
+    {%- endif -%}
+    <span>{% if product.price_varies %}from {% endif %}{% render 'echo-money', price: product.price %}</span>
+    {%- if i[0] == 'gift' -%}
+      <span class="ed">Sent by email · no expiry</span>
+    {%- elsif state == 'sold' -%}
+      <span class="ed">Sold out · get notified about the next edition</span>
+    {%- elsif state == 'last' -%}
+      <span class="ed">Last pieces · {{ i[3] }} of {{ i[2] }} left</span>
+    {%- else -%}
+      <span class="ed">Edition of {{ i[2] }}</span>
+    {%- endif -%}
+  </div>
+</a>

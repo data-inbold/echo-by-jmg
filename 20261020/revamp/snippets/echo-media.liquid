@@ -1,0 +1,20 @@
+{%- comment -%}
+  Section media slot: video (Shopify-hosted) > image > bundled photo > placeholder label.
+  Params: video, image, asset, alt, label, ar, h, eager
+{%- endcomment -%}
+{%- if video != blank -%}
+  {%- liquid
+    assign st = ''
+    if ar != blank
+      assign st = 'aspect-ratio:' | append: ar | append: ';min-height:0;'
+    endif
+    if h != blank
+      assign st = st | append: 'height:' | append: h | append: ';'
+    endif
+  -%}
+  <div class="ph pic" style="{{ st }}">
+    {{- video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, image_size: '1600x' -}}
+  </div>
+{%- else -%}
+  {%- render 'echo-pic', image: image, asset: asset, alt: alt, label: label, ar: ar, h: h, eager: eager -%}
+{%- endif -%}

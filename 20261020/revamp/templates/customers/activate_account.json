@@ -1,0 +1,12 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-password-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

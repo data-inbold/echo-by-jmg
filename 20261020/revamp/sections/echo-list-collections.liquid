@@ -1,0 +1,12 @@
+<section class="section tight"><div class="wrap stack" style="gap:20px">
+  <h1 class="h1">{{ page_title | default: 'Collections' }}</h1>
+  <div class="grid g4">
+    {%- for c in collections -%}
+      {%- if c.handle == 'all' or c.products_count == 0 -%}{%- continue -%}{%- endif -%}
+      <a class="card" href="{{ c.url }}">{%- render 'echo-pic', image: c.featured_image, alt: c.title, label: c.title, ar: '1/1' -%}<div class="meta"><span class="name">{{ c.title }}</span><span class="muted">{{ c.products_count }} products</span></div></a>
+    {%- endfor -%}
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Collections list", "settings": [] }
+{% endschema %}

@@ -1,0 +1,69 @@
+{%- capture echo_out -%}
+{%- comment -%} Text + media side by side. The most used layout in the design. {%- endcomment -%}
+{%- capture media -%}
+  {%- render 'echo-media', video: section.settings.video, image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.label, ar: section.settings.ar, eager: section.settings.heading_tag -%}
+{%- endcapture -%}
+{%- capture text -%}
+  <div class="stack" style="gap:{{ section.settings.gap }}px">
+    {%- if section.settings.eyebrow != blank -%}<span class="mono">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      {%- if section.settings.heading_tag -%}<h1 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h1>{%- else -%}<h2 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- endif -%}
+    {%- if section.settings.quote != blank -%}<p style="font:500 italic 21px/1.5 var(--display);margin:0">{{ section.settings.quote }}</p>{%- endif -%}
+    {%- if section.settings.lead != blank -%}<p class="lead" style="margin:0">{{ section.settings.lead }}</p>{%- endif -%}
+    {%- if section.settings.caption != blank -%}<p class="muted" style="margin:0">{{ section.settings.caption }}</p>{%- endif -%}
+    {%- if section.settings.small != blank -%}<p class="muted" style="margin:0;font-size:14px">{{ section.settings.small }}</p>{%- endif -%}
+    {%- if section.settings.btn1_label != blank or section.settings.btn2_label != blank -%}
+      <div{% if section.settings.btn1_label != blank and section.settings.btn2_label != blank %} class="row"{% endif %}>
+        {%- if section.settings.btn1_label != blank -%}<a class="btn{% if section.settings.btn1_ghost %} ghost{% endif %}" href="{{ section.settings.btn1_link }}">{{ section.settings.btn1_label }}</a>{%- endif -%}
+        {%- if section.settings.btn2_label != blank -%}<a class="btn{% if section.settings.btn2_ghost %} ghost{% endif %}" href="{{ section.settings.btn2_link }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endcapture -%}
+{%- unless section.settings.hide_on_gift and product.gift_card? -%}
+<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
+  <div class="wrap split{% if section.settings.rev %} rev{% endif %}"{% if section.settings.top %} style="align-items:start"{% endif %}>
+    {%- if section.settings.media_first -%}{{ media }}{{ text }}{%- else -%}{{ text }}{{ media }}{%- endif -%}
+  </div>
+</section>
+{%- endunless -%}
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Text and media",
+  "settings": [
+    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
+    { "type": "checkbox", "id": "media_first", "label": "Media first (left on desktop)", "default": true },
+    { "type": "checkbox", "id": "rev", "label": "Swap columns on desktop", "default": false },
+    { "type": "checkbox", "id": "top", "label": "Align to top", "default": false },
+    { "type": "range", "id": "gap", "label": "Text spacing", "min": 10, "max": 20, "step": 2, "default": 16, "unit": "px" },
+    { "type": "checkbox", "id": "hide_on_gift", "label": "Hide on gift card product", "default": false },
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "eyebrow", "label": "Small label" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The story behind every stitch" },
+    { "type": "checkbox", "id": "heading_tag", "label": "This is the page title (H1)", "default": false },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "options": [{ "value": "h1", "label": "Extra large" }, { "value": "h2", "label": "Large" }, { "value": "h3", "label": "Small" }], "default": "h2" },
+    { "type": "textarea", "id": "quote", "label": "Quote (large italic)" },
+    { "type": "textarea", "id": "lead", "label": "Intro text" },
+    { "type": "textarea", "id": "caption", "label": "Muted text" },
+    { "type": "textarea", "id": "small", "label": "Small text" },
+    { "type": "text", "id": "btn1_label", "label": "Button 1" },
+    { "type": "text", "id": "btn1_link", "label": "Button 1 link" },
+    { "type": "checkbox", "id": "btn1_ghost", "label": "Button 1 outlined", "default": true },
+    { "type": "text", "id": "btn2_label", "label": "Button 2" },
+    { "type": "text", "id": "btn2_link", "label": "Button 2 link" },
+    { "type": "checkbox", "id": "btn2_ghost", "label": "Button 2 outlined", "default": true },
+    { "type": "header", "content": "Media" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "video", "id": "video", "label": "Video (plays muted, looped)" },
+    { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
+    { "type": "text", "id": "alt", "label": "Image description" },
+    { "type": "textarea", "id": "label", "label": "Placeholder text (shown until media is added)", "default": "20 sec loop: Ming and the family on the factory floor, faces visible." },
+    { "type": "text", "id": "ar", "label": "Media shape (aspect ratio)", "default": "4/3" }
+  ],
+  "presets": [{ "name": "Text and media" }]
+}
+{% endschema %}

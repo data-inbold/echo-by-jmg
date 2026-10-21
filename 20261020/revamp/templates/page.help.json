@@ -1,0 +1,227 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Help"
+      }
+    },
+    "main": {
+      "type": "echo-help",
+      "settings": {},
+      "blocks": {
+        "topic_1": {
+          "type": "topic",
+          "settings": {
+            "title": "Delivery and returns"
+          }
+        },
+        "q_2": {
+          "type": "q",
+          "settings": {
+            "q": "How fast do you deliver?",
+            "a": "<p>Free delivery across Denmark, usually within 2 working days. Orders placed by [cut-off time] on weekdays ship the same day from our fulfilment partner in Brøndby, Copenhagen.</p>"
+          }
+        },
+        "q_3": {
+          "type": "q",
+          "settings": {
+            "q": "What does delivery cost?",
+            "a": "<p>Nothing. Delivery is free across Denmark, to a parcel shop, a locker or your door.</p>"
+          }
+        },
+        "q_4": {
+          "type": "q",
+          "settings": {
+            "q": "What is your return policy?",
+            "a": "<p>If you are not completely happy, you can return your order within 14 days. Items should be unused and in their original condition. New, unused items are refunded to the original payment method. Lightly tested items may be eligible for store credit. Final-sale items cannot be returned.</p>"
+          }
+        },
+        "q_5": {
+          "type": "q",
+          "settings": {
+            "q": "Can I change or cancel my order?",
+            "a": "<p>There is a short window of about 60 minutes after you order. Contact us straight away. Once an order is packed or shipped, it cannot be changed, but you can use our free returns.</p>"
+          }
+        },
+        "q_6": {
+          "type": "q",
+          "settings": {
+            "q": "Do you ship outside Denmark?",
+            "a": "<p>We start our journey in Denmark, so at launch we ship only within Denmark. We are preparing to deliver to the other Scandinavian countries and across the EU. Join the Cozy Club to hear first.</p>"
+          }
+        },
+        "q_7": {
+          "type": "q",
+          "settings": {
+            "q": "Is your packaging sustainable?",
+            "a": "<p>Our packaging is made from recycled materials and kept minimal. It is designed to be reused, including as the bag for a return.</p>"
+          }
+        },
+        "q_8": {
+          "type": "q",
+          "settings": {
+            "q": "Who is behind the shop?",
+            "a": "<p>EchoByJMG is owned by JM Group Limited in Hong Kong, a family knitwear maker since 1946. Orders ship from Denmark through our local fulfilment partner.</p>"
+          }
+        },
+        "topic_9": {
+          "type": "topic",
+          "settings": {
+            "title": "Yarn and quality"
+          }
+        },
+        "q_10": {
+          "type": "q",
+          "settings": {
+            "q": "What do you mean by leftover yarn?",
+            "a": "<p>Premium, unused yarn left over from earlier production runs for fashion brands. It is not waste and not used fibre. It is high-quality yarn that was never worn or used, simply left in limited quantities.</p>"
+          }
+        },
+        "q_11": {
+          "type": "q",
+          "settings": {
+            "q": "Does leftover yarn mean lower quality?",
+            "a": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>"
+          }
+        },
+        "q_12": {
+          "type": "q",
+          "settings": {
+            "q": "What does limited edition mean?",
+            "a": "<p>Our pieces are made in small quantities from leftover yarn that exists in limited amounts. Once that yarn is used, the same design or colour may not be repeated.</p>"
+          }
+        },
+        "q_13": {
+          "type": "q",
+          "settings": {
+            "q": "Will items be restocked?",
+            "a": "<p>Some items may return in a new colourway or updated design, but once sold out they are not restocked exactly the same. If a piece speaks to you, it may be best to make it yours while it is available.</p>"
+          }
+        },
+        "q_14": {
+          "type": "q",
+          "settings": {
+            "q": "Why are colours sometimes limited?",
+            "a": "<p>Because many collections are made from limited yarn quantities, some colours come in small runs only. Once a yarn is used, we may not be able to find the exact shade again.</p>"
+          }
+        },
+        "q_15": {
+          "type": "q",
+          "settings": {
+            "q": "Will the colours look exactly the same in person?",
+            "a": "<p>We photograph colours as accurately as we can. Small differences can come from lighting, screens and the natural character of yarn blends.</p>"
+          }
+        },
+        "q_16": {
+          "type": "q",
+          "settings": {
+            "q": "Where are your products made?",
+            "a": "<p>In our own family-run knitwear factory in China, owned and managed by our parent company JM Group Limited, a family business founded in 1946 and based in Hong Kong. This gives us direct oversight of craftsmanship, quality and responsible production.</p>"
+          }
+        },
+        "q_17": {
+          "type": "q",
+          "settings": {
+            "q": "Are your products ethically made?",
+            "a": "<p>Yes. We work in line with BSCI social compliance principles for fair working conditions, and with OCS and RCS certified materials where they apply. We also support WWF Hong Kong.</p>"
+          }
+        },
+        "topic_18": {
+          "type": "topic",
+          "settings": {
+            "title": "Care"
+          }
+        },
+        "q_19": {
+          "type": "q",
+          "settings": {
+            "q": "How should I care for my knitted piece?",
+            "a": "<p>Care depends on the yarn, and the care label on each piece has the details. Lambswool pieces are hand wash cold and dry flat. For machine-washable pieces, use a wash bag so they do not rub against other clothes.</p>"
+          }
+        },
+        "q_20": {
+          "type": "q",
+          "settings": {
+            "q": "Do cushion covers come with the inner cushion?",
+            "a": "<p>No. Covers are sold without inners, so you can choose your own filling and firmness.</p>"
+          }
+        },
+        "topic_21": {
+          "type": "topic",
+          "settings": {
+            "title": "Gifting"
+          }
+        },
+        "q_22": {
+          "type": "q",
+          "settings": {
+            "q": "Why give EchoByJMG as a gift?",
+            "a": "<p>Every piece is made in limited quantities from premium leftover yarn, so each gift feels personal and unique, with beauty, comfort and meaning behind it.</p>"
+          }
+        },
+        "q_23": {
+          "type": "q",
+          "settings": {
+            "q": "Is the price shown in the package?",
+            "a": "<p>No. No prices are printed in the order. Confirmations and receipts are sent to the buyer by email.</p>"
+          }
+        },
+        "q_24": {
+          "type": "q",
+          "settings": {
+            "q": "Do you offer gift wrapping?",
+            "a": "<p>Every order is wrapped in our own tissue paper, with a little surprise gift inside.</p>"
+          }
+        },
+        "q_25": {
+          "type": "q",
+          "settings": {
+            "q": "Can I send it straight to the recipient?",
+            "a": "<p>Yes. Enter their address at checkout. [Gift message option to confirm.]</p>"
+          }
+        },
+        "q_26": {
+          "type": "q",
+          "settings": {
+            "q": "When do I need to order for Christmas?",
+            "a": "<p>Order by [date] for delivery before Christmas Eve.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "topic_1",
+        "q_2",
+        "q_3",
+        "q_4",
+        "q_5",
+        "q_6",
+        "q_7",
+        "q_8",
+        "topic_9",
+        "q_10",
+        "q_11",
+        "q_12",
+        "q_13",
+        "q_14",
+        "q_15",
+        "q_16",
+        "q_17",
+        "topic_18",
+        "q_19",
+        "q_20",
+        "topic_21",
+        "q_22",
+        "q_23",
+        "q_24",
+        "q_25",
+        "q_26"
+      ]
+    }
+  },
+  "order": [
+    "crumbs",
+    "main"
+  ]
+}

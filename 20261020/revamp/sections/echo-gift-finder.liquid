@@ -1,0 +1,80 @@
+{%- capture echo_out -%}
+{%- comment -%} Gift finder: budget chips, occasions, and the product grid they filter. {%- endcomment -%}
+{%- liquid
+  assign col = section.settings.collection
+  if col != blank
+    assign list = col.products
+  else
+    assign list = collections.all.products
+  endif
+  assign pop = ','
+  for p in section.settings.popular
+    assign pop = pop | append: p.handle | append: ','
+  endfor
+-%}
+<section class="section tight alt">
+  <div class="wrap stack" style="gap:16px">
+    <h2 class="h3">By budget</h2>
+    <div class="row" style="gap:6px">
+      <button class="chip" data-budget="u700" aria-pressed="false">Under DKK 700</button>
+      <button class="chip" data-budget="700" aria-pressed="false">DKK 700 to 1,000</button>
+      <button class="chip" data-budget="1000" aria-pressed="false">DKK 1,000 to 2,200</button>
+      <a class="chip" href="{% render 'echo-url', key: 'sets' %}">Sets</a>
+      <a class="chip" href="{% render 'echo-url', key: 'gift-card' %}">Gift card</a>
+    </div>
+    <h2 class="h3" style="margin-top:10px">By occasion</h2>
+    <div class="grid g4">
+      {%- for b in section.blocks -%}
+        {%- capture hs -%}{%- for p in b.settings.products -%}{{ p.handle }}{% unless forloop.last %},{% endunless %}{%- endfor -%}{%- endcapture -%}
+        <button class="card" style="background:none;border:0;padding:0;text-align:left" data-occ="{{ b.id }}" data-handles="{{ hs }}" aria-pressed="false" {{ b.shopify_attributes }}>
+          {%- render 'echo-pic', image: b.settings.image, alt: b.settings.title, label: b.settings.ph, ar: '4/3' -%}
+          <span class="name" data-label="{{ b.settings.title | escape }}">{{ b.settings.title }}</span>
+        </button>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+<section class="section tight">
+  <div class="wrap stack" style="gap:16px">
+    <div class="row" style="justify-content:space-between"><h2 class="h2" data-gift-title>Popular gifts</h2><button class="textbtn" data-clear-gift hidden>Clear</button></div>
+    <div class="grid g4" data-gift-grid>
+      {%- assign n = 0 -%}
+      {%- assign seen = ',' -%}
+      {%- for p in list limit: 100 -%}
+        {%- if p.gift_card? -%}{%- continue -%}{%- endif -%}
+        {%- assign hk = ',' | append: p.handle | append: ',' -%}
+        {%- if seen contains hk -%}{%- continue -%}{%- endif -%}
+        {%- for s in p.metafields.custom.linked_products.value -%}{%- assign seen = seen | append: s.handle | append: ',' -%}{%- endfor -%}
+        {%- assign seen = seen | append: p.handle | append: ',' -%}
+        {%- assign is_pop = false -%}
+        {%- assign ghit = false -%}
+        {%- for s in p.metafields.custom.linked_products.value -%}{%- assign sk = ',' | append: s.handle | append: ',' -%}{%- if pop contains sk -%}{%- assign ghit = true -%}{%- endif -%}{%- endfor -%}
+        {%- if pop contains hk or ghit -%}{%- assign is_pop = true -%}{%- elsif section.settings.popular == blank and n < 8 -%}{%- assign is_pop = true -%}{%- endif -%}
+        {%- assign n = n | plus: 1 -%}
+        {%- capture card -%}{%- render 'echo-card', product: p -%}{%- endcapture -%}
+        {%- if is_pop -%}{{ card | replace_first: '<a class="card"', '<a data-popular class="card"' }}{%- else -%}{{ card }}{%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="review" data-gift-empty hidden>No gifts in this budget for this occasion. <button class="textbtn" data-clear-gift>Clear</button></div>
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Gift finder",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Products to choose from", "info": "Empty = all products" },
+    { "type": "product_list", "id": "popular", "label": "Popular gifts (shown before a filter is picked)", "limit": 12 }
+  ],
+  "blocks": [
+    { "type": "occasion", "name": "Occasion", "settings": [
+      { "type": "text", "id": "title", "label": "Name", "default": "Housewarming" },
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "ph", "label": "Placeholder text", "default": "new home" },
+      { "type": "product_list", "id": "products", "label": "Products for this occasion", "limit": 12 }
+    ] }
+  ],
+  "presets": [{ "name": "Gift finder" }]
+}
+{% endschema %}

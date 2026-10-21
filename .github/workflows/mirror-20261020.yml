@@ -1,0 +1,49 @@
+# The 20 Oct preview theme ("echo-by-jmg/main" in Shopify) still lives at the root of main,
+# so its preview link keeps working. This copies it into 20261020/revamp/ and onto branch
+# 20261020/revamp (theme at the branch root) after every change, ready for the later switch.
+# One-way: the root is the source. Edits made in a theme connected to 20261020/revamp
+# would be overwritten by the next change at the root.
+name: Mirror root theme to 20261020/revamp
+on:
+  push:
+    branches: [main]
+    paths: ['assets/**', 'blocks/**', 'config/**', 'layout/**', 'locales/**', 'sections/**', 'snippets/**', 'templates/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sync-20261022
+  cancel-in-progress: false
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Root -> 20261020/revamp on main
+        run: |
+          set -euo pipefail
+          git config user.name "echo-theme-sync"
+          git config user.email "echo-theme-sync@users.noreply.github.com"
+          for d in assets blocks config layout locales sections snippets templates; do
+            rm -rf "20261020/revamp/$d"; mkdir -p 20261020/revamp; cp -a "$d" "20261020/revamp/"
+          done
+          git add -A 20261020/revamp
+          if ! git diff --cached --quiet; then
+            git commit -m "Mirror root theme into 20261020/revamp (${GITHUB_SHA::7})"
+            git push origin HEAD:main
+          fi
+      - name: 20261020/revamp -> branch 20261020/revamp
+        run: |
+          set -euo pipefail
+          SRC="$(mktemp -d)"; cp -a 20261020/revamp/. "$SRC/"
+          B="20261020/revamp"
+          if git ls-remote --exit-code --heads origin "$B" >/dev/null; then git checkout -B "$B" "origin/$B"; else git checkout --orphan "$B"; fi
+          git rm -rq --ignore-unmatch . || true
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a "$SRC/." .
+          git add -A
+          if git diff --cached --quiet; then echo "Branch already in sync"; exit 0; fi
+          git commit -m "Mirror 20261020/revamp (${GITHUB_SHA::7})"
+          git push origin "HEAD:refs/heads/$B"

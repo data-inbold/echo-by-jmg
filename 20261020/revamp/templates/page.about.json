@@ -1,0 +1,177 @@
+{
+  "layout": "echo",
+  "sections": {
+    "hero": {
+      "type": "echo-story-hero",
+      "settings": {}
+    },
+    "letter": {
+      "type": "echo-split",
+      "settings": {
+        "media_first": true,
+        "top": true,
+        "gap": 16,
+        "eyebrow": "A letter from Ming",
+        "heading": "",
+        "quote": "“Hello, my name is Ming, founder of EchoByJMG. EchoByJMG is born from JM Group Limited, a family-owned knitwear specialist since 1946. For over 80 years, we have produced knitwear for some of the world’s most respected luxury and high-street labels. We know our materials deeply: their quality, their character, and how much is left behind after every production run. EchoByJMG is our answer to that knowledge.”",
+        "caption": "Ming, founder of EchoByJMG",
+        "small": "Why Echo? Our yarns began as part of fashion production. Instead of being forgotten, they continue their story here. It is also an echo of heritage: generations of knitwear knowledge carried into something fresh.",
+        "label": "Portrait: Ming at the factory",
+        "ar": "4/5"
+      }
+    },
+    "ch1": {
+      "type": "echo-steps",
+      "settings": {
+        "bg": "alt",
+        "layout": "timeline",
+        "gap": 24,
+        "eyebrow": "Chapter 1 · Our 80-year experience",
+        "heading": "The factory brands never name"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "1946",
+            "text": "JM Group is founded in Hong Kong as a family knitwear maker."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "[Year]",
+            "text": "Our own family-run factory opens in [city], China."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "80+ years",
+            "text": "Three generations making knitwear for the world’s leading fashion labels."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "2026",
+            "text": "EchoByJMG launches in Denmark under our own name."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "ch2": {
+      "type": "echo-steps",
+      "settings": {
+        "gap": 24,
+        "eyebrow": "Chapter 2 · turns materials",
+        "heading": "Rescued yarn, with a batch number",
+        "pair1_label": "Shelves of leftover cones in the factory store",
+        "pair2_label": "Close-up: lot and batch label on a cone",
+        "link_label": "How to read a Yarn Passport",
+        "link": "echo:passport"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "A fashion order ends",
+            "text": "Premium yarn is ordered for luxury and high-street production. Some is always left on the shelf, never worn, never used."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "The leftover is logged",
+            "text": "Fibre, colour, weight and batch. [How it is tracked today, to confirm with Ming.]"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "We design around it",
+            "text": "We don’t order materials to match a design. We design around what we have rescued. The yarn comes first, the collection follows."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "A numbered edition",
+            "text": "When a rescued batch is gone, it is gone. No reorder, no restock, no repeat. Every piece gets its number and its Yarn Passport."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "ch3": {
+      "type": "echo-split",
+      "settings": {
+        "bg": "alt",
+        "media_first": false,
+        "gap": 12,
+        "eyebrow": "Chapter 3 · to products",
+        "heading": "Knitted, not woven",
+        "lead": "A blanket with the structure of the best sweater you have ever owned: the softness, stretch and durability of fashion knitwear, at home.",
+        "photo": "echo-twister-sofa-small.jpg",
+        "alt": "Close-up of the Twister Rope cable knit",
+        "label": "",
+        "ar": "16/9"
+      }
+    },
+    "ch4": {
+      "type": "echo-split",
+      "settings": {
+        "media_first": false,
+        "rev": true,
+        "gap": 12,
+        "eyebrow": "Chapter 4 · that are unique",
+        "heading": "Colour, in a market of beige",
+        "lead": "Nordic does not have to mean pale. Our colours are whatever fashion left behind, which is why they are not on every other shelf.",
+        "photo": "echo-carousel-violet.jpg",
+        "alt": "Carousel Stripes blanket in violet blue with a green border",
+        "label": "",
+        "ar": "16/9"
+      }
+    },
+    "ch5": {
+      "type": "echo-split",
+      "settings": {
+        "bg": "alt",
+        "media_first": false,
+        "gap": 12,
+        "eyebrow": "Chapter 5 · as gifts",
+        "heading": "A gift that tells its own story",
+        "lead": "Every piece arrives with its number and its story, so you never have to explain it.",
+        "btn1_label": "Find a gift",
+        "btn1_link": "echo:gifts",
+        "label": "Unboxing: tissue, edition card, no price",
+        "ar": "16/9"
+      }
+    },
+    "made": {
+      "type": "echo-made",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "letter",
+    "ch1",
+    "ch2",
+    "ch3",
+    "ch4",
+    "ch5",
+    "made"
+  ]
+}

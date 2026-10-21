@@ -1,0 +1,53 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-collection",
+      "settings": {
+        "crumb": "Accessories",
+        "only": "accessories",
+        "h1": "Knitted beanies and scarves",
+        "intro": "Lightweight, cheerful colour-block accessories that give a highlight to any outfit. Pick a colour to lighten your spirit.",
+        "label": "8 sec clip: pompoms being attached"
+      }
+    },
+    "questions": {
+      "type": "echo-faq",
+      "settings": {
+        "heading": "Questions"
+      },
+      "blocks": {
+        "q_1": {
+          "type": "q",
+          "settings": {
+            "q": "Does leftover yarn mean lower quality?",
+            "a": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>"
+          }
+        },
+        "q_2": {
+          "type": "q",
+          "settings": {
+            "q": "What does limited edition mean?",
+            "a": "<p>Our pieces are made in small quantities from leftover yarn that exists in limited amounts. Once that yarn is used, the same design or colour may not be repeated.</p>"
+          }
+        },
+        "q_3": {
+          "type": "q",
+          "settings": {
+            "q": "Will items be restocked?",
+            "a": "<p>Some items may return in a new colourway or updated design, but once sold out they are not restocked exactly the same. If a piece speaks to you, it may be best to make it yours while it is available.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q_1",
+        "q_2",
+        "q_3"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "questions"
+  ]
+}
