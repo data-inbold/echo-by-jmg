@@ -1,0 +1,480 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "hide_heading": true,
+        "heading_size": "default",
+        "heading_tag": "h2",
+        "section_width": "wide",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "f77b2952-b52e-45d2-b205-76fe03dcda3c": {
+      "type": "rich-text",
+      "blocks": {
+        "template--18858394288402__f77b2952-b52e-45d2-b205-76fe03dcda3c-1683292757de9415f4-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Stockists",
+            "heading_size": "heading_l_uppercase",
+            "heading_tag": "h1"
+          }
+        },
+        "3fecf266-24d5-45ad-9e4f-df5eecb896ab": {
+          "type": "button",
+          "settings": {
+            "button_label": "Online shops",
+            "button_link": "#1",
+            "target_blank": false,
+            "button_style": "link"
+          }
+        },
+        "5a209262-097f-4f35-9f2d-6e0eb8993156": {
+          "type": "button",
+          "settings": {
+            "button_label": "USA",
+            "button_link": "#2",
+            "target_blank": false,
+            "button_style": "link"
+          }
+        },
+        "3538939b-fd3e-4fc2-8476-3f95e3034d91": {
+          "type": "button",
+          "settings": {
+            "button_label": "Europe",
+            "button_link": "#3",
+            "target_blank": false,
+            "button_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "template--18858394288402__f77b2952-b52e-45d2-b205-76fe03dcda3c-1683292757de9415f4-1",
+        "3fecf266-24d5-45ad-9e4f-df5eecb896ab",
+        "5a209262-097f-4f35-9f2d-6e0eb8993156",
+        "3538939b-fd3e-4fc2-8476-3f95e3034d91"
+      ],
+      "settings": {
+        "section_width": "wide",
+        "center_text": false,
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "a5cda1b5-0532-4ff4-84c0-608673924644": {
+      "type": "anchor-link",
+      "settings": {
+        "anchor_link": "1"
+      }
+    },
+    "3b3bf796-b9fb-4e50-bb2a-5c42adfc3936": {
+      "type": "banner-gallery",
+      "blocks": {
+        "template--18858394288402__3b3bf796-b9fb-4e50-bb2a-5c42adfc3936-168329619257696810-0": {
+          "type": "image",
+          "settings": {
+            "heading": "Online shop",
+            "link": "",
+            "target_blank": true
+          }
+        },
+        "template--18858394288402__3b3bf796-b9fb-4e50-bb2a-5c42adfc3936-168329619257696810-1": {
+          "type": "image",
+          "settings": {
+            "heading": "Online shop",
+            "link": "",
+            "target_blank": true
+          }
+        },
+        "template--18858394288402__3b3bf796-b9fb-4e50-bb2a-5c42adfc3936-168329619257696810-2": {
+          "type": "image",
+          "settings": {
+            "heading": "Online shop",
+            "link": "",
+            "target_blank": true
+          }
+        },
+        "template--18858394288402__3b3bf796-b9fb-4e50-bb2a-5c42adfc3936-168329619257696810-3": {
+          "type": "image",
+          "settings": {
+            "heading": "Online shop",
+            "link": "",
+            "target_blank": true
+          }
+        }
+      },
+      "block_order": [
+        "template--18858394288402__3b3bf796-b9fb-4e50-bb2a-5c42adfc3936-168329619257696810-0",
+        "template--18858394288402__3b3bf796-b9fb-4e50-bb2a-5c42adfc3936-168329619257696810-1",
+        "template--18858394288402__3b3bf796-b9fb-4e50-bb2a-5c42adfc3936-168329619257696810-2",
+        "template--18858394288402__3b3bf796-b9fb-4e50-bb2a-5c42adfc3936-168329619257696810-3"
+      ],
+      "settings": {
+        "content_on_hover": false,
+        "heading": "Online shops",
+        "banner_heading_size": "body_s_uppercase",
+        "desktop_grid_type": "4",
+        "mobile_layout": "2",
+        "center_text": true,
+        "vertical_content_position": "center",
+        "image_ratio": "wide",
+        "overlay_color": "#000000",
+        "overlay_gradient": "",
+        "overlay_opacity": 100,
+        "image_radius": "default",
+        "heading_size": "heading_m_uppercase",
+        "heading_tag": "h3",
+        "color_type": "invert-content",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "95e08098-990f-4885-9ae7-828df610e427": {
+      "type": "anchor-link",
+      "settings": {
+        "anchor_link": "2"
+      }
+    },
+    "c6fc4866-b879-4e3f-8862-5de661a8529f": {
+      "type": "rich-text",
+      "blocks": {
+        "a0d872df-16fd-468d-bb32-e30e7a2cc3fb": {
+          "type": "heading",
+          "settings": {
+            "heading": "USA",
+            "heading_size": "heading_m_uppercase",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "a0d872df-16fd-468d-bb32-e30e7a2cc3fb"
+      ],
+      "settings": {
+        "section_width": "wide",
+        "center_text": false,
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": -40
+      }
+    },
+    "d8a185ed-c586-4f66-8179-1e72998a5bdf": {
+      "type": "media-with-text",
+      "blocks": {
+        "59d523d0-ca83-4575-a313-93865577943a": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "New York",
+            "subheading_size": "default",
+            "subheading_tag": "h4"
+          }
+        },
+        "bda1d5d3-dd44-49d7-ab44-32d00f9bc2da": {
+          "type": "heading",
+          "settings": {
+            "heading": "Store name",
+            "heading_size": "default",
+            "heading_tag": "h3"
+          }
+        },
+        "61c46cfe-0c20-4f24-b873-38e17e9c9268": {
+          "type": "text",
+          "settings": {
+            "text": "<p>620 King St W, Toronto, ON M5V 1M7, Canada<\/p>",
+            "dim_text": true
+          }
+        },
+        "9e3e9ac9-ccb1-4d76-b076-8261e9d7b4a6": {
+          "type": "button",
+          "settings": {
+            "button_label": "Visit website",
+            "button_link": "",
+            "target_blank": true,
+            "button_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "59d523d0-ca83-4575-a313-93865577943a",
+        "bda1d5d3-dd44-49d7-ab44-32d00f9bc2da",
+        "61c46cfe-0c20-4f24-b873-38e17e9c9268",
+        "9e3e9ac9-ccb1-4d76-b076-8261e9d7b4a6"
+      ],
+      "settings": {
+        "link": "",
+        "target_blank": false,
+        "video_focal_point": "center center",
+        "section_width": "wide",
+        "swap_media": false,
+        "media_size": "half",
+        "media_ratio": "wide",
+        "narrow_content": true,
+        "vertical_text_alignment": "center",
+        "horizontal_text_alignment": "flex-start",
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "fill_section": false,
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "39c40181-74b2-4784-8463-6cccfaea5806": {
+      "type": "media-with-text",
+      "blocks": {
+        "7241f8f0-22de-4827-b9c2-0a985955b036": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Los Angeles",
+            "subheading_size": "default",
+            "subheading_tag": "h4"
+          }
+        },
+        "b81b5375-ebc7-46e1-98af-bbd1ce774284": {
+          "type": "heading",
+          "settings": {
+            "heading": "Store name",
+            "heading_size": "default",
+            "heading_tag": "h3"
+          }
+        },
+        "6f74693f-8446-4d55-bc06-4ee432417cac": {
+          "type": "text",
+          "settings": {
+            "text": "<p>620 King St W, Toronto, ON M5V 1M7, Canada<\/p>",
+            "dim_text": true
+          }
+        },
+        "5e418d1a-c847-4a0b-9bc6-b33866d988ae": {
+          "type": "button",
+          "settings": {
+            "button_label": "Visit website",
+            "button_link": "",
+            "target_blank": true,
+            "button_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "7241f8f0-22de-4827-b9c2-0a985955b036",
+        "b81b5375-ebc7-46e1-98af-bbd1ce774284",
+        "6f74693f-8446-4d55-bc06-4ee432417cac",
+        "5e418d1a-c847-4a0b-9bc6-b33866d988ae"
+      ],
+      "settings": {
+        "link": "",
+        "target_blank": false,
+        "video_focal_point": "center center",
+        "section_width": "wide",
+        "swap_media": false,
+        "media_size": "half",
+        "media_ratio": "wide",
+        "narrow_content": true,
+        "vertical_text_alignment": "center",
+        "horizontal_text_alignment": "flex-start",
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "fill_section": false,
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "5cabd305-acb9-4b55-a8aa-7df6b33bb453": {
+      "type": "media-with-text",
+      "blocks": {
+        "6a7c6d9b-6e9e-4faa-81ac-dd7ba7a994c5": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Boston",
+            "subheading_size": "default",
+            "subheading_tag": "h4"
+          }
+        },
+        "e8f59622-38e6-4f7b-a62f-3a69d2fef82f": {
+          "type": "heading",
+          "settings": {
+            "heading": "Store name",
+            "heading_size": "default",
+            "heading_tag": "h3"
+          }
+        },
+        "dcf5b255-db63-4270-9a42-65e7c789e0b5": {
+          "type": "text",
+          "settings": {
+            "text": "<p>620 King St W, Toronto, ON M5V 1M7, Canada<\/p>",
+            "dim_text": true
+          }
+        },
+        "f3fc0875-40c7-4e63-837e-8f616d0bbc0b": {
+          "type": "button",
+          "settings": {
+            "button_label": "Visit website",
+            "button_link": "",
+            "target_blank": true,
+            "button_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "6a7c6d9b-6e9e-4faa-81ac-dd7ba7a994c5",
+        "e8f59622-38e6-4f7b-a62f-3a69d2fef82f",
+        "dcf5b255-db63-4270-9a42-65e7c789e0b5",
+        "f3fc0875-40c7-4e63-837e-8f616d0bbc0b"
+      ],
+      "settings": {
+        "link": "",
+        "target_blank": false,
+        "video_focal_point": "center center",
+        "section_width": "wide",
+        "swap_media": false,
+        "media_size": "half",
+        "media_ratio": "wide",
+        "narrow_content": true,
+        "vertical_text_alignment": "center",
+        "horizontal_text_alignment": "flex-start",
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "fill_section": false,
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "3e0578c1-f9ee-414f-96f6-a4889358c353": {
+      "type": "anchor-link",
+      "settings": {
+        "anchor_link": "3"
+      }
+    },
+    "e48550f1-90f8-4055-a7a5-49fe2d82b85e": {
+      "type": "rich-text",
+      "blocks": {
+        "696649e6-8ced-43b3-8e0a-6535f531c92f": {
+          "type": "heading",
+          "settings": {
+            "heading": "Europe",
+            "heading_size": "heading_m_uppercase",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "696649e6-8ced-43b3-8e0a-6535f531c92f"
+      ],
+      "settings": {
+        "section_width": "wide",
+        "center_text": false,
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": -40
+      }
+    },
+    "d37b8d2f-e377-444b-904d-684c14043f2f": {
+      "type": "media-with-text",
+      "blocks": {
+        "4d7b523b-0c1d-435e-b697-6602a54abd45": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Brussels",
+            "subheading_size": "default",
+            "subheading_tag": "h4"
+          }
+        },
+        "template--18858394288402__d37b8d2f-e377-444b-904d-684c14043f2f-1683293700c019eb93-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Store name",
+            "heading_size": "default",
+            "heading_tag": "h3"
+          }
+        },
+        "template--18858394288402__d37b8d2f-e377-444b-904d-684c14043f2f-1683293700c019eb93-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>620 King St W, Toronto, ON M5V 1M7, Canada<\/p>",
+            "dim_text": true
+          }
+        },
+        "template--18858394288402__d37b8d2f-e377-444b-904d-684c14043f2f-1683293700c019eb93-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Visit website",
+            "button_link": "",
+            "target_blank": true,
+            "button_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "4d7b523b-0c1d-435e-b697-6602a54abd45",
+        "template--18858394288402__d37b8d2f-e377-444b-904d-684c14043f2f-1683293700c019eb93-0",
+        "template--18858394288402__d37b8d2f-e377-444b-904d-684c14043f2f-1683293700c019eb93-1",
+        "template--18858394288402__d37b8d2f-e377-444b-904d-684c14043f2f-1683293700c019eb93-2"
+      ],
+      "settings": {
+        "link": "",
+        "target_blank": false,
+        "video_focal_point": "center center",
+        "section_width": "wide",
+        "swap_media": false,
+        "media_size": "half",
+        "media_ratio": "wide",
+        "narrow_content": true,
+        "vertical_text_alignment": "center",
+        "horizontal_text_alignment": "flex-start",
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "fill_section": false,
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "f77b2952-b52e-45d2-b205-76fe03dcda3c",
+    "a5cda1b5-0532-4ff4-84c0-608673924644",
+    "3b3bf796-b9fb-4e50-bb2a-5c42adfc3936",
+    "95e08098-990f-4885-9ae7-828df610e427",
+    "c6fc4866-b879-4e3f-8862-5de661a8529f",
+    "d8a185ed-c586-4f66-8179-1e72998a5bdf",
+    "39c40181-74b2-4784-8463-6cccfaea5806",
+    "5cabd305-acb9-4b55-a8aa-7df6b33bb453",
+    "3e0578c1-f9ee-414f-96f6-a4889358c353",
+    "e48550f1-90f8-4055-a7a5-49fe2d82b85e",
+    "d37b8d2f-e377-444b-904d-684c14043f2f"
+  ]
+}  

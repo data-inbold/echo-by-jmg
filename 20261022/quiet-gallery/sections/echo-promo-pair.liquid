@@ -1,0 +1,27 @@
+{%- capture echo_out -%}
+<section class="section promo {{ section.settings.spacing }} {{ section.settings.bg }}">
+  <div class="wrap grid g2">
+    <div class="review promo-l knitbox"><span class="tx" aria-hidden="true"></span><span class="ic i-gift" aria-hidden="true"></span><span class="mono">{{ section.settings.l_eyebrow }}</span><h3 class="h3" style="margin:8px 0">{{ section.settings.l_heading }}</h3><p class="muted">{{ section.settings.l_text }}</p><a class="btn ghost" href="{% if section.settings.l_link != blank %}{{ section.settings.l_link }}{% else %}{% render 'echo-url', key: 'gifts' %}{% endif %}">{{ section.settings.l_btn }}</a></div>
+    <div class="review promo-r knitbox"><span class="tx" aria-hidden="true"></span><span class="ic i-knitted-with-care" aria-hidden="true"></span><span class="mono">{{ section.settings.r_eyebrow }}</span><h3 class="h3" style="margin:8px 0">{{ section.settings.r_heading }}</h3><p class="muted">{{ section.settings.r_text }}</p>{% render 'echo-club-form', k: section.id %}</div>
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Gift + Cozy Club",
+  "settings": [
+    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "tight"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
+    { "type": "text", "id": "l_eyebrow", "label": "Left label", "default": "Gifts" },
+    { "type": "text", "id": "l_heading", "label": "Left heading", "default": "The gift with a story" },
+    { "type": "textarea", "id": "l_text", "label": "Left text", "default": "No price on the packing slip, wrapped in tissue, with a small surprise inside. Or let them choose with a gift card." },
+    { "type": "text", "id": "l_btn", "label": "Left button", "default": "Gift guide" },
+    { "type": "url", "id": "l_link", "label": "Left button link" },
+    { "type": "text", "id": "r_eyebrow", "label": "Right label", "default": "The Cozy Club" },
+    { "type": "text", "id": "r_heading", "label": "Right heading", "default": "10% off your first order" },
+    { "type": "textarea", "id": "r_text", "label": "Right text", "default": "And first access to new editions, which sell out." }
+  ],
+  "presets": [{ "name": "Gift + Cozy Club" }]
+}
+{% endschema %}

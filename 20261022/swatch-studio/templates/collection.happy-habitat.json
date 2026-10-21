@@ -1,0 +1,31 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-collection",
+      "settings": {
+        "crumb": "Happy Habitat",
+        "only": "picks",
+        "picks": [
+          "happy-sunshine-throw-cloud",
+          "happy-sunshine-throw-cloud-smoky-mauve",
+          "happy-sunshine-throw",
+          "carousel-stripes-knitted-throw-violet-blue",
+          "carousel-stripes-throw",
+          "bonjour-pup-throw",
+          "stripey-spy-throw",
+          "puff-friends-cushion-cover",
+          "sky-fence-knitted-cushion-cover",
+          "purrfect-peek-cushion-cover",
+          "joyful-rainbow-knitted-cushion-cover",
+          "fluff-paws-cushion-cover"
+        ],
+        "h1": "Happy Habitat, for kids’ rooms",
+        "intro": "From play corners to quiet evenings. Playful pieces for nurseries and kids’ rooms, made to belong wherever comfort grows."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

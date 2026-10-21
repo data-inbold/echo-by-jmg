@@ -1,0 +1,27 @@
+{%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
+{%- assign cl = 'Home::' | append: u_home | append: '||Search' -%}
+{%- render 'echo-crumbs', list: cl -%}
+<section class="section tight">
+  <div class="wrap stack" style="gap:20px">
+    <span class="mono">Search</span>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search" style="position:static;background:none;overflow:visible">
+      <input type="hidden" name="type" value="product">
+      <input name="q" type="search" value="{{ search.terms | escape }}" placeholder="Search blankets, bags, colours" aria-label="Search">
+    </form>
+    {%- if search.performed -%}
+      {%- paginate search.results by 24 -%}
+        <p class="muted">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %}</p>
+        <div class="grid g4">
+          {%- for r in search.results -%}
+            {%- if r.object_type == 'product' -%}{%- render 'echo-card', product: r -%}
+            {%- else -%}<a class="card" href="{{ r.url }}">{%- render 'echo-ph', label: r.object_type, ar: '4/3' -%}<div class="meta"><span class="name">{{ r.title }}</span></div></a>{%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}<nav class="pagination">{{ paginate | default_pagination }}</nav>{%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Search results", "settings": [] }
+{% endschema %}

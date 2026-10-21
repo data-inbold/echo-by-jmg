@@ -1,0 +1,31 @@
+<section class="section quotes {{ section.settings.spacing }} {{ section.settings.bg }}">
+  <div class="wrap stack" style="gap:20px">
+    <h2 class="h2">{{ section.settings.heading }}</h2>
+    <div class="grid g3">
+      {%- for b in section.blocks -%}
+        <figure class="review quote" {{ b.shopify_attributes }}>{% if b.settings.stars != blank %}<span class="stars" aria-label="{{ b.settings.stars | size }} stars">{{ b.settings.stars }}</span>{% endif %}<blockquote>“{{ b.settings.quote }}”</blockquote><figcaption class="muted">{{ b.settings.name }}</figcaption></figure>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.app_note != blank -%}<p class="muted" style="font-size:13px;margin:0">{{ section.settings.app_note }}</p>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Customer quotes",
+  "settings": [
+    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What customers say" },
+    { "type": "text", "id": "app_note", "label": "Note under quotes" }
+  ],
+  "blocks": [
+    { "type": "review", "name": "Quote", "settings": [
+      { "type": "text", "id": "stars", "label": "Stars", "default": "★★★★★" },
+      { "type": "textarea", "id": "quote", "label": "Quote", "default": "So soft, you felt it immediately. It feels like it’s always belonged in the room." },
+      { "type": "text", "id": "name", "label": "Name", "default": "Aija" }
+    ] },
+    { "type": "@app" }
+  ],
+  "presets": [{ "name": "Customer quotes", "blocks": [{ "type": "review" }] }]
+}
+{% endschema %}

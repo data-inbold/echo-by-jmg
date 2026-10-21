@@ -1,0 +1,13 @@
+{%- comment -%} Certificate logo. Params: k (bsci|ocs|rcs), h (px), cls {%- endcomment -%}
+{%- liquid
+  case k
+    when 'bsci'
+      assign alt = 'BSCI, Business Social Compliance Initiative, member logo'
+    when 'ocs'
+      assign alt = 'Organic 100 Content Standard logo, Textile Exchange'
+    else
+      assign alt = 'Recycled 100 Claim Standard logo, Textile Exchange'
+  endcase
+  assign file = 'echo-cert-' | append: k | append: '.png'
+-%}
+<img class="certlogo{% if cls != blank %} {{ cls }}{% endif %}" src="{{ file | asset_url }}" alt="{{ alt }}" style="height:{{ h }}px" loading="lazy" width="{{ h }}" height="{{ h }}">

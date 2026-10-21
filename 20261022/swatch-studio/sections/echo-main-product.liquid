@@ -1,0 +1,215 @@
+{%- comment -%}
+  Product page top: gallery + buy box. Colours are separate linked products (custom.linked_products),
+  so the colour swatches link to the sibling product. The gift card product gets the amount picker.
+{%- endcomment -%}
+{%- liquid
+  capture raw
+    render 'echo-pinfo', product: product
+  endcapture
+  assign i = raw | strip | split: '~'
+  assign cat = i[0]
+  capture u_home
+    render 'echo-url', key: 'home'
+  endcapture
+  capture u_all
+    render 'echo-url', key: 'shop-all'
+  endcapture
+  case cat
+    when 'blankets'
+      assign catcol = settings.echo_col_blankets
+      assign catname = 'Blankets'
+    when 'cushions'
+      assign catcol = settings.echo_col_cushions
+      assign catname = 'Cushion covers'
+    when 'bags'
+      assign catcol = settings.echo_col_bags
+      assign catname = 'Bags'
+    else
+      assign catcol = settings.echo_col_accessories
+      assign catname = 'Accessories'
+  endcase
+  capture caturl
+    render 'echo-url', key: cat
+  endcapture
+  if catcol != blank
+    assign caturl = catcol.url
+    assign catname = catcol.title
+  endif
+  assign variant = product.selected_or_first_available_variant
+  assign comp = product.metafields.custom.composition.value | default: ''
+  assign care = product.metafields.custom.care_guide.value | default: ''
+  assign dims = product.metafields.custom.dimensions.value | default: ''
+  assign compl = comp | downcase
+  if care == ''
+    if compl contains 'wool'
+      assign care = section.settings.care_wool
+    elsif compl contains 'cotton'
+      assign care = section.settings.care_cotton
+    endif
+  endif
+-%}
+
+{%- if product.gift_card? -%}
+  {%- capture u_gifts -%}{%- render 'echo-url', key: 'gifts' -%}{%- endcapture -%}
+  {%- assign cl = 'Home::' | append: u_home | append: '||Gifts::' | append: u_gifts | append: '||' | append: product.title -%}
+  {%- render 'echo-crumbs', list: cl -%}
+  <div class="wrap pdp">
+    <div class="gallery">
+      {%- if product.featured_media -%}{%- render 'echo-pic', image: product.featured_media.preview_image, alt: product.title, cls: 'main', eager: true -%}{%- else -%}{%- render 'echo-ph', label: 'eGift card visual', cls: 'main' -%}{%- endif -%}
+    </div>
+    {%- form 'product', product, class: 'stack', style: 'gap:16px', data-pdp-form: '' -%}
+      <h1 class="h2">{{ product.title }}</h1>
+      <div style="font-size:22px;font-weight:600" data-gc-price>{% render 'echo-money', price: variant.price %}</div>
+      <div class="muted rte" style="margin:0">{{ product.description | default: section.settings.gc_text }}</div>
+      <input type="hidden" name="id" value="{{ variant.id }}">
+      <input type="hidden" name="quantity" value="1">
+      <div><div style="font-size:14px;margin-bottom:10px">Amount</div><div class="row" style="gap:6px">
+        {%- for v in product.variants -%}
+          {%- capture lbl -%}{%- render 'echo-money', price: v.price -%}{%- endcapture -%}
+          <button type="button" class="chip" data-amount="{{ v.id }}" data-label="{{ lbl | strip }}" aria-pressed="{% if v.id == variant.id %}true{% else %}false{% endif %}"{% unless v.available %} disabled{% endunless %}>{{ lbl | strip }}</button>
+        {%- endfor -%}
+      </div></div>
+      <button class="btn" type="submit">Add to bag</button>
+      <ul class="ticks"><li>Sent instantly by email</li><li>No expiry</li></ul>
+    {%- endform -%}
+  </div>
+{%- else -%}
+  {%- assign cl = 'Home::' | append: u_home | append: '||Shop::' | append: u_all | append: '||' | append: catname | append: '::' | append: caturl | append: '||' | append: i[8] -%}
+  {%- render 'echo-crumbs', list: cl -%}
+  <div class="wrap pdp">
+    <div class="gallery">
+      {%- liquid
+        assign media = product.media | where: 'media_type', 'image'
+        assign labels = section.settings.ph_labels | split: '|'
+        assign total = media.size
+        if total < 5
+          assign total = 5
+        endif
+      -%}
+      {%- for k in (1..total) -%}
+        {%- assign idx = forloop.index0 -%}
+        <div data-main="{{ idx }}"{% if idx > 0 %} hidden{% endif %}>
+          {%- if media[idx] -%}
+            {%- assign malt = media[idx].alt | default: i[8] -%}
+            {%- render 'echo-pic', image: media[idx].preview_image, alt: malt, cls: 'main', eager: forloop.first, sizes: '(min-width: 900px) 55vw, 100vw' -%}
+          {%- else -%}
+            {%- assign li = idx | minus: media.size -%}
+            {%- if media.size > 0 -%}{%- assign li = li | plus: 1 -%}{%- endif -%}
+            {%- assign lbl = labels[li] | strip | replace: '[N]', i[2] | append: '<br><br>' | append: i[5] -%}
+            {%- render 'echo-ph', label: lbl, tint: i[6], cls: 'main' -%}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+      <div class="thumbs">
+        {%- for k in (1..total) -%}
+          {%- assign idx = forloop.index0 -%}
+          <button type="button" data-img="{{ idx }}" aria-pressed="{% if idx == 0 %}true{% else %}false{% endif %}" aria-label="Photo {{ forloop.index }}">
+            {%- if media[idx] -%}{%- render 'echo-pic', image: media[idx].preview_image, alt: '', sizes: '120px' -%}{%- else -%}{%- render 'echo-ph', label: forloop.index, tint: i[6] -%}{%- endif -%}
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="stack buybox" style="gap:16px">
+      <span class="eyebrow">{{ catname }}{% assign comp1 = comp | split: ',' | first | strip %}{% if comp1 != blank %} · {{ comp1 | split: '%' | last | strip | capitalize }}{% endif %}</span>
+      <h1 class="h2">{{ i[8] }}</h1>
+      {%- assign rating = product.metafields.reviews.rating.value -%}
+      {%- assign rcount = product.metafields.reviews.rating_count | default: 0 -%}
+      {%- if rating != blank -%}
+        <a href="#reviews" class="muted" style="font-size:14px;text-decoration:none">★★★★★ {{ rating.rating | round: 1 }} · {{ rcount }} reviews</a>
+      {%- endif -%}
+      <div style="font-size:22px;font-weight:600">{% render 'echo-money', price: variant.price %} <span class="muted" style="font-size:13px;font-weight:400">incl. VAT · free delivery</span></div>
+      <div>
+        {%- assign sibs = product.metafields.custom.linked_products.value -%}
+        <div style="font-size:14px;margin-bottom:10px">Colour: <b>{{ i[5] }}</b>{% if sibs.size > 1 %} · also in this design:{% endif %}</div>
+        <div class="row colour-sw">
+          {%- if sibs != blank -%}
+            {%- for s in sibs -%}
+              {%- capture sraw -%}{%- render 'echo-pinfo', product: s -%}{%- endcapture -%}
+              {%- assign si = sraw | strip | split: '~' -%}
+              <a class="csw" href="{{ s.url }}"{% if s.id == product.id %} aria-current="page"{% endif %} title="{{ si[5] | escape }}">
+                {%- if s.featured_media -%}<span class="csw-img">{{ s.featured_media.preview_image | image_url: width: 160 | image_tag: alt: '', loading: 'lazy', widths: '80, 160', sizes: '64px' }}</span>{%- else -%}<span class="csw-img" style="background:{{ si[6] }}"></span>{%- endif -%}
+                <span class="csw-name">{{ si[5] }}</span>
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            <span class="csw" aria-current="page"><span class="csw-img">{% if product.featured_media %}{{ product.featured_media.preview_image | image_url: width: 160 | image_tag: alt: '', widths: '80, 160', sizes: '64px' }}{% else %}<span style="display:block;width:100%;height:100%;background:{{ i[6] }}"></span>{% endif %}</span><span class="csw-name">{{ i[5] }}</span></span>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if i[4] == 'sold' -%}
+        <div class="edition"><span class="ic i-edition-label" aria-hidden="true"></span><b>This edition is sold out.</b> All {{ i[2] }} pieces have found a home. The design will not be repeated in this colour.</div>
+        {%- form 'contact', class: 'stack', style: 'gap:8px' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="ok" role="status">Thank you. We will email you when the next edition is ready.</div>
+          {%- else -%}
+            <input type="hidden" name="contact[Request]" value="Notify me: {{ product.title }}">
+            <input type="hidden" name="contact[tags]" value="notify-next-edition">
+            <label for="n-email" style="font-size:14px;font-weight:600">Get an email when a new edition from this yarn family is ready</label>
+            <div class="inline-form"><input id="n-email" type="email" name="contact[email]" required placeholder="Your email"><button class="btn" type="submit">Notify me</button></div>
+          {%- endif -%}
+        {%- endform -%}
+        <a class="btn ghost block" href="{{ caturl }}">See current {{ catname | downcase }}</a>
+      {%- else -%}
+        <div class="edition"><span class="ic i-edition-label" aria-hidden="true"></span><span><b>Edition of {{ i[2] }}, {{ i[3] }} left.</b> Once this batch of yarn is used, the design is not repeated in this colour.</span></div>
+        {%- form 'product', product, class: 'stack', style: 'gap:12px', data-pdp-form: '' -%}
+          <input type="hidden" name="id" value="{{ variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <div class="row">
+            <div class="qty"><button type="button" data-qty="-1" aria-label="Fewer">−</button><span data-qty-out>1</span><button type="button" data-qty="1" aria-label="More">+</button></div>
+            <button class="btn" style="flex:1" type="submit"{% unless variant.available %} disabled{% endunless %}>Add to bag</button>
+          </div>
+          {%- if section.settings.show_mobilepay -%}
+            <button class="btn mp block" type="submit" name="return_to" value="/checkout" data-buynow>Pay with MobilePay</button>
+          {%- endif -%}
+        {%- endform -%}
+        <ul class="ticks">
+          {%- assign ticks = section.settings.ticks | split: '|' -%}
+          {%- for t in ticks -%}
+            {%- liquid
+              assign tl = t | downcase
+              assign tic = 'stitch'
+              if tl contains 'deliver' or tl contains 'order by' or tl contains 'ship'
+                assign tic = 'delivery'
+              elsif tl contains 'return'
+                assign tic = 'returns'
+              elsif tl contains 'gift' or tl contains 'price' or tl contains 'pack'
+                assign tic = 'gift'
+              endif
+            -%}
+            <li><span class="ic i-{{ tic }}" aria-hidden="true"></span><span>{{ t | strip | replace: '[cut-off time]', settings.echo_cutoff }}</span></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <div>
+        <details class="acc" open><summary>Description</summary><div class="body rte">{{ product.description | default: '[Product description]' }}</div></details>
+        <details class="acc"><summary>Material and care</summary><div class="body">{{ comp | default: '[Composition]' | newline_to_br }}{% if care != blank %}<br>{{ care | newline_to_br }}{% endif %}
+          {%- if section.settings.care_icons -%}
+            <span class="care-ic" role="img" aria-label="Care symbols: hand wash cool, do not tumble dry, dry flat, iron low"><span class="ic i-care-wash"></span><span class="ic i-care-no-tumble"></span><span class="ic i-care-dry-flat"></span><span class="ic i-care-iron-low"></span></span>
+            <span class="care-note">[Care symbols: example set, to match the woven label]</span>
+          {%- endif -%}
+        </div></details>
+        <details class="acc"><summary>Dimensions</summary><div class="body">{{ dims | default: '[Size]' | newline_to_br }}</div></details>
+        <details class="acc"><summary>Delivery and returns</summary><div class="body">{{ section.settings.delivery }} <a class="link" href="{% render 'echo-url', key: 'help' %}#topic-Delivery%20and%20returns">More about delivery</a></div></details>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    { "type": "checkbox", "id": "care_icons", "label": "Show care symbols under Material and care", "default": true, "info": "Example set until the symbols are matched to each woven label." },
+    { "type": "checkbox", "id": "show_mobilepay", "label": "Show 'Pay with MobilePay' button", "default": true, "info": "Adds the piece and goes straight to checkout." },
+    { "type": "text", "id": "ticks", "label": "Ticks (separate with |)", "default": "Order by [cut-off time] on weekdays for delivery in 1 to 2 working days | Free 14-day returns to our Danish address | No price on the packing slip, ready to give" },
+    { "type": "textarea", "id": "delivery", "label": "Delivery and returns text", "default": "Free delivery in Denmark in 1 to 2 working days from our Danish warehouse. Free returns within 14 days." },
+    { "type": "textarea", "id": "care_wool", "label": "Care text for wool (when no care guide)", "default": "Hand wash cold. Do not bleach. Dry flat after washing. Iron at low temperature. Professional dry clean." },
+    { "type": "textarea", "id": "care_cotton", "label": "Care text for cotton (when no care guide)", "default": "Machine wash cold on a gentle cycle. Do not bleach. Dry flat after washing. Iron at medium temperature. Professional dry clean." },
+    { "type": "textarea", "id": "ph_labels", "label": "Gallery placeholder labels (separate with |)", "info": "Shown in empty gallery slots until more photos are added. [N] = edition size.", "default": "In use: on a sofa, someone wrapped in it | Scale: on a double bed | 10 sec clip: this design on the knitting machine | Flat lay: full pattern | Woven label: “7 of [N]”" },
+    { "type": "textarea", "id": "gc_text", "label": "Gift card text (when product has no description)", "default": "Give the gift of choice. An EchoByJMG eGift card lets your loved one explore our limited-edition collection and choose the piece that speaks to them: a cushion cover, a blanket, a bag or an accessory, all crafted from rescued premium yarns. Delivered instantly by email, redeemable at checkout. No expiry." }
+  ]
+}
+{% endschema %}

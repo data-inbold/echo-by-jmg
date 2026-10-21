@@ -1,0 +1,84 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "p1_label": "Our Story",
+        "p1_link": "echo:story",
+        "current": "Factory and certificates"
+      }
+    },
+    "intro": {
+      "type": "echo-split",
+      "settings": {
+        "spacing": "tight",
+        "media_first": false,
+        "gap": 14,
+        "heading": "Our factory and certificates",
+        "heading_tag": true,
+        "heading_size": "h1",
+        "lead": "Our products are made in our own family-run knitwear factory in [city], China, owned and long-term managed by our parent company JM Group Limited. This gives us direct oversight of craftsmanship, quality control and responsible production.",
+        "label": "Photo: the factory building and the knitting hall",
+        "ar": "4/3"
+      }
+    },
+    "certs": {
+      "type": "echo-certs",
+      "settings": {
+        "bg": "alt"
+      },
+      "blocks": {
+        "cert_1": {
+          "type": "cert",
+          "settings": {
+            "logo": "bsci",
+            "title": "BSCI compliance",
+            "text": "Our parent company JM Group Limited follows the BSCI framework, ensuring safe, fair and responsible working conditions in our manufacturing process. We uphold standards on worker wellbeing, health and safety, fair pay and ethical management. This is the foundation of how every EchoByJMG piece is made.",
+            "no": "amfori ID 156-020420-000 · applies to all products"
+          }
+        },
+        "cert_2": {
+          "type": "cert",
+          "settings": {
+            "logo": "ocs",
+            "title": "Organic Content Standard (OCS)",
+            "text": "Our OCS certification means every piece containing organic fibres is independently verified, from raw material to finished product. We choose organic cotton and sustainable wool sourced through trusted suppliers who follow ethical farming and manufacturing processes.",
+            "no": "Certificate [no.] · certified by [body] · products in scope: [list]"
+          }
+        },
+        "cert_3": {
+          "type": "cert",
+          "settings": {
+            "logo": "rcs",
+            "title": "Recycled Claim Standard (RCS)",
+            "text": "We are certified under the Recycled Claim Standard, confirming that the yarns we use are made from verified recycled materials. Much of our collection is knitted from leftover yarn, which keeps good material out of landfill and reduces the need for new fibre.",
+            "no": "Certificate [no.] · certified by [body] · products in scope: [list]"
+          }
+        }
+      },
+      "block_order": [
+        "cert_1",
+        "cert_2",
+        "cert_3"
+      ]
+    },
+    "beyond": {
+      "type": "echo-split",
+      "settings": {
+        "media_first": false,
+        "gap": 12,
+        "heading": "Beyond the factory",
+        "caption": "We support environmental initiatives in partnership with WWF Hong Kong. Our operations are designed to be responsible and continuously improving, with a focus on reducing our environmental impact over time. Our packaging is made from recycled materials and can be reused for returns.",
+        "label": "Photo: packaging",
+        "ar": "16/9"
+      }
+    }
+  },
+  "order": [
+    "crumbs",
+    "intro",
+    "certs",
+    "beyond"
+  ]
+}

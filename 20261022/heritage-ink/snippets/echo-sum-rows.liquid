@@ -1,0 +1,6 @@
+<div class="row" style="justify-content:space-between;padding-top:14px"><span>Subtotal</span><span>{% render 'echo-money', price: cart.items_subtotal_price %}</span></div>
+{%- for d in cart.cart_level_discount_applications -%}
+  <div class="row" style="justify-content:space-between;padding-top:6px"><span>Discount ({{ d.title | escape }})</span><span>−{% render 'echo-money', price: d.total_allocated_amount %}</span></div>
+{%- endfor -%}
+<div class="row" style="justify-content:space-between;padding-top:6px"><span>Delivery</span><span>Free</span></div>
+<div class="row" style="justify-content:space-between;padding-top:6px;font-weight:600"><span>Total incl. VAT</span><span>{% render 'echo-money', price: cart.total_price %}</span></div>

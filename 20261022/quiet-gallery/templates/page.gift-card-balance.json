@@ -1,0 +1,19 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Gift card balance"
+      }
+    },
+    "main": {
+      "type": "echo-gc-balance",
+      "settings": {}
+    }
+  },
+  "order": [
+    "crumbs",
+    "main"
+  ]
+}

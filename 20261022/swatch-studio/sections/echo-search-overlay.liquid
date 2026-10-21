@@ -1,0 +1,33 @@
+{%- comment -%} Full-screen search from the wireframe. Live results come from Shopify predictive search. {%- endcomment -%}
+<div id="echo-search" hidden>
+  <div class="search" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="wrap section tight stack" style="gap:20px">
+      <div class="row" style="justify-content:space-between"><span class="mono">Search</span><button class="x" data-close aria-label="Close search">×</button></div>
+      <form action="{{ routes.search_url }}" method="get" role="search">
+        <input type="hidden" name="type" value="product">
+        <input id="s-q" name="q" type="search" placeholder="{{ section.settings.placeholder }}" autocomplete="off" aria-label="Search">
+      </form>
+      <div id="s-popular">
+        <p class="muted">Popular</p>
+        <div class="grid g4">
+          {%- assign pop = section.settings.popular -%}
+          {%- if pop != blank -%}
+            {%- for p in pop.products limit: 4 -%}{%- render 'echo-card', product: p -%}{%- endfor -%}
+          {%- else -%}
+            {%- for p in collections.all.products limit: 4 -%}{%- render 'echo-card', product: p -%}{%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+      <div id="s-res"></div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Search overlay",
+  "settings": [
+    { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "Search blankets, bags, colours" },
+    { "type": "collection", "id": "popular", "label": "Popular products (first 4)" }
+  ]
+}
+{% endschema %}

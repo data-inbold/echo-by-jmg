@@ -1,0 +1,19 @@
+{
+  "type": "footer",
+  "name": "EchoByJMG footer",
+  "sections": {
+    "promise": {
+      "type": "echo-brand-promise",
+      "blocks": {
+        "p1": { "type": "item", "settings": { "icon": "yarn-rescued", "title": "Yarn rescued", "text": "Leftover yarn from fashion runs in our own factory." } },
+        "p2": { "type": "item", "settings": { "icon": "yarn-passport", "title": "Yarn Passport", "text": "Every piece carries the batch it came from." } },
+        "p3": { "type": "item", "settings": { "icon": "knitted-with-care", "title": "Knitted with care", "text": "Three generations of craft." } },
+        "p4": { "type": "item", "settings": { "icon": "echo-thread", "title": "The Echo thread", "text": "Nothing wasted." } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {}
+    },
+    "footer": { "type": "echo-footer", "settings": {} }
+  },
+  "order": ["promise", "footer"]
+}

@@ -1,0 +1,15 @@
+{%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
+{%- assign cl = 'Home::' | append: u_home | append: '||' | append: blog.title | append: '::' | append: blog.url | append: '||' | append: article.title -%}
+{%- render 'echo-crumbs', list: cl -%}
+{%- assign kind = article.tags.first | default: 'Guide' -%}
+<article class="section tight"><div class="wrap stack" style="gap:24px">
+  <span class="mono">{{ kind }}</span>
+  <h1 class="h1" style="max-width:20ch">{{ article.title }}</h1>
+  {%- if article.excerpt != blank -%}<p class="lead" style="margin:0">{{ article.excerpt | strip_html }}</p>{%- endif -%}
+  {%- render 'echo-pic', image: article.image, alt: article.title, label: 'Article image', ar: '21/9', eager: true -%}
+  <div class="article rte">{{ article.content }}</div>
+  <div class="row"><a class="btn ghost" href="{{ blog.url }}">All articles</a><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">Shop the editions</a></div>
+</div></article>
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

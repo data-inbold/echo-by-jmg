@@ -1,0 +1,14 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-collection",
+      "settings": {
+        "mode": "all"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

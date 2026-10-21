@@ -1,0 +1,32 @@
+<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}"><div class="wrap stack" style="gap:20px">
+  <h2 class="h2">{{ section.settings.heading }}</h2>
+  <p class="muted" style="margin:0;max-width:62ch">{{ section.settings.intro }}</p>
+  <div class="grid g3">
+    {%- for b in section.blocks -%}
+      <div class="cert" {{ b.shopify_attributes }}>{% render 'echo-cert-logo', k: b.settings.logo, h: 96 %}<b>{{ b.settings.title }}</b><span class="muted" style="font-size:14px">{{ b.settings.text }}</span><span class="mono" style="text-transform:none;letter-spacing:0">{{ b.settings.no }}</span>
+        {%- if b.settings.file != blank -%}<a class="link" href="{{ b.settings.file }}" target="_blank" rel="noopener" style="align-self:flex-start;font-size:13px">View certificate</a>{%- else -%}<a class="link" href="#" data-toast="Certificate PDF coming soon." style="align-self:flex-start;font-size:13px">View certificate</a>{%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div></section>
+{% schema %}
+{
+  "name": "Certificates",
+  "settings": [
+    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Certificates" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "BSCI covers the factory, so it applies to everything we make. OCS and RCS cover materials, so each product page shows only the certificates that apply to that product." }
+  ],
+  "blocks": [
+    { "type": "cert", "name": "Certificate", "settings": [
+      { "type": "select", "id": "logo", "label": "Logo", "options": [{ "value": "bsci", "label": "BSCI" }, { "value": "ocs", "label": "OCS" }, { "value": "rcs", "label": "RCS" }], "default": "bsci" },
+      { "type": "text", "id": "title", "label": "Name", "default": "BSCI compliance" },
+      { "type": "textarea", "id": "text", "label": "Text" },
+      { "type": "text", "id": "no", "label": "Number and scope" },
+      { "type": "url", "id": "file", "label": "Certificate PDF link", "info": "Upload the PDF in Content › Files and paste its link." }
+    ] }
+  ],
+  "presets": [{ "name": "Certificates" }]
+}
+{% endschema %}

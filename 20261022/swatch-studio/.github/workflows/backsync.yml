@@ -1,0 +1,33 @@
+# Lives at the root of branch 20261022/swatch-studio (the branch Shopify is connected to).
+# When Shopify commits theme editor or code editor changes to this branch,
+# copy the theme back into 20261022/swatch-studio/ on main. Inert on main itself.
+name: Back-sync swatch-studio to main
+on:
+  push:
+    branches: ['20261022/swatch-studio']
+permissions:
+  contents: write
+concurrency:
+  group: sync-20261022
+  cancel-in-progress: false
+jobs:
+  backsync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Copy branch into 20261022/swatch-studio on main
+        run: |
+          set -euo pipefail
+          git config user.name "echo-theme-sync"
+          git config user.email "echo-theme-sync@users.noreply.github.com"
+          git fetch origin "20261022/swatch-studio"
+          rm -rf "20261022/swatch-studio"
+          mkdir -p "20261022/swatch-studio"
+          git archive "origin/20261022/swatch-studio" | tar -x -C "20261022/swatch-studio"
+          git add -A "20261022/swatch-studio"
+          if git diff --cached --quiet; then echo "Already in sync"; exit 0; fi
+          git commit -m "Back-sync swatch-studio from Shopify (${GITHUB_SHA::7})"
+          git push origin HEAD:main

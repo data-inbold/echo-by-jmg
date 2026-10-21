@@ -1,0 +1,18 @@
+<section class="section tight"><div class="wrap" style="max-width:560px">
+  <form class="stack" style="gap:14px" data-gc-form>
+    <h1 class="h2">{{ section.settings.heading }}</h1>
+    <div class="field"><label for="gc-code">Gift card code</label><input id="gc-code" required placeholder="XXXX XXXX XXXX XXXX" autocomplete="off"></div>
+    <button class="btn" type="submit">Check balance</button>
+  </form>
+  <div style="margin-top:20px" data-gc-result hidden><div class="ok">{{ section.settings.result }}</div><div style="margin-top:14px"><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">Shop the editions</a></div></div>
+</div></section>
+{% schema %}
+{
+  "name": "Gift card balance",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Check your gift card balance" },
+    { "type": "richtext", "id": "result", "label": "Message after checking", "default": "<p><strong>Your balance is shown in two places.</strong><br>Open the link in your gift card email to see the live balance, or enter the code at checkout and the remaining amount is applied and shown. No expiry.</p>" }
+  ],
+  "presets": [{ "name": "Gift card balance" }]
+}
+{% endschema %}

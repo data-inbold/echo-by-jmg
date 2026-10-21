@@ -1,0 +1,40 @@
+/* EchoByJMG brand kit: one-ink icon family and knitting textures (Round 1, 22 Oct 2026).
+   Colour always comes from currentColor, so an icon takes the text colour of where it sits. */
+.ic{display:inline-block;flex:none;width:24px;height:24px;vertical-align:middle;background-color:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.i-account{--ic:url({{ 'echo-ic-account.svg' | asset_url }})}
+.i-bag{--ic:url({{ 'echo-ic-bag.svg' | asset_url }})}
+.i-care-dry-flat{--ic:url({{ 'echo-ic-care-dry-flat.svg' | asset_url }})}
+.i-care-iron-low{--ic:url({{ 'echo-ic-care-iron-low.svg' | asset_url }})}
+.i-care-no-tumble{--ic:url({{ 'echo-ic-care-no-tumble.svg' | asset_url }})}
+.i-care-wash{--ic:url({{ 'echo-ic-care-wash.svg' | asset_url }})}
+.i-certificate{--ic:url({{ 'echo-ic-certificate.svg' | asset_url }})}
+.i-delivery{--ic:url({{ 'echo-ic-delivery.svg' | asset_url }})}
+.i-echo-thread{--ic:url({{ 'echo-ic-echo-thread.svg' | asset_url }})}
+.i-edition-label{--ic:url({{ 'echo-ic-edition-label.svg' | asset_url }})}
+.i-gift{--ic:url({{ 'echo-ic-gift.svg' | asset_url }})}
+.i-heritage{--ic:url({{ 'echo-ic-heritage.svg' | asset_url }})}
+.i-knitted-with-care{--ic:url({{ 'echo-ic-knitted-with-care.svg' | asset_url }})}
+.i-needles-ball{--ic:url({{ 'echo-ic-needles-ball.svg' | asset_url }})}
+.i-returns{--ic:url({{ 'echo-ic-returns.svg' | asset_url }})}
+.i-search{--ic:url({{ 'echo-ic-search.svg' | asset_url }})}
+.i-skein{--ic:url({{ 'echo-ic-skein.svg' | asset_url }})}
+.i-stitch{--ic:url({{ 'echo-ic-stitch.svg' | asset_url }})}
+.i-yarn-passport{--ic:url({{ 'echo-ic-yarn-passport.svg' | asset_url }})}
+.i-yarn-rescued{--ic:url({{ 'echo-ic-yarn-rescued.svg' | asset_url }})}
+/* textures: put .tx inside a .knitbox; it fills the box behind the content */
+.knitbox{position:relative;isolation:isolate}.knitbox>.tx{z-index:-1}
+.tx{position:absolute;inset:0;pointer-events:none;background-color:currentColor;-webkit-mask-repeat:repeat;mask-repeat:repeat}
+.tx-v{-webkit-mask-image:url({{ 'echo-tx-stockinette.svg' | asset_url }});mask-image:url({{ 'echo-tx-stockinette.svg' | asset_url }});-webkit-mask-size:22px 20px;mask-size:22px 20px}
+.tx-vl{-webkit-mask-image:url({{ 'echo-tx-stockinette.svg' | asset_url }});mask-image:url({{ 'echo-tx-stockinette.svg' | asset_url }});-webkit-mask-size:44px 40px;mask-size:44px 40px}
+.tx-cable{-webkit-mask-image:url({{ 'echo-tx-cable.svg' | asset_url }});mask-image:url({{ 'echo-tx-cable.svg' | asset_url }});-webkit-mask-size:40px 56px;mask-size:40px 56px}
+.tx-garter{-webkit-mask-image:url({{ 'echo-tx-garter.svg' | asset_url }});mask-image:url({{ 'echo-tx-garter.svg' | asset_url }});-webkit-mask-size:16px 10px;mask-size:16px 10px}
+.tx-chart{-webkit-mask-image:url({{ 'echo-tx-chart.svg' | asset_url }});mask-image:url({{ 'echo-tx-chart.svg' | asset_url }});-webkit-mask-size:120px 120px;mask-size:120px 120px}
+.thread{display:block;height:28px;background-color:currentColor;-webkit-mask:url({{ 'echo-tx-thread.svg' | asset_url }}) 0 50%/160px 28px repeat-x;mask:url({{ 'echo-tx-thread.svg' | asset_url }}) 0 50%/160px 28px repeat-x}
+.vrow{display:block;width:66px;height:12px;background-color:currentColor;-webkit-mask:url({{ 'echo-tx-stockinette.svg' | asset_url }}) 0 0/13.2px 12px repeat-x;mask:url({{ 'echo-tx-stockinette.svg' | asset_url }}) 0 0/13.2px 12px repeat-x}
+.cableband{display:block;background-color:currentColor;-webkit-mask:url({{ 'echo-tx-cable.svg' | asset_url }}) 0 0/40px 56px repeat;mask:url({{ 'echo-tx-cable.svg' | asset_url }}) 0 0/40px 56px repeat}
+.stitchband{display:block;height:12px;background-color:var(--wine-deep,#2A0C17);background-image:url({{ 'echo-tx-stitch.svg' | asset_url }});background-size:16px 13px}
+.ribband{background-color:#A8B9A1;background-image:url({{ 'echo-tx-rib.svg' | asset_url }});background-size:12px 16px}
+.stripeband{display:block;height:14px;background:repeating-linear-gradient(90deg,#35101D 0 22px,#F47D68 22px 44px,#EFE4D0 44px 66px,#98780D 66px 88px,#86A9DB 88px 110px,#A8B9A1 110px 132px)}
+/* logo drawn from the store's registered logo file, in the ink of the place it sits */
+.wm{display:block;background-color:currentColor;-webkit-mask:var(--wm) left center/contain no-repeat;mask:var(--wm) left center/contain no-repeat}
+.emblem{display:block;background-color:currentColor;-webkit-mask:url({{ 'echo-emblem.png' | asset_url }}) center/contain no-repeat;mask:url({{ 'echo-emblem.png' | asset_url }}) center/contain no-repeat}

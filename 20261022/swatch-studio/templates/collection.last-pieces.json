@@ -1,0 +1,17 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-collection",
+      "settings": {
+        "crumb": "Last pieces",
+        "mode": "last",
+        "h1": "Last pieces",
+        "intro": "Editions with fewer than 5 pieces left. When they are gone, the design is not repeated in that colour."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

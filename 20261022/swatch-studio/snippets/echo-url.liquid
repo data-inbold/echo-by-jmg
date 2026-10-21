@@ -1,0 +1,141 @@
+{%- comment -%}
+  Central list of page/collection paths used by the header, footer and content links.
+  Usage: {% render 'echo-url', key: 'story' %}
+  If you change a page handle in Shopify admin, change it here once.
+{%- endcomment -%}
+{%- liquid
+  assign root = routes.root_url
+  if root == '/'
+    assign root = ''
+  endif
+  case key
+    when 'home'
+      assign p = '/'
+    when 'shop-all'
+      assign p = '/collections/all'
+    when 'blankets'
+      assign p = '/collections/blankets'
+    when 'cushions'
+      assign p = '/collections/cushion-covers'
+    when 'bags'
+      assign p = '/collections/bags'
+    when 'accessories'
+      assign p = '/collections/accessories'
+    when 'sets'
+      assign p = '/collections/pillow-talk-sets'
+    when 'happy-habitat'
+      assign p = '/collections/happy-habitat'
+    when 'last-pieces'
+      assign p = '/collections/last-pieces'
+    when 'open'
+      assign p = '/collections/open-editions'
+    when 'gift-card'
+      assign p = '/products/egift-card'
+    when 'gifts'
+      assign p = '/pages/gifts'
+    when 'story'
+      assign p = '/pages/our-story'
+    when 'passport'
+      assign p = '/pages/yarn-passport'
+    when 'factory'
+      assign p = '/pages/factory-and-certificates'
+    when 'tracker'
+      assign p = '/pages/rescued-yarn-tracker'
+    when 'journal'
+      assign p = '/blogs/journal'
+    when 'help'
+      assign p = '/pages/help'
+    when 'contact'
+      assign p = '/pages/contact'
+    when 'account'
+      assign p = routes.account_url
+    when 'track'
+      assign p = '/pages/track-your-order'
+    when 'returns'
+      assign p = '/pages/returns'
+    when 'care'
+      assign p = '/pages/size-and-care-guide'
+    when 'gc-balance'
+      assign p = '/pages/gift-card-balance'
+    when 'corporate'
+      assign p = '/pages/corporate-gifts'
+    when 'terms'
+      assign p = '/pages/terms-of-sale'
+    when 'privacy'
+      assign p = '/pages/privacy-policy'
+    when 'cookies'
+      assign p = '/pages/cookie-policy'
+    when 'company'
+      assign p = '/pages/company-details'
+    when 'search'
+      assign p = routes.search_url
+    else
+      assign p = '/'
+  endcase
+  if settings.echo_preview
+    assign base = settings.echo_base_page.handle | default: 'contact'
+    case key
+      when 'blankets'
+        assign p = '/collections/all?view=blankets'
+      when 'cushions'
+        assign p = '/collections/all?view=cushion-covers'
+      when 'bags'
+        assign p = '/collections/all?view=bags'
+      when 'accessories'
+        assign p = '/collections/all?view=accessories'
+      when 'sets'
+        assign p = '/collections/all?view=pillow-talk-sets'
+      when 'happy-habitat'
+        assign p = '/collections/all?view=happy-habitat'
+      when 'last-pieces'
+        assign p = '/collections/all?view=last-pieces'
+      when 'open'
+        assign p = '/collections/all?view=open-editions'
+      when 'gifts'
+        assign p = '/pages/' | append: base | append: '?view=gifts'
+      when 'story'
+        assign p = '/pages/' | append: base | append: '?view=our-story'
+      when 'passport'
+        assign p = '/pages/' | append: base | append: '?view=yarn-passport'
+      when 'factory'
+        assign p = '/pages/' | append: base | append: '?view=factory'
+      when 'tracker'
+        assign p = '/pages/' | append: base | append: '?view=tracker'
+      when 'help'
+        assign p = '/pages/' | append: base | append: '?view=help'
+      when 'contact'
+        assign p = '/pages/' | append: base | append: '?view=contact'
+      when 'track'
+        assign p = '/pages/' | append: base | append: '?view=track'
+      when 'returns'
+        assign p = '/pages/' | append: base | append: '?view=returns'
+      when 'care'
+        assign p = '/pages/' | append: base | append: '?view=care'
+      when 'gc-balance'
+        assign p = '/pages/' | append: base | append: '?view=gift-card-balance'
+      when 'corporate'
+        assign p = '/pages/' | append: base | append: '?view=corporate'
+      when 'terms'
+        assign p = '/pages/' | append: base | append: '?view=terms'
+      when 'privacy'
+        assign p = '/pages/' | append: base | append: '?view=privacy'
+      when 'cookies'
+        assign p = '/pages/' | append: base | append: '?view=cookies'
+      when 'company'
+        assign p = '/pages/' | append: base | append: '?view=company'
+    endcase
+  endif
+  if key == 'journal' and settings.echo_blog != blank
+    assign p = settings.echo_blog.url
+  endif
+  assign first = p | slice: 0, root.size
+  if root != '' and first != root
+    if p == '/'
+      echo root
+    else
+      echo root | append: p
+    endif
+  else
+    echo p
+  endif
+-%}

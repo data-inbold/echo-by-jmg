@@ -1,0 +1,44 @@
+<section class="section tight">
+  <div class="wrap split">
+    <div class="stack" style="gap:16px">
+      <span class="mono">{{ section.settings.eyebrow }}</span>
+      <h1 class="h1">{{ section.settings.heading }}</h1>
+      <p class="lead" style="margin:0">{{ section.settings.lead }}</p>
+      <p class="muted" style="margin:0">{{ section.settings.caption }}</p>
+    </div>
+    <div class="ypcard" role="img" aria-label="Example Yarn Passport card for a {{ section.settings.c_name | escape }}, edition {{ section.settings.c_no }} of {{ section.settings.c_of }}">
+      <div class="yptop"><span>EchoByJMG</span><span>Yarn Passport</span></div>
+      <div class="ypname">{{ section.settings.c_name }}</div><div class="ypsub">{{ section.settings.c_colour }}</div>
+      <div class="ypno"><span>No.</span>{{ section.settings.c_no }}<em>/ {{ section.settings.c_of }}</em></div>
+      <dl>
+        <div><dt>Origin</dt><dd>{{ section.settings.c_origin }}</dd></div>
+        <div><dt>Fibre</dt><dd>{{ section.settings.c_fibre }}</dd></div>
+        <div><dt>Batch</dt><dd>{{ section.settings.c_batch }}</dd></div>
+        <div><dt>Made</dt><dd>{{ section.settings.c_made }}</dd></div>
+      </dl>
+      <div class="ypfoot">{{ section.settings.c_foot }}</div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Yarn Passport intro",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Our Story · The Yarn Passport" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Every piece comes with its own passport." },
+    { "type": "textarea", "id": "lead", "label": "Intro", "default": "The Yarn Passport is a short record that follows each piece from our factory to your home. It tells you where the yarn came from, what it is made of, how many pieces the yarn could make and which number is yours." },
+    { "type": "textarea", "id": "caption", "label": "Muted text", "default": "You find it in three places. On the product page before you buy, on a woven label sewn into the piece, and on a printed card in the box." },
+    { "type": "header", "content": "Example card" },
+    { "type": "text", "id": "c_name", "label": "Product", "default": "Hills & Valleys blanket" },
+    { "type": "text", "id": "c_colour", "label": "Colour", "default": "Vetiver green" },
+    { "type": "text", "id": "c_no", "label": "Number", "default": "7" },
+    { "type": "text", "id": "c_of", "label": "Of", "default": "12" },
+    { "type": "text", "id": "c_origin", "label": "Origin", "default": "Leftover from a [season] knitwear run for a [luxury] fashion house" },
+    { "type": "text", "id": "c_fibre", "label": "Fibre", "default": "80% lambswool, 20% nylon" },
+    { "type": "text", "id": "c_batch", "label": "Batch", "default": "HV-2417 · 14 kg rescued" },
+    { "type": "text", "id": "c_made", "label": "Made", "default": "JM Group knitwear factory, [city]" },
+    { "type": "text", "id": "c_foot", "label": "Footer line", "default": "When these 12 are gone, this colourway is not made again." }
+  ],
+  "presets": [{ "name": "Yarn Passport intro" }]
+}
+{% endschema %}

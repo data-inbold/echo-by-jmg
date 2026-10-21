@@ -1,0 +1,50 @@
+# Keeps the Round 1 design themes in 20261022/<name>/ (on main) in step with the
+# branches Shopify is connected to (20261022/<name>, theme files at the branch root).
+#   main  -> branch : runs when 20261022/** changes on main.
+#   branch -> main  : the twin workflow inside each theme folder (.github/workflows/backsync.yml)
+#                     runs when Shopify commits theme editor changes to the branch.
+# Pushes made with GITHUB_TOKEN do not start other workflows, so the two never loop.
+name: Sync 20261022 themes to Shopify branches
+on:
+  push:
+    branches: [main]
+    paths: ['20261022/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sync-20261022
+  cancel-in-progress: false
+jobs:
+  forward:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        theme: [heritage-ink, swatch-studio, quiet-gallery]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Copy 20261022/${{ matrix.theme }} onto branch 20261022/${{ matrix.theme }}
+        env:
+          T: ${{ matrix.theme }}
+        run: |
+          set -euo pipefail
+          git config user.name "echo-theme-sync"
+          git config user.email "echo-theme-sync@users.noreply.github.com"
+          SRC="$(mktemp -d)"
+          cp -a "20261022/$T/." "$SRC/"
+          B="20261022/$T"
+          if git ls-remote --exit-code --heads origin "$B" >/dev/null; then
+            git checkout -B "$B" "origin/$B"
+          else
+            git checkout --orphan "$B"
+          fi
+          git rm -rq --ignore-unmatch . || true
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a "$SRC/." .
+          git add -A
+          if git diff --cached --quiet; then echo "No change for $T"; exit 0; fi
+          git commit -m "Sync $T from main (${GITHUB_SHA::7})"
+          git push origin "HEAD:refs/heads/$B"

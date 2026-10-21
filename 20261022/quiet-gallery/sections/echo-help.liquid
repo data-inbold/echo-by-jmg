@@ -1,0 +1,66 @@
+{%- capture echo_out -%}
+{%- comment -%} Questions and answers with live search and topic chips. Add a "Topic" block, then its questions below it. {%- endcomment -%}
+{%- liquid
+  assign topics = section.blocks | where: 'type', 'topic'
+-%}
+<section class="section tight"><div class="wrap stack" style="gap:18px;max-width:900px;margin-inline:auto">
+  <h1 class="h1">{{ section.settings.heading }}</h1>
+  <label for="faq-q" class="mono">Search the answers</label>
+  <input id="faq-q" type="search" placeholder="For example: delivery, wash, gift" style="border:1px solid var(--line);background:#fff;padding:14px;min-height:50px;font-size:16px">
+  <div class="row" style="gap:6px"><button class="chip" data-topic="" aria-pressed="true">All topics</button>{% for t in topics %}<button class="chip" data-topic="{{ t.settings.title | escape }}" aria-pressed="false">{{ t.settings.title }}</button>{% endfor %}</div>
+  <div id="faq-results">
+    {%- liquid
+      assign open = false
+      for b in section.blocks
+        if b.type == 'topic'
+          if open
+            echo '</div>'
+          endif
+          assign tt = b.settings.title | escape
+          echo '<div data-topic-group="' | append: tt | append: '" ' | append: b.shopify_attributes | append: '><h2 class="h3" style="margin:28px 0 8px">' | append: b.settings.title | append: '</h2>'
+          assign open = true
+        else
+          assign ans = b.settings.a | replace: '[cut-off time]', settings.echo_cutoff
+          echo '<details class="acc" ' | append: b.shopify_attributes | append: '><summary>' | append: b.settings.q | append: '</summary><div class="body">' | append: ans | append: '</div></details>'
+        endif
+      endfor
+      if open
+        echo '</div>'
+      endif
+    -%}
+    <div class="review" data-faq-none hidden>No answers match “<span data-faq-q></span>”. <a class="link" href="{% render 'echo-url', key: 'contact' %}">Ask us directly</a></div>
+  </div>
+</div></section>
+<section class="section alt"><div class="wrap grid g2">
+  <div class="stack"><h2 class="h3">Did not find it?</h2><p class="muted" style="margin:0">{{ section.settings.contact_text }}</p><div><a class="btn" href="{% render 'echo-url', key: 'contact' %}">Contact us</a></div></div>
+  <div class="stack"><h2 class="h3">Guides</h2>
+    {%- if section.settings.g1_label != blank -%}<a class="link" href="{{ section.settings.g1_link }}" style="align-self:flex-start">{{ section.settings.g1_label }}</a>{%- endif -%}
+    {%- if section.settings.g2_label != blank -%}<a class="link" href="{{ section.settings.g2_link }}" style="align-self:flex-start">{{ section.settings.g2_label }}</a>{%- endif -%}
+    {%- if section.settings.g3_label != blank -%}<a class="link" href="{{ section.settings.g3_link }}" style="align-self:flex-start">{{ section.settings.g3_label }}</a>{%- endif -%}
+  </div>
+</div></section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Questions and answers",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions and answers" },
+    { "type": "textarea", "id": "contact_text", "label": "Contact text", "default": "Chat [weekdays 9 to 16 CET], or write to hello@echobyjmg.com. We reply within 24 hours." },
+    { "type": "text", "id": "g1_label", "label": "Guide 1", "default": "How to wash a lambswool blanket" },
+    { "type": "text", "id": "g1_link", "label": "Guide 1 link", "default": "echo:journal/how-to-wash-a-lambswool-blanket" },
+    { "type": "text", "id": "g2_label", "label": "Guide 2", "default": "How to choose a knitted blanket" },
+    { "type": "text", "id": "g2_link", "label": "Guide 2 link", "default": "echo:journal/how-to-choose-a-knitted-blanket" },
+    { "type": "text", "id": "g3_label", "label": "Guide 3", "default": "The Yarn Passport explained" },
+    { "type": "text", "id": "g3_link", "label": "Guide 3 link", "default": "echo:passport" }
+  ],
+  "blocks": [
+    { "type": "topic", "name": "Topic", "settings": [ { "type": "text", "id": "title", "label": "Topic", "default": "Delivery and returns" } ] },
+    { "type": "q", "name": "Question", "settings": [
+      { "type": "text", "id": "q", "label": "Question", "default": "How fast do you deliver?" },
+      { "type": "richtext", "id": "a", "label": "Answer", "default": "<p>Free delivery across Denmark, usually within 2 working days.</p>" }
+    ] }
+  ],
+  "presets": [{ "name": "Questions and answers" }]
+}
+{% endschema %}

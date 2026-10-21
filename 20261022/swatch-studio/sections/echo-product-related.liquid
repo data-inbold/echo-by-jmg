@@ -1,0 +1,78 @@
+{%- unless product.gift_card? -%}
+{%- liquid
+  capture raw
+    render 'echo-pinfo', product: product
+  endcapture
+  assign cat = raw | strip | split: '~' | first
+  assign compl = product.metafields['shopify--discovery--product_recommendation'].complementary_products.value
+  assign filter_cat = false
+  assign heading = section.settings.heading_set
+  if compl == blank
+    assign heading = section.settings.heading_like
+    case cat
+      when 'blankets'
+        assign col = settings.echo_col_blankets
+      when 'cushions'
+        assign col = settings.echo_col_cushions
+      when 'bags'
+        assign col = settings.echo_col_bags
+      else
+        assign col = settings.echo_col_accessories
+    endcase
+    if col != blank
+      assign compl = col.products
+    else
+      assign compl = collections.all.products
+      assign filter_cat = true
+    endif
+  endif
+  assign seen = ','
+  for s in product.metafields.custom.linked_products.value
+    assign seen = seen | append: s.handle | append: ','
+  endfor
+  assign seen = seen | append: product.handle | append: ','
+  assign n = 0
+-%}
+<section class="section alt">
+  <div class="wrap stack" style="gap:20px">
+    <h2 class="h2">{{ heading }}</h2>
+    <div class="grid g4">
+      {%- for p in compl -%}
+        {%- liquid
+          if n >= 4
+            break
+          endif
+          assign hk = ',' | append: p.handle | append: ','
+          if seen contains hk or p.gift_card?
+            continue
+          endif
+          if filter_cat
+            capture pc
+              render 'echo-cat', product: p
+            endcapture
+            assign pc = pc | strip
+            if pc != cat
+              continue
+            endif
+          endif
+          for s in p.metafields.custom.linked_products.value
+            assign seen = seen | append: s.handle | append: ','
+          endfor
+          assign seen = seen | append: p.handle | append: ','
+          assign n = n | plus: 1
+        -%}
+        {%- render 'echo-card', product: p -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endunless -%}
+{% schema %}
+{
+  "name": "Complete the set",
+  "settings": [
+    { "type": "text", "id": "heading_set", "label": "Heading when matching pieces exist", "default": "Complete the set", "info": "Uses the product's complementary products (Search & Discovery app)." },
+    { "type": "text", "id": "heading_like", "label": "Heading otherwise", "default": "You may also like" }
+  ]
+}
+{% endschema %}
