@@ -1,0 +1,67 @@
+{%- comment -%}
+  One row of the Rescued yarn tracker. Outputs "PIECES@@LEFT@@<tr>…</tr>" so the section can add up totals.
+  Params: bid, dstr (YYYY-MM or YYYY-MM-DD), fibre, kg, prods (product list), closed, closed_name,
+  closed_pieces, pieces_override, attrs (editor attributes)
+{%- endcomment -%}
+{%- liquid
+  assign months = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec' | split: ','
+  assign pcs = 0
+  assign left = 0
+  assign has_last = false
+  capture became
+    if closed
+      echo closed_name | escape
+    else
+      assign tseen = ','
+      assign tfirst = true
+      for p in prods
+        assign thk = ',' | append: p.handle | append: ','
+        if tseen contains thk
+          continue
+        endif
+        for sib in p.metafields.custom.linked_products.value
+          assign tseen = tseen | append: sib.handle | append: ','
+        endfor
+        assign tseen = tseen | append: p.handle | append: ','
+        capture raw
+          render 'echo-pinfo', product: p
+        endcapture
+        assign pi = raw | strip | split: '~'
+        assign pcs = pcs | plus: pi[2]
+        assign left = left | plus: pi[3]
+        if pi[4] == 'last'
+          assign has_last = true
+        endif
+        unless tfirst
+          echo '<br>'
+        endunless
+        assign tfirst = false
+        echo '<a class="link" href="' | append: p.url | append: '">' | append: pi[8] | append: '</a>'
+      endfor
+    endif
+  endcapture
+  if closed
+    assign pcs = closed_pieces | default: 0
+    assign left = 0
+  endif
+  if pieces_override > 0
+    assign pcs = pieces_override
+  endif
+  assign d = dstr | split: '-'
+  assign mi = d[1] | plus: 0 | minus: 1
+  if d.size > 1 and mi >= 0
+    assign dshow = months[mi] | append: ' ' | append: d[0]
+  else
+    assign dshow = dstr
+  endif
+  assign fshow = fibre | newline_to_br | replace: '<br />', ', '
+  if closed or left == 0
+    assign status = '<span class="tstat closed">Closed</span>'
+  elsif has_last
+    assign status = '<span class="tstat last">Last pieces</span>'
+  else
+    assign status = '<span class="tstat">Open · ' | append: left | append: ' left</span>'
+  endif
+  echo pcs | append: '@@' | append: left | append: '@@'
+  echo '<tr ' | append: attrs | append: '><td class="mono" style="text-transform:none;letter-spacing:0;color:var(--ink)">' | append: bid | append: '</td><td>' | append: dshow | append: '</td><td>' | append: fshow | append: '</td><td class="num">' | append: kg | append: ' kg</td><td>' | append: became | append: '</td><td class="num">' | append: pcs | append: '</td><td>' | append: status | append: '</td></tr>'
+-%}

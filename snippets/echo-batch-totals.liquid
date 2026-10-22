@@ -1,0 +1,18 @@
+{%- comment -%} Outputs "KG|COUNT" from the Yarn batch list, or the Theme settings fallbacks when the list is empty. {%- endcomment -%}
+{%- liquid
+  assign vals = shop.metaobjects.yarn_batch.values
+  if vals.size > 0
+    assign t = 0
+    for yb in vals
+      assign kgv = yb.kg.value | default: 0
+      assign t = t | plus: kgv
+    endfor
+    assign tr = t | round
+    if tr == t
+      assign t = tr
+    endif
+    echo t | append: ' kg|' | append: vals.size
+  else
+    echo settings.echo_rescued_kg | append: '|' | append: settings.echo_editions
+  endif
+-%}

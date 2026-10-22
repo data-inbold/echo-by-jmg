@@ -1,0 +1,80 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Corporate gifts"
+      }
+    },
+    "intro": {
+      "type": "echo-split",
+      "settings": {
+        "spacing": "tight",
+        "media_first": false,
+        "gap": 14,
+        "heading": "Corporate gifts",
+        "heading_tag": true,
+        "heading_size": "h1",
+        "lead": "Gifts for employees and clients that come with a real story: knitted from rescued yarn, numbered, and wrapped ready to give.",
+        "label": "Photo: a stack of wrapped gifts with edition cards",
+        "ar": "4/3"
+      }
+    },
+    "how": {
+      "type": "echo-steps",
+      "settings": {
+        "bg": "alt",
+        "heading": "",
+        "gap": 24
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "From [10] pieces",
+            "text": "Mix blankets, cushions and bags. [Volume prices to confirm.]"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Your card in the box",
+            "text": "A printed card with your message next to the Yarn Passport. [Confirm.]"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Delivered in Denmark",
+            "text": "To your office or straight to each recipient."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Gift cards in bulk",
+            "text": "Let people choose for themselves."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "form": {
+      "type": "echo-corporate-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "crumbs",
+    "intro",
+    "how",
+    "form"
+  ]
+}
+

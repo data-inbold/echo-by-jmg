@@ -1,0 +1,33 @@
+# Lives at the root of branch 20261022/workbook (the branch Shopify is connected to).
+# When Shopify commits theme editor or code editor changes to this branch,
+# copy the theme back into 20261022/workbook/ on main. Inert on main itself.
+name: Back-sync workbook to main
+on:
+  push:
+    branches: ['20261022/workbook']
+permissions:
+  contents: write
+concurrency:
+  group: sync-20261022
+  cancel-in-progress: false
+jobs:
+  backsync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Copy branch into 20261022/workbook on main
+        run: |
+          set -euo pipefail
+          git config user.name "echo-theme-sync"
+          git config user.email "echo-theme-sync@users.noreply.github.com"
+          git fetch origin "20261022/workbook"
+          rm -rf "20261022/workbook"
+          mkdir -p "20261022/workbook"
+          git archive "origin/20261022/workbook" | tar -x -C "20261022/workbook"
+          git add -A "20261022/workbook"
+          if git diff --cached --quiet; then echo "Already in sync"; exit 0; fi
+          git commit -m "Back-sync workbook from Shopify (${GITHUB_SHA::7})"
+          git push origin HEAD:main

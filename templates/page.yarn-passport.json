@@ -1,0 +1,206 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "p1_label": "Our Story",
+        "p1_link": "echo:story",
+        "current": "The Yarn Passport"
+      }
+    },
+    "intro": {
+      "type": "echo-passport-hero",
+      "settings": {}
+    },
+    "why": {
+      "type": "echo-steps",
+      "settings": {
+        "bg": "alt",
+        "layout": "cards",
+        "heading": "Why we made it",
+        "gap": 28
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Proof the yarn is rescued",
+            "text": "Anyone can say “leftover yarn”. The passport names the batch, the fibre and how many kilos we saved, so the claim can be checked."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "A limit you can see",
+            "text": "The amount of yarn decides the size of the edition. When the batch runs out, so does the design in that colour."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "A piece that is yours",
+            "text": "Your number belongs to your piece only. It makes a blanket or a cushion cover something you keep, pass on or give as a gift with a story."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "flow": {
+      "type": "echo-steps",
+      "settings": {
+        "heading": "From leftover yarn to your number",
+        "gap": 28,
+        "photo": "echo-twister-sofa-small.jpg",
+        "alt": "Close-up of a cable-knit blanket made from a rescued yarn batch",
+        "ar": "21/9"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Left over",
+            "text": "A fashion production run ends and good yarn is left on the cones in our factory.",
+            "num": "01"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Logged",
+            "text": "We weigh the batch, record the fibre, colour and where it came from, and give it a batch ID.",
+            "num": "02"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Knitted",
+            "text": "The kilos decide the edition. Batch HV-2417 held 14 kg, enough for 12 blankets and 20 matching cushion covers.",
+            "num": "03"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Numbered",
+            "text": "Each piece gets its woven label and passport card. When the last one sells, the edition is closed.",
+            "num": "04"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "read": {
+      "type": "echo-passport-grid",
+      "settings": {
+        "eyebrow": "How to read a passport"
+      },
+      "blocks": {
+        "col_1": {
+          "type": "col",
+          "settings": {
+            "title": "Origin",
+            "text": "The production run and type of fashion house the yarn was left over from. We do not name brands, but we do name the season."
+          }
+        },
+        "col_2": {
+          "type": "col",
+          "settings": {
+            "title": "Fibre",
+            "text": "The exact composition, so you know how it feels and how to care for it."
+          }
+        },
+        "col_3": {
+          "type": "col",
+          "settings": {
+            "title": "Batch",
+            "text": "The ID of the yarn lot and how many kilos it held. All pieces in an edition share it."
+          }
+        },
+        "col_4": {
+          "type": "col",
+          "settings": {
+            "title": "Your number",
+            "text": "Your place in the edition, for example 7 of 12. No two pieces share a number."
+          }
+        }
+      },
+      "block_order": [
+        "col_1",
+        "col_2",
+        "col_3",
+        "col_4"
+      ]
+    },
+    "faq": {
+      "type": "echo-faq",
+      "settings": {
+        "layout": "side",
+        "heading": "Questions about the passport",
+        "intro": "Totals so far: 250 kg of yarn rescued across 28 editions."
+      },
+      "blocks": {
+        "q_1": {
+          "type": "q",
+          "settings": {
+            "q": "Can I choose my number?",
+            "a": "<p>Numbers are given at packing, in the order pieces are sent. [Confirm with Ming: can customers request a number?]</p>"
+          }
+        },
+        "q_2": {
+          "type": "q",
+          "settings": {
+            "q": "Why don’t you name the fashion house?",
+            "a": "<p>[Confirm with Ming: reason the brand is not named.] The season, the fibre and the batch are all on the passport.</p>"
+          }
+        },
+        "q_3": {
+          "type": "q",
+          "settings": {
+            "q": "What if I lose the card?",
+            "a": "<p>The number is also on the woven label in the piece. Send us the number and we will email you the passport again.</p>"
+          }
+        },
+        "q_4": {
+          "type": "q",
+          "settings": {
+            "q": "Do all products have a passport?",
+            "a": "<p>Yes. Every blanket, cushion cover, bag and accessory has one. Gift cards do not.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q_1",
+        "q_2",
+        "q_3",
+        "q_4"
+      ]
+    },
+    "cta": {
+      "type": "echo-cta-row",
+      "settings": {
+        "bg": "alt"
+      }
+    }
+  },
+  "order": [
+    "crumbs",
+    "intro",
+    "why",
+    "flow",
+    "read",
+    "faq",
+    "cta"
+  ]
+}
+

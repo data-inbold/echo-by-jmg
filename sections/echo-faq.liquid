@@ -1,0 +1,38 @@
+{%- capture echo_out -%}
+{%- comment -%} Accordion questions. Layout "single" (narrow column) or "side" (heading left, questions right). {%- endcomment -%}
+{%- capture acc -%}
+  {%- for b in section.blocks -%}
+    <details class="acc" {{ b.shopify_attributes }}><summary>{{ b.settings.q }}</summary><div class="body">{{ b.settings.a }}</div></details>
+  {%- endfor -%}
+{%- endcapture -%}
+<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
+  {%- if section.settings.layout == 'side' -%}
+    <div class="wrap grid g2" style="align-items:start">
+      <div class="stack" style="gap:12px"><h2 class="h2">{{ section.settings.heading }}</h2>{% if section.settings.intro != blank %}<p class="muted" style="margin:0">{{ section.settings.intro }}</p>{% endif %}</div>
+      <div>{{ acc }}</div>
+    </div>
+  {%- else -%}
+    <div class="wrap" style="max-width:860px"><h2 class="h2" style="margin-bottom:16px">{{ section.settings.heading }}</h2>{{ acc }}</div>
+  {%- endif -%}
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Questions",
+  "settings": [
+    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
+    { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "single", "label": "Single column" }, { "value": "side", "label": "Heading beside questions" }], "default": "single" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions" },
+    { "type": "textarea", "id": "intro", "label": "Text under heading (side layout)" }
+  ],
+  "blocks": [
+    { "type": "q", "name": "Question", "settings": [
+      { "type": "text", "id": "q", "label": "Question", "default": "Does leftover yarn mean lower quality?" },
+      { "type": "richtext", "id": "a", "label": "Answer", "default": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>" }
+    ] }
+  ],
+  "presets": [{ "name": "Questions", "blocks": [{ "type": "q" }] }]
+}
+{% endschema %}

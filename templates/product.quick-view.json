@@ -1,0 +1,129 @@
+{
+  "sections": {
+    "quick-view": {
+      "type": "quick-view",
+      "blocks": {
+        "subtitle_V4PHyM": {
+          "type": "subtitle",
+          "disabled": true,
+          "settings": {
+            "subtitle": "{{ product.vendor }}",
+            "dim_text": true,
+            "subtitle_size": "body_l",
+            "subtitle_tag": "h3",
+            "top_spacing": 0,
+            "mobile_top_spacing": 1
+          }
+        },
+        "5e8c9327-e699-4289-b5d4-b055fc4f0862": {
+          "type": "title",
+          "settings": {
+            "title_size": "heading_xs_uppercase",
+            "heading_tag": "h1",
+            "top_spacing": 1,
+            "mobile_top_spacing": 1
+          }
+        },
+        "63f93c87-7976-4d84-9caa-ec20c29b2cd6": {
+          "type": "price",
+          "settings": {
+            "text_size": "heading_xs_uppercase",
+            "badge_size": "default",
+            "show_price": true,
+            "show_badges": true,
+            "hide_shipping_note": false,
+            "top_spacing": 0.2,
+            "mobile_top_spacing": 0.2
+          }
+        },
+        "e8d14fca-ff07-4108-a172-9ef5277aecf6": {
+          "type": "rating",
+          "settings": {
+            "text_size": "default",
+            "top_spacing": 1,
+            "mobile_top_spacing": 1
+          }
+        },
+        "linked_products_MhJzrg": {
+          "type": "linked_products",
+          "settings": {
+            "heading": "",
+            "heading_size": "default",
+            "top_spacing": 1,
+            "mobile_top_spacing": 1
+          }
+        },
+        "67d18980-87f7-4387-855c-ca214f4f8fe8": {
+          "type": "variant_picker",
+          "settings": {
+            "show_label": true,
+            "label_size": "body_s",
+            "text_size": "label_font",
+            "top_spacing": 1,
+            "mobile_top_spacing": 1
+          }
+        },
+        "10bbe7f0-7c40-4f4c-8110-74a22653bbef": {
+          "type": "quantity_selector",
+          "settings": {
+            "show_label": false,
+            "label_size": "default",
+            "top_spacing": 1,
+            "mobile_top_spacing": 1
+          }
+        },
+        "45ccea7b-527e-4a1c-b894-60ce2ec7f8f4": {
+          "type": "buy_buttons",
+          "settings": {
+            "stretch_buy_buttons": true,
+            "display_in_a_row": false,
+            "price_in_button": false,
+            "compare_price_on_mobile": true,
+            "show_dynamic_checkout": true,
+            "hide_pickup_availability": false,
+            "top_spacing": 1,
+            "mobile_top_spacing": 1
+          }
+        },
+        "c4c583df-841b-4c6f-8386-c43496f7ca63": {
+          "type": "more_details",
+          "settings": {
+            "button_label": "More details",
+            "link_size": "label_font_uppercase",
+            "top_spacing": 1,
+            "mobile_top_spacing": 1
+          }
+        }
+      },
+      "block_order": [
+        "subtitle_V4PHyM",
+        "5e8c9327-e699-4289-b5d4-b055fc4f0862",
+        "63f93c87-7976-4d84-9caa-ec20c29b2cd6",
+        "e8d14fca-ff07-4108-a172-9ef5277aecf6",
+        "linked_products_MhJzrg",
+        "67d18980-87f7-4387-855c-ca214f4f8fe8",
+        "10bbe7f0-7c40-4f4c-8110-74a22653bbef",
+        "45ccea7b-527e-4a1c-b894-60ce2ec7f8f4",
+        "c4c583df-841b-4c6f-8386-c43496f7ca63"
+      ],
+      "settings": {
+        "desktop_gallery_style": "arrows",
+        "thumbnails_image_ratio": "square",
+        "swap_position": false,
+        "image_ratio": "square",
+        "focal_point": "center center",
+        "context_image_radius": "default",
+        "organize_images": true,
+        "first_image_instead_of_variant": false,
+        "show_media_attached_to_variant": true,
+        "show_extra_images": true,
+        "enable_video_looping": true,
+        "disable_video_controls": false,
+        "mobile_navigation": "scrollbar"
+      }
+    }
+  },
+  "order": [
+    "quick-view"
+  ]
+}  

@@ -1,0 +1,40 @@
+{%- comment -%} Three-step return request. Steps 1–2 run in the page; step 2 sends the request to support through the contact form. {%- endcomment -%}
+<section class="section tight"><div class="wrap" style="max-width:760px"><div class="stack" style="gap:16px" data-returns>
+  <div class="row mono" style="gap:16px"><span data-ret-label="0" style="color:var(--ink)">1. Find order</span><span data-ret-label="1">2. Choose items</span><span data-ret-label="2">3. Label</span></div>
+  {%- form 'contact', class: 'stack', style: 'gap:16px', data-returns-form: '' -%}
+    {%- if form.posted_successfully? -%}
+      <div class="stack" style="gap:16px">
+        <h1 class="h2">Your return is registered</h1>
+        <div class="ok">{{ section.settings.ok }}</div>
+        <div class="row"><a class="btn" href="{% render 'echo-url', key: 'home' %}">Back to the shop</a><a class="btn ghost" href="{{ request.path }}">Start another return</a></div>
+      </div>
+    {%- else -%}
+      <input type="hidden" name="contact[Form]" value="Return request">
+      <div class="stack" style="gap:16px" data-ret-step="0">
+        <h1 class="h2">Return something</h1>
+        <p class="muted" style="margin:0">{{ section.settings.intro }}</p>
+        <div class="field"><label for="rt-no">Order number</label><input id="rt-no" name="contact[Order number]" placeholder="#1003"></div>
+        <div class="field"><label for="rt-email">Email</label><input id="rt-email" name="contact[email]" type="email" autocomplete="email"></div>
+        <button class="btn" type="button" data-ret-next>Find order</button>
+      </div>
+      <div class="stack" style="gap:12px" data-ret-step="1" hidden>
+        <h1 class="h2">Which items are you returning?</h1>
+        <div class="field"><label for="rt-items">Items to return</label><textarea id="rt-items" name="contact[Items]" rows="3" placeholder="For example: Hills & Valleys blanket, Oat"></textarea></div>
+        <div class="field"><label for="rt-why">Reason</label><select id="rt-why" name="contact[Reason]"><option>Changed my mind</option><option>Colour not as expected</option><option>Damaged or faulty</option><option>Wrong item</option><option>Other</option></select></div>
+        <div class="field"><label>Refund to</label><label class="row" style="gap:8px;font-size:14px"><input type="radio" name="contact[Refund to]" value="Original payment method" checked> Original payment method</label><label class="row" style="gap:8px;font-size:14px"><input type="radio" name="contact[Refund to]" value="Gift card"> Gift card (instantly)</label></div>
+        <input type="hidden" name="contact[body]" value="Return request">
+        <div class="row"><button class="btn ghost" type="button" data-retback>Back</button><button class="btn" type="submit">Get return label</button></div>
+      </div>
+    {%- endif -%}
+  {%- endform -%}
+</div></div></section>
+{% schema %}
+{
+  "name": "Returns",
+  "settings": [
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Free returns within 14 days of delivery. Items should be unused and in their original condition. Lightly tested items may be eligible for store credit, and final-sale items cannot be returned." },
+    { "type": "textarea", "id": "ok", "label": "Confirmation", "default": "We will email you a QR code for [carrier] within 1 working day. Show it at any parcel shop, no printer needed. Your refund is sent within 14 days of us receiving the item." }
+  ],
+  "presets": [{ "name": "Returns" }]
+}
+{% endschema %}
