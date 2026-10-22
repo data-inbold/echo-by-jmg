@@ -601,3 +601,255 @@ body.skin-quiet-gallery .passport-band .ic{color:var(--wine)}
 body.skin-quiet-gallery .passport-band .passport b{color:var(--faint)}
 body.skin-quiet-gallery .passport-band .passport span{color:var(--muted)}
 body.skin-quiet-gallery .passport-band a{color:var(--wine)!important}
+
+/* ==========================================================================
+   D · THE WORKBOOK  (70% elegant / 30% personal)
+   The family's pattern book: paper with a faint knitting chart, photos pinned
+   as prints with tape, products on Buttercream swatch tags hung from Golden Yarn
+   strings, editions pegged on a washing line, margin notes in Caveat in the
+   one ink. House rules: one thing off the grid per section; tilt photos and
+   tags 1-5deg, never text you need to read; prices, buttons and forms stay
+   straight; on mobile the tilts stay and the overlaps go.
+   Margin notes come from Theme settings › EchoByJMG › D · The Workbook.
+   ========================================================================== */
+{%- liquid
+  assign wb_start = settings.echo_wb_note_start | default: '' | replace: '"', '\"'
+  assign wb_gauge = settings.echo_wb_note_gauge | default: '' | replace: '"', '\"'
+  assign wb_sticky = settings.echo_wb_note_sticky | default: '' | replace: '"', '\"'
+  assign wb_how = settings.echo_wb_note_how | default: '' | replace: '"', '\"'
+  assign wb_shop = settings.echo_wb_note_shop | default: '' | replace: '"', '\"'
+  assign wb_footer = settings.echo_wb_note_footer | default: '' | replace: '"', '\"'
+  assign wb_stamp = settings.echo_wb_stamp | default: '' | replace: '"', '\"'
+  assign tx_paper = 'echo-tx-chart-paper.svg' | asset_url
+-%}
+body.skin-workbook{--paper:#F6EFE3;--white:#FBF8F2;--soft:#EFE4D0;--line:#D9C9AE;--muted:#5A514C;--faint:#6B625C;--warm:#7A600A;--hatch1:#E8DDC8;--hatch2:#EFE4D0;--card-ground:var(--cream);
+  --hand:'Caveat','Segoe Print','Bradley Hand',cursive;--tape:rgba(232,221,200,.86);--tape-line:rgba(214,198,170,.75);--print:#FBF8F2;
+  background:#F6EFE3 url({{ tx_paper }}) 0 0/120px 120px repeat}
+body.skin-workbook .hand{font-family:var(--hand);font-weight:700;line-height:1.1;color:var(--wine)}
+body.skin-workbook .section.alt,body.skin-workbook .section.band,body.skin-workbook .section.paper{background:transparent}
+body.skin-workbook .mono,body.skin-workbook .eyebrow{font:700 24px/1.1 var(--hand);letter-spacing:0;text-transform:none;color:var(--wine)}
+body.skin-workbook .h1{font:500 clamp(48px,7.6vw,118px)/.96 var(--display);letter-spacing:-.01em;color:var(--wine)}
+body.skin-workbook .h1 em{color:var(--gold)}
+body.skin-workbook .h2{font:500 clamp(36px,4.4vw,64px)/1 var(--display);color:var(--wine)}
+body.skin-workbook .btn{border-radius:4px;font:700 14px/1 var(--body);letter-spacing:0;text-transform:none}
+body.skin-workbook .btn.ghost{background:none;border:0;border-bottom:2px solid var(--gold);border-radius:0;min-height:0;padding:4px 0;color:var(--wine)}
+body.skin-workbook .btn.ghost:hover,body.skin-workbook .btn.ghost:focus-visible{background:none;color:var(--gold-s);box-shadow:none}
+body.skin-workbook .link{border-bottom:2px solid var(--gold);font-weight:700;color:var(--wine)}
+body.skin-workbook .knit-divider{display:none}
+/* header: paper, gold underline on the current item */
+body.skin-workbook .util{background:transparent;color:var(--wine);border-bottom:1px solid #E2D6C1}
+body.skin-workbook header.site{background:var(--paper);color:var(--wine);border-bottom:1px solid #E2D6C1}
+body.skin-workbook .nav{min-height:88px;gap:32px}
+body.skin-workbook .nav .main>a,body.skin-workbook .nav .main>button{font:600 13px/1.2 var(--body);letter-spacing:.06em;border-bottom:2px solid transparent}
+body.skin-workbook .nav .main [aria-current="page"],body.skin-workbook .nav .main [aria-expanded="true"]{border-bottom-color:var(--gold)}
+body.skin-workbook .nav .tools button,body.skin-workbook .nav .tools a{font:600 13px/1.2 var(--body);letter-spacing:0;text-transform:none}
+body.skin-workbook .mobile-menu{background:var(--paper);color:var(--wine);border-top-color:var(--line)}
+body.skin-workbook .mobile-menu a{border-bottom-color:var(--line)}
+body.skin-workbook .mobile-menu .sub a{color:var(--muted)}
+body.skin-workbook .mega{background:var(--paper)}
+/* the kit: tape, swatch tag, print */
+body.skin-workbook .wb-tape,body.skin-workbook .hero-media::before,body.skin-workbook .story .ph::before,body.skin-workbook .quotes .quote::before,body.skin-workbook .gallery>div[data-main]::before{content:"";position:absolute;z-index:3;width:110px;height:30px;background:var(--tape);border:1px solid var(--tape-line);pointer-events:none}
+/* hero: headline left, the photo pinned as a print */
+body.skin-workbook .hero{padding-block:clamp(32px,5vw,72px)}
+@media(min-width:880px){body.skin-workbook .hero-grid{grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,72px)}}
+body.skin-workbook .hero .eyebrow{font-size:30px;transform:rotate(-3deg);transform-origin:left;display:inline-block;align-self:flex-start}
+body.skin-workbook .hero .eyebrow::after{content:" —"}
+body.skin-workbook .hero .lead{color:var(--text);max-width:460px}
+body.skin-workbook .hero .row:has(.btn){gap:28px}
+{%- if wb_start != '' -%}
+body.skin-workbook .hero .row:has(.btn)::after{content:"{{ wb_start }}";font:700 24px/1 var(--hand);color:var(--gold)}
+{%- endif -%}
+body.skin-workbook .hero .trust{gap:20px}
+body.skin-workbook .hero .trust .chip{background:none;border:0;padding:0;min-height:0;color:#4A423E}
+body.skin-workbook .hero-media{position:relative;background:var(--print);border:1px solid #E2D6C1;padding:12px 12px 14px;transform:rotate(2deg);box-shadow:0 18px 30px -24px rgba(53,16,29,.45)}
+body.skin-workbook .hero-media::before{left:50%;top:-14px;margin-left:-55px;transform:rotate(-4deg)}
+body.skin-workbook .hero-media .ph{border:0}
+body.skin-workbook .hero .shown{font:700 21px/1.1 var(--hand);color:var(--wine);margin-top:10px}
+body.skin-workbook .hero .shown .muted{color:var(--wine)}
+body.skin-workbook .hero .shown .link{font:600 13px/1.3 var(--body)}
+body.skin-workbook .hero-tabs{gap:10px;margin-top:26px}
+body.skin-workbook .hero-tabs a{flex:0 1 auto;padding:6px 2px;font:700 22px/1 var(--hand);color:var(--muted);border-bottom:2px solid transparent}
+body.skin-workbook .hero-tabs a[aria-current]{color:var(--wine);border-bottom-color:var(--gold)}
+/* numbers: "Gauge", a gold frame and a coral sticky note */
+body.skin-workbook .numbers{position:relative}
+body.skin-workbook .numbers>.tx{display:none}
+body.skin-workbook .numbers .stats{position:relative;border:1px solid var(--gold);padding:40px 28px 28px;gap:28px;margin-top:18px}
+{%- if wb_gauge != '' -%}
+body.skin-workbook .numbers .stats::before{content:"{{ wb_gauge }}";position:absolute;left:20px;top:-20px;padding:0 10px;background:var(--paper);font:700 30px/1.2 var(--hand);color:var(--wine)}
+{%- endif -%}
+body.skin-workbook .numbers .stat .ic{width:30px;height:30px;margin-bottom:8px}
+body.skin-workbook .numbers .stat .n{font:400 60px/1 var(--display);color:var(--wine)}
+body.skin-workbook .numbers .stat p{color:var(--text)}
+{%- if wb_sticky != '' -%}
+body.skin-workbook .numbers .stats::after{content:"{{ wb_sticky }}";display:block;justify-self:start;max-width:230px;background:var(--coral);padding:22px 24px;font:700 26px/1.1 var(--hand);color:var(--wine);transform:rotate(4deg);box-shadow:0 14px 20px -16px rgba(53,16,29,.5)}
+@media(min-width:1100px){body.skin-workbook .numbers .stats{grid-template-columns:repeat(4,minmax(0,1fr)) 240px}}
+{%- endif -%}
+/* how it works: Row 1 / Row 2 / Row 3, stepping down, joined by the Echo thread */
+{%- if wb_how != '' -%}
+body.skin-workbook .section[id="how"] h2.h2::after{content:"{{ wb_how }}";display:inline-block;margin-left:18px;font:700 28px/1 var(--hand);color:var(--gold);transform:rotate(-3deg);vertical-align:middle}
+{%- endif -%}
+body.skin-workbook .steps{position:relative;isolation:isolate;gap:40px}
+body.skin-workbook .step{border:0;padding:0;display:flex;flex-direction:column;gap:10px;max-width:340px}
+body.skin-workbook .step .num,body.skin-workbook .step .mono{order:-2;font:700 44px/1 var(--hand);color:var(--wine);letter-spacing:0}
+body.skin-workbook .steps.counted .num::before{content:"Row " counter(st)}
+body.skin-workbook .step .step-ic{order:-1}
+body.skin-workbook .step .step-ic .ic{width:56px;height:56px}
+body.skin-workbook .step b{font:700 18px/1.3 var(--body);color:var(--wine);margin:0}
+body.skin-workbook .step .muted{color:var(--text)}
+@media(min-width:900px){
+  body.skin-workbook .step:nth-child(3n+2){margin-top:100px}
+  body.skin-workbook .step:nth-child(3n+3){margin-top:200px}
+  body.skin-workbook .steps:has(.step:nth-child(2))::before{content:"";position:absolute;left:4%;right:4%;top:56%;height:28px;z-index:-1;background-color:var(--gold);transform:rotate(9deg);-webkit-mask:url({{ tx_thread }}) 0 50%/160px 28px repeat-x;mask:url({{ tx_thread }}) 0 50%/160px 28px repeat-x}
+}
+/* shop by: swatch tags on Golden Yarn strings */
+{%- if wb_shop != '' -%}
+body.skin-workbook .shop-by h2.h2::after{content:"{{ wb_shop }}";display:block;max-width:240px;margin-top:12px;font:700 24px/1.1 var(--hand);color:var(--wine);transform:rotate(-2deg);transform-origin:left}
+{%- endif -%}
+body.skin-workbook .shop-by .grid{gap:28px;padding-top:30px;align-items:start}
+@media(min-width:900px){body.skin-workbook .shop-by .grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+body.skin-workbook .tile,body.skin-workbook .pcard{--rot:-2deg}
+body.skin-workbook .tile:nth-child(4n+2),body.skin-workbook .pcard:nth-child(4n+2){--rot:3deg}
+body.skin-workbook .tile:nth-child(4n+3),body.skin-workbook .pcard:nth-child(4n+3){--rot:-1deg}
+body.skin-workbook .tile:nth-child(4n+4),body.skin-workbook .pcard:nth-child(4n+4){--rot:2deg}
+body.skin-workbook .tile{position:relative;gap:0;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:30px 16px 16px;transform:rotate(var(--rot));transition:transform .2s ease}
+body.skin-workbook .tile::before{content:"";position:absolute;left:50%;top:10px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--paper);border:1.5px solid var(--gold);box-sizing:border-box}
+body.skin-workbook .tile::after{content:"";position:absolute;left:50%;bottom:calc(100% - 12px);width:2px;height:44px;margin-left:-1px;background:var(--gold)}
+body.skin-workbook .tile:hover,body.skin-workbook .tile:focus-visible{transform:rotate(0)}
+@media(min-width:900px){body.skin-workbook .shop-by .tile:nth-child(even){margin-top:70px}}
+body.skin-workbook .tile .ph{border:0}
+body.skin-workbook .tile .ph.pic{background:var(--cream)}
+body.skin-workbook .tile .ph.pic img{mix-blend-mode:multiply}
+body.skin-workbook .shop-by .tile .meta{padding-top:10px;gap:2px}
+body.skin-workbook .shop-by .tile .name{font:700 30px/1.1 var(--hand);color:var(--wine)}
+body.skin-workbook .shop-by .tile .muted{font-size:13px;color:var(--text)}
+/* current editions: pegged on a washing line */
+body.skin-workbook .editions{overflow-x:clip}
+body.skin-workbook .editions .grid{position:relative;gap:28px;padding-top:24px;row-gap:56px}
+body.skin-workbook .editions .grid::before{content:"";position:absolute;left:-200vw;right:-200vw;top:12px;height:2px;background:var(--gold)}
+@media(max-width:719px){body.skin-workbook .editions .grid::before{display:none}}
+body.skin-workbook .pcard{background:var(--cream);border:1px solid var(--line);padding:14px 14px 16px;transform:rotate(var(--rot));transition:transform .2s ease;box-shadow:0 16px 24px -22px rgba(53,16,29,.5)}
+body.skin-workbook .editions .pcard::before{content:"";position:absolute;left:50%;top:-22px;width:12px;height:32px;margin-left:-6px;border-radius:2px;background:var(--wine);z-index:2}
+body.skin-workbook .pcard:hover,body.skin-workbook .pcard:focus-visible{transform:rotate(0)}
+@media(prefers-reduced-motion:reduce){body.skin-workbook .pcard,body.skin-workbook .tile{transition:none}}
+body.skin-workbook .pcard .card-img{--card-ground:var(--cream)}
+body.skin-workbook .pcard .name{font:400 23px/1.15 var(--display);color:var(--wine)}
+body.skin-workbook .pcard .sub{color:var(--text)}
+body.skin-workbook .pcard .ed{order:9;flex-basis:100%;font:700 21px/1.1 var(--hand);color:var(--gold)}
+body.skin-workbook .pcard[data-state="last"] .ed{color:#A3402D}
+body.skin-workbook .pcard .edot{display:none}
+body.skin-workbook .pcard .price-row{flex-wrap:wrap}
+/* collection grids keep the tags but lose the pegs and the line */
+body.skin-workbook .pcard .sticker,body.skin-workbook .pcard .lab{display:none}
+/* story: Wine page, the film as a pinned polaroid, signed */
+body.skin-workbook .section.story{background:var(--wine);color:var(--cream);padding-block:clamp(56px,7vw,96px)}
+body.skin-workbook .story .mono{color:var(--gold-b);font-size:30px}
+body.skin-workbook .story .eyebrow-row .ic{color:var(--cream)}
+body.skin-workbook .story .h2{color:var(--cream)}
+body.skin-workbook .story .lead{color:var(--cream)}
+body.skin-workbook .story .caption{font:700 40px/1.1 var(--hand);color:var(--gold-b)}
+body.skin-workbook .story .thread{color:var(--gold-b)}
+body.skin-workbook .story .btn,body.skin-workbook .story .btn.ghost{background:var(--cream);border:1px solid var(--cream);border-radius:4px;color:var(--wine);padding:0 28px;min-height:50px}
+body.skin-workbook .story .btn:hover,body.skin-workbook .story .btn:focus-visible{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px var(--cream)}
+body.skin-workbook .story .ph{background:var(--wine-2);border:14px solid var(--print);border-bottom-width:56px;color:#E6DAC4;transform:rotate(-2deg);overflow:visible}
+body.skin-workbook .story .ph::before{left:40%;top:-26px;transform:rotate(3deg)}
+body.skin-workbook .story .ph video,body.skin-workbook .story .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+body.skin-workbook .story :focus-visible{outline-color:var(--cream)}
+/* quotes: scraps of paper, taped */
+body.skin-workbook .quotes .grid{gap:32px;padding-top:20px}
+body.skin-workbook .quotes .quote{position:relative;border:0;padding:30px 26px 24px;background:var(--cream);color:var(--wine);transform:rotate(-1.5deg)}
+body.skin-workbook .quotes .quote:nth-child(3n+2){background:var(--sage);color:#1F2A1C;transform:rotate(1deg)}
+body.skin-workbook .quotes .quote:nth-child(3n+3){background:var(--corn);color:#1D2B44;transform:rotate(-1deg)}
+@media(min-width:900px){body.skin-workbook .quotes .quote:nth-child(3n+2){margin-top:40px}}
+body.skin-workbook .quotes .quote::before{left:50%;top:-14px;width:96px;margin-left:-48px;transform:rotate(4deg)}
+body.skin-workbook .quotes blockquote{font:italic 400 24px/1.35 var(--display);color:inherit}
+body.skin-workbook .quotes figcaption{font:700 26px/1 var(--hand);color:inherit}
+body.skin-workbook .quotes figcaption::before{content:"— "}
+/* gifts: a big swatch tag; Cozy Club: a postcard with a 10% stamp */
+body.skin-workbook .promo .grid{gap:40px}
+body.skin-workbook .promo .review{position:relative;padding:44px;border:1px solid var(--line)}
+body.skin-workbook .promo-l{background:var(--cream);border-radius:10px;transform:rotate(-1deg)}
+body.skin-workbook .promo-l::before{content:"";position:absolute;left:24px;top:24px;width:18px;height:18px;border-radius:50%;background:var(--paper);border:1.5px solid var(--gold);box-sizing:border-box}
+body.skin-workbook .promo-l>.ic{margin-top:18px}
+body.skin-workbook .promo-r{background:var(--print);overflow:visible!important}
+body.skin-workbook .promo-r::before,body.skin-workbook .promo-r::after{position:absolute;right:28px;top:-18px;width:96px;height:112px;box-sizing:border-box;text-align:center;color:var(--wine);transform:rotate(4deg);pointer-events:none}
+body.skin-workbook .promo-r::after{content:"10%";padding-top:26px;background:var(--coral);font:600 40px/1 var(--display);z-index:1}
+body.skin-workbook .promo-r::before{content:"FIRST ORDER";padding-top:74px;font:700 10px/1 var(--body);letter-spacing:.1em;z-index:2}
+body.skin-workbook .promo .review>.tx{display:none}
+body.skin-workbook .promo .review>.ic{width:46px;height:46px;color:var(--wine)}
+body.skin-workbook .promo .mono{font-size:28px}
+body.skin-workbook .promo .review .h3{font:500 clamp(32px,3.4vw,44px)/1.05 var(--display)}
+body.skin-workbook .promo-r .h3{max-width:calc(100% - 110px)}
+body.skin-workbook .promo .review .muted{color:var(--text)}
+body.skin-workbook .promo-r input{background:transparent;border:0;border-bottom:1px solid var(--wine)}
+body.skin-workbook .promo .btn.ghost{border-bottom-color:var(--gold)}
+/* brand promise: the Echo thread on top, titles in the hand */
+body.skin-workbook .promise>.tx{display:none}
+body.skin-workbook .promise .thread{display:block;color:var(--gold);margin-bottom:36px}
+body.skin-workbook .promise-it .ic{width:48px;height:48px}
+body.skin-workbook .promise-tx .pt{font:700 28px/1.1 var(--hand);letter-spacing:0;text-transform:none;color:var(--wine)}
+/* footer: Wine, signed off by hand */
+body.skin-workbook footer.site .btn{background:var(--cream);border-color:var(--cream);color:var(--wine)}
+body.skin-workbook footer.site .btn:hover,body.skin-workbook footer.site .btn:focus-visible{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px var(--cream)}
+body.skin-workbook footer.site :focus-visible{outline-color:var(--cream)}
+body.skin-workbook .fcols h4{color:var(--gold-b)}
+{%- if wb_footer != '' -%}
+body.skin-workbook .fbrand .emblem-wrap::after{content:"{{ wb_footer }}";display:block;margin-top:18px;font:700 28px/1.1 var(--hand);color:var(--gold-b);transform:rotate(-2deg);transform-origin:left}
+{%- endif -%}
+/* product page: pinned main print, swatch tags, a passport booklet */
+body.skin-workbook .crumbs{font:700 20px/1.2 var(--hand);color:var(--muted)}
+body.skin-workbook .gallery>div[data-main]{position:relative;background:var(--print);border:1px solid #E2D6C1;padding:14px;transform:rotate(-1deg);box-shadow:0 20px 30px -26px rgba(53,16,29,.5)}
+body.skin-workbook .gallery>div[data-main]::before{left:50%;top:-14px;margin-left:-55px;transform:rotate(-3deg)}
+body.skin-workbook .gallery .main{background:var(--cream);border:0}
+body.skin-workbook .gallery .main.pic img{mix-blend-mode:multiply}
+body.skin-workbook .thumbs{gap:12px;margin-top:22px}
+body.skin-workbook .thumbs button{background:var(--print);border:1px solid #E2D6C1;padding:4px}
+body.skin-workbook .thumbs button:nth-child(odd){transform:rotate(-2deg)}
+body.skin-workbook .thumbs button:nth-child(even){transform:rotate(2deg)}
+body.skin-workbook .thumbs button[aria-pressed="true"]{outline:2px solid var(--wine);outline-offset:2px}
+body.skin-workbook .buybox .eyebrow{font-size:26px;transform:rotate(-2deg);transform-origin:left;align-self:flex-start}
+body.skin-workbook .buybox h1.h2{font:500 clamp(42px,4.6vw,60px)/1 var(--display)}
+body.skin-workbook .colour-sw{gap:16px;padding-top:6px}
+body.skin-workbook .csw{position:relative;width:92px;background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:22px 8px 8px;font:700 18px/1.05 var(--hand);color:var(--wine);transform:rotate(-2deg)}
+body.skin-workbook .csw:nth-child(even){transform:rotate(3deg)}
+body.skin-workbook .csw::before{content:"";position:absolute;left:50%;top:7px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--paper);border:1.5px solid var(--gold);box-sizing:border-box}
+body.skin-workbook .csw-img{width:100%;height:84px}
+body.skin-workbook .csw[aria-current] .csw-img{outline:0}
+body.skin-workbook .csw[aria-current]{border-color:var(--wine);box-shadow:0 0 0 1px var(--wine)}
+body.skin-workbook .edition{border:0;background:var(--wine);color:var(--cream);border-radius:4px;position:relative}
+body.skin-workbook .edition>.ic{color:var(--cream)}
+body.skin-workbook .edition b{color:var(--gold-b)}
+body.skin-workbook .qty{border-radius:4px}
+body.skin-workbook details.acc summary::after{font:700 30px/.8 var(--hand);color:var(--gold)}
+body.skin-workbook .section.passport-band{background:transparent;color:var(--text);padding-top:24px}
+body.skin-workbook .passport-band .knit-divider{display:none}
+body.skin-workbook .passport-band>.wrap{position:relative;background:var(--print);border:1px solid var(--line);padding:clamp(24px,4vw,48px);box-shadow:0 24px 40px -32px rgba(53,16,29,.55);background-image:linear-gradient(90deg,transparent calc(50% - 1px),#E2D6C1 calc(50% - 1px),#E2D6C1 calc(50% + 1px),transparent calc(50% + 1px))}
+@media(max-width:899px){body.skin-workbook .passport-band>.wrap{background-image:none}}
+{%- if wb_stamp != '' -%}
+body.skin-workbook .passport-band>.wrap::after{content:"{{ wb_stamp }}";position:absolute;right:clamp(16px,4vw,48px);bottom:clamp(16px,3vw,36px);padding:14px 18px;border:3px solid #A3402D;border-radius:50%;font:700 24px/1 var(--hand);color:#A3402D;transform:rotate(-12deg);pointer-events:none}
+{%- endif -%}
+body.skin-workbook .passport-band h2{color:var(--wine)!important}
+body.skin-workbook .section.passport-band .mono{color:var(--wine)}
+body.skin-workbook .passport-band a{color:var(--wine)!important}
+body.skin-workbook .passport-band .ic{color:var(--wine)}
+body.skin-workbook .passport-band .passport>div{border-top:1px dashed var(--gold)}
+body.skin-workbook .passport-band .passport b{font:700 24px/1.1 var(--hand);letter-spacing:0;text-transform:none;color:var(--wine)}
+body.skin-workbook .passport-band .passport span{color:var(--text)}
+body.skin-workbook .review{background:var(--cream);border:0}
+/* mobile: the tilts stay, the overlaps go */
+@media(max-width:719px){
+  body.skin-workbook .hero-media{transform:rotate(1deg)}
+  body.skin-workbook .numbers .stats{margin-inline:16px;padding-inline:18px}
+  body.skin-workbook .numbers .stats::after{grid-column:1/-1;justify-self:start;max-width:260px}
+  body.skin-workbook .section[id="how"] h2.h2::after{display:block;margin:10px 0 0}
+  body.skin-workbook .promo-r::before,body.skin-workbook .promo-r::after{top:-26px;right:16px}
+  body.skin-workbook .promo-r .h3{max-width:none;padding-top:40px}
+  body.skin-workbook .quotes .quote,body.skin-workbook .promo-l,body.skin-workbook .promo-r{transform:none}
+  body.skin-workbook .section.passport-band>.wrap{margin-inline:16px;width:auto}
+  body.skin-workbook .grid.g4:has(.pcard),body.skin-workbook .shop-by .grid,body.skin-workbook .editions .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;row-gap:40px}
+  body.skin-workbook .tile{padding:24px 10px 10px}
+  body.skin-workbook .shop-by .tile .name{font-size:22px}
+  body.skin-workbook .pcard{padding:8px 8px 10px}
+  body.skin-workbook .pcard .name{font-size:18px}
+  body.skin-workbook .pcard .meta{font-size:12px}
+  body.skin-workbook .pcard .ed{font-size:17px}
+}

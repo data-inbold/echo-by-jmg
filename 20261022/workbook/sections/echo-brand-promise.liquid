@@ -1,0 +1,36 @@
+{%- comment -%} Brand promise strip above the footer: the four brand icons (Round 1). {%- endcomment -%}
+<section class="section promise knitbox">
+  <span class="tx" aria-hidden="true"></span>
+  <div class="wrap">
+    <span class="thread" aria-hidden="true"></span>
+    <div class="promise-grid">
+      {%- for b in section.blocks -%}
+        <div class="promise-it" {{ b.shopify_attributes }}>
+          {%- if b.settings.icon != 'none' -%}<span class="ic i-{{ b.settings.icon }}" aria-hidden="true"></span>{%- endif -%}
+          <span class="promise-tx"><span class="pt">{{ b.settings.title }}</span><span class="pd">{{ b.settings.text }}</span></span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Brand promise",
+  "settings": [],
+  "blocks": [
+    { "type": "item", "name": "Promise", "settings": [
+      {"type": "select", "id": "icon", "label": "Icon", "options": [{"value": "none", "label": "None"}, {"value": "yarn-rescued", "label": "Yarn rescued"}, {"value": "yarn-passport", "label": "Yarn Passport"}, {"value": "knitted-with-care", "label": "Knitted with care"}, {"value": "echo-thread", "label": "The Echo thread"}, {"value": "skein", "label": "Skein"}, {"value": "needles-ball", "label": "Needles and ball"}, {"value": "stitch", "label": "Stitch"}, {"value": "edition-label", "label": "Edition label"}, {"value": "heritage", "label": "Heritage (factory, 1946)"}, {"value": "certificate", "label": "Certificate"}, {"value": "delivery", "label": "Delivery"}, {"value": "returns", "label": "Returns"}, {"value": "gift", "label": "Gift"}, {"value": "bag", "label": "Bag"}, {"value": "search", "label": "Search"}, {"value": "account", "label": "Account"}, {"value": "care-wash", "label": "Care: wash"}, {"value": "care-no-tumble", "label": "Care: no tumble dry"}, {"value": "care-dry-flat", "label": "Care: dry flat"}, {"value": "care-iron-low", "label": "Care: iron low"}], "default": "yarn-rescued"},
+      { "type": "text", "id": "title", "label": "Title", "default": "Yarn rescued" },
+      { "type": "text", "id": "text", "label": "Text", "default": "Leftover yarn from fashion runs in our own factory." }
+    ] }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "Brand promise", "blocks": [
+    { "type": "item", "settings": { "icon": "yarn-rescued", "title": "Yarn rescued", "text": "Leftover yarn from fashion runs in our own factory." } },
+    { "type": "item", "settings": { "icon": "yarn-passport", "title": "Yarn Passport", "text": "Every piece carries the batch it came from." } },
+    { "type": "item", "settings": { "icon": "knitted-with-care", "title": "Knitted with care", "text": "Three generations of craft." } },
+    { "type": "item", "settings": { "icon": "echo-thread", "title": "The Echo thread", "text": "Nothing wasted." } }
+  ] }],
+  "enabled_on": { "groups": ["footer"] }
+}
+{% endschema %}

@@ -4,7 +4,7 @@
 |---|---|---|
 | repo root (`assets/`, `sections/` …) | 20 Oct revamp preview theme, the one shared with the client | `echo-by-jmg/main` (keeps its preview link) |
 | `20261020/revamp/` + branch `20261020/revamp` | Mirror of the root, kept in step automatically | not connected yet (connect at the switch) |
-| `20261022/<name>/` + branch `20261022/<name>` | Round 1 design directions: heritage-ink, swatch-studio, quiet-gallery | `echo-by-jmg/20261022/<name>` |
+| `20261022/<name>/` + branch `20261022/<name>` | Round 1 design directions: heritage-ink, swatch-studio, quiet-gallery, workbook | `echo-by-jmg/20261022/<name>` |
 
 Shopify only connects a branch whose root is a theme, so every folder has a twin branch. See `20261022/README.md` for the two-way sync.
 

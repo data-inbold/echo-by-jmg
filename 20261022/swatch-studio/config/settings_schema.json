@@ -25,11 +25,27 @@
         "options": [
           { "value": "heritage-ink", "label": "A · Heritage Ink (80% elegant / 20% playful)" },
           { "value": "swatch-studio", "label": "B · Swatch Studio (60 / 40)" },
-          { "value": "quiet-gallery", "label": "C · Quiet Gallery (90 / 10)" }
+          { "value": "quiet-gallery", "label": "C · Quiet Gallery (90 / 10)" },
+          { "value": "workbook", "label": "D · The Workbook (70% elegant / 30% personal)" }
         ],
         "default": "heritage-ink",
-        "info": "Colours, type, icons and knitting textures from the three mood directions. Every theme can show all three; each Round 1 draft starts on its own."
+        "info": "Colours, type, icons and knitting textures from the four mood directions. Every theme can show all four; each Round 1 draft starts on its own."
       },
+      {
+        "type": "header",
+        "content": "D · The Workbook: margin notes"
+      },
+      {
+        "type": "paragraph",
+        "content": "Only shown when the design direction is D · The Workbook. Short handwritten notes in the one ink; leave a field empty to hide that note."
+      },
+      { "type": "text", "id": "echo_wb_note_start", "label": "Home hero, next to the buttons", "default": "← start here" },
+      { "type": "text", "id": "echo_wb_note_gauge", "label": "Numbers label", "default": "Gauge" },
+      { "type": "text", "id": "echo_wb_note_sticky", "label": "Numbers sticky note", "default": "When an edition is gone, it is gone." },
+      { "type": "text", "id": "echo_wb_note_how", "label": "How it works, beside the heading", "default": "(the pattern, in three rows)" },
+      { "type": "text", "id": "echo_wb_note_shop", "label": "Shop by product, under the heading", "default": "pick a pile. every one is a small edition." },
+      { "type": "text", "id": "echo_wb_note_footer", "label": "Footer sign-off", "default": "made from what was left." },
+      { "type": "text", "id": "echo_wb_stamp", "label": "Yarn Passport stamp (product page)", "default": "RESCUED" },
       {
         "type": "checkbox",
         "id": "echo_logo_ink",

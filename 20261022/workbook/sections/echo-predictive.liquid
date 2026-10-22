@@ -1,0 +1,12 @@
+{%- comment -%} Returned by /search/suggest?section_id=echo-predictive for the search overlay. {%- endcomment -%}
+<div data-predictive>
+  {%- assign res = predictive_search.resources.products -%}
+  <p class="muted">{{ res.size }} result{% if res.size != 1 %}s{% endif %}</p>
+  <div class="grid g4">
+    {%- for p in res -%}{%- render 'echo-card', product: p -%}{%- endfor -%}
+  </div>
+  {%- if res.size > 0 -%}<p style="margin-top:16px"><a class="link" href="{{ routes.search_url }}?q={{ predictive_search.terms | url_encode }}&type=product">See all results</a></p>{%- endif -%}
+</div>
+{% schema %}
+{ "name": "Predictive search results", "settings": [] }
+{% endschema %}

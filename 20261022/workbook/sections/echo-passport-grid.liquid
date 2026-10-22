@@ -1,0 +1,29 @@
+{%- capture echo_out -%}
+{%- comment -%} Dark band with labelled columns ("How to read a passport"). {%- endcomment -%}
+<section class="section dark">
+  <div class="wrap">
+    {%- if section.settings.eyebrow != blank -%}<span class="mono">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="serif" style="font:500 italic clamp(24px,3vw,32px)/1.25 var(--display);margin:14px 0 0;max-width:30ch">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="passport">
+      {%- for b in section.blocks -%}<div {{ b.shopify_attributes }}><b>{{ b.settings.title }}</b><span>{{ b.settings.text }}</span></div>{%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Dark explainer",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "How to read a passport" },
+    { "type": "text", "id": "heading", "label": "Italic heading (optional)" }
+  ],
+  "blocks": [
+    { "type": "col", "name": "Column", "settings": [
+      { "type": "text", "id": "title", "label": "Label", "default": "Origin" },
+      { "type": "inline_richtext", "id": "text", "label": "Text", "default": "The production run and type of fashion house the yarn was left over from. We do not name brands, but we do name the season." }
+    ] }
+  ],
+  "presets": [{ "name": "Dark explainer", "blocks": [{ "type": "col" }] }]
+}
+{% endschema %}

@@ -21,7 +21,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        theme: [heritage-ink, swatch-studio, quiet-gallery]
+        theme: [heritage-ink, swatch-studio, quiet-gallery, workbook]
     steps:
       - uses: actions/checkout@v4
         with:

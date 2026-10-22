@@ -1,0 +1,17 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-collection",
+      "settings": {
+        "crumb": "Open editions",
+        "mode": "open",
+        "h1": "Open editions",
+        "intro": "Everything you can still buy. Editions with only a few pieces left come first. When an edition closes, it moves to the tracker."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
