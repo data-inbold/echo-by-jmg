@@ -85,13 +85,40 @@
         if total < 5
           assign total = 5
         endif
+        comment
+          Packshot first: the square catalogue photo ending in -01 leads the gallery, the other photos keep their order.
+        endcomment
+        assign pick_i = -1
+        for m in media
+          if m.preview_image.width == m.preview_image.height
+            assign mname = m.preview_image.src | split: '?' | first | downcase
+            if mname contains '-01.'
+              assign pick_i = forloop.index0
+              break
+            endif
+          endif
+        endfor
       -%}
       {%- for k in (1..total) -%}
         {%- assign idx = forloop.index0 -%}
+        {%- liquid
+          assign sidx = idx
+          assign mcls = 'main'
+          if pick_i >= 0 and idx == 0
+            assign mcls = 'main pack'
+          endif
+          if pick_i >= 0
+            if idx == 0
+              assign sidx = pick_i
+            elsif idx <= pick_i
+              assign sidx = idx | minus: 1
+            endif
+          endif
+        -%}
         <div data-main="{{ idx }}"{% if idx > 0 %} hidden{% endif %}>
-          {%- if media[idx] -%}
-            {%- assign malt = media[idx].alt | default: i[8] -%}
-            {%- render 'echo-pic', image: media[idx].preview_image, alt: malt, cls: 'main', eager: forloop.first, sizes: '(min-width: 900px) 55vw, 100vw' -%}
+          {%- if media[sidx] -%}
+            {%- assign malt = media[sidx].alt | default: i[8] -%}
+            {%- render 'echo-pic', image: media[sidx].preview_image, alt: malt, cls: mcls, eager: forloop.first, sizes: '(min-width: 900px) 55vw, 100vw' -%}
           {%- else -%}
             {%- assign li = idx | minus: media.size -%}
             {%- if media.size > 0 -%}{%- assign li = li | plus: 1 -%}{%- endif -%}
@@ -103,8 +130,18 @@
       <div class="thumbs">
         {%- for k in (1..total) -%}
           {%- assign idx = forloop.index0 -%}
+        {%- liquid
+          assign sidx = idx
+          if pick_i >= 0
+            if idx == 0
+              assign sidx = pick_i
+            elsif idx <= pick_i
+              assign sidx = idx | minus: 1
+            endif
+          endif
+        -%}
           <button type="button" data-img="{{ idx }}" aria-pressed="{% if idx == 0 %}true{% else %}false{% endif %}" aria-label="Photo {{ forloop.index }}">
-            {%- if media[idx] -%}{%- render 'echo-pic', image: media[idx].preview_image, alt: '', sizes: '120px' -%}{%- else -%}{%- render 'echo-ph', label: forloop.index, tint: i[6] -%}{%- endif -%}
+            {%- if media[sidx] -%}{%- render 'echo-pic', image: media[sidx].preview_image, alt: '', sizes: '120px' -%}{%- else -%}{%- render 'echo-ph', label: forloop.index, tint: i[6] -%}{%- endif -%}
           </button>
         {%- endfor -%}
       </div>

@@ -1,0 +1,70 @@
+{%- capture echo_out -%}
+{%- comment -%} "How it works" (Collab design): photo or video on the left, vertical timeline of steps on the right. {%- endcomment -%}
+<style>
+  .how-grid{display:grid;gap:36px;align-items:center}
+  @media(min-width:880px){.how-grid{grid-template-columns:1fr 1fr;gap:64px}}
+  .how-media{position:relative}
+  .how-media .ph{aspect-ratio:4/3;min-height:0}
+  .how-media .lbl{position:absolute;left:0;right:0;bottom:22%;text-align:center;color:#fff;font:600 28px/1 var(--body);letter-spacing:-.01em;text-shadow:0 1px 8px rgba(0,0,0,.35);pointer-events:none}
+  .how-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;position:relative}
+  .how-steps li{position:relative;padding-left:58px}
+  .how-steps li::before{content:"";position:absolute;left:0;top:6px;width:34px;height:34px;border-radius:50%;background:#EFE2C6}
+  .how-steps li::after{content:"";position:absolute;left:10px;top:16px;width:14px;height:14px;border-radius:50%;background:#E2CFA8}
+  .how-steps li+li .ln{position:absolute;left:16px;top:-30px;height:34px;border-left:2px dashed #E2CFA8}
+  .how-steps h3{margin:0 0 8px;font:italic 400 clamp(26px,3vw,34px)/1.15 var(--display);color:var(--gold)}
+  .how-steps p{margin:0;font-size:16px;line-height:1.6;max-width:44ch}
+  .how-steps p a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+</style>
+<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
+  <div class="wrap stack" style="gap:34px">
+    {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="how-grid">
+      <div class="how-media">
+        {%- render 'echo-media', video: section.settings.video, image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.media_label, ar: '4/3' -%}
+        {%- if section.settings.overlay != blank -%}<span class="lbl">{{ section.settings.overlay }}</span>{%- endif -%}
+      </div>
+      <ol class="how-steps">
+        {%- for b in section.blocks -%}
+          {%- liquid
+            assign t = b.settings.text
+            if b.settings.link_word != blank and b.settings.link != blank
+              capture a_html
+                echo '<a href="' | append: b.settings.link | append: '">' | append: b.settings.link_word | append: '</a>'
+              endcapture
+              assign t = t | replace: b.settings.link_word, a_html
+            endif
+          -%}
+          <li {{ b.shopify_attributes }}>{% unless forloop.first %}<span class="ln" aria-hidden="true"></span>{% endunless %}<h3>{{ b.settings.title }}</h3><p>{{ t }}</p></li>
+        {%- endfor -%}
+      </ol>
+    </div>
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Cream"}, {"value": "alt", "label": "Blush"}, {"value": "band", "label": "Sand band"}], "default": "paper" },
+    { "type": "text", "id": "anchor", "label": "Anchor (for #links)", "default": "how" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How It Works" },
+    { "type": "video", "id": "video", "label": "Video" },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "photo", "label": "Bundled photo file", "info": "Used when no video or photo is picked.", "default": "echo-v2-process.jpg" },
+    { "type": "text", "id": "alt", "label": "Photo description", "default": "A JM Group yarn label lying on a knitted fair-isle piece" },
+    { "type": "text", "id": "overlay", "label": "Text over the media", "default": "Video process" },
+    { "type": "text", "id": "media_label", "label": "Placeholder text", "default": "Process video" }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "We rescue the yarn" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Unused yarn left after fashion production runs in our own factory. Never worn, never recycled fibre." },
+      { "type": "text", "id": "link_word", "label": "Word to link (optional)", "info": "A word in the text that becomes a link, for example Yarn Passport." },
+      { "type": "text", "id": "link", "label": "Link", "info": "Page address or echo:passport" }
+    ] }
+  ],
+  "presets": [{ "name": "How it works", "blocks": [{ "type": "step" }, { "type": "step" }, { "type": "step" }] }]
+}
+{% endschema %}

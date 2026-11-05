@@ -11,100 +11,55 @@
   "layout": "echo",
   "sections": {
     "hero": {
-      "type": "echo-hero",
-      "blocks": {
-        "slide_1": {
-          "type": "slide",
-          "settings": {
-            "label": "Blankets",
-            "cat": "blankets",
-            "link": "",
-            "photo": "echo-twister-outdoor.jpg",
-            "alt": "Twister Rope blanket and cushion cover on an outdoor lounger",
-            "product": "twister-rope-blanket-doe",
-            "shown": ""
-          }
-        },
-        "slide_2": {
-          "type": "slide",
-          "settings": {
-            "label": "Cushion covers",
-            "cat": "cushions",
-            "link": "",
-            "photo": "echo-cushion-brown.jpg",
-            "alt": "Brown knitted cushion cover and blanket with a green border on a white sofa",
-            "product": "",
-            "shown": "Cushion cover and blanket [product names to confirm]"
-          }
-        },
-        "slide_3": {
-          "type": "slide",
-          "settings": {
-            "label": "Bags",
-            "cat": "bags",
-            "link": "",
-            "photo": "echo-bag-cable.jpg",
-            "alt": "Cable Rope knitted tote in ginger with a pink satin lining",
-            "product": "cable-rope-knitted-tote",
-            "shown": ""
-          }
-        },
-        "slide_4": {
-          "type": "slide",
-          "settings": {
-            "label": "Accessories",
-            "cat": "accessories",
-            "link": "",
-            "photo": "echo-acc-scarf.jpg",
-            "alt": "Rainbow Crossing knitted scarf with pompom edges on a woven pouf",
-            "product": "rainbow-crossing-knitted-scarf",
-            "shown": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_1",
-        "slide_2",
-        "slide_3",
-        "slide_4"
-      ],
+      "type": "echo-hero-banner",
       "settings": {
-        "heading": "Where luxury material finds a second life.",
+        "heading": "Where Luxury Material Finds A Second Life.",
         "lead": "We rescue leftover yarns from luxury fashion and turn them into limited-edition pieces for your home. Three generations of craft. Nothing wasted.",
+        "btn1_label": "Shop now",
+        "btn1_link": "echo:shop-all",
         "btn2_label": "How it works",
         "btn2_link": "#how",
-        "chips": "★ 4.8 · 312 reviews | MobilePay | Free 14-day returns"
+        "photo": "echo-v2-hero.jpg",
+        "alt": "Cones of green, mustard, cream and pink yarn resting on a knitted blanket",
+        "focus": "75% 85%"
       }
     },
     "numbers": {
       "type": "echo-stats",
+      "settings": {
+        "spacing": "normal",
+        "bg": "dark",
+        "icons": true,
+        "link_label": "View rescued yarn tracker",
+        "link": ""
+      },
       "blocks": {
         "stat_1": {
           "type": "stat",
           "settings": {
             "n": "{kg}",
-            "text": "yarn rescued to date"
+            "text": "Yarn rescued to date"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "numbered editions released"
+            "text": "Numbered editions released"
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
             "n": "1946",
-            "text": "family knitwear since"
+            "text": "Family knitwear since"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
-            "n": "0",
-            "text": "restocks. When an edition is gone, it is gone."
+            "n": "0 restocks",
+            "text": "When an edition is gone, it is gone."
           }
         }
       },
@@ -113,129 +68,14 @@
         "stat_2",
         "stat_3",
         "stat_4"
-      ],
-      "settings": {
-        "spacing": "tight",
-        "bg": "band",
-        "link_label": "See every batch in the rescued yarn tracker",
-        "link": ""
-      }
-    },
-    "how": {
-      "type": "echo-steps",
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "num": "",
-            "title": "1. We rescue the yarn",
-            "text": "Unused yarn left after fashion production runs in our own factory. Never worn, never recycled fibre."
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "num": "",
-            "title": "2. The yarn decides the design",
-            "text": "We design around what is left. That is why every run is limited."
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "num": "",
-            "title": "3. You get a number",
-            "text": "Every piece is labelled “7 of 12” and carries its <a href=\"echo:passport\">Yarn Passport</a>."
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
-      ],
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "layout": "steps",
-        "anchor": "how",
-        "eyebrow": "",
-        "heading": "How it works",
-        "heading_size": "h2",
-        "intro": "",
-        "gap": 28,
-        "narrow": false,
-        "photo": "none",
-        "alt": "",
-        "ar": "21/9",
-        "pair1_label": "",
-        "pair2_label": "",
-        "link_label": "",
-        "link": ""
-      }
-    },
-    "shop_by": {
-      "type": "echo-category-tiles",
-      "blocks": {
-        "tile_1": {
-          "type": "tile",
-          "settings": {
-            "collection": "",
-            "cat": "blankets",
-            "title": "Blankets",
-            "from": "from DKK 1,300",
-            "photo": "echo-twister-doe.jpg"
-          }
-        },
-        "tile_2": {
-          "type": "tile",
-          "settings": {
-            "collection": "",
-            "cat": "cushions",
-            "title": "Cushion covers",
-            "from": "from DKK 620",
-            "photo": "echo-cushion-brown.jpg"
-          }
-        },
-        "tile_3": {
-          "type": "tile",
-          "settings": {
-            "collection": "",
-            "cat": "bags",
-            "title": "Bags",
-            "from": "from DKK 630",
-            "photo": "echo-bag-cable.jpg"
-          }
-        },
-        "tile_4": {
-          "type": "tile",
-          "settings": {
-            "collection": "",
-            "cat": "accessories",
-            "title": "Accessories",
-            "from": "from DKK 660",
-            "photo": "echo-acc-scarf.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "tile_1",
-        "tile_2",
-        "tile_3",
-        "tile_4"
-      ],
-      "settings": {
-        "spacing": "tight",
-        "bg": "paper",
-        "heading": "Shop by product"
-      }
+      ]
     },
     "editions": {
       "type": "echo-product-grid",
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "heading": "Current editions",
+        "heading": "Latest Designs",
         "link_label": "See all",
         "link": "",
         "products": [
@@ -250,25 +90,139 @@
         ],
         "collection": "",
         "limit": 8,
-        "group": false
+        "group": false,
+        "link_inline": true
+      }
+    },
+    "how": {
+      "type": "echo-how",
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "anchor": "how",
+        "heading": "How It Works",
+        "photo": "echo-v2-process.jpg",
+        "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
+        "overlay": "",
+        "media_label": "Process video"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "We rescue the yarn",
+            "text": "Unused yarn left after fashion production runs in our own factory. Never worn, never recycled fibre.",
+            "link_word": "",
+            "link": ""
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "The yarn decides the design",
+            "text": "We design around what is left. That is why every run is limited.",
+            "link_word": "",
+            "link": ""
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "You get a number",
+            "text": "Every piece is labelled “7 of 12” and carries its Yarn Passport.",
+            "link_word": "Yarn Passport",
+            "link": "echo:passport"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "marquee": {
+      "type": "echo-marquee",
+      "settings": {
+        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
+        "speed": 40,
+        "pad": 24,
+        "bg": ""
+      }
+    },
+    "shop_by": {
+      "type": "echo-category-tiles",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "cat": "blankets",
+            "title": "Blankets",
+            "from": "from DKK 1,300",
+            "photo": "echo-v2-tile-blankets.jpg"
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "cat": "cushions",
+            "title": "Cushion covers",
+            "from": "from DKK 620",
+            "photo": "echo-v2-tile-cushions.jpg"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "cat": "bags",
+            "title": "Bags",
+            "from": "from DKK 630",
+            "photo": "echo-v2-tile-bags.jpg"
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "cat": "accessories",
+            "title": "Accessories",
+            "from": "from DKK 660",
+            "photo": "echo-v2-tile-accessories.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4"
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "Shop By Products",
+        "ar": "5/7"
       }
     },
     "story": {
       "type": "echo-split",
       "settings": {
         "spacing": "normal",
-        "bg": "alt",
+        "bg": "paper",
         "media_first": true,
         "rev": false,
         "top": false,
         "gap": 16,
         "hide_on_gift": false,
-        "eyebrow": "Our Story",
-        "heading": "The story behind every stitch",
+        "eyebrow": "",
+        "heading": "",
         "heading_tag": false,
         "heading_size": "h2",
-        "quote": "",
-        "lead": "“Not sourced from third parties, not processed through industrial recycling, but intercepted at the source, by the people who made them.”",
+        "quote": "“Not sourced from third parties, not processed through industrial recycling, but intercepted at the source, by the people who made them.”",
+        "lead": "",
         "caption": "Ming, founder of EchoByJMG",
         "small": "",
         "btn1_label": "Read our story",
@@ -277,77 +231,94 @@
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
-        "video": "shopify://files/videos/gemini_generated_video_9ca2862c.mp4",
-        "photo": "none",
-        "alt": "",
-        "label": "20 sec loop: Ming and the family on the factory floor, faces visible.",
-        "ar": "4/3"
+        "video": "",
+        "photo": "echo-v2-story.jpg",
+        "alt": "Ming and a colleague at the factory going through yarn samples",
+        "label": "",
+        "ar": "4/3",
+        "outer_heading": "Story About Us",
+        "panel": "blush"
       }
     },
     "quotes": {
-      "type": "echo-reviews",
+      "type": "echo-review-cards",
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "Our Customers"
+      },
       "blocks": {
         "review_1": {
           "type": "review",
           "settings": {
-            "stars": "★★★★★",
+            "name": "Aija",
+            "country": "",
             "quote": "So soft, you felt it immediately. It feels like it’s always belonged in the room.",
-            "name": "Aija"
+            "photo": "echo-v2-review-1.jpg",
+            "alt": "A blue knitted blanket with a green border in a play tent",
+            "product": "hills-valleys-cushion-cover"
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "stars": "★★★★★",
+            "name": "Anna",
+            "country": "",
             "quote": "I adore my cushion covers, the cat and dog designs are just too cute! Love the colours.",
-            "name": "Anna"
-          }
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {
-            "stars": "★★★★★",
-            "quote": "I bought the colourful phone bag and it cheers me up so much. The quality is good!",
-            "name": "Mia"
+            "photo": "echo-v2-review-2.jpg",
+            "alt": "A grey knitted blanket with a soft toy rabbit",
+            "product": "puff-friends-cushion-cover"
           }
         }
       },
       "block_order": [
         "review_1",
-        "review_2",
-        "review_3"
-      ],
+        "review_2"
+      ]
+    },
+    "gift": {
+      "type": "echo-split",
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "heading": "What customers say",
-        "app_note": ""
-      }
-    },
-    "promo": {
-      "type": "echo-promo-pair",
-      "settings": {
-        "spacing": "tight",
-        "bg": "paper",
-        "l_eyebrow": "Gifts",
-        "l_heading": "The gift with a story",
-        "l_text": "No price on the packing slip, wrapped in tissue, with a small surprise inside. Or let them choose with a gift card.",
-        "l_btn": "Gift guide",
-        "l_link": "",
-        "r_eyebrow": "The Cozy Club",
-        "r_heading": "10% off your first order",
-        "r_text": "And first access to new editions, which sell out."
+        "media_first": false,
+        "rev": false,
+        "top": false,
+        "gap": 16,
+        "hide_on_gift": false,
+        "eyebrow": "",
+        "heading": "Gift With A Story",
+        "heading_tag": false,
+        "heading_size": "h2",
+        "quote": "",
+        "lead": "No price on the packing slip. Gift wrapped in tissue, with a small surprise inside, or let you choose with a gift card.",
+        "caption": "",
+        "small": "",
+        "btn1_label": "Gift guide",
+        "btn1_link": "echo:gifts",
+        "btn1_ghost": true,
+        "btn2_label": "",
+        "btn2_link": "",
+        "btn2_ghost": true,
+        "video": "",
+        "photo": "echo-v2-gift.jpg",
+        "alt": "A gift box tied with twine and a sprig of eucalyptus, next to a ball of yarn",
+        "label": "",
+        "ar": "16/9",
+        "outer_heading": "",
+        "panel": "wine"
       }
     }
   },
   "order": [
     "hero",
     "numbers",
-    "how",
-    "shop_by",
     "editions",
+    "how",
+    "marquee",
+    "shop_by",
     "story",
     "quotes",
-    "promo"
+    "gift"
   ]
 }

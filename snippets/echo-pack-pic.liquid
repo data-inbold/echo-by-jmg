@@ -1,0 +1,39 @@
+{%- comment -%}
+  Product photo for cards: the PACKSHOT (square catalogue photo on white), not the lifestyle shot.
+  A packshot is a square image; the one whose file name ends in -01 wins (the catalogue files are named like 1002507044-01.jpg).
+  No square image on the product (for example a gift card)? Falls back to the first image.
+  Params: product, alt, eager, sizes
+{%- endcomment -%}
+{%- liquid
+  assign pick = blank
+  assign first_square = blank
+  for m in product.media
+    if m.media_type != 'image'
+      continue
+    endif
+    if m.preview_image.width == m.preview_image.height
+      if first_square == blank
+        assign first_square = m
+      endif
+      assign fname = m.preview_image.src | split: '?' | first | downcase
+      if fname contains '-01.'
+        assign pick = m
+        break
+      endif
+    endif
+  endfor
+  if pick == blank
+    assign pick = first_square
+  endif
+  assign load = 'lazy'
+  if eager
+    assign load = 'eager'
+  endif
+-%}
+{%- if pick != blank -%}
+  <div class="ph pic pack">
+    {{- pick.preview_image | image_url: width: 900 | image_tag: alt: alt, loading: load, sizes: sizes, widths: '300, 450, 600, 900' -}}
+  </div>
+{%- elsif product.featured_media -%}
+  {%- render 'echo-pic', image: product.featured_media.preview_image, alt: alt, eager: eager, sizes: sizes -%}
+{%- endif -%}

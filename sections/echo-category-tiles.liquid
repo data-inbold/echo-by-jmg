@@ -1,7 +1,7 @@
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap stack" style="gap:20px">
     {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
-    <div class="grid g4">
+    <div class="grid g4 tiles">
       {%- for b in section.blocks -%}
         {%- liquid
           assign col = b.settings.collection
@@ -47,7 +47,7 @@
           endfor
         -%}
         <a class="card" href="{{ curl }}" {{ b.shopify_attributes }}>
-          {%- render 'echo-pic', image: b.settings.image, asset: b.settings.photo, alt: nm, ar: '1/1', label: nm, sizes: '(min-width: 1240px) 300px, 50vw' -%}
+          {%- render 'echo-pic', image: b.settings.image, asset: b.settings.photo, alt: nm, ar: section.settings.ar, label: nm, sizes: '(min-width: 1240px) 300px, 50vw' -%}
           <div class="meta"><span class="name">{{ nm }}</span>{% if minp > 0 and minp < 999999999 %}<span class="muted">{% if section.settings.show_count and designs > 0 %}{{ designs }} {% if designs == 1 %}design{% else %}designs{% endif %} · {% endif %}from {% render 'echo-money', price: minp %}</span>{% elsif b.settings.from != blank %}<span class="muted">{{ b.settings.from }}</span>{% endif %}</div>
         </a>
       {%- endfor -%}
@@ -61,6 +61,7 @@
     {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "tight"},
     {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by product" },
+    { "type": "select", "id": "ar", "label": "Photo shape", "options": [{"value": "1/1", "label": "Square"}, {"value": "4/5", "label": "Portrait 4:5"}, {"value": "5/7", "label": "Tall 5:7"}], "default": "1/1" },
     { "type": "checkbox", "id": "show_count", "label": "Show number of designs", "default": false, "info": "Adds e.g. \"12 designs ·\" before the price. Colour siblings count as one design." }
   ],
   "blocks": [
@@ -73,7 +74,7 @@
       { "type": "text", "id": "title", "label": "Name", "default": "Blankets" },
       { "type": "text", "id": "from", "label": "Price line (when no collection)", "default": "from DKK 1,300" },
       { "type": "image_picker", "id": "image", "label": "Image" },
-      { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "echo-twister-doe.jpg" }
+      { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-v2-hero.jpg", "label": "New design: yarn cones hero"}, {"value": "echo-v2-process.jpg", "label": "New design: yarn label process"}, {"value": "echo-v2-tile-blankets.jpg", "label": "New design: blanket on sofa"}, {"value": "echo-v2-tile-cushions.jpg", "label": "New design: cushion on sofa"}, {"value": "echo-v2-tile-bags.jpg", "label": "New design: bag on side table"}, {"value": "echo-v2-tile-accessories.jpg", "label": "New design: beanie, portrait"}, {"value": "echo-v2-story.jpg", "label": "New design: Ming at the factory (b/w)"}, {"value": "echo-v2-review-1.jpg", "label": "New design: customer, blue blanket"}, {"value": "echo-v2-review-2.jpg", "label": "New design: customer, grey blanket"}, {"value": "echo-v2-gift.jpg", "label": "New design: gift box with yarn"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "echo-twister-doe.jpg" }
     ] }
   ],
   "presets": [{ "name": "Shop by product", "blocks": [{ "type": "tile" }] }]

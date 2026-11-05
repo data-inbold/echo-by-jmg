@@ -1,7 +1,7 @@
 {%- comment -%} "Current editions" style grid. One card per design: colour siblings are grouped. {%- endcomment -%}
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap stack" style="gap:20px">
-    <div class="row" style="justify-content:space-between"><h2 class="h2">{{ section.settings.heading }}</h2>{% if section.settings.link_label != blank %}<a class="link" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'shop-all' %}{% endif %}">{{ section.settings.link_label }}</a>{% endif %}</div>
+    <div class="row{% if section.settings.link_inline %} head-inline{% endif %}" style="{% unless section.settings.link_inline %}justify-content:space-between{% endunless %}"><h2 class="h2">{{ section.settings.heading }}</h2>{% if section.settings.link_label != blank %}<a class="link{% if section.settings.link_inline %} arrow{% endif %}" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'shop-all' %}{% endif %}">{{ section.settings.link_label }}</a>{% endif %}</div>
     <div class="grid g4">
       {%- liquid
         assign n = 0
@@ -39,6 +39,7 @@
     {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
     {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
     { "type": "text", "id": "heading", "label": "Heading", "default": "Current editions" },
+    { "type": "checkbox", "id": "link_inline", "label": "Show the link right next to the heading (with an arrow)", "default": false },
     { "type": "text", "id": "link_label", "label": "Link text", "default": "See all" },
     { "type": "url", "id": "link", "label": "Link" },
     { "type": "product_list", "id": "products", "label": "Pick products", "limit": 24 },

@@ -9,7 +9,7 @@
     {%- if section.settings.heading != blank -%}
       {%- if section.settings.heading_tag -%}<h1 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h1>{%- else -%}<h2 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>{%- endif -%}
     {%- endif -%}
-    {%- if section.settings.quote != blank -%}<p style="font:500 italic 21px/1.5 var(--display);margin:0">{{ section.settings.quote }}</p>{%- endif -%}
+    {%- if section.settings.quote != blank -%}<p class="echo-quote" style="margin:0">{{ section.settings.quote }}</p>{%- endif -%}
     {%- if section.settings.lead != blank -%}<p class="lead" style="margin:0">{{ section.settings.lead }}</p>{%- endif -%}
     {%- if section.settings.chips != blank -%}
       <div class="row" style="gap:8px">
@@ -52,6 +52,7 @@
 <style>
   .echo-points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--line,rgba(0,0,0,.15));padding-top:14px}
   .echo-points b{display:block;font-size:14px;margin-bottom:4px}.echo-points p{margin:0;font-size:13px;line-height:1.5}
+  .echo-quote{font:500 italic 21px/1.5 var(--display)}
   .echo-statline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);padding:10px 12px;font-size:13px}
   .echo-stat-n{font:600 17px/1 var(--display)}
   .echo-points.years{grid-template-columns:1fr 1fr;gap:20px 16px}.echo-points.years b{font:800 24px/1.1 var(--display);margin-bottom:6px}
@@ -59,7 +60,8 @@
 </style>
 {%- unless section.settings.hide_on_gift and product.gift_card? -%}
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
-  <div class="wrap split{% if section.settings.rev %} rev{% endif %}"{% if section.settings.top %} style="align-items:start"{% endif %}>
+  {%- if section.settings.outer_heading != blank -%}<div class="wrap" style="margin-bottom:28px"><h2 class="h2">{{ section.settings.outer_heading }}</h2></div>{%- endif -%}
+  <div class="wrap split{% if section.settings.rev %} rev{% endif %}{% if section.settings.panel != 'none' %} panel panel-{{ section.settings.panel }}{% if section.settings.media_first %} mf{% endif %}{% endif %}"{% if section.settings.top %} style="align-items:start"{% endif %}>
     {%- if section.settings.media_first -%}{{ media }}{{ text }}{%- else -%}{{ text }}{{ media }}{%- endif -%}
   </div>
 </section>
@@ -86,6 +88,8 @@
     { "type": "textarea", "id": "lead", "label": "Intro text" },
     { "type": "textarea", "id": "caption", "label": "Muted text" },
     { "type": "textarea", "id": "small", "label": "Small text" },
+    { "type": "text", "id": "outer_heading", "label": "Heading above the section", "info": "Shown above the text and photo, outside the panel." },
+    { "type": "select", "id": "panel", "label": "Text panel", "options": [{"value": "none", "label": "None"}, {"value": "blush", "label": "Blush panel"}, {"value": "wine", "label": "Wine panel"}], "default": "none" },
     { "type": "textarea", "id": "chips", "label": "Link chips", "info": "One per line: Label::link. For example: Yarn tracker::/pages/tracker" },
     { "type": "text", "id": "badges", "label": "Certificate badges", "info": "Comma separated: bsci, ocs, rcs" },
     { "type": "select", "id": "points_style", "label": "Point blocks layout", "options": [{"value": "cols3", "label": "Three columns, small titles"}, {"value": "years", "label": "Two columns, large titles (years)"}], "default": "cols3" },
@@ -98,7 +102,7 @@
     { "type": "header", "content": "Media" },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "video", "id": "video", "label": "Video (plays muted, looped)" },
-    { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
+    { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-v2-hero.jpg", "label": "New design: yarn cones hero"}, {"value": "echo-v2-process.jpg", "label": "New design: yarn label process"}, {"value": "echo-v2-tile-blankets.jpg", "label": "New design: blanket on sofa"}, {"value": "echo-v2-tile-cushions.jpg", "label": "New design: cushion on sofa"}, {"value": "echo-v2-tile-bags.jpg", "label": "New design: bag on side table"}, {"value": "echo-v2-tile-accessories.jpg", "label": "New design: beanie, portrait"}, {"value": "echo-v2-story.jpg", "label": "New design: Ming at the factory (b/w)"}, {"value": "echo-v2-review-1.jpg", "label": "New design: customer, blue blanket"}, {"value": "echo-v2-review-2.jpg", "label": "New design: customer, grey blanket"}, {"value": "echo-v2-gift.jpg", "label": "New design: gift box with yarn"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
     { "type": "text", "id": "alt", "label": "Image description" },
     { "type": "textarea", "id": "label", "label": "Placeholder text (shown until media is added)", "default": "20 sec loop: Ming and the family on the factory floor, faces visible." },
     { "type": "text", "id": "ar", "label": "Media shape (aspect ratio)", "default": "4/3" },

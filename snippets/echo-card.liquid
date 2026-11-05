@@ -35,7 +35,7 @@
 -%}
 <a class="card" href="{{ product.url }}" data-family="{{ fams }}" data-state="{{ state }}" data-price="{{ product.price }}" data-handle="{{ product.handle }}" data-group="{{ grp }}"{% if state == 'sold' %} style="opacity:.6"{% endif %}>
   {%- if product.featured_media -%}
-    {%- render 'echo-pic', image: product.featured_media.preview_image, alt: alt, eager: eager, sizes: '(min-width: 1240px) 300px, (min-width: 720px) 33vw, 50vw' -%}
+    {%- render 'echo-pack-pic', product: product, alt: alt, eager: eager, sizes: '(min-width: 1240px) 300px, (min-width: 720px) 33vw, 50vw' -%}
   {%- elsif state == 'sold' -%}
     {%- render 'echo-ph', label: 'Edition sold out', tint: i[6] -%}
   {%- else -%}

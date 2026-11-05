@@ -1,0 +1,26 @@
+{%- comment -%} Slowly scrolling line of big words (Collab design: the hashtags). {%- endcomment -%}
+{%- assign words = section.settings.words | split: '|' -%}
+<style>
+  .mq{overflow:hidden;padding-block:{{ section.settings.pad }}px;white-space:nowrap}
+  .mq-track{display:inline-flex;gap:56px;animation:mq-slide {{ section.settings.speed }}s linear infinite;will-change:transform}
+  .mq-track span{font:400 clamp(34px,4.4vw,56px)/1 var(--display);color:var(--sand)}
+  @keyframes mq-slide{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.mq-track{animation:none}}
+</style>
+<section class="mq {{ section.settings.bg }}" aria-label="{{ section.settings.words | escape }}">
+  <div class="mq-track" aria-hidden="true">
+    {%- for r in (1..4) -%}{%- for w in words -%}<span>{{ w | strip }}</span>{%- endfor -%}{%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Scrolling words",
+  "settings": [
+    { "type": "text", "id": "words", "label": "Words (separate with |)", "default": "#Limited Editions | #EchoByJMG | #Rescue The Yarn" },
+    { "type": "range", "id": "speed", "label": "Seconds per loop", "min": 10, "max": 90, "step": 5, "default": 40 },
+    { "type": "range", "id": "pad", "label": "Space above and below", "min": 0, "max": 80, "step": 4, "default": 24, "unit": "px" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "", "label": "Same as page"}, {"value": "alt", "label": "Blush"}], "default": "" }
+  ],
+  "presets": [{ "name": "Scrolling words" }]
+}
+{% endschema %}
