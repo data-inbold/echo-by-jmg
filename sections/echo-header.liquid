@@ -2,6 +2,9 @@
   capture u_home
     render 'echo-url', key: 'home'
   endcapture
+  capture u_shop
+    render 'echo-url', key: 'shop'
+  endcapture
   capture u_all
     render 'echo-url', key: 'shop-all'
   endcapture
@@ -49,7 +52,7 @@
   endcapture
 
   assign shop_cur = false
-  if request.page_type == 'collection' or request.page_type == 'product'
+  if request.page_type == 'collection' or request.page_type == 'product' or request.page_type == 'list-collections'
     assign shop_cur = true
   endif
   assign story_cur = false
@@ -68,9 +71,17 @@
     <button class="burger x" aria-label="Menu" aria-expanded="false" data-act="menu">☰</button>
     <a class="logo" href="{{ u_home }}"{% if section.settings.logo != blank %} style="--logo-h:{{ section.settings.logo_height_mobile }}px;--logo-h-d:{{ section.settings.logo_height }}px"{% endif %}>{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 480 | image_tag: alt: shop.name, widths: '160, 240, 360, 480', sizes: '(min-width: 980px) 160px, 100px' }}{% else %}{{ section.settings.logo_text | default: shop.name }}{% endif %}</a>
     <nav class="main" aria-label="Main">
-      <button data-act="mega" aria-expanded="false"{% if shop_cur %} aria-current="page"{% endif %}>Shop ▾</button>
+      {%- if section.settings.show_dropdowns -%}
+        <button data-act="mega" aria-expanded="false"{% if shop_cur %} aria-current="page"{% endif %}>Shop ▾</button>
+      {%- else -%}
+        <a href="{{ u_shop }}"{% if shop_cur %} aria-current="page"{% endif %}>Shop</a>
+      {%- endif -%}
       <a href="{{ u_gifts }}"{% if template.suffix == 'gifts' %} aria-current="page"{% endif %}>Gifts</a>
-      <button data-act="story" aria-expanded="false"{% if story_cur %} aria-current="page"{% endif %}>Our Story ▾</button>
+      {%- if section.settings.show_dropdowns -%}
+        <button data-act="story" aria-expanded="false"{% if story_cur %} aria-current="page"{% endif %}>Our Story ▾</button>
+      {%- else -%}
+        <a href="{{ u_story }}"{% if story_cur %} aria-current="page"{% endif %}>About us</a>
+      {%- endif -%}
       <a href="{{ u_help }}"{% if template.suffix == 'help' or template.suffix == 'faq' %} aria-current="page"{% endif %}>Help</a>
     </nav>
     <div class="tools">
@@ -87,6 +98,7 @@
     </div>
   </div>
 
+  {%- if section.settings.show_dropdowns -%}
   <div class="mega" data-panel="mega" hidden>
     <div class="wrap shopmega">
       <div class="tiles">
@@ -198,6 +210,8 @@
     </div>
   </div>
 
+  {%- endif -%}
+
   <div class="mobile-menu" data-panel="menu" hidden>
     <div class="wrap">
       <a href="{{ u_all }}"><b>Shop all</b></a>
@@ -232,7 +246,7 @@
         <a href="{{ u_sets }}">Pillow Talk sets</a><a href="{{ u_happy }}">Happy Habitat</a><a href="{{ u_last }}">Last pieces</a><a href="{{ u_gc }}">Gift card</a>
       </div>
       <a href="{{ u_gifts }}">Gifts</a>
-      <a href="{{ u_story }}">Our Story</a>
+      <a href="{{ u_story }}">About us</a>
       <div class="sub"><a href="{{ u_passport }}">The Yarn Passport</a><a href="{{ u_factory }}">Factory and certificates</a><a href="{{ u_tracker }}">Rescued yarn tracker</a><a href="{{ u_journal }}">Journal</a></div>
       <a href="{{ u_help }}">Help</a><a href="{{ u_contact }}">Contact</a><a href="{{ routes.account_url }}">Account</a><a href="{{ u_track }}">Track your order</a><a href="{{ u_returns }}">Returns</a>
       {%- if localization.available_languages.size > 1 -%}
@@ -259,6 +273,7 @@
     { "type": "range", "id": "logo_height", "label": "Logo image height, desktop", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 40 },
     { "type": "range", "id": "logo_height_mobile", "label": "Logo image height, mobile", "min": 16, "max": 48, "step": 2, "unit": "px", "default": 28 },
     { "type": "text", "id": "logo_text", "label": "Text logo", "default": "EchoByJMG" },
+    { "type": "checkbox", "id": "show_dropdowns", "label": "Show dropdown menus (mega menu)", "default": false, "info": "Off: Shop and About us are plain links to their overview pages (wireframe 4 Nov). On: the previous Shop and Our Story dropdowns." },
     { "type": "header", "content": "Shop menu tiles" },
     { "type": "paragraph", "content": "Tiles link to the category collections set in Theme settings › EchoByJMG. Images below override the bundled photos." },
     { "type": "image_picker", "id": "tile_blankets", "label": "Blankets tile image" },
