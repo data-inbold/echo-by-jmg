@@ -18,8 +18,13 @@
   .cl-card{flex:0 0 clamp(248px,25vw,340px);scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
   .cl-frame{position:relative;aspect-ratio:9/16;border-radius:26px;overflow:hidden;background:var(--g,#380F1C);color:#fff;isolation:isolate;cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;box-shadow:0 1px 2px rgba(56,15,28,.12),0 12px 30px -14px rgba(56,15,28,.45)}
   .cl-frame:hover,.cl-frame:focus-visible{transform:translateY(-4px) scale(1.012);box-shadow:0 2px 4px rgba(56,15,28,.12),0 24px 44px -16px rgba(56,15,28,.55)}
-  .cl-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-  .cl-ph{position:absolute;inset:0;z-index:0;background:radial-gradient(120% 70% at 20% 0%,rgba(255,255,255,.22),transparent 60%),linear-gradient(165deg,var(--g,#380F1C),#1d0810)}
+  .cl-media{position:absolute;inset:0;z-index:0;background:center/cover no-repeat;filter:brightness(.52) saturate(.8);transition:filter .5s ease}
+  .cl-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s ease;background:transparent}
+  .cl-frame.on .cl-media,.cl-frame:focus-visible .cl-media{filter:brightness(1.04) saturate(1.05)}
+  .cl-frame.on .cl-media video{opacity:1}
+  @media (hover:hover){.cl-frame:hover .cl-media{filter:brightness(1.04) saturate(1.05)}}
+  @media (hover:none){.cl-media{filter:brightness(.82)}}
+  .cl-ph{position:absolute;inset:0;background:radial-gradient(120% 70% at 20% 0%,rgba(255,255,255,.22),transparent 60%),linear-gradient(165deg,var(--g,#380F1C),#1d0810)}
   .cl-ph span{position:absolute;left:0;right:0;top:36%;text-align:center;font:500 11px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);white-space:pre-line}
   .cl-frame::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 22%,transparent 48%,rgba(0,0,0,.78) 100%);pointer-events:none}
   .cl-top{position:absolute;z-index:2;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;gap:8px}
@@ -71,6 +76,7 @@
             if b.settings.video != blank
               assign mp4 = b.settings.video.sources | where: 'format', 'mp4' | first
               assign vsrc = mp4.url | default: b.settings.video.sources[0].url
+              assign vposter = b.settings.video.preview_image | image_url: width: 720
             elsif b.settings.file != blank
               assign vsrc = b.settings.file | asset_url
               assign vposter = b.settings.file | replace: '.mp4', '-poster.jpg' | asset_url
@@ -79,7 +85,9 @@
           -%}
           <article class="cl-card" {{ b.shopify_attributes }}>
             <div class="cl-frame" style="--g:{{ grads[gi] }}" data-src="{{ vsrc }}" tabindex="0" role="button" aria-label="Play {{ b.settings.title | escape }}">
-              {%- if b.settings.video != blank -%}{{ b.settings.video | video_tag: image_size: '600x', controls: false, muted: true, loop: true, playsinline: true, preload: 'metadata' }}{%- elsif b.settings.file != blank -%}<video src="{{ vsrc }}" poster="{{ vposter }}" muted loop playsinline preload="metadata"></video>{%- else -%}<div class="cl-ph"><span>{{ b.settings.placeholder }}</span></div>{%- endif -%}
+              <div class="cl-media"{% if vposter != blank %} style="background-image:url('{{ vposter }}')"{% endif %}>
+                {%- if b.settings.video != blank -%}{{ b.settings.video | video_tag: image_size: '600x', controls: false, muted: true, loop: true, playsinline: true, preload: 'none' }}{%- elsif b.settings.file != blank -%}<video src="{{ vsrc }}" muted loop playsinline preload="none"></video>{%- else -%}<div class="cl-ph"><span>{{ b.settings.placeholder }}</span></div>{%- endif -%}
+              </div>
               <div class="cl-top"><span class="cl-pill"><i></i>REC{% if b.settings.time != blank %} · {{ b.settings.time }}{% endif %}</span>{% if b.settings.duration != blank %}<span class="cl-pill">{{ b.settings.duration }}</span>{% endif %}</div>
               <span class="cl-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
               <div class="cl-cap"><strong>{{ b.settings.title }}</strong><span>{{ b.settings.text }}</span>{% if b.settings.by != blank %}<small>{{ b.settings.by }}</small>{% endif %}</div>
@@ -128,9 +136,9 @@
     var dlg = root.querySelector('[data-dlg]'), dv = dlg ? dlg.querySelector('video') : null;
     root.querySelectorAll('.cl-frame').forEach(function (f) {
       var v = f.querySelector('video');
-      if (v && canHover) {
-        f.addEventListener('mouseenter', function () { v.play().catch(function () {}); });
-        f.addEventListener('mouseleave', function () { v.pause(); v.currentTime = 0; });
+      if (canHover) {
+        f.addEventListener('mouseenter', function () { f.classList.add('on'); if (v) { v.play().catch(function () {}); } });
+        f.addEventListener('mouseleave', function () { f.classList.remove('on'); if (v) { v.pause(); v.currentTime = 0; } });
       }
       function open() {
         var src = f.getAttribute('data-src');
