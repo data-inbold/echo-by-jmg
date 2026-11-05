@@ -1,0 +1,80 @@
+{%- capture echo_out -%}
+{%- comment -%}
+  Dark band with the headline numbers and the latest batches. Summary of the Rescued yarn tracker, used on About us.
+  {kg} and {batches} in a number are counted from the Yarn batch list (same as the Numbers section).
+{%- endcomment -%}
+{%- capture tot -%}{%- render 'echo-batch-totals' -%}{%- endcapture -%}
+{%- assign totp = tot | strip | split: '|' -%}
+{%- liquid
+  assign tok_kg = '{' | append: 'kg' | append: '}'
+  assign tok_ed = '{' | append: 'batches' | append: '}'
+  assign kg_out = totp[0] | default: ''
+  assign ed_out = totp[1] | default: ''
+  assign stats = section.blocks | where: 'type', 'stat'
+  assign batches = section.blocks | where: 'type', 'batch'
+-%}
+<style>
+  .echo-tband-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .echo-tband-log{border-top:1px solid #6A645C}
+  .echo-tband-log .r{display:grid;grid-template-columns:90px 1fr 70px 90px;gap:12px;padding:12px 0;border-bottom:1px solid #3F3B36;font-size:14px;align-items:center}
+  .echo-tband-log .r .id{font:500 12px/1 var(--mono);color:#CFC9BF}
+  .echo-tband-log .r .kg,.echo-tband-log .r .dt{text-align:right}
+  @media (max-width:749px){.echo-tband-log .r{grid-template-columns:70px 1fr 56px;}.echo-tband-log .r .dt{display:none}}
+</style>
+<section class="section {{ section.settings.spacing }} dark">
+  <div class="wrap stack" style="gap:24px">
+    <div class="echo-tband-head">
+      <div class="stack" style="gap:8px">
+        {%- if section.settings.eyebrow != blank -%}<span class="mono">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="h2" style="max-width:16ch">{{ section.settings.heading }}</h2>{%- endif -%}
+      </div>
+      {%- if section.settings.btn_label != blank -%}<a class="btn" style="background:#fff;color:var(--ink)" href="{{ section.settings.btn_link | default: 'echo:tracker' }}">{{ section.settings.btn_label }}</a>{%- endif -%}
+    </div>
+    {%- if stats.size > 0 -%}
+      <div class="stats">
+        {%- for b in stats -%}
+          {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out -%}
+          <div class="stat" {{ b.shopify_attributes }}><div class="n">{{ n }}</div><p style="color:#B9B6B0">{{ b.settings.text }}</p></div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- if batches.size > 0 -%}
+      <div>
+        {%- if section.settings.log_label != blank -%}<span class="mono" style="display:block;margin-bottom:10px">{{ section.settings.log_label }}</span>{%- endif -%}
+        <div class="echo-tband-log">
+          {%- for b in batches -%}
+            <div class="r" {{ b.shopify_attributes }}><span class="id">{{ b.settings.id }}</span><span>{{ b.settings.fibre }}</span><span class="kg">{{ b.settings.kg }}</span><span class="dt">{{ b.settings.date }}</span></div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Tracker band (dark)",
+  "settings": [
+    { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "03 · Rescued yarn tracker" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Every batch we have saved, in the open" },
+    { "type": "text", "id": "btn_label", "label": "Button text", "default": "Open the tracker" },
+    { "type": "text", "id": "btn_link", "label": "Button link", "default": "echo:tracker" },
+    { "type": "text", "id": "log_label", "label": "Label above the batches", "default": "Latest batches" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Number", "settings": [
+      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, counted from the Yarn batch list." },
+      { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued" }
+    ] },
+    { "type": "batch", "name": "Batch", "settings": [
+      { "type": "text", "id": "id", "label": "Batch ID", "default": "HV-2417" },
+      { "type": "text", "id": "fibre", "label": "Fibre", "default": "80% lambswool, 20% nylon" },
+      { "type": "text", "id": "kg", "label": "Weight", "default": "14 kg" },
+      { "type": "text", "id": "date", "label": "Month", "default": "Sep 2026" }
+    ] }
+  ],
+  "presets": [{ "name": "Tracker band (dark)" }]
+}
+{% endschema %}

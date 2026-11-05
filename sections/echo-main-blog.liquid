@@ -1,8 +1,13 @@
 {%- capture echo_out -%}
+{%- assign part = section.settings.part | default: 'all' -%}
+{%- if part == 'all' or part == 'head' -%}
 {%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
-{%- assign cl = 'Home::' | append: u_home | append: '||' | append: blog.title -%}
+{%- capture u_story -%}{%- render 'echo-url', key: 'story' -%}{%- endcapture -%}
+{%- assign cl = 'Home::' | append: u_home | append: '||About us::' | append: u_story | append: '||' | append: blog.title -%}
 {%- render 'echo-crumbs', list: cl -%}
 <section class="section tight"><div class="wrap stack" style="gap:14px"><h1 class="h1">{{ blog.title }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p></div></section>
+{%- endif -%}
+{%- if part == 'all' or part == 'list' -%}
 <section class="section tight">
   {%- paginate blog.articles by 24 -%}
   <div class="wrap grid g3">
@@ -23,12 +28,14 @@
   {%- if paginate.pages > 1 -%}<nav class="pagination wrap">{{ paginate | default_pagination }}</nav>{%- endif -%}
   {%- endpaginate -%}
 </section>
+{%- endif -%}
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
 {% schema %}
 {
   "name": "Journal",
   "settings": [
+    { "type": "select", "id": "part", "label": "Show", "options": [{"value": "all", "label": "Heading and cards"}, {"value": "head", "label": "Heading only (put the cards in a second Journal section below)"}, {"value": "list", "label": "Cards only"}], "default": "all" },
     { "type": "textarea", "id": "lead", "label": "Intro", "default": "Guides to choosing and caring for knitwear, and short stories from our factory." },
     { "type": "text", "id": "default_kind", "label": "Label when an article has no tag", "default": "Guide", "info": "The first tag of an article is shown as its label (Guide, From the factory…)." }
   ],
