@@ -4,7 +4,7 @@
     "crumbs": {
       "type": "echo-breadcrumbs",
       "settings": {
-        "p1_label": "Our Story",
+        "p1_label": "About us",
         "p1_link": "echo:story",
         "current": "Factory and certificates"
       }

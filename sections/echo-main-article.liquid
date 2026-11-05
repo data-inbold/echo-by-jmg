@@ -1,5 +1,6 @@
 {%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
-{%- assign cl = 'Home::' | append: u_home | append: '||' | append: blog.title | append: '::' | append: blog.url | append: '||' | append: article.title -%}
+{%- capture u_story -%}{%- render 'echo-url', key: 'story' -%}{%- endcapture -%}
+{%- assign cl = 'Home::' | append: u_home | append: '||About us::' | append: u_story | append: '||' | append: blog.title | append: '::' | append: blog.url | append: '||' | append: article.title -%}
 {%- render 'echo-crumbs', list: cl -%}
 {%- assign kind = article.tags.first | default: 'Guide' -%}
 <article class="section tight"><div class="wrap stack" style="gap:24px">
