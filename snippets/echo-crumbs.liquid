@@ -1,0 +1,8 @@
+{%- comment -%} Breadcrumbs. Pass pairs as "Label::url||Label::url||Current" {%- endcomment -%}
+{%- assign items = list | split: '||' -%}
+<nav class="crumbs wrap" aria-label="Breadcrumb">
+  {%- for it in items -%}
+    {%- assign pr = it | split: '::' -%}
+    {%- if forloop.last -%}<span>{{ pr[0] }}</span>{%- else -%}<a href="{{ pr[1] }}">{{ pr[0] }}</a> › {% endif -%}
+  {%- endfor -%}
+</nav>

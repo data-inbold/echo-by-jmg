@@ -1,0 +1,26 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-blog",
+      "settings": {},
+      "blocks": {
+        "link_1": {
+          "type": "link",
+          "settings": {
+            "kind": "Rescued yarn tracker",
+            "title": "Rescued yarn tracker",
+            "dek": "250 kg rescued so far, 28 editions released. Updated per batch.",
+            "link": "echo:tracker"
+          }
+        }
+      },
+      "block_order": [
+        "link_1"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

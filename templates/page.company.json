@@ -1,0 +1,71 @@
+{
+  "layout": "echo",
+  "sections": {
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Company details"
+      }
+    },
+    "main": {
+      "type": "echo-company",
+      "settings": {},
+      "blocks": {
+        "fact_1": {
+          "type": "fact",
+          "settings": {
+            "label": "Seller",
+            "value": "JM Group Limited"
+          }
+        },
+        "fact_2": {
+          "type": "fact",
+          "settings": {
+            "label": "Registered address",
+            "value": "Suite F, 4th Floor, Yip Cheung Centre, 10 Fung Yip Street, Chai Wan, Hong Kong"
+          }
+        },
+        "fact_3": {
+          "type": "fact",
+          "settings": {
+            "label": "Company registration no.",
+            "value": "[No.]"
+          }
+        },
+        "fact_4": {
+          "type": "fact",
+          "settings": {
+            "label": "VAT registration",
+            "value": "[Danish or EU VAT number]"
+          }
+        },
+        "fact_5": {
+          "type": "fact",
+          "settings": {
+            "label": "Contact",
+            "value": "hello@echobyjmg.com · +852 3500 3911"
+          }
+        },
+        "fact_6": {
+          "type": "fact",
+          "settings": {
+            "label": "Warehouse and returns in Denmark",
+            "value": "Parcel Feeder, Brøndby, [street address]"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "fact_5",
+        "fact_6"
+      ]
+    }
+  },
+  "order": [
+    "crumbs",
+    "main"
+  ]
+}

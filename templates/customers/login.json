@@ -1,0 +1,12 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-login",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

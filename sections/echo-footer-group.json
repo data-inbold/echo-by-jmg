@@ -1,0 +1,8 @@
+{
+  "type": "footer",
+  "name": "EchoByJMG footer",
+  "sections": {
+    "footer": { "type": "echo-footer", "settings": {} }
+  },
+  "order": ["footer"]
+}

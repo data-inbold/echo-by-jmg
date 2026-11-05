@@ -1,0 +1,19 @@
+<section style="position:relative">
+  {%- render 'echo-media', video: section.settings.video, image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.label, h: 'min(62vh,560px)', eager: true -%}
+  <div class="wrap" style="position:relative;margin-top:-140px"><div style="background:#fff;padding:28px;max-width:760px;border:1px solid var(--line)"><span class="mono">{{ section.settings.eyebrow }}</span><h1 class="h2" style="margin-top:10px">{{ section.settings.heading }}</h1></div></div>
+</section>
+{% schema %}
+{
+  "name": "Story hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Our Story" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "We are the family knitter European brands describe but never name. This time we sign our own work." },
+    { "type": "video", "id": "video", "label": "Film loop (plays muted)" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
+    { "type": "text", "id": "alt", "label": "Image description" },
+    { "type": "textarea", "id": "label", "label": "Placeholder text", "default": "FULL-WIDTH FILM STILL OR LOOP: the factory floor, knitting machines running, a family member at work. Sound off, captioned." }
+  ],
+  "presets": [{ "name": "Story hero" }]
+}
+{% endschema %}
