@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-/* Re-import 4 · 5 Nov 2026 */
+/* Re-import 5 · 5 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
@@ -118,8 +118,8 @@
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
-        "photo": "none",
-        "alt": "",
+        "photo": "echo-ming-portrait.jpg",
+        "alt": "Ming at the factory, going through a stack of navy knitted blankets",
         "label": "Portrait: Ming at the factory",
         "ar": "4/5",
         "points_style": "years"
