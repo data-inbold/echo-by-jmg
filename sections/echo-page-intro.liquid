@@ -1,0 +1,40 @@
+{%- comment -%} Page title + intro line. {designs} is replaced by the number of designs in the shop (colour siblings count once). {%- endcomment -%}
+{%- liquid
+  assign lead = section.settings.lead
+  if lead contains '{designs}'
+    assign designs = 0
+    assign seen = ','
+    for p in collections.all.products limit: 250
+      if p.gift_card?
+        continue
+      endif
+      assign hk = ',' | append: p.handle | append: ','
+      unless seen contains hk
+        assign designs = designs | plus: 1
+        for sib in p.metafields.custom.linked_products.value
+          assign seen = seen | append: sib.handle | append: ','
+        endfor
+        assign seen = seen | append: p.handle | append: ','
+      endunless
+    endfor
+    assign lead = lead | replace: '{designs}', designs
+  endif
+  assign title = section.settings.heading | default: page_title
+-%}
+<section class="section tight {{ section.settings.bg }}">
+  <div class="wrap stack" style="gap:12px;max-width:var(--wrap)">
+    <h1 class="h1">{{ title }}</h1>
+    {%- if lead != blank -%}<p class="lead" style="margin:0;max-width:62ch">{{ lead }}</p>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Page intro",
+  "settings": [
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}], "default": "paper"},
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Empty = the page title." },
+    { "type": "textarea", "id": "lead", "label": "Intro", "info": "{designs} shows the live number of designs." }
+  ],
+  "presets": [{ "name": "Page intro" }]
+}
+{% endschema %}

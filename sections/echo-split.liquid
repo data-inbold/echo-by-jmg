@@ -13,6 +13,25 @@
     {%- if section.settings.lead != blank -%}<p class="lead" style="margin:0">{{ section.settings.lead }}</p>{%- endif -%}
     {%- if section.settings.caption != blank -%}<p class="muted" style="margin:0">{{ section.settings.caption }}</p>{%- endif -%}
     {%- if section.settings.small != blank -%}<p class="muted" style="margin:0;font-size:14px">{{ section.settings.small }}</p>{%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="echo-points">
+        {%- for b in section.blocks -%}
+          <div {{ b.shopify_attributes }}><b>{{ b.settings.title }}</b>{% if b.settings.text != blank %}<p class="muted">{{ b.settings.text }}</p>{% endif %}</div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- if section.settings.stat_text != blank -%}
+      {%- liquid
+        capture bt
+          render 'echo-batch-totals'
+        endcapture
+        assign bp = bt | strip | split: '|'
+        assign kg_html = '<b class="echo-stat-n">' | append: bp[0] | append: '</b>'
+        assign n_html = '<b class="echo-stat-n">' | append: bp[1] | append: '</b>'
+        assign stat = section.settings.stat_text | replace: '{kg}', kg_html | replace: '{batches}', n_html
+      -%}
+      <div class="echo-statline"><span>{{ stat }}</span>{% if section.settings.stat_link_label != blank %}<a class="link" href="{{ section.settings.stat_link | default: '#' }}">{{ section.settings.stat_link_label }}</a>{% endif %}</div>
+    {%- endif -%}
     {%- if section.settings.btn1_label != blank or section.settings.btn2_label != blank -%}
       <div{% if section.settings.btn1_label != blank and section.settings.btn2_label != blank %} class="row"{% endif %}>
         {%- if section.settings.btn1_label != blank -%}<a class="btn{% if section.settings.btn1_ghost %} ghost{% endif %}" href="{{ section.settings.btn1_link }}">{{ section.settings.btn1_label }}</a>{%- endif -%}
@@ -21,6 +40,13 @@
     {%- endif -%}
   </div>
 {%- endcapture -%}
+<style>
+  .echo-points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--line,rgba(0,0,0,.15));padding-top:14px}
+  .echo-points b{display:block;font-size:14px;margin-bottom:4px}.echo-points p{margin:0;font-size:13px;line-height:1.5}
+  .echo-statline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);padding:10px 12px;font-size:13px}
+  .echo-stat-n{font:600 17px/1 var(--display)}
+  @media (max-width:749px){.echo-points{grid-template-columns:1fr}}
+</style>
 {%- unless section.settings.hide_on_gift and product.gift_card? -%}
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap split{% if section.settings.rev %} rev{% endif %}"{% if section.settings.top %} style="align-items:start"{% endif %}>
@@ -62,7 +88,17 @@
     { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
     { "type": "text", "id": "alt", "label": "Image description" },
     { "type": "textarea", "id": "label", "label": "Placeholder text (shown until media is added)", "default": "20 sec loop: Ming and the family on the factory floor, faces visible." },
-    { "type": "text", "id": "ar", "label": "Media shape (aspect ratio)", "default": "4/3" }
+    { "type": "text", "id": "ar", "label": "Media shape (aspect ratio)", "default": "4/3" },
+    { "type": "header", "content": "Yarn stat line" },
+    { "type": "text", "id": "stat_text", "label": "Stat text", "info": "Shown above the buttons. {kg} and {batches} are filled from the Yarn batch list. Empty = hidden." },
+    { "type": "text", "id": "stat_link_label", "label": "Stat link label" },
+    { "type": "url", "id": "stat_link", "label": "Stat link" }
+  ],
+  "blocks": [
+    { "type": "point", "name": "Point", "limit": 3, "settings": [
+      { "type": "text", "id": "title", "label": "Title" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ] }
   ],
   "presets": [{ "name": "Text and media" }]
 }

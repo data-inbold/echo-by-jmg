@@ -1,12 +1,225 @@
 {
   "layout": "echo",
   "sections": {
-    "main": {
-      "type": "echo-list-collections",
-      "settings": {}
+    "crumbs": {
+      "type": "echo-breadcrumbs",
+      "settings": {
+        "current": "Shop"
+      }
+    },
+    "intro": {
+      "type": "echo-page-intro",
+      "settings": {
+        "bg": "paper",
+        "heading": "Shop",
+        "lead": "Blankets, cushion covers, bags and accessories, knitted from rescued premium yarn in numbered editions. {designs} designs right now."
+      }
+    },
+    "tiles": {
+      "type": "echo-category-tiles",
+      "settings": {
+        "spacing": "tight",
+        "bg": "paper",
+        "heading": "",
+        "show_count": true
+      },
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "cat": "blankets",
+            "title": "Blankets",
+            "from": "",
+            "photo": "echo-twister-outdoor.jpg"
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "cat": "cushions",
+            "title": "Cushion covers",
+            "from": "",
+            "photo": "echo-cushion-brown.jpg"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "cat": "bags",
+            "title": "Bags",
+            "from": "",
+            "photo": "echo-bag-cable.jpg"
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "cat": "accessories",
+            "title": "Accessories",
+            "from": "",
+            "photo": "echo-acc-scarf.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4"
+      ]
+    },
+    "leftover": {
+      "type": "echo-split",
+      "settings": {
+        "spacing": "normal",
+        "bg": "alt",
+        "media_first": true,
+        "rev": false,
+        "top": false,
+        "gap": 14,
+        "eyebrow": "Leftover yarn",
+        "heading": "Every piece starts as yarn fashion left behind",
+        "heading_tag": false,
+        "heading_size": "h2",
+        "lead": "When a fashion production run ends, good yarn is left on the cones in our factory. It was spun for luxury and high-street knitwear and never used. We knit it into blankets, cushion covers and bags, in editions as large as the yarn allows.",
+        "stat_text": "{kg} rescued in {batches} batches so far",
+        "stat_link_label": "See every batch",
+        "stat_link": "/pages/rescued-yarn-tracker",
+        "btn1_label": "What is leftover yarn?",
+        "btn1_link": "/pages/our-story",
+        "btn1_ghost": true,
+        "btn2_label": "The Yarn Passport",
+        "btn2_link": "/pages/yarn-passport",
+        "btn2_ghost": true,
+        "photo": "none",
+        "alt": "Cones of leftover yarn on the factory shelf",
+        "label": "Photo: cones of leftover yarn on the factory shelf, batch labels visible",
+        "ar": "1/1"
+      },
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "title": "Never worn",
+            "text": "Unused yarn, not recycled clothing."
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "title": "Same quality",
+            "text": "The yarn fashion houses knit with."
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "title": "Limited by the yarn",
+            "text": "When the batch is gone, so is the colour."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    },
+    "edits": {
+      "type": "echo-link-cards",
+      "settings": {
+        "bg": "band",
+        "heading": "Edits"
+      },
+      "blocks": {
+        "e1": {
+          "type": "card",
+          "settings": {
+            "title": "Open editions",
+            "text": "Everything you can still buy, last pieces first",
+            "key": "open",
+            "link": ""
+          }
+        },
+        "e2": {
+          "type": "card",
+          "settings": {
+            "title": "Last pieces",
+            "text": "Editions with fewer than 5 left",
+            "key": "last-pieces",
+            "link": ""
+          }
+        },
+        "e3": {
+          "type": "card",
+          "settings": {
+            "title": "Pillow Talk sets",
+            "text": "Blanket and cushion cover from one batch",
+            "key": "sets",
+            "link": ""
+          }
+        },
+        "e4": {
+          "type": "card",
+          "settings": {
+            "title": "Happy Habitat",
+            "text": "Playful pieces for kids' rooms",
+            "key": "happy-habitat",
+            "link": ""
+          }
+        },
+        "e5": {
+          "type": "card",
+          "settings": {
+            "title": "Gift card",
+            "text": "By email, no expiry",
+            "key": "gift-card",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5"
+      ]
+    },
+    "editions": {
+      "type": "echo-product-grid",
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "Current editions",
+        "link_label": "Shop all",
+        "link": "/collections/all",
+        "products": [
+          "hills-valleys-throw",
+          "twister-rope-blanket-doe",
+          "hills-valleys-cushion-cover",
+          "cable-rope-knitted-tote",
+          "carousel-stripes-knitted-throw-violet-blue",
+          "puff-friends-cushion-cover",
+          "joyful-pompom-beanie-candy-pink",
+          "happy-sunshine-throw-cloud-smoky-mauve"
+        ],
+        "collection": "",
+        "limit": 8,
+        "group": false
+      }
     }
   },
   "order": [
-    "main"
+    "crumbs",
+    "intro",
+    "tiles",
+    "leftover",
+    "edits",
+    "editions"
   ]
 }
