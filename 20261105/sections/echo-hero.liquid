@@ -1,0 +1,79 @@
+{%- capture echo_out -%}
+{%- comment -%} Home hero: rotating category photo with matching Shop button (every 5 s). {%- endcomment -%}
+{%- assign slides = section.blocks | where: 'type', 'slide' -%}
+<section class="section tight" id="hero">
+  <div class="wrap split">
+    <div id="hero-media" class="hero-media">
+      {%- for b in slides -%}
+        {%- liquid
+          capture surl
+            render 'echo-url', key: b.settings.cat
+          endcapture
+          if b.settings.link != blank
+            assign surl = b.settings.link
+          endif
+          assign cta = 'Shop ' | append: b.settings.label | downcase
+        -%}
+        <div data-slide data-url="{{ surl }}" data-cta="{{ cta | escape }}"{% unless forloop.first %} hidden{% endunless %} {{ b.shopify_attributes }}>
+          {%- render 'echo-media', video: b.settings.video, image: b.settings.image, asset: b.settings.photo, alt: b.settings.alt, label: b.settings.alt, ar: '4/3', eager: forloop.first -%}
+          {%- if b.settings.product != blank -%}
+            {%- capture raw -%}{%- render 'echo-pinfo', product: b.settings.product -%}{%- endcapture -%}
+            {%- assign pi = raw | strip | split: '~' -%}
+            <a class="row" href="{{ b.settings.product.url }}" style="justify-content:space-between;font-size:13px;text-decoration:none;margin-top:10px"><span class="muted">Shown: {{ pi[8] }}</span><span class="link">View product</span></a>
+          {%- else -%}
+            <div class="row" style="font-size:13px;margin-top:10px;min-height:22px"><span class="muted">{% if b.settings.shown != blank %}Shown: {{ b.settings.shown }}{% endif %}</span></div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class="stack" style="gap:18px">
+      <h1 class="h1">{{ section.settings.heading }}</h1>
+      <p class="lead" style="margin:0">{{ section.settings.lead }}</p>
+      <div class="row">
+        {%- assign first = slides.first -%}
+        {%- capture furl -%}{%- if first -%}{%- if first.settings.link != blank -%}{{ first.settings.link }}{%- else -%}{%- render 'echo-url', key: first.settings.cat -%}{%- endif -%}{%- else -%}{%- render 'echo-url', key: 'shop-all' -%}{%- endif -%}{%- endcapture -%}
+        <a class="btn" id="hero-cta" href="{{ furl }}">{% if first %}Shop {{ first.settings.label | downcase }}{% else %}Shop all{% endif %}</a>
+        {%- if section.settings.btn2_label != blank -%}<a class="btn ghost" href="{{ section.settings.btn2_link | default: '#how' }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
+      </div>
+      <div class="row" style="gap:6px">
+        {%- assign chips = section.settings.chips | split: '|' -%}
+        {%- for c in chips -%}<span class="chip">{{ c | strip }}</span>{%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Hero (rotating)",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Where luxury material finds a second life." },
+    { "type": "textarea", "id": "lead", "label": "Intro", "default": "We rescue leftover yarns from luxury fashion and turn them into limited-edition pieces for your home. Three generations of craft. Nothing wasted." },
+    { "type": "text", "id": "btn2_label", "label": "Second button", "default": "How it works" },
+    { "type": "text", "id": "btn2_link", "label": "Second button link", "default": "#how", "info": "#how scrolls to the How it works section." },
+    { "type": "text", "id": "chips", "label": "Chips (separate with |)", "default": "★ 4.8 · 312 reviews | MobilePay | Free 14-day returns" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Category slide",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Category name (used in button)", "default": "Blankets" },
+        { "type": "select", "id": "cat", "label": "Links to", "options": [
+          { "value": "blankets", "label": "Blankets" }, { "value": "cushions", "label": "Cushion covers" },
+          { "value": "bags", "label": "Bags" }, { "value": "accessories", "label": "Accessories" }, { "value": "shop-all", "label": "Shop all" }
+        ], "default": "blankets" },
+        { "type": "url", "id": "link", "label": "Custom link (optional)" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "video", "id": "video", "label": "Video (optional)" },
+        { "type": "select", "id": "photo", "label": "Bundled photo (used when no image)", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "echo-twister-outdoor.jpg" },
+        { "type": "text", "id": "alt", "label": "Image description", "default": "Twister Rope blanket and cushion cover on an outdoor lounger" },
+        { "type": "product", "id": "product", "label": "Product shown" },
+        { "type": "text", "id": "shown", "label": "Shown text (when no product)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Hero (rotating)" }]
+}
+{% endschema %}

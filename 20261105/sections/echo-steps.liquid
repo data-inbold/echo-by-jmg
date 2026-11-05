@@ -1,0 +1,76 @@
+{%- capture echo_out -%}
+{%- comment -%} Steps / timeline / three-up text. Used for How it works, guides, gift reasons, passport flow, story chapters. {%- endcomment -%}
+<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
+  <div class="wrap stack" style="gap:{{ section.settings.gap }}px{% if section.settings.narrow %};max-width:860px{% endif %}">
+    {%- if section.settings.eyebrow != blank -%}<span class="mono">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.intro != blank -%}<p class="muted" style="margin:0;max-width:62ch">{{ section.settings.intro }}</p>{%- endif -%}
+    {%- case section.settings.layout -%}
+      {%- when 'timeline' -%}
+        <div class="timeline">
+          {%- for b in section.blocks -%}<div {{ b.shopify_attributes }}><b>{{ b.settings.title }}</b>{{ b.settings.text }}</div>{%- endfor -%}
+        </div>
+      {%- when 'cards' -%}
+        <div class="grid g3">
+          {%- for b in section.blocks -%}<div class="stack" style="gap:8px" {{ b.shopify_attributes }}><b class="h3">{{ b.settings.title }}</b><span class="muted">{{ b.settings.text }}</span></div>{%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="steps">
+          {%- for b in section.blocks -%}
+            <div class="step" {{ b.shopify_attributes }}>{% if b.settings.num != blank %}<span class="mono">{{ b.settings.num }}</span>{% endif %}<b>{{ b.settings.title }}</b><span class="muted">{{ b.settings.text }}</span></div>
+          {%- endfor -%}
+        </div>
+    {%- endcase -%}
+    {%- if section.settings.pair1_label != blank or section.settings.pair1_image != blank -%}
+      <div class="grid g2">
+        {%- render 'echo-pic', image: section.settings.pair1_image, alt: section.settings.pair1_label, label: section.settings.pair1_label, ar: '16/9' -%}
+        {%- render 'echo-pic', image: section.settings.pair2_image, alt: section.settings.pair2_label, label: section.settings.pair2_label, ar: '16/9' -%}
+      </div>
+    {%- endif -%}
+    {%- if section.settings.image != blank or section.settings.photo != 'none' -%}
+      {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, ar: section.settings.ar -%}
+    {%- endif -%}
+    {%- if section.settings.link_label != blank -%}
+      <div><a class="link" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a></div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Steps",
+  "settings": [
+    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
+    { "type": "select", "id": "layout", "label": "Layout", "options": [
+      { "value": "steps", "label": "Steps with top rule" }, { "value": "timeline", "label": "Timeline (big years)" }, { "value": "cards", "label": "Three columns with titles" }
+    ], "default": "steps" },
+    { "type": "text", "id": "anchor", "label": "Anchor id (for #links)" },
+    { "type": "text", "id": "eyebrow", "label": "Small label" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How it works" },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "options": [{ "value": "h2", "label": "Large" }, { "value": "h3", "label": "Small" }], "default": "h2" },
+    { "type": "textarea", "id": "intro", "label": "Intro text" },
+    { "type": "range", "id": "gap", "label": "Spacing", "min": 16, "max": 32, "step": 4, "default": 28, "unit": "px" },
+    { "type": "checkbox", "id": "narrow", "label": "Narrow width", "default": false },
+    { "type": "image_picker", "id": "image", "label": "Image below (optional)" },
+    { "type": "select", "id": "photo", "label": "Bundled photo below", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
+    { "type": "text", "id": "alt", "label": "Image description" },
+    { "type": "text", "id": "ar", "label": "Image shape (aspect ratio)", "default": "21/9" },
+    { "type": "image_picker", "id": "pair1_image", "label": "Image pair: left image" },
+    { "type": "text", "id": "pair1_label", "label": "Image pair: left description" },
+    { "type": "image_picker", "id": "pair2_image", "label": "Image pair: right image" },
+    { "type": "text", "id": "pair2_label", "label": "Image pair: right description" },
+    { "type": "text", "id": "link_label", "label": "Link text" },
+    { "type": "text", "id": "link", "label": "Link" }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [
+      { "type": "text", "id": "num", "label": "Number label (e.g. 01)" },
+      { "type": "text", "id": "title", "label": "Title", "default": "1. We rescue the yarn" },
+      { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Unused yarn left after fashion production runs in our own factory. Never worn, never recycled fibre." }
+    ] }
+  ],
+  "presets": [{ "name": "Steps", "blocks": [{ "type": "step" }, { "type": "step" }, { "type": "step" }] }]
+}
+{% endschema %}

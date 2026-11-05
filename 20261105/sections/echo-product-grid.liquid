@@ -1,0 +1,51 @@
+{%- comment -%} "Current editions" style grid. One card per design: colour siblings are grouped. {%- endcomment -%}
+<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
+  <div class="wrap stack" style="gap:20px">
+    <div class="row" style="justify-content:space-between"><h2 class="h2">{{ section.settings.heading }}</h2>{% if section.settings.link_label != blank %}<a class="link" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'shop-all' %}{% endif %}">{{ section.settings.link_label }}</a>{% endif %}</div>
+    <div class="grid g4">
+      {%- liquid
+        assign n = 0
+        assign seen = ','
+        if section.settings.products != blank
+          assign list = section.settings.products
+        elsif section.settings.collection != blank
+          assign list = section.settings.collection.products
+        else
+          assign list = collections.all.products
+        endif
+        for p in list
+          if n >= section.settings.limit
+            break
+          endif
+          assign hk = ',' | append: p.handle | append: ','
+          if seen contains hk and section.settings.group
+            continue
+          endif
+          for s in p.metafields.custom.linked_products.value
+            assign seen = seen | append: s.handle | append: ','
+          endfor
+          assign seen = seen | append: p.handle | append: ','
+          render 'echo-card', product: p
+          assign n = n | plus: 1
+        endfor
+      -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Product grid",
+  "settings": [
+    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Current editions" },
+    { "type": "text", "id": "link_label", "label": "Link text", "default": "See all" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "product_list", "id": "products", "label": "Pick products", "limit": 24 },
+    { "type": "collection", "id": "collection", "label": "Or a collection" },
+    { "type": "range", "id": "limit", "label": "Max products", "min": 2, "max": 24, "step": 1, "default": 8 },
+    { "type": "checkbox", "id": "group", "label": "Show one card per design (group colours)", "default": true }
+  ],
+  "presets": [{ "name": "Product grid" }]
+}
+{% endschema %}

@@ -1,0 +1,180 @@
+{%- comment -%}
+  Product facts used across the theme. Capture the output and split on "~":
+  0 cat key (blankets|cushions|bags|accessories|gift)  1 singular name  2 edition size
+  3 pieces left  4 state (open|last|sold)  5 colour label  6 colour hex  7 colour family
+  8 display name (title without the colour suffix)  9 batch id  10 batch kg  11 colour key
+  12 yarn origin text (may be empty)  13 batch fibre (may be empty)
+
+  Batch sources, first match wins: product tags (batch:, batch-kg:, edition:) and product
+  metafields (custom.batch_id, custom.batch_kg, custom.edition_size, custom.yarn_origin),
+  then the "Yarn batch" metaobject list (Content > Metaobjects) that includes this product,
+  then the "Batch per product" list in Theme settings > EchoByJMG.
+{%- endcomment -%}
+{%- liquid
+  capture cat
+    render 'echo-cat', product: product
+  endcapture
+  assign cat = cat | strip
+  case cat
+    when 'blankets'
+      assign single = 'blanket'
+      assign ed = settings.echo_ed_blankets | default: 12
+    when 'cushions'
+      assign single = 'cushion cover'
+      assign ed = settings.echo_ed_cushions | default: 20
+    when 'bags'
+      assign single = 'bag'
+      assign ed = settings.echo_ed_bags | default: 20
+    when 'gift'
+      assign single = 'gift card'
+      assign ed = 0
+    else
+      assign single = 'accessory'
+      assign ed = settings.echo_ed_accessories | default: 25
+  endcase
+
+  assign ckey = ''
+  assign fam = ''
+  assign batch = product.metafields.custom.batch_id.value | default: ''
+  assign kg = product.metafields.custom.batch_kg.value | default: ''
+  assign origin = product.metafields.custom.yarn_origin.value | default: ''
+  assign bfibre = ''
+  assign ed_set = false
+  if product.metafields.custom.edition_size.value
+    assign ed = product.metafields.custom.edition_size.value
+    assign ed_set = true
+  endif
+  for tag in product.tags
+    assign tl = tag | downcase
+    if tl contains 'colour:' or tl contains 'color:'
+      assign ckey = tag | split: ':' | last | strip | handle
+    elsif tl contains 'family:'
+      assign fam = tag | split: ':' | last | strip | downcase
+    elsif tl contains 'edition:'
+      assign ed = tag | split: ':' | last | strip | plus: 0
+      assign ed_set = true
+    elsif tl contains 'batch-kg:'
+      assign kg = tag | split: ':' | last | strip
+    elsif tl contains 'batch:'
+      assign batch = tag | split: ':' | last | strip
+    endif
+  endfor
+  if batch == '' and product.gift_card? == false
+    for yb in shop.metaobjects.yarn_batch.values
+      assign hit = false
+      for yp in yb.products.value
+        if yp.id == product.id
+          assign hit = true
+          break
+        endif
+      endfor
+      if hit
+        assign batch = yb.batch_id.value | default: ''
+        if kg == '' and yb.kg.value != blank
+          assign kgr = yb.kg.value | round
+          if kgr == yb.kg.value
+            assign kg = kgr
+          else
+            assign kg = yb.kg.value
+          endif
+        endif
+        if origin == ''
+          assign origin = yb.origin.value | default: ''
+        endif
+        assign bfibre = yb.fibre.value | default: ''
+        if ed_set == false and yb.edition_size.value
+          assign ed = yb.edition_size.value
+        endif
+        break
+      endif
+    endfor
+  endif
+  if batch == '' and settings.echo_batches != blank
+    assign hk = ',' | append: product.handle | append: ','
+    assign blines = settings.echo_batches | newline_to_br | split: '<br />'
+    for bl in blines
+      assign bp = bl | split: '|'
+      if bp.size >= 3
+        assign hs = bp[2] | remove: ' ' | strip | prepend: ',' | append: ','
+        if hs contains hk
+          assign batch = bp[0] | strip
+          if kg == ''
+            assign kg = bp[1] | strip
+          endif
+          break
+        endif
+      endif
+    endfor
+  endif
+  if ckey == ''
+    assign v1 = product.variants.first.option1 | default: ''
+    if v1 != 'Default Title' and product.gift_card? == false
+      assign ckey = v1 | handle
+    endif
+  endif
+  if ckey == ''
+    assign cp = product.metafields.shopify['color-pattern'].value.first.label | default: ''
+    assign ckey = cp | handle
+  endif
+  capture col
+    render 'echo-colour', key: ckey
+  endcapture
+  assign colp = col | strip | split: '|'
+  assign hex = colp[0]
+  if fam == ''
+    assign fam = colp[1]
+  endif
+  assign label = colp[2] | default: ''
+
+  assign name = product.title
+  if product.title contains '-'
+    assign segs = product.title | split: '-'
+    assign suffix = '-' | append: segs.last
+    assign name = product.title | remove_last: suffix
+    if name contains '-'
+      assign segs2 = name | split: '-'
+      assign k2 = segs2.last | handle
+      capture c2
+        render 'echo-colour', key: k2
+      endcapture
+      unless c2 contains '|?'
+        assign suffix2 = '-' | append: segs2.last
+        assign name = name | remove_last: suffix2
+      endunless
+    endif
+  endif
+
+  assign left = 0
+  assign tracked = false
+  for v in product.variants
+    if v.inventory_management == 'shopify'
+      assign tracked = true
+      if v.inventory_quantity > 0
+        assign left = left | plus: v.inventory_quantity
+      endif
+    endif
+  endfor
+  if tracked == false
+    assign left = ed
+  endif
+  if left > ed and ed > 0
+    assign left = ed
+  endif
+  assign thr = settings.echo_last_threshold | default: 4
+  assign state = 'open'
+  if product.available == false
+    assign state = 'sold'
+    assign left = 0
+  elsif tracked and left <= thr
+    assign state = 'last'
+  endif
+  assign origin_clean = origin | replace: '~', '-' | strip_newlines
+  assign fibre_clean = bfibre | replace: '~', '-' | newline_to_br | replace: '<br />', ', '
+  if batch == ''
+    assign batch = '[ID]'
+  endif
+  if kg == ''
+    assign kg = '[x]'
+  endif
+  echo cat | append: '~' | append: single | append: '~' | append: ed | append: '~' | append: left | append: '~' | append: state | append: '~' | append: label | append: '~' | append: hex | append: '~' | append: fam | append: '~' | append: name | append: '~' | append: batch | append: '~' | append: kg | append: '~' | append: ckey | append: '~' | append: origin_clean | append: '~' | append: fibre_clean
+-%}

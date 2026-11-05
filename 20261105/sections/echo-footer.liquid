@@ -1,0 +1,106 @@
+{%- liquid
+  capture u_gifts
+    render 'echo-url', key: 'gifts'
+  endcapture
+  capture u_gc
+    render 'echo-url', key: 'gift-card'
+  endcapture
+  capture u_factory
+    render 'echo-url', key: 'factory'
+  endcapture
+-%}
+<footer class="site" id="ftr">
+  <div class="wrap fcols">
+    <div><h4>Shop</h4><ul>
+      {%- assign cat_keys = 'blankets,cushions,bags,accessories' | split: ',' -%}
+      {%- for key in cat_keys -%}
+        {%- liquid
+          case key
+            when 'blankets'
+              assign col = settings.echo_col_blankets
+              assign nm = 'Blankets'
+            when 'cushions'
+              assign col = settings.echo_col_cushions
+              assign nm = 'Cushion covers'
+            when 'bags'
+              assign col = settings.echo_col_bags
+              assign nm = 'Bags'
+            else
+              assign col = settings.echo_col_accessories
+              assign nm = 'Accessories'
+          endcase
+          capture curl
+            render 'echo-url', key: key
+          endcapture
+          if col != blank
+            assign curl = col.url
+            assign nm = col.title
+          endif
+        -%}
+        <li><a href="{{ curl }}">{{ nm }}</a></li>
+      {%- endfor -%}
+      <li><a href="{{ u_gifts }}">Gifts</a></li><li><a href="{{ u_gc }}">Gift card</a></li>
+    </ul></div>
+    <div><h4>About</h4><ul>
+      <li><a href="{% render 'echo-url', key: 'story' %}">Our Story</a></li>
+      <li><a href="{% render 'echo-url', key: 'passport' %}">The Yarn Passport</a></li>
+      <li><a href="{{ u_factory }}">Factory and certificates</a></li>
+      <li><a href="{% render 'echo-url', key: 'tracker' %}">Rescued yarn tracker</a></li>
+      <li><a href="{% render 'echo-url', key: 'journal' %}">Journal</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="{% render 'echo-url', key: 'help' %}">Questions and answers</a></li>
+      <li><a href="{% render 'echo-url', key: 'track' %}">Track your order</a></li>
+      <li><a href="{% render 'echo-url', key: 'returns' %}">Returns</a></li>
+      <li><a href="{% render 'echo-url', key: 'care' %}">Size and care guide</a></li>
+      <li><a href="{% render 'echo-url', key: 'gc-balance' %}">Gift card balance</a></li>
+      <li><a href="{% render 'echo-url', key: 'corporate' %}">Corporate gifts</a></li>
+      <li><a href="{% render 'echo-url', key: 'contact' %}">Contact</a></li>
+    </ul></div>
+    <div><h4>{{ section.settings.club_heading }}</h4><p style="font-size:14px;margin:0 0 10px">{{ section.settings.club_text }}</p>{% render 'echo-club-form', k: 'f' %}</div>
+  </div>
+  <div class="wrap certrow" style="padding-top:8px;padding-bottom:8px">
+    <a href="{{ u_factory }}" aria-label="BSCI compliance, read more">{% render 'echo-cert-logo', k: 'bsci', h: 44 %}</a>
+    <a href="{{ u_factory }}" aria-label="Organic Content Standard, read more">{% render 'echo-cert-logo', k: 'ocs', h: 44 %}</a>
+    <a href="{{ u_factory }}" aria-label="Recycled Claim Standard, read more">{% render 'echo-cert-logo', k: 'rcs', h: 44 %}</a>
+    <a href="{{ u_factory }}" style="font-size:13px;margin-left:6px">Factory and certificates</a>
+  </div>
+  <div class="wrap legal">
+    <span>{{ section.settings.ships_text }}</span>
+    <span class="payments">
+      {%- assign pay = section.settings.payments | split: ',' -%}
+      {%- for p in pay -%}<span{% if forloop.first %} class="first"{% endif %}>{{ p | strip }}</span>{%- endfor -%}
+    </span>
+    <span>{{ section.settings.legal_text }}</span>
+    <span class="row" style="gap:16px">
+      {%- if section.settings.instagram != blank %}<a href="{{ section.settings.instagram }}" target="_blank" rel="noopener">Instagram</a>{% endif -%}
+      {%- if section.settings.pinterest != blank %}<a href="{{ section.settings.pinterest }}" target="_blank" rel="noopener">Pinterest</a>{% endif -%}
+      {%- if section.settings.facebook != blank %}<a href="{{ section.settings.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif -%}
+      {%- if section.settings.youtube != blank %}<a href="{{ section.settings.youtube }}" target="_blank" rel="noopener">YouTube</a>{% endif -%}
+    </span>
+    <span class="row" style="gap:16px">
+      <a href="{% render 'echo-url', key: 'terms' %}">Terms of sale</a>
+      <a href="{% render 'echo-url', key: 'privacy' %}">Privacy policy</a>
+      <a href="{% render 'echo-url', key: 'cookies' %}">Cookie policy</a>
+      <a href="{% render 'echo-url', key: 'company' %}">Company details</a>
+    </span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer (EchoByJMG)",
+  "settings": [
+    { "type": "text", "id": "club_heading", "label": "Newsletter heading", "default": "The Cozy Club" },
+    { "type": "textarea", "id": "club_text", "label": "Newsletter text", "default": "Keep building your cosy moment with our updates. 10% off your first order as a welcome." },
+    { "type": "text", "id": "ships_text", "label": "Shipping line", "default": "Ships from Parcel Feeder, Brøndby · Free 14-day returns · Support [hours] CET" },
+    { "type": "text", "id": "payments", "label": "Payment methods (comma separated, first is highlighted)", "default": "MobilePay, Visa, Mastercard, Apple Pay, [Klarna]" },
+    { "type": "text", "id": "legal_text", "label": "Legal seller line", "default": "EchoByJMG is owned by JM Group Limited, Hong Kong, the legal seller." },
+    { "type": "header", "content": "Social" },
+    { "type": "text", "id": "instagram", "label": "Instagram URL", "default": "https://instagram.com/echobyjmg_official" },
+    { "type": "text", "id": "pinterest", "label": "Pinterest URL", "default": "https://pinterest.com/echobyjmg" },
+    { "type": "text", "id": "facebook", "label": "Facebook URL", "default": "https://facebook.com/echobyjmgofficial" },
+    { "type": "text", "id": "youtube", "label": "YouTube URL", "default": "https://www.youtube.com/@EchoByJMG" }
+  ]
+}
+{% endschema %}

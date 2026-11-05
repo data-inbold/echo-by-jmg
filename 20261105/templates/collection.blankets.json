@@ -1,0 +1,92 @@
+{
+  "layout": "echo",
+  "sections": {
+    "main": {
+      "type": "echo-main-collection",
+      "settings": {
+        "crumb": "Blankets",
+        "only": "blankets",
+        "h1": "Knitted blankets from rescued luxury yarn",
+        "intro": "Every blanket is knitted from unused yarn left over from fashion production, in our family factory. Timeless, soft and textured, for cosy, conscious living. Each design is a numbered edition of 12 to 25 pieces, sized from 100 × 150 to 120 × 160 cm. Free delivery and free returns within Denmark.",
+        "label": "8 sec clip: blankets being knitted on the machine"
+      }
+    },
+    "guide": {
+      "type": "echo-steps",
+      "settings": {
+        "bg": "alt",
+        "heading": "How to choose the right blanket",
+        "gap": 24,
+        "link_label": "Read the full guide",
+        "link": "echo:journal/how-to-choose-a-knitted-blanket"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Size",
+            "text": "Our blankets run from 100 × 150 cm, good for a lap, a stroller or a cot, to 120 × 160 cm, which covers a sofa seat or the foot of a double bed."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Yarn",
+            "text": "Lambswool blends for warmth and shape. Lambswool and hemp for weight and texture. Organic and recycled cotton for babies, all year use and machine washing."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Care",
+            "text": "Lambswool pieces are hand wash cold and dry flat. Cotton pieces can go in the machine on a cold, gentle cycle."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "questions": {
+      "type": "echo-faq",
+      "settings": {
+        "heading": "Questions"
+      },
+      "blocks": {
+        "q_1": {
+          "type": "q",
+          "settings": {
+            "q": "Does leftover yarn mean lower quality?",
+            "a": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>"
+          }
+        },
+        "q_2": {
+          "type": "q",
+          "settings": {
+            "q": "What does limited edition mean?",
+            "a": "<p>Our pieces are made in small quantities from leftover yarn that exists in limited amounts. Once that yarn is used, the same design or colour may not be repeated.</p>"
+          }
+        },
+        "q_3": {
+          "type": "q",
+          "settings": {
+            "q": "Will items be restocked?",
+            "a": "<p>Some items may return in a new colourway or updated design, but once sold out they are not restocked exactly the same. If a piece speaks to you, it may be best to make it yours while it is available.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q_1",
+        "q_2",
+        "q_3"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "guide",
+    "questions"
+  ]
+}
