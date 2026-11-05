@@ -1,5 +1,6 @@
 {%- capture echo_out -%}
 {%- assign part = section.settings.part | default: 'all' -%}
+{%- paginate blog.articles by 24 -%}
 {%- if part == 'all' or part == 'head' -%}
 {%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
 {%- capture u_story -%}{%- render 'echo-url', key: 'story' -%}{%- endcapture -%}
@@ -9,7 +10,6 @@
 {%- endif -%}
 {%- if part == 'all' or part == 'list' -%}
 <section class="section tight">
-  {%- paginate blog.articles by 24 -%}
   <div class="wrap grid g3">
     {%- for a in blog.articles -%}
       {%- assign kind = a.tags.first | default: section.settings.default_kind -%}
@@ -26,9 +26,9 @@
     {%- endfor -%}
   </div>
   {%- if paginate.pages > 1 -%}<nav class="pagination wrap">{{ paginate | default_pagination }}</nav>{%- endif -%}
-  {%- endpaginate -%}
 </section>
 {%- endif -%}
+{%- endpaginate -%}
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
 {% schema %}
