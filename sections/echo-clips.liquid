@@ -67,15 +67,19 @@
         {%- for b in clips -%}
           {%- liquid
             assign vsrc = ''
+            assign vposter = ''
             if b.settings.video != blank
               assign mp4 = b.settings.video.sources | where: 'format', 'mp4' | first
               assign vsrc = mp4.url | default: b.settings.video.sources[0].url
+            elsif b.settings.file != blank
+              assign vsrc = b.settings.file | asset_url
+              assign vposter = b.settings.file | replace: '.mp4', '-poster.jpg' | asset_url
             endif
             assign gi = forloop.index0 | modulo: 5
           -%}
           <article class="cl-card" {{ b.shopify_attributes }}>
             <div class="cl-frame" style="--g:{{ grads[gi] }}" data-src="{{ vsrc }}" tabindex="0" role="button" aria-label="Play {{ b.settings.title | escape }}">
-              {%- if b.settings.video != blank -%}{{ b.settings.video | video_tag: image_size: '600x', controls: false, muted: true, loop: true, playsinline: true, preload: 'metadata' }}{%- else -%}<div class="cl-ph"><span>{{ b.settings.placeholder }}</span></div>{%- endif -%}
+              {%- if b.settings.video != blank -%}{{ b.settings.video | video_tag: image_size: '600x', controls: false, muted: true, loop: true, playsinline: true, preload: 'metadata' }}{%- elsif b.settings.file != blank -%}<video src="{{ vsrc }}" poster="{{ vposter }}" muted loop playsinline preload="metadata"></video>{%- else -%}<div class="cl-ph"><span>{{ b.settings.placeholder }}</span></div>{%- endif -%}
               <div class="cl-top"><span class="cl-pill"><i></i>REC{% if b.settings.time != blank %} · {{ b.settings.time }}{% endif %}</span>{% if b.settings.duration != blank %}<span class="cl-pill">{{ b.settings.duration }}</span>{% endif %}</div>
               <span class="cl-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
               <div class="cl-cap"><strong>{{ b.settings.title }}</strong><span>{{ b.settings.text }}</span>{% if b.settings.by != blank %}<small>{{ b.settings.by }}</small>{% endif %}</div>
@@ -170,7 +174,8 @@
       { "type": "text", "id": "text", "label": "Text", "default": "The knitting machines warm up before the first shift." },
       { "type": "text", "id": "duration", "label": "Length", "default": "0:14" },
       { "type": "text", "id": "by", "label": "Credit", "default": "Filmed by [name], knitting hall" },
-      { "type": "video", "id": "video", "label": "Clip", "info": "Empty = placeholder" },
+      { "type": "video", "id": "video", "label": "Clip", "info": "Upload the real film here. Empty = the bundled file below, then a placeholder." },
+      { "type": "text", "id": "file", "label": "Bundled video file", "info": "File name in assets (mp4). A poster named like clip-poster.jpg goes with it." },
       { "type": "textarea", "id": "placeholder", "label": "Placeholder text", "default": "Phone clip\nMorning start-up" }
     ] },
     { "type": "card", "name": "Article card", "settings": [

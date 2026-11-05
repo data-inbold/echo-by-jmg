@@ -1,4 +1,4 @@
-/* Re-import 3 · 5 Nov 2026 */
+/* Re-import 4 · 5 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
@@ -25,7 +25,8 @@
             "text": "The knitting machines warm up before the first shift.",
             "duration": "0:14",
             "by": "Filmed by [name], knitting hall",
-            "placeholder": "Phone clip\nMorning start-up"
+            "placeholder": "Phone clip\nMorning start-up",
+            "file": "echo-clip-1.mp4"
           }
         },
         "clip_2": {
@@ -36,7 +37,8 @@
             "text": "Leftover lambswool pulled for batch HV-2417.",
             "duration": "0:21",
             "by": "Filmed by [name], yarn store",
-            "placeholder": "Phone clip\nCones off the shelf"
+            "placeholder": "Phone clip\nCones off the shelf",
+            "file": "echo-clip-2.mp4"
           }
         },
         "clip_3": {
@@ -47,7 +49,8 @@
             "text": "Closing the seams of a cushion cover, stitch by stitch.",
             "duration": "0:18",
             "by": "Filmed by [name], linking table",
-            "placeholder": "Phone clip\nLinking by hand"
+            "placeholder": "Phone clip\nLinking by hand",
+            "file": "echo-clip-3.mp4"
           }
         },
         "clip_4": {
@@ -58,7 +61,8 @@
             "text": "Trimming pompoms for the Joyful beanie.",
             "duration": "0:09",
             "by": "Filmed by [name], finishing",
-            "placeholder": "Phone clip\nPompoms"
+            "placeholder": "Phone clip\nPompoms",
+            "file": "echo-clip-4.mp4"
           }
         },
         "clip_5": {
@@ -69,7 +73,8 @@
             "text": "Every blanket is checked on the light table.",
             "duration": "0:26",
             "by": "Filmed by [name], QC",
-            "placeholder": "Phone clip\nQuality check"
+            "placeholder": "Phone clip\nQuality check",
+            "file": "echo-clip-5.mp4"
           }
         }
       },
