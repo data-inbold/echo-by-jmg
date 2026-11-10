@@ -5,9 +5,14 @@ name: Sync yarn batches
 # SHOPIFY_CLIENT_SECRET of a Dev Dashboard app installed on the store
 # (scopes: read_products, read_metaobjects, write_metaobjects, read_metaobject_definitions).
 
+#
+# The hourly schedule is switched off for now (the app and the shop are in different Shopify
+# organizations, so the client credentials grant is refused). The workflow can still be started
+# by hand from the Actions tab. To turn the schedule back on, add under "on:":
+#   schedule:
+#     - cron: '17 * * * *'
+
 on:
-  schedule:
-    - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
       apply:
