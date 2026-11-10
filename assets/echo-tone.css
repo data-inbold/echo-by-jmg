@@ -93,9 +93,9 @@ header.site :focus-visible{outline-color:var(--olive-2)}
 
 /* how it works: white card, text left and photo right */
 .how-grid{background:#fff;gap:0;align-items:stretch}
-.how-media{order:2}
-.how-media .ph{aspect-ratio:auto!important;height:100%;min-height:320px}
-.how-steps{padding:clamp(24px,4vw,56px);gap:0;justify-content:center}
+.how-grid .how-media{order:2;display:flex;min-height:320px}
+.how-grid .how-media .ph{aspect-ratio:auto!important;flex:1;height:auto;min-height:320px}
+.how-grid .how-steps{padding:clamp(24px,4vw,56px);gap:0;justify-content:center}
 .how-steps li{padding:20px 0;border-bottom:1px solid var(--line)}
 .how-steps li:first-child{padding-top:0}
 .how-steps li:last-child{border-bottom:0}
