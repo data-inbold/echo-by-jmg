@@ -6,8 +6,8 @@
     {%- liquid
       assign tok_kg = '{' | append: 'kg' | append: '}'
       assign tok_ed = '{' | append: 'batches' | append: '}'
-      assign kg_out = totp[0] | default: ''
-      assign ed_out = totp[1] | default: ''
+      assign kg_out = '<span data-yarn-total="kg">' | append: totp[0] | append: '</span>'
+      assign ed_out = '<span data-yarn-total="batches">' | append: totp[1] | append: '</span>'
     -%}
     {%- for b in section.blocks -%}
       {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out -%}
@@ -17,6 +17,7 @@
   {%- if section.settings.link_label != blank -%}
     <div class="wrap{% if section.settings.icons %} stats-cta{% endif %}" style="margin-top:18px"><a class="{% if section.settings.icons %}btn ghost arrow{% else %}link{% endif %}" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'tracker' %}{% endif %}">{{ section.settings.link_label }}</a></div>
   {%- endif -%}
+  {%- render 'echo-yarn-history' -%}
 </section>
 {% schema %}
 {
@@ -30,7 +31,7 @@
   ],
   "blocks": [
     { "type": "stat", "name": "Number", "settings": [
-      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, both counted from the Yarn batch list." },
+      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, both calculated from the Yarn Passport fields on the products plus older batches in the Yarn batch list." },
       { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued to date" }
     ] }
   ],

@@ -39,6 +39,7 @@
     };
   </script>
   <script src="{{ 'echo.js' | asset_url }}" defer></script>
+  <script src="{{ 'echo-tracker.js' | asset_url }}" defer></script>
   {{ content_for_header }}
 </head>
 <body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.suffix | handle }}{% endif %}">

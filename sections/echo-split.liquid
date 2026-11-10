@@ -32,11 +32,12 @@
           render 'echo-batch-totals'
         endcapture
         assign bp = bt | strip | split: '|'
-        assign kg_html = '<b class="echo-stat-n">' | append: bp[0] | append: '</b>'
-        assign n_html = '<b class="echo-stat-n">' | append: bp[1] | append: '</b>'
+        assign kg_html = '<b class="echo-stat-n" data-yarn-total="kg">' | append: bp[0] | append: '</b>'
+        assign n_html = '<b class="echo-stat-n" data-yarn-total="batches">' | append: bp[1] | append: '</b>'
         assign stat = section.settings.stat_text | replace: '{kg}', kg_html | replace: '{batches}', n_html
       -%}
       <div class="echo-statline"><span>{{ stat }}</span>{% if section.settings.stat_link_label != blank %}<a class="link" href="{{ section.settings.stat_link | default: '#' }}">{{ section.settings.stat_link_label }}</a>{% endif %}</div>
+      {%- render 'echo-yarn-history' -%}
     {%- endif -%}
     {%- if section.settings.badges != blank -%}
       <div class="certrow">{%- assign badge_keys = section.settings.badges | split: ',' -%}{%- for bk in badge_keys -%}{%- assign bk_key = bk | strip -%}{%- render 'echo-cert-logo', k: bk_key, h: 44 -%}{%- endfor -%}</div>
@@ -107,7 +108,7 @@
     { "type": "textarea", "id": "label", "label": "Placeholder text (shown until media is added)", "default": "20 sec loop: Ming and the family on the factory floor, faces visible." },
     { "type": "text", "id": "ar", "label": "Media shape (aspect ratio)", "default": "4/3" },
     { "type": "header", "content": "Yarn stat line" },
-    { "type": "text", "id": "stat_text", "label": "Stat text", "info": "Shown above the buttons. {kg} and {batches} are filled from the Yarn batch list. Empty = hidden." },
+    { "type": "text", "id": "stat_text", "label": "Stat text", "info": "Shown above the buttons. {kg} and {batches} are calculated from the Yarn Passport fields on the products, plus older batches in the Yarn batch list. Empty = hidden." },
     { "type": "text", "id": "stat_link_label", "label": "Stat link label" },
     { "type": "url", "id": "stat_link", "label": "Stat link" }
   ],

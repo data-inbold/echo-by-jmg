@@ -169,6 +169,53 @@
     });
   }
 
+  /*
+    Totals for the home page and other pages ([data-yarn-total="kg|batches"] elements).
+    batches: result of aggregate() on the light feed; history: [{bid, kg}] from the Yarn batch list.
+    A list entry whose batch ID has products is replaced by the products, every other entry still counts.
+  */
+  function totalsFrom(batches, history) {
+    var live = Object.create(null);
+    var kg = 0;
+    var n = 0;
+    batches.forEach(function (b) { live[b.key] = true; kg += b.kg; n += 1; });
+    (history || []).forEach(function (h) {
+      if (live[normId(h.bid)]) return;
+      var v = parseNum(h.kg);
+      kg += isNaN(v) ? 0 : v;
+      n += 1;
+    });
+    return { kg: round3(kg), batches: n };
+  }
+
+  function readHistory() {
+    var el = document.querySelector('script[data-yarn-history]');
+    if (!el) return null;
+    var rows = [];
+    try { rows = JSON.parse(el.textContent || '[]'); } catch (e) { rows = []; }
+    return {
+      src: el.getAttribute('data-src'),
+      rows: rows.map(function (r) { return { bid: r[0], kg: r[1] }; })
+    };
+  }
+
+  function initTotals() {
+    var els = document.querySelectorAll('[data-yarn-total]');
+    if (!els.length) return;
+    var hist = readHistory();
+    if (!hist || !hist.src) return;
+    loadItems(hist.src).then(function (items) {
+      var batches = aggregate(items);
+      if (!batches.length) return; // nothing on the products yet: keep the server numbers
+      var t = totalsFrom(batches, hist.rows);
+      Array.prototype.forEach.call(els, function (el) {
+        var kind = el.getAttribute('data-yarn-total');
+        if (kind === 'kg') el.textContent = fmtNum(t.kg) + ' kg';
+        else if (kind === 'batches') el.textContent = String(t.batches);
+      });
+    }).catch(function () { /* keep the server numbers */ });
+  }
+
   function setStat(root, name, text) {
     var el = root.querySelector('[data-stat="' + name + '"]');
     if (el) el.textContent = text;
@@ -206,10 +253,17 @@
     });
   }
 
+  function start() {
+    if (root.__echoYarnStarted) return; // the script may be included more than once
+    root.__echoYarnStarted = true;
+    init();
+    initTotals();
+  }
+
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { aggregate: aggregate, merge: merge, parseNum: parseNum, dateKey: dateKey, showDate: showDate };
+    module.exports = { aggregate: aggregate, merge: merge, totalsFrom: totalsFrom, parseNum: parseNum, dateKey: dateKey, showDate: showDate };
   } else if (typeof document !== 'undefined') {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-    else init();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+    else start();
   }
 })(this);

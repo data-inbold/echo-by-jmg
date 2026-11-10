@@ -104,9 +104,7 @@
   <div class="row" style="justify-content:space-between"><h2 class="h2">The batch log</h2><a class="btn" href="{% render 'echo-url', key: 'open' %}">Shop open editions</a></div>
   <div class="tablewrap"><table class="tracker"><thead><tr><th>Batch</th><th>Logged</th><th>Fibre</th><th class="num">Yarn</th><th>Became</th><th class="num">Pieces</th><th>Status</th></tr></thead><tbody>{{ rows }}</tbody></table></div>
   {%- if section.settings.note != blank -%}<p class="muted" style="font-size:13px;margin:0">{{ section.settings.note }}</p>{%- endif -%}
-</div></section>
-<script src="{{ 'echo-tracker.js' | asset_url }}" defer></script>
-{% schema %}
+</div></section>{% schema %}
 {
   "name": "Rescued yarn tracker",
   "settings": [
