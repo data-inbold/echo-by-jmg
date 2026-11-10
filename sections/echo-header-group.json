@@ -7,7 +7,8 @@
       "settings": {
         "logo": "shopify://shop_images/Logo_W-13.5.26.png",
         "logo_height": 40,
-        "logo_height_mobile": 28
+        "logo_height_mobile": 28,
+        "show_dropdowns": true
       }
     }
   },

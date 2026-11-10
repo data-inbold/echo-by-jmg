@@ -180,3 +180,7 @@ footer.site :focus-visible{outline-color:var(--olive-2)}
 .section .how-grid .how-media .ph img{object-position:50% 8%}
 /* a faint shadow keeps the white thread readable on light photos */
 [id$="__hero"] .hbn::after,.section .how-grid .how-media::after,[id$="__story"] .split.panel .ph::after{filter:drop-shadow(0 0 1px rgba(60,50,40,.35))}
+
+/* fonts: Newsreader serif in the menu too, as in the design */
+header.site .nav .main>a,header.site .nav .main>button,header.site .nav .tools button,header.site .nav .tools a{font-family:'Newsreader',Georgia,serif;font-size:16px;font-weight:400;color:#6F7063}
+.h1,.h2,.tiles .name,.section .how-steps h3{font-family:'Newsreader',Georgia,serif}

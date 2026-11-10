@@ -46,7 +46,7 @@
           "settings": {
             "collection": "",
             "cat": "cushions",
-            "title": "Cushion covers",
+            "title": "Cushion Covers",
             "from": "from DKK 620",
             "photo": "echo-t2-tile-cushions.jpg"
           }
@@ -88,7 +88,7 @@
     "marquee": {
       "type": "echo-marquee",
       "settings": {
-        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
+        "words": "#EchoByJMG | #Rescue The Yarn | #Limited Editions",
         "speed": 40,
         "pad": 24,
         "bg": ""
@@ -110,7 +110,7 @@
         "step_1": {
           "type": "step",
           "settings": {
-            "title": "Luxury yarn unused",
+            "title": "Luxury yarn goes unused",
             "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
             "link_word": "",
             "link": ""
@@ -144,7 +144,7 @@
     "marquee_2": {
       "type": "echo-marquee",
       "settings": {
-        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
+        "words": "#EchoByJMG | #Rescue The Yarn | #Limited Editions",
         "speed": 40,
         "pad": 24,
         "bg": ""
@@ -164,28 +164,28 @@
           "type": "stat",
           "settings": {
             "n": "{kg}",
-            "text": "Yarn rescued"
+            "text": "yarn rescued"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "Limited edition drops"
+            "text": "limited edition"
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
             "n": "1946",
-            "text": "Family knitwear to today"
+            "text": "to today"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
             "n": "0",
-            "text": "Restock once sold out"
+            "text": "restock once sold out"
           }
         }
       },
@@ -236,7 +236,7 @@
         "heading_size": "h2",
         "quote": "“To me, EchoByJMG is more than a collection of knitted products. It’s a continuation of our family’s story, with a fresh purpose for the future.”",
         "lead": "",
-        "caption": "Ming, Founder of EchoByJMG",
+        "caption": "Ming, founder of EchoByJMG",
         "small": "",
         "btn1_label": "Read our story",
         "btn1_link": "echo:story",
@@ -304,10 +304,10 @@
         "heading_tag": false,
         "heading_size": "h2",
         "quote": "",
-        "lead": "No price on the packing slip. Gift wrapped in tissue, with a small surprise inside, or let you choose with a gift card.",
+        "lead": "No price on the packing slip, wrapped in tissue, with a small surprise inside. Or let them choose with a gift card.",
         "caption": "",
         "small": "",
-        "btn1_label": "Shop gift",
+        "btn1_label": "Gift guide",
         "btn1_link": "echo:gifts",
         "btn1_ghost": true,
         "btn2_label": "",
