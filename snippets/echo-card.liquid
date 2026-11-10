@@ -39,8 +39,11 @@
     if lifestyle
       for m in product.media
         if m.media_type == 'image' and m.preview_image.width != m.preview_image.height
-          assign life = m
-          break
+          assign fn = m.preview_image.src | split: '?' | first | downcase
+          unless fn contains 'cover'
+            assign life = m
+            break
+          endunless
         endif
       endfor
     endif
