@@ -14,10 +14,10 @@ body{font-family:var(--body);font-size:15px;line-height:1.6}
 
 /* pixel checker accent: add a colour with --c and a square size with --s */
 .px-checker,
-#shopify-section-hero .hbn::before,
-#shopify-section-shop_by .section::before,
-#shopify-section-shop_by .section::after,
-#shopify-section-story .split.panel::after{
+[id$="__hero"] .hbn::before,
+[id$="__shop_by"] .section::before,
+[id$="__shop_by"] .section::after,
+[id$="__story"] .split.panel::after{
   background-image:repeating-conic-gradient(var(--c,var(--wine)) 0 25%,transparent 0 50%);
   background-size:calc(var(--s,var(--px)) * 2) calc(var(--s,var(--px)) * 2);
 }
@@ -70,17 +70,17 @@ header.site :focus-visible{outline-color:var(--wine-2)}
 .thumbs button[aria-pressed="true"]{outline-color:var(--wine)}
 
 /* home hero: pale photo, burgundy heading, plum and cream buttons */
-#shopify-section-hero .hbn{background:#EFE6DD;min-height:clamp(520px,50vw,700px)}
-#shopify-section-hero .hbn::after{background:linear-gradient(180deg,rgba(241,236,230,.92) 0%,rgba(241,236,230,.55) 38%,rgba(241,236,230,0) 62%)}
-#shopify-section-hero .hbn-thread{display:none}
-#shopify-section-hero .hbn-h{color:var(--wine-2);font-weight:400}
-#shopify-section-hero .hbn-in{padding-block:clamp(40px,5vw,72px) clamp(260px,32vw,460px);max-width:760px}
-#shopify-section-hero .hbn-in p{color:var(--muted);font-size:15px}
-#shopify-section-hero .hbn .btn.sec{background:var(--paper);color:var(--wine);border-color:var(--wine)}
-#shopify-section-hero .hbn .btn.sec:hover{background:var(--wine);color:var(--cream)}
-#shopify-section-hero .hbn::before{content:"";position:absolute;left:0;bottom:0;width:calc(var(--px) * 10);height:calc(var(--px) * 3);z-index:1;pointer-events:none;
+[id$="__hero"] .hbn{background:#EFE6DD;min-height:clamp(520px,50vw,700px)}
+[id$="__hero"] .hbn::after{background:linear-gradient(180deg,rgba(241,236,230,.92) 0%,rgba(241,236,230,.55) 38%,rgba(241,236,230,0) 62%)}
+[id$="__hero"] .hbn-thread{display:none}
+[id$="__hero"] .hbn-h{color:var(--wine-2);font-weight:400}
+[id$="__hero"] .hbn-in{padding-block:clamp(40px,5vw,72px) clamp(260px,32vw,460px);max-width:760px}
+[id$="__hero"] .hbn-in p{color:var(--muted);font-size:15px}
+[id$="__hero"] .hbn .btn.sec{background:var(--paper);color:var(--wine);border-color:var(--wine)}
+[id$="__hero"] .hbn .btn.sec:hover{background:var(--wine);color:var(--cream)}
+[id$="__hero"] .hbn::before{content:"";position:absolute;left:0;bottom:0;width:calc(var(--px) * 10);height:calc(var(--px) * 3);z-index:1;pointer-events:none;
   -webkit-mask-image:linear-gradient(90deg,#000 0,#000 40%,transparent 100%);mask-image:linear-gradient(90deg,#000 0,#000 40%,transparent 100%)}
-@media(max-width:749px){#shopify-section-hero .hbn-in{padding-block:36px 260px}}
+@media(max-width:749px){[id$="__hero"] .hbn-in{padding-block:36px 260px}}
 
 /* numbers on a plum band, with yarn icons */
 .stats-icons .stats{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
@@ -107,12 +107,12 @@ header.site :focus-visible{outline-color:var(--wine-2)}
 .mq-track span{font:italic 400 clamp(28px,3.4vw,44px)/1 var(--display);color:var(--blue)}
 
 /* shop by products: periwinkle band with pixel corners */
-#shopify-section-shop_by .section{background:var(--blue);position:relative;overflow:hidden}
-#shopify-section-shop_by .section::before{content:"";position:absolute;right:0;top:0;width:calc(var(--px) * 6);height:calc(var(--px) * 2);--c:var(--paper);pointer-events:none}
-#shopify-section-shop_by .section::after{content:"";position:absolute;right:0;bottom:0;width:calc(var(--px) * 3);height:calc(var(--px) * 2);--c:var(--paper);pointer-events:none}
-#shopify-section-shop_by .h2{color:var(--wine)}
-#shopify-section-shop_by .tiles .name{color:var(--wine)}
-#shopify-section-shop_by .tiles .muted{color:#3D3550;font-size:12px}
+[id$="__shop_by"] .section{background:var(--blue);position:relative;overflow:hidden}
+[id$="__shop_by"] .section::before{content:"";position:absolute;right:0;top:0;width:calc(var(--px) * 6);height:calc(var(--px) * 2);--c:var(--paper);pointer-events:none}
+[id$="__shop_by"] .section::after{content:"";position:absolute;right:0;bottom:0;width:calc(var(--px) * 3);height:calc(var(--px) * 2);--c:var(--paper);pointer-events:none}
+[id$="__shop_by"] .h2{color:var(--wine)}
+[id$="__shop_by"] .tiles .name{color:var(--wine)}
+[id$="__shop_by"] .tiles .muted{color:#3D3550;font-size:12px}
 .grid.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 @media(max-width:879px){.grid.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .tiles .ph.pic{border:0}
@@ -142,14 +142,14 @@ header.site :focus-visible{outline-color:var(--wine-2)}
 .split.panel .btn::after{content:"\2197";font-size:1.1em}
 .split.panel-wine .btn{background:transparent;border-color:#E9DCCB;color:var(--cream)}
 .split.panel-wine .btn:hover{background:var(--cream);color:var(--wine)}
-#shopify-section-story .split.panel::after{content:"";position:absolute;right:0;bottom:0;width:calc(var(--px) * 5);height:calc(var(--px) * 3);--c:var(--paper);pointer-events:none}
-@media(max-width:879px){#shopify-section-story .split.panel::after{display:none}}
+[id$="__story"] .split.panel::after{content:"";position:absolute;right:0;bottom:0;width:calc(var(--px) * 5);height:calc(var(--px) * 3);--c:var(--paper);pointer-events:none}
+@media(max-width:879px){[id$="__story"] .split.panel::after{display:none}}
 /* gift panel: periwinkle */
-#shopify-section-gift .split.panel-wine>.stack{background:var(--blue);color:var(--ink)}
-#shopify-section-gift .split.panel-wine .h2{color:var(--wine)}
-#shopify-section-gift .split.panel-wine .lead{color:#3D3550}
-#shopify-section-gift .split.panel-wine .btn{background:transparent;border-color:var(--wine);color:var(--wine)}
-#shopify-section-gift .split.panel-wine .btn:hover{background:var(--wine);color:var(--cream)}
+[id$="__gift"] .split.panel-wine>.stack{background:var(--blue);color:var(--ink)}
+[id$="__gift"] .split.panel-wine .h2{color:var(--wine)}
+[id$="__gift"] .split.panel-wine .lead{color:#3D3550}
+[id$="__gift"] .split.panel-wine .btn{background:transparent;border-color:var(--wine);color:var(--wine)}
+[id$="__gift"] .split.panel-wine .btn:hover{background:var(--wine);color:var(--cream)}
 
 /* customer cards */
 .rv-av{color:var(--wine-2)}
