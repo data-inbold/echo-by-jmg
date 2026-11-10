@@ -48,8 +48,15 @@
         if yb.closed.value == true
           assign is_closed = true
         endif
+        comment
+          Batches that have products carry the pieces total synced from the products ("Pieces made" field); batches without products (history) use closed_pieces via the closed path.
+        endcomment
+        assign po = 0
+        if yb.products.value.size > 0
+          assign po = yb.closed_pieces.value | default: 0
+        endif
         capture out
-          render 'echo-tracker-row', bid: yb.batch_id.value, dstr: dstr, fibre: yb.fibre.value, kg: kgv, prods: yb.products.value, closed: is_closed, closed_name: yb.closed_name.value, closed_pieces: yb.closed_pieces.value, pieces_override: 0, attrs: ''
+          render 'echo-tracker-row', bid: yb.batch_id.value, dstr: dstr, fibre: yb.fibre.value, kg: kgv, prods: yb.products.value, closed: is_closed, closed_name: yb.closed_name.value, closed_pieces: yb.closed_pieces.value, pieces_override: po, attrs: ''
         endcapture
         assign parts = out | strip | split: '@@'
         assign total_pieces = total_pieces | plus: parts[0]
@@ -73,6 +80,10 @@
     endif
   endcapture
   if use_list
+    assign tkr = total_kg | round
+    if tkr == total_kg
+      assign total_kg = tkr
+    endif
     assign kg_label = total_kg | append: ' kg'
     assign ed_label = batch_count
   else

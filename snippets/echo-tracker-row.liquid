@@ -12,17 +12,13 @@
     if closed
       echo closed_name | escape
     else
+      comment
+        Every product in the batch counts: pieces and stock are added up per product.
+        Only the displayed link is de-duplicated by name, so colourways of one design show as a single link.
+      endcomment
       assign tseen = ','
       assign tfirst = true
       for p in prods
-        assign thk = ',' | append: p.handle | append: ','
-        if tseen contains thk
-          continue
-        endif
-        for sib in p.metafields.custom.linked_products.value
-          assign tseen = tseen | append: sib.handle | append: ','
-        endfor
-        assign tseen = tseen | append: p.handle | append: ','
         capture raw
           render 'echo-pinfo', product: p
         endcapture
@@ -32,6 +28,12 @@
         if pi[4] == 'last'
           assign has_last = true
         endif
+        assign hn = pi[8] | handle
+        assign nk = ',' | append: hn | append: ','
+        if tseen contains nk
+          continue
+        endif
+        assign tseen = tseen | append: hn | append: ','
         unless tfirst
           echo '<br>'
         endunless
