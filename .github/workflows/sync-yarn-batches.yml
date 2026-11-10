@@ -1,0 +1,38 @@
+name: Sync yarn batches
+
+# Rebuilds the "Yarn batch" metaobject list from the Yarn Passport metafields on products.
+# Needs repository secrets SHOPIFY_STORE (your-shop.myshopify.com) and SHOPIFY_ADMIN_TOKEN
+# (scopes: read_products, read_metaobjects, write_metaobjects).
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Write to Shopify (untick for a dry run)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Sync
+        env:
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          APPLY: ${{ github.event_name == 'schedule' || inputs.apply }}
+        run: |
+          if [ "$APPLY" = "true" ]; then
+            node scripts/sync-yarn-batches.mjs --apply
+          else
+            node scripts/sync-yarn-batches.mjs
+          fi
