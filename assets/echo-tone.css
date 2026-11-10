@@ -184,3 +184,7 @@ footer.site :focus-visible{outline-color:var(--olive-2)}
 /* fonts: Newsreader serif in the menu too, as in the design */
 header.site .nav .main>a,header.site .nav .main>button,header.site .nav .tools button,header.site .nav .tools a{font-family:'Newsreader',Georgia,serif;font-size:16px;font-weight:400;color:#6F7063}
 .h1,.h2,.tiles .name,.section .how-steps h3{font-family:'Newsreader',Georgia,serif}
+
+/* latest designs: lifestyle photos */
+.card .ph.pic:not(.pack){background:var(--soft);border:0}
+.card .meta .name{font-size:13px;font-weight:400;color:var(--muted)}

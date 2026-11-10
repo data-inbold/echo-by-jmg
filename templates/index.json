@@ -217,7 +217,8 @@
         "collection": "",
         "limit": 4,
         "group": false,
-        "link_inline": true
+        "link_inline": true,
+        "lifestyle": true
       }
     },
     "story": {

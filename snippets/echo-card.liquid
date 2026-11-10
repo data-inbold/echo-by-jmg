@@ -1,7 +1,7 @@
 {%- comment -%}
   Product card from the wireframe: photo, name, colour dots, price, edition line.
   Colour dots come from the product's linked colour siblings (custom.linked_products).
-  Params: product, eager
+  Params: product, eager, lifestyle (show the lifestyle photo instead of the packshot)
 {%- endcomment -%}
 {%- liquid
   capture raw
@@ -34,7 +34,20 @@
   assign alt = i[8] | append: ', ' | append: i[5]
 -%}
 <a class="card" href="{{ product.url }}" data-family="{{ fams }}" data-state="{{ state }}" data-price="{{ product.price }}" data-handle="{{ product.handle }}" data-group="{{ grp }}"{% if state == 'sold' %} style="opacity:.6"{% endif %}>
-  {%- if product.featured_media -%}
+  {%- liquid
+    assign life = blank
+    if lifestyle
+      for m in product.media
+        if m.media_type == 'image' and m.preview_image.width != m.preview_image.height
+          assign life = m
+          break
+        endif
+      endfor
+    endif
+  -%}
+  {%- if life != blank -%}
+    {%- render 'echo-pic', image: life.preview_image, alt: alt, eager: eager, ar: '5/6', sizes: '(min-width: 1240px) 300px, (min-width: 720px) 25vw, 50vw' -%}
+  {%- elsif product.featured_media -%}
     {%- render 'echo-pack-pic', product: product, alt: alt, eager: eager, sizes: '(min-width: 1240px) 300px, (min-width: 720px) 33vw, 50vw' -%}
   {%- elsif state == 'sold' -%}
     {%- render 'echo-ph', label: 'Edition sold out', tint: i[6] -%}
