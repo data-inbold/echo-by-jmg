@@ -25,7 +25,7 @@
             assign seen = seen | append: s.handle | append: ','
           endfor
           assign seen = seen | append: p.handle | append: ','
-          render 'echo-card', product: p
+          render 'echo-card', product: p, lifestyle: section.settings.lifestyle
           assign n = n | plus: 1
         endfor
       -%}
@@ -45,7 +45,8 @@
     { "type": "product_list", "id": "products", "label": "Pick products", "limit": 24 },
     { "type": "collection", "id": "collection", "label": "Or a collection" },
     { "type": "range", "id": "limit", "label": "Max products", "min": 2, "max": 24, "step": 1, "default": 8 },
-    { "type": "checkbox", "id": "group", "label": "Show one card per design (group colours)", "default": true }
+    { "type": "checkbox", "id": "group", "label": "Show one card per design (group colours)", "default": true },
+    { "type": "checkbox", "id": "lifestyle", "label": "Show lifestyle photos instead of packshots", "default": false }
   ],
   "presets": [{ "name": "Product grid" }]
 }

@@ -116,8 +116,8 @@ header.site :focus-visible{outline-color:var(--wine-2)}
 [id$="__shop_by"] .h2{color:var(--wine)}
 [id$="__shop_by"] .tiles .name{color:var(--wine)}
 [id$="__shop_by"] .tiles .muted{color:#3D3550;font-size:12px}
-.grid.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-@media(max-width:879px){.grid.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.grid.tiles,.section .grid.g4{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+@media(max-width:879px){.grid.tiles,.section .grid.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .tiles .ph.pic{border:0}
 .tiles .meta{gap:4px;padding-top:6px}
 .tiles .name{font:400 clamp(20px,2vw,26px)/1.15 var(--display)}
@@ -171,3 +171,8 @@ footer.site :focus-visible{outline-color:var(--wine)}
 .legal{border-top:1px solid var(--ink);color:var(--faint)}
 .payments span{border-color:#CDBFB1;color:var(--ink)}
 .payments span.first{background:#111;border-color:#111;color:#fff}
+
+/* latest designs: lifestyle photos, four to a row */
+.card .ph.pic:not(.pack){background:var(--soft);border:0}
+.card .meta{font-size:13px}
+.card .meta .name{font-size:13px;font-weight:400;color:var(--muted)}
