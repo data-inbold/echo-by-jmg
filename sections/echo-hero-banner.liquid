@@ -1,28 +1,31 @@
 {%- capture echo_out -%}
-{%- comment -%} Home hero (Collab design): full-width photo, centred wine heading, two buttons. {%- endcomment -%}
+{%- comment -%} Home hero (Figma Homepage Opt 1): full-width photo, left-aligned wine heading, two buttons, pixel corners. {%- endcomment -%}
 <style>
-  .hbn{position:relative;overflow:hidden;background:#F1E7E0;min-height:clamp(480px,46vw,640px);display:flex;justify-content:center}
+  .hbn{position:relative;overflow:hidden;background:#F1E7E0;min-height:clamp(480px,46vw,680px);display:flex;justify-content:flex-start}
   .hbn .ph{position:absolute;inset:0;border:0;background:transparent}
   .hbn .ph img{object-position:{{ section.settings.focus }}}
-  .hbn::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(241,231,224,.92) 0%,rgba(241,231,224,.55) 45%,rgba(241,231,224,0) 70%);pointer-events:none}
+  .hbn::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(241,231,224,.55) 0%,rgba(241,231,224,.25) 40%,rgba(241,231,224,0) 60%);pointer-events:none}
   .hbn-thread{position:absolute;left:-40px;top:70px;width:340px;height:300px;z-index:1;pointer-events:none}
-  .hbn-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(48px,6vw,92px) clamp(120px,14vw,200px);max-width:880px}
+  .hbn-in{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:22px;padding-block:clamp(56px,8vw,120px) clamp(140px,16vw,220px);padding-inline:16px;width:100%;max-width:var(--wrap);margin-inline:auto;box-sizing:border-box}
+  .hbn-in .hbn-h{max-width:12ch}
+  .hbn-in p{font-size:15px;color:var(--muted)}
   .hbn-h{font:400 clamp(38px,5.6vw,72px)/1.1 var(--display);color:var(--wine-2);margin:0;letter-spacing:-.01em}
   .hbn-in p{margin:0;max-width:56ch;font-size:17px;line-height:1.6;color:var(--ink)}
   .hbn .btn.sec{background:#FBF6F1;color:var(--wine);border-color:var(--wine)}
   @media (max-width:749px){.hbn::after{background:linear-gradient(180deg,rgba(241,231,224,.9) 0%,rgba(241,231,224,.6) 60%,rgba(241,231,224,0) 100%)}.hbn-thread{display:none}}
 </style>
-<section class="hbn">
+<section class="hbn px-host">
   {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Hero photo', eager: true, sizes: '100vw' -%}
   <svg class="hbn-thread" viewBox="0 0 340 300" fill="none" aria-hidden="true"><path d="M30 60C-10 120 10 230 90 260 150 282 300 240 292 90 288 20 310 -10 330 -20" stroke="#E2CFA8" stroke-width="2.5" stroke-linecap="round"/></svg>
   <div class="hbn-in">
     <h1 class="hbn-h">{{ section.settings.heading }}</h1>
     {%- if section.settings.lead != blank -%}<p>{{ section.settings.lead | newline_to_br }}</p>{%- endif -%}
-    <div class="row" style="justify-content:center">
+    <div class="row" style="justify-content:flex-start;margin-top:26px">
       {%- if section.settings.btn1_label != blank -%}<a class="btn" href="{{ section.settings.btn1_link }}">{{ section.settings.btn1_label }}</a>{%- endif -%}
       {%- if section.settings.btn2_label != blank -%}<a class="btn sec" href="{{ section.settings.btn2_link }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
     </div>
   </div>
+  {%- render 'echo-pixels', corner: 'bl' -%}{%- render 'echo-pixels', corner: 'br' -%}
 </section>
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
@@ -30,7 +33,7 @@
 {
   "name": "Hero banner",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Where Luxury Material Finds A Second Life." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Where luxury yarn finds a second life" },
     { "type": "textarea", "id": "lead", "label": "Intro", "default": "We rescue leftover yarns from luxury fashion and turn them into limited-edition pieces for your home. Three generations of craft. Nothing wasted." },
     { "type": "text", "id": "btn1_label", "label": "Button 1", "default": "Shop now" },
     { "type": "text", "id": "btn1_link", "label": "Button 1 link", "default": "echo:shop-all" },

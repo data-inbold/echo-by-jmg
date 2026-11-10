@@ -13,8 +13,8 @@
     "hero": {
       "type": "echo-hero-banner",
       "settings": {
-        "heading": "Where Luxury Material Finds A Second Life.",
-        "lead": "We rescue leftover yarns from luxury fashion and turn them into limited-edition pieces for your home. Three generations of craft. Nothing wasted.",
+        "heading": "Where luxury yarn finds a second life",
+        "lead": "Zero waste, 100% luxury quality. Discover limited-edition pieces born from surplus designer yarn.",
         "btn1_label": "Shop now",
         "btn1_link": "echo:shop-all",
         "btn2_label": "How it works",
@@ -37,29 +37,29 @@
         "stat_1": {
           "type": "stat",
           "settings": {
-            "n": "{kg}",
-            "text": "Yarn rescued to date"
+            "n": "1946",
+            "text": "to today"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
-            "n": "{batches}",
-            "text": "Numbered editions released"
+            "n": "{kg}",
+            "text": "yarn rescued"
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
-            "n": "1946",
-            "text": "Family knitwear since"
+            "n": "{batches}",
+            "text": "limited edition drops"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
-            "n": "0 restocks",
-            "text": "When an edition is gone, it is gone."
+            "n": "0",
+            "text": "restock once sold out"
           }
         }
       },
@@ -110,8 +110,8 @@
         "step_1": {
           "type": "step",
           "settings": {
-            "title": "We rescue the yarn",
-            "text": "Unused yarn left after fashion production runs in our own factory. Never worn, never recycled fibre.",
+            "title": "Luxury yarn goes unused",
+            "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
             "link_word": "",
             "link": ""
           }
@@ -119,8 +119,8 @@
         "step_2": {
           "type": "step",
           "settings": {
-            "title": "The yarn decides the design",
-            "text": "We design around what is left. That is why every run is limited.",
+            "title": "We rescue and reimagine",
+            "text": "We reclaim the leftover yarn, designing and producing strictly around what is available.",
             "link_word": "",
             "link": ""
           }
@@ -128,8 +128,8 @@
         "step_3": {
           "type": "step",
           "settings": {
-            "title": "You get a number",
-            "text": "Every piece is labelled “7 of 12” and carries its Yarn Passport.",
+            "title": "Traceable and exclusively yours",
+            "text": "Every limited-edition piece you purchase will include a custom woven label and a Yarn Passport that details your yarn’s journey.",
             "link_word": "Yarn Passport",
             "link": "echo:passport"
           }
@@ -202,7 +202,7 @@
       ],
       "settings": {
         "spacing": "normal",
-        "bg": "paper",
+        "bg": "dark",
         "heading": "Shop By Products",
         "ar": "5/7"
       }
@@ -221,7 +221,7 @@
         "heading": "",
         "heading_tag": false,
         "heading_size": "h2",
-        "quote": "“Not sourced from third parties, not processed through industrial recycling, but intercepted at the source, by the people who made them.”",
+        "quote": "“To me, EchoByJMG is more than a collection of knitted products. It’s a continuation of our family’s story, with a fresh purpose for the future”",
         "lead": "",
         "caption": "Ming, founder of EchoByJMG",
         "small": "",
@@ -236,8 +236,8 @@
         "alt": "Ming and a colleague at the factory going through yarn samples",
         "label": "",
         "ar": "4/3",
-        "outer_heading": "Story About Us",
-        "panel": "blush"
+        "outer_heading": "Our story",
+        "panel": "blue"
       }
     },
     "quotes": {
@@ -245,7 +245,7 @@
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "heading": "Our Customers"
+        "heading": "What our customers say"
       },
       "blocks": {
         "review_1": {
@@ -287,14 +287,14 @@
         "gap": 16,
         "hide_on_gift": false,
         "eyebrow": "",
-        "heading": "Gift With A Story",
+        "heading": "A gift with a story",
         "heading_tag": false,
         "heading_size": "h2",
         "quote": "",
         "lead": "No price on the packing slip. Gift wrapped in tissue, with a small surprise inside, or let you choose with a gift card.",
         "caption": "",
         "small": "",
-        "btn1_label": "Gift guide",
+        "btn1_label": "Shop gift",
         "btn1_link": "echo:gifts",
         "btn1_ghost": true,
         "btn2_label": "",
@@ -313,10 +313,10 @@
   "order": [
     "hero",
     "numbers",
-    "editions",
     "how",
     "marquee",
     "shop_by",
+    "editions",
     "story",
     "quotes",
     "gift"

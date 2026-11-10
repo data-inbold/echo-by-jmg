@@ -1,0 +1,6 @@
+{%- comment -%}
+  Pixel checker corner from the Figma homepage (Nov 2026). Purely decorative.
+  corner: 'bl' | 'br' | 'tl' | 'tr'   color: CSS colour (default wine)
+{%- endcomment -%}
+{%- assign c = color | default: 'var(--wine)' -%}
+<svg class="px-deco px-{{ corner }}" viewBox="0 0 150 150" width="150" height="150" aria-hidden="true" focusable="false" style="color:{{ c }}"><g fill="currentColor"><rect x="0" y="0" width="30" height="30"/><rect x="30" y="30" width="30" height="30"/><rect x="0" y="60" width="30" height="30"/><rect x="30" y="90" width="30" height="30"/><rect x="90" y="90" width="30" height="30"/><rect x="0" y="120" width="150" height="30"/><rect x="60" y="120" width="30" height="30"/></g></svg>
