@@ -23,6 +23,13 @@
       {%- if section.settings.btn2_label != blank -%}<a class="btn sec" href="{{ section.settings.btn2_link }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
     </div>
   </div>
+  {%- if section.settings.feat_title != blank -%}
+    <a class="hbn-feat" href="{{ section.settings.feat_link | default: '#' }}">
+      {%- render 'echo-pic', image: section.settings.feat_image, asset: section.settings.feat_photo, alt: section.settings.feat_title, label: 'Featured photo', ar: '4/3', sizes: '(min-width: 980px) 45vw, 100vw' -%}
+      <span class="hbn-feat-t">{{ section.settings.feat_title }}</span>
+      {%- if section.settings.feat_cta != blank -%}<span class="hbn-feat-c">{{ section.settings.feat_cta }}</span>{%- endif -%}
+    </a>
+  {%- endif -%}
 </section>
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
@@ -39,7 +46,13 @@
     { "type": "image_picker", "id": "image", "label": "Photo" },
     { "type": "text", "id": "photo", "label": "Bundled photo file", "info": "Used when no photo is picked. File name in assets.", "default": "echo-v2-hero.jpg" },
     { "type": "text", "id": "alt", "label": "Photo description", "default": "Cones of green, mustard, cream and pink yarn resting on a knitted blanket" },
-    { "type": "text", "id": "focus", "label": "Photo focus (CSS position)", "default": "75% 85%" }
+    { "type": "text", "id": "focus", "label": "Photo focus (CSS position)", "default": "75% 85%" },
+    { "type": "header", "content": "Featured product card (optional, right side)" },
+    { "type": "text", "id": "feat_title", "label": "Card title", "info": "Leave empty to hide the card." },
+    { "type": "text", "id": "feat_cta", "label": "Card link text", "default": "View products" },
+    { "type": "text", "id": "feat_link", "label": "Card link" },
+    { "type": "image_picker", "id": "feat_image", "label": "Card photo" },
+    { "type": "text", "id": "feat_photo", "label": "Bundled card photo file", "info": "Used when no card photo is picked. File name in assets." }
   ],
   "presets": [{ "name": "Hero banner" }]
 }

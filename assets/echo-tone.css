@@ -1,55 +1,123 @@
-/* EchoByJMG · Collab tone and mood (5 Nov 2026)
-   Warm cream and blush, deep wine, gold accents, light serif headings (Newsreader) and Manrope text.
-   Loaded after echo.css so it restyles every page. The header and the top bar are left as they are. */
+/* EchoByJMG · Tone and mood, Option 2 "Sage and olive" (test-02)
+   Soft off-white paper, olive and sage accents, light italic serif (Newsreader), airy white cards.
+   Loaded after echo.css so it restyles every page, including the header, top bar and footer. */
 :root{
-  --paper:#F2EEEA; --white:#FFFFFF; --ink:#2B2523; --muted:#6B615B; --faint:#9A8F85;
-  --line:#E3DAD1; --soft:#EBE2D9; --clay:#631930; --warm:#8C7A55;
-  --wine:#380F1C; --wine-2:#631930; --gold:#948057; --gold-2:#A8882B; --blush:#F0E7DF; --sand:#E2CFA8;
-  --hatch1:#E9E1D8; --hatch2:#F2EBE4;
+  --paper:#F6F5F1; --white:#FFFFFF; --ink:#2A2B25; --muted:#66675C; --faint:#97988A;
+  --line:#E1E1D7; --soft:#E7E7DC; --clay:#6E7355; --warm:#8A8D74;
+  --wine:#767B5A; --wine-2:#5C6046; --gold:#8E917A; --gold-2:#2A2B25; --blush:#FFFFFF; --sand:#C9CBB6;
+  --olive:#767B5A; --olive-2:#5C6046; --sage:#E7E7DC; --cream:#F6F5F1;
+  --hatch1:#E7E7DC; --hatch2:#F2F1EB;
   --head:'Newsreader',Georgia,serif; --display:'Newsreader',Georgia,serif; --body:'Manrope',system-ui,sans-serif; --mono:'Manrope',system-ui,sans-serif;
 }
 body{font-family:var(--body);font-size:15px;line-height:1.6}
 .mono{font-weight:600;letter-spacing:.12em;font-size:11px}
 
-/* headings: light serif, not bold */
-.h1,.h2{font-weight:400;letter-spacing:-.01em}
+/* headings: light serif in soft ink */
+.h1,.h2{font-weight:400;letter-spacing:-.005em;color:var(--ink)}
 .h1{font-size:clamp(38px,5.2vw,64px);line-height:1.08}
-.h2{font-size:clamp(30px,3.6vw,44px);line-height:1.1}
+.h2{font-size:clamp(26px,3vw,36px);line-height:1.12}
+.section.dark .h1,.section.dark .h2,.split.panel-wine .h2{color:var(--cream)}
 .stat .n{font-weight:400}
 
 /* sections */
-.section.alt{background:var(--blush)}
+.section.alt{background:var(--white)}
 .section.band{background:var(--soft)}
-.section.dark{background:var(--wine);color:#F3EAE1}
-.section.dark .muted{color:#D9CBBE}
-.section.dark .mono{color:#D9C7A6}
-.section.dark .step{border-top-color:#6B4452}
+.section.dark{background:var(--olive-2);color:var(--cream)}
+.section.dark .muted{color:#DADCCB}
+.section.dark .mono{color:var(--sand)}
+.section.dark .step{border-top-color:#868A6C}
 .ph.pic{background:var(--soft)}
 
-/* buttons and links: wine, uppercase, arrow */
-.btn{background:var(--wine);border-color:var(--wine);color:#F7EFE9;font-size:13px;font-weight:500;letter-spacing:.1em}
-.btn:hover,.btn:focus-visible{background:transparent;color:var(--wine);box-shadow:inset 0 0 0 1px var(--wine)}
-.btn.ghost{background:transparent;color:var(--wine);border-color:var(--wine)}
-.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--wine);color:#F7EFE9;box-shadow:none}
-.btn[disabled]:hover{background:var(--wine);color:#F7EFE9}
+/* top bar and header: olive bar, light header with the logo centred */
+.util{background:var(--olive);color:#F4F3EA;border-bottom:0;font-size:12px;letter-spacing:.03em;padding:8px 16px}
+.util a{color:inherit}
+header.site{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
+header.site .nav{position:relative;min-height:84px}
+header.site .logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;z-index:1}
+header.site .logo img{filter:invert(1) brightness(.25)}
+header.site .nav .main>a,header.site .nav .main>button,
+header.site .nav .tools button,header.site .nav .tools a{text-transform:none;letter-spacing:0;font-size:14px;font-weight:500;color:var(--ink)}
+header.site .nav .main [aria-current="page"],header.site .nav .main [aria-expanded="true"]{border-bottom-color:var(--olive)}
+header.site :focus-visible{outline-color:var(--olive-2)}
+.mobile-menu{background:var(--paper);color:var(--ink);border-top:1px solid var(--line)}
+.mobile-menu a{border-bottom-color:var(--line);color:var(--ink);text-transform:none;font-size:15px;letter-spacing:0}
+.mobile-menu .sub a{color:var(--muted)}
+.mega{background:var(--paper)}
+
+/* buttons and links: olive filled, white outlined, uppercase */
+.btn{background:var(--olive);border-color:var(--olive);color:#fff;font-size:12px;font-weight:600;letter-spacing:.12em;border-radius:2px}
+.btn:hover,.btn:focus-visible{background:transparent;color:var(--olive-2);box-shadow:inset 0 0 0 1px var(--olive)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--ink);color:#fff;box-shadow:none}
+.btn[disabled]:hover{background:var(--olive);color:#fff}
 .btn.arrow::after,.link.arrow::after{content:"\2197";font-size:1.1em;margin-left:2px}
 .link{color:var(--ink);border-bottom:1px solid currentColor}
-.link.arrow{text-transform:uppercase;letter-spacing:.1em;font-size:13px;font-weight:600;padding-bottom:4px}
+.link.arrow{text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:600;padding-bottom:4px}
 .head-inline{align-items:baseline;gap:8px 28px}
 .chip{background:#fff;border-color:var(--line)}
-.chip[aria-pressed="true"]{background:var(--wine);border-color:var(--wine);color:#F7EFE9}
-.badge{background:var(--wine)}
-.thumbs button[aria-pressed="true"]{outline-color:var(--wine)}
+.chip[aria-pressed="true"]{background:var(--olive);border-color:var(--olive);color:#fff}
+.badge{background:var(--olive-2)}
+.thumbs button[aria-pressed="true"]{outline-color:var(--olive)}
 
-/* numbers on a wine band, with yarn icons */
-.stats-icons .stats{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}
-.stats-icons .stat{display:flex;align-items:center;gap:14px}
-.stats-icons .stat-ic{width:58px;height:58px;color:#E8D9C4;flex:none}
-.stats-icons .stat .n{font:italic 400 clamp(34px,3.6vw,46px)/1.05 var(--display);color:var(--gold-2)}
-.stats-icons .stat p{color:#F0E4D8;margin:4px 0 0;font-size:15px}
+/* home hero: yarn photo on the left, featured product card on the right */
+#shopify-section-hero .hbn{display:grid;grid-template-columns:minmax(0,1fr);background:var(--paper);min-height:0}
+#shopify-section-hero .hbn>.ph{position:relative;inset:auto;grid-area:1/1;min-height:clamp(440px,42vw,560px)}
+#shopify-section-hero .hbn::after{content:"";position:absolute;inset:0;grid-area:1/1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(246,242,234,.78) 0%,rgba(246,242,234,.4) 45%,rgba(246,242,234,0) 75%)}
+#shopify-section-hero .hbn-thread{display:none}
+#shopify-section-hero .hbn-in{grid-area:1/1;align-self:center;align-items:flex-start;text-align:left;padding:clamp(32px,5vw,72px) clamp(20px,5vw,72px);max-width:620px;gap:18px}
+#shopify-section-hero .hbn-h{color:#8D907A;font-weight:300;font-size:clamp(36px,4.6vw,60px)}
+#shopify-section-hero .hbn-in p{color:var(--ink);font-size:14px;max-width:34ch}
+#shopify-section-hero .hbn .row{justify-content:flex-start!important}
+#shopify-section-hero .hbn .btn.sec{background:#fff;color:var(--ink);border-color:#fff}
+#shopify-section-hero .hbn .btn.sec:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+#shopify-section-hero .hbn-feat{grid-area:2/1;position:relative;z-index:2;display:flex;flex-direction:column;gap:6px;padding:14px 14px 12px;background:var(--paper);color:var(--ink);text-decoration:none}
+#shopify-section-hero .hbn-feat .ph{position:relative;inset:auto;flex:1;aspect-ratio:4/3;min-height:240px}
+#shopify-section-hero .hbn-feat .ph img{object-position:50% 40%}
+.hbn-feat-t{font-size:11px;letter-spacing:.02em}
+.hbn-feat-c{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid currentColor;align-self:flex-start;padding-bottom:2px}
+@media(min-width:980px){
+  #shopify-section-hero .hbn{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)}
+  #shopify-section-hero .hbn::after{grid-area:1/1}
+  #shopify-section-hero .hbn-feat{grid-area:1/2}
+}
+
+/* numbers on a light sage band, with yarn icons */
+.stats-icons .stats{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
+.stats-icons .stat{flex-direction:column;align-items:flex-start;display:flex;gap:10px}
+.stats-icons .stat-ic{width:34px;height:34px;color:#A9AC95;flex:none}
+.stats-icons .stat .n{font:400 clamp(26px,2.8vw,34px)/1.05 var(--display);color:var(--ink)}
+.stats-icons .stat p{color:var(--muted);margin:4px 0 0;font-size:12px}
 .stats-icons .stats-cta{display:flex;justify-content:center}
-.stats-icons .stats-cta .btn.ghost{color:#F5ECE3;border-color:#E9DCCB;margin-top:6px}
-.stats-icons .stats-cta .btn.ghost:hover{background:#F5ECE3;color:var(--wine)}
+.stats-icons .stats-cta .btn.ghost{color:var(--ink);border-color:var(--ink);margin-top:6px;font-size:11px}
+
+/* how it works: white card, text left and photo right */
+.how-grid{background:#fff;gap:0;align-items:stretch}
+.how-media{order:2}
+.how-media .ph{aspect-ratio:auto!important;height:100%;min-height:320px}
+.how-steps{padding:clamp(24px,4vw,56px);gap:0;justify-content:center}
+.how-steps li{padding:20px 0;border-bottom:1px solid var(--line)}
+.how-steps li:first-child{padding-top:0}
+.how-steps li:last-child{border-bottom:0}
+.how-steps li::before,.how-steps li::after{display:none}
+.how-steps li+li .ln{display:none}
+.how-steps h3{font:italic 300 clamp(22px,2.4vw,28px)/1.2 var(--display);color:var(--ink)}
+.how-steps li:not(:first-child) h3{color:#9A9C88}
+.how-steps p{font-size:13px;color:var(--muted)}
+.how-steps p a{color:var(--olive-2)}
+
+/* hashtag line */
+.mq{padding-block:18px}
+.mq-track span{font:400 clamp(24px,3vw,38px)/1 var(--display);color:#A9AC95}
+
+/* shop by products */
+.grid.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media(max-width:879px){.grid.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tiles .ph.pic{border:0}
+.tiles .meta{gap:2px;padding-top:6px;position:relative}
+.tiles .name{font:400 clamp(20px,2vw,24px)/1.15 var(--display);display:flex;justify-content:space-between;align-items:baseline}
+.tiles .name::after{content:"\2197";font:400 14px var(--body);color:var(--muted)}
+.tiles .muted{font-size:11px}
 
 /* product cards: packshot on white, colour dots, quiet text */
 .card .ph.pack{background:#fff;border:0;aspect-ratio:5/6}
@@ -58,37 +126,37 @@ body{font-family:var(--body);font-size:15px;line-height:1.6}
 .gallery .main.pack img{object-fit:contain;padding:4%}
 .card .name{font-weight:500}
 .card .ed{color:var(--faint)}
-.edit-tile{background:var(--wine)}
-.tiles .ph.pic{border:0}
-.tiles .meta{gap:6px;padding-top:6px}
-.tiles .name{font:400 clamp(24px,2.4vw,32px)/1.15 var(--display)}
+.edit-tile{background:var(--olive-2)}
 
-/* text + photo panels (story: blush, gift: wine) */
+/* text + photo panels: story is a white card, gift is olive */
 .split.panel{gap:0;align-items:stretch}
 .split.panel>.stack{padding:clamp(28px,5vw,64px);justify-content:center;gap:20px}
 .split.panel .ph{height:100%;min-height:300px;aspect-ratio:auto!important;border:0}
-@media(min-width:880px){.split.panel.mf{grid-template-columns:1fr 1fr}.split.panel:not(.mf){grid-template-columns:5fr 7fr}}
-.split.panel-blush>.stack{background:var(--blush)}
-.split.panel-wine>.stack{background:var(--wine);color:#F3EAE1}
-.split.panel-wine .h2{color:var(--sand)}
-.split.panel-wine .lead,.split.panel-wine .muted{color:#F3EAE1}
-.split.panel-blush .echo-quote{font:italic 400 clamp(26px,3vw,36px)/1.3 var(--display);color:var(--gold)}
-.split.panel .echo-quote+.muted{border-top:1px solid #CDBFB1;padding-top:18px}
+@media(min-width:880px){.split.panel.mf{grid-template-columns:1fr 1fr}.split.panel:not(.mf){grid-template-columns:1fr 1fr}}
+.split.panel-blush>.stack{background:#fff}
+.split.panel-wine>.stack{background:var(--olive);color:var(--cream)}
+.split.panel-wine .lead,.split.panel-wine .muted{color:var(--cream)}
+.split.panel-blush .echo-quote{font:italic 300 clamp(24px,2.8vw,32px)/1.3 var(--display);color:#8D907A}
+.split.panel .echo-quote+.muted{padding-top:14px;margin-top:20px;font-size:12px}
 .split.panel .btn::after{content:"\2197";font-size:1.1em}
-.split.panel-wine .btn{background:transparent;border-color:#E9DCCB;color:#F7EFE9}
-.split.panel-wine .btn:hover{background:#F7EFE9;color:var(--wine)}
+.split.panel-wine .btn{background:transparent;border-color:#F1F0E6;color:#fff}
+.split.panel-wine .btn:hover{background:#fff;color:var(--olive-2)}
 
-/* steps (used on many inner pages): gold serif titles */
-.step{border-top:2px solid var(--gold)}
-.step b{font:italic 400 22px/1.2 var(--display);color:var(--gold)}
+/* customer cards */
+.rv-av{color:var(--olive-2)}
 
-/* footer: blush */
-footer.site{background:var(--blush);color:var(--muted)}
+/* steps (used on many inner pages) */
+.step{border-top:2px solid var(--olive)}
+.step b{font:italic 300 22px/1.2 var(--display);color:var(--olive-2)}
+
+/* footer: light sage */
+footer.site{background:#EFEFE7;color:var(--muted)}
 footer.site a{color:var(--muted)}
 footer.site a:hover{color:var(--ink)}
 footer.site p{color:var(--ink)}
-footer.site :focus-visible{outline-color:var(--wine)}
+footer.site :focus-visible{outline-color:var(--olive-2)}
 .fcols h4{color:var(--ink);font-weight:600}
 .legal{border-top:1px solid var(--ink);color:var(--faint)}
-.payments span{border-color:#CDBFB1;color:var(--ink)}
+.payments span{border-color:#CDCEBF;color:var(--ink)}
 .payments span.first{background:#111;border-color:#111;color:#fff}
+#shopify-section-gift .split.panel .ph img{object-position:50% 80%}
