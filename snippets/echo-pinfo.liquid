@@ -6,7 +6,8 @@
   12 yarn origin text (may be empty)  13 batch fibre (may be empty)
 
   Batch sources, first match wins: product tags (batch:, batch-kg:, edition:) and product
-  metafields (custom.batch_id, custom.batch_kg, custom.edition_size, custom.yarn_origin),
+  metafields (Yarn Passport: custom.yp_batch_id, yp_kg, yp_pieces, yp_fibre, yp_origin;
+  older custom.batch_id, batch_kg, edition_size, yarn_origin still work as fallbacks),
   then the "Yarn batch" metaobject list (Content > Metaobjects) that includes this product,
   then the "Batch per product" list in Theme settings > EchoByJMG.
 {%- endcomment -%}
@@ -35,11 +36,16 @@
 
   assign ckey = ''
   assign fam = ''
-  assign batch = product.metafields.custom.batch_id.value | default: ''
-  assign kg = product.metafields.custom.batch_kg.value | default: ''
-  assign origin = product.metafields.custom.yarn_origin.value | default: ''
-  assign bfibre = ''
+  assign batch = product.metafields.custom.yp_batch_id.value | default: product.metafields.custom.batch_id.value | default: ''
+  assign kg = product.metafields.custom.yp_kg.value | default: product.metafields.custom.batch_kg.value | default: ''
+  assign origin = product.metafields.custom.yp_origin.value | default: product.metafields.custom.yarn_origin.value | default: ''
+  assign bfibre = product.metafields.custom.yp_fibre.value | default: ''
   assign ed_set = false
+  assign yp_ed = product.metafields.custom.yp_pieces.value | plus: 0
+  if yp_ed > 0
+    assign ed = yp_ed
+    assign ed_set = true
+  endif
   if product.metafields.custom.edition_size.value
     assign ed = product.metafields.custom.edition_size.value
     assign ed_set = true
