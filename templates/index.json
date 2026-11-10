@@ -19,6 +19,7 @@
         "btn1_link": "echo:shop-all",
         "btn2_label": "How it works",
         "btn2_link": "#how",
+        "image": "shopify://shop_images/Rectangle_7.png",
         "photo": "echo-v2-hero.jpg",
         "alt": "Cones of green, mustard, cream and pink yarn resting on a knitted blanket",
         "focus": "75% 85%"
@@ -26,14 +27,14 @@
     },
     "numbers": {
       "type": "echo-stats",
-      "settings": {
-        "spacing": "normal",
-        "bg": "dark",
-        "icons": true,
-        "link_label": "View rescued yarn tracker",
-        "link": ""
-      },
       "blocks": {
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "n": "1946",
+            "text": "to today"
+          }
+        },
         "stat_1": {
           "type": "stat",
           "settings": {
@@ -46,13 +47,6 @@
           "settings": {
             "n": "{batches}",
             "text": "limited edition drops"
-          }
-        },
-        "stat_3": {
-          "type": "stat",
-          "settings": {
-            "n": "1946",
-            "text": "to today"
           }
         },
         "stat_4": {
@@ -68,44 +62,17 @@
         "stat_1",
         "stat_2",
         "stat_4"
-      ]
-    },
-    "editions": {
-      "type": "echo-product-grid",
+      ],
       "settings": {
         "spacing": "normal",
-        "bg": "paper",
-        "heading": "Latest Designs",
-        "link_label": "See all",
-        "link": "",
-        "products": [
-          "hills-valleys-throw",
-          "twister-rope-blanket-doe",
-          "hills-valleys-cushion-cover",
-          "cable-rope-knitted-tote",
-          "carousel-stripes-knitted-throw-violet-blue",
-          "puff-friends-cushion-cover",
-          "joyful-pompom-beanie-candy-pink",
-          "happy-sunshine-throw-cloud-smoky-mauve"
-        ],
-        "collection": "",
-        "limit": 8,
-        "group": false,
-        "link_inline": true
+        "bg": "dark",
+        "icons": true,
+        "link_label": "View rescued yarn tracker",
+        "link": ""
       }
     },
     "how": {
       "type": "echo-how",
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "anchor": "how",
-        "heading": "How It Works",
-        "photo": "echo-v2-process.jpg",
-        "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
-        "overlay": "",
-        "media_label": "Process video"
-      },
       "blocks": {
         "step_1": {
           "type": "step",
@@ -139,7 +106,18 @@
         "step_1",
         "step_2",
         "step_3"
-      ]
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "anchor": "how",
+        "heading": "How It Works",
+        "image": "shopify://shop_images/StockYarn_awaiting_to_be_login_1.png",
+        "photo": "echo-v2-process.jpg",
+        "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
+        "overlay": "",
+        "media_label": "Process video"
+      }
     },
     "marquee": {
       "type": "echo-marquee",
@@ -204,7 +182,32 @@
         "spacing": "normal",
         "bg": "blue",
         "heading": "Shop By Products",
-        "ar": "5/7"
+        "ar": "5/7",
+        "show_count": false
+      }
+    },
+    "editions": {
+      "type": "echo-product-grid",
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "Latest Designs",
+        "link_inline": true,
+        "link_label": "See all",
+        "link": "",
+        "products": [
+          "hills-valleys-throw",
+          "twister-rope-blanket-doe",
+          "hills-valleys-cushion-cover",
+          "cable-rope-knitted-tote",
+          "carousel-stripes-knitted-throw-violet-blue",
+          "puff-friends-cushion-cover",
+          "joyful-pompom-beanie-candy-pink",
+          "happy-sunshine-throw-cloud-smoky-mauve"
+        ],
+        "collection": "",
+        "limit": 8,
+        "group": false
       }
     },
     "story": {
@@ -225,28 +228,28 @@
         "lead": "",
         "caption": "Ming, founder of EchoByJMG",
         "small": "",
+        "outer_heading": "Our story",
+        "panel": "wine",
+        "chips": "",
+        "badges": "",
+        "points_style": "cols3",
         "btn1_label": "Read our story",
         "btn1_link": "echo:story",
         "btn1_ghost": true,
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
-        "video": "",
         "photo": "echo-v2-story.jpg",
         "alt": "Ming and a colleague at the factory going through yarn samples",
         "label": "",
         "ar": "4/3",
-        "outer_heading": "Our story",
-        "panel": "wine"
+        "stat_text": "",
+        "stat_link_label": "",
+        "stat_link": ""
       }
     },
     "quotes": {
       "type": "echo-review-cards",
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "heading": "What our customers say"
-      },
       "blocks": {
         "review_1": {
           "type": "review",
@@ -256,7 +259,9 @@
             "quote": "So soft, you felt it immediately. It feels like it’s always belonged in the room.",
             "photo": "echo-v2-review-1.jpg",
             "alt": "A blue knitted blanket with a green border in a play tent",
-            "product": "carousel-stripes-knitted-throw-violet-blue"
+            "product": "carousel-stripes-knitted-throw-violet-blue",
+            "product_name": "",
+            "product_price": ""
           }
         },
         "review_2": {
@@ -276,7 +281,12 @@
       "block_order": [
         "review_1",
         "review_2"
-      ]
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "What our customers say"
+      }
     },
     "gift": {
       "type": "echo-split",
@@ -296,19 +306,24 @@
         "lead": "No price on the packing slip. Gift wrapped in tissue, with a small surprise inside, or let you choose with a gift card.",
         "caption": "",
         "small": "",
+        "outer_heading": "",
+        "panel": "blue",
+        "chips": "",
+        "badges": "",
+        "points_style": "cols3",
         "btn1_label": "Shop gift",
         "btn1_link": "echo:gifts",
         "btn1_ghost": true,
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
-        "video": "",
         "photo": "echo-v2-gift.jpg",
         "alt": "A gift box tied with twine and a sprig of eucalyptus, next to a ball of yarn",
         "label": "",
         "ar": "16/9",
-        "outer_heading": "",
-        "panel": "blue"
+        "stat_text": "",
+        "stat_link_label": "",
+        "stat_link": ""
       }
     }
   },
