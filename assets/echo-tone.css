@@ -1,12 +1,12 @@
-/* EchoByJMG · Collab tone and mood (5 Nov 2026)
-   Warm cream and blush, deep wine, gold accents, light serif headings (Newsreader) and Manrope text.
-   Loaded after echo.css so it restyles every page. The header and the top bar are left as they are. */
+/* EchoByJMG · tone and mood. Updated 10 Nov 2026 from the Figma "Homepage Opt 1" design.
+   Cream paper, deep wine, sky-blue bands, Prata headings, Literata navigation and Manrope text.
+   Loaded after echo.css so it restyles every page, header and top bar included. */
 :root{
   --paper:#F2EEEA; --white:#FFFFFF; --ink:#2B2523; --muted:#6B615B; --faint:#9A8F85;
   --line:#E3DAD1; --soft:#EBE2D9; --clay:#631930; --warm:#8C7A55;
   --wine:#380F1C; --wine-2:#631930; --gold:#948057; --gold-2:#A8882B; --blush:#F0E7DF; --sand:#E2CFA8;
   --hatch1:#E9E1D8; --hatch2:#F2EBE4;
-  --head:'Newsreader',Georgia,serif; --display:'Newsreader',Georgia,serif; --body:'Manrope',system-ui,sans-serif; --mono:'Manrope',system-ui,sans-serif;
+  --head:'Prata',Georgia,serif; --display:'Prata',Georgia,serif; --body:'Manrope',system-ui,sans-serif; --mono:'Manrope',system-ui,sans-serif;
 }
 body{font-family:var(--body);font-size:15px;line-height:1.6}
 .mono{font-weight:600;letter-spacing:.12em;font-size:11px}
@@ -92,3 +92,143 @@ footer.site :focus-visible{outline-color:var(--wine)}
 .legal{border-top:1px solid var(--ink);color:var(--faint)}
 .payments span{border-color:#CDBFB1;color:var(--ink)}
 .payments span.first{background:#111;border-color:#111;color:#fff}
+
+/* ================= Figma "Homepage Opt 1" (10 Nov 2026) ================= */
+:root{
+  --paper:#F2EEEA; --wine:#380F1C; --wine-2:#631930; --blue:#97B5E1; --cream:#FFF9ED;
+  --ink:#2E2D2C; --muted:#61686A; --faint:#ABA499; --pink:#F0DFD8; --blush:#F0E7DF; --card:#E7DCD0;
+  --nav:'Literata',Georgia,serif; --wrap:1440px;
+}
+@media(min-width:720px){.wrap{padding-inline:60px}}
+.section{padding-block:60px}
+.section.tight{padding-block:32px}
+body.template-index #app{padding-bottom:60px}
+
+/* headings: Prata 40, wine */
+.h1,.h2{font-family:var(--display);font-weight:400;font-style:normal;letter-spacing:0}
+.h2{font-size:clamp(30px,2.8vw,40px);line-height:1;color:var(--wine-2)}
+.section.dark .h2{color:var(--pink)}
+
+/* buttons: Manrope Medium 16, tracked, wine fill or outline */
+.btn{font:500 16px/1.6 var(--body);letter-spacing:.1em;min-height:50px;padding:0 24px}
+.btn:hover,.btn:focus-visible{background:var(--cream);color:var(--wine)}
+.link.arrow{font-size:16px;font-weight:600;color:var(--ink)}
+.head-inline{align-items:center;gap:12px clamp(24px,5vw,75px)}
+
+/* top bar */
+.util{background:#332C2A;color:#fff;font:300 12px/1.5 var(--nav);letter-spacing:0;padding:8px 16px;border-bottom:0}
+
+/* header: light, menu left, logo centred, tools right */
+header.site{background:var(--paper);color:var(--wine)}
+header.site :focus-visible{outline-color:var(--wine)}
+.nav{min-height:92px;gap:24px}
+.nav .main>a,.nav .main>button,.nav .tools button,.nav .tools a,.nav .tools select{font:400 18px/1.5 var(--nav);letter-spacing:0;text-transform:none;color:var(--wine)}
+.nav .main{gap:16px}
+.nav .main>a,.nav .main>button{padding:10px 4px}
+.nav .main [aria-current="page"],.nav .main [aria-expanded="true"]{border-bottom-color:var(--wine)}
+.logo img{filter:brightness(0)}
+.nav .tools{gap:12px}
+.nav .tools form{padding-right:20px;margin-right:4px;border-right:1px solid #CFC4BA}
+.nav .tools form button{padding-inline:2px}
+.mobile-menu{background:var(--paper);color:var(--wine);border-top:1px solid var(--line)}
+.mobile-menu a{border-bottom-color:var(--line);font:400 18px/1.4 var(--nav);text-transform:none;letter-spacing:0}
+.mobile-menu .sub a{color:var(--muted);font-size:16px}
+@media(min-width:980px){
+  .nav{display:grid;grid-template-columns:1fr auto 1fr}
+  .nav .main{order:1;justify-self:start}
+  .logo{order:2;margin:0;justify-self:center}
+  .nav .tools{order:3;justify-self:end;margin-left:0}
+}
+
+/* hero */
+.hbn{min-height:clamp(480px,47vw,680px)}
+.hbn-in{gap:24px}
+.hbn-h{font-size:clamp(38px,4.45vw,64px);line-height:1.19;color:var(--wine-2)}
+.hbn-in p{font-size:16px;line-height:1.45;color:#5E5953;max-width:713px}
+.hbn .btn{min-width:193px}
+.hbn .btn.sec{background:var(--cream);color:var(--wine);border-color:var(--wine)}
+.hbn .btn.sec:hover,.hbn .btn.sec:focus-visible{background:var(--wine);color:#fff}
+
+/* numbers band */
+.stats-icons.section{padding-block:40px}
+.stats-icons .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
+@media(min-width:900px){.stats-icons .stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stats-icons .stat{gap:21px;align-items:flex-start}
+.stats-icons .stat-ic{width:60px;height:60px;color:var(--pink)}
+.stats-icons .stat .n{font:400 40px/1.2 var(--display);font-style:normal;color:var(--pink);margin-bottom:-6px}
+.stats-icons .stat p{font-size:16px;line-height:1.6;color:var(--pink);margin:0}
+.stats-icons .stats-cta{margin-top:40px!important}
+.stats-icons .stats-cta .btn.ghost{color:var(--cream);border-color:var(--cream);margin-top:0}
+.stats-icons .stats-cta .btn.ghost:hover{background:var(--cream);color:var(--wine)}
+
+/* shop by products: sky-blue band with pixel corners */
+.section.blue{background:var(--blue);position:relative;overflow:hidden;padding-block:60px}
+.section.blue .h2{color:#332C2A}
+.shopify-section:has(>.section.blue)+.shopify-section>.section{padding-top:120px}
+.shopify-section:has(>.mq)+.shopify-section>.section.blue{margin-top:60px}
+.notch{position:absolute;width:30px;height:30px;background:var(--paper);pointer-events:none;display:none}
+@media(min-width:720px){.notch{display:block}}
+.notch.tl{left:0;top:30px;box-shadow:30px -30px 0 var(--paper)}
+.notch.tr{right:0;top:0;box-shadow:-30px 30px 0 var(--paper),-60px 60px 0 var(--paper),-90px 30px 0 var(--paper),-60px 0 0 var(--paper)}
+.notch.br{right:0;bottom:60px;box-shadow:-60px 0 0 var(--paper),-30px 30px 0 var(--paper)}
+.tiles .ph.pic{aspect-ratio:312/420!important}
+.tiles.card,.tiles .card{gap:13px}
+.tiles .meta{gap:0;padding-top:0}
+.tiles .name{font:300 clamp(22px,2vw,28px)/1.5 var(--nav);color:#332C2A}
+.tiles .muted{color:#332C2A;font-size:16px;line-height:1.6}
+
+/* product grid: four across, 24px gap */
+.g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}
+@media(min-width:900px){.g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.card{gap:20px}
+.card .ph.pack{background:var(--card);aspect-ratio:312/360}
+.card .ph.pack img{mix-blend-mode:multiply}
+.card .meta{gap:6px}
+.card .swatches{order:-1;gap:7px}
+.card .swatches .dot{width:20px;height:20px}
+.card .name{order:0;font-weight:400;font-size:18px;line-height:1.3;color:var(--muted)}
+.card .ed{order:1;font-size:14px;color:var(--faint)}
+.card .meta>span:not([class]){order:2;font-size:18px;font-weight:600;color:var(--ink)}
+.card:hover .name{text-decoration:none;color:var(--ink)}
+
+/* our story (wine quote panel) and gift (blue band) */
+.split.panel{min-height:560px}
+.split.panel>.stack{padding:clamp(28px,5vw,60px)}
+@media(min-width:880px){
+  .split.panel.mf{grid-template-columns:680fr 640fr}
+  .split.panel.panel-blue:not(.mf){grid-template-columns:537fr 783fr}
+}
+.split.panel-wine>.stack{background:var(--wine);color:var(--pink);justify-content:flex-start;gap:24px}
+.split.panel-wine .echo-quote{font:400 clamp(22px,2.1vw,30px)/1.3 var(--display);font-style:normal;color:var(--pink)}
+.split.panel-wine .echo-quote+.muted{border-top:1px solid #6B4452;padding-top:24px}
+.split.panel-wine .muted{color:var(--pink)}
+.split.panel-wine .btn{border-color:var(--pink);color:var(--pink)}
+.split.panel-wine .btn:hover{background:var(--pink);color:var(--wine)}
+.split.panel-wine .h2{color:var(--pink)}
+.split.panel-blue{background:var(--blue);min-height:420px}
+.split.panel-blue>.stack{background:transparent;color:var(--wine);gap:24px}
+.split.panel-blue .h2{font-size:clamp(30px,2.8vw,40px);color:var(--wine)}
+.split.panel-blue .lead{color:var(--wine);font-size:16px;max-width:none}
+.split.panel-blue .btn,.split.panel-blue .btn.ghost{background:transparent;color:var(--wine);border-color:var(--wine)}
+.split.panel-blue .btn:hover{background:var(--wine);color:var(--cream)}
+.split.panel-blue>.ph,.split.panel-blue>div:not(.stack){margin:0 40px 40px}
+@media(min-width:880px){.split.panel-blue>.ph,.split.panel-blue>div:not(.stack){margin:40px 40px 40px 0}}
+
+/* marquee hashtags */
+.mq-track{gap:40px}
+.mq-track span{font:300 clamp(30px,2.8vw,40px)/76px var(--nav);color:var(--blue)}
+
+/* footer */
+footer.site{background:var(--blush)}
+footer.site .wrap{max-width:1240px;padding-inline:32px}
+.fcols{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+@media(min-width:900px){.fcols{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.fcols h4{font:700 15px/1.55 var(--body);color:#252729}
+.fcols ul{gap:8px}
+footer.site a{color:var(--muted)}
+footer.site p{font-size:14px;color:var(--ink)}
+footer.site .inline-form{flex-direction:column;align-items:flex-start;gap:8px}
+footer.site .inline-form input{flex:none;width:100%;border-color:#E2E0DB;background:#fff}
+footer.site .btn{background:#111;border-color:#111;color:#fff;font:500 12.5px/1.55 var(--body);letter-spacing:.06em;min-height:48px;padding:0 27px}
+footer.site .btn:hover{background:#fff;color:#111}
+.legal{border-top-color:#2E2E2E}

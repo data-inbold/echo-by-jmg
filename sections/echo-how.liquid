@@ -2,18 +2,18 @@
 {%- comment -%} "How it works" (Collab design): photo or video on the left, vertical timeline of steps on the right. {%- endcomment -%}
 <style>
   .how-grid{display:grid;gap:36px;align-items:center}
-  @media(min-width:880px){.how-grid{grid-template-columns:1fr 1fr;gap:64px}}
+  @media(min-width:880px){.how-grid{grid-template-columns:673fr 602fr;gap:45px}}
   .how-media{position:relative}
-  .how-media .ph{aspect-ratio:4/3;min-height:0}
-  .how-media .lbl{position:absolute;left:0;right:0;bottom:22%;text-align:center;color:#fff;font:600 28px/1 var(--body);letter-spacing:-.01em;text-shadow:0 1px 8px rgba(0,0,0,.35);pointer-events:none}
-  .how-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;position:relative}
-  .how-steps li{position:relative;padding-left:58px}
-  .how-steps li::before{content:"";position:absolute;left:0;top:6px;width:34px;height:34px;border-radius:50%;background:#EFE2C6}
-  .how-steps li::after{content:"";position:absolute;left:10px;top:16px;width:14px;height:14px;border-radius:50%;background:#E2CFA8}
-  .how-steps li+li .ln{position:absolute;left:16px;top:-30px;height:34px;border-left:2px dashed #E2CFA8}
-  .how-steps h3{margin:0 0 8px;font:italic 400 clamp(26px,3vw,34px)/1.15 var(--display);color:var(--gold)}
-  .how-steps p{margin:0;font-size:16px;line-height:1.6;max-width:44ch}
-  .how-steps p a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+  .how-media .ph{aspect-ratio:673/420!important;min-height:0}
+  .how-media .lbl{position:absolute;left:0;right:0;bottom:22%;text-align:center;color:rgba(255,255,255,.8);font:700 clamp(24px,2.5vw,36px)/1.6 var(--body);pointer-events:none}
+  .how-steps{--gap:58px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--gap);position:relative}
+  .how-steps li{position:relative;padding-left:63px;min-height:44px}
+  .how-steps li::before{content:"";position:absolute;left:0;top:5px;width:44px;height:44px;border-radius:50%;background:rgba(56,15,28,.1);z-index:1}
+  .how-steps li::after{content:"";position:absolute;left:12px;top:17px;width:20px;height:20px;border-radius:50%;background:var(--wine);z-index:2}
+  .how-steps .ln{position:absolute;left:21px;top:27px;bottom:calc(-1 * (var(--gap) + 27px));border-left:2px solid var(--wine);opacity:.35}
+  .how-steps h3{margin:0;font:400 clamp(22px,2vw,28px)/1.35 var(--display);color:#332C2A}
+  .how-steps p{margin:0;font-size:16px;line-height:1.6;color:var(--ink);max-width:483px}
+  .how-steps p a{color:var(--wine-2);text-decoration:underline;text-underline-offset:3px}
 </style>
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
   <div class="wrap stack" style="gap:34px">
@@ -34,7 +34,7 @@
               assign t = t | replace: b.settings.link_word, a_html
             endif
           -%}
-          <li {{ b.shopify_attributes }}>{% unless forloop.first %}<span class="ln" aria-hidden="true"></span>{% endunless %}<h3>{{ b.settings.title }}</h3><p>{{ t }}</p></li>
+          <li {{ b.shopify_attributes }}>{% unless forloop.last %}<span class="ln" aria-hidden="true"></span>{% endunless %}<h3>{{ b.settings.title }}</h3><p>{{ t }}</p></li>
         {%- endfor -%}
       </ol>
     </div>

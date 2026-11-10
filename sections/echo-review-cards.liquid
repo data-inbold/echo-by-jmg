@@ -3,19 +3,19 @@
 <style>
   .rv-grid{display:grid;gap:24px;grid-template-columns:1fr}
   @media(min-width:980px){.rv-grid{grid-template-columns:1fr 1fr}}
-  .rv{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:12px;align-items:stretch}
-  .rv .ph{min-height:0;height:100%;aspect-ratio:3/4}
-  .rv-card{background:#fff;padding:22px;display:flex;flex-direction:column;gap:14px}
-  .rv-who{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-  .rv-av{width:44px;height:44px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;font:400 18px var(--display);color:var(--wine-2)}
-  .rv-who b{display:block;font:400 20px/1.2 var(--display)}
-  .rv-who span{font-size:13px;color:var(--muted)}
+  .rv{display:grid;grid-template-columns:minmax(0,312px) minmax(0,1fr);gap:0;align-items:stretch}
+  .rv .ph{min-height:0;height:100%;aspect-ratio:auto!important;min-height:320px;border:0}
+  .rv-card{background:#fff;padding:20px;display:flex;flex-direction:column;gap:16px;min-height:320px}
+  .rv-who{display:flex;align-items:flex-start;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .rv-av{width:48px;height:48px;flex:none;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;font:400 20px var(--display);color:var(--wine-2)}
+  .rv-who b{display:block;font:400 20px/1.3 var(--display);color:var(--ink)}
+  .rv-who span{font-size:12px;font-weight:300;letter-spacing:.04em;color:var(--muted)}
   .rv-stars{color:#C9AE6D;letter-spacing:.2em;font-size:17px}
-  .rv-card p{margin:0;font-size:17px;line-height:1.55}
-  .rv-prod{margin-top:auto;display:flex;gap:12px;align-items:center;background:var(--paper);padding:10px;font-size:13px;text-decoration:none}
-  .rv-prod .ph{width:56px;height:56px;aspect-ratio:1;flex:none}
-  .rv-prod b{display:block;font-weight:500;font-size:13px;line-height:1.3;margin-bottom:2px}
-  @media (max-width:559px){.rv{grid-template-columns:1fr}.rv .ph{aspect-ratio:4/3}}
+  .rv-card p{margin:0;font-size:16px;font-weight:300;letter-spacing:.04em;line-height:1.5;color:#000}
+  .rv-prod{margin-top:auto;display:flex;gap:12px;align-items:center;background:var(--paper);padding:8px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none}
+  .rv-prod .ph{width:60px;height:60px;min-height:0!important;aspect-ratio:1!important;flex:none}
+  .rv-prod b{display:block;font-weight:400;font-size:12px;line-height:1.3;margin-bottom:2px;color:var(--muted)}
+  @media (max-width:559px){.rv{grid-template-columns:1fr}.rv .ph{aspect-ratio:4/3!important;min-height:0;height:auto}}
 </style>
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap stack" style="gap:28px">

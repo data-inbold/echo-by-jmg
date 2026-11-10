@@ -1,4 +1,5 @@
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
+  {%- if section.settings.bg == 'blue' -%}<span class="notch tl" aria-hidden="true"></span><span class="notch tr" aria-hidden="true"></span><span class="notch br" aria-hidden="true"></span>{%- endif -%}
   <div class="wrap stack" style="gap:20px">
     {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
     <div class="grid g4 tiles">
@@ -59,7 +60,7 @@
   "name": "Shop by product",
   "settings": [
     {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "tight"},
-    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
+    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}, {"value": "blue", "label": "Sky blue with pixel corners"}], "default": "paper"},
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by product" },
     { "type": "select", "id": "ar", "label": "Photo shape", "options": [{"value": "1/1", "label": "Square"}, {"value": "4/5", "label": "Portrait 4:5"}, {"value": "5/7", "label": "Tall 5:7"}], "default": "1/1" },
     { "type": "checkbox", "id": "show_count", "label": "Show number of designs", "default": false, "info": "Adds e.g. \"12 designs ·\" before the price. Colour siblings count as one design." }
