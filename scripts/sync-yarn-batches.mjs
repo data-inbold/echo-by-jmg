@@ -16,16 +16,19 @@
  * Status (open / closed / left) is NOT synced: the theme computes it live from stock.
  *
  * Usage:
- *   SHOPIFY_STORE=your-shop.myshopify.com SHOPIFY_ADMIN_TOKEN=shpat_... node scripts/sync-yarn-batches.mjs          (dry run)
- *   ... node scripts/sync-yarn-batches.mjs --apply                                                                    (write)
+ *   SHOPIFY_STORE=your-shop.myshopify.com SHOPIFY_CLIENT_ID=... SHOPIFY_CLIENT_SECRET=... node scripts/sync-yarn-batches.mjs   (dry run)
+ *   ... node scripts/sync-yarn-batches.mjs --apply                                                                          (write)
  *
- * Token scopes: read_products, read_metaobjects, write_metaobjects.
+ * Auth: Dev Dashboard app, client credentials grant (the script requests a fresh access token on
+ * every run, so nothing expires between runs). A fixed SHOPIFY_ADMIN_TOKEN is still accepted
+ * instead of the client id / secret.
+ * App scopes: read_products, read_metaobjects, write_metaobjects, read_metaobject_definitions.
  * Metafields are found by their definition NAME (Settings > Custom data > Products), so the
  * namespace and key do not matter.
  */
 import { pathToFileURL } from 'node:url';
 
-const API_VERSION = process.env.SHOPIFY_API_VERSION || '2025-10';
+const API_VERSION = process.env.SHOPIFY_API_VERSION || '2026-10';
 const TYPE = 'yarn_batch';
 
 // Product metafield definition names (case-insensitive) -> role
@@ -141,16 +144,46 @@ export function diffFields(batch, entry) {
 
 /* ---------------------------------- Shopify ---------------------------------- */
 
+let cachedToken = null;
+
+async function getToken(force = false) {
+  if (process.env.SHOPIFY_ADMIN_TOKEN) return process.env.SHOPIFY_ADMIN_TOKEN;
+  if (cachedToken && !force) return cachedToken;
+  const res = await fetch(`https://${process.env.SHOPIFY_STORE}/admin/oauth/access_token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      client_id: process.env.SHOPIFY_CLIENT_ID,
+      client_secret: process.env.SHOPIFY_CLIENT_SECRET,
+      grant_type: 'client_credentials',
+    }),
+  });
+  if (!res.ok) {
+    throw new Error(`Could not get an access token (HTTP ${res.status}): ${await res.text()}. ` +
+      'Check that the app is installed on the store, they are in the same organization, and the client id / secret are right.');
+  }
+  const json = await res.json();
+  if (!json.access_token) throw new Error('Token response had no access_token');
+  cachedToken = json.access_token;
+  return cachedToken;
+}
+
 async function gql(query, variables = {}) {
   const store = process.env.SHOPIFY_STORE;
-  const token = process.env.SHOPIFY_ADMIN_TOKEN;
   const url = `https://${store}/admin/api/${API_VERSION}/graphql.json`;
+  let token = await getToken();
+  let refreshed = false;
   for (let attempt = 0; attempt < 5; attempt++) {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token },
       body: JSON.stringify({ query, variables }),
     });
+    if (res.status === 401 && !refreshed && !process.env.SHOPIFY_ADMIN_TOKEN) {
+      refreshed = true;
+      token = await getToken(true);
+      continue;
+    }
     if (res.status === 429 || res.status >= 500) {
       await new Promise((r) => setTimeout(r, 1000 * 2 ** attempt));
       continue;
@@ -254,9 +287,13 @@ async function writeEntry(entry, batch, fields) {
 
 async function main() {
   const apply = process.argv.includes('--apply');
-  for (const v of ['SHOPIFY_STORE', 'SHOPIFY_ADMIN_TOKEN']) {
+  const required = process.env.SHOPIFY_ADMIN_TOKEN
+    ? ['SHOPIFY_STORE']
+    : ['SHOPIFY_STORE', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET'];
+  for (const v of required) {
     if (!process.env[v]) { console.error(`Missing env var ${v}`); process.exit(2); }
   }
+  process.env.SHOPIFY_STORE = process.env.SHOPIFY_STORE.trim().replace(/^https?:\/\//, '').replace(/\/+$/, '');
   console.log(apply ? 'MODE: apply (writing to Shopify)' : 'MODE: dry run (add --apply to write)');
 
   const defs = await loadProductDefinitions();
