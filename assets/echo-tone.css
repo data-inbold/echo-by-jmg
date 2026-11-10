@@ -7,7 +7,7 @@
   --wine:#3A0F1F; --wine-2:#6B1F36; --gold:#6B1F36; --gold-2:#F4EDE6; --blush:#EAE3DB; --sand:#9CB4E4;
   --blue:#9CB4E4; --blue-2:#7F9ADA; --cream:#F4EDE6; --px:20px;
   --hatch1:#E9E1D8; --hatch2:#F1ECE6;
-  --head:'Playfair Display',Georgia,serif; --display:'Playfair Display',Georgia,serif; --body:'Manrope',system-ui,sans-serif; --mono:'Manrope',system-ui,sans-serif;
+  --head:'Prata',Georgia,serif; --display:'Newsreader',Georgia,serif; --body:'Manrope',system-ui,sans-serif; --mono:'Manrope',system-ui,sans-serif;
 }
 body{font-family:var(--body);font-size:15px;line-height:1.6}
 .mono{font-weight:600;letter-spacing:.12em;font-size:11px}
@@ -177,3 +177,10 @@ footer.site :focus-visible{outline-color:var(--wine)}
 .card .ph.pic:not(.pack){background:var(--soft);border:0}
 .card .meta{font-size:13px}
 .card .meta .name{font-size:13px;font-weight:400;color:var(--muted)}
+
+/* fonts: Prata for the big headings and numbers, Newsreader for the rest of the serif text */
+.h1,.h2,[id$="__hero"] .hbn-h,.stats-icons .stat .n{font-family:var(--head);font-weight:400;font-style:normal}
+header.site .nav .main>a,header.site .nav .main>button,header.site .nav .tools button,header.site .nav .tools a{font-family:'Newsreader',Georgia,serif;font-size:16px;font-weight:400}
+header.site .nav .main>a,header.site .nav .main>button{color:var(--wine)}
+.mq .mq-track span{font-family:'Newsreader',Georgia,serif;font-style:normal;font-weight:400;color:#96B3E2}
+.section .how-steps h3,.tiles .name{font-family:'Newsreader',Georgia,serif;font-weight:400}

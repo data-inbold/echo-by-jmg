@@ -38,28 +38,28 @@
           "type": "stat",
           "settings": {
             "n": "{kg}",
-            "text": "Yarn rescued"
+            "text": "yarn rescued"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "Limited edition drops"
+            "text": "limited edition drops"
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
             "n": "1946",
-            "text": "Family knitwear to today"
+            "text": "to today"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
             "n": "0",
-            "text": "Restock once sold out"
+            "text": "restock once sold out"
           }
         }
       },
@@ -111,7 +111,7 @@
         "step_1": {
           "type": "step",
           "settings": {
-            "title": "Luxury yarn unused",
+            "title": "Luxury yarn goes unused",
             "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
             "link_word": "",
             "link": ""
@@ -169,7 +169,7 @@
           "settings": {
             "collection": "",
             "cat": "cushions",
-            "title": "Cushion covers",
+            "title": "Cushion Covers",
             "from": "from DKK 620",
             "photo": "echo-t1-tile-cushions.jpg"
           }
@@ -222,9 +222,9 @@
         "heading": "",
         "heading_tag": false,
         "heading_size": "h2",
-        "quote": "“To me, EchoByJMG is more than a collection of knitted products. It’s a continuation of our family’s story, with a fresh purpose for the future.”",
+        "quote": "“To me, EchoByJMG is more than a collection of knitted products. It’s a continuation of our family’s story, with a fresh purpose for the future”",
         "lead": "",
-        "caption": "Ming, Founder of EchoByJMG",
+        "caption": "Ming, founder of EchoByJMG",
         "small": "",
         "btn1_label": "Read our story",
         "btn1_link": "echo:story",
@@ -237,7 +237,7 @@
         "alt": "Ming and a colleague at the factory going through yarn samples",
         "label": "",
         "ar": "4/3",
-        "outer_heading": "Our Story",
+        "outer_heading": "Our story",
         "panel": "wine"
       }
     },
