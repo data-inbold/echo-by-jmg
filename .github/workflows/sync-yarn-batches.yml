@@ -29,6 +29,8 @@ jobs:
       - name: Sync
         env:
           SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          # Optional: a fixed Admin API token. When this secret is set it is used instead of the client id / secret.
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           APPLY: ${{ github.event_name == 'schedule' || inputs.apply }}

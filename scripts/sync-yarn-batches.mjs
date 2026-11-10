@@ -159,8 +159,9 @@ async function getToken(force = false) {
     }),
   });
   if (!res.ok) {
-    throw new Error(`Could not get an access token (HTTP ${res.status}): ${await res.text()}. ` +
-      'Check that the app is installed on the store, they are in the same organization, and the client id / secret are right.');
+    const cid = String(process.env.SHOPIFY_CLIENT_ID || '');
+    throw new Error(`Could not get an access token for shop "${process.env.SHOPIFY_STORE}" with client id "${cid.slice(0, 6)}..." (HTTP ${res.status}): ${await res.text()}. ` +
+      'Check that this is the right shop domain, that the app is installed on that shop, that the app and shop are in the same organization, and that the client id / secret belong to this app.');
   }
   const json = await res.json();
   if (!json.access_token) throw new Error('Token response had no access_token');
@@ -295,6 +296,7 @@ async function main() {
   }
   process.env.SHOPIFY_STORE = process.env.SHOPIFY_STORE.trim().replace(/^https?:\/\//, '').replace(/\/+$/, '');
   console.log(apply ? 'MODE: apply (writing to Shopify)' : 'MODE: dry run (add --apply to write)');
+  console.log(`Shop: ${process.env.SHOPIFY_STORE}  Auth: ${process.env.SHOPIFY_ADMIN_TOKEN ? 'fixed admin token' : 'client credentials'}  API: ${API_VERSION}`);
 
   const defs = await loadProductDefinitions();
   console.log('Product metafields:', Object.entries(defs).map(([r, d]) => `${r}=${d.namespace}.${d.key}`).join('  '));
