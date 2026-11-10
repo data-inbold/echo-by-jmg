@@ -62,8 +62,6 @@ header.site :focus-visible{outline-color:var(--olive-2)}
 /* home hero: yarn photo on the left, featured product card on the right */
 [id$="__hero"] .hbn{display:grid;grid-template-columns:minmax(0,1fr);background:var(--paper);min-height:0}
 [id$="__hero"] .hbn>.ph{position:relative;inset:auto;grid-area:1/1;min-height:clamp(440px,42vw,560px)}
-[id$="__hero"] .hbn::after{content:"";position:absolute;inset:0;grid-area:1/1;pointer-events:none;
-  background:linear-gradient(90deg,rgba(246,242,234,.78) 0%,rgba(246,242,234,.4) 45%,rgba(246,242,234,0) 75%)}
 [id$="__hero"] .hbn-thread{display:none}
 [id$="__hero"] .hbn-in{grid-area:1/1;align-self:center;align-items:flex-start;text-align:left;padding:clamp(32px,5vw,72px) clamp(20px,5vw,72px);max-width:620px;gap:18px}
 [id$="__hero"] .hbn-h{color:#8D907A;font-weight:300;font-size:clamp(36px,4.6vw,60px)}
@@ -78,7 +76,6 @@ header.site :focus-visible{outline-color:var(--olive-2)}
 .hbn-feat-c{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid currentColor;align-self:flex-start;padding-bottom:2px}
 @media(min-width:980px){
   [id$="__hero"] .hbn{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)}
-  [id$="__hero"] .hbn::after{grid-area:1/1}
   [id$="__hero"] .hbn-feat{grid-area:1/2}
 }
 
@@ -168,4 +165,11 @@ footer.site :focus-visible{outline-color:var(--olive-2)}
 .how-grid .how-steps::after,.split.panel-blush>.stack::after{content:"";position:absolute;right:clamp(14px,3vw,36px);bottom:clamp(10px,2vw,22px);width:88px;height:86px;background:var(--yarn-icon) center/contain no-repeat;pointer-events:none}
 .split.panel-blush>.stack{position:relative}
 .stats-icons .stat-ic{display:none}
-.stats-icons .stat::before{content:"";width:38px;height:37px;background:var(--yarn-icon) center/contain no-repeat;opacity:.55}
+.stats-icons .stat::before{content:"";width:62px;height:54px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 56' fill='none' stroke='%23A3A68F' stroke-width='1.4' stroke-linecap='round'%3E%3Ccircle cx='24' cy='24' r='18'/%3E%3Cpath d='M8 18c10 6 22 6 32 0M7 28c11 6 24 6 35 0M16 38c6 3 12 3 18 0M14 8c6 8 6 24 0 32M26 6c-5 8-5 26 0 36'/%3E%3Ccircle cx='44' cy='38' r='13'/%3E%3Cpath d='M33 34c7 4 15 4 22 0M32 42c8 4 17 4 25 0M40 26c-4 6-4 16 0 24M48 26c-3 6-3 16 0 24M52 49c4 2 8 1 10-2'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* white thread loops drawn over the photos, as in the design */
+[id$="__hero"] .hbn::after{content:"";position:absolute;inset:0;grid-area:1/1;z-index:1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1012 784' preserveAspectRatio='none' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M675 0C675 90 730 135 810 132C890 130 950 70 925 48C900 30 800 80 792 220C788 250 800 310 850 330C900 346 970 337 1012 335' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M0 410C90 400 170 440 192 510C200 590 150 620 80 640C30 655 30 690 55 700C130 690 250 600 300 620C320 700 300 780 305 784' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;opacity:.95}
+.section .how-grid .how-media{position:relative}
+.section .how-grid .how-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 860 703' preserveAspectRatio='none' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M440 0C425 90 440 200 500 240C580 280 700 190 710 170C690 120 660 150 610 250C600 330 640 400 720 400C780 400 830 380 860 370' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;opacity:.95}
+[id$="__story"] .split.panel .ph::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 860 708' preserveAspectRatio='none' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M0 360C90 345 205 380 208 470C210 560 150 640 110 640C60 640 90 560 120 520C150 480 230 450 290 480C350 510 380 540 384 600L386 708' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;opacity:.95}
+@media(max-width:979px){[id$="__hero"] .hbn::after{display:none}}
