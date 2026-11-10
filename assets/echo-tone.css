@@ -93,7 +93,7 @@ header.site :focus-visible{outline-color:var(--olive-2)}
 .section .how-grid .how-media{order:2;display:flex;align-self:stretch;min-height:320px}
 .section .how-grid .how-media>*{flex:1;min-width:0}
 .how-grid .how-media .ph{aspect-ratio:auto!important;flex:1;height:auto;min-height:320px}
-.how-grid .how-steps{padding:clamp(24px,4vw,56px);gap:0;justify-content:center}
+.how-grid .how-steps{padding:clamp(24px,4vw,56px) clamp(24px,4vw,56px) 150px;gap:0;justify-content:center}
 .section .how-grid .how-steps li{padding:20px 0;border-bottom:1px solid var(--line)}
 .section .how-grid .how-steps li:first-child{padding-top:0}
 .section .how-grid .how-steps li:last-child{border-bottom:0}
@@ -160,9 +160,9 @@ footer.site :focus-visible{outline-color:var(--olive-2)}
 [id$="__gift"] .split.panel .ph img{object-position:50% 80%}
 
 /* yarn ball drawing: centred dividers, card corners and the numbers icons */
-[id$="__shop_by"] .section::after,[id$="__quotes"] .section::after{content:"";display:block;width:150px;height:146px;margin:32px auto -8px;background:var(--yarn-icon) center/contain no-repeat}
+[id$="__shop_by"] .section::after,[id$="__quotes"] .section::after{content:"";display:block;width:150px;height:165px;margin:32px auto -8px;background:var(--yarn-icon) center/contain no-repeat}
 .how-grid .how-steps{position:relative}
-.how-grid .how-steps::after,.split.panel-blush>.stack::after{content:"";position:absolute;right:clamp(14px,3vw,36px);bottom:clamp(10px,2vw,22px);width:120px;height:117px;background:var(--yarn-icon) center/contain no-repeat;pointer-events:none}
+.how-grid .how-steps::after,.split.panel-blush>.stack::after{content:"";position:absolute;right:clamp(14px,3vw,36px);bottom:clamp(10px,2vw,22px);width:120px;height:132px;background:var(--yarn-icon) center/contain no-repeat;pointer-events:none}
 .split.panel-blush>.stack{position:relative}
 .stats-icons .stat-ic{display:none}
 .stats-icons .stat::before{content:"";width:72px;height:63px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 56' fill='none' stroke='%23A3A68F' stroke-width='1.4' stroke-linecap='round'%3E%3Ccircle cx='24' cy='24' r='18'/%3E%3Cpath d='M8 18c10 6 22 6 32 0M7 28c11 6 24 6 35 0M16 38c6 3 12 3 18 0M14 8c6 8 6 24 0 32M26 6c-5 8-5 26 0 36'/%3E%3Ccircle cx='44' cy='38' r='13'/%3E%3Cpath d='M33 34c7 4 15 4 22 0M32 42c8 4 17 4 25 0M40 26c-4 6-4 16 0 24M48 26c-3 6-3 16 0 24M52 49c4 2 8 1 10-2'/%3E%3C/svg%3E") center/contain no-repeat}
@@ -173,3 +173,8 @@ footer.site :focus-visible{outline-color:var(--olive-2)}
 .section .how-grid .how-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 860 703' preserveAspectRatio='none' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M440 0C425 90 440 200 500 240C580 280 700 190 710 170C690 120 660 150 610 250C600 330 640 400 720 400C780 400 830 380 860 370' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;opacity:.95}
 [id$="__story"] .split.panel .ph::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 860 708' preserveAspectRatio='none' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M0 360C90 345 205 380 208 470C210 560 150 640 110 640C60 640 90 560 120 520C150 480 230 450 290 480C350 510 380 540 384 600L386 708' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;opacity:.95}
 @media(max-width:979px){[id$="__hero"] .hbn::after{display:none}}
+
+/* keep the corner drawing clear of the text, and show the label at the top of the how-it-works photo */
+.split.panel-blush>.stack{padding-bottom:clamp(28px,5vw,64px)}
+@media(min-width:880px){.split.panel-blush>.stack{padding-bottom:160px}}
+.section .how-grid .how-media .ph img{object-position:50% 8%}
