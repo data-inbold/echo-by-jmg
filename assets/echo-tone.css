@@ -1,12 +1,12 @@
-/* EchoByJMG · Collab tone and mood (5 Nov 2026)
-   Warm cream and blush, deep wine, gold accents, light serif headings (Newsreader) and Manrope text.
-   Loaded after echo.css so it restyles every page. The header and the top bar are left as they are. */
+/* EchoByJMG · tone and mood. Updated 10 Nov 2026 from the Figma "Homepage Opt 2" design.
+   Soft off-white, olive and stone, Literata light headings and Manrope text.
+   Loaded after echo.css so it restyles every page, header and top bar included. */
 :root{
   --paper:#F2EEEA; --white:#FFFFFF; --ink:#2B2523; --muted:#6B615B; --faint:#9A8F85;
   --line:#E3DAD1; --soft:#EBE2D9; --clay:#631930; --warm:#8C7A55;
   --wine:#380F1C; --wine-2:#631930; --gold:#948057; --gold-2:#A8882B; --blush:#F0E7DF; --sand:#E2CFA8;
   --hatch1:#E9E1D8; --hatch2:#F2EBE4;
-  --head:'Newsreader',Georgia,serif; --display:'Newsreader',Georgia,serif; --body:'Manrope',system-ui,sans-serif; --mono:'Manrope',system-ui,sans-serif;
+  --head:'Literata',Georgia,serif; --display:'Literata',Georgia,serif; --body:'Manrope',system-ui,sans-serif; --mono:'Manrope',system-ui,sans-serif;
 }
 body{font-family:var(--body);font-size:15px;line-height:1.6}
 .mono{font-weight:600;letter-spacing:.12em;font-size:11px}
@@ -92,3 +92,136 @@ footer.site :focus-visible{outline-color:var(--wine)}
 .legal{border-top:1px solid var(--ink);color:var(--faint)}
 .payments span{border-color:#CDBFB1;color:var(--ink)}
 .payments span.first{background:#111;border-color:#111;color:#fff}
+
+/* ================= Figma "Homepage Opt 2" (10 Nov 2026) ================= */
+:root{
+  --paper:#F6F5F1; --soft:#E7E6DE; --olive:#7C7E64; --olive-dk:#6B6D55; --stone:#D7D5CB; --mist:#A8A99B;
+  --ink:#2E2D2C; --muted:#61686A; --faint:#ABA499; --line:#E2E0DB; --dark:#252729;
+  --wine:#7C7E64; --wine-2:#7C7E64; --gold:#7C7E64; --blush:#E7E6DE; --sand:#A8A99B;
+  --nav:'Literata',Georgia,serif; --wrap:1440px;
+}
+body{font-size:14px;line-height:1.6}
+@media(min-width:720px){.wrap{padding-inline:80px}}
+.section{padding-block:40px}
+.section.tight{padding-block:32px}
+body.template-index #app{padding-bottom:40px}
+
+/* headings: Literata Light 40, ink */
+.h1,.h2{font-family:var(--display);font-weight:300;font-style:normal;letter-spacing:0}
+.h2{font-size:clamp(30px,2.8vw,40px);line-height:1.2;color:var(--ink)}
+.stat .n{font-weight:300}
+.section.dark{background:var(--olive);color:#fff}
+
+/* buttons: Manrope Medium 12, tracked; olive fill or outline */
+.btn{font:500 12px/1.6 var(--body);letter-spacing:.1em;min-height:43px;padding:0 24px;background:var(--olive);border-color:var(--olive);color:var(--stone)}
+.btn:hover,.btn:focus-visible{background:transparent;color:var(--olive);box-shadow:inset 0 0 0 1px var(--olive)}
+.btn.ghost{background:transparent;color:var(--dark);border-color:var(--dark)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--dark);color:#fff;box-shadow:none}
+.btn.sec{background:var(--paper);color:var(--dark);border-color:var(--paper)}
+.btn.sec:hover,.btn.sec:focus-visible{background:var(--dark);color:#fff;box-shadow:none}
+.link.arrow{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--dark);border-bottom-color:var(--ink)}
+.head-inline{align-items:center}
+.row.head-inline{justify-content:space-between!important}
+.chip[aria-pressed="true"],.badge{background:var(--olive);border-color:var(--olive)}
+
+/* top bar and header */
+.util{background:var(--olive);color:#fff;font:300 12px/1.5 var(--nav);letter-spacing:0;padding:8px 16px;border-bottom:0}
+header.site{background:var(--paper);color:#777873}
+header.site :focus-visible{outline-color:var(--olive)}
+.nav{min-height:92px;gap:24px}
+.nav .main>a,.nav .main>button,.nav .tools button,.nav .tools a,.nav .tools select{font:400 16px/1.5 var(--nav);letter-spacing:0;text-transform:none;color:#777873}
+.nav .main>a:hover,.nav .main>button:hover,.nav .tools button:hover,.nav .tools a:hover{color:var(--dark)}
+.nav .main [aria-current="page"],.nav .main [aria-expanded="true"]{color:var(--dark);border-bottom-color:var(--olive)}
+.logo img{filter:brightness(0) opacity(.75)}
+.nav .tools form{padding-right:20px;margin-right:4px;border-right:1px solid #CFCDC6}
+.nav .tools form button{padding-inline:2px}
+.mobile-menu{background:var(--paper);color:#777873;border-top:1px solid var(--line)}
+.mobile-menu a{border-bottom-color:var(--line);font:400 16px/1.4 var(--nav);text-transform:none;letter-spacing:0}
+@media(min-width:980px){
+  .nav{display:grid;grid-template-columns:1fr auto 1fr}
+  .nav .main{order:1;justify-self:start;gap:12px}
+  .logo{order:2;margin:0;justify-self:center}
+  .nav .tools{order:3;justify-self:end;margin-left:0}
+}
+
+/* hero (split) */
+.hd-h{font-weight:400}
+
+/* shop by products: photo, title with arrow, price line */
+.tiles .ph.pic{aspect-ratio:302/420!important}
+.tiles .meta{gap:4px;padding-top:0}
+.tiles .name{display:flex;justify-content:space-between;align-items:center;gap:10px;font:300 clamp(24px,2.2vw,32px)/1.5 var(--nav);color:var(--ink)}
+.tiles .name::after{content:"\2197";font:400 22px/1 var(--body)}
+.tiles .muted{color:var(--ink);font-size:16px;line-height:1.6}
+.card:hover .name{text-decoration:none}
+
+/* four across, 24px gap */
+.g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}
+@media(min-width:900px){.g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.card{gap:20px}
+.card .ph.pack{background:var(--soft);aspect-ratio:302/360}
+.card .ph.pack img{mix-blend-mode:multiply}
+.card .meta{gap:8px}
+.card .name{font-weight:400;font-size:16px;line-height:1.3;color:var(--muted)}
+.card .ed{font-size:14px;color:var(--faint)}
+.card .meta>span:not([class]){font-size:16px;font-weight:600;color:var(--ink)}
+body.template-index .card .swatches{display:none}
+
+/* hashtags */
+.mq-track{gap:40px}
+.mq-track span{font:300 clamp(30px,2.8vw,40px)/76px var(--nav);color:var(--mist)}
+
+/* numbers: stone band, icon above each number */
+.section.band{background:var(--soft)}
+.stats-icons.section{padding-block:40px;margin-block:40px}
+.shopify-section:has(>.hd)+.shopify-section>.section{padding-top:80px}
+.stats-icons .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
+@media(min-width:900px){.stats-icons .stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stats-icons .stat{flex-direction:column;align-items:flex-start;gap:0}
+.stats-icons .stat-ic{width:68px;height:68px;color:var(--olive)}
+.stats-icons .stat .n{font:italic 300 40px/1.2 var(--display);color:var(--olive)}
+.stats-icons .stat p{font-size:14px;line-height:1.6;color:var(--ink);margin:0}
+.stats-icons .stats-cta{margin-top:40px!important}
+.stats-icons .stats-cta .btn.ghost{color:var(--dark);border-color:var(--dark);margin-top:0;min-width:min(100%,408px)}
+.stats-icons .stats-cta .btn.ghost:hover{background:var(--dark);color:#fff}
+
+/* story (white panel) and gift (olive band) */
+.split.panel{min-height:560px}
+.split.panel>.stack{padding:clamp(28px,5vw,40px);justify-content:center;gap:24px}
+@media(min-width:880px){
+  .split.panel.mf{grid-template-columns:680fr 600fr}
+  .split.panel.panel-olive:not(.mf){grid-template-columns:470fr 810fr}
+}
+.split.panel-white{background:#fff}
+.split.panel-white>.stack{background:#fff;color:var(--ink)}
+.split.panel-white .echo-quote{font:italic 300 clamp(22px,2.3vw,32px)/1.3 var(--display);color:var(--olive)}
+.split.panel-white .echo-quote+.muted{border-top:1px solid var(--stone);padding-top:24px}
+.split.panel-white .muted{color:var(--muted);font-size:14px}
+.split.panel-white .btn,.split.panel-white .btn.ghost{background:transparent;color:var(--dark);border-color:var(--dark)}
+.split.panel-white .btn:hover{background:var(--dark);color:#fff}
+.split.panel-olive{background:var(--olive);min-height:420px}
+.split.panel-olive>.stack{background:transparent;color:#fff}
+.split.panel-olive .h2{color:#EEECEA}
+.split.panel-olive .lead,.split.panel-olive .muted{color:#fff;font-size:14px;max-width:none}
+.split.panel-olive .btn,.split.panel-olive .btn.ghost{background:transparent;color:var(--paper);border-color:var(--paper)}
+.split.panel-olive .btn:hover{background:var(--paper);color:var(--olive)}
+.split.panel-olive>.ph,.split.panel-olive>div:not(.stack){margin:0 40px 40px}
+@media(min-width:880px){.split.panel-olive>.ph,.split.panel-olive>div:not(.stack){margin:40px 40px 40px 0}}
+.split.panel .btn::after{content:"\2197";font-size:1.7em;line-height:1}
+
+/* reviews */
+.step b,.how-steps h3{color:var(--olive)}
+
+/* footer */
+footer.site{background:#EDECE9}
+footer.site .wrap{max-width:1240px;padding-inline:32px}
+.fcols{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+@media(min-width:900px){.fcols{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.fcols h4{font:700 15px/1.55 var(--body);color:#252729}
+footer.site a{color:var(--muted)}
+footer.site p{font-size:14px;color:var(--ink)}
+footer.site .inline-form{flex-direction:column;align-items:flex-start;gap:8px}
+footer.site .inline-form input{flex:none;width:100%;border-color:#E2E0DB;background:#fff}
+footer.site .btn{background:#111;border-color:#111;color:#fff;font:500 12.5px/1.55 var(--body);letter-spacing:.06em;min-height:48px;padding:0 27px}
+footer.site .btn:hover{background:#fff;color:#111}
+.legal{border-top-color:#2E2E2E}

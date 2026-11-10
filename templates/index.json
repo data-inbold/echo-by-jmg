@@ -11,24 +11,65 @@
   "layout": "echo",
   "sections": {
     "hero": {
-      "type": "echo-hero-banner",
+      "type": "echo-hero-duo",
       "settings": {
-        "heading": "Where Luxury Material Finds A Second Life.",
-        "lead": "We rescue leftover yarns from luxury fashion and turn them into limited-edition pieces for your home. Three generations of craft. Nothing wasted.",
+        "heading": "Where luxury yarn finds a second life.",
+        "lead": "Zero waste, 100% luxury quality. Discover limited-edition pieces born from surplus designer yarn.",
         "btn1_label": "Shop now",
         "btn1_link": "echo:shop-all",
         "btn2_label": "How it works",
         "btn2_link": "#how",
         "photo": "echo-v2-hero.jpg",
         "alt": "Cones of green, mustard, cream and pink yarn resting on a knitted blanket",
-        "focus": "75% 85%"
-      }
+        "focus": "75% 85%",
+        "link_label": "View products"
+      },
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "title": "Twisted Rope Knitted Blanket",
+            "link": "echo:shop-all",
+            "photo": "echo-twister-outdoor.jpg"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "title": "Carousel Stripes Knitted Throw",
+            "link": "echo:shop-all",
+            "photo": "echo-carousel-violet.jpg"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "title": "Hills & Valleys Knitted Throw",
+            "link": "echo:shop-all",
+            "photo": "echo-hills-valleys-green.jpg"
+          }
+        },
+        "slide_4": {
+          "type": "slide",
+          "settings": {
+            "title": "Happy Sunshine Knitted Throw",
+            "link": "echo:shop-all",
+            "photo": "echo-happy-sunshine-mauve.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3",
+        "slide_4"
+      ]
     },
     "numbers": {
       "type": "echo-stats",
       "settings": {
         "spacing": "normal",
-        "bg": "dark",
+        "bg": "band",
         "icons": true,
         "link_label": "View rescued yarn tracker",
         "link": ""
@@ -38,35 +79,35 @@
           "type": "stat",
           "settings": {
             "n": "{kg}",
-            "text": "Yarn rescued to date"
+            "text": "yarn rescued"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "Numbered editions released"
+            "text": "limited edition"
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
             "n": "1946",
-            "text": "Family knitwear since"
+            "text": "to today"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
-            "n": "0 restocks",
-            "text": "When an edition is gone, it is gone."
+            "n": "0",
+            "text": "restock once sold out"
           }
         }
       },
       "block_order": [
+        "stat_3",
         "stat_1",
         "stat_2",
-        "stat_3",
         "stat_4"
       ]
     },
@@ -89,7 +130,7 @@
           "happy-sunshine-throw-cloud-smoky-mauve"
         ],
         "collection": "",
-        "limit": 8,
+        "limit": 4,
         "group": false,
         "link_inline": true
       }
@@ -110,8 +151,8 @@
         "step_1": {
           "type": "step",
           "settings": {
-            "title": "We rescue the yarn",
-            "text": "Unused yarn left after fashion production runs in our own factory. Never worn, never recycled fibre.",
+            "title": "Luxury yarn goes unused",
+            "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
             "link_word": "",
             "link": ""
           }
@@ -119,8 +160,8 @@
         "step_2": {
           "type": "step",
           "settings": {
-            "title": "The yarn decides the design",
-            "text": "We design around what is left. That is why every run is limited.",
+            "title": "We rescue and reimagine",
+            "text": "We reclaim the leftover yarn, designing and producing strictly around what is available.",
             "link_word": "",
             "link": ""
           }
@@ -128,8 +169,8 @@
         "step_3": {
           "type": "step",
           "settings": {
-            "title": "You get a number",
-            "text": "Every piece is labelled “7 of 12” and carries its Yarn Passport.",
+            "title": "Traceable and exclusively yours",
+            "text": "Every limited-edition piece you purchase will include a custom woven label and a Yarn Passport that details your yarn's journey.",
             "link_word": "Yarn Passport",
             "link": "echo:passport"
           }
@@ -146,7 +187,7 @@
       "settings": {
         "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
         "speed": 40,
-        "pad": 24,
+        "pad": 40,
         "bg": ""
       }
     },
@@ -159,7 +200,7 @@
             "collection": "",
             "cat": "blankets",
             "title": "Blankets",
-            "from": "from DKK 1,300",
+            "from": "from DKK 809",
             "photo": "echo-v2-tile-blankets.jpg"
           }
         },
@@ -169,7 +210,7 @@
             "collection": "",
             "cat": "cushions",
             "title": "Cushion covers",
-            "from": "from DKK 620",
+            "from": "from DKK 809",
             "photo": "echo-v2-tile-cushions.jpg"
           }
         },
@@ -179,7 +220,7 @@
             "collection": "",
             "cat": "bags",
             "title": "Bags",
-            "from": "from DKK 630",
+            "from": "from DKK 809",
             "photo": "echo-v2-tile-bags.jpg"
           }
         },
@@ -189,7 +230,7 @@
             "collection": "",
             "cat": "accessories",
             "title": "Accessories",
-            "from": "from DKK 660",
+            "from": "from DKK 809",
             "photo": "echo-v2-tile-accessories.jpg"
           }
         }
@@ -221,7 +262,7 @@
         "heading": "",
         "heading_tag": false,
         "heading_size": "h2",
-        "quote": "“Not sourced from third parties, not processed through industrial recycling, but intercepted at the source, by the people who made them.”",
+        "quote": "“To me, EchoByJMG is more than a collection of knitted products. It's a continuation of our family's story, with a fresh purpose for the future.”",
         "lead": "",
         "caption": "Ming, founder of EchoByJMG",
         "small": "",
@@ -236,8 +277,8 @@
         "alt": "Ming and a colleague at the factory going through yarn samples",
         "label": "",
         "ar": "4/3",
-        "outer_heading": "Story About Us",
-        "panel": "blush"
+        "outer_heading": "Our story",
+        "panel": "white"
       }
     },
     "quotes": {
@@ -245,29 +286,31 @@
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "heading": "Our Customers"
+        "heading": "What our customers say"
       },
       "blocks": {
         "review_1": {
           "type": "review",
           "settings": {
-            "name": "Aija",
-            "country": "",
+            "name": "Jane Doe",
+            "country": "Denmark",
             "quote": "So soft, you felt it immediately. It feels like it’s always belonged in the room.",
             "photo": "echo-v2-review-1.jpg",
             "alt": "A blue knitted blanket with a green border in a play tent",
-            "product": "hills-valleys-cushion-cover"
+            "product": "carousel-stripes-knitted-throw-violet-blue"
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "name": "Anna",
-            "country": "",
-            "quote": "I adore my cushion covers, the cat and dog designs are just too cute! Love the colours.",
+            "name": "Oscar",
+            "country": "Denmark",
+            "quote": "My daughter favorite blanket.",
             "photo": "echo-v2-review-2.jpg",
             "alt": "A grey knitted blanket with a soft toy rabbit",
-            "product": "puff-friends-cushion-cover"
+            "product": "",
+            "product_name": "Cotton Candy Cloud Knitted Throw",
+            "product_price": "DKK 979"
           }
         }
       },
@@ -287,11 +330,11 @@
         "gap": 16,
         "hide_on_gift": false,
         "eyebrow": "",
-        "heading": "Gift With A Story",
+        "heading": "A gift with a story",
         "heading_tag": false,
         "heading_size": "h2",
         "quote": "",
-        "lead": "No price on the packing slip. Gift wrapped in tissue, with a small surprise inside, or let you choose with a gift card.",
+        "lead": "No price on the packing slip, wrapped in tissue, with a small surprise inside. Or let them choose with a gift card.",
         "caption": "",
         "small": "",
         "btn1_label": "Gift guide",
@@ -306,17 +349,27 @@
         "label": "",
         "ar": "16/9",
         "outer_heading": "",
-        "panel": "wine"
+        "panel": "olive"
+      }
+    },
+    "marquee_2": {
+      "type": "echo-marquee",
+      "settings": {
+        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
+        "speed": 40,
+        "pad": 40,
+        "bg": ""
       }
     }
   },
   "order": [
     "hero",
+    "shop_by",
+    "marquee",
+    "how",
+    "marquee_2",
     "numbers",
     "editions",
-    "how",
-    "marquee",
-    "shop_by",
     "story",
     "quotes",
     "gift"
