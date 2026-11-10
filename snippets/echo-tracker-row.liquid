@@ -65,5 +65,5 @@
     assign status = '<span class="tstat">Open · ' | append: left | append: ' left</span>'
   endif
   echo pcs | append: '@@' | append: left | append: '@@'
-  echo '<tr ' | append: attrs | append: '><td class="mono" style="text-transform:none;letter-spacing:0;color:var(--ink)">' | append: bid | append: '</td><td>' | append: dshow | append: '</td><td>' | append: fshow | append: '</td><td class="num">' | append: kg | append: ' kg</td><td>' | append: became | append: '</td><td class="num">' | append: pcs | append: '</td><td>' | append: status | append: '</td></tr>'
+  echo '<tr ' | append: attrs | append: ' data-kg="' | append: kg | append: '" data-pieces="' | append: pcs | append: '" data-left="' | append: left | append: '"><td class="mono" style="text-transform:none;letter-spacing:0;color:var(--ink)">' | append: bid | append: '</td><td>' | append: dshow | append: '</td><td>' | append: fshow | append: '</td><td class="num">' | append: kg | append: ' kg</td><td>' | append: became | append: '</td><td class="num">' | append: pcs | append: '</td><td>' | append: status | append: '</td></tr>'
 -%}

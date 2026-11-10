@@ -1,0 +1,33 @@
+{% layout none %}
+{%- comment -%}
+  Data feed for the Rescued yarn tracker (assets/echo-tracker.js). Not a visible page.
+  Request: /collections/all?view=yarn-data&page=N   (50 products per page, the tracker loads every page)
+  Returns JSON with one entry per product that has a Yarn Passport batch (metafield custom.yp_batch_id):
+    h handle, u url, n display name, b batch id, k kg, p pieces made, l pieces left (live stock),
+    s state (open|last|sold), f fibre, d logged date (optional metafield custom.yp_logged)
+  Values come from the echo-pinfo snippet so the tracker, passport cards and this feed always agree.
+{%- endcomment -%}
+{%- paginate collection.products by 50 -%}
+{%- assign first = true -%}
+{"page":{{ paginate.current_page }},"pages":{{ paginate.pages }},"items":[
+{%- for p in collection.products -%}
+  {%- assign hasb = p.metafields.custom.yp_batch_id.value | default: p.metafields.custom.batch_id.value -%}
+  {%- if hasb == blank -%}
+    {%- continue -%}
+  {%- endif -%}
+  {%- capture raw -%}{%- render 'echo-pinfo', product: p -%}{%- endcapture -%}
+  {%- assign pi = raw | strip | split: '~' -%}
+  {%- unless first -%},{%- endunless -%}
+  {%- assign first = false -%}
+  {%- assign f_name = pi[8] | default: p.title -%}
+  {%- assign f_batch = pi[9] | default: '' -%}
+  {%- assign f_kg = pi[10] | default: '' -%}
+  {%- assign f_pieces = pi[2] | default: '' -%}
+  {%- assign f_left = pi[3] | default: '' -%}
+  {%- assign f_state = pi[4] | default: '' -%}
+  {%- assign f_fibre = pi[13] | default: '' -%}
+  {%- assign f_logged = p.metafields.custom.yp_logged.value | default: '' -%}
+  {"h":{{ p.handle | json }},"u":{{ p.url | json }},"n":{{ f_name | json }},"b":{{ f_batch | json }},"k":{{ f_kg | json }},"p":{{ f_pieces | json }},"l":{{ f_left | json }},"s":{{ f_state | json }},"f":{{ f_fibre | json }},"d":{{ f_logged | json }}}
+{%- endfor -%}
+]}
+{%- endpaginate -%}
