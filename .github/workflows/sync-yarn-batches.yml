@@ -1,8 +1,9 @@
 name: Sync yarn batches
 
 # Rebuilds the "Yarn batch" metaobject list from the Yarn Passport metafields on products.
-# Needs repository secrets SHOPIFY_STORE (your-shop.myshopify.com) and SHOPIFY_ADMIN_TOKEN
-# (scopes: read_products, read_metaobjects, write_metaobjects).
+# Needs repository secrets SHOPIFY_STORE (your-shop.myshopify.com), SHOPIFY_CLIENT_ID and
+# SHOPIFY_CLIENT_SECRET of a Dev Dashboard app installed on the store
+# (scopes: read_products, read_metaobjects, write_metaobjects, read_metaobject_definitions).
 
 on:
   schedule:
@@ -28,7 +29,8 @@ jobs:
       - name: Sync
         env:
           SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
-          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           APPLY: ${{ github.event_name == 'schedule' || inputs.apply }}
         run: |
           if [ "$APPLY" = "true" ]; then
