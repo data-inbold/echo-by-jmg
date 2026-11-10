@@ -160,3 +160,11 @@ footer.site :focus-visible{outline-color:var(--olive-2)}
 .payments span{border-color:#CDCEBF;color:var(--ink)}
 .payments span.first{background:#111;border-color:#111;color:#fff}
 [id$="__gift"] .split.panel .ph img{object-position:50% 80%}
+
+/* yarn ball drawing: centred dividers, card corners and the numbers icons */
+[id$="__shop_by"] .section::after,[id$="__quotes"] .section::after{content:"";display:block;width:112px;height:110px;margin:28px auto -16px;background:var(--yarn-icon) center/contain no-repeat}
+.how-grid .how-steps{position:relative}
+.how-grid .how-steps::after,.split.panel-blush>.stack::after{content:"";position:absolute;right:clamp(14px,3vw,36px);bottom:clamp(10px,2vw,22px);width:88px;height:86px;background:var(--yarn-icon) center/contain no-repeat;pointer-events:none}
+.split.panel-blush>.stack{position:relative}
+.stats-icons .stat-ic{display:none}
+.stats-icons .stat::before{content:"";width:38px;height:37px;background:var(--yarn-icon) center/contain no-repeat;opacity:.55}
