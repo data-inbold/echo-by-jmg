@@ -373,7 +373,8 @@
         "ar": "5",
         "stat_text": "",
         "stat_link_label": "",
-        "stat_link": ""
+        "stat_link": "",
+        "focus": "45% 55%"
       }
     }
   },

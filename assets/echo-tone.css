@@ -205,8 +205,9 @@ body.template-index .card .swatches{display:none}
 .split.panel-olive .lead,.split.panel-olive .muted{color:#fff;font-size:14px;max-width:none}
 .split.panel-olive .btn,.split.panel-olive .btn.ghost{background:transparent;color:var(--paper);border-color:var(--paper)}
 .split.panel-olive .btn:hover{background:var(--paper);color:var(--olive)}
-.split.panel-olive>.ph,.split.panel-olive>div:not(.stack){margin:0 40px 40px}
-@media(min-width:880px){.split.panel-olive>.ph,.split.panel-olive>div:not(.stack){margin:40px 40px 40px 0}}
+.split.panel-olive>.ph,.split.panel-olive>div:not(.stack){margin:0;min-height:300px}
+.split.panel .ph.pic img{object-position:var(--focus,50% 50%)}
+@media(min-width:880px){.split.panel-olive>.ph,.split.panel-olive>div:not(.stack){min-height:420px}}
 .split.panel .btn::after{content:"\2197";font-size:1.7em;line-height:1}
 
 /* reviews */
