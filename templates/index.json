@@ -341,7 +341,7 @@
       "type": "echo-split",
       "settings": {
         "spacing": "normal",
-        "bg": "dark",
+        "bg": "paper",
         "media_first": false,
         "rev": false,
         "top": false,

@@ -226,3 +226,6 @@ footer.site .inline-form input{flex:none;width:100%;border-color:#E2E0DB;backgro
 footer.site .btn{background:#111;border-color:#111;color:#fff;font:500 12.5px/1.55 var(--body);letter-spacing:.06em;min-height:48px;padding:0 27px}
 footer.site .btn:hover{background:#fff;color:#111}
 .legal{border-top-color:#2E2E2E}
+
+/* the coloured band is the split itself: the section background behind it stays page colour */
+.section:has(>.split.panel-olive),.section:has(>.split.panel-white){background:transparent}
