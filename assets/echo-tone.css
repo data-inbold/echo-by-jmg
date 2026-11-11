@@ -205,7 +205,7 @@ header.site :focus-visible{outline-color:var(--wine)}
 .split.panel-wine .btn{border-color:var(--pink);color:var(--pink)}
 .split.panel-wine .btn:hover{background:var(--pink);color:var(--wine)}
 .split.panel-wine .h2{color:var(--pink)}
-.split.panel-blue{background:var(--blue);min-height:420px}
+.split.panel-blue{background:var(--blue);background-clip:content-box;min-height:420px}
 .split.panel-blue>.stack{background:transparent;color:var(--wine);gap:24px}
 .split.panel-blue .h2{font-size:clamp(30px,2.8vw,40px);color:var(--wine)}
 .split.panel-blue .lead{color:var(--wine);font-size:16px;max-width:none}
