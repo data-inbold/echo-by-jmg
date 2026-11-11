@@ -12,18 +12,6 @@
   "sections": {
     "hero": {
       "type": "echo-hero-duo",
-      "settings": {
-        "heading": "Where luxury yarn finds a second life.",
-        "lead": "Zero waste, 100% luxury quality. Discover limited-edition pieces born from surplus designer yarn.",
-        "btn1_label": "Shop now",
-        "btn1_link": "echo:shop-all",
-        "btn2_label": "How it works",
-        "btn2_link": "#how",
-        "photo": "echo-v2-hero.jpg",
-        "alt": "Cones of green, mustard, cream and pink yarn resting on a knitted blanket",
-        "focus": "75% 85%",
-        "link_label": "View products"
-      },
       "blocks": {
         "slide_1": {
           "type": "slide",
@@ -63,132 +51,18 @@
         "slide_2",
         "slide_3",
         "slide_4"
-      ]
-    },
-    "numbers": {
-      "type": "echo-stats",
+      ],
       "settings": {
-        "spacing": "normal",
-        "bg": "band",
-        "icons": true,
-        "link_label": "View rescued yarn tracker",
-        "link": ""
-      },
-      "blocks": {
-        "stat_1": {
-          "type": "stat",
-          "settings": {
-            "n": "{kg}",
-            "text": "yarn rescued"
-          }
-        },
-        "stat_2": {
-          "type": "stat",
-          "settings": {
-            "n": "{batches}",
-            "text": "limited edition"
-          }
-        },
-        "stat_3": {
-          "type": "stat",
-          "settings": {
-            "n": "1946",
-            "text": "to today"
-          }
-        },
-        "stat_4": {
-          "type": "stat",
-          "settings": {
-            "n": "0",
-            "text": "restock once sold out"
-          }
-        }
-      },
-      "block_order": [
-        "stat_3",
-        "stat_1",
-        "stat_2",
-        "stat_4"
-      ]
-    },
-    "editions": {
-      "type": "echo-product-grid",
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "heading": "Latest Designs",
-        "link_label": "See all",
-        "link": "",
-        "products": [
-          "hills-valleys-throw",
-          "twister-rope-blanket-doe",
-          "hills-valleys-cushion-cover",
-          "cable-rope-knitted-tote",
-          "carousel-stripes-knitted-throw-violet-blue",
-          "puff-friends-cushion-cover",
-          "joyful-pompom-beanie-candy-pink",
-          "happy-sunshine-throw-cloud-smoky-mauve"
-        ],
-        "collection": "",
-        "limit": 4,
-        "group": false,
-        "link_inline": true
-      }
-    },
-    "how": {
-      "type": "echo-how",
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "anchor": "how",
-        "heading": "How It Works",
-        "photo": "echo-v2-process.jpg",
-        "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
-        "overlay": "",
-        "media_label": "Process video"
-      },
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "Luxury yarn goes unused",
-            "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
-            "link_word": "",
-            "link": ""
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "We rescue and reimagine",
-            "text": "We reclaim the leftover yarn, designing and producing strictly around what is available.",
-            "link_word": "",
-            "link": ""
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Traceable and exclusively yours",
-            "text": "Every limited-edition piece you purchase will include a custom woven label and a Yarn Passport that details your yarn's journey.",
-            "link_word": "Yarn Passport",
-            "link": "echo:passport"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
-      ]
-    },
-    "marquee": {
-      "type": "echo-marquee",
-      "settings": {
-        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
-        "speed": 40,
-        "pad": 40,
-        "bg": ""
+        "heading": "Where luxury yarn finds a second life.",
+        "lead": "Zero waste, 100% luxury quality. Discover limited-edition pieces born from surplus designer yarn.",
+        "btn1_label": "Shop now",
+        "btn1_link": "echo:shop-all",
+        "btn2_label": "How it works",
+        "btn2_link": "#how",
+        "photo": "echo-v2-hero.jpg",
+        "alt": "Cones of green, mustard, cream and pink yarn resting on a knitted blanket",
+        "focus": "75% 85%",
+        "link_label": "View products"
       }
     },
     "shop_by": {
@@ -245,7 +119,143 @@
         "spacing": "normal",
         "bg": "paper",
         "heading": "Shop By Products",
-        "ar": "5/7"
+        "ar": "5/7",
+        "show_count": false
+      }
+    },
+    "marquee": {
+      "type": "echo-marquee",
+      "settings": {
+        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
+        "speed": 40,
+        "pad": 40,
+        "bg": ""
+      }
+    },
+    "how": {
+      "type": "echo-how",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Luxury yarn goes unused",
+            "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
+            "link_word": "",
+            "link": ""
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "We rescue and reimagine",
+            "text": "We reclaim the leftover yarn, designing and producing strictly around what is available.",
+            "link_word": "",
+            "link": ""
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Traceable and exclusively yours",
+            "text": "Every limited-edition piece you purchase will include a custom woven label and a Yarn Passport that details your yarn's journey.",
+            "link_word": "Yarn Passport",
+            "link": "echo:passport"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "anchor": "how",
+        "heading": "How It Works",
+        "photo": "echo-v2-process.jpg",
+        "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
+        "overlay": "",
+        "media_label": "Process video"
+      }
+    },
+    "marquee_2": {
+      "type": "echo-marquee",
+      "settings": {
+        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
+        "speed": 40,
+        "pad": 40,
+        "bg": ""
+      }
+    },
+    "numbers": {
+      "type": "echo-stats",
+      "blocks": {
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "n": "1946",
+            "text": "to today"
+          }
+        },
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "n": "{kg}",
+            "text": "yarn rescued"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "n": "{batches}",
+            "text": "limited edition"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "n": "0",
+            "text": "restock once sold out"
+          }
+        }
+      },
+      "block_order": [
+        "stat_3",
+        "stat_1",
+        "stat_2",
+        "stat_4"
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "band",
+        "icons": true,
+        "link_label": "View rescued yarn tracker",
+        "link": ""
+      }
+    },
+    "editions": {
+      "type": "echo-product-grid",
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "Latest Designs",
+        "link_inline": true,
+        "link_label": "See all",
+        "link": "",
+        "products": [
+          "hills-valleys-throw",
+          "twister-rope-blanket-doe",
+          "hills-valleys-cushion-cover",
+          "cable-rope-knitted-tote",
+          "carousel-stripes-knitted-throw-violet-blue",
+          "puff-friends-cushion-cover",
+          "joyful-pompom-beanie-candy-pink",
+          "happy-sunshine-throw-cloud-smoky-mauve"
+        ],
+        "collection": "",
+        "limit": 4,
+        "group": false
       }
     },
     "story": {
@@ -266,28 +276,28 @@
         "lead": "",
         "caption": "Ming, founder of EchoByJMG",
         "small": "",
+        "outer_heading": "Our story",
+        "panel": "white",
+        "chips": "",
+        "badges": "",
+        "points_style": "cols3",
         "btn1_label": "Read our story",
         "btn1_link": "echo:story",
         "btn1_ghost": true,
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
-        "video": "",
         "photo": "echo-v2-story.jpg",
         "alt": "Ming and a colleague at the factory going through yarn samples",
         "label": "",
         "ar": "4/3",
-        "outer_heading": "Our story",
-        "panel": "white"
+        "stat_text": "",
+        "stat_link_label": "",
+        "stat_link": ""
       }
     },
     "quotes": {
       "type": "echo-review-cards",
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "heading": "What our customers say"
-      },
       "blocks": {
         "review_1": {
           "type": "review",
@@ -297,7 +307,9 @@
             "quote": "So soft, you felt it immediately. It feels like it’s always belonged in the room.",
             "photo": "echo-v2-review-1.jpg",
             "alt": "A blue knitted blanket with a green border in a play tent",
-            "product": "carousel-stripes-knitted-throw-violet-blue"
+            "product": "carousel-stripes-knitted-throw-violet-blue",
+            "product_name": "",
+            "product_price": ""
           }
         },
         "review_2": {
@@ -317,13 +329,18 @@
       "block_order": [
         "review_1",
         "review_2"
-      ]
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "What our customers say"
+      }
     },
     "gift": {
       "type": "echo-split",
       "settings": {
         "spacing": "normal",
-        "bg": "paper",
+        "bg": "dark",
         "media_first": false,
         "rev": false,
         "top": false,
@@ -337,28 +354,25 @@
         "lead": "No price on the packing slip, wrapped in tissue, with a small surprise inside. Or let them choose with a gift card.",
         "caption": "",
         "small": "",
+        "outer_heading": "",
+        "panel": "olive",
+        "chips": "",
+        "badges": "",
+        "points_style": "cols3",
         "btn1_label": "Gift guide",
         "btn1_link": "echo:gifts",
         "btn1_ghost": true,
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
-        "video": "",
+        "image": "shopify://shop_images/BabyCable_edit_66493363-5527-4bf3-a1be-c2339fdef58d.jpg",
         "photo": "echo-v2-gift.jpg",
         "alt": "A gift box tied with twine and a sprig of eucalyptus, next to a ball of yarn",
         "label": "",
         "ar": "16/9",
-        "outer_heading": "",
-        "panel": "olive"
-      }
-    },
-    "marquee_2": {
-      "type": "echo-marquee",
-      "settings": {
-        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
-        "speed": 40,
-        "pad": 40,
-        "bg": ""
+        "stat_text": "",
+        "stat_link_label": "",
+        "stat_link": ""
       }
     }
   },
