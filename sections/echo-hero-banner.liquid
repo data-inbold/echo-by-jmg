@@ -4,13 +4,12 @@
   .hbn{position:relative;overflow:hidden;background:#F1E7E0;min-height:clamp(480px,46vw,640px);display:flex;justify-content:center}
   .hbn .ph{position:absolute;inset:0;border:0;background:transparent}
   .hbn .ph img{object-position:{{ section.settings.focus }}}
-  .hbn::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(241,231,224,.92) 0%,rgba(241,231,224,.55) 45%,rgba(241,231,224,0) 70%);pointer-events:none}
   .hbn-thread{position:absolute;left:-40px;top:70px;width:340px;height:300px;z-index:1;pointer-events:none}
   .hbn-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(48px,6vw,92px) clamp(120px,14vw,200px);max-width:880px}
   .hbn-h{font:400 clamp(38px,5.6vw,72px)/1.1 var(--display);color:var(--wine-2);margin:0;letter-spacing:-.01em}
   .hbn-in p{margin:0;max-width:56ch;font-size:17px;line-height:1.6;color:var(--ink)}
   .hbn .btn.sec{background:#FBF6F1;color:var(--wine);border-color:var(--wine)}
-  @media (max-width:749px){.hbn::after{background:linear-gradient(180deg,rgba(241,231,224,.9) 0%,rgba(241,231,224,.6) 60%,rgba(241,231,224,0) 100%)}.hbn-thread{display:none}}
+  @media (max-width:749px){.hbn-thread{display:none}}
 </style>
 <section class="hbn">
   {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Hero photo', eager: true, sizes: '100vw' -%}
