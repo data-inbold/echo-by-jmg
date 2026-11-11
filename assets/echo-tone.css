@@ -211,8 +211,9 @@ header.site :focus-visible{outline-color:var(--wine)}
 .split.panel-blue .lead{color:var(--wine);font-size:16px;max-width:none}
 .split.panel-blue .btn,.split.panel-blue .btn.ghost{background:transparent;color:var(--wine);border-color:var(--wine)}
 .split.panel-blue .btn:hover{background:var(--wine);color:var(--cream)}
-.split.panel-blue>.ph,.split.panel-blue>div:not(.stack){margin:0 40px 40px}
-@media(min-width:880px){.split.panel-blue>.ph,.split.panel-blue>div:not(.stack){margin:40px 40px 40px 0}}
+.split.panel-blue>.ph,.split.panel-blue>div:not(.stack){margin:0;min-height:300px}
+.split.panel .ph.pic img{object-position:var(--focus,50% 50%)}
+@media(min-width:880px){.split.panel-blue>.ph,.split.panel-blue>div:not(.stack){min-height:420px}}
 
 /* marquee hashtags */
 .mq-track{gap:40px}
