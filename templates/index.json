@@ -59,6 +59,7 @@
         "btn1_link": "echo:shop-all",
         "btn2_label": "How it works",
         "btn2_link": "#how",
+        "image": "shopify://shop_images/1002516002_4.jpg",
         "photo": "echo-v2-hero.jpg",
         "alt": "Cones of green, mustard, cream and pink yarn resting on a knitted blanket",
         "focus": "75% 85%",
@@ -369,7 +370,7 @@
         "photo": "echo-v2-gift.jpg",
         "alt": "A gift box tied with twine and a sprig of eucalyptus, next to a ball of yarn",
         "label": "",
-        "ar": "4/5",
+        "ar": "5",
         "stat_text": "",
         "stat_link_label": "",
         "stat_link": ""
