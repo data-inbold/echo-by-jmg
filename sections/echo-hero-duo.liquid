@@ -6,7 +6,6 @@
   .hd-l{position:relative;overflow:hidden;background:#EDEAE1;min-height:420px;display:flex;align-items:center}
   .hd-l .ph{position:absolute;inset:0;border:0;background:transparent}
   .hd-l .ph img{object-position:{{ section.settings.focus }}}
-  .hd-thread{position:absolute;right:-60px;top:-60px;width:340px;height:340px;z-index:1;pointer-events:none}
   .hd-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:22px;padding:clamp(32px,6vw,80px);max-width:640px}
   .hd-h{font:400 clamp(36px,3.9vw,56px)/1.36 var(--display);color:var(--olive);margin:0}
   .hd-in p{margin:0;max-width:437px;font-size:14px;line-height:1.6;color:var(--ink)}
@@ -26,12 +25,10 @@
   .hd-dots button[aria-current="true"]{width:30px;background:#777873}
   .hd-pager .tot{color:#A8A99B}
   @media(prefers-reduced-motion:reduce){.hd-slide{transition:none}}
-  @media(max-width:979px){.hd-thread{display:none}}
 </style>
 <section class="hd" data-hd>
   <div class="hd-l">
     {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Hero photo', eager: true, sizes: '(min-width: 980px) 56vw, 100vw' -%}
-    <svg class="hd-thread" viewBox="0 0 340 340" fill="none" aria-hidden="true"><path d="M40 20C120 -10 300 30 310 130 320 230 210 300 130 270 50 240 90 120 190 110" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".9"/></svg>
     <div class="hd-in">
       <h1 class="hd-h">{{ section.settings.heading }}</h1>
       {%- if section.settings.lead != blank -%}<p>{{ section.settings.lead | newline_to_br }}</p>{%- endif -%}
