@@ -1,7 +1,10 @@
 {%- capture echo_out -%}
 {%- comment -%} "How it works" (option 2): accordion of steps on the left, photo or video on the right. {%- endcomment -%}
 <style>
-  .how-panel{display:grid;background:#fff;align-items:stretch}
+  .how-panel{display:grid;background:#fff;align-items:stretch;position:relative}
+  .section:has(.how-thread-blue){overflow-x:clip}
+  .how-thread-blue{display:none;position:absolute;left:62.1%;top:-29.5%;width:45.5%;height:auto;max-width:none;pointer-events:none;z-index:3}
+  @media(min-width:880px){.how-thread-blue{display:block}}
   @media(min-width:880px){.how-panel{grid-template-columns:600fr 680fr;min-height:556px}}
   .how-acc{padding:clamp(24px,4.5vw,40px) clamp(20px,4.5vw,60px);display:flex;flex-direction:column;gap:24px}
   .how-i{margin:0;padding:0 0 24px;border:0;border-bottom:1px solid #D7D5CB}
@@ -40,6 +43,7 @@
         {%- endfor -%}
         {%- if section.settings.show_icon -%}<img class="how-icon" src="{{ 'echo-wool-icon.png' | asset_url }}" alt="" width="109" height="120" loading="lazy">{%- endif -%}
       </div>
+      {%- if section.settings.show_blue_thread -%}<img class="how-thread-blue" src="{{ 'echo-thread-howitworks.png' | asset_url }}" alt="" width="1129" height="812" loading="lazy">{%- endif -%}
       <div class="how-media">
         {%- render 'echo-media', video: section.settings.video, image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.media_label, ar: '680/556' -%}
         {%- if section.settings.show_thread -%}<span class="how-thread" aria-hidden="true"><img src="{{ 'echo-thread-white.png' | asset_url }}" alt="" loading="lazy"></span>{%- endif -%}
@@ -56,6 +60,7 @@
   "settings": [
     { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Cream"}, {"value": "alt", "label": "Blush"}, {"value": "band", "label": "Sand band"}], "default": "paper" },
+    { "type": "checkbox", "id": "show_blue_thread", "label": "Show the blue thread over the panel corner", "default": true },
     { "type": "checkbox", "id": "show_thread", "label": "Show the white thread over the photo", "default": true },
     { "type": "checkbox", "id": "show_icon", "label": "Show the wool icon under the steps", "default": true },
     { "type": "text", "id": "anchor", "label": "Anchor (for #links)", "default": "how" },
