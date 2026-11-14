@@ -1,0 +1,25 @@
+{%- comment -%}
+  Hands the "Yarn batch" list (batch id and kg only) to assets/echo-tracker.js, together with the address of the light
+  product feed. The script uses it to keep the totals right: a list entry whose batch ID also has products is
+  replaced by the products' numbers, the others stay as they are. Render it once in any section that shows
+  data-yarn-total numbers. Safe to render more than once on a page (the script reads the first one).
+{%- endcomment -%}
+{%- liquid
+  echo '<script type="application/json" data-yarn-history data-src="'
+  echo routes.all_products_collection_url | append: '?view=yarn-totals' | escape
+  echo '">['
+  assign yh_first = true
+  for yb in shop.metaobjects.yarn_batch.values
+    unless yh_first
+      echo ','
+    endunless
+    assign yh_first = false
+    assign yh_kg = yb.kg.value | default: 0
+    echo '['
+    echo yb.batch_id.value | default: '' | remove: '<' | json
+    echo ','
+    echo yh_kg
+    echo ']'
+  endfor
+  echo ']</script>'
+-%}

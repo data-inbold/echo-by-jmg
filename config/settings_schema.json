@@ -140,14 +140,14 @@
         "id": "echo_rescued_kg",
         "label": "Yarn rescued (total)",
         "default": "250 kg",
-        "info": "Only used while the Yarn batch list is empty; otherwise calculated from it."
+        "info": "Only used while there are no Yarn Passport batches on products and the Yarn batch list is empty; otherwise calculated."
       },
       {
         "type": "text",
         "id": "echo_editions",
         "label": "Editions released (total)",
         "default": "28",
-        "info": "Only used while the Yarn batch list is empty; otherwise calculated from it."
+        "info": "Only used while there are no Yarn Passport batches on products and the Yarn batch list is empty; otherwise calculated."
       },
       {
         "type": "header",
