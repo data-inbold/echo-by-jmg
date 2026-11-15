@@ -14,7 +14,10 @@
     if tr == t
       assign t = tr
     endif
-    echo t | append: ' kg|' | append: vals.size
+    capture kg_fmt
+      render 'echo-num', n: t
+    endcapture
+    echo kg_fmt | strip | append: ' kg|' | append: vals.size
   else
     echo settings.echo_rescued_kg | append: '|' | append: settings.echo_editions
   endif
