@@ -86,19 +86,28 @@
     if tkr == total_kg
       assign total_kg = tkr
     endif
-    assign kg_label = total_kg | append: ' kg'
+    capture kg_fmt
+      render 'echo-num', n: total_kg
+    endcapture
+    assign kg_label = kg_fmt | strip | append: ' kg'
     assign ed_label = batch_count
   else
     assign kg_label = settings.echo_rescued_kg
     assign ed_label = settings.echo_editions
   endif
+  capture pieces_fmt
+    render 'echo-num', n: total_pieces
+  endcapture
+  capture open_fmt
+    render 'echo-num', n: open_count
+  endcapture
 -%}
 <section class="section tight"><div class="wrap stack" style="gap:14px"><span class="mono">{{ section.settings.eyebrow }}</span><h1 class="h1">{{ section.settings.heading }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p></div></section>
 <section class="section band tight"><div class="wrap stats">
   <div class="stat"><div class="n" data-stat="kg">{{ kg_label }}</div><p>yarn rescued to date</p></div>
   <div class="stat"><div class="n" data-stat="batches">{{ ed_label }}</div><p>batches and editions</p></div>
-  <div class="stat"><div class="n" data-stat="pieces">{{ total_pieces }}</div><p>numbered pieces made</p></div>
-  <div class="stat"><div class="n" data-stat="open">{{ open_count }}</div><p>editions still open</p></div>
+  <div class="stat"><div class="n" data-stat="pieces">{{ pieces_fmt | strip }}</div><p>numbered pieces made</p></div>
+  <div class="stat"><div class="n" data-stat="open">{{ open_fmt | strip }}</div><p>editions still open</p></div>
 </div></section>
 <section class="section"><div class="wrap stack" style="gap:16px" id="yarn-tracker" data-src="{{ routes.all_products_collection_url }}?view=yarn-data">
   <div class="row" style="justify-content:space-between"><h2 class="h2">The batch log</h2><a class="btn" href="{% render 'echo-url', key: 'open' %}">Shop open editions</a></div>

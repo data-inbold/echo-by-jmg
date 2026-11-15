@@ -5,6 +5,7 @@
   kg, pieces and live stock per batch, replaces any list row with the same batch ID, sorts everything by
   logged date (newest first) and updates the four numbers at the top.
   If anything fails, the server-rendered rows stay as they are.
+  Numbers get thousands separators (1,460 kg) and count up from 0 when they scroll into view.
 */
 (function (root) {
   'use strict';
@@ -23,6 +24,57 @@
   }
   function round3(n) { return Math.round(n * 1000) / 1000; }
   function fmtNum(n) { return String(round3(n)); }
+  /* 1460 -> "1,460", 1380.5 -> "1,380.5" (same as snippets/echo-num.liquid) */
+  function fmtNumber(n) {
+    var p = String(round3(n)).split('.');
+    p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return p.join('.');
+  }
+  function fmtKg(n) { return fmtNumber(n) + ' kg'; }
+
+  /*
+    Count-up: the number runs from 0 to its value when it scrolls into view (about 1.4 seconds, easing out).
+    No animation (final number straight away) for visitors who prefer reduced motion, browsers without
+    IntersectionObserver, and zero values. While counting only whole numbers are shown, the exact value
+    (for example 1,380.5) appears at the end. Each element animates once per value.
+  */
+  var DURATION = 1400;
+  function reducedMotion() {
+    return !!(root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+  function runCount(el, to, format) {
+    var start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / DURATION);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = p >= 1 ? format(to) : format(Math.floor(to * eased));
+      if (p < 1) root.requestAnimationFrame(frame);
+    }
+    root.requestAnimationFrame(frame);
+  }
+  function showNumber(el, to, format) {
+    if (!el) return;
+    var final = format(to);
+    el.style.fontVariantNumeric = 'tabular-nums';
+    if (el.__yarnShown === to) { el.textContent = final; return; }
+    if (!(to > 0) || reducedMotion() || !root.IntersectionObserver || !root.requestAnimationFrame) {
+      el.__yarnShown = to;
+      el.textContent = final;
+      return;
+    }
+    el.textContent = format(0);
+    var io = new root.IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (!entries[i].isIntersecting) continue;
+        io.disconnect();
+        el.__yarnShown = to;
+        runCount(el, to, format);
+        return;
+      }
+    }, { threshold: 0.4 });
+    io.observe(el);
+  }
   function normId(s) { return String(s == null ? '' : s).trim().toLowerCase(); }
   function dateKey(d) {
     var m = String(d || '').match(/^(\d{4})-(\d{2})(-(\d{2}))?/);
@@ -87,7 +139,7 @@
       '<td class="mono" style="text-transform:none;letter-spacing:0;color:var(--ink)">' + esc(b.id) + '</td>' +
       '<td>' + (esc(showDate(logged)) || '–') + '</td>' +
       '<td>' + esc(b.fibre) + '</td>' +
-      '<td class="num">' + fmtNum(b.kg) + ' kg</td>' +
+      '<td class="num">' + fmtKg(b.kg) + '</td>' +
       '<td>' + links + '</td>' +
       '<td class="num">' + b.pieces + '</td>' +
       '<td>' + statusHtml(b) + '</td></tr>';
@@ -210,15 +262,14 @@
       var t = totalsFrom(batches, hist.rows);
       Array.prototype.forEach.call(els, function (el) {
         var kind = el.getAttribute('data-yarn-total');
-        if (kind === 'kg') el.textContent = fmtNum(t.kg) + ' kg';
-        else if (kind === 'batches') el.textContent = String(t.batches);
+        if (kind === 'kg') showNumber(el, t.kg, fmtKg);
+        else if (kind === 'batches') showNumber(el, t.batches, fmtNumber);
       });
     }).catch(function () { /* keep the server numbers */ });
   }
 
-  function setStat(root, name, text) {
-    var el = root.querySelector('[data-stat="' + name + '"]');
-    if (el) el.textContent = text;
+  function setStat(scope, name, value, format) {
+    showNumber(scope.querySelector('[data-stat="' + name + '"]'), value, format);
   }
 
   function init() {
@@ -242,10 +293,10 @@
       tbody.textContent = '';
       tbody.appendChild(frag);
       var page = document.documentElement;
-      setStat(page, 'kg', fmtNum(res.stats.kg) + ' kg');
-      setStat(page, 'batches', String(res.stats.batches));
-      setStat(page, 'pieces', String(res.stats.pieces));
-      setStat(page, 'open', String(res.stats.open));
+      setStat(page, 'kg', res.stats.kg, fmtKg);
+      setStat(page, 'batches', res.stats.batches, fmtNumber);
+      setStat(page, 'pieces', res.stats.pieces, fmtNumber);
+      setStat(page, 'open', res.stats.open, fmtNumber);
     }).catch(function () {
       /* keep the server-rendered rows */
     }).then(function () {
@@ -261,7 +312,7 @@
   }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { aggregate: aggregate, merge: merge, totalsFrom: totalsFrom, parseNum: parseNum, dateKey: dateKey, showDate: showDate };
+    module.exports = { aggregate: aggregate, merge: merge, totalsFrom: totalsFrom, parseNum: parseNum, dateKey: dateKey, showDate: showDate, fmtNumber: fmtNumber, fmtKg: fmtKg };
   } else if (typeof document !== 'undefined') {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();

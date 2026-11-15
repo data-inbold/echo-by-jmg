@@ -1,0 +1,56 @@
+{%- comment -%}
+  Formats a number with thousands separators, up to 3 decimals, no trailing zeros: 1460 -> 1,460   1380.5 -> 1,380.5
+  Usage: {% render 'echo-num', n: total_kg %}   (n is a number or a numeric string)
+  assets/echo-tracker.js formats the same way in the browser.
+{%- endcomment -%}
+{%- liquid
+  assign v = n | plus: 0
+  assign whole = v | floor
+  assign frac = v | minus: whole | times: 1000 | round
+  if frac >= 1000
+    assign whole = whole | plus: 1
+    assign frac = 0
+  endif
+  assign s = whole | append: ''
+  assign out = ''
+  for i in (1..6)
+    if s.size > 3
+      assign keep = s.size | minus: 3
+      assign tail = s | slice: keep, 3
+      assign s = s | slice: 0, keep
+      if out == ''
+        assign out = tail
+      else
+        assign out = tail | append: ',' | append: out
+      endif
+    else
+      break
+    endif
+  endfor
+  if out == ''
+    assign out = s
+  else
+    assign out = s | append: ',' | append: out
+  endif
+  if frac > 0
+    assign m100 = frac | modulo: 100
+    assign m10 = frac | modulo: 10
+    if m100 == 0
+      assign dec = frac | divided_by: 100
+    elsif m10 == 0
+      assign dec = frac | divided_by: 10
+      if dec < 10
+        assign dec = '0' | append: dec
+      endif
+    else
+      assign dec = frac
+      if frac < 10
+        assign dec = '00' | append: frac
+      elsif frac < 100
+        assign dec = '0' | append: frac
+      endif
+    endif
+    assign out = out | append: '.' | append: dec
+  endif
+  echo out
+-%}
