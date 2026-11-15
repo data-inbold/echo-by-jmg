@@ -5,7 +5,7 @@
   kg, pieces and live stock per batch, replaces any list row with the same batch ID, sorts everything by
   logged date (newest first) and updates the four numbers at the top.
   If anything fails, the server-rendered rows stay as they are.
-  Numbers get thousands separators (1,460 kg) and count up from 0 when they scroll into view.
+  Numbers get thousands separators (1,460 kg) and count up from 0 (about 2.4 s) when they scroll into view.
 */
 (function (root) {
   'use strict';
@@ -33,21 +33,28 @@
   function fmtKg(n) { return fmtNumber(n) + ' kg'; }
 
   /*
-    Count-up: the number runs from 0 to its value when it scrolls into view (about 1.4 seconds, easing out).
+    Count-up: the number runs from 0 to its value when it is mostly in view (2.4 seconds by default, easing out
+    gently so the climb stays visible the whole time). The speed can be changed per number with
+    data-yarn-duration="3000" (milliseconds) on the element.
     No animation (final number straight away) for visitors who prefer reduced motion, browsers without
     IntersectionObserver, and zero values. While counting only whole numbers are shown, the exact value
     (for example 1,380.5) appears at the end. Each element animates once per value.
   */
-  var DURATION = 1400;
+  var DURATION = 2400;
+  function durationOf(el) {
+    var d = parseInt(el.getAttribute('data-yarn-duration'), 10);
+    return d >= 300 && d <= 10000 ? d : DURATION;
+  }
   function reducedMotion() {
     return !!(root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches);
   }
   function runCount(el, to, format) {
     var start = null;
+    var duration = durationOf(el);
     function frame(ts) {
       if (start === null) start = ts;
-      var p = Math.min(1, (ts - start) / DURATION);
-      var eased = 1 - Math.pow(1 - p, 3);
+      var p = Math.min(1, (ts - start) / duration);
+      var eased = 1 - Math.pow(1 - p, 2);
       el.textContent = p >= 1 ? format(to) : format(Math.floor(to * eased));
       if (p < 1) root.requestAnimationFrame(frame);
     }
@@ -72,7 +79,7 @@
         runCount(el, to, format);
         return;
       }
-    }, { threshold: 0.4 });
+    }, { threshold: 0.6 });
     io.observe(el);
   }
   function normId(s) { return String(s == null ? '' : s).trim().toLowerCase(); }
