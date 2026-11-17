@@ -11,7 +11,7 @@
   <title>
     {{- page_title -}}
     {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif -%}
-    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- if current_page != 1 %} &ndash; {{ 'echo.common.page_n' | t: number: current_page }}{% endif -%}
     {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
   </title>
   {%- if page_description -%}
@@ -35,7 +35,22 @@
         predictive: {{ routes.predictive_search_url | json }}
       },
       currency: {{ cart.currency.iso_code | json }},
-      moneyFormat: {{ shop.money_format | json }}
+      moneyFormat: {{ shop.money_format | json }},
+      i18n: {
+        locale: {{ request.locale.iso_code | json }},
+        thousands: {{ 'echo.number.thousands' | t | json }},
+        decimal: {{ 'echo.number.decimal' | t | json }},
+        months: {{ 'echo.date.months' | t | json }},
+        closed: {{ 'echo.tracker.closed' | t | json }},
+        lastPieces: {{ 'echo.tracker.last_pieces' | t | json }},
+        openLeft: {{ 'echo.tracker.open_left' | t: count: '__COUNT__' | json }},
+        bagAria: {{ 'echo.bag.aria' | t: count: '__COUNT__' | json }},
+        couldNotAdd: {{ 'echo.bag.could_not_add' | t | json }},
+        invalidCodeBag: {{ 'echo.bag.invalid_code_bag' | t | json }},
+        invalidCode: {{ 'echo.bag.invalid_code' | t | json }},
+        giftIdeas: {{ 'echo.gift.gift_ideas' | t | json }},
+        popularGifts: {{ 'echo.gift.popular_gifts' | t | json }}
+      }
     };
   </script>
   <script src="{{ 'echo.js' | asset_url }}" defer></script>
@@ -43,7 +58,7 @@
   {{ content_for_header }}
 </head>
 <body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.suffix | handle }}{% endif %}">
-  <a class="visually-hidden" href="#app">Skip to content</a>
+  <a class="visually-hidden" href="#app">{{ 'echo.common.skip_to_content' | t }}</a>
   {% sections 'echo-header-group' %}
   <main id="app" tabindex="-1">
     {{ content_for_layout }}

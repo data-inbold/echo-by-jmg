@@ -4,7 +4,7 @@
   <div class="grid g3">
     {%- for b in section.blocks -%}
       <div class="cert" {{ b.shopify_attributes }}>{% render 'echo-cert-logo', k: b.settings.logo, h: 96 %}<b>{{ b.settings.title }}</b><span class="muted" style="font-size:14px">{{ b.settings.text }}</span><span class="mono" style="text-transform:none;letter-spacing:0">{{ b.settings.no }}</span>
-        {%- if b.settings.file != blank -%}<a class="link" href="{{ b.settings.file }}" target="_blank" rel="noopener" style="align-self:flex-start;font-size:13px">View certificate</a>{%- else -%}<a class="link" href="#" data-toast="Certificate PDF coming soon." style="align-self:flex-start;font-size:13px">View certificate</a>{%- endif -%}
+        {%- if b.settings.file != blank -%}<a class="link" href="{{ b.settings.file }}" target="_blank" rel="noopener" style="align-self:flex-start;font-size:13px">{{ 'echo.certs.view_certificate' | t }}</a>{%- else -%}<a class="link" href="#" data-toast="Certificate PDF coming soon." style="align-self:flex-start;font-size:13px">{{ 'echo.certs.view_certificate' | t }}</a>{%- endif -%}
       </div>
     {%- endfor -%}
   </div>

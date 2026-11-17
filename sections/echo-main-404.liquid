@@ -1,6 +1,6 @@
-<section class="section"><div class="wrap stack" style="gap:18px;max-width:760px"><span class="mono">Page not found</span><h1 class="h1">{{ section.settings.heading }}</h1>
+<section class="section"><div class="wrap stack" style="gap:18px;max-width:760px"><span class="mono">{{ 'echo.main_404.page_not_found' | t }}</span><h1 class="h1">{{ section.settings.heading }}</h1>
 <p class="lead" style="margin:0">{{ section.settings.lead }}</p>
-<div class="row"><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">Shop the editions</a><a class="btn ghost" href="{% render 'echo-url', key: 'home' %}">Go to the homepage</a><button class="btn ghost" data-act="search">Search</button></div></div></section>
+<div class="row"><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">{{ 'echo.common.shop_the_editions' | t }}</a><a class="btn ghost" href="{% render 'echo-url', key: 'home' %}">{{ 'echo.main_404.go_to_the_homepage' | t }}</a><button class="btn ghost" data-act="search">{{ 'echo.common.search' | t }}</button></div></div></section>
 {% schema %}
 {
   "name": "Page not found",

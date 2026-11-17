@@ -27,7 +27,7 @@
           {%- render 'echo-pic', image: b.settings.image, asset: b.settings.photo, alt: b.settings.alt, label: 'Customer photo', ar: '3/4' -%}
           <div class="rv-card">
             <div class="rv-who"><span class="rv-av">{{ b.settings.name | slice: 0 }}</span><div><b>{{ b.settings.name }}</b><span>{{ b.settings.country }}</span></div></div>
-            <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <div class="rv-stars" aria-label="{{ 'echo.review_cards.5_out_of_5_stars' | t | escape }}">★★★★★</div>
             <p>{{ b.settings.quote }}</p>
             {%- if p != blank -%}
               <a class="rv-prod" href="{{ p.url }}">{%- render 'echo-pack-pic', product: p, alt: p.title, sizes: '56px' -%}<span><b>{{ p.title }}</b>{% render 'echo-money', price: p.price %}</span></a>

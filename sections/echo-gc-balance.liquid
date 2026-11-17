@@ -1,10 +1,10 @@
 <section class="section tight"><div class="wrap" style="max-width:560px">
   <form class="stack" style="gap:14px" data-gc-form>
     <h1 class="h2">{{ section.settings.heading }}</h1>
-    <div class="field"><label for="gc-code">Gift card code</label><input id="gc-code" required placeholder="XXXX XXXX XXXX XXXX" autocomplete="off"></div>
-    <button class="btn" type="submit">Check balance</button>
+    <div class="field"><label for="gc-code">{{ 'echo.gc_balance.gift_card_code' | t }}</label><input id="gc-code" required placeholder="XXXX XXXX XXXX XXXX" autocomplete="off"></div>
+    <button class="btn" type="submit">{{ 'echo.gc_balance.check_balance' | t }}</button>
   </form>
-  <div style="margin-top:20px" data-gc-result hidden><div class="ok">{{ section.settings.result }}</div><div style="margin-top:14px"><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">Shop the editions</a></div></div>
+  <div style="margin-top:20px" data-gc-result hidden><div class="ok">{{ section.settings.result }}</div><div style="margin-top:14px"><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">{{ 'echo.common.shop_the_editions' | t }}</a></div></div>
 </div></section>
 {% schema %}
 {

@@ -2,8 +2,8 @@
   <div class="wrap grid g2">
     <div class="stack"><h2 class="h3">{{ section.settings.heading }}</h2><p class="muted" style="margin:0">{{ section.settings.text }}</p>
       <div class="certrow">{% render 'echo-cert-logo', k: 'bsci', h: 64, cls: 'mb' %}{% render 'echo-cert-logo', k: 'ocs', h: 64, cls: 'mb' %}{% render 'echo-cert-logo', k: 'rcs', h: 64, cls: 'mb' %}</div>
-      <div><a class="link" href="{% render 'echo-url', key: 'factory' %}">Factory and certificates</a></div></div>
-    <div class="row"><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">Shop the current editions</a>
+      <div><a class="link" href="{% render 'echo-url', key: 'factory' %}">{{ 'echo.common.factory_and_certificates' | t }}</a></div></div>
+    <div class="row"><a class="btn" href="{% render 'echo-url', key: 'shop-all' %}">{{ 'echo.made.shop_the_current_editions' | t }}</a>
       {%- if section.settings.film_url != blank -%}<a class="btn ghost" href="{{ section.settings.film_url }}" target="_blank" rel="noopener">{{ section.settings.film_label }}</a>{%- else -%}<button class="btn ghost" data-toast="The factory film is coming soon.">{{ section.settings.film_label }}</button>{%- endif -%}
     </div>
   </div>

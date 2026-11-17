@@ -63,7 +63,7 @@
         {%- if section.settings.text != blank -%}<p class="lead" style="margin:0">{{ section.settings.text }}</p>{%- endif -%}
       </div>
       {%- if clips.size > 0 -%}
-        <div class="cl-tools">{{ section.settings.note }}<span class="cl-arrows"><button type="button" data-dir="-1" aria-label="Previous clips"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" data-dir="1" aria-label="Next clips"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></span></div>
+        <div class="cl-tools">{{ section.settings.note }}<span class="cl-arrows"><button type="button" data-dir="-1" aria-label="{{ 'echo.clips.previous_clips' | t | escape }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" data-dir="1" aria-label="{{ 'echo.clips.next_clips' | t | escape }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></span></div>
       {%- endif -%}
     </div>
     {%- if clips.size > 0 -%}
@@ -96,7 +96,7 @@
         {%- endfor -%}
       </div>
       <div class="cl-bar" aria-hidden="true"><i data-bar></i></div>
-      <dialog class="cl-dlg" data-dlg><button type="button" data-close>Close</button><video controls playsinline></video></dialog>
+      <dialog class="cl-dlg" data-dlg><button type="button" data-close>{{ 'echo.clips.close' | t }}</button><video controls playsinline></video></dialog>
     {%- endif -%}
     {%- if cards.size > 0 -%}
       {%- if section.settings.cards_label != blank -%}<span class="mono">{{ section.settings.cards_label }}</span>{%- endif -%}

@@ -44,17 +44,17 @@
   <div class="meta">
     <span class="name">{{ i[8] }}</span>
     {%- if i[0] != 'gift' -%}
-      <span class="swatches">{{ dots }}{% if ncol > 1 %}<span class="muted" style="font-size:12px;margin-left:4px">{{ ncol }} colours</span>{% endif %}</span>
+      <span class="swatches">{{ dots }}{% if ncol > 1 %}<span class="muted" style="font-size:12px;margin-left:4px">{{ 'echo.common.colours_count' | t: count: ncol }}</span>{% endif %}</span>
     {%- endif -%}
-    <span>{% if product.price_varies %}from {% endif %}{% render 'echo-money', price: product.price %}</span>
+    <span>{% if product.price_varies %}{{ 'echo.common.from' | t }} {% endif %}{% render 'echo-money', price: product.price %}</span>
     {%- if i[0] == 'gift' -%}
-      <span class="ed">Sent by email · no expiry</span>
+      <span class="ed">{{ 'echo.card.sent_by_email_no_expiry' | t }}</span>
     {%- elsif state == 'sold' -%}
-      <span class="ed">Sold out · get notified about the next edition</span>
+      <span class="ed">{{ 'echo.card.sold_out_get_notified_about_the_next' | t }}</span>
     {%- elsif state == 'last' -%}
-      <span class="ed">Last pieces · {{ i[3] }} of {{ i[2] }} left</span>
+      <span class="ed">{{ 'echo.card.last_pieces' | t: left: i[3], total: i[2] }}</span>
     {%- else -%}
-      <span class="ed">Edition of {{ i[2] }}</span>
+      <span class="ed">{{ 'echo.card.edition_of' | t: total: i[2] }}</span>
     {%- endif -%}
   </div>
 </a>

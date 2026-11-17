@@ -2,11 +2,11 @@
 {%- liquid
   case k
     when 'bsci'
-      assign alt = 'BSCI, Business Social Compliance Initiative, member logo'
+      assign alt = 'echo.certs.alt_bsci' | t
     when 'ocs'
-      assign alt = 'Organic 100 Content Standard logo, Textile Exchange'
+      assign alt = 'echo.certs.alt_ocs' | t
     else
-      assign alt = 'Recycled 100 Claim Standard logo, Textile Exchange'
+      assign alt = 'echo.certs.alt_rcs' | t
   endcase
   assign file = 'echo-cert-' | append: k | append: '.png'
 -%}

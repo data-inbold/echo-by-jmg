@@ -1,5 +1,5 @@
 {%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
-{%- assign cl = 'Home::' | append: u_home | append: '||Account::' | append: routes.account_url | append: '||Order ' | append: order.name -%}
+{%- assign t_home = 'echo.common.home' | t -%}{%- assign t_account = 'echo.common.account' | t -%}{%- assign t_order = 'echo.order.title' | t: name: order.name -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_account | append: '::' | append: routes.account_url | append: '||' | append: t_order -%}
 {%- render 'echo-crumbs', list: cl -%}
 {%- liquid
   assign at = 0
@@ -19,25 +19,25 @@
   endfor
 -%}
 <section class="section tight"><div class="wrap grid g2" style="align-items:start">
-  <div class="stack" style="gap:16px"><h1 class="h2">Order {{ order.name }}</h1><span class="muted">Placed {{ order.created_at | date: '%-d %b %Y' }} · {{ order.fulfillment_status_label }}</span>
+  <div class="stack" style="gap:16px"><h1 class="h2">{{ 'echo.order.title' | t: name: order.name }}</h1><span class="muted">{% capture placed_d %}{% render 'echo-date', d: order.created_at %}{% endcapture %}{{ 'echo.order.placed' | t: date: placed_d }} · {{ order.fulfillment_status_label }}</span>
     <ol class="stack" style="list-style:none;margin:0;padding:0;gap:0">
-      {%- assign st = 'Order received,Packed in Denmark,On its way,Delivered' | split: ',' -%}
+      {%- assign st = 'echo.order.steps' | t | split: ',' -%}
       {%- for t in st -%}
         {%- assign done = false -%}{%- if forloop.index0 <= at -%}{%- assign done = true -%}{%- endif -%}
         <li class="row" style="gap:12px;padding:10px 0;border-bottom:1px solid var(--line)"><span class="dot" style="width:18px;height:18px;background:{% if done %}var(--ink){% else %}transparent{% endif %};border-color:var(--ink)"></span><span style="{% if done %}font-weight:600{% else %}color:var(--faint){% endif %}">{{ t }}</span>{% if forloop.index0 == 2 and track != '' %}<a class="muted" style="margin-left:auto;font-size:13px" href="{{ track }}" target="_blank" rel="noopener">{{ tco }} · {{ tno }}</a>{% endif %}</li>
       {%- endfor -%}
     </ol>
-    <div class="row"><a class="btn ghost" href="{% render 'echo-url', key: 'returns' %}">Return an item</a><a class="btn ghost" href="{% render 'echo-url', key: 'contact' %}">Get help</a></div>
+    <div class="row"><a class="btn ghost" href="{% render 'echo-url', key: 'returns' %}">{{ 'echo.order.return_an_item' | t }}</a><a class="btn ghost" href="{% render 'echo-url', key: 'contact' %}">{{ 'echo.order.get_help' | t }}</a></div>
   </div>
   <div class="stack">
     {%- for li in order.line_items -%}
       {%- capture raw -%}{%- render 'echo-pinfo', product: li.product -%}{%- endcapture -%}
       {%- assign pi = raw | strip | split: '~' -%}
       <div class="review"><b>{{ li.title }}</b> × {{ li.quantity }}<br><span class="muted">{% render 'echo-money', price: li.final_line_price %}</span>
-        {%- unless li.gift_card -%}<div class="section dark" style="padding:22px;margin-top:12px"><span class="mono">Yarn Passport</span><div class="passport" style="margin-top:12px"><div><b>Batch</b><span>{{ pi[9] }} · {{ pi[10] }} kg</span></div><div><b>Your number</b><span>On the woven label · edition of {{ pi[2] }}</span></div></div></div>{%- endunless -%}
+        {%- unless li.gift_card -%}<div class="section dark" style="padding:22px;margin-top:12px"><span class="mono">{{ 'echo.common.yarn_passport' | t }}</span><div class="passport" style="margin-top:12px"><div><b>{{ 'echo.common.batch' | t }}</b><span>{{ pi[9] }} · {{ pi[10] }} kg</span></div><div><b>{{ 'echo.common.your_number' | t }}</b><span>{{ 'echo.order.woven_label' | t: total: pi[2] }}</span></div></div></div>{%- endunless -%}
       </div>
     {%- endfor -%}
-    <div class="review"><div class="row" style="justify-content:space-between"><span>Subtotal</span><span>{% render 'echo-money', price: order.line_items_subtotal_price %}</span></div><div class="row" style="justify-content:space-between;padding-top:6px;font-weight:600"><span>Total incl. VAT</span><span>{% render 'echo-money', price: order.total_price %}</span></div></div>
+    <div class="review"><div class="row" style="justify-content:space-between"><span>{{ 'echo.common.subtotal' | t }}</span><span>{% render 'echo-money', price: order.line_items_subtotal_price %}</span></div><div class="row" style="justify-content:space-between;padding-top:6px;font-weight:600"><span>{{ 'echo.common.total_incl_vat' | t }}</span><span>{% render 'echo-money', price: order.total_price %}</span></div></div>
   </div>
 </div></section>
 {% schema %}

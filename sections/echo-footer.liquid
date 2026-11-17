@@ -11,23 +11,23 @@
 -%}
 <footer class="site" id="ftr">
   <div class="wrap fcols">
-    <div><h4>Shop</h4><ul>
+    <div><h4>{{ 'echo.common.shop' | t }}</h4><ul>
       {%- assign cat_keys = 'blankets,cushions,bags,accessories' | split: ',' -%}
       {%- for key in cat_keys -%}
         {%- liquid
           case key
             when 'blankets'
               assign col = settings.echo_col_blankets
-              assign nm = 'Blankets'
+              assign nm = 'echo.common.blankets' | t
             when 'cushions'
               assign col = settings.echo_col_cushions
-              assign nm = 'Cushion covers'
+              assign nm = 'echo.common.cushion_covers' | t
             when 'bags'
               assign col = settings.echo_col_bags
-              assign nm = 'Bags'
+              assign nm = 'echo.common.bags' | t
             else
               assign col = settings.echo_col_accessories
-              assign nm = 'Accessories'
+              assign nm = 'echo.common.accessories' | t
           endcase
           capture curl
             render 'echo-url', key: key
@@ -39,31 +39,31 @@
         -%}
         <li><a href="{{ curl }}">{{ nm }}</a></li>
       {%- endfor -%}
-      <li><a href="{{ u_gifts }}">Gifts</a></li><li><a href="{{ u_gc }}">Gift card</a></li>
+      <li><a href="{{ u_gifts }}">{{ 'echo.common.gifts' | t }}</a></li><li><a href="{{ u_gc }}">{{ 'echo.common.gift_card' | t }}</a></li>
     </ul></div>
-    <div><h4>About</h4><ul>
-      <li><a href="{% render 'echo-url', key: 'story' %}">Our Story</a></li>
-      <li><a href="{% render 'echo-url', key: 'passport' %}">The Yarn Passport</a></li>
-      <li><a href="{{ u_factory }}">Factory and certificates</a></li>
-      <li><a href="{% render 'echo-url', key: 'tracker' %}">Rescued yarn tracker</a></li>
-      <li><a href="{% render 'echo-url', key: 'journal' %}">Journal</a></li>
+    <div><h4>{{ 'echo.footer.about' | t }}</h4><ul>
+      <li><a href="{% render 'echo-url', key: 'story' %}">{{ 'echo.footer.our_story' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'passport' %}">{{ 'echo.common.the_yarn_passport' | t }}</a></li>
+      <li><a href="{{ u_factory }}">{{ 'echo.common.factory_and_certificates' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.common.rescued_yarn_tracker' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'journal' %}">{{ 'echo.common.journal' | t }}</a></li>
     </ul></div>
-    <div><h4>Help</h4><ul>
-      <li><a href="{% render 'echo-url', key: 'help' %}">Questions and answers</a></li>
-      <li><a href="{% render 'echo-url', key: 'track' %}">Track your order</a></li>
-      <li><a href="{% render 'echo-url', key: 'returns' %}">Returns</a></li>
-      <li><a href="{% render 'echo-url', key: 'care' %}">Size and care guide</a></li>
-      <li><a href="{% render 'echo-url', key: 'gc-balance' %}">Gift card balance</a></li>
-      <li><a href="{% render 'echo-url', key: 'corporate' %}">Corporate gifts</a></li>
-      <li><a href="{% render 'echo-url', key: 'contact' %}">Contact</a></li>
+    <div><h4>{{ 'echo.common.help' | t }}</h4><ul>
+      <li><a href="{% render 'echo-url', key: 'help' %}">{{ 'echo.footer.questions_and_answers' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'track' %}">{{ 'echo.common.track_your_order' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'returns' %}">{{ 'echo.common.returns' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'care' %}">{{ 'echo.footer.size_and_care_guide' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'gc-balance' %}">{{ 'echo.footer.gift_card_balance' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'corporate' %}">{{ 'echo.common.corporate_gifts' | t }}</a></li>
+      <li><a href="{% render 'echo-url', key: 'contact' %}">{{ 'echo.common.contact' | t }}</a></li>
     </ul></div>
     <div><h4>{{ section.settings.club_heading }}</h4><p style="font-size:14px;margin:0 0 10px">{{ section.settings.club_text }}</p>{% render 'echo-club-form', k: 'f' %}</div>
   </div>
   <div class="wrap certrow" style="padding-top:8px;padding-bottom:8px">
-    <a href="{{ u_factory }}" aria-label="BSCI compliance, read more">{% render 'echo-cert-logo', k: 'bsci', h: 44 %}</a>
-    <a href="{{ u_factory }}" aria-label="Organic Content Standard, read more">{% render 'echo-cert-logo', k: 'ocs', h: 44 %}</a>
-    <a href="{{ u_factory }}" aria-label="Recycled Claim Standard, read more">{% render 'echo-cert-logo', k: 'rcs', h: 44 %}</a>
-    <a href="{{ u_factory }}" style="font-size:13px;margin-left:6px">Factory and certificates</a>
+    <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.bsci_compliance_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'bsci', h: 44 %}</a>
+    <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.organic_content_standard_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'ocs', h: 44 %}</a>
+    <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.recycled_claim_standard_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'rcs', h: 44 %}</a>
+    <a href="{{ u_factory }}" style="font-size:13px;margin-left:6px">{{ 'echo.common.factory_and_certificates' | t }}</a>
   </div>
   <div class="wrap legal">
     <span>{{ section.settings.ships_text }}</span>
@@ -79,10 +79,10 @@
       {%- if section.settings.youtube != blank %}<a href="{{ section.settings.youtube }}" target="_blank" rel="noopener">YouTube</a>{% endif -%}
     </span>
     <span class="row" style="gap:16px">
-      <a href="{% render 'echo-url', key: 'terms' %}">Terms of sale</a>
-      <a href="{% render 'echo-url', key: 'privacy' %}">Privacy policy</a>
-      <a href="{% render 'echo-url', key: 'cookies' %}">Cookie policy</a>
-      <a href="{% render 'echo-url', key: 'company' %}">Company details</a>
+      <a href="{% render 'echo-url', key: 'terms' %}">{{ 'echo.footer.terms_of_sale' | t }}</a>
+      <a href="{% render 'echo-url', key: 'privacy' %}">{{ 'echo.footer.privacy_policy' | t }}</a>
+      <a href="{% render 'echo-url', key: 'cookies' %}">{{ 'echo.footer.cookie_policy' | t }}</a>
+      <a href="{% render 'echo-url', key: 'company' %}">{{ 'echo.footer.company_details' | t }}</a>
     </span>
   </div>
 </footer>

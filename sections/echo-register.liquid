@@ -1,16 +1,16 @@
 {%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
-{%- assign cl = 'Home::' | append: u_home | append: '||Account::' | append: routes.account_url | append: '||Create account' -%}
+{%- assign t_home = 'echo.common.home' | t -%}{%- assign t_account = 'echo.common.account' | t -%}{%- assign t_create = 'echo.account.create_account' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_account | append: '::' | append: routes.account_url | append: '||' | append: t_create -%}
 {%- render 'echo-crumbs', list: cl -%}
 <section class="section tight"><div class="wrap" style="max-width:560px">
   {%- form 'create_customer', class: 'stack', style: 'gap:14px' -%}
-    <h1 class="h2">Create account</h1>
+    <h1 class="h2">{{ 'echo.account.create_account' | t }}</h1>
     {%- if form.errors -%}<div class="err">{{ form.errors | default_errors }}</div>{%- endif -%}
-    <div class="field"><label for="r-name">Name</label><input id="r-name" name="customer[first_name]" required autocomplete="name"></div>
-    <div class="field"><label for="r-email">Email</label><input id="r-email" type="email" name="customer[email]" required autocomplete="email"></div>
-    <div class="field"><label for="r-pw">Password</label><input id="r-pw" type="password" name="customer[password]" required minlength="6" autocomplete="new-password"></div>
-    <label class="row" style="gap:8px;font-size:14px"><input type="checkbox" name="customer[accepts_marketing]" value="true" id="r-club"> Join the Cozy Club for 10% off your first order</label>
-    <button class="btn" type="submit">Create account</button>
-    <span class="muted" style="font-size:13px">Read how we handle your data in our <a class="link" href="{% render 'echo-url', key: 'privacy' %}">privacy policy</a>.</span>
+    <div class="field"><label for="r-name">{{ 'echo.common.name' | t }}</label><input id="r-name" name="customer[first_name]" required autocomplete="name"></div>
+    <div class="field"><label for="r-email">{{ 'echo.common.email' | t }}</label><input id="r-email" type="email" name="customer[email]" required autocomplete="email"></div>
+    <div class="field"><label for="r-pw">{{ 'echo.common.password' | t }}</label><input id="r-pw" type="password" name="customer[password]" required minlength="6" autocomplete="new-password"></div>
+    <label class="row" style="gap:8px;font-size:14px"><input type="checkbox" name="customer[accepts_marketing]" value="true" id="r-club"> {{ 'echo.register.join_the_cozy_club_for_10_off_your' | t }}</label>
+    <button class="btn" type="submit">{{ 'echo.account.create_account' | t }}</button>
+    <span class="muted" style="font-size:13px">{%- capture u_privacy -%}{%- render 'echo-url', key: 'privacy' -%}{%- endcapture -%}{{ 'echo.register.privacy_html' | t: privacy_url: u_privacy }}</span>
   {%- endform -%}
 </div></section>
 {% schema %}

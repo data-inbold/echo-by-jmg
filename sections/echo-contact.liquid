@@ -7,11 +7,11 @@
     {%- else -%}
       {%- if form.errors -%}<div class="err">{{ form.errors | default_errors }}</div>{%- endif -%}
       <input type="hidden" name="contact[Form]" value="Contact">
-      <div class="field"><label for="c-name">Name</label><input id="c-name" name="contact[name]" required autocomplete="name"></div>
-      <div class="field"><label for="c-email">Email</label><input id="c-email" name="contact[email]" type="email" required autocomplete="email"></div>
-      <div class="field"><label for="c-order">Order number (optional)</label><input id="c-order" name="contact[Order number]"></div>
-      <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="contact[body]" rows="5" required></textarea></div>
-      <button class="btn" type="submit">Send message</button>
+      <div class="field"><label for="c-name">{{ 'echo.common.name' | t }}</label><input id="c-name" name="contact[name]" required autocomplete="name"></div>
+      <div class="field"><label for="c-email">{{ 'echo.common.email' | t }}</label><input id="c-email" name="contact[email]" type="email" required autocomplete="email"></div>
+      <div class="field"><label for="c-order">{{ 'echo.contact.order_number_optional' | t }}</label><input id="c-order" name="contact[Order number]"></div>
+      <div class="field"><label for="c-msg">{{ 'echo.contact.message' | t }}</label><textarea id="c-msg" name="contact[body]" rows="5" required></textarea></div>
+      <button class="btn" type="submit">{{ 'echo.contact.send_message' | t }}</button>
     {%- endif -%}
   {%- endform -%}
 </div></section>

@@ -48,7 +48,7 @@
         -%}
         <a class="card" href="{{ curl }}" {{ b.shopify_attributes }}>
           {%- render 'echo-pic', image: b.settings.image, asset: b.settings.photo, alt: nm, ar: section.settings.ar, label: nm, sizes: '(min-width: 1240px) 300px, 50vw' -%}
-          <div class="meta"><span class="name">{{ nm }}</span>{% if minp > 0 and minp < 999999999 %}<span class="muted">{% if section.settings.show_count and designs > 0 %}{{ designs }} {% if designs == 1 %}design{% else %}designs{% endif %} · {% endif %}from {% render 'echo-money', price: minp %}</span>{% elsif b.settings.from != blank %}<span class="muted">{{ b.settings.from }}</span>{% endif %}</div>
+          <div class="meta"><span class="name">{{ nm }}</span>{% if minp > 0 and minp < 999999999 %}<span class="muted">{% if section.settings.show_count and designs > 0 %}{{ 'echo.common.designs_count' | t: count: designs }} · {% endif %}{{ 'echo.common.from' | t }} {% render 'echo-money', price: minp %}</span>{% elsif b.settings.from != blank %}<span class="muted">{{ b.settings.from }}</span>{% endif %}</div>
         </a>
       {%- endfor -%}
     </div>

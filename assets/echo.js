@@ -4,13 +4,16 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
   var R = (window.Echo && window.Echo.routes) || {};
+  /* translated strings from the layout (window.Echo.i18n); the English text is the fallback */
+  var I = (window.Echo && window.Echo.i18n) || {};
+  function tr(key, fallback, count) { return (I[key] || fallback).replace('__COUNT__', count); }
 
   /* ---------- money, same format as the theme: "DKK 2,150" ---------- */
   function money(cents) {
     var cur = (window.Echo && window.Echo.currency) || 'DKK';
     var v = cents / 100;
     if (v % 1 !== 0) return cur + ' ' + v.toFixed(2);
-    return cur + ' ' + Math.round(v).toLocaleString('en-US');
+    return cur + ' ' + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, I.thousands || ',');
   }
 
   /* ---------- toast ---------- */
@@ -86,7 +89,7 @@
         if (fresh && cur) { var wasOpen = !cur.hidden; cur.innerHTML = fresh.innerHTML; cur.hidden = !(open || wasOpen); }
         var cnt = fresh ? fresh.getAttribute('data-count') : null;
         if (cnt !== null) $$('[data-bag-count]').forEach(function (el) { el.textContent = cnt; });
-        $$('[data-bag-label]').forEach(function (el) { el.setAttribute('aria-label', 'Bag, ' + cnt + ' items'); });
+        $$('[data-bag-label]').forEach(function (el) { el.setAttribute('aria-label', tr('bagAria', 'Bag, __COUNT__ items', cnt)); });
         if (open) openBag();
         if (document.body.classList.contains('template-cart')) location.reload();
       });
@@ -97,7 +100,7 @@
   }
   function addToBag(items) {
     return post(R.cartAdd, { items: items }).then(function () { return refreshBag(true); })
-      .catch(function (e) { toast((e && (e.description || e.message)) || 'Could not add to bag.'); });
+      .catch(function (e) { toast((e && (e.description || e.message)) || I.couldNotAdd || 'Could not add to bag.'); });
   }
   function changeLine(line, qty) { return post(R.cartChange, { line: line, quantity: qty }).then(function () { return refreshBag(true); }); }
   function applyCode(box) {
@@ -109,9 +112,9 @@
       return post(R.cartUpdate, { discount: codes.join(',') });
     }).then(function (cart) {
       var hit = (cart.discount_codes || []).filter(function (d) { return d.code.toUpperCase() === v.toUpperCase(); })[0];
-      if (hit && !hit.applicable) { msg.textContent = 'That code is not valid for this bag. Check the spelling, or contact us.'; msg.style.color = '#A3392B'; return; }
+      if (hit && !hit.applicable) { msg.textContent = I.invalidCodeBag || 'That code is not valid for this bag. Check the spelling, or contact us.'; msg.style.color = '#A3392B'; return; }
       return refreshBag(!!$('.drawer', box.closest('#echo-bag') || document));
-    }).catch(function () { msg.textContent = 'That code is not valid. Check the spelling, or contact us.'; msg.style.color = '#A3392B'; });
+    }).catch(function () { msg.textContent = I.invalidCode || 'That code is not valid. Check the spelling, or contact us.'; msg.style.color = '#A3392B'; });
   }
   function removeCode(code) {
     fetch(R.cart + '.js', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (cart) {
@@ -192,7 +195,7 @@
       var ok = okB && okO && (gift.budget || gift.occ || c.hasAttribute('data-popular'));
       if (ok) { c.removeAttribute('data-hidden'); n++; } else c.setAttribute('data-hidden', '');
     });
-    var t = $('[data-gift-title]'); if (t) t.textContent = (gift.budget || gift.occ) ? 'Gift ideas' : 'Popular gifts';
+    var t = $('[data-gift-title]'); if (t) t.textContent = (gift.budget || gift.occ) ? (I.giftIdeas || 'Gift ideas') : (I.popularGifts || 'Popular gifts');
     $$('[data-clear-gift]').forEach(function (b) { b.hidden = !(gift.budget || gift.occ); });
     var empty = $('[data-gift-empty]'); if (empty) { empty.hidden = n > 0; grid.hidden = n === 0; }
     $$('[data-budget]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-budget') === gift.budget ? 'true' : 'false'); });

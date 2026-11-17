@@ -7,7 +7,8 @@
   assign img = item.image | default: item.product.featured_media.preview_image
   assign label = i[5]
   if item.product.gift_card?
-    assign label = item.variant.title | append: ' by email'
+    assign by_email = 'echo.cart.by_email' | t
+    assign label = item.variant.title | append: ' ' | append: by_email
   endif
 -%}
 <div class="line">
@@ -18,10 +19,10 @@
     {%- for p in item.properties -%}{%- unless p.last == blank or p.first contains '_' -%}<span class="muted">{{ p.first }}: {{ p.last }}</span>{%- endunless -%}{%- endfor -%}
     <div class="row" style="justify-content:space-between">
       <div class="qty" style="transform:scale(.85);transform-origin:left">
-        <button data-lq="-1" data-line="{{ line }}" data-q="{{ item.quantity }}" aria-label="Fewer">−</button><span>{{ item.quantity }}</span><button data-lq="1" data-line="{{ line }}" data-q="{{ item.quantity }}" aria-label="More">+</button>
+        <button data-lq="-1" data-line="{{ line }}" data-q="{{ item.quantity }}" aria-label="{{ 'echo.common.fewer' | t | escape }}">−</button><span>{{ item.quantity }}</span><button data-lq="1" data-line="{{ line }}" data-q="{{ item.quantity }}" aria-label="{{ 'echo.common.more' | t | escape }}">+</button>
       </div>
       <span>{% render 'echo-money', price: item.final_line_price %}</span>
     </div>
-    <button class="textbtn" data-rm="{{ line }}" style="align-self:flex-start">Remove</button>
+    <button class="textbtn" data-rm="{{ line }}" style="align-self:flex-start">{{ 'echo.common.remove' | t }}</button>
   </div>
 </div>

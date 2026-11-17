@@ -15,7 +15,8 @@
       assign cur = blog.title
     endif
   endif
-  assign list = 'Home::' | append: u_home
+  assign t_home = 'echo.common.home' | t
+  assign list = t_home | append: '::' | append: u_home
   if section.settings.p1_label != blank
     assign list = list | append: '||' | append: section.settings.p1_label | append: '::' | append: section.settings.p1_link
   endif

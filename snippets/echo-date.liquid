@@ -1,0 +1,12 @@
+{%- comment -%}
+  Date in the visitor's language: "12 Nov 2026" in English, "12. nov 2026" in Danish.
+  Usage: {% render 'echo-date', d: order.created_at %}
+  Month names and the order of day, month and year come from locales (echo.date.months, echo.date.day_month_year).
+{%- endcomment -%}
+{%- liquid
+  assign months = 'echo.date.months' | t | split: ','
+  assign mi = d | date: '%-m' | minus: 1
+  assign day = d | date: '%-d'
+  assign yr = d | date: '%Y'
+  echo 'echo.date.day_month_year' | t: day: day, month: months[mi], year: yr
+-%}

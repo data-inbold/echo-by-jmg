@@ -4,7 +4,7 @@
   closed_pieces, pieces_override, attrs (editor attributes)
 {%- endcomment -%}
 {%- liquid
-  assign months = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec' | split: ','
+  assign months = 'echo.date.months' | t | split: ','
   assign pcs = 0
   assign left = 0
   assign has_last = false
@@ -52,17 +52,20 @@
   assign d = dstr | split: '-'
   assign mi = d[1] | plus: 0 | minus: 1
   if d.size > 1 and mi >= 0
-    assign dshow = months[mi] | append: ' ' | append: d[0]
+    assign dshow = 'echo.date.month_year' | t: month: months[mi], year: d[0]
   else
     assign dshow = dstr
   endif
+  assign t_closed = 'echo.tracker.closed' | t
+  assign t_last = 'echo.tracker.last_pieces' | t
   assign fshow = fibre | newline_to_br | replace: '<br />', ', '
   if closed or left == 0
-    assign status = '<span class="tstat closed">Closed</span>'
+    assign status = '<span class="tstat closed">' | append: t_closed | append: '</span>'
   elsif has_last
-    assign status = '<span class="tstat last">Last pieces</span>'
+    assign status = '<span class="tstat last">' | append: t_last | append: '</span>'
   else
-    assign status = '<span class="tstat">Open · ' | append: left | append: ' left</span>'
+    assign t_open = 'echo.tracker.open_left' | t: count: left
+    assign status = '<span class="tstat">' | append: t_open | append: '</span>'
   endif
   echo pcs | append: '@@' | append: left | append: '@@'
   echo '<tr ' | append: attrs | append: ' data-kg="' | append: kg | append: '" data-pieces="' | append: pcs | append: '" data-left="' | append: left | append: '"><td class="mono" style="text-transform:none;letter-spacing:0;color:var(--ink)">' | append: bid | append: '</td><td>' | append: dshow | append: '</td><td>' | append: fshow | append: '</td><td class="num">' | append: kg | append: ' kg</td><td>' | append: became | append: '</td><td class="num">' | append: pcs | append: '</td><td>' | append: status | append: '</td></tr>'

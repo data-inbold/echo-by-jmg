@@ -1,16 +1,16 @@
 {%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
-{%- assign cl = 'Home::' | append: u_home | append: '||Search' -%}
+{%- assign t_home = 'echo.common.home' | t -%}{%- assign t_search = 'echo.common.search' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_search -%}
 {%- render 'echo-crumbs', list: cl -%}
 <section class="section tight">
   <div class="wrap stack" style="gap:20px">
-    <span class="mono">Search</span>
+    <span class="mono">{{ 'echo.common.search' | t }}</span>
     <form action="{{ routes.search_url }}" method="get" role="search" class="search" style="position:static;background:none;overflow:visible">
       <input type="hidden" name="type" value="product">
-      <input name="q" type="search" value="{{ search.terms | escape }}" placeholder="Search blankets, bags, colours" aria-label="Search">
+      <input name="q" type="search" value="{{ search.terms | escape }}" placeholder="{{ 'echo.main_search.search_blankets_bags_colours' | t | escape }}" aria-label="{{ 'echo.common.search' | t | escape }}">
     </form>
     {%- if search.performed -%}
       {%- paginate search.results by 24 -%}
-        <p class="muted">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %}</p>
+        <p class="muted">{{ 'echo.common.results_count' | t: count: search.results_count }}</p>
         <div class="grid g4">
           {%- for r in search.results -%}
             {%- if r.object_type == 'product' -%}{%- render 'echo-card', product: r -%}

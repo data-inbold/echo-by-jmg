@@ -5,12 +5,12 @@
       <div class="ok" role="status">{{ section.settings.ok }}</div>
     {%- else -%}
       <input type="hidden" name="contact[Form]" value="Corporate gifts">
-      <div class="field"><label for="co-name">Name</label><input id="co-name" name="contact[name]" required></div>
-      <div class="field"><label for="co-company">Company</label><input id="co-company" name="contact[Company]" required></div>
-      <div class="field"><label for="co-email">Email</label><input id="co-email" name="contact[email]" type="email" required></div>
-      <div class="row" style="gap:12px"><div class="field" style="flex:1 1 160px"><label for="co-qty">Number of gifts</label><input id="co-qty" name="contact[Number of gifts]" type="number" min="1"></div><div class="field" style="flex:1 1 160px"><label for="co-date">Needed by</label><input id="co-date" name="contact[Needed by]" type="date"></div></div>
-      <div class="field"><label for="co-msg">Anything else</label><textarea id="co-msg" name="contact[body]" rows="4"></textarea></div>
-      <button class="btn" type="submit">Send request</button>
+      <div class="field"><label for="co-name">{{ 'echo.common.name' | t }}</label><input id="co-name" name="contact[name]" required></div>
+      <div class="field"><label for="co-company">{{ 'echo.corporate_form.company' | t }}</label><input id="co-company" name="contact[Company]" required></div>
+      <div class="field"><label for="co-email">{{ 'echo.common.email' | t }}</label><input id="co-email" name="contact[email]" type="email" required></div>
+      <div class="row" style="gap:12px"><div class="field" style="flex:1 1 160px"><label for="co-qty">{{ 'echo.corporate_form.number_of_gifts' | t }}</label><input id="co-qty" name="contact[Number of gifts]" type="number" min="1"></div><div class="field" style="flex:1 1 160px"><label for="co-date">{{ 'echo.corporate_form.needed_by' | t }}</label><input id="co-date" name="contact[Needed by]" type="date"></div></div>
+      <div class="field"><label for="co-msg">{{ 'echo.corporate_form.anything_else' | t }}</label><textarea id="co-msg" name="contact[body]" rows="4"></textarea></div>
+      <button class="btn" type="submit">{{ 'echo.corporate_form.send_request' | t }}</button>
     {%- endif -%}
   {%- endform -%}
 </div></section>

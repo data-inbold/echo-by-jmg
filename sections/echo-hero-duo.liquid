@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="hd-r">
-    <div class="hd-stage" aria-roledescription="carousel" aria-label="Featured pieces">
+    <div class="hd-stage" aria-roledescription="carousel" aria-label="{{ 'echo.hero_duo.featured_pieces' | t | escape }}">
       {%- for b in section.blocks -%}
         <div class="hd-slide{% if forloop.first %} on{% endif %}" data-slide data-title="{{ b.settings.title | escape }}" data-link="{{ b.settings.link }}" {{ b.shopify_attributes }}>
           {%- render 'echo-pic', image: b.settings.image, asset: b.settings.photo, alt: b.settings.title, label: b.settings.title, sizes: '(min-width: 980px) 600px, 100vw', eager: forloop.first -%}

@@ -2,11 +2,11 @@
 {%- assign applied = cart.discount_codes | where: 'applicable', true -%}
 {%- if applied.size > 0 -%}
   {%- for d in applied -%}
-    <div class="row" data-dcbox style="justify-content:space-between;font-size:14px"><span>Code <b>{{ d.code | escape }}</b> applied</span><button class="textbtn" data-rmcode="{{ d.code | escape }}">Remove</button></div>
+    <div class="row" data-dcbox style="justify-content:space-between;font-size:14px"><span>{{ 'echo.discount_box.code' | t }} <b>{{ d.code | escape }}</b> {{ 'echo.discount_box.applied' | t }}</span><button class="textbtn" data-rmcode="{{ d.code | escape }}">{{ 'echo.common.remove' | t }}</button></div>
   {%- endfor -%}
 {%- else -%}
   <div class="stack" style="gap:6px" data-dcbox>
-    <div class="inline-form"><label for="dc-{{ k }}" class="visually-hidden">Discount code</label><input id="dc-{{ k }}" class="dc" placeholder="Discount code" autocomplete="off"><button class="btn ghost" type="button" data-applycode>Apply</button></div>
-    <span class="muted" style="font-size:12px" data-dcmsg>Gift cards are added at checkout.</span>
+    <div class="inline-form"><label for="dc-{{ k }}" class="visually-hidden">{{ 'echo.discount_box.discount_code' | t }}</label><input id="dc-{{ k }}" class="dc" placeholder="{{ 'echo.discount_box.discount_code' | t | escape }}" autocomplete="off"><button class="btn ghost" type="button" data-applycode>{{ 'echo.discount_box.apply' | t }}</button></div>
+    <span class="muted" style="font-size:12px" data-dcmsg>{{ 'echo.discount_box.gift_cards_are_added_at_checkout' | t }}</span>
   </div>
 {%- endif -%}

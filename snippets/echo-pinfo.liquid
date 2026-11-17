@@ -18,19 +18,19 @@
   assign cat = cat | strip
   case cat
     when 'blankets'
-      assign single = 'blanket'
+      assign single = 'echo.common.single_blanket' | t
       assign ed = settings.echo_ed_blankets | default: 12
     when 'cushions'
-      assign single = 'cushion cover'
+      assign single = 'echo.common.single_cushion' | t
       assign ed = settings.echo_ed_cushions | default: 20
     when 'bags'
-      assign single = 'bag'
+      assign single = 'echo.common.single_bag' | t
       assign ed = settings.echo_ed_bags | default: 20
     when 'gift'
-      assign single = 'gift card'
+      assign single = 'echo.common.single_gift_card' | t
       assign ed = 0
     else
-      assign single = 'accessory'
+      assign single = 'echo.common.single_accessory' | t
       assign ed = settings.echo_ed_accessories | default: 25
   endcase
 

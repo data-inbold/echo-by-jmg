@@ -12,16 +12,16 @@
           if b.settings.link != blank
             assign surl = b.settings.link
           endif
-          assign cta = 'Shop ' | append: b.settings.label | downcase
+          assign cta = 'echo.common.shop_category' | t: name: b.settings.label | downcase
         -%}
         <div data-slide data-url="{{ surl }}" data-cta="{{ cta | escape }}"{% unless forloop.first %} hidden{% endunless %} {{ b.shopify_attributes }}>
           {%- render 'echo-media', video: b.settings.video, image: b.settings.image, asset: b.settings.photo, alt: b.settings.alt, label: b.settings.alt, ar: '4/3', eager: forloop.first -%}
           {%- if b.settings.product != blank -%}
             {%- capture raw -%}{%- render 'echo-pinfo', product: b.settings.product -%}{%- endcapture -%}
             {%- assign pi = raw | strip | split: '~' -%}
-            <a class="row" href="{{ b.settings.product.url }}" style="justify-content:space-between;font-size:13px;text-decoration:none;margin-top:10px"><span class="muted">Shown: {{ pi[8] }}</span><span class="link">View product</span></a>
+            <a class="row" href="{{ b.settings.product.url }}" style="justify-content:space-between;font-size:13px;text-decoration:none;margin-top:10px"><span class="muted">{{ 'echo.hero.shown' | t: name: pi[8] }}</span><span class="link">{{ 'echo.hero.view_product' | t }}</span></a>
           {%- else -%}
-            <div class="row" style="font-size:13px;margin-top:10px;min-height:22px"><span class="muted">{% if b.settings.shown != blank %}Shown: {{ b.settings.shown }}{% endif %}</span></div>
+            <div class="row" style="font-size:13px;margin-top:10px;min-height:22px"><span class="muted">{% if b.settings.shown != blank %}{{ 'echo.hero.shown' | t: name: b.settings.shown }}{% endif %}</span></div>
           {%- endif -%}
         </div>
       {%- endfor -%}
@@ -32,7 +32,7 @@
       <div class="row">
         {%- assign first = slides.first -%}
         {%- capture furl -%}{%- if first -%}{%- if first.settings.link != blank -%}{{ first.settings.link }}{%- else -%}{%- render 'echo-url', key: first.settings.cat -%}{%- endif -%}{%- else -%}{%- render 'echo-url', key: 'shop-all' -%}{%- endif -%}{%- endcapture -%}
-        <a class="btn" id="hero-cta" href="{{ furl }}">{% if first %}Shop {{ first.settings.label | downcase }}{% else %}Shop all{% endif %}</a>
+        <a class="btn" id="hero-cta" href="{{ furl }}">{% if first %}{% assign first_label = first.settings.label | downcase %}{{ 'echo.common.shop_category' | t: name: first_label }}{% else %}{{ 'echo.common.shop_all' | t }}{% endif %}</a>
         {%- if section.settings.btn2_label != blank -%}<a class="btn ghost" href="{{ section.settings.btn2_link | default: '#how' }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
       </div>
       <div class="row" style="gap:6px">

@@ -1,33 +1,33 @@
 {%- capture u_home -%}{%- render 'echo-url', key: 'home' -%}{%- endcapture -%}
-{%- assign cl = 'Home::' | append: u_home | append: '||Account' -%}
+{%- assign t_home = 'echo.common.home' | t -%}{%- assign t_account = 'echo.common.account' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_account -%}
 {%- render 'echo-crumbs', list: cl -%}
 <section class="section tight"><div class="wrap grid g2" style="align-items:start">
   <div>
     <div id="login-box">
       {%- form 'customer_login', class: 'stack', style: 'gap:14px' -%}
-        <h1 class="h2">Log in</h1>
+        <h1 class="h2">{{ 'echo.login.log_in' | t }}</h1>
         {%- if form.errors -%}<div class="err">{{ form.errors | default_errors }}</div>{%- endif -%}
-        <div class="field"><label for="l-email">Email</label><input id="l-email" type="email" name="customer[email]" required autocomplete="email"></div>
-        <div class="field"><label for="l-pw">Password</label><input id="l-pw" type="password" name="customer[password]" required autocomplete="current-password"></div>
-        <button class="btn" type="submit">Log in</button>
-        <a class="link" style="align-self:flex-start" href="#recover">Forgot your password?</a>
+        <div class="field"><label for="l-email">{{ 'echo.common.email' | t }}</label><input id="l-email" type="email" name="customer[email]" required autocomplete="email"></div>
+        <div class="field"><label for="l-pw">{{ 'echo.common.password' | t }}</label><input id="l-pw" type="password" name="customer[password]" required autocomplete="current-password"></div>
+        <button class="btn" type="submit">{{ 'echo.login.log_in' | t }}</button>
+        <a class="link" style="align-self:flex-start" href="#recover">{{ 'echo.login.forgot_your_password' | t }}</a>
       {%- endform -%}
     </div>
     <div id="recover" style="margin-top:40px">
       {%- form 'recover_customer_password', class: 'stack', style: 'gap:14px' -%}
-        <h2 class="h2">Reset your password</h2>
+        <h2 class="h2">{{ 'echo.login.reset_your_password' | t }}</h2>
         {%- if form.posted_successfully? -%}
-          <div class="ok" role="status">If the email has an account, a reset link is on its way.</div>
+          <div class="ok" role="status">{{ 'echo.login.if_the_email_has_an_account_a_reset' | t }}</div>
         {%- else -%}
-          <p class="muted" style="margin:0">We will email you a link to choose a new password.</p>
+          <p class="muted" style="margin:0">{{ 'echo.login.we_will_email_you_a_link_to_choose_a' | t }}</p>
           {%- if form.errors -%}<div class="err">{{ form.errors | default_errors }}</div>{%- endif -%}
-          <div class="field"><label for="rs-email">Email</label><input id="rs-email" type="email" name="email" required autocomplete="email"></div>
-          <button class="btn" type="submit">Send link</button>
+          <div class="field"><label for="rs-email">{{ 'echo.common.email' | t }}</label><input id="rs-email" type="email" name="email" required autocomplete="email"></div>
+          <button class="btn" type="submit">{{ 'echo.login.send_link' | t }}</button>
         {%- endif -%}
       {%- endform -%}
     </div>
   </div>
-  <div class="review stack" style="gap:12px;padding:28px"><h2 class="h3">New here?</h2><p class="muted" style="margin:0">Create an account to see your orders, start returns and keep your Yarn Passports in one place. You can also check out as a guest.</p><div><a class="btn ghost" href="{{ routes.account_register_url }}">Create account</a></div></div>
+  <div class="review stack" style="gap:12px;padding:28px"><h2 class="h3">{{ 'echo.login.new_here' | t }}</h2><p class="muted" style="margin:0">{{ 'echo.login.create_an_account_to_see_your_orders' | t }}</p><div><a class="btn ghost" href="{{ routes.account_register_url }}">{{ 'echo.account.create_account' | t }}</a></div></div>
 </div></section>
 {% schema %}
 { "name": "Log in", "settings": [] }

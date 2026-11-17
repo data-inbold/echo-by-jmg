@@ -12,10 +12,10 @@
 -%}
 <section class="section">
   <div class="wrap grid g2" style="align-items:start">
-    <div><h2 class="h2" style="margin-bottom:16px">Questions about this {{ i[1] }}</h2>
+    <div><h2 class="h2" style="margin-bottom:16px">{{ 'echo.product.faq_title' | t: item: i[1] }}</h2>
       {%- for b in qs -%}<details class="acc" {{ b.shopify_attributes }}><summary>{{ b.settings.q }}</summary><div class="body">{{ b.settings.a }}</div></details>{%- endfor -%}
     </div>
-    <div id="reviews"><h2 class="h2" style="margin-bottom:16px">Reviews{% if rcount > 0 %} ({{ rcount }}){% endif %}</h2>
+    <div id="reviews"><h2 class="h2" style="margin-bottom:16px">{{ 'echo.product_faq_reviews.reviews' | t }}{% if rcount > 0 %} ({{ rcount }}){% endif %}</h2>
       <div class="stack">
         {%- for b in apps -%}{% render b %}{%- endfor -%}
         {%- if apps.size == 0 -%}

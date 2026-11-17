@@ -1,9 +1,12 @@
 {%- comment -%}
   Formats a number with thousands separators, up to 3 decimals, no trailing zeros: 1460 -> 1,460   1380.5 -> 1,380.5
+  The separators come from locales (echo.number.thousands and echo.number.decimal), so Danish gets 1.460 and 1.380,5.
   Usage: {% render 'echo-num', n: total_kg %}   (n is a number or a numeric string)
   assets/echo-tracker.js formats the same way in the browser.
 {%- endcomment -%}
 {%- liquid
+  assign sep_t = 'echo.number.thousands' | t
+  assign sep_d = 'echo.number.decimal' | t
   assign v = n | plus: 0
   assign whole = v | floor
   assign frac = v | minus: whole | times: 1000 | round
@@ -21,7 +24,7 @@
       if out == ''
         assign out = tail
       else
-        assign out = tail | append: ',' | append: out
+        assign out = tail | append: sep_t | append: out
       endif
     else
       break
@@ -30,7 +33,7 @@
   if out == ''
     assign out = s
   else
-    assign out = s | append: ',' | append: out
+    assign out = s | append: sep_t | append: out
   endif
   if frac > 0
     assign m100 = frac | modulo: 100
@@ -50,7 +53,7 @@
         assign dec = '0' | append: frac
       endif
     endif
-    assign out = out | append: '.' | append: dec
+    assign out = out | append: sep_d | append: dec
   endif
   echo out
 -%}

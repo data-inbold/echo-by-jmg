@@ -14,18 +14,18 @@
   endcapture
   assign h1 = section.settings.h1 | default: collection.title
   if collection.handle == 'all' and section.settings.h1 == blank
-    assign h1 = 'Everything we make'
+    assign h1 = 'echo.collection.everything' | t
   endif
   assign intro = section.settings.intro
   if intro == blank
     assign intro = collection.description | strip_html
   endif
   if intro == blank and collection.handle == 'all'
-    assign intro = 'Blankets, cushion covers, bags and accessories, all knitted from rescued premium yarn in numbered editions.'
+    assign intro = 'echo.collection.intro' | t
   endif
   assign title = collection.title
   if collection.handle == 'all'
-    assign title = 'Shop all'
+    assign title = 'echo.common.shop_all' | t
   endif
   if section.settings.crumb != blank
     assign title = section.settings.crumb
@@ -54,7 +54,7 @@
   assign mode = section.settings.mode
   assign sort = collection.sort_by | default: collection.default_sort_by
 -%}
-{%- assign cl = 'Home::' | append: u_home | append: '||Shop::' | append: u_all | append: '||' | append: title -%}
+{%- assign t_home = 'echo.common.home' | t -%}{%- assign t_shop = 'echo.common.shop' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_shop | append: '::' | append: u_all | append: '||' | append: title -%}
 {%- render 'echo-crumbs', list: cl -%}
 <section class="section tight">
   <div class="wrap split" style="align-items:start">
@@ -67,19 +67,19 @@
 <section class="section tight alt" style="padding-block:16px;position:sticky;top:66px;z-index:5;border-block:1px solid var(--line)">
   <div class="wrap row" style="justify-content:space-between">
     <div class="row" style="gap:6px">
-      <button class="chip" data-fam="" aria-pressed="true">All colours</button>
+      <button class="chip" data-fam="" aria-pressed="true">{{ 'echo.main_collection.all_colours' | t }}</button>
       {%- assign fams = 'green:#6E7559,neutral:#D8CCB4,blue:#3D5BA9,black:#2A2826,bright:#E0763C,pink:#D6A0B4' | split: ',' -%}
       {%- for f in fams -%}
         {%- assign fp = f | split: ':' -%}
         <button class="chip" data-fam="{{ fp[0] }}" aria-pressed="false"><span class="dot" style="background:{{ fp[1] }}"></span>{{ fp[0] | capitalize }}</button>
       {%- endfor -%}
-      {%- if mode != 'last' -%}<button class="chip" data-last aria-pressed="false">Last pieces</button>{%- endif -%}
+      {%- if mode != 'last' -%}<button class="chip" data-last aria-pressed="false">{{ 'echo.tracker.last_pieces' | t }}</button>{%- endif -%}
     </div>
-    <label class="row" style="gap:8px;font-size:13px" for="sort">Sort
+    <label class="row" style="gap:8px;font-size:13px" for="sort">{{ 'echo.main_collection.sort' | t }}
       <select id="sort" style="border:1px solid var(--line);background:#fff;min-height:36px;padding:0 8px">
-        <option value="created-descending"{% if sort == 'created-descending' %} selected{% endif %}>Newest editions</option>
-        <option value="price-ascending"{% if sort == 'price-ascending' %} selected{% endif %}>Price, low to high</option>
-        <option value="price-descending"{% if sort == 'price-descending' %} selected{% endif %}>Price, high to low</option>
+        <option value="created-descending"{% if sort == 'created-descending' %} selected{% endif %}>{{ 'echo.main_collection.newest_editions' | t }}</option>
+        <option value="price-ascending"{% if sort == 'price-ascending' %} selected{% endif %}>{{ 'echo.main_collection.price_low_to_high' | t }}</option>
+        <option value="price-descending"{% if sort == 'price-descending' %} selected{% endif %}>{{ 'echo.main_collection.price_high_to_low' | t }}</option>
       </select>
     </label>
   </div>
@@ -145,16 +145,16 @@
           endfor
         endcapture
       -%}
-      <span class="muted" style="font-size:14px" data-shop-count>{{ n }} design{% if n != 1 %}s{% endif %}</span>
+      <span class="muted" style="font-size:14px" data-shop-count>{{ 'echo.common.designs_count' | t: count: n }}</span>
       <div class="grid g4" data-shop-grid{% if n == 0 %} hidden{% endif %}>
         {{ cards_last }}{{ cards }}
         {%- if section.settings.show_tile -%}
           <a class="edit-tile" href="{{ section.settings.tile_link | default: u_passport }}" hidden><span class="mono">{{ section.settings.tile_eyebrow }}</span><span class="t">{{ section.settings.tile_heading }}</span><span style="font-size:14px;color:#CFCDC8">{{ section.settings.tile_text }}</span></a>
         {%- endif -%}
       </div>
-      <div class="review" data-shop-empty{% if n > 0 %} hidden{% endif %}>No designs match these filters. <button class="textbtn" data-fam="">Clear filters</button></div>
+      <div class="review" data-shop-empty{% if n > 0 %} hidden{% endif %}>{{ 'echo.collection.no_match' | t }} <button class="textbtn" data-fam="">{{ 'echo.main_collection.clear_filters' | t }}</button></div>
       {%- if paginate.pages > 1 -%}
-        <nav class="pagination" aria-label="Pages">
+        <nav class="pagination" aria-label="{{ 'echo.main_collection.pages' | t | escape }}">
           {%- for part in paginate.parts -%}
             {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- elsif part.title == paginate.current_page -%}<span class="current">{{ part.title }}</span>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}
           {%- endfor -%}

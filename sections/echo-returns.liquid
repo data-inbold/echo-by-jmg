@@ -1,29 +1,29 @@
 {%- comment -%} Three-step return request. Steps 1–2 run in the page; step 2 sends the request to support through the contact form. {%- endcomment -%}
 <section class="section tight"><div class="wrap" style="max-width:760px"><div class="stack" style="gap:16px" data-returns>
-  <div class="row mono" style="gap:16px"><span data-ret-label="0" style="color:var(--ink)">1. Find order</span><span data-ret-label="1">2. Choose items</span><span data-ret-label="2">3. Label</span></div>
+  <div class="row mono" style="gap:16px"><span data-ret-label="0" style="color:var(--ink)">{{ 'echo.returns.1_find_order' | t }}</span><span data-ret-label="1">{{ 'echo.returns.2_choose_items' | t }}</span><span data-ret-label="2">{{ 'echo.returns.3_label' | t }}</span></div>
   {%- form 'contact', class: 'stack', style: 'gap:16px', data-returns-form: '' -%}
     {%- if form.posted_successfully? -%}
       <div class="stack" style="gap:16px">
-        <h1 class="h2">Your return is registered</h1>
+        <h1 class="h2">{{ 'echo.returns.your_return_is_registered' | t }}</h1>
         <div class="ok">{{ section.settings.ok }}</div>
-        <div class="row"><a class="btn" href="{% render 'echo-url', key: 'home' %}">Back to the shop</a><a class="btn ghost" href="{{ request.path }}">Start another return</a></div>
+        <div class="row"><a class="btn" href="{% render 'echo-url', key: 'home' %}">{{ 'echo.returns.back_to_the_shop' | t }}</a><a class="btn ghost" href="{{ request.path }}">{{ 'echo.returns.start_another_return' | t }}</a></div>
       </div>
     {%- else -%}
       <input type="hidden" name="contact[Form]" value="Return request">
       <div class="stack" style="gap:16px" data-ret-step="0">
-        <h1 class="h2">Return something</h1>
+        <h1 class="h2">{{ 'echo.returns.return_something' | t }}</h1>
         <p class="muted" style="margin:0">{{ section.settings.intro }}</p>
-        <div class="field"><label for="rt-no">Order number</label><input id="rt-no" name="contact[Order number]" placeholder="#1003"></div>
-        <div class="field"><label for="rt-email">Email</label><input id="rt-email" name="contact[email]" type="email" autocomplete="email"></div>
-        <button class="btn" type="button" data-ret-next>Find order</button>
+        <div class="field"><label for="rt-no">{{ 'echo.common.order_number' | t }}</label><input id="rt-no" name="contact[Order number]" placeholder="#1003"></div>
+        <div class="field"><label for="rt-email">{{ 'echo.common.email' | t }}</label><input id="rt-email" name="contact[email]" type="email" autocomplete="email"></div>
+        <button class="btn" type="button" data-ret-next>{{ 'echo.returns.find_order' | t }}</button>
       </div>
       <div class="stack" style="gap:12px" data-ret-step="1" hidden>
-        <h1 class="h2">Which items are you returning?</h1>
-        <div class="field"><label for="rt-items">Items to return</label><textarea id="rt-items" name="contact[Items]" rows="3" placeholder="For example: Hills & Valleys blanket, Oat"></textarea></div>
-        <div class="field"><label for="rt-why">Reason</label><select id="rt-why" name="contact[Reason]"><option>Changed my mind</option><option>Colour not as expected</option><option>Damaged or faulty</option><option>Wrong item</option><option>Other</option></select></div>
-        <div class="field"><label>Refund to</label><label class="row" style="gap:8px;font-size:14px"><input type="radio" name="contact[Refund to]" value="Original payment method" checked> Original payment method</label><label class="row" style="gap:8px;font-size:14px"><input type="radio" name="contact[Refund to]" value="Gift card"> Gift card (instantly)</label></div>
+        <h1 class="h2">{{ 'echo.returns.which_items_are_you_returning' | t }}</h1>
+        <div class="field"><label for="rt-items">{{ 'echo.returns.items_to_return' | t }}</label><textarea id="rt-items" name="contact[Items]" rows="3" placeholder="{{ 'echo.returns.for_example_hills_and_valleys_blanket' | t | escape }}"></textarea></div>
+        <div class="field"><label for="rt-why">{{ 'echo.returns.reason' | t }}</label><select id="rt-why" name="contact[Reason]"><option value="Changed my mind">{{ 'echo.returns.changed_my_mind' | t }}</option><option value="Colour not as expected">{{ 'echo.returns.colour_not_as_expected' | t }}</option><option value="Damaged or faulty">{{ 'echo.returns.damaged_or_faulty' | t }}</option><option value="Wrong item">{{ 'echo.returns.wrong_item' | t }}</option><option value="Other">{{ 'echo.returns.other' | t }}</option></select></div>
+        <div class="field"><label>{{ 'echo.returns.refund_to' | t }}</label><label class="row" style="gap:8px;font-size:14px"><input type="radio" name="contact[Refund to]" value="Original payment method" checked> {{ 'echo.returns.original_payment_method' | t }}</label><label class="row" style="gap:8px;font-size:14px"><input type="radio" name="contact[Refund to]" value="Gift card"> {{ 'echo.returns.gift_card_instantly' | t }}</label></div>
         <input type="hidden" name="contact[body]" value="Return request">
-        <div class="row"><button class="btn ghost" type="button" data-retback>Back</button><button class="btn" type="submit">Get return label</button></div>
+        <div class="row"><button class="btn ghost" type="button" data-retback>{{ 'echo.returns.back' | t }}</button><button class="btn" type="submit">{{ 'echo.returns.get_return_label' | t }}</button></div>
       </div>
     {%- endif -%}
   {%- endform -%}

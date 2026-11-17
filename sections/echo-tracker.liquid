@@ -104,14 +104,14 @@
 -%}
 <section class="section tight"><div class="wrap stack" style="gap:14px"><span class="mono">{{ section.settings.eyebrow }}</span><h1 class="h1">{{ section.settings.heading }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p></div></section>
 <section class="section band tight"><div class="wrap stats">
-  <div class="stat"><div class="n" data-stat="kg">{{ kg_label }}</div><p>yarn rescued to date</p></div>
-  <div class="stat"><div class="n" data-stat="batches">{{ ed_label }}</div><p>batches and editions</p></div>
-  <div class="stat"><div class="n" data-stat="pieces">{{ pieces_fmt | strip }}</div><p>numbered pieces made</p></div>
-  <div class="stat"><div class="n" data-stat="open">{{ open_fmt | strip }}</div><p>editions still open</p></div>
+  <div class="stat"><div class="n" data-stat="kg">{{ kg_label }}</div><p>{{ 'echo.tracker.yarn_rescued_to_date' | t }}</p></div>
+  <div class="stat"><div class="n" data-stat="batches">{{ ed_label }}</div><p>{{ 'echo.tracker.batches_and_editions' | t }}</p></div>
+  <div class="stat"><div class="n" data-stat="pieces">{{ pieces_fmt | strip }}</div><p>{{ 'echo.tracker.numbered_pieces_made' | t }}</p></div>
+  <div class="stat"><div class="n" data-stat="open">{{ open_fmt | strip }}</div><p>{{ 'echo.tracker.editions_still_open' | t }}</p></div>
 </div></section>
 <section class="section"><div class="wrap stack" style="gap:16px" id="yarn-tracker" data-src="{{ routes.all_products_collection_url }}?view=yarn-data">
-  <div class="row" style="justify-content:space-between"><h2 class="h2">The batch log</h2><a class="btn" href="{% render 'echo-url', key: 'open' %}">Shop open editions</a></div>
-  <div class="tablewrap"><table class="tracker"><thead><tr><th>Batch</th><th>Logged</th><th>Fibre</th><th class="num">Yarn</th><th>Became</th><th class="num">Pieces</th><th>Status</th></tr></thead><tbody>{{ rows }}</tbody></table></div>
+  <div class="row" style="justify-content:space-between"><h2 class="h2">{{ 'echo.tracker.the_batch_log' | t }}</h2><a class="btn" href="{% render 'echo-url', key: 'open' %}">{{ 'echo.tracker.shop_open_editions' | t }}</a></div>
+  <div class="tablewrap"><table class="tracker"><thead><tr><th>{{ 'echo.common.batch' | t }}</th><th>{{ 'echo.tracker.logged' | t }}</th><th>{{ 'echo.common.fibre' | t }}</th><th class="num">{{ 'echo.tracker.yarn' | t }}</th><th>{{ 'echo.tracker.became' | t }}</th><th class="num">{{ 'echo.tracker.pieces' | t }}</th><th>{{ 'echo.common.status' | t }}</th></tr></thead><tbody>{{ rows }}</tbody></table></div>
   {%- if section.settings.note != blank -%}<p class="muted" style="font-size:13px;margin:0">{{ section.settings.note }}</p>{%- endif -%}
 </div></section>{% schema %}
 {

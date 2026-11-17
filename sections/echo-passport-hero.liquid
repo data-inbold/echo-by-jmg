@@ -7,14 +7,14 @@
       <p class="muted" style="margin:0">{{ section.settings.caption }}</p>
     </div>
     <div class="ypcard" role="img" aria-label="Example Yarn Passport card for a {{ section.settings.c_name | escape }}, edition {{ section.settings.c_no }} of {{ section.settings.c_of }}">
-      <div class="yptop"><span>EchoByJMG</span><span>Yarn Passport</span></div>
+      <div class="yptop"><span>EchoByJMG</span><span>{{ 'echo.common.yarn_passport' | t }}</span></div>
       <div class="ypname">{{ section.settings.c_name }}</div><div class="ypsub">{{ section.settings.c_colour }}</div>
-      <div class="ypno"><span>No.</span>{{ section.settings.c_no }}<em>/ {{ section.settings.c_of }}</em></div>
+      <div class="ypno"><span>{{ 'echo.passport_hero.no' | t }}</span>{{ section.settings.c_no }}<em>/ {{ section.settings.c_of }}</em></div>
       <dl>
-        <div><dt>Origin</dt><dd>{{ section.settings.c_origin }}</dd></div>
-        <div><dt>Fibre</dt><dd>{{ section.settings.c_fibre }}</dd></div>
-        <div><dt>Batch</dt><dd>{{ section.settings.c_batch }}</dd></div>
-        <div><dt>Made</dt><dd>{{ section.settings.c_made }}</dd></div>
+        <div><dt>{{ 'echo.passport_hero.origin' | t }}</dt><dd>{{ section.settings.c_origin }}</dd></div>
+        <div><dt>{{ 'echo.common.fibre' | t }}</dt><dd>{{ section.settings.c_fibre }}</dd></div>
+        <div><dt>{{ 'echo.common.batch' | t }}</dt><dd>{{ section.settings.c_batch }}</dd></div>
+        <div><dt>{{ 'echo.passport_hero.made' | t }}</dt><dd>{{ section.settings.c_made }}</dd></div>
       </dl>
       <div class="ypfoot">{{ section.settings.c_foot }}</div>
     </div>

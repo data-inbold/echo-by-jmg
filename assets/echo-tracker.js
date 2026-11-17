@@ -10,7 +10,11 @@
 (function (root) {
   'use strict';
 
-  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  /* translated strings and number format from the layout (window.Echo.i18n); English is the fallback */
+  var I = (root.Echo && root.Echo.i18n) || {};
+  var MONTHS = (I.months || 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec').split(',');
+  var THOUSANDS = I.thousands || ',';
+  var DECIMAL = I.decimal || '.';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -27,8 +31,8 @@
   /* 1460 -> "1,460", 1380.5 -> "1,380.5" (same as snippets/echo-num.liquid) */
   function fmtNumber(n) {
     var p = String(round3(n)).split('.');
-    p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return p.join('.');
+    p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, THOUSANDS);
+    return p.join(DECIMAL);
   }
   function fmtKg(n) { return fmtNumber(n) + ' kg'; }
 
@@ -132,9 +136,9 @@
   }
 
   function statusHtml(b) {
-    if (b.left <= 0) return '<span class="tstat closed">Closed</span>';
-    if (b.last) return '<span class="tstat last">Last pieces</span>';
-    return '<span class="tstat">Open · ' + b.left + ' left</span>';
+    if (b.left <= 0) return '<span class="tstat closed">' + esc(I.closed || 'Closed') + '</span>';
+    if (b.last) return '<span class="tstat last">' + esc(I.lastPieces || 'Last pieces') + '</span>';
+    return '<span class="tstat">' + esc((I.openLeft || 'Open \u00b7 __COUNT__ left').replace('__COUNT__', b.left)) + '</span>';
   }
 
   function rowFromBatch(b, logged) {

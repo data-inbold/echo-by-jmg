@@ -17,16 +17,16 @@
   case cat
     when 'blankets'
       assign catcol = settings.echo_col_blankets
-      assign catname = 'Blankets'
+      assign catname = 'echo.common.blankets' | t
     when 'cushions'
       assign catcol = settings.echo_col_cushions
-      assign catname = 'Cushion covers'
+      assign catname = 'echo.common.cushion_covers' | t
     when 'bags'
       assign catcol = settings.echo_col_bags
-      assign catname = 'Bags'
+      assign catname = 'echo.common.bags' | t
     else
       assign catcol = settings.echo_col_accessories
-      assign catname = 'Accessories'
+      assign catname = 'echo.common.accessories' | t
   endcase
   capture caturl
     render 'echo-url', key: cat
@@ -51,7 +51,7 @@
 
 {%- if product.gift_card? -%}
   {%- capture u_gifts -%}{%- render 'echo-url', key: 'gifts' -%}{%- endcapture -%}
-  {%- assign cl = 'Home::' | append: u_home | append: '||Gifts::' | append: u_gifts | append: '||' | append: product.title -%}
+  {%- assign t_home = 'echo.common.home' | t -%}{%- assign t_gifts = 'echo.common.gifts' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_gifts | append: '::' | append: u_gifts | append: '||' | append: product.title -%}
   {%- render 'echo-crumbs', list: cl -%}
   <div class="wrap pdp">
     <div class="gallery">
@@ -63,18 +63,18 @@
       <div class="muted rte" style="margin:0">{{ product.description | default: section.settings.gc_text }}</div>
       <input type="hidden" name="id" value="{{ variant.id }}">
       <input type="hidden" name="quantity" value="1">
-      <div><div style="font-size:14px;margin-bottom:10px">Amount</div><div class="row" style="gap:6px">
+      <div><div style="font-size:14px;margin-bottom:10px">{{ 'echo.main_product.amount' | t }}</div><div class="row" style="gap:6px">
         {%- for v in product.variants -%}
           {%- capture lbl -%}{%- render 'echo-money', price: v.price -%}{%- endcapture -%}
           <button type="button" class="chip" data-amount="{{ v.id }}" data-label="{{ lbl | strip }}" aria-pressed="{% if v.id == variant.id %}true{% else %}false{% endif %}"{% unless v.available %} disabled{% endunless %}>{{ lbl | strip }}</button>
         {%- endfor -%}
       </div></div>
-      <button class="btn" type="submit">Add to bag</button>
-      <ul class="ticks"><li>Sent instantly by email</li><li>No expiry</li></ul>
+      <button class="btn" type="submit">{{ 'echo.main_product.add_to_bag' | t }}</button>
+      <ul class="ticks"><li>{{ 'echo.main_product.sent_instantly_by_email' | t }}</li><li>{{ 'echo.main_product.no_expiry' | t }}</li></ul>
     {%- endform -%}
   </div>
 {%- else -%}
-  {%- assign cl = 'Home::' | append: u_home | append: '||Shop::' | append: u_all | append: '||' | append: catname | append: '::' | append: caturl | append: '||' | append: i[8] -%}
+  {%- assign t_home = 'echo.common.home' | t -%}{%- assign t_shop = 'echo.common.shop' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_shop | append: '::' | append: u_all | append: '||' | append: catname | append: '::' | append: caturl | append: '||' | append: i[8] -%}
   {%- render 'echo-crumbs', list: cl -%}
   <div class="wrap pdp">
     <div class="gallery">
@@ -152,11 +152,11 @@
       {%- assign rating = product.metafields.reviews.rating.value -%}
       {%- assign rcount = product.metafields.reviews.rating_count | default: 0 -%}
       {%- if rating != blank -%}
-        <a href="#reviews" class="muted" style="font-size:14px;text-decoration:none">★★★★★ {{ rating.rating | round: 1 }} · {{ rcount }} reviews</a>
+        <a href="#reviews" class="muted" style="font-size:14px;text-decoration:none">★★★★★ {{ rating.rating | round: 1 }} · {{ 'echo.common.reviews_count' | t: count: rcount }}</a>
       {%- endif -%}
-      <div style="font-size:22px;font-weight:600">{% render 'echo-money', price: variant.price %} <span class="muted" style="font-size:13px;font-weight:400">incl. VAT · free delivery</span></div>
+      <div style="font-size:22px;font-weight:600">{% render 'echo-money', price: variant.price %} <span class="muted" style="font-size:13px;font-weight:400">{{ 'echo.main_product.incl_vat_free_delivery' | t }}</span></div>
       <div>
-        <div style="font-size:14px;margin-bottom:10px">Colour: <b>{{ i[5] }}</b></div>
+        <div style="font-size:14px;margin-bottom:10px">{{ 'echo.main_product.colour' | t }} <b>{{ i[5] }}</b></div>
         <div class="row">
           {%- assign sibs = product.metafields.custom.linked_products.value -%}
           {%- if sibs != blank -%}
@@ -172,29 +172,29 @@
       </div>
 
       {%- if i[4] == 'sold' -%}
-        <div class="edition"><b>This edition is sold out.</b> All {{ i[2] }} pieces have found a home. The design will not be repeated in this colour.</div>
+        <div class="edition">{{ 'echo.product.sold_out_html' | t: total: i[2] }}</div>
         {%- form 'contact', class: 'stack', style: 'gap:8px' -%}
           {%- if form.posted_successfully? -%}
-            <div class="ok" role="status">Thank you. We will email you when the next edition is ready.</div>
+            <div class="ok" role="status">{{ 'echo.main_product.thank_you_we_will_email_you_when_the' | t }}</div>
           {%- else -%}
             <input type="hidden" name="contact[Request]" value="Notify me: {{ product.title }}">
             <input type="hidden" name="contact[tags]" value="notify-next-edition">
-            <label for="n-email" style="font-size:14px;font-weight:600">Get an email when a new edition from this yarn family is ready</label>
-            <div class="inline-form"><input id="n-email" type="email" name="contact[email]" required placeholder="Your email"><button class="btn" type="submit">Notify me</button></div>
+            <label for="n-email" style="font-size:14px;font-weight:600">{{ 'echo.main_product.get_an_email_when_a_new_edition_from' | t }}</label>
+            <div class="inline-form"><input id="n-email" type="email" name="contact[email]" required placeholder="{{ 'echo.common.your_email' | t | escape }}"><button class="btn" type="submit">{{ 'echo.main_product.notify_me' | t }}</button></div>
           {%- endif -%}
         {%- endform -%}
-        <a class="btn ghost block" href="{{ caturl }}">See current {{ catname | downcase }}</a>
+        <a class="btn ghost block" href="{{ caturl }}">{% assign catname_l = catname | downcase %}{{ 'echo.product.see_current' | t: name: catname_l }}</a>
       {%- else -%}
-        <div class="edition"><b>Edition of {{ i[2] }}, {{ i[3] }} left.</b> Once this batch of yarn is used, the design is not repeated in this colour.</div>
+        <div class="edition">{{ 'echo.product.edition_left_html' | t: total: i[2], left: i[3] }}</div>
         {%- form 'product', product, class: 'stack', style: 'gap:12px', data-pdp-form: '' -%}
           <input type="hidden" name="id" value="{{ variant.id }}">
           <input type="hidden" name="quantity" value="1">
           <div class="row">
-            <div class="qty"><button type="button" data-qty="-1" aria-label="Fewer">−</button><span data-qty-out>1</span><button type="button" data-qty="1" aria-label="More">+</button></div>
-            <button class="btn" style="flex:1" type="submit"{% unless variant.available %} disabled{% endunless %}>Add to bag</button>
+            <div class="qty"><button type="button" data-qty="-1" aria-label="{{ 'echo.common.fewer' | t | escape }}">−</button><span data-qty-out>1</span><button type="button" data-qty="1" aria-label="{{ 'echo.common.more' | t | escape }}">+</button></div>
+            <button class="btn" style="flex:1" type="submit"{% unless variant.available %} disabled{% endunless %}>{{ 'echo.main_product.add_to_bag' | t }}</button>
           </div>
           {%- if section.settings.show_mobilepay -%}
-            <button class="btn mp block" type="submit" name="return_to" value="/checkout" data-buynow>Pay with MobilePay</button>
+            <button class="btn mp block" type="submit" name="return_to" value="/checkout" data-buynow>{{ 'echo.main_product.pay_with_mobilepay' | t }}</button>
           {%- endif -%}
         {%- endform -%}
         <ul class="ticks">
@@ -204,10 +204,10 @@
       {%- endif -%}
 
       <div>
-        <details class="acc" open><summary>Description</summary><div class="body rte">{{ product.description | default: '[Product description]' }}</div></details>
-        <details class="acc"><summary>Material and care</summary><div class="body">{{ comp | default: '[Composition]' | newline_to_br }}{% if care != blank %}<br>{{ care | newline_to_br }}{% endif %}</div></details>
-        <details class="acc"><summary>Dimensions</summary><div class="body">{{ dims | default: '[Size]' | newline_to_br }}</div></details>
-        <details class="acc"><summary>Delivery and returns</summary><div class="body">{{ section.settings.delivery }} <a class="link" href="{% render 'echo-url', key: 'help' %}#topic-Delivery%20and%20returns">More about delivery</a></div></details>
+        <details class="acc" open><summary>{{ 'echo.main_product.description' | t }}</summary><div class="body rte">{{ product.description | default: '[Product description]' }}</div></details>
+        <details class="acc"><summary>{{ 'echo.main_product.material_and_care' | t }}</summary><div class="body">{{ comp | default: '[Composition]' | newline_to_br }}{% if care != blank %}<br>{{ care | newline_to_br }}{% endif %}</div></details>
+        <details class="acc"><summary>{{ 'echo.main_product.dimensions' | t }}</summary><div class="body">{{ dims | default: '[Size]' | newline_to_br }}</div></details>
+        <details class="acc"><summary>{{ 'echo.main_product.delivery_and_returns' | t }}</summary><div class="body">{{ section.settings.delivery }} <a class="link" href="{% render 'echo-url', key: 'help' %}#topic-Delivery%20and%20returns">{{ 'echo.main_product.more_about_delivery' | t }}</a></div></details>
       </div>
     </div>
   </div>
