@@ -1,15 +1,16 @@
 {%- capture echo_out -%}
 {%- comment -%}
   Dark band with the headline numbers and the latest batches. Summary of the Rescued yarn tracker, used on About us.
-  {kg} and {batches} in a number are counted from the Yarn batch list (same as the Numbers section).
+  {kg} and {batches} in a number are calculated from the Yarn Passport fields on the products plus older batches in the
+  Yarn batch list (same as the Numbers section and the Rescued yarn tracker page; assets/echo-tracker.js refreshes them in the browser).
 {%- endcomment -%}
 {%- capture tot -%}{%- render 'echo-batch-totals' -%}{%- endcapture -%}
 {%- assign totp = tot | strip | split: '|' -%}
 {%- liquid
   assign tok_kg = '{' | append: 'kg' | append: '}'
   assign tok_ed = '{' | append: 'batches' | append: '}'
-  assign kg_out = totp[0] | default: ''
-  assign ed_out = totp[1] | default: ''
+  assign kg_out = '<span data-yarn-total="kg">' | append: totp[0] | append: '</span>'
+  assign ed_out = '<span data-yarn-total="batches">' | append: totp[1] | append: '</span>'
   assign stats = section.blocks | where: 'type', 'stat'
   assign batches = section.blocks | where: 'type', 'batch'
 -%}
@@ -52,6 +53,7 @@
 </section>
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
+{%- render 'echo-yarn-history' -%}
 {% schema %}
 {
   "name": "Tracker band (dark)",
@@ -65,7 +67,7 @@
   ],
   "blocks": [
     { "type": "stat", "name": "Number", "settings": [
-      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, counted from the Yarn batch list." },
+      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, calculated from the Yarn Passport fields on the products plus older batches in the Yarn batch list." },
       { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued" }
     ] },
     { "type": "batch", "name": "Batch", "settings": [

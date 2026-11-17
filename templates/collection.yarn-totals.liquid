@@ -1,0 +1,23 @@
+{% layout none %}
+{%- comment -%}
+  Light data feed for the yarn totals shown on the home page and other pages (assets/echo-tracker.js). Not a visible page.
+  Request: /collections/all?view=yarn-totals&page=N   (50 products per page)
+  One entry per product that has a Yarn Passport batch: b batch id, k kg of that product.
+  No echo-pinfo here on purpose, so this stays cheap on pages many visitors open.
+  The full feed with names, stock and status is collection.yarn-data.liquid (tracker page only).
+{%- endcomment -%}
+{%- paginate collection.products by 50 -%}
+{%- assign first = true -%}
+{"page":{{ paginate.current_page }},"pages":{{ paginate.pages }},"items":[
+{%- for p in collection.products -%}
+  {%- assign f_batch = p.metafields.custom.yp_batch_id.value | default: p.metafields.custom.batch_id.value | default: '' -%}
+  {%- if f_batch == blank -%}
+    {%- continue -%}
+  {%- endif -%}
+  {%- assign f_kg = p.metafields.custom.yp_kg.value | default: p.metafields.custom.batch_kg.value | default: '' -%}
+  {%- unless first -%},{%- endunless -%}
+  {%- assign first = false -%}
+  {"b":{{ f_batch | json }},"k":{{ f_kg | json }}}
+{%- endfor -%}
+]}
+{%- endpaginate -%}
