@@ -14,197 +14,158 @@
     "crumbs": {
       "type": "echo-breadcrumbs",
       "settings": {
-        "current": "About us"
+        "current": "About Us"
       }
     },
-    "intro": {
-      "type": "echo-split",
+    "hero": {
+      "type": "echo-about-hero",
       "settings": {
-        "spacing": "tight",
         "bg": "paper",
-        "media_first": false,
-        "rev": false,
-        "top": false,
-        "gap": 14,
-        "hide_on_gift": false,
-        "eyebrow": "About us",
-        "heading": "A family knitter since 1946, now under our own name.",
-        "heading_tag": true,
-        "heading_size": "h1",
-        "quote": "",
-        "lead": "EchoByJMG is the homeware brand of JM Group, a family knitwear maker in Hong Kong with its own factory. For over 80 years we knitted for luxury and high-street labels. Now we knit the yarn they left behind into blankets, cushion covers and bags for Danish homes.",
-        "caption": "",
-        "small": "",
-        "btn1_label": "",
-        "btn1_link": "",
-        "btn1_ghost": true,
-        "btn2_label": "",
-        "btn2_link": "",
-        "btn2_ghost": true,
-        "photo": "none",
-        "alt": "",
-        "label": "Film still or loop: the factory floor, knitting machines running, a family member at work",
-        "ar": "4/3",
-        "chips": "Our story::echo:story\nYarn Passport::echo:passport\nYarn tracker::echo:tracker\nFactory::echo:factory\nStories::echo:journal",
-        "video": "shopify://files/videos/gemini_generated_video_91f90f4d.mp4"
-      }
-    },
-    "numbers": {
-      "type": "echo-stats",
-      "settings": {
-        "spacing": "tight",
-        "bg": "band",
-        "link_label": "",
-        "link": ""
+        "heading": "New vision for a 80-year family legacy",
+        "lead": "With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home.",
+        "logo_file": "echo-stat-logo.png",
+        "speed": 90,
+        "strip_label": "Photos of the factory and the family"
       },
       "blocks": {
-        "stat_1": {
-          "type": "stat",
+        "photo_1": {
+          "type": "photo",
           "settings": {
-            "n": "1946",
-            "text": "family knitwear since"
+            "file": "echo-ming-portrait.jpg",
+            "alt": "Ming at the factory"
           }
         },
-        "stat_2": {
-          "type": "stat",
+        "photo_2": {
+          "type": "photo",
           "settings": {
-            "n": "80+",
-            "text": "years knitting for fashion labels"
+            "file": "echo-v2-story.jpg",
+            "alt": "Ming and a colleague going through yarn samples"
           }
         },
-        "stat_3": {
-          "type": "stat",
+        "photo_3": {
+          "type": "photo",
           "settings": {
-            "n": "{kg}",
-            "text": "leftover yarn rescued"
+            "file": "echo-v2-process.jpg",
+            "alt": "A JM Group yarn label on a knitted fair-isle piece"
           }
         },
-        "stat_4": {
-          "type": "stat",
+        "photo_4": {
+          "type": "photo",
           "settings": {
-            "n": "{batches}",
-            "text": "numbered editions"
+            "file": "echo-v2-tile-blankets.jpg",
+            "alt": "A knitted blanket on a sofa"
+          }
+        },
+        "photo_5": {
+          "type": "photo",
+          "settings": {
+            "file": "echo-v2-tile-cushions.jpg",
+            "alt": "A knitted cushion cover on a sofa"
+          }
+        },
+        "photo_6": {
+          "type": "photo",
+          "settings": {
+            "file": "echo-v2-tile-bags.jpg",
+            "alt": "A knitted bag on a side table"
+          }
+        },
+        "photo_7": {
+          "type": "photo",
+          "settings": {
+            "file": "echo-v2-tile-accessories.jpg",
+            "alt": "A knitted beanie"
           }
         }
       },
       "block_order": [
-        "stat_1",
-        "stat_2",
-        "stat_3",
-        "stat_4"
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4",
+        "photo_5",
+        "photo_6",
+        "photo_7"
       ]
     },
-    "story": {
-      "type": "echo-split",
+    "letter": {
+      "type": "echo-letter",
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "media_first": true,
-        "rev": false,
-        "top": true,
-        "gap": 16,
-        "hide_on_gift": false,
-        "eyebrow": "01 · Our story",
-        "heading": "The factory brands never name",
-        "heading_tag": false,
-        "heading_size": "h2",
-        "quote": "“EchoByJMG is born from JM Group Limited, a family-owned knitwear specialist since 1946. We know our materials deeply: their quality, their character, and how much is left behind after every production run. EchoByJMG is our answer to that knowledge.”",
-        "lead": "",
-        "caption": "Ming, founder of EchoByJMG",
-        "small": "Why Echo? Our yarns began as part of fashion production. Here they continue their story, carried by generations of knitwear knowledge.",
-        "btn1_label": "",
-        "btn1_link": "",
-        "btn1_ghost": true,
-        "btn2_label": "",
-        "btn2_link": "",
-        "btn2_ghost": true,
+        "heading": "Letter From Our Founders",
+        "letter": "“Knitting has been part of my family for generations. What began with my grandfather's knitting factory in 1946 has grown into decades of craftsmanship and a deep appreciation for beautiful yarns.\n\nOver the years, I've seen extraordinary materials left behind after production; beautiful, high-quality yarns that still have so much potential. I couldn't help thinking: surely, they deserve more than to be forgotten?\n\nThat thought became EchoByJMG. A brand born from my passion for giving beautiful yarns a new purpose, transforming what was once overlooked into something meaningful, playful and made to be loved.”",
+        "caption": "Ming, Founder of EchoByJMG",
         "photo": "echo-ming-portrait.jpg",
-        "alt": "Ming at the factory, going through a stack of navy knitted blankets",
-        "label": "Portrait: Ming at the factory",
-        "ar": "4/5",
-        "points_style": "years"
+        "alt": "Ming, founder of EchoByJMG",
+        "icon_file": "echo-yarnknitting-ourstory.png"
       },
       "blocks": {
-        "point_1": {
-          "type": "point",
+        "m1": {
+          "type": "milestone",
           "settings": {
-            "title": "1946",
-            "text": "JM Group is founded in Hong Kong."
+            "year": "1946",
+            "text": "Our story begins in Hong Kong, where my grandfather establishes the family's first knitwear factory."
           }
         },
-        "point_2": {
-          "type": "point",
+        "m2": {
+          "type": "milestone",
           "settings": {
-            "title": "[Year]",
-            "text": "Our own factory opens in [city], China."
+            "year": "1985",
+            "text": "Our family-run knitwear factory moves from Hong Kong to Dongguan, China."
           }
         },
-        "point_3": {
-          "type": "point",
+        "m3": {
+          "type": "milestone",
           "settings": {
-            "title": "80+ years",
-            "text": "Three generations knitting for leading fashion labels."
-          }
-        },
-        "point_4": {
-          "type": "point",
-          "settings": {
-            "title": "2026",
-            "text": "EchoByJMG launches in Denmark."
+            "year": "2026",
+            "text": "EchoByJMG is born, bringing our knitting heritage to life under our own name, launching in Denmark."
           }
         }
       },
       "block_order": [
-        "point_1",
-        "point_2",
-        "point_3",
-        "point_4"
+        "m1",
+        "m2",
+        "m3"
       ]
     },
-    "values": {
-      "type": "echo-steps",
+    "marquee": {
+      "type": "echo-marquee",
       "settings": {
-        "spacing": "tight",
-        "bg": "paper",
-        "layout": "steps",
-        "anchor": "",
-        "eyebrow": "",
-        "heading": "",
-        "heading_size": "h2",
-        "intro": "",
-        "gap": 24,
-        "narrow": false,
-        "photo": "none",
-        "alt": "",
-        "ar": "21/9",
-        "pair1_label": "",
-        "pair2_label": "",
-        "link_label": "",
-        "link": ""
-      },
+        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
+        "speed": 40,
+        "pad": 40,
+        "bg": ""
+      }
+    },
+    "how": {
+      "type": "echo-how",
       "blocks": {
         "step_1": {
           "type": "step",
           "settings": {
-            "num": "",
-            "title": "Knitted, not woven",
-            "text": "The softness, stretch and durability of fashion knitwear, at home."
+            "title": "Luxury yarn goes unused",
+            "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
+            "link_word": "",
+            "link": ""
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
-            "num": "",
-            "title": "Colour, in a market of beige",
-            "text": "Our colours are whatever fashion left behind, so they are not on every other shelf."
+            "title": "We rescue and reimagine",
+            "text": "We reclaim the leftover yarn, designing and producing strictly around what is available.",
+            "link_word": "",
+            "link": ""
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
-            "num": "",
-            "title": "A gift with its own story",
-            "text": "Every piece arrives with its number and its passport."
+            "title": "Traceable and exclusively yours",
+            "text": "Every limited-edition piece you purchase will include a custom woven label and a Yarn Passport that details your yarn's journey.",
+            "link_word": "Yarn Passport",
+            "link": "echo:passport"
           }
         }
       },
@@ -212,45 +173,26 @@
         "step_1",
         "step_2",
         "step_3"
-      ]
-    },
-    "passport": {
-      "type": "echo-split",
+      ],
       "settings": {
         "spacing": "normal",
-        "bg": "alt",
-        "media_first": true,
-        "rev": false,
-        "top": false,
-        "gap": 14,
-        "hide_on_gift": false,
-        "eyebrow": "02 · The Yarn Passport",
-        "heading": "Every piece comes with its own passport",
-        "heading_tag": false,
-        "heading_size": "h2",
-        "quote": "",
-        "lead": "A short record of where the yarn came from, what it is made of, how many pieces it could make and which number is yours. On the product page, on a woven label and on a card in the box.",
-        "caption": "",
-        "small": "",
-        "btn1_label": "How the Yarn Passport works",
-        "btn1_link": "echo:passport",
-        "btn1_ghost": false,
-        "btn2_label": "",
-        "btn2_link": "",
-        "btn2_ghost": true,
-        "photo": "none",
-        "alt": "",
-        "label": "Yarn Passport · No. 7 / 21 · Hills & Valleys · Batch HV-2417 · 14 kg",
-        "ar": "16/9"
+        "bg": "paper",
+        "show_thread": true,
+        "show_icon": true,
+        "anchor": "how",
+        "heading": "The EchoByJMG Process",
+        "photo": "echo-v2-hero.jpg",
+        "alt": "Cones of yarn in many colours",
+        "overlay": "",
+        "media_label": ""
       }
     },
     "tracker": {
       "type": "echo-tracker-band",
       "settings": {
         "spacing": "normal",
-        "eyebrow": "03 · Rescued yarn tracker",
-        "heading": "Every batch we have saved, in the open",
-        "btn_label": "Open the tracker",
+        "heading": "Our Rescue Journey, In Numbers",
+        "btn_label": "Open tracker",
         "btn_link": "echo:tracker",
         "log_label": "Latest batches"
       },
@@ -259,28 +201,32 @@
           "type": "stat",
           "settings": {
             "n": "{kg}",
-            "text": "yarn rescued"
+            "text": "Yarn rescued",
+            "icon_file": "echo-stat-yarn.png"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "batches"
+            "text": "Batches",
+            "icon_file": "echo-stat-logo.png"
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
             "n": "738",
-            "text": "numbered pieces"
+            "text": "Numbered pieces",
+            "icon_file": "echo-stat-knit.png"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
             "n": "26",
-            "text": "editions still open"
+            "text": "Available designs",
+            "icon_file": "echo-stat-pillows.png"
           }
         },
         "batch_1": {
@@ -321,60 +267,71 @@
         "batch_3"
       ]
     },
-    "factory": {
-      "type": "echo-split",
+    "track": {
+      "type": "echo-feature",
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "media_first": false,
-        "rev": false,
-        "top": false,
-        "gap": 14,
-        "hide_on_gift": false,
-        "eyebrow": "04 · Factory and certificates",
-        "heading": "Made in our own factory, and audited",
-        "heading_tag": false,
-        "heading_size": "h2",
-        "quote": "",
-        "lead": "Our pieces are made in the family-run JM Group factory in [city], China. The factory is audited under BSCI, and materials carry OCS and RCS certificates where they apply.",
-        "caption": "",
-        "small": "",
-        "btn1_label": "Factory and certificates",
-        "btn1_link": "echo:factory",
-        "btn1_ghost": true,
-        "btn2_label": "",
-        "btn2_link": "",
-        "btn2_ghost": true,
-        "photo": "none",
-        "alt": "",
-        "label": "Photo: the factory building and the knitting hall",
-        "ar": "16/9",
-        "badges": "bsci, ocs, rcs"
+        "media_side": "right",
+        "text_width": 519,
+        "gap": 24,
+        "heading": "How We Track Each Piece With Our Yarn Passport",
+        "divider": false,
+        "text": "Our Yarn Passport reveals the journey behind your piece — its origins, materials, amount of yarn rescued, and total number of pieces in the batch.",
+        "certs": false,
+        "btn_label": "Discover more",
+        "btn_link": "echo:passport",
+        "icon_file": "echo-yarnknitting-ourstory.png",
+        "ar": "787/443",
+        "photo": "echo-v2-process.jpg",
+        "alt": "A JM Group yarn label lying on a knitted fair-isle piece"
+      }
+    },
+    "factory": {
+      "type": "echo-feature",
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "media_side": "left",
+        "text_width": 604,
+        "gap": 48,
+        "heading": "Our Factory & Certificates",
+        "divider": true,
+        "text": "All of our products are crafted in our family-owned Dongguan factory, operating since 1946. We are proudly BSCI-audited and utilize RCS and OCS certified materials wherever applicable.",
+        "certs": true,
+        "btn_label": "Discover more",
+        "btn_link": "echo:factory",
+        "icon_file": "",
+        "ar": "302/480",
+        "photo": "echo-v2-story.jpg",
+        "alt": "The knitting hall",
+        "photo2": "echo-v2-tile-blankets.jpg",
+        "alt2": "Finished blankets"
       }
     },
     "stories": {
       "type": "echo-clips",
       "settings": {
         "spacing": "normal",
-        "bg": "alt",
-        "eyebrow": "05 · Stories",
-        "heading": "Stories from the factory floor",
-        "link_label": "All stories",
+        "bg": "paper",
+        "eyebrow": "",
+        "heading": "Stories From Our Factory Floor",
+        "link_label": "Discover more",
         "link": "echo:journal",
-        "kicker": "Films on the floor, on a phone",
-        "text": "These clips are shot by the people who make our pieces, during the working day. Handheld, a little shaky, with the sound as it was. We share them as they are, so you can see the machines, the yarn and the hands behind every edition.",
-        "note": "New clips most weeks [cadence to confirm]",
-        "cards_label": "Read"
+        "kicker": "",
+        "text": "See our behind-the-scene as it is, with raw, unfiltered footages and honest stories shared by the very people who make your pieces.",
+        "note": "",
+        "cards_label": "Journals"
       },
       "blocks": {
         "clip_1": {
           "type": "clip",
           "settings": {
             "time": "07:32",
-            "title": "Morning start-up",
+            "title": "From left over yarn",
             "text": "The knitting machines warm up before the first shift.",
             "duration": "0:14",
-            "by": "Filmed by [name], knitting hall",
+            "by": "Filmed by [name], Knitting hall",
             "placeholder": "Phone clip\nMorning start-up",
             "file": "echo-clip-1.mp4"
           }
@@ -385,8 +342,8 @@
             "time": "08:10",
             "title": "Cones off the shelf",
             "text": "Leftover lambswool pulled for batch HV-2417.",
-            "duration": "0:21",
-            "by": "Filmed by [name], yarn store",
+            "duration": "0:14",
+            "by": "Filmed by [name], Yarn store",
             "placeholder": "Phone clip\nCones off the shelf",
             "file": "echo-clip-2.mp4"
           }
@@ -397,8 +354,8 @@
             "time": "10:45",
             "title": "Linking by hand",
             "text": "Closing the seams of a cushion cover, stitch by stitch.",
-            "duration": "0:18",
-            "by": "Filmed by [name], linking table",
+            "duration": "0:14",
+            "by": "Filmed by [name], Linking table",
             "placeholder": "Phone clip\nLinking by hand",
             "file": "echo-clip-3.mp4"
           }
@@ -407,24 +364,12 @@
           "type": "clip",
           "settings": {
             "time": "13:20",
-            "title": "Pompoms",
-            "text": "Trimming pompoms for the Joyful beanie.",
-            "duration": "0:09",
-            "by": "Filmed by [name], finishing",
+            "title": "Select Pompoms",
+            "text": "Trimming pompoms for the joyful beanie.",
+            "duration": "0:14",
+            "by": "Filmed by [name], Finishing",
             "placeholder": "Phone clip\nPompoms",
             "file": "echo-clip-4.mp4"
-          }
-        },
-        "clip_5": {
-          "type": "clip",
-          "settings": {
-            "time": "15:05",
-            "title": "Quality check",
-            "text": "Every blanket is checked on the light table.",
-            "duration": "0:26",
-            "by": "Filmed by [name], QC",
-            "placeholder": "Phone clip\nQuality check",
-            "file": "echo-clip-5.mp4"
           }
         },
         "card_1": {
@@ -460,35 +405,43 @@
         "clip_2",
         "clip_3",
         "clip_4",
-        "clip_5",
         "card_1",
         "card_2",
         "card_3"
       ]
     },
-    "cta": {
-      "type": "echo-cta-row",
+    "illustration": {
+      "type": "echo-illustration",
       "settings": {
-        "spacing": "tight",
-        "bg": "paper",
-        "heading": "See what the yarn became.",
-        "btn1_label": "Shop",
-        "btn1_link": "echo:shop-all",
-        "btn2_label": "Watch the factory film (3 min)",
-        "btn2_link": ""
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 20,
+        "space_below": 20
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
       }
     }
   },
   "order": [
     "crumbs",
-    "intro",
-    "numbers",
-    "story",
-    "values",
-    "passport",
+    "hero",
+    "letter",
+    "marquee",
+    "how",
     "tracker",
+    "track",
     "factory",
     "stories",
-    "cta"
+    "illustration",
+    "club"
   ]
 }

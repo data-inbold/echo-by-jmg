@@ -3,6 +3,6 @@
 <nav class="crumbs wrap" aria-label="{{ 'echo.crumbs.breadcrumb' | t | escape }}">
   {%- for it in items -%}
     {%- assign pr = it | split: '::' -%}
-    {%- if forloop.last -%}<span>{{ pr[0] }}</span>{%- else -%}<a href="{{ pr[1] }}">{{ pr[0] }}</a> › {% endif -%}
+    {%- if forloop.last -%}<span>{{ pr[0] }}</span>{%- else -%}<a href="{{ pr[1] }}">{{ pr[0] }}</a><span class="crumb-sep" aria-hidden="true">/</span>{% endif -%}
   {%- endfor -%}
 </nav>

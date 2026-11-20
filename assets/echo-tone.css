@@ -340,3 +340,34 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .f-pay{gap:12px;align-items:center;flex-wrap:wrap}
 .f-pay img{display:block;height:16px;width:auto}
 .f-pay img[alt="Mastercard"]{height:20px}
+
+/* ================= About us page (21 Nov 2026) ================= */
+.crumbs{display:flex;align-items:center;gap:8px;font-size:16px;line-height:1.6;color:#ABA499;padding-top:40px}
+.crumbs a{color:#ABA499;text-decoration:none;padding-block:4px}
+.crumbs a:hover{color:var(--wine)}
+.crumbs span:not(.crumb-sep){color:#2E2D2C;padding-block:4px}
+.crumb-sep{font-weight:200;color:#ABA499}
+
+/* stories row: round arrows, 302px framed film cards */
+.cl-arrows{gap:24px}
+.cl-arrows button{width:50px;height:50px;border:1px solid var(--wine);background:transparent;color:var(--wine)}
+.cl-arrows button:hover:not(:disabled){background:var(--wine);color:var(--pink);border-color:var(--wine)}
+.cl-arrows button:disabled{opacity:1;border-color:#ABA499;color:#ABA499}
+.cl-row{gap:24px}
+.cl-card{flex:0 0 clamp(248px,21vw,302px)}
+.cl-frame{border-radius:24px;border:2px solid #7C7E64}
+.cl-cap strong{font:400 24px/1.2 var(--display)}
+.cl-bar i{background:var(--wine)}
+
+/* journals: four plain cards with a read more link */
+.cl-hr{border:0;border-top:1px solid #ABA499;margin:16px 0 0;width:100%}
+.cl-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+@media(min-width:900px){.cl-cards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.cl-cards .card{padding:12px 12px 40px;gap:24px;height:100%}
+.cl-cards .card .ph{aspect-ratio:296/240!important}
+.cl-cards .card .meta{gap:8px;flex:1}
+.cl-cards .card .meta .mono{font:400 12px/normal var(--body);letter-spacing:.05em;color:#ABA499;text-transform:uppercase}
+.cl-cards .card .meta .name{font:400 18px/normal var(--body)!important;color:#332C2A}
+.cl-cards .card .meta .muted{font-size:14px;line-height:1.6;color:#55524E}
+.cl-more{margin-top:16px;align-self:flex-start;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#332C2A;border-bottom:1px solid #332C2A;padding:4px 0}
+.cl-cards .card:hover .name{text-decoration:none}

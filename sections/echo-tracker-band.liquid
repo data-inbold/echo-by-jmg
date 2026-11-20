@@ -15,40 +15,50 @@
   assign batches = section.blocks | where: 'type', 'batch'
 -%}
 <style>
-  .echo-tband-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
-  .echo-tband-log{border-top:1px solid #6A645C}
-  .echo-tband-log .r{display:grid;grid-template-columns:90px 1fr 70px 90px;gap:12px;padding:12px 0;border-bottom:1px solid #3F3B36;font-size:14px;align-items:center}
-  .echo-tband-log .r .id{font:500 12px/1 var(--mono);color:#CFC9BF}
-  .echo-tband-log .r .kg,.echo-tband-log .r .dt{text-align:right}
-  @media (max-width:749px){.echo-tband-log .r{grid-template-columns:70px 1fr 56px;}.echo-tband-log .r .dt{display:none}}
+  .echo-tband-head{display:flex;justify-content:space-between;align-items:center;gap:16px 40px;flex-wrap:wrap}
+  .echo-tband-head .h2{margin:0}
+  .echo-tband .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
+  @media(min-width:900px){.echo-tband .stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .echo-tband .stat{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .echo-tband .stat-img{display:block;width:68px;height:68px;object-fit:contain}
+  .echo-tband .stat .n{font:italic 300 clamp(30px,3vw,40px)/1.2 var(--display);color:var(--wine)}
+  .echo-tband .stat p{margin:0;font-size:14px;line-height:1.6;color:#332C2A}
+  .echo-tband hr{border:0;border-top:1px solid #ABA499;margin:0;width:100%}
+  .echo-tband-logl{margin:0 0 12px;font:600 16px/normal var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--wine)}
+  .echo-tband-log{width:100%}
+  .echo-tband-log .r{display:grid;grid-template-columns:180px minmax(0,1fr) 120px 120px;align-items:center;border-bottom:1px solid #ABA499;font-size:16px;line-height:1.6;color:#2E2D2C}
+  .echo-tband-log .r:last-child{border-bottom:0}
+  .echo-tband-log .r>*{padding:8px;text-align:center}
+  .echo-tband-log .r .dt{font-weight:300;color:#7C7E64}
+  @media (max-width:749px){.echo-tband-log .r{grid-template-columns:90px minmax(0,1fr) 64px;font-size:14px}.echo-tband-log .r .dt{display:none}.echo-tband-log .r>*{padding:8px 4px}}
 </style>
-<section class="section {{ section.settings.spacing }} dark">
-  <div class="wrap stack" style="gap:24px">
+<section class="section {{ section.settings.spacing }} band echo-tband">
+  <div class="wrap stack" style="gap:40px">
     <div class="echo-tband-head">
-      <div class="stack" style="gap:8px">
-        {%- if section.settings.eyebrow != blank -%}<span class="mono">{{ section.settings.eyebrow }}</span>{%- endif -%}
-        {%- if section.settings.heading != blank -%}<h2 class="h2" style="max-width:16ch">{{ section.settings.heading }}</h2>{%- endif -%}
-      </div>
-      {%- if section.settings.btn_label != blank -%}<a class="btn" style="background:#fff;color:var(--ink)" href="{{ section.settings.btn_link | default: 'echo:tracker' }}">{{ section.settings.btn_label }}</a>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.btn_label != blank -%}<a class="btn ghost arrow" href="{{ section.settings.btn_link | default: 'echo:tracker' }}">{{ section.settings.btn_label }}</a>{%- endif -%}
     </div>
-    {%- if stats.size > 0 -%}
-      <div class="stats">
-        {%- for b in stats -%}
-          {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out -%}
-          <div class="stat" {{ b.shopify_attributes }}><div class="n">{{ n }}</div><p style="color:#B9B6B0">{{ b.settings.text }}</p></div>
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
-    {%- if batches.size > 0 -%}
-      <div>
-        {%- if section.settings.log_label != blank -%}<span class="mono" style="display:block;margin-bottom:10px">{{ section.settings.log_label }}</span>{%- endif -%}
-        <div class="echo-tband-log">
-          {%- for b in batches -%}
-            <div class="r" {{ b.shopify_attributes }}><span class="id">{{ b.settings.id }}</span><span>{{ b.settings.fibre }}</span><span class="kg">{{ b.settings.kg }}</span><span class="dt">{{ b.settings.date }}</span></div>
+    <div class="stack" style="gap:24px">
+      {%- if stats.size > 0 -%}
+        <div class="stats">
+          {%- for b in stats -%}
+            {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out -%}
+            <div class="stat" {{ b.shopify_attributes }}>{% if b.settings.icon_file != blank %}<img class="stat-img" src="{{ b.settings.icon_file | asset_url }}" alt="" width="68" height="68" loading="lazy">{% endif %}<div class="n">{{ n }}</div><p>{{ b.settings.text }}</p></div>
           {%- endfor -%}
         </div>
-      </div>
-    {%- endif -%}
+      {%- endif -%}
+      {%- if batches.size > 0 -%}
+        <hr>
+        <div style="width:100%">
+          {%- if section.settings.log_label != blank -%}<p class="echo-tband-logl">{{ section.settings.log_label }}</p>{%- endif -%}
+          <div class="echo-tband-log">
+            {%- for b in batches -%}
+              <div class="r" {{ b.shopify_attributes }}><span class="id">{{ b.settings.id }}</span><span>{{ b.settings.fibre }}</span><span class="kg">{{ b.settings.kg }}</span><span class="dt">{{ b.settings.date }}</span></div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
   </div>
 </section>
 {%- endcapture -%}
@@ -68,7 +78,8 @@
   "blocks": [
     { "type": "stat", "name": "Number", "settings": [
       { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, calculated from the Yarn Passport fields on the products plus older batches in the Yarn batch list." },
-      { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued" }
+      { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued" },
+      { "type": "text", "id": "icon_file", "label": "Icon file", "info": "File name in assets, for example echo-stat-yarn.png. Empty = no icon." }
     ] },
     { "type": "batch", "name": "Batch", "settings": [
       { "type": "text", "id": "id", "label": "Batch ID", "default": "HV-2417" },

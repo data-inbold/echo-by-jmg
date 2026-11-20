@@ -635,7 +635,8 @@
     "clips": {
       "close": "Close",
       "next_clips": "Next clips",
-      "previous_clips": "Previous clips"
+      "previous_clips": "Previous clips",
+      "read_more": "Read more"
     },
     "club_form": {
       "join": "Join",

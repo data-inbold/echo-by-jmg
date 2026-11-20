@@ -1,0 +1,78 @@
+{%- comment -%} Text next to one or two photos: heading, optional divider, text, certificate logos, button and an icon. {%- endcomment -%}
+{%- capture echo_out -%}
+<style>
+  .ft{display:grid;gap:28px;align-items:start}
+  @media(min-width:900px){
+    .ft{gap:var(--ft-gap,24px);grid-template-columns:minmax(0,var(--ft-tw,519px)) minmax(0,1fr)}
+    .ft.media-left{grid-template-columns:minmax(0,1fr) minmax(0,var(--ft-tw,519px))}
+    .ft.media-left .ft-media{order:-1}
+  }
+  .ft-text{display:flex;flex-direction:column;gap:40px;align-items:flex-start}
+  .ft-text .h2{margin:0}
+  .ft-hr{border:0;border-top:1px solid #ABA499;margin:0;width:100%}
+  .ft-text p{margin:0;font-size:14px;line-height:1.6;color:#332C2A;max-width:628px}
+  .ft-certs{display:flex;gap:clamp(12px,1.6vw,24px);align-items:center;flex-wrap:wrap}
+  .ft-certs img{display:block;height:clamp(64px,6vw,89px);width:auto}
+  .ft-ico{display:block;width:109px;height:120px}
+  .ft-media{display:grid;gap:24px;grid-template-columns:repeat(var(--ft-n,1),minmax(0,1fr))}
+  .ft-media .ph{border:0;min-height:0!important;width:100%}
+  @media(max-width:559px){.ft-media{grid-template-columns:1fr}}
+</style>
+<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
+  {%- assign n = 1 -%}
+  {%- if section.settings.image2 != blank or section.settings.photo2 != blank and section.settings.photo2 != 'none' -%}{%- assign n = 2 -%}{%- endif -%}
+  <div class="wrap">
+    <div class="ft{% if section.settings.media_side == 'left' %} media-left{% endif %}" style="--ft-tw:{{ section.settings.text_width }}px;--ft-gap:{{ section.settings.gap }}px;--ft-n:{{ n }}">
+      <div class="ft-text">
+        {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.divider -%}<hr class="ft-hr">{%- endif -%}
+        {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+        {%- if section.settings.certs -%}
+          <div class="ft-certs">
+            <img src="{{ 'echo-footer-cert-bsci.png' | asset_url }}" alt="{{ 'echo.certs.alt_bsci' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-footer-cert-ocs-100.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-footer-cert-ocs-blended.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs_blended' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-footer-cert-rcs-100.png' | asset_url }}" alt="{{ 'echo.certs.alt_rcs' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-footer-cert-rcs-blended.png' | asset_url }}" alt="{{ 'echo.certs.alt_rcs_blended' | t | escape }}" loading="lazy">
+          </div>
+        {%- endif -%}
+        {%- if section.settings.btn_label != blank -%}<a class="btn ghost arrow" href="{{ section.settings.btn_link }}">{{ section.settings.btn_label }}</a>{%- endif -%}
+        {%- if section.settings.icon_file != blank -%}<img class="ft-ico" src="{{ section.settings.icon_file | asset_url }}" alt="" width="109" height="120" loading="lazy">{%- endif -%}
+      </div>
+      <div class="ft-media">
+        {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.heading, ar: section.settings.ar, sizes: '(min-width: 900px) 55vw, 100vw' -%}
+        {%- if n == 2 -%}{%- render 'echo-pic', image: section.settings.image2, asset: section.settings.photo2, alt: section.settings.alt2, label: section.settings.heading, ar: section.settings.ar, sizes: '(min-width: 900px) 25vw, 100vw' -%}{%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Feature: text and photos",
+  "settings": [
+    { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}], "default": "paper" },
+    { "type": "select", "id": "media_side", "label": "Photos on", "options": [{"value": "right", "label": "Right"}, {"value": "left", "label": "Left"}], "default": "right" },
+    { "type": "range", "id": "text_width", "label": "Text column width", "min": 400, "max": 700, "step": 4, "default": 519, "unit": "px" },
+    { "type": "range", "id": "gap", "label": "Space between text and photos", "min": 16, "max": 64, "step": 4, "default": 24, "unit": "px" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "checkbox", "id": "divider", "label": "Line under the heading", "default": false },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "checkbox", "id": "certs", "label": "Certificate logos", "default": false },
+    { "type": "text", "id": "btn_label", "label": "Button text" },
+    { "type": "text", "id": "btn_link", "label": "Button link", "info": "Page address or echo:passport, echo:factory" },
+    { "type": "text", "id": "icon_file", "label": "Icon file", "info": "File name in assets. Empty = no icon." },
+    { "type": "header", "content": "Photos" },
+    { "type": "text", "id": "ar", "label": "Photo shape (aspect ratio)", "default": "787/443" },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "photo", "label": "Bundled photo file", "info": "Used when no photo is picked. File name in assets." },
+    { "type": "text", "id": "alt", "label": "Photo description" },
+    { "type": "image_picker", "id": "image2", "label": "Second photo (optional)" },
+    { "type": "text", "id": "photo2", "label": "Bundled second photo file" },
+    { "type": "text", "id": "alt2", "label": "Second photo description" }
+  ],
+  "presets": [{ "name": "Feature: text and photos" }]
+}
+{% endschema %}

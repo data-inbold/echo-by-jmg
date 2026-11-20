@@ -55,7 +55,7 @@
         {%- if section.settings.eyebrow != blank -%}<span class="mono">{{ section.settings.eyebrow }}</span>{%- endif -%}
         {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
       </div>
-      {%- if section.settings.link_label != blank -%}<a class="link arrow" href="{{ section.settings.link | default: '#' }}">{{ section.settings.link_label }}</a>{%- endif -%}
+      {%- if section.settings.link_label != blank -%}<a class="btn ghost arrow" href="{{ section.settings.link | default: '#' }}">{{ section.settings.link_label }}</a>{%- endif -%}
     </div>
     <div class="cl-head">
       <div class="stack" style="gap:8px;max-width:64ch">
@@ -99,12 +99,13 @@
       <dialog class="cl-dlg" data-dlg><button type="button" data-close>{{ 'echo.clips.close' | t }}</button><video controls playsinline></video></dialog>
     {%- endif -%}
     {%- if cards.size > 0 -%}
-      {%- if section.settings.cards_label != blank -%}<span class="mono">{{ section.settings.cards_label }}</span>{%- endif -%}
+      <hr class="cl-hr">
+      {%- if section.settings.cards_label != blank -%}<h2 class="h2">{{ section.settings.cards_label }}</h2>{%- endif -%}
       <div class="cl-cards">
         {%- for b in cards -%}
           <a class="card" href="{{ b.settings.link | default: '#' }}" {{ b.shopify_attributes }}>
             {%- render 'echo-pic', image: b.settings.image, alt: b.settings.title, label: b.settings.kind, ar: '4/3' -%}
-            <div class="meta"><span class="mono">{{ b.settings.kind }}</span><span class="name" style="font-size:18px">{{ b.settings.title }}</span><span class="muted">{{ b.settings.dek }}</span></div>
+            <div class="meta"><span class="mono">{{ b.settings.kind }}</span><span class="name" style="font-size:18px">{{ b.settings.title }}</span><span class="muted">{{ b.settings.dek }}</span><span class="cl-more">{{ 'echo.clips.read_more' | t }}</span></div>
           </a>
         {%- endfor -%}
       </div>

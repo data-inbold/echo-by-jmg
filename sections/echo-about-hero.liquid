@@ -1,0 +1,69 @@
+{%- comment -%} About us hero: big heading, logo and intro, and a strip of photos that runs to the right edge of the page. {%- endcomment -%}
+{%- assign photos = section.blocks | where: 'type', 'photo' -%}
+<style>
+  .ah{padding-block:20px 40px}
+  .ah-top{display:grid;grid-template-columns:1fr;gap:28px;align-items:end}
+  @media(min-width:900px){.ah-top{grid-template-columns:minmax(0,1fr) minmax(0,519px);gap:40px}}
+  .ah-h{font:300 clamp(36px,3.9vw,56px)/1.36 var(--display);color:var(--wine);margin:0}
+  .ah-side{display:flex;flex-direction:column;align-items:center;gap:18px;justify-content:space-between}
+  .ah-logo{display:block;width:68px;height:68px;object-fit:contain}
+  .ah-side p{margin:0;font-size:14px;line-height:1.6;color:#332C2A;width:100%}
+  .ah-strip{margin-top:40px;overflow:hidden;padding-left:max(16px,calc((100vw - var(--wrap)) / 2 + 16px))}
+  @media(min-width:720px){.ah-strip{margin-top:60px;padding-left:max(80px,calc((100vw - var(--wrap)) / 2 + 80px))}}
+  .ah-track{display:flex;gap:24px;width:max-content;animation:ah-slide {{ section.settings.speed }}s linear infinite}
+  .ah-strip:hover .ah-track{animation-play-state:paused}
+  .ah-item{flex:none;width:clamp(200px,21vw,302px);aspect-ratio:302/400;overflow:hidden;background:var(--soft)}
+  .ah-item img{display:block;width:100%;height:100%;object-fit:cover}
+  @keyframes ah-slide{to{transform:translateX(calc(-50% - 12px))}}
+  @media(prefers-reduced-motion:reduce){.ah-strip{overflow-x:auto}.ah-track{animation:none}.ah-copy{display:none}}
+</style>
+<section class="section ah {{ section.settings.bg }}">
+  <div class="wrap">
+    <div class="ah-top">
+      <h1 class="ah-h">{{ section.settings.heading }}</h1>
+      <div class="ah-side">
+        {%- if section.settings.logo_file != blank -%}<img class="ah-logo" src="{{ section.settings.logo_file | asset_url }}" alt="" width="68" height="68">{%- endif -%}
+        {%- if section.settings.lead != blank -%}<p>{{ section.settings.lead }}</p>{%- endif -%}
+      </div>
+    </div>
+  </div>
+  {%- if photos.size > 0 -%}
+  <div class="ah-strip" aria-label="{{ section.settings.strip_label | escape }}">
+    <div class="ah-track">
+      {%- for round in (1..2) -%}
+        {%- for b in photos -%}
+          <div class="ah-item{% if round == 2 %} ah-copy{% endif %}"{% if round == 2 %} aria-hidden="true"{% endif %} {% if round == 1 %}{{ b.shopify_attributes }}{% endif %}>
+            {%- if b.settings.image != blank -%}
+              {{ b.settings.image | image_url: width: 604 | image_tag: alt: b.settings.alt, loading: 'lazy', widths: '302, 453, 604', sizes: '302px' }}
+            {%- elsif b.settings.file != blank -%}
+              <img src="{{ b.settings.file | asset_url }}" alt="{{ b.settings.alt | escape }}" width="302" height="400" loading="lazy">
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+  {%- endif -%}
+</section>
+{% schema %}
+{
+  "name": "About hero with photo strip",
+  "settings": [
+    { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}], "default": "paper" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "New vision for a 80-year family legacy" },
+    { "type": "textarea", "id": "lead", "label": "Intro text", "default": "With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home." },
+    { "type": "text", "id": "logo_file", "label": "Logo file", "info": "File name in assets. Empty = no logo.", "default": "echo-stat-logo.png" },
+    { "type": "range", "id": "speed", "label": "Seconds per loop", "min": 30, "max": 180, "step": 10, "default": 90 },
+    { "type": "text", "id": "strip_label", "label": "Description of the photo strip", "default": "Photos of the factory and the family" }
+  ],
+  "blocks": [
+    { "type": "photo", "name": "Photo", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Photo", "info": "Portrait, about 604 × 800 px." },
+      { "type": "text", "id": "file", "label": "Bundled photo file", "info": "Used when no photo is picked. File name in assets." },
+      { "type": "text", "id": "alt", "label": "Description" }
+    ] }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "About hero with photo strip" }]
+}
+{% endschema %}

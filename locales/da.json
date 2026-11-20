@@ -592,7 +592,8 @@
     "clips": {
       "close": "Luk",
       "next_clips": "Næste klip",
-      "previous_clips": "Forrige klip"
+      "previous_clips": "Forrige klip",
+      "read_more": "Læs mere"
     },
     "club_form": {
       "join": "Tilmeld",
