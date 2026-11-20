@@ -252,6 +252,7 @@
         "spacing": "normal",
         "bg": "paper",
         "heading": "Latest Designs",
+        "show_thread": true,
         "carousel": true,
         "link_inline": true,
         "link_label": "See all",
@@ -268,8 +269,7 @@
         ],
         "collection": "",
         "limit": 8,
-        "group": false,
-        "show_thread": true
+        "group": false
       }
     },
     "story": {
@@ -304,13 +304,13 @@
         "photo": "echo-v2-story.jpg",
         "alt": "Ming and a colleague at the factory going through yarn samples",
         "icon": true,
+        "thread": true,
         "focus": "50% 50%",
         "label": "",
         "ar": "4/3",
         "stat_text": "",
         "stat_link_label": "",
-        "stat_link": "",
-        "thread": true
+        "stat_link": ""
       }
     },
     "quotes": {
@@ -351,7 +351,7 @@
         "spacing": "normal",
         "bg": "paper",
         "icon": true,
-        "heading": "What our customers say"
+        "heading": "What Our Customers Say"
       }
     },
     "gift": {
@@ -383,10 +383,11 @@
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
-        "image": "shopify://shop_images/gift.png",
+        "image": "shopify://shop_images/giftsection.png",
         "photo": "echo-v2-gift.jpg",
         "alt": "A gift box tied with twine and a sprig of eucalyptus, next to a ball of yarn",
         "icon": false,
+        "thread": false,
         "focus": "45% 55%",
         "label": "",
         "ar": "5",
