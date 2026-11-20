@@ -1,0 +1,53 @@
+{%- comment -%} "Join the Cozy Club": photo band with a centred sign-up, sits above the footer on the homepage. {%- endcomment -%}
+<style>
+  .cb{position:relative;overflow:hidden;color:#fff;min-height:320px;display:flex;align-items:center;justify-content:center;padding:60px 16px;margin-top:40px}
+  .cb .ph{position:absolute;inset:0;border:0;min-height:0!important;aspect-ratio:auto!important;height:100%}
+  .cb .ph img{object-position:var(--focus,50% 50%)}
+  .cb::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.3);pointer-events:none}
+  .cb-in{position:relative;z-index:2;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;width:min(100%,410px)}
+  .cb-in h2{font:400 clamp(30px,2.8vw,40px)/1.2 var(--display);margin:0;color:#fff}
+  .cb-in p{margin:0;font-size:14px;line-height:1.4;color:#fff}
+  .cb-form{display:flex;gap:12px;align-items:flex-start;width:100%;padding-block:4px}
+  .cb-form input{flex:1;min-width:0;background:none;border:0;border-bottom:1px solid #fff;border-radius:0;color:#E9E5DE;font:400 16px/1.5 var(--body);padding:4px 16px 8px;min-height:0}
+  .cb-form input::placeholder{color:#E9E5DE;opacity:1}
+  .cb-form input:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .cb-form button{background:none;border:0;border-bottom:1px solid #fff;color:#fff;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:4px 0;display:inline-flex;gap:10px;align-items:center;cursor:pointer;white-space:nowrap}
+  .cb-form button::after{content:"\2197";font-size:1.8em;line-height:1}
+  .cb-form button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .cb-ok,.cb-err{width:100%;font-size:14px;color:#fff}
+  body.template-index #app:has(.shopify-section:last-child>.cb){padding-bottom:0}
+  @media(max-width:559px){.cb-form{flex-direction:column;align-items:stretch}.cb-form button{align-self:flex-start}}
+</style>
+<section class="cb"{% if section.settings.focus != blank %} style="--focus:{{ section.settings.focus }}"{% endif %}>
+  {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: '', label: '', sizes: '100vw' -%}
+  <div class="cb-in">
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+    {%- assign fid = 'club-band-' | append: section.id -%}
+    {%- form 'customer', class: 'cb-form', id: fid -%}
+      {%- if form.posted_successfully? -%}
+        <div class="cb-ok" role="status">{{ 'echo.club_form.welcome_to_the_cozy_club_your_10_code' | t }}</div>
+      {%- else -%}
+        <input type="hidden" name="contact[tags]" value="newsletter,cozy-club">
+        <label class="visually-hidden" for="cb-{{ section.id }}">{{ 'echo.common.email' | t }}</label>
+        <input id="cb-{{ section.id }}" type="email" name="contact[email]" required placeholder="{{ 'echo.common.your_email' | t | escape }}" autocomplete="email">
+        <button type="submit">{{ section.settings.button_label }}</button>
+        {%- if form.errors -%}<span class="cb-err">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</span>{%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Join the Cozy Club band",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Join the Cozy Club" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Get 10% off your first order, and be the first to hear about our new designs!" },
+    { "type": "text", "id": "button_label", "label": "Button text", "default": "Join the club" },
+    { "type": "image_picker", "id": "image", "label": "Background photo" },
+    { "type": "text", "id": "photo", "label": "Bundled photo file", "info": "Used when no photo is picked. File name in assets.", "default": "echo-twister-outdoor.jpg" },
+    { "type": "text", "id": "focus", "label": "Photo focus (CSS position)", "default": "50% 50%" }
+  ],
+  "presets": [{ "name": "Join the Cozy Club band" }]
+}
+{% endschema %}

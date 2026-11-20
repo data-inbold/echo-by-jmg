@@ -10,7 +10,18 @@
   endcapture
 -%}
 <footer class="site" id="ftr">
-  <div class="wrap fcols">
+  <div class="wrap fgrid">
+    <div class="f-brand">
+      <a class="f-logo" href="{% render 'echo-url', key: 'home' %}" aria-label="{{ shop.name | escape }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 352 | image_tag: alt: shop.name, widths: '88, 176, 352', sizes: '88px', loading: 'lazy' }}{% else %}{{ shop.name }}{% endif %}</a>
+      <div class="f-certs">
+        <a href="{{ u_factory }}" class="f-certs-t">{{ 'echo.common.factory_and_certificates' | t }}</a>
+        <div class="certrow">
+          <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.bsci_compliance_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'bsci', h: 44 %}</a>
+          <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.organic_content_standard_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'ocs', h: 44 %}</a>
+          <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.recycled_claim_standard_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'rcs', h: 44 %}</a>
+        </div>
+      </div>
+    </div>
     <div><h4>{{ 'echo.common.shop' | t }}</h4><ul>
       {%- assign cat_keys = 'blankets,cushions,bags,accessories' | split: ',' -%}
       {%- for key in cat_keys -%}
@@ -57,33 +68,29 @@
       <li><a href="{% render 'echo-url', key: 'corporate' %}">{{ 'echo.common.corporate_gifts' | t }}</a></li>
       <li><a href="{% render 'echo-url', key: 'contact' %}">{{ 'echo.common.contact' | t }}</a></li>
     </ul></div>
-    <div><h4>{{ section.settings.club_heading }}</h4><p style="font-size:14px;margin:0 0 10px">{{ section.settings.club_text }}</p>{% render 'echo-club-form', k: 'f' %}</div>
   </div>
-  <div class="wrap certrow" style="padding-top:8px;padding-bottom:8px">
-    <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.bsci_compliance_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'bsci', h: 44 %}</a>
-    <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.organic_content_standard_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'ocs', h: 44 %}</a>
-    <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.recycled_claim_standard_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'rcs', h: 44 %}</a>
-    <a href="{{ u_factory }}" style="font-size:13px;margin-left:6px">{{ 'echo.common.factory_and_certificates' | t }}</a>
-  </div>
-  <div class="wrap legal">
-    <span>{{ section.settings.ships_text }}</span>
-    <span class="payments">
+  <div class="wrap f-bottom">
+    <div class="payments">
       {%- assign pay = section.settings.payments | split: ',' -%}
       {%- for p in pay -%}<span{% if forloop.first %} class="first"{% endif %}>{{ p | strip }}</span>{%- endfor -%}
-    </span>
-    <span>{{ section.settings.legal_text }}</span>
-    <span class="row" style="gap:16px">
-      {%- if section.settings.instagram != blank %}<a href="{{ section.settings.instagram }}" target="_blank" rel="noopener">Instagram</a>{% endif -%}
-      {%- if section.settings.pinterest != blank %}<a href="{{ section.settings.pinterest }}" target="_blank" rel="noopener">Pinterest</a>{% endif -%}
-      {%- if section.settings.facebook != blank %}<a href="{{ section.settings.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif -%}
-      {%- if section.settings.youtube != blank %}<a href="{{ section.settings.youtube }}" target="_blank" rel="noopener">YouTube</a>{% endif -%}
-    </span>
-    <span class="row" style="gap:16px">
-      <a href="{% render 'echo-url', key: 'terms' %}">{{ 'echo.footer.terms_of_sale' | t }}</a>
-      <a href="{% render 'echo-url', key: 'privacy' %}">{{ 'echo.footer.privacy_policy' | t }}</a>
-      <a href="{% render 'echo-url', key: 'cookies' %}">{{ 'echo.footer.cookie_policy' | t }}</a>
-      <a href="{% render 'echo-url', key: 'company' %}">{{ 'echo.footer.company_details' | t }}</a>
-    </span>
+    </div>
+    <div class="f-row">
+      <div class="f-info"><span>{{ section.settings.ships_text }}</span><span>{{ section.settings.legal_text }}</span></div>
+      <div class="f-right">
+        <div class="f-social">
+          {%- if section.settings.instagram != blank -%}<a href="{{ section.settings.instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5.3-3.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg></a>{%- endif -%}
+          {%- if section.settings.facebook != blank -%}<a href="{{ section.settings.facebook }}" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1.2 17v-5.6h1.9l.3-2.3h-2.2V9.7c0-.7.2-1.1 1.1-1.1h1.2V6.5c-.2 0-.9-.1-1.7-.1-1.7 0-2.9 1-2.9 2.9v1.8H8.9v2.3h2V19h2.3Z"/></svg></a>{%- endif -%}
+          {%- if section.settings.pinterest != blank -%}<a href="{{ section.settings.pinterest }}" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.5 2.1-.8 3.3-.2 1 .5 1.8 1.5 1.8 1.8 0 3.2-1.9 3.2-4.6 0-2.4-1.7-4.1-4.2-4.1-2.9 0-4.5 2.1-4.5 4.3 0 .9.3 1.8.7 2.3.1.1.1.2.1.3l-.3 1.2c0 .2-.1.2-.3.1-1.2-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.7-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.2 6.3-1 0-2-.5-2.3-1.1l-.6 2.4c-.2.9-.8 2-1.3 2.7A10 10 0 1 0 12 2Z"/></svg></a>{%- endif -%}
+          {%- if section.settings.youtube != blank -%}<a href="{{ section.settings.youtube }}" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8C22 15.2 22 12 22 12s0-3.2-.4-4.8ZM10 15V9l5.2 3L10 15Z"/></svg></a>{%- endif -%}
+        </div>
+        <div class="f-legal">
+          <a href="{% render 'echo-url', key: 'terms' %}">{{ 'echo.footer.terms_of_sale' | t }}</a>
+          <a href="{% render 'echo-url', key: 'privacy' %}">{{ 'echo.footer.privacy_policy' | t }}</a>
+          <a href="{% render 'echo-url', key: 'cookies' %}">{{ 'echo.footer.cookie_policy' | t }}</a>
+          <a href="{% render 'echo-url', key: 'company' %}">{{ 'echo.footer.company_details' | t }}</a>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -91,8 +98,7 @@
 {
   "name": "Footer (EchoByJMG)",
   "settings": [
-    { "type": "text", "id": "club_heading", "label": "Newsletter heading", "default": "The Cozy Club" },
-    { "type": "textarea", "id": "club_text", "label": "Newsletter text", "default": "Keep building your cosy moment with our updates. 10% off your first order as a welcome." },
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
     { "type": "text", "id": "ships_text", "label": "Shipping line", "default": "Ships from Parcel Feeder, Brøndby · Free 14-day returns · Support [hours] CET" },
     { "type": "text", "id": "payments", "label": "Payment methods (comma separated, first is highlighted)", "default": "MobilePay, Visa, Mastercard, Apple Pay, [Klarna]" },
     { "type": "text", "id": "legal_text", "label": "Legal seller line", "default": "EchoByJMG is owned by JM Group Limited, Hong Kong, the legal seller." },

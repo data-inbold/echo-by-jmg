@@ -2,7 +2,7 @@
   "type": "footer",
   "name": "EchoByJMG footer",
   "sections": {
-    "footer": { "type": "echo-footer", "settings": {} }
+    "footer": { "type": "echo-footer", "settings": { "logo": "shopify://shop_images/Logo_W-13.5.26.png" } }
   },
   "order": ["footer"]
 }

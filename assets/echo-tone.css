@@ -229,3 +229,86 @@ footer.site .btn:hover{background:#fff;color:#111}
 
 /* the coloured band is the split itself: the section background behind it stays page colour */
 .section:has(>.split.panel-olive),.section:has(>.split.panel-white){background:transparent}
+
+/* ================= Approved homepage layout (20 Nov 2026) ================= */
+:root{
+  --olive:#380F1C; --wine:#380F1C; --wine-2:#380F1C; --gold:#380F1C;
+  --ink:#332C2A; --pink:#F0DFD8; --blush:#F0DFD8; --band:#E9E2DA;
+  --steps-off:#9D837C; --thread:#6F9BD4;
+}
+.h2{color:var(--wine)}
+
+/* buttons: wine fill / wine outline */
+.btn{background:var(--wine);border-color:var(--wine);color:var(--pink)}
+.btn:hover,.btn:focus-visible{background:transparent;color:var(--wine);box-shadow:inset 0 0 0 1px var(--wine)}
+.btn.ghost{background:transparent;color:var(--wine);border-color:var(--wine)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--wine);color:var(--pink);box-shadow:none}
+.btn.sec{background:#F6F5F1;color:var(--wine);border-color:#F6F5F1}
+.btn.sec:hover,.btn.sec:focus-visible{background:var(--wine);color:var(--pink);box-shadow:none}
+.link.arrow{color:#332C2A;border-bottom-color:#332C2A}
+
+/* top bar and navigation */
+.util{background:#332C2A}
+.nav{min-height:80px}
+
+/* recolourable wool icon (the PNG is used as a mask) */
+.wool-ico{display:block;width:109px;height:120px;background:var(--thread);-webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}
+.split-ico{display:none;position:absolute;right:140px;bottom:80px;z-index:2}
+@media(min-width:880px){.split-ico{display:block}}
+.section:has(>.split-ico){position:relative}
+
+/* shop by products: 24px between photo and label */
+.tiles.grid .card,.tiles .card{gap:24px}
+
+/* numbers: centred, pink-beige band */
+.section.band{background:var(--band)}
+.stats-icons .stat{align-items:center;text-align:center}
+.stats-icons .stat-t{width:100%}
+.stats-icons .stat-ic{color:var(--wine)}
+.stats-icons .stat .n{color:var(--wine)}
+.stats-icons .stat p{color:#332C2A}
+.stats-icons .stats-cta .btn.ghost{color:var(--wine);border-color:var(--wine)}
+.stats-icons .stats-cta .btn.ghost:hover{background:var(--wine);color:var(--pink)}
+
+/* our story: pink panel, wine italic quote */
+.split.panel-white,.split.panel-white>.stack{background:var(--pink)}
+.split.panel-white .echo-quote{color:var(--wine)}
+.split.panel-white .echo-quote+.muted{border-top-color:rgba(56,15,28,.22)}
+.split.panel-white .muted{color:#7C7E64}
+.split.panel-white .btn,.split.panel-white .btn.ghost{color:var(--wine);border-color:var(--wine)}
+.split.panel-white .btn:hover{background:var(--wine);color:var(--pink)}
+
+/* gift: wine band */
+.split.panel-olive .h2{color:#E7DCD0}
+
+/* footer: pink, logo and certificates left, three link columns, payments, social */
+footer.site{background:var(--pink)}
+footer.site .wrap{max-width:var(--wrap);padding-inline:16px}
+@media(min-width:720px){footer.site .wrap{padding-inline:80px}}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;padding-block:40px 0}
+@media(min-width:900px){.fgrid{grid-template-columns:minmax(0,1fr) repeat(3,minmax(0,193px));column-gap:clamp(48px,9vw,133px)}}
+.f-brand{grid-column:1/-1;display:flex;flex-direction:column;gap:40px}
+@media(min-width:900px){.f-brand{grid-column:auto}}
+.f-logo{display:block;width:88px;color:var(--wine);font:500 18px/1.2 var(--nav);text-decoration:none}
+.f-logo img{display:block;width:88px;height:auto;filter:brightness(0) opacity(.85)}
+.f-certs-t{display:block;font-size:14px;color:#332C2A;margin-bottom:8px;text-decoration:none}
+.f-certs .certrow{gap:9px}
+.fgrid h4{font:500 18px/1.3 var(--nav);color:var(--wine);margin:0 0 16px}
+.fgrid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.fgrid a{text-decoration:none}
+.fgrid a:hover{text-decoration:underline}
+footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-certs-t{color:#332C2A}
+.f-bottom{display:flex;flex-direction:column;gap:24px;padding-block:40px}
+.f-bottom .payments{justify-content:flex-end}
+.f-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:24px;border-top:1px solid var(--faint);padding-top:24px}
+.f-info{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.f-right{display:flex;flex-direction:column;gap:20px;align-items:flex-end}
+.f-social{display:flex;gap:24px}
+.f-social a{display:grid;color:#7C7E64}
+.f-social a:hover{color:var(--wine)}
+.f-social svg{width:24px;height:24px}
+.f-legal{display:flex;flex-wrap:wrap;font-size:14px}
+.f-legal a{text-decoration:none}
+.f-legal a:hover{text-decoration:underline}
+.f-legal a+a{border-left:1px solid var(--faint);margin-left:11px;padding-left:11px}
+@media(max-width:719px){.f-bottom .payments{justify-content:flex-start}.f-right{align-items:flex-start}}

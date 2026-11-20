@@ -9,7 +9,7 @@
   .how-acc{padding:clamp(24px,4.5vw,40px) clamp(20px,4.5vw,60px);display:flex;flex-direction:column;gap:24px}
   .how-i{margin:0;padding:0 0 24px;border:0;border-bottom:1px solid #D7D5CB}
   .how-icon{margin-top:auto;align-self:flex-end;width:109px;height:120px;display:block}
-  .how-i summary{list-style:none;cursor:pointer;font:300 clamp(24px,2.3vw,32px)/1.3 var(--display);color:var(--faint);transition:color .2s ease}
+  .how-i summary{list-style:none;cursor:pointer;font:300 clamp(24px,2.3vw,32px)/1.3 var(--display);color:var(--steps-off,#9D837C);transition:color .2s ease}
   .how-i summary::-webkit-details-marker{display:none}
   .how-i summary:hover{color:var(--ink)}
   .how-i[open] summary{font-style:italic;color:var(--olive);cursor:default}
@@ -39,7 +39,7 @@
           -%}
           <details class="how-i" name="how-steps"{% if forloop.first %} open{% endif %} {{ b.shopify_attributes }}><summary>{{ b.settings.title }}</summary><div class="b"><p>{{ t }}</p></div></details>
         {%- endfor -%}
-        {%- if section.settings.show_icon -%}<img class="how-icon" src="{{ 'echo-wool-icon.png' | asset_url }}" alt="" width="109" height="120" loading="lazy">{%- endif -%}
+        {%- if section.settings.show_icon -%}<span class="how-icon wool-ico" aria-hidden="true" style="--ico:url('{{ 'echo-wool-icon.png' | asset_url }}')"></span>{%- endif -%}
       </div>
       {%- if section.settings.show_blue_thread -%}<img class="how-thread-blue" src="{{ 'echo-thread-howitworks.png' | asset_url }}" alt="" width="1129" height="812" loading="lazy">{%- endif -%}
       <div class="how-media">

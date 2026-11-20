@@ -1,8 +1,31 @@
 {%- comment -%} "Current editions" style grid. One card per design: colour siblings are grouped. {%- endcomment -%}
+<style>
+  .pg-head{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .pg-left{display:flex;align-items:center;gap:12px clamp(20px,3vw,24px);flex-wrap:wrap}
+  .pg-head.apart .pg-left{flex:1;justify-content:space-between}
+  .pg-arrows{display:flex;gap:24px}
+  .pg-arrow{width:50px;height:50px;border-radius:50%;border:1px solid var(--wine);background:transparent;color:var(--wine);display:grid;place-items:center;padding:0;cursor:pointer;transition:background-color .18s ease,color .18s ease,border-color .18s ease}
+  .pg-arrow svg{width:24px;height:24px}
+  .pg-arrow:hover:not([disabled]){background:var(--wine);color:var(--pink)}
+  .pg-arrow[disabled]{border-color:var(--faint);color:var(--faint);cursor:default}
+  .pg-track{display:flex!important;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .pg-track::-webkit-scrollbar{display:none}
+  .pg-track>.card{flex:0 0 calc((100% - 24px)/2);scroll-snap-align:start}
+  @media(min-width:900px){.pg-track>.card{flex:0 0 calc((100% - 72px)/4)}}
+  @media(prefers-reduced-motion:reduce){.pg-track{scroll-behavior:auto}}
+</style>
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap stack" style="gap:20px">
-    <div class="row{% if section.settings.link_inline %} head-inline{% endif %}" style="{% unless section.settings.link_inline %}justify-content:space-between{% endunless %}"><h2 class="h2">{{ section.settings.heading }}</h2>{% if section.settings.link_label != blank %}<a class="link{% if section.settings.link_inline %} arrow{% endif %}" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'shop-all' %}{% endif %}">{{ section.settings.link_label }}</a>{% endif %}</div>
-    <div class="grid g4">
+    <div class="pg-head{% unless section.settings.link_inline or section.settings.carousel %} apart{% endunless %}">
+      <div class="pg-left"><h2 class="h2">{{ section.settings.heading }}</h2>{% if section.settings.link_label != blank %}<a class="link{% if section.settings.link_inline or section.settings.carousel %} arrow{% endif %}" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'shop-all' %}{% endif %}">{{ section.settings.link_label }}</a>{% endif %}</div>
+      {%- if section.settings.carousel -%}
+        <div class="pg-arrows">
+          <button type="button" class="pg-arrow" data-pg-prev aria-label="{{ 'echo.product_grid.previous' | t | escape }}" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <button type="button" class="pg-arrow" data-pg-next aria-label="{{ 'echo.product_grid.next' | t | escape }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="grid g4{% if section.settings.carousel %} pg-track{% endif %}"{% if section.settings.carousel %} data-pg-track{% endif %}>
       {%- liquid
         assign n = 0
         assign seen = ','
@@ -31,6 +54,21 @@
       -%}
     </div>
   </div>
+  {%- if section.settings.carousel -%}
+  <script>
+  (function(){
+    var sec=document.currentScript.parentElement;
+    var tr=sec.querySelector('[data-pg-track]'),pv=sec.querySelector('[data-pg-prev]'),nx=sec.querySelector('[data-pg-next]');
+    if(!tr||!pv||!nx)return;
+    function step(){var c=tr.querySelector('.card');return c?c.getBoundingClientRect().width+24:tr.clientWidth}
+    function upd(){pv.disabled=tr.scrollLeft<=2;nx.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-2}
+    pv.addEventListener('click',function(){tr.scrollBy({left:-step(),behavior:'smooth'})});
+    nx.addEventListener('click',function(){tr.scrollBy({left:step(),behavior:'smooth'})});
+    tr.addEventListener('scroll',function(){window.requestAnimationFrame(upd)},{passive:true});
+    window.addEventListener('resize',upd);upd();
+  })();
+  </script>
+  {%- endif -%}
 </section>
 {% schema %}
 {
@@ -39,6 +77,7 @@
     {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
     {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
     { "type": "text", "id": "heading", "label": "Heading", "default": "Current editions" },
+    { "type": "checkbox", "id": "carousel", "label": "Carousel: one row you scroll with arrows", "default": false },
     { "type": "checkbox", "id": "link_inline", "label": "Show the link right next to the heading (with an arrow)", "default": false },
     { "type": "text", "id": "link_label", "label": "Link text", "default": "See all" },
     { "type": "url", "id": "link", "label": "Link" },

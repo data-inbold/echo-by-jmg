@@ -54,8 +54,8 @@
       ],
       "settings": {
         "heading": "Where luxury yarn finds a second life.",
-        "lead": "Zero waste, 100% luxury quality. Discover limited-edition pieces born from surplus designer yarn.",
-        "btn1_label": "Shop now",
+        "lead": "Discover limited-edition pieces knit from surplus luxury yarn, brought to life by three generations of family craftsmanship.",
+        "btn1_label": "See our products",
         "btn1_link": "echo:shop-all",
         "btn2_label": "How it works",
         "btn2_link": "#how",
@@ -140,7 +140,7 @@
           "type": "step",
           "settings": {
             "title": "Luxury yarn goes unused",
-            "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
+            "text": "From the floor of our family factory, we watch fashion houses leave behind beautiful, premium yarn at the end of every season.",
             "link_word": "",
             "link": ""
           }
@@ -195,29 +195,29 @@
         "stat_3": {
           "type": "stat",
           "settings": {
-            "n": "1946",
-            "text": "to today"
+            "n": "Since 1946",
+            "text": "To present"
           }
         },
         "stat_1": {
           "type": "stat",
           "settings": {
             "n": "{kg}",
-            "text": "yarn rescued"
+            "text": "Yarn rescued"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "limited edition"
+            "text": "Limited-edition drops"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
-            "n": "0",
-            "text": "restock once sold out"
+            "n": "0 restocks",
+            "text": "Once sold out"
           }
         }
       },
@@ -255,8 +255,9 @@
           "happy-sunshine-throw-cloud-smoky-mauve"
         ],
         "collection": "",
-        "limit": 4,
-        "group": false
+        "limit": 8,
+        "group": false,
+        "carousel": true
       }
     },
     "story": {
@@ -277,7 +278,7 @@
         "lead": "",
         "caption": "Ming, founder of EchoByJMG",
         "small": "",
-        "outer_heading": "Our story",
+        "outer_heading": "Our Story",
         "panel": "white",
         "chips": "",
         "badges": "",
@@ -294,7 +295,8 @@
         "ar": "4/3",
         "stat_text": "",
         "stat_link_label": "",
-        "stat_link": ""
+        "stat_link": "",
+        "icon": true
       }
     },
     "quotes": {
@@ -316,14 +318,14 @@
         "review_2": {
           "type": "review",
           "settings": {
-            "name": "Oscar",
+            "name": "John Doe",
             "country": "Denmark",
             "quote": "My daughter favorite blanket.",
             "photo": "echo-v2-review-2.jpg",
             "alt": "A grey knitted blanket with a soft toy rabbit",
             "product": "",
             "product_name": "Cotton Candy Cloud Knitted Throw",
-            "product_price": "DKK 979"
+            "product_price": "DKK 1,379"
           }
         }
       },
@@ -334,7 +336,8 @@
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "heading": "What our customers say"
+        "heading": "What our customers say",
+        "icon": true
       }
     },
     "gift": {
@@ -376,6 +379,16 @@
         "stat_link": "",
         "focus": "45% 55%"
       }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
+      }
     }
   },
   "order": [
@@ -388,6 +401,7 @@
     "editions",
     "story",
     "quotes",
-    "gift"
+    "gift",
+    "club"
   ]
 }
