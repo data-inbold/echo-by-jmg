@@ -377,7 +377,7 @@
         "btn2_label": "",
         "btn2_link": "",
         "btn2_ghost": true,
-        "image": "shopify://shop_images/BabyCable_edit_66493363-5527-4bf3-a1be-c2339fdef58d.jpg",
+        "image": "shopify://shop_images/gift.png",
         "photo": "echo-v2-gift.jpg",
         "alt": "A gift box tied with twine and a sprig of eucalyptus, next to a ball of yarn",
         "icon": false,
@@ -395,6 +395,7 @@
         "heading": "Join the Cozy Club",
         "text": "Get 10% off your first order, and be the first to hear about our new designs!",
         "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
       }
