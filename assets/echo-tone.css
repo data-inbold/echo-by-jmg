@@ -271,7 +271,8 @@ footer.site .btn:hover{background:#fff;color:#111}
 .stats-icons .stats-cta .btn.ghost:hover{background:var(--wine);color:var(--pink)}
 
 /* our story: pink panel, wine italic quote */
-.split.panel-white,.split.panel-white>.stack{background:var(--pink)}
+.split.panel-white,.split.panel-white>.stack{background-color:var(--pink)}
+.split.panel-white{background-clip:content-box}
 .split.panel-white .echo-quote{color:var(--wine)}
 .split.panel-white .echo-quote+.muted{border-top-color:rgba(56,15,28,.22)}
 .split.panel-white .muted{color:#7C7E64}
