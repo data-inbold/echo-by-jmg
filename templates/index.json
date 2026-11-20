@@ -180,6 +180,7 @@
         "show_icon": true,
         "anchor": "how",
         "heading": "How It Works",
+        "image": "shopify://shop_images/how-it-works-yarn.png",
         "photo": "echo-v2-process.jpg",
         "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
         "overlay": "",
