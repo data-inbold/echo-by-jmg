@@ -396,10 +396,6 @@
         "stat_link": ""
       }
     },
-    "179516495166d65546": {
-      "type": "_blocks",
-      "settings": {}
-    },
     "club": {
       "type": "echo-club-band",
       "settings": {
@@ -409,6 +405,16 @@
         "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
+      }
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 20,
+        "space_below": 20
       }
     }
   },
@@ -423,7 +429,7 @@
     "story",
     "quotes",
     "gift",
-    "179516495166d65546",
+    "illustration",
     "club"
   ]
 }
