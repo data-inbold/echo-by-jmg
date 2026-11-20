@@ -203,28 +203,32 @@
           "type": "stat",
           "settings": {
             "n": "Since 1946",
-            "text": "To present"
+            "text": "To present",
+            "icon_file": "echo-stat-logo.png"
           }
         },
         "stat_1": {
           "type": "stat",
           "settings": {
             "n": "{kg}",
-            "text": "Yarn rescued"
+            "text": "Yarn rescued",
+            "icon_file": "echo-stat-yarn.png"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "Limited-edition drops"
+            "text": "Limited-edition drops",
+            "icon_file": "echo-stat-pillows.png"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
             "n": "0 restocks",
-            "text": "Once sold out"
+            "text": "Once sold out",
+            "icon_file": "echo-stat-knit.png"
           }
         }
       },

@@ -11,7 +11,14 @@
     -%}
     {%- for b in section.blocks -%}
       {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out -%}
-      <div class="stat" {{ b.shopify_attributes }}>{% if section.settings.icons %}<svg class="stat-ic" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="24" cy="31" r="18"/><path d="M8 24c10 6 22 6 32 0M7 33c11 6 24 6 35 0M12 44c8 3 16 3 24 0M18 15c6 8 6 24 0 32M30 14c-5 8-5 25 0 33"/><path d="M42 6 30 22M48 12 36 24" /><circle cx="42" cy="5" r="2"/><circle cx="48" cy="11" r="2"/></svg>{% endif %}<div class="stat-t"><div class="n">{{ n }}</div><p>{{ b.settings.text }}</p></div></div>
+      <div class="stat" {{ b.shopify_attributes }}>{%- liquid
+        assign ico = ''
+        if b.settings.icon != blank
+          assign ico = b.settings.icon | image_url: width: 280
+        elsif b.settings.icon_file != blank
+          assign ico = b.settings.icon_file | asset_url
+        endif
+      -%}{% if ico != blank %}<img class="stat-ic stat-img" src="{{ ico }}" alt="" width="68" height="68" loading="lazy">{% elsif section.settings.icons %}<svg class="stat-ic" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="24" cy="31" r="18"/><path d="M8 24c10 6 22 6 32 0M7 33c11 6 24 6 35 0M12 44c8 3 16 3 24 0M18 15c6 8 6 24 0 32M30 14c-5 8-5 25 0 33"/><path d="M42 6 30 22M48 12 36 24" /><circle cx="42" cy="5" r="2"/><circle cx="48" cy="11" r="2"/></svg>{% endif %}<div class="stat-t"><div class="n">{{ n }}</div><p>{{ b.settings.text }}</p></div></div>
     {%- endfor -%}
   </div>
   {%- if section.settings.link_label != blank -%}
@@ -32,7 +39,9 @@
   "blocks": [
     { "type": "stat", "name": "Number", "settings": [
       { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, both calculated from the Yarn Passport fields on the products plus older batches in the Yarn batch list." },
-      { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued to date" }
+      { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued to date" },
+      { "type": "image_picker", "id": "icon", "label": "Icon (optional)", "info": "Replaces the yarn icon above this number. A transparent PNG, about 140 px, works best." },
+      { "type": "text", "id": "icon_file", "label": "Bundled icon file", "info": "Used when no icon is picked. File name in assets, for example echo-stat-yarn.png. Empty = the drawn yarn icon." }
     ] }
   ],
   "presets": [{ "name": "Numbers", "blocks": [

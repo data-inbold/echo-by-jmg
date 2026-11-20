@@ -321,3 +321,7 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 
 /* scrolling words (hashtags): Manrope Light 26, #ABA499 */
 .mq .mq-track span{font-family:'Manrope',system-ui,sans-serif;font-weight:300;font-size:26px;line-height:76px;color:#ABA499}
+
+/* numbers: icons from PNG files, band #E9E2DA */
+.stats-icons.section,.section.band.stats-icons{background:#E9E2DA}
+.stats-icons .stat-img{width:68px;height:68px;object-fit:contain;display:block}
