@@ -59,7 +59,7 @@
         "btn1_link": "echo:shop-all",
         "btn2_label": "How it works",
         "btn2_link": "#how",
-        "image": "shopify://shop_images/1002516002_4.jpg",
+        "image": "shopify://shop_images/Rectangle_6.png",
         "photo": "echo-v2-hero.jpg",
         "alt": "Cones of green, mustard, cream and pink yarn resting on a knitted blanket",
         "focus": "75% 85%",
@@ -172,6 +172,8 @@
       "settings": {
         "spacing": "normal",
         "bg": "paper",
+        "show_blue_thread": true,
+        "show_icon": true,
         "anchor": "how",
         "heading": "How It Works",
         "photo": "echo-v2-process.jpg",
@@ -241,6 +243,7 @@
         "spacing": "normal",
         "bg": "paper",
         "heading": "Latest Designs",
+        "carousel": true,
         "link_inline": true,
         "link_label": "See all",
         "link": "",
@@ -256,8 +259,7 @@
         ],
         "collection": "",
         "limit": 8,
-        "group": false,
-        "carousel": true
+        "group": false
       }
     },
     "story": {
@@ -291,12 +293,13 @@
         "btn2_ghost": true,
         "photo": "echo-v2-story.jpg",
         "alt": "Ming and a colleague at the factory going through yarn samples",
+        "icon": true,
+        "focus": "50% 50%",
         "label": "",
         "ar": "4/3",
         "stat_text": "",
         "stat_link_label": "",
-        "stat_link": "",
-        "icon": true
+        "stat_link": ""
       }
     },
     "quotes": {
@@ -336,8 +339,8 @@
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "heading": "What our customers say",
-        "icon": true
+        "icon": true,
+        "heading": "What our customers say"
       }
     },
     "gift": {
@@ -372,12 +375,13 @@
         "image": "shopify://shop_images/BabyCable_edit_66493363-5527-4bf3-a1be-c2339fdef58d.jpg",
         "photo": "echo-v2-gift.jpg",
         "alt": "A gift box tied with twine and a sprig of eucalyptus, next to a ball of yarn",
+        "icon": false,
+        "focus": "45% 55%",
         "label": "",
         "ar": "5",
         "stat_text": "",
         "stat_link_label": "",
-        "stat_link": "",
-        "focus": "45% 55%"
+        "stat_link": ""
       }
     },
     "club": {
