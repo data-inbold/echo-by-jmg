@@ -312,3 +312,9 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .f-legal a:hover{text-decoration:underline}
 .f-legal a+a{border-left:1px solid var(--faint);margin-left:11px;padding-left:11px}
 @media(max-width:719px){.f-bottom .payments{justify-content:flex-start}.f-right{align-items:flex-start}}
+
+/* shop by products: label Literata Light 32 / price line Manrope Regular 16, both #332C2A */
+.tiles .card .meta .name{font-family:'Literata',Georgia,serif;font-weight:300;font-size:24px;line-height:1.5;color:#332C2A}
+.tiles .card .meta .name::after{color:#332C2A}
+.tiles .card .meta .muted{font-family:'Manrope',system-ui,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#332C2A}
+@media(min-width:720px){.tiles .card .meta .name{font-size:32px}}
