@@ -176,7 +176,6 @@
       "settings": {
         "spacing": "normal",
         "bg": "paper",
-        "show_blue_thread": true,
         "show_icon": true,
         "anchor": "how",
         "heading": "How It Works",
