@@ -15,10 +15,12 @@
       <a class="f-logo" href="{% render 'echo-url', key: 'home' %}" aria-label="{{ shop.name | escape }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 352 | image_tag: alt: shop.name, widths: '88, 176, 352', sizes: '88px', loading: 'lazy' }}{% else %}{{ shop.name }}{% endif %}</a>
       <div class="f-certs">
         <a href="{{ u_factory }}" class="f-certs-t">{{ 'echo.common.factory_and_certificates' | t }}</a>
-        <div class="certrow">
-          <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.bsci_compliance_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'bsci', h: 44 %}</a>
-          <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.organic_content_standard_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'ocs', h: 44 %}</a>
-          <a href="{{ u_factory }}" aria-label="{{ 'echo.footer.recycled_claim_standard_read_more' | t | escape }}">{% render 'echo-cert-logo', k: 'rcs', h: 44 %}</a>
+        <div class="certrow f-certlogos">
+          <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-bsci.png' | asset_url }}" alt="{{ 'echo.certs.alt_bsci' | t | escape }}" width="44" height="44" loading="lazy"></a>
+          <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-ocs-100.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs' | t | escape }}" width="39" height="44" loading="lazy"></a>
+          <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-ocs-blended.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs_blended' | t | escape }}" width="40" height="44" loading="lazy"></a>
+          <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-rcs-100.png' | asset_url }}" alt="{{ 'echo.certs.alt_rcs' | t | escape }}" width="40" height="44" loading="lazy"></a>
+          <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-rcs-blended.png' | asset_url }}" alt="{{ 'echo.certs.alt_rcs_blended' | t | escape }}" width="40" height="44" loading="lazy"></a>
         </div>
       </div>
     </div>

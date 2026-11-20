@@ -584,7 +584,9 @@
     "certs": {
       "alt_bsci": "BSCI, Business Social Compliance Initiative, medlemslogo",
       "alt_ocs": "Logo for Organic 100 Content Standard, Textile Exchange",
+      "alt_ocs_blended": "Logo for Organic Blended Content Standard, Textile Exchange",
       "alt_rcs": "Logo for Recycled 100 Claim Standard, Textile Exchange",
+      "alt_rcs_blended": "Logo for Recycled Blended Claim Standard, Textile Exchange",
       "view_certificate": "Se certifikat"
     },
     "clips": {

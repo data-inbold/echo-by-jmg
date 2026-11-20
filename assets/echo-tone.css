@@ -330,3 +330,8 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 /* numbers: icons from PNG files, band #E9E2DA */
 .stats-icons.section,.section.band.stats-icons{background:#E9E2DA}
 .stats-icons .stat-img{width:68px;height:68px;object-fit:contain;display:block}
+
+/* footer certificate logos: five badges, 44px high, 9px apart */
+.f-certlogos{gap:9px;flex-wrap:nowrap}
+.f-certlogos a{display:block;line-height:0;flex:none}
+.f-certlogos img{display:block;height:44px;width:auto}
