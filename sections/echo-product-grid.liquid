@@ -13,8 +13,17 @@
   .pg-track>.card{flex:0 0 calc((100% - 24px)/2);scroll-snap-align:start}
   @media(min-width:900px){.pg-track>.card{flex:0 0 calc((100% - 72px)/4)}}
   @media(prefers-reduced-motion:reduce){.pg-track{scroll-behavior:auto}}
+  .pg-sec{position:relative}
+  .pg-sec>.wrap{position:relative;z-index:2}
+  .pg-sec .card .meta .name{order:0;color:#7C7E64}
+  .pg-sec .card .meta .ed{order:1}
+  .pg-sec .card .meta>span:not([class]){order:2}
+  .pg-thread{display:none;position:absolute;left:0;top:-116px;height:502px;width:auto;max-width:none;pointer-events:none;z-index:1}
+  @media(min-width:900px){.pg-thread{display:block}}
+  .section:has(>.pg-thread){overflow-x:clip}
 </style>
-<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
+<section class="section pg-sec {{ section.settings.spacing }} {{ section.settings.bg }}">
+  {%- if section.settings.show_thread -%}<img class="pg-thread" src="{{ 'echo-thread-latestdesign.png' | asset_url }}" alt="" width="449" height="755" loading="lazy">{%- endif -%}
   <div class="wrap stack" style="gap:20px">
     <div class="pg-head{% unless section.settings.link_inline or section.settings.carousel %} apart{% endunless %}">
       <div class="pg-left"><h2 class="h2">{{ section.settings.heading }}</h2>{% if section.settings.link_label != blank %}<a class="link{% if section.settings.link_inline or section.settings.carousel %} arrow{% endif %}" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'shop-all' %}{% endif %}">{{ section.settings.link_label }}</a>{% endif %}</div>
@@ -77,6 +86,7 @@
     {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
     {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
     { "type": "text", "id": "heading", "label": "Heading", "default": "Current editions" },
+    { "type": "checkbox", "id": "show_thread", "label": "Show the blue thread at the left edge", "default": false },
     { "type": "checkbox", "id": "carousel", "label": "Carousel: one row you scroll with arrows", "default": false },
     { "type": "checkbox", "id": "link_inline", "label": "Show the link right next to the heading (with an arrow)", "default": false },
     { "type": "text", "id": "link_label", "label": "Link text", "default": "See all" },

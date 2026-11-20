@@ -268,7 +268,8 @@
         ],
         "collection": "",
         "limit": 8,
-        "group": false
+        "group": false,
+        "show_thread": true
       }
     },
     "story": {
