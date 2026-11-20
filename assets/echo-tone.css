@@ -335,3 +335,8 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .f-certlogos{gap:9px;flex-wrap:nowrap}
 .f-certlogos a{display:block;line-height:0;flex:none}
 .f-certlogos img{display:block;height:44px;width:auto}
+
+/* footer payment logos: 16px high, 12px apart, right aligned */
+.f-pay{gap:12px;align-items:center;flex-wrap:wrap}
+.f-pay img{display:block;height:16px;width:auto}
+.f-pay img[alt="Mastercard"]{height:20px}

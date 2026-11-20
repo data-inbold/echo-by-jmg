@@ -72,9 +72,12 @@
     </ul></div>
   </div>
   <div class="wrap f-bottom">
-    <div class="payments">
-      {%- assign pay = section.settings.payments | split: ',' -%}
-      {%- for p in pay -%}<span{% if forloop.first %} class="first"{% endif %}>{{ p | strip }}</span>{%- endfor -%}
+    <div class="payments f-pay">
+      <img src="{{ 'echo-pay-mobilepay.png' | asset_url }}" alt="MobilePay" width="81" height="16" loading="lazy">
+      <img src="{{ 'echo-pay-visa.png' | asset_url }}" alt="Visa" width="45" height="16" loading="lazy">
+      <img src="{{ 'echo-pay-mastercard.png' | asset_url }}" alt="Mastercard" width="25" height="20" loading="lazy">
+      <img src="{{ 'echo-pay-applepay.png' | asset_url }}" alt="Apple Pay" width="38" height="16" loading="lazy">
+      <img src="{{ 'echo-pay-klarna.png' | asset_url }}" alt="Klarna" width="55" height="16" loading="lazy">
     </div>
     <div class="f-row">
       <div class="f-info"><span>{{ section.settings.ships_text }}</span><span>{{ section.settings.legal_text }}</span></div>
@@ -102,7 +105,6 @@
   "settings": [
     { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Empty = the bundled EchoByJMG circle logo." },
     { "type": "text", "id": "ships_text", "label": "Shipping line", "default": "Ships from Parcel Feeder, Brøndby · Free 14-day returns · Support [hours] CET" },
-    { "type": "text", "id": "payments", "label": "Payment methods (comma separated, first is highlighted)", "default": "MobilePay, Visa, Mastercard, Apple Pay, [Klarna]" },
     { "type": "text", "id": "legal_text", "label": "Legal seller line", "default": "EchoByJMG is owned by JM Group Limited, Hong Kong, the legal seller." },
     { "type": "header", "content": "Social" },
     { "type": "text", "id": "instagram", "label": "Instagram URL", "default": "https://instagram.com/echobyjmg_official" },
