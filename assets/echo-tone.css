@@ -295,7 +295,7 @@ footer.site .wrap{max-width:var(--wrap);padding-inline:16px}
 .f-brand{grid-column:1/-1;display:flex;flex-direction:column;gap:40px}
 @media(min-width:900px){.f-brand{grid-column:auto}}
 .f-logo{display:block;width:88px;color:var(--wine);font:500 18px/1.2 var(--nav);text-decoration:none}
-.f-logo img{display:block;width:88px;height:auto;filter:brightness(0) opacity(.85)}
+.f-logo img{display:block;width:88px;height:auto}
 .f-certs-t{display:block;font-size:14px;color:#332C2A;margin-bottom:8px;text-decoration:none}
 .f-certs .certrow{gap:9px}
 .fgrid h4{font:500 18px/1.3 var(--nav);color:var(--wine);margin:0 0 16px}

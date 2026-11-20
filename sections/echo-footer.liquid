@@ -12,7 +12,7 @@
 <footer class="site" id="ftr">
   <div class="wrap fgrid">
     <div class="f-brand">
-      <a class="f-logo" href="{% render 'echo-url', key: 'home' %}" aria-label="{{ shop.name | escape }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 352 | image_tag: alt: shop.name, widths: '88, 176, 352', sizes: '88px', loading: 'lazy' }}{% else %}{{ shop.name }}{% endif %}</a>
+      <a class="f-logo" href="{% render 'echo-url', key: 'home' %}" aria-label="{{ shop.name | escape }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 352 | image_tag: alt: shop.name, widths: '88, 176, 352', sizes: '88px', loading: 'lazy' }}{% else %}<img src="{{ 'echo-footer-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" width="88" height="88" loading="lazy">{% endif %}</a>
       <div class="f-certs">
         <a href="{{ u_factory }}" class="f-certs-t">{{ 'echo.common.factory_and_certificates' | t }}</a>
         <div class="certrow f-certlogos">
@@ -100,7 +100,7 @@
 {
   "name": "Footer (EchoByJMG)",
   "settings": [
-    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Empty = the bundled EchoByJMG circle logo." },
     { "type": "text", "id": "ships_text", "label": "Shipping line", "default": "Ships from Parcel Feeder, Brøndby · Free 14-day returns · Support [hours] CET" },
     { "type": "text", "id": "payments", "label": "Payment methods (comma separated, first is highlighted)", "default": "MobilePay, Visa, Mastercard, Apple Pay, [Klarna]" },
     { "type": "text", "id": "legal_text", "label": "Legal seller line", "default": "EchoByJMG is owned by JM Group Limited, Hong Kong, the legal seller." },
