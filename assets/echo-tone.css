@@ -253,9 +253,13 @@ footer.site .btn:hover{background:#fff;color:#111}
 
 /* recolourable wool icon (the PNG is used as a mask) */
 .wool-ico{display:block;width:109px;height:120px;background:var(--thread);-webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}
-.split-ico{display:none;position:absolute;right:140px;bottom:80px;z-index:2}
+.split-ico{display:none;position:absolute;right:max(140px,calc((100% - 1440px)/2 + 140px));bottom:80px;width:109px;height:120px;z-index:3;pointer-events:none}
+.split-thread{display:none;position:absolute;right:0;top:-226px;height:745.8px;width:auto;max-width:none;pointer-events:none;z-index:1}
 @media(min-width:880px){.split-ico{display:block}}
-.section:has(>.split-ico){position:relative}
+@media(min-width:900px){.split-thread{display:block}}
+.section:has(>.split-ico),.section:has(>.split-thread){position:relative}
+.section:has(>.split-thread){overflow-x:clip}
+.section:has(>.split-thread)>.wrap{position:relative;z-index:2}
 
 /* shop by products: 24px between photo and label */
 .tiles.grid .card,.tiles .card{gap:24px}
