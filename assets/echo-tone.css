@@ -318,3 +318,6 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .tiles .card .meta .name::after{color:#332C2A}
 .tiles .card .meta .muted{font-family:'Manrope',system-ui,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#332C2A}
 @media(min-width:720px){.tiles .card .meta .name{font-size:32px}}
+
+/* scrolling words (hashtags): Manrope Light 26, #ABA499 */
+.mq .mq-track span{font-family:'Manrope',system-ui,sans-serif;font-weight:300;font-size:26px;line-height:76px;color:#ABA499}
