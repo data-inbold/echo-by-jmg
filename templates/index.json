@@ -76,6 +76,7 @@
             "cat": "blankets",
             "title": "Blankets",
             "from": "from DKK 809",
+            "image": "shopify://shop_images/Blankets.png",
             "photo": "echo-v2-tile-blankets.jpg"
           }
         },
@@ -86,6 +87,7 @@
             "cat": "cushions",
             "title": "Cushion covers",
             "from": "from DKK 809",
+            "image": "shopify://shop_images/Cushion_Covers.png",
             "photo": "echo-v2-tile-cushions.jpg"
           }
         },
@@ -96,6 +98,7 @@
             "cat": "bags",
             "title": "Bags",
             "from": "from DKK 809",
+            "image": "shopify://shop_images/Bags.png",
             "photo": "echo-v2-tile-bags.jpg"
           }
         },
@@ -106,6 +109,7 @@
             "cat": "accessories",
             "title": "Accessories",
             "from": "from DKK 809",
+            "image": "shopify://shop_images/ACCESSORIES.png",
             "photo": "echo-v2-tile-accessories.jpg"
           }
         }
