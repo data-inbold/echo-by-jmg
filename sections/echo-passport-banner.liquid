@@ -1,0 +1,77 @@
+{%- comment -%} (Shopify section names are limited to 25 characters.) Yarn Passport page top: blush band with breadcrumbs, big heading with the folded-blanket drawing, a divider, then a short text on the left and the open + closed passport picture on the right. {%- endcomment -%}
+{%- liquid
+  capture u_home
+    render 'echo-url', key: 'home'
+  endcapture
+  capture u_story
+    render 'echo-url', key: 'story'
+  endcapture
+  assign t_home = 'echo.common.home' | t
+  assign crumb_list = t_home | append: '::' | append: u_home | append: '||' | append: section.settings.crumb_label | append: '::' | append: u_story | append: '||' | append: section.settings.crumb_current
+-%}
+<style>
+  .pb{background:#F0DFD8;padding-block:{{ section.settings.pad_top }}px {{ section.settings.pad_bottom }}px;overflow:hidden}
+  .pb .crumbs{padding:0 0 20px}
+  .pb .wrap>.crumbs{max-width:none;margin:0}
+  .pb-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+  .pb-h{margin:0;font:300 clamp(34px,3.9vw,56px)/1.36 var(--display);color:var(--wine)}
+  .pb-draw{flex:none;width:clamp(84px,9.7vw,140px);height:auto;display:block}
+  .pb-hr{height:0;border:0;border-top:1px solid #ABA499;margin:40px 0}
+  .pb-main{display:grid;grid-template-columns:1fr;gap:32px;align-items:center}
+  @media(min-width:900px){.pb-main{grid-template-columns:411px minmax(0,1fr);gap:24px}}
+  .pb-copy{display:flex;flex-direction:column;gap:20px}
+  .pb-logo{display:block;width:68px;height:68px;object-fit:contain}
+  .pb-copy .pb-t{display:flex;flex-direction:column;gap:24px;max-width:326px}
+  .pb-copy p{margin:0;font:400 14px/1.6 var(--body);color:#332C2A}
+  .pb-pic{display:block;width:100%;max-width:845px;height:auto;margin-inline:auto}
+  @media(min-width:900px){.pb-pic{margin-block:-26px}}
+</style>
+<section class="pb">
+  <div class="wrap">
+    {%- render 'echo-crumbs', list: crumb_list -%}
+    <div class="pb-top">
+      <h1 class="pb-h">{{ section.settings.heading | escape | newline_to_br }}</h1>
+      {%- if section.settings.drawing != blank -%}
+        {{ section.settings.drawing | image_url: width: 420 | image_tag: alt: '', class: 'pb-draw', widths: '140, 280, 420', sizes: '140px' }}
+      {%- elsif section.settings.drawing_file != blank -%}
+        <img class="pb-draw" src="{{ section.settings.drawing_file | asset_url }}" alt="" width="140" height="140">
+      {%- endif -%}
+    </div>
+    <hr class="pb-hr">
+    <div class="pb-main">
+      <div class="pb-copy">
+        {%- if section.settings.logo_file != blank -%}<img class="pb-logo" src="{{ section.settings.logo_file | asset_url }}" alt="" width="68" height="68">{%- endif -%}
+        <div class="pb-t">
+          {%- if section.settings.text_1 != blank -%}<p>{{ section.settings.text_1 }}</p>{%- endif -%}
+          {%- if section.settings.text_2 != blank -%}<p>{{ section.settings.text_2 }}</p>{%- endif -%}
+        </div>
+      </div>
+      {%- if section.settings.picture != blank -%}
+        {{ section.settings.picture | image_url: width: 1690 | image_tag: alt: section.settings.picture_alt, class: 'pb-pic', widths: '640, 845, 1268, 1690', sizes: '(min-width: 900px) 845px, 100vw', loading: 'eager' }}
+      {%- elsif section.settings.picture_file != blank -%}
+        <img class="pb-pic" src="{{ section.settings.picture_file | asset_url }}" alt="{{ section.settings.picture_alt | escape }}" width="1268" height="699">
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Yarn Passport hero",
+  "settings": [
+    { "type": "text", "id": "crumb_label", "label": "Breadcrumb: parent page", "default": "About Us" },
+    { "type": "text", "id": "crumb_current", "label": "Breadcrumb: this page", "default": "Yarn Passport" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "info": "Press Enter for a new line.", "default": "Every piece comes\nwith its own passport" },
+    { "type": "image_picker", "id": "drawing", "label": "Drawing (top right)", "info": "Empty = the folded blanket drawing from the theme." },
+    { "type": "text", "id": "drawing_file", "label": "Drawing file in assets", "default": "echo-passport-blanket.png" },
+    { "type": "text", "id": "logo_file", "label": "Small logo file in assets", "default": "echo-stat-logo.png" },
+    { "type": "textarea", "id": "text_1", "label": "Text 1", "default": "Our Yarn Passport reveals the journey behind your piece — its origins, materials, amount of yarn rescued, and total number of pieces in the batch." },
+    { "type": "textarea", "id": "text_2", "label": "Text 2", "default": "View it on the product page and in your post-purchase email; or find each item’s unique number sewn directly into the physical label." },
+    { "type": "image_picker", "id": "picture", "label": "Passport picture", "info": "About 1690 px wide, transparent background. Empty = the picture from the theme." },
+    { "type": "text", "id": "picture_file", "label": "Passport picture file in assets", "default": "echo-passport-booklet.webp" },
+    { "type": "text", "id": "picture_alt", "label": "Picture description", "default": "An open and a closed EchoByJMG Yarn Passport" },
+    { "type": "range", "id": "pad_top", "label": "Space above", "min": 0, "max": 160, "step": 10, "default": 80, "unit": "px" },
+    { "type": "range", "id": "pad_bottom", "label": "Space below", "min": 0, "max": 160, "step": 10, "default": 100, "unit": "px" }
+  ],
+  "presets": [{ "name": "Yarn Passport hero" }]
+}
+{% endschema %}
