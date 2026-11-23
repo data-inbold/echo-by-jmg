@@ -404,3 +404,6 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 /* About dropdown: a single "About" column (Figma "Mega Menu - About Us") */
 .mm-about{min-height:0}
 .mm-about .mm-col{border-right:0;padding-right:0}
+/* dropdown caret: Figma CaretDown, 16px, 8px from the label, same colour as the label */
+.nav .main>button{display:inline-flex;align-items:center;gap:8px}
+.nav .main>button .caret{width:16px;height:16px;flex:none}

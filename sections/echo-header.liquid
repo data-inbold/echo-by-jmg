@@ -83,7 +83,7 @@
         {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if about_t != blank and l_t == about_t -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if l.links.size > 0 or is_mega -%}
-          <button data-act="dd-{{ forloop.index }}" aria-expanded="false"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }} <span aria-hidden="true">▾</span></button>
+          <button data-act="dd-{{ forloop.index }}" aria-expanded="false"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}<svg class="caret" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"/></svg></button>
         {%- else -%}
           <a href="{{ l.url }}"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}</a>
         {%- endif -%}
