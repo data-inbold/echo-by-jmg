@@ -5,11 +5,11 @@
     "header": {
       "type": "echo-header",
       "settings": {
+        "menu": "header-menu",
         "logo": "shopify://shop_images/Logo_W-13.5.26.png",
         "logo_height": 40,
         "logo_height_mobile": 28,
-        "show_dropdowns": true,
-        "menu": "header-menu"
+        "show_dropdowns": true
       }
     }
   },
