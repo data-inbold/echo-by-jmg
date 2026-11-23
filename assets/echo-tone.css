@@ -381,6 +381,7 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .mm-col h4{margin:0 0 4px;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#380F1C}
 .mm-col a{position:relative;display:inline-flex;align-items:center;align-self:flex-start;gap:8px;height:28px;padding:0;font:300 16px/normal var(--nav);color:#332C2A;text-decoration:none}
 .mm-col a.mm-cat{font-weight:400}
+.mega .mm a,.mega .mm a:hover,.mega .mm a:focus-visible{text-decoration:none}
 /* hover underline: 1px line under the label text only, on the bottom edge of the 28px row */
 .mm-col a::after,.mm-cat span::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:#332C2A;transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
 .mm-col a.mm-cat::after{display:none}
