@@ -1,0 +1,102 @@
+{%- comment -%} (Shopify section names are limited to 25 characters.) Blush band: photo on the left; heading, text, three icon points, a yarn number line and two buttons on the right. {%- endcomment -%}
+{%- liquid
+  capture bt
+    render 'echo-batch-totals'
+  endcapture
+  assign bp = bt | strip | split: '|'
+-%}
+<style>
+  .rp{background:#F0DFD8;padding:56px 16px}
+  @media(min-width:720px){.rp{padding:80px max(80px,calc((100vw - var(--wrap)) / 2 + 80px))}}
+  .rp-box{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
+  @media(min-width:960px){.rp-box{grid-template-columns:minmax(0,519px) minmax(0,1fr)}}
+  .rp-photo{position:relative;min-height:340px;background:#d8d0c6}
+  @media(min-width:960px){.rp-photo{height:620px}}
+  .rp-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ section.settings.focus }}}
+  .rp-body{display:flex;flex-direction:column;gap:24px;min-width:0}
+  .rp-h{margin:0;font:300 clamp(28px,2.8vw,40px)/normal var(--display);color:var(--wine)}
+  .rp-lead{margin:0;font:400 16px/1.6 var(--body);color:#332C2A}
+  .rp-pts{display:grid;grid-template-columns:1fr;gap:24px;padding-block:20px}
+  @media(min-width:720px){.rp-pts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .rp-pt{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .rp-pt img{width:68px;height:68px;object-fit:contain;display:block}
+  .rp-pt b{font:italic 300 clamp(24px,2.2vw,32px)/normal var(--display);color:var(--wine);margin-top:0}
+  .rp-pt p{margin:0;font:400 14px/1.6 var(--body);color:#332C2A}
+  .rp-hr{height:0;border:0;border-top:1px solid #ABA499;margin:0}
+  .rp-stat{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:8px 12px;font:400 16px/1.6 var(--body);color:#332C2A}
+  .rp-stat i{font:italic 300 24px/1 var(--display);color:var(--wine)}
+  .rp-stat .rp-sp{flex:1}
+  .rp-link{display:inline-flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px solid #332C2A;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#332C2A;text-decoration:none}
+  .rp-link svg{width:24px;height:24px}
+  .rp-btns{display:flex;gap:24px;flex-wrap:wrap;padding-block:20px}
+  .rp-btn{display:inline-flex;align-items:center;justify-content:center;min-width:193px;padding:12px 16px;border:1px solid #380F1C;font:500 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#380F1C}
+  .rp-btn.fill{background:#380F1C;color:#F0DFD8}
+</style>
+<section class="rp">
+  <div class="rp-box">
+    <div class="rp-photo">
+      {%- if section.settings.photo != blank -%}
+        {{ section.settings.photo | image_url: width: 1100 | image_tag: alt: section.settings.alt, loading: 'lazy', widths: '519, 780, 1038, 1100', sizes: '(min-width: 960px) 519px, 100vw' }}
+      {%- elsif section.settings.photo_file != blank -%}
+        <img src="{{ section.settings.photo_file | asset_url }}" alt="{{ section.settings.alt | escape }}" width="1038" height="1240" loading="lazy">
+      {%- endif -%}
+    </div>
+    <div class="rp-body">
+      <h2 class="rp-h">{{ section.settings.heading }}</h2>
+      <p class="rp-lead">{{ section.settings.text }}</p>
+      <div class="rp-pts">
+        {%- for b in section.blocks -%}
+          <div class="rp-pt" {{ b.shopify_attributes }}>
+            {%- if b.settings.icon_file != blank -%}<img src="{{ b.settings.icon_file | asset_url }}" alt="" width="68" height="68" loading="lazy">{%- endif -%}
+            <b>{{ b.settings.title }}</b><p>{{ b.settings.text }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+      <hr class="rp-hr">
+      <div class="rp-stat">
+        <i data-yarn-total="kg">{{ bp[0] }}</i><span>{{ section.settings.stat_mid }}</span><i data-yarn-total="batches">{{ bp[1] }}</i><span>{{ section.settings.stat_end }}</span>
+        <span class="rp-sp"></span>
+        {%- if section.settings.stat_link_label != blank -%}
+          <a class="rp-link" href="{{ section.settings.stat_link | default: '#' }}">{{ section.settings.stat_link_label }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        {%- endif -%}
+      </div>
+      <div class="rp-btns">
+        {%- if section.settings.btn1_label != blank -%}<a class="rp-btn fill" href="{{ section.settings.btn1_link | default: '#' }}">{{ section.settings.btn1_label }}</a>{%- endif -%}
+        {%- if section.settings.btn2_label != blank -%}<a class="rp-btn" href="{{ section.settings.btn2_link | default: '#' }}">{{ section.settings.btn2_label }}</a>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Rescue panel",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Fine Knits From What Remains" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "When a luxury fashion production run ends, there's often some perfectly good yarn left unused. Rather than letting it go to waste, we turn it into knitted pieces for your home and beyond. Each batch of rescued yarn is limited, so once it's gone, the designs made from it won't be restocked." },
+    { "type": "header", "content": "Yarn numbers" },
+    { "type": "paragraph", "content": "The kilograms and batches are calculated from the Yarn Passport fields, the same as on the home page." },
+    { "type": "text", "id": "stat_mid", "label": "Text between the numbers", "default": "rescued in" },
+    { "type": "text", "id": "stat_end", "label": "Text after the numbers", "default": "batches so far." },
+    { "type": "text", "id": "stat_link_label", "label": "Link label", "default": "See every batch" },
+    { "type": "url", "id": "stat_link", "label": "Link" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "btn1_label", "label": "Button 1 (filled)", "default": "What is rescued yarn?" },
+    { "type": "url", "id": "btn1_link", "label": "Button 1 link" },
+    { "type": "text", "id": "btn2_label", "label": "Button 2 (outlined)", "default": "The Yarn Passport" },
+    { "type": "url", "id": "btn2_link", "label": "Button 2 link" },
+    { "type": "header", "content": "Photo" },
+    { "type": "image_picker", "id": "photo", "label": "Photo", "info": "About 1040 x 1240 px. Empty = the file named below." },
+    { "type": "text", "id": "photo_file", "label": "Photo file in assets", "default": "echo-v2-tile-cushions.jpg" },
+    { "type": "text", "id": "alt", "label": "Photo description", "default": "Knitted cushion covers on a sofa" },
+    { "type": "text", "id": "focus", "label": "Photo focus", "default": "50% 50%" }
+  ],
+  "blocks": [
+    { "type": "point", "name": "Point", "limit": 4, "settings": [
+      { "type": "text", "id": "icon_file", "label": "Icon file in assets", "info": "For example echo-stat-yarn.png." },
+      { "type": "text", "id": "title", "label": "Title", "default": "Never worn" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [{ "name": "Rescue panel", "blocks": [{ "type": "point" }] }]
+}
+{% endschema %}
