@@ -741,6 +741,7 @@
         "one": "{{ count }} design · fra",
         "other": "{{ count }} designs · fra"
       },
+      "editions": "Udgaver",
       "edits": "Edits",
       "happy_habitat": "Happy Habitat",
       "happy_habitat_kids_rooms": "Happy Habitat (børneværelser)",
@@ -749,7 +750,9 @@
       "our_story": "Vores historie ▾",
       "pillow_talk_sets": "Pillow Talk-sæt",
       "shop": "Shop ▾",
-      "the_family_and_the_factory": "Familien og fabrikken"
+      "shop_by_category": "Køb efter kategori",
+      "the_family_and_the_factory": "Familien og fabrikken",
+      "view_products": "Se produkter"
     },
     "help": {
       "all_topics": "Alle emner",

@@ -784,6 +784,7 @@
         "one": "{{ count }} design · from",
         "other": "{{ count }} designs · from"
       },
+      "editions": "Editions",
       "edits": "Edits",
       "happy_habitat": "Happy Habitat",
       "happy_habitat_kids_rooms": "Happy Habitat (kids’ rooms)",
@@ -792,7 +793,9 @@
       "our_story": "Our Story ▾",
       "pillow_talk_sets": "Pillow Talk sets",
       "shop": "Shop ▾",
-      "the_family_and_the_factory": "The family and the factory"
+      "shop_by_category": "Shop by category",
+      "the_family_and_the_factory": "The family and the factory",
+      "view_products": "View products"
     },
     "help": {
       "all_topics": "All topics",

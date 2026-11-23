@@ -1,0 +1,86 @@
+{%- comment -%}
+  Mega dropdown for one header menu item: an Editions column, a Shop by category column with small icons,
+  and a "Latest Design" photo card. Params: s (the header section settings), idx (panel number)
+{%- endcomment -%}
+{%- liquid
+  capture u_all
+    render 'echo-url', key: 'shop-all'
+  endcapture
+  capture u_sets
+    render 'echo-url', key: 'sets'
+  endcapture
+  capture u_happy
+    render 'echo-url', key: 'happy-habitat'
+  endcapture
+  capture u_last
+    render 'echo-url', key: 'last-pieces'
+  endcapture
+  capture u_gc
+    render 'echo-url', key: 'gift-card'
+  endcapture
+  assign card_link = s.mega_card_link
+  if card_link == blank
+    assign card_link = u_all
+  endif
+-%}
+<div class="mega" data-panel="dd-{{ idx }}" hidden>
+  <div class="wrap mm">
+    <div class="mm-col">
+      <h4>{{ 'echo.header.editions' | t }}</h4>
+      <a href="{{ u_sets }}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
+      <a href="{{ u_happy }}">{{ 'echo.header.happy_habitat' | t }}</a>
+      <a href="{{ u_last }}">{{ 'echo.tracker.last_pieces' | t }}</a>
+      <a href="{{ u_gc }}">{{ 'echo.common.gift_card' | t }}</a>
+      <a class="mm-all" href="{{ u_all }}">{{ 'echo.common.shop_all' | t }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+    <div class="mm-col">
+      <h4>{{ 'echo.header.shop_by_category' | t }}</h4>
+      {%- assign cat_keys = 'blankets,cushions,bags,accessories' | split: ',' -%}
+      {%- for key in cat_keys -%}
+        {%- liquid
+          case key
+            when 'blankets'
+              assign col = settings.echo_col_blankets
+              assign nm = 'echo.common.blankets' | t
+            when 'cushions'
+              assign col = settings.echo_col_cushions
+              assign nm = 'echo.common.cushion_covers' | t
+            when 'bags'
+              assign col = settings.echo_col_bags
+              assign nm = 'echo.common.bags' | t
+            else
+              assign col = settings.echo_col_accessories
+              assign nm = 'echo.common.accessories' | t
+          endcase
+          capture curl
+            render 'echo-url', key: key
+          endcapture
+          if col != blank
+            assign curl = col.url
+            assign nm = col.title
+          endif
+        -%}
+        <a class="mm-cat" href="{{ curl }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            {%- case key -%}
+              {%- when 'blankets' -%}<path d="M3 8.5 12 5l9 3.5-9 3.5-9-3.5Z"/><path d="m3 12.5 9 3.5 9-3.5"/><path d="m3 16.5 9 3.5 9-3.5"/>
+              {%- when 'cushions' -%}<rect x="3.5" y="8" width="12.5" height="12.5" rx="1"/><path d="M8 8V4.5h12.5V17H16"/>
+              {%- when 'bags' -%}<path d="M6.5 8.5h11l1 12h-13l1-12Z"/><path d="M9.5 8.5V7a2.5 2.5 0 0 1 5 0v1.5"/>
+              {%- else -%}<path d="M9 3.5h6l1.2 6-2.2 11h-3.2L10 12.5 9 20.5H5.8L7.8 9.5 9 3.5Z"/>
+            {%- endcase -%}
+          </svg>
+          <span>{{ nm }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+    <a class="mm-card" href="{{ card_link }}">
+      {%- if s.mega_card_image != blank -%}
+        {{ s.mega_card_image | image_url: width: 900 | image_tag: alt: s.mega_card_title, loading: 'lazy', widths: '312, 624, 900', sizes: '312px' }}
+      {%- else -%}
+        <img src="{{ 'echo-twister-outdoor.jpg' | asset_url }}" alt="{{ s.mega_card_title | escape }}" width="312" height="150" loading="lazy">
+      {%- endif -%}
+      <span class="mm-card-label">{{ s.mega_card_label }}</span>
+      <span class="mm-card-foot"><span class="mm-card-title">{{ s.mega_card_title }}</span><span class="mm-card-go">{{ 'echo.header.view_products' | t }}</span></span>
+    </a>
+  </div>
+</div>

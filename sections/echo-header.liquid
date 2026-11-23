@@ -64,6 +64,7 @@
   assign seen_all = ','
 -%}
 {%- assign hm = section.settings.menu -%}
+{%- assign mega_t = section.settings.mega_item | strip | downcase -%}
 <div class="util">
   {%- if section.settings.util_link != blank -%}<a href="{{ section.settings.util_link }}">{{ section.settings.util_text }}</a>{%- else -%}{{ section.settings.util_text }}{%- endif -%}
 </div>
@@ -76,7 +77,10 @@
       {%- for l in hm.links -%}
         {%- assign is_act = false -%}
         {%- if l.active or l.child_active -%}{%- assign is_act = true -%}{%- endif -%}
-        {%- if l.links.size > 0 -%}
+        {%- assign l_t = l.title | downcase -%}
+        {%- assign is_mega = false -%}
+        {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
+        {%- if l.links.size > 0 or is_mega -%}
           <button data-act="dd-{{ forloop.index }}" aria-expanded="false"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }} <span aria-hidden="true">▾</span></button>
         {%- else -%}
           <a href="{{ l.url }}"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}</a>
@@ -115,7 +119,12 @@
 
   {%- if hm != blank -%}
   {%- for l in hm.links -%}
-    {%- if l.links.size > 0 -%}
+    {%- assign l_t = l.title | downcase -%}
+    {%- assign is_mega = false -%}
+    {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
+    {%- if is_mega -%}
+      {%- render 'echo-mega', s: section.settings, idx: forloop.index -%}
+    {%- elsif l.links.size > 0 -%}
   <div class="mega" data-panel="dd-{{ forloop.index }}" hidden>
     <div class="wrap dd">
       {%- assign has_loose = false -%}
@@ -251,6 +260,19 @@
       {%- if hm != blank -%}
         {%- for l in hm.links -%}
           {%- if l.url == '#' or l.url == blank -%}<span class="mm-h">{{ l.title }}</span>{%- else -%}<a href="{{ l.url }}">{{ l.title }}</a>{%- endif -%}
+          {%- assign l_t = l.title | downcase -%}
+          {%- if mega_t != blank and l_t == mega_t -%}
+            <div class="sub">
+              <a href="{% render 'echo-url', key: 'sets' %}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
+              <a href="{% render 'echo-url', key: 'happy-habitat' %}">{{ 'echo.header.happy_habitat' | t }}</a>
+              <a href="{% render 'echo-url', key: 'last-pieces' %}">{{ 'echo.tracker.last_pieces' | t }}</a>
+              <a href="{% render 'echo-url', key: 'gift-card' %}">{{ 'echo.common.gift_card' | t }}</a>
+              <a href="{% render 'echo-url', key: 'blankets' %}">{{ settings.echo_col_blankets.title | default: 'echo.common.blankets' | t }}</a>
+              <a href="{% render 'echo-url', key: 'cushions' %}">{{ settings.echo_col_cushions.title | default: 'echo.common.cushion_covers' | t }}</a>
+              <a href="{% render 'echo-url', key: 'bags' %}">{{ settings.echo_col_bags.title | default: 'echo.common.bags' | t }}</a>
+              <a href="{% render 'echo-url', key: 'accessories' %}">{{ settings.echo_col_accessories.title | default: 'echo.common.accessories' | t }}</a>
+            </div>
+          {%- endif -%}
           {%- if l.links.size > 0 -%}<div class="sub">{%- for c in l.links -%}<a href="{{ c.url }}">{{ c.title }}</a>{%- for g in c.links -%}<a href="{{ g.url }}">{{ g.title }}</a>{%- endfor -%}{%- endfor -%}</div>{%- endif -%}
         {%- endfor -%}
         <a href="{{ routes.account_url }}">{{ 'echo.common.account' | t }}</a>
@@ -310,6 +332,11 @@
   "class": "echo-header",
   "settings": [
     { "type": "link_list", "id": "menu", "label": "Menu", "info": "Content → Menus in Shopify admin. Items with sub-items open a dropdown. Empty = the built-in menu (Shop, Gifts, About us, Help)." },
+    { "type": "text", "id": "mega_item", "label": "Menu item with the big dropdown", "info": "The menu item whose title matches this opens the Editions / Shop by category / Latest Design dropdown. Empty = none.", "default": "By Collections" },
+    { "type": "text", "id": "mega_card_label", "label": "Dropdown card: small label", "default": "Latest Design" },
+    { "type": "text", "id": "mega_card_title", "label": "Dropdown card: product name", "default": "Twisted Rope Knitted Blanket" },
+    { "type": "url", "id": "mega_card_link", "label": "Dropdown card: link", "info": "Empty = all products." },
+    { "type": "image_picker", "id": "mega_card_image", "label": "Dropdown card: photo", "info": "About 624 x 300 px. Empty = a bundled photo." },
     { "type": "text", "id": "util_text", "label": "Top bar text", "default": "Free delivery in Denmark · Free 14-day returns to a Danish address · ★ 4.8 on Trustpilot" },
     { "type": "url", "id": "util_link", "label": "Top bar link" },
     { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to show the text logo, as in the design. The header is black, so use a white or light logo file." },
