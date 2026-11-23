@@ -1,10 +1,30 @@
-/* Yarn Passport: Figma layout, 23 Nov 2026 */
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
     "hero": {
       "type": "echo-passport-banner",
-      "settings": {}
+      "settings": {
+        "crumb_label": "About Us",
+        "crumb_current": "Yarn Passport",
+        "heading": "Every piece comes\nwith its own passport",
+        "drawing_file": "echo-passport-blanket.png",
+        "logo_file": "echo-stat-logo.png",
+        "text_1": "Our Yarn Passport reveals the journey behind your piece — its origins, materials, amount of yarn rescued, and total number of pieces in the batch.",
+        "text_2": "View it on the product page and in your post-purchase email; or find each item’s unique number sewn directly into the physical label.",
+        "picture_file": "echo-passport-booklet.webp",
+        "picture_alt": "An open and a closed EchoByJMG Yarn Passport",
+        "pad_top": 80,
+        "pad_bottom": 100
+      }
     },
     "marquee": {
       "type": "echo-marquee",
@@ -17,37 +37,36 @@
     },
     "read": {
       "type": "echo-passport-read",
-      "settings": {},
       "blocks": {
         "row_1": {
           "type": "row",
           "settings": {
-            "label": "Origin",
             "icon_file": "echo-stat-yarn.png",
+            "label": "Origin",
             "text": "Where the rescued yarn came from, including the original production season and its rescue date."
           }
         },
         "row_2": {
           "type": "row",
           "settings": {
-            "label": "Fibre",
             "icon_file": "echo-stat-knit.png",
+            "label": "Fibre",
             "text": "The yarn's composition, showing exactly what your piece is made from."
           }
         },
         "row_3": {
           "type": "row",
           "settings": {
-            "label": "Batch",
             "icon_file": "echo-stat-logo.png",
+            "label": "Batch",
             "text": "The reference number identifying the rescued yarn lot and its total weight in kilograms."
           }
         },
         "row_4": {
           "type": "row",
           "settings": {
-            "label": "Your Number",
             "icon_file": "echo-stat-pillows.png",
+            "label": "Your Number",
             "text": "The total number of pieces created from this limited production run. Your individual piece number is sewn into the product label."
           }
         }
@@ -57,7 +76,15 @@
         "row_2",
         "row_3",
         "row_4"
-      ]
+      ],
+      "settings": {
+        "heading": "How To Read Your Yarn Passport",
+        "photo": "shopify://shop_images/read_your_yarn_passport.png",
+        "photo_file": "echo-hv-cushion-oat.jpg",
+        "alt": "A knitted cushion cover with its Yarn Passport",
+        "focus": "50% 50%",
+        "pad": 80
+      }
     },
     "illustration": {
       "type": "echo-illustration",
