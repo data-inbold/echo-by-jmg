@@ -63,6 +63,7 @@
   assign design_total = 0
   assign seen_all = ','
 -%}
+{%- assign hm = section.settings.menu -%}
 <div class="util">
   {%- if section.settings.util_link != blank -%}<a href="{{ section.settings.util_link }}">{{ section.settings.util_text }}</a>{%- else -%}{{ section.settings.util_text }}{%- endif -%}
 </div>
@@ -70,6 +71,19 @@
   <div class="wrap nav">
     <button class="burger x" aria-label="{{ 'echo.header.menu' | t | escape }}" aria-expanded="false" data-act="menu">☰</button>
     <a class="logo" href="{{ u_home }}"{% if section.settings.logo != blank %} style="--logo-h:{{ section.settings.logo_height_mobile }}px;--logo-h-d:{{ section.settings.logo_height }}px"{% endif %}>{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 480 | image_tag: alt: shop.name, widths: '160, 240, 360, 480', sizes: '(min-width: 980px) 160px, 100px' }}{% else %}{{ section.settings.logo_text | default: shop.name }}{% endif %}</a>
+    {%- if hm != blank -%}
+    <nav class="main" aria-label="{{ 'echo.header.main' | t | escape }}">
+      {%- for l in hm.links -%}
+        {%- assign is_act = false -%}
+        {%- if l.active or l.child_active -%}{%- assign is_act = true -%}{%- endif -%}
+        {%- if l.links.size > 0 -%}
+          <button data-act="dd-{{ forloop.index }}" aria-expanded="false"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }} <span aria-hidden="true">▾</span></button>
+        {%- else -%}
+          <a href="{{ l.url }}"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+    {%- else -%}
     <nav class="main" aria-label="{{ 'echo.header.main' | t | escape }}">
       {%- if section.settings.show_dropdowns -%}
         <button data-act="mega" aria-expanded="false"{% if shop_cur %} aria-current="page"{% endif %}>{{ 'echo.header.shop' | t }}</button>
@@ -84,6 +98,7 @@
       {%- endif -%}
       <a href="{{ u_help }}"{% if template.suffix == 'help' or template.suffix == 'faq' %} aria-current="page"{% endif %}>{{ 'echo.common.help' | t }}</a>
     </nav>
+    {%- endif -%}
     <div class="tools">
       {%- if localization.available_languages.size > 1 -%}
         {%- form 'localization', class: 'hide-s' -%}
@@ -98,7 +113,26 @@
     </div>
   </div>
 
-  {%- if section.settings.show_dropdowns -%}
+  {%- if hm != blank -%}
+  {%- for l in hm.links -%}
+    {%- if l.links.size > 0 -%}
+  <div class="mega" data-panel="dd-{{ forloop.index }}" hidden>
+    <div class="wrap dd">
+      {%- assign has_loose = false -%}
+      {%- for c in l.links -%}{%- if c.links.size == 0 -%}{%- assign has_loose = true -%}{%- endif -%}{%- endfor -%}
+      {%- if has_loose -%}
+        <div class="dd-col">{%- for c in l.links -%}{%- if c.links.size == 0 -%}<a href="{{ c.url }}">{{ c.title }}</a>{%- endif -%}{%- endfor -%}</div>
+      {%- endif -%}
+      {%- for c in l.links -%}
+        {%- if c.links.size > 0 -%}
+          <div class="dd-col"><a class="dd-h" href="{{ c.url }}">{{ c.title }}</a>{%- for g in c.links -%}<a href="{{ g.url }}">{{ g.title }}</a>{%- endfor -%}</div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- elsif section.settings.show_dropdowns -%}
   <div class="mega" data-panel="mega" hidden>
     <div class="wrap shopmega">
       <div class="tiles">
@@ -214,6 +248,13 @@
 
   <div class="mobile-menu" data-panel="menu" hidden>
     <div class="wrap">
+      {%- if hm != blank -%}
+        {%- for l in hm.links -%}
+          {%- if l.url == '#' or l.url == blank -%}<span class="mm-h">{{ l.title }}</span>{%- else -%}<a href="{{ l.url }}">{{ l.title }}</a>{%- endif -%}
+          {%- if l.links.size > 0 -%}<div class="sub">{%- for c in l.links -%}<a href="{{ c.url }}">{{ c.title }}</a>{%- for g in c.links -%}<a href="{{ g.url }}">{{ g.title }}</a>{%- endfor -%}{%- endfor -%}</div>{%- endif -%}
+        {%- endfor -%}
+        <a href="{{ routes.account_url }}">{{ 'echo.common.account' | t }}</a>
+      {%- else -%}
       <a href="{{ u_all }}"><b>{{ 'echo.common.shop_all' | t }}</b></a>
       <div class="sub">
         {%- assign cat_keys = 'blankets,cushions,bags,accessories' | split: ',' -%}
@@ -249,6 +290,7 @@
       <a href="{{ u_story }}">{{ 'echo.common.about_us' | t }}</a>
       <div class="sub"><a href="{{ u_passport }}">{{ 'echo.common.the_yarn_passport' | t }}</a><a href="{{ u_factory }}">{{ 'echo.common.factory_and_certificates' | t }}</a><a href="{{ u_tracker }}">{{ 'echo.common.rescued_yarn_tracker' | t }}</a><a href="{{ u_journal }}">{{ 'echo.common.journal' | t }}</a></div>
       <a href="{{ u_help }}">{{ 'echo.common.help' | t }}</a><a href="{{ u_contact }}">{{ 'echo.common.contact' | t }}</a><a href="{{ routes.account_url }}">{{ 'echo.common.account' | t }}</a><a href="{{ u_track }}">{{ 'echo.common.track_your_order' | t }}</a><a href="{{ u_returns }}">{{ 'echo.common.returns' | t }}</a>
+      {%- endif -%}
       {%- if localization.available_languages.size > 1 -%}
         {%- form 'localization' -%}
           <div class="row" style="padding:12px 0;gap:14px">
@@ -267,6 +309,7 @@
   "name": "Header (EchoByJMG)",
   "class": "echo-header",
   "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "info": "Content → Menus in Shopify admin. Items with sub-items open a dropdown. Empty = the built-in menu (Shop, Gifts, About us, Help)." },
     { "type": "text", "id": "util_text", "label": "Top bar text", "default": "Free delivery in Denmark · Free 14-day returns to a Danish address · ★ 4.8 on Trustpilot" },
     { "type": "url", "id": "util_link", "label": "Top bar link" },
     { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to show the text logo, as in the design. The header is black, so use a white or light logo file." },

@@ -24,6 +24,9 @@
         </div>
       </div>
     </div>
+    {%- if section.settings.col1_menu != blank -%}
+    <div><h4>{{ section.settings.col1_heading | default: 'echo.common.shop' | t }}</h4><ul>{%- for l in section.settings.col1_menu.links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}</ul></div>
+    {%- else -%}
     <div><h4>{{ 'echo.common.shop' | t }}</h4><ul>
       {%- assign cat_keys = 'blankets,cushions,bags,accessories' | split: ',' -%}
       {%- for key in cat_keys -%}
@@ -54,6 +57,10 @@
       {%- endfor -%}
       <li><a href="{{ u_gifts }}">{{ 'echo.common.gifts' | t }}</a></li><li><a href="{{ u_gc }}">{{ 'echo.common.gift_card' | t }}</a></li>
     </ul></div>
+    {%- endif -%}
+    {%- if section.settings.col2_menu != blank -%}
+    <div><h4>{{ section.settings.col2_heading | default: 'echo.footer.about' | t }}</h4><ul>{%- for l in section.settings.col2_menu.links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}</ul></div>
+    {%- else -%}
     <div><h4>{{ 'echo.footer.about' | t }}</h4><ul>
       <li><a href="{% render 'echo-url', key: 'story' %}">{{ 'echo.footer.our_story' | t }}</a></li>
       <li><a href="{% render 'echo-url', key: 'passport' %}">{{ 'echo.common.the_yarn_passport' | t }}</a></li>
@@ -61,6 +68,10 @@
       <li><a href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.common.rescued_yarn_tracker' | t }}</a></li>
       <li><a href="{% render 'echo-url', key: 'journal' %}">{{ 'echo.common.journal' | t }}</a></li>
     </ul></div>
+    {%- endif -%}
+    {%- if section.settings.col3_menu != blank -%}
+    <div><h4>{{ section.settings.col3_heading | default: 'echo.common.help' | t }}</h4><ul>{%- for l in section.settings.col3_menu.links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}</ul></div>
+    {%- else -%}
     <div><h4>{{ 'echo.common.help' | t }}</h4><ul>
       <li><a href="{% render 'echo-url', key: 'help' %}">{{ 'echo.footer.questions_and_answers' | t }}</a></li>
       <li><a href="{% render 'echo-url', key: 'track' %}">{{ 'echo.common.track_your_order' | t }}</a></li>
@@ -70,6 +81,7 @@
       <li><a href="{% render 'echo-url', key: 'corporate' %}">{{ 'echo.common.corporate_gifts' | t }}</a></li>
       <li><a href="{% render 'echo-url', key: 'contact' %}">{{ 'echo.common.contact' | t }}</a></li>
     </ul></div>
+    {%- endif -%}
   </div>
   <div class="wrap f-bottom">
     <div class="payments f-pay">
@@ -103,6 +115,14 @@
 {
   "name": "Footer (EchoByJMG)",
   "settings": [
+    { "type": "header", "content": "Link columns" },
+    { "type": "paragraph", "content": "Pick a menu from Content → Menus to fill a column. Empty = the built-in links." },
+    { "type": "link_list", "id": "col1_menu", "label": "Column 1 menu" },
+    { "type": "text", "id": "col1_heading", "label": "Column 1 heading", "info": "Empty = Shop" },
+    { "type": "link_list", "id": "col2_menu", "label": "Column 2 menu" },
+    { "type": "text", "id": "col2_heading", "label": "Column 2 heading", "info": "Empty = About" },
+    { "type": "link_list", "id": "col3_menu", "label": "Column 3 menu" },
+    { "type": "text", "id": "col3_heading", "label": "Column 3 heading", "info": "Empty = Help" },
     { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Empty = the bundled EchoByJMG circle logo." },
     { "type": "text", "id": "ships_text", "label": "Shipping line", "default": "Ships from Parcel Feeder, Brøndby · Free 14-day returns · Support [hours] CET" },
     { "type": "text", "id": "legal_text", "label": "Legal seller line", "default": "EchoByJMG is owned by JM Group Limited, Hong Kong, the legal seller." },

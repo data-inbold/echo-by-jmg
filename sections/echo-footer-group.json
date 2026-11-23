@@ -13,7 +13,10 @@
   "sections": {
     "footer": {
       "type": "echo-footer",
-      "settings": {}
+      "settings": {
+        "col2_menu": "footer",
+        "col3_menu": "info-footer-menu"
+      }
     }
   },
   "order": [

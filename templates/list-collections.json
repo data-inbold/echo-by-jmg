@@ -90,7 +90,7 @@
         "stat_link_label": "See every batch",
         "stat_link": "/pages/rescued-yarn-tracker",
         "btn1_label": "What is leftover yarn?",
-        "btn1_link": "/pages/our-story",
+        "btn1_link": "/pages/about-us",
         "btn1_ghost": true,
         "btn2_label": "The Yarn Passport",
         "btn2_link": "/pages/yarn-passport",

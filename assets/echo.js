@@ -28,9 +28,9 @@
   var hdr = $('header.site');
   function setMenu(name) {
     if (!hdr) return;
-    ['mega', 'story', 'menu'].forEach(function (k) {
-      var btn = $('[data-act="' + k + '"]', hdr), panel = $('[data-panel="' + k + '"]', hdr);
-      var open = (k === name) && panel && panel.hidden;
+    $$('[data-panel]', hdr).forEach(function (panel) {
+      var k = panel.getAttribute('data-panel'), btn = $('[data-act="' + k + '"]', hdr);
+      var open = (k === name) && panel.hidden;
       if (panel) panel.hidden = !open;
       if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
@@ -41,19 +41,21 @@
   var hoverOpenedAt = 0;
   if (hdr && window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
     var openT = null, closeT = null;
+    var dropKeys = function () { return $$('[data-panel]', hdr).map(function (p) { return p.getAttribute('data-panel'); }).filter(function (k) { return k !== 'menu'; }); };
     var isOpen = function (k) { var p = $('[data-panel="' + k + '"]', hdr); return p && !p.hidden; };
+    var anyOpen = function () { return dropKeys().some(isOpen); };
     var showMenu = function (k) { if (!isOpen(k)) { setMenu(k); hoverOpenedAt = Date.now(); } };
     var cancel = function () { clearTimeout(openT); clearTimeout(closeT); };
     var scheduleClose = function () {
       clearTimeout(openT); clearTimeout(closeT);
-      closeT = setTimeout(function () { if (isOpen('mega') || isOpen('story')) closeMenus(); }, 250);
+      closeT = setTimeout(function () { if (anyOpen()) closeMenus(); }, 250);
     };
-    ['mega', 'story'].forEach(function (k) {
+    dropKeys().forEach(function (k) {
       var btn = $('[data-act="' + k + '"]', hdr), panel = $('[data-panel="' + k + '"]', hdr);
       if (!btn || !panel) return;
       btn.addEventListener('mouseenter', function () {
         cancel();
-        openT = setTimeout(function () { showMenu(k); }, (isOpen('mega') || isOpen('story')) ? 0 : 120);
+        openT = setTimeout(function () { showMenu(k); }, anyOpen() ? 0 : 120);
       });
       btn.addEventListener('mouseleave', scheduleClose);
       panel.addEventListener('mouseenter', cancel);
@@ -255,7 +257,7 @@
     var b = t.closest('button,[data-act]');
     if (!b) { if (hdr && !hdr.contains(t)) closeMenus(); return; }
     var act = b.getAttribute('data-act');
-    if (act === 'mega' || act === 'story' || act === 'menu') {
+    if (act && hdr && (act === 'menu' || $('[data-panel="' + act + '"]', hdr))) {
       e.preventDefault();
       // A click right after hover opened this menu should keep it open, not toggle it shut.
       if (act !== 'menu' && Date.now() - hoverOpenedAt < 600) return;
