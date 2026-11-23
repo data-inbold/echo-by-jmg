@@ -374,22 +374,23 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .nav .main{flex-wrap:nowrap;white-space:nowrap;min-width:0}
 .nav .main>a,.nav .main>button{white-space:nowrap}
 
-/* big dropdown (Editions / Shop by category / Latest Design card) */
-.mm{display:flex;align-items:stretch;padding-block:24px}
-.mm-col{display:flex;flex-direction:column;gap:0;padding-right:clamp(24px,3vw,48px);min-width:200px}
-.mm-col+.mm-col{padding-left:clamp(24px,3vw,48px);border-left:1px solid #CFC9C0;border-right:1px solid #CFC9C0;min-width:280px}
-.mm-col h4{margin:0 0 14px;font:600 11px/1.4 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--wine)}
-.mm-col a{display:flex;align-items:center;gap:10px;padding:0;font:400 14px/26px var(--body);color:var(--ink);text-decoration:none}
+/* big dropdown: Figma "Mega Menu - Shop Hovering" (280 / 360 columns, 1px dividers, 480 x 232 photo card, 40px gaps) */
+.mm{display:flex;align-items:stretch;padding-block:24px;min-height:280px;box-sizing:border-box}
+.mm-col{box-sizing:content-box;display:flex;flex-direction:column;gap:12px;flex:none;width:280px;padding-right:40px;border-right:1px solid #CFC9C0}
+.mm-col+.mm-col{width:360px;padding-left:40px}
+.mm-col h4{margin:0 0 4px;font:600 11px/19px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--wine)}
+.mm-col a{display:flex;align-items:center;gap:8px;height:28px;padding:0;font:400 16px/28px var(--nav);color:var(--nav-ink,#5f6148);text-decoration:none}
 .mm-col a:hover{color:var(--wine)}
-.mm-cat svg{width:20px;height:20px;flex:none;color:#4A4745}
-.mm .mm-all{align-self:flex-start;margin-top:12px;padding:4px 0;gap:10px;font:600 11px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--ink)}
-.mm-all svg{width:20px;height:20px}
-.mm-card{position:relative;display:block;flex:none;width:312px;height:150px;margin-left:clamp(24px,3vw,48px);overflow:hidden;background:#2b2523;text-decoration:none;color:#fff}
+.mm-cat svg{width:28px;height:28px;flex:none;color:#7A7467}
+.mm .mm-all{align-self:flex-start;height:33px;margin-top:4px;padding:0;gap:10px;font:500 11px/19px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--ink)}
+.mm-all svg{width:24px;height:24px}
+.mm-card{position:relative;display:block;flex:none;width:480px;height:232px;margin-left:40px;overflow:hidden;background:#2b2523;text-decoration:none;color:#fff}
 .mm-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.mm-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.6) 100%);pointer-events:none}
-.mm-card-label{position:absolute;z-index:1;left:16px;top:16px;font:400 12px/1.4 var(--body);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85)}
-.mm-card-foot{position:absolute;z-index:1;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.mm-card-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 12px/1.4 var(--body);color:#fff}
-.mm-card-go{flex:none;font:600 10px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #fff;padding-bottom:2px}
+.mm-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.7) 100%);pointer-events:none}
+.mm-card-label{position:absolute;z-index:1;left:24px;top:24px;font:400 14px/22px var(--body);letter-spacing:.08em;color:rgba(255,255,255,.9)}
+.mm-card-foot{position:absolute;z-index:1;left:24px;right:24px;bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.mm-card-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 16px/22px var(--body);color:#fff}
+.mm-card-go{flex:none;font:500 11px/19px var(--body);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #fff}
 .mm-card:hover .mm-card-go{opacity:.8}
+@media(max-width:1380px){.mm-col{width:200px}.mm-col+.mm-col{width:240px}.mm-card{width:360px;height:232px}}
 @media(max-width:1180px){.mm-card{display:none}.mm-col+.mm-col{border-right:0}}

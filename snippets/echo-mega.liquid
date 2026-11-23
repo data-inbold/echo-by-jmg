@@ -75,9 +75,9 @@
     </div>
     <a class="mm-card" href="{{ card_link }}">
       {%- if s.mega_card_image != blank -%}
-        {{ s.mega_card_image | image_url: width: 900 | image_tag: alt: s.mega_card_title, loading: 'lazy', widths: '312, 624, 900', sizes: '312px' }}
+        {{ s.mega_card_image | image_url: width: 1440 | image_tag: alt: s.mega_card_title, loading: 'lazy', widths: "480, 960, 1440", sizes: "480px" }}
       {%- else -%}
-        <img src="{{ 'echo-twister-outdoor.jpg' | asset_url }}" alt="{{ s.mega_card_title | escape }}" width="312" height="150" loading="lazy">
+        <img src="{{ 'echo-twister-outdoor.jpg' | asset_url }}" alt="{{ s.mega_card_title | escape }}" width="480" height="232" loading="lazy">
       {%- endif -%}
       <span class="mm-card-label">{{ s.mega_card_label }}</span>
       <span class="mm-card-foot"><span class="mm-card-title">{{ s.mega_card_title }}</span><span class="mm-card-go">{{ 'echo.header.view_products' | t }}</span></span>
