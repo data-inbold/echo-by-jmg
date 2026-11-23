@@ -990,6 +990,10 @@
     "product_grid": {
       "next": "Next designs",
       "previous": "Previous designs"
+    },
+    "about_hero": {
+      "next": "Next photos",
+      "previous": "Previous photos"
     }
   }
 }

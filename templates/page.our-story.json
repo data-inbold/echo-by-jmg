@@ -24,8 +24,9 @@
         "heading": "New vision for a 80-year family legacy",
         "lead": "With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home.",
         "logo_file": "echo-stat-logo.png",
-        "speed": 90,
-        "strip_label": "Photos of the factory and the family"
+        "strip_label": "Photos of the factory and the family",
+        "autoplay": true,
+        "interval": 5
       },
       "blocks": {
         "photo_1": {

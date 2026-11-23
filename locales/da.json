@@ -947,6 +947,10 @@
     "product_grid": {
       "next": "Næste designs",
       "previous": "Forrige designs"
+    },
+    "about_hero": {
+      "next": "Næste billeder",
+      "previous": "Forrige billeder"
     }
   }
 }

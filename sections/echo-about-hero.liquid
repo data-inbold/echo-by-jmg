@@ -8,14 +8,18 @@
   .ah-side{display:flex;flex-direction:column;align-items:center;gap:18px;justify-content:space-between}
   .ah-logo{display:block;width:68px;height:68px;object-fit:contain}
   .ah-side p{margin:0;font-size:14px;line-height:1.6;color:#332C2A;width:100%}
-  .ah-strip{margin-top:40px;overflow:hidden;padding-left:max(16px,calc((100vw - var(--wrap)) / 2 + 16px))}
-  @media(min-width:720px){.ah-strip{margin-top:60px;padding-left:max(80px,calc((100vw - var(--wrap)) / 2 + 80px))}}
-  .ah-track{display:flex;gap:24px;width:max-content;animation:ah-slide {{ section.settings.speed }}s linear infinite}
-  .ah-strip:hover .ah-track{animation-play-state:paused}
-  .ah-item{flex:none;width:clamp(200px,21vw,302px);aspect-ratio:302/400;overflow:hidden;background:var(--soft)}
+  .ah-car{--ah-pad:16px;margin-top:40px}
+  @media(min-width:720px){.ah-car{--ah-pad:max(80px,calc((100vw - var(--wrap)) / 2 + 80px));margin-top:60px}}
+  .ah-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-left:var(--ah-pad);scroll-padding-left:var(--ah-pad);outline-offset:-2px}
+  .ah-track::-webkit-scrollbar{display:none}
+  .ah-item{flex:none;width:clamp(220px,21vw,302px);aspect-ratio:302/400;overflow:hidden;background:var(--soft);scroll-snap-align:start}
+  .ah-item:last-child{margin-right:var(--ah-pad)}
   .ah-item img{display:block;width:100%;height:100%;object-fit:cover}
-  @keyframes ah-slide{to{transform:translateX(calc(-50% - 12px))}}
-  @media(prefers-reduced-motion:reduce){.ah-strip{overflow-x:auto}.ah-track{animation:none}.ah-copy{display:none}}
+  .ah-arrows{display:flex;justify-content:flex-end;gap:24px;margin-top:24px}
+  .ah-arrow{width:50px;height:50px;border-radius:50%;border:1px solid var(--wine);background:transparent;color:var(--wine);display:grid;place-items:center;padding:0;cursor:pointer;transition:background-color .18s ease,color .18s ease}
+  .ah-arrow svg{width:24px;height:24px}
+  .ah-arrow:hover{background:var(--wine);color:var(--pink)}
+  @media(prefers-reduced-motion:reduce){.ah-track{scroll-behavior:auto}}
 </style>
 <section class="section ah {{ section.settings.bg }}">
   <div class="wrap">
@@ -28,32 +32,60 @@
     </div>
   </div>
   {%- if photos.size > 0 -%}
-  <div class="ah-strip" aria-label="{{ section.settings.strip_label | escape }}">
-    <div class="ah-track">
-      {%- for round in (1..2) -%}
-        {%- for b in photos -%}
-          <div class="ah-item{% if round == 2 %} ah-copy{% endif %}"{% if round == 2 %} aria-hidden="true"{% endif %} {% if round == 1 %}{{ b.shopify_attributes }}{% endif %}>
-            {%- if b.settings.image != blank -%}
-              {{ b.settings.image | image_url: width: 604 | image_tag: alt: b.settings.alt, loading: 'lazy', widths: '302, 453, 604', sizes: '302px' }}
-            {%- elsif b.settings.file != blank -%}
-              <img src="{{ b.settings.file | asset_url }}" alt="{{ b.settings.alt | escape }}" width="302" height="400" loading="lazy">
-            {%- endif -%}
-          </div>
-        {%- endfor -%}
+  <div class="ah-car" data-ah{% if section.settings.autoplay %} data-autoplay="{{ section.settings.interval }}"{% endif %} role="region" aria-roledescription="carousel" aria-label="{{ section.settings.strip_label | escape }}">
+    <div class="ah-track" data-track tabindex="0">
+      {%- for b in photos -%}
+        <div class="ah-item" {{ b.shopify_attributes }}>
+          {%- if b.settings.image != blank -%}
+            {{ b.settings.image | image_url: width: 604 | image_tag: alt: b.settings.alt, loading: 'lazy', widths: '302, 453, 604', sizes: '302px' }}
+          {%- elsif b.settings.file != blank -%}
+            <img src="{{ b.settings.file | asset_url }}" alt="{{ b.settings.alt | escape }}" width="302" height="400" loading="lazy">
+          {%- endif -%}
+        </div>
       {%- endfor -%}
     </div>
+    <div class="wrap"><div class="ah-arrows">
+      <button type="button" class="ah-arrow" data-prev aria-label="{{ 'echo.about_hero.previous' | t | escape }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+      <button type="button" class="ah-arrow" data-next aria-label="{{ 'echo.about_hero.next' | t | escape }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div></div>
   </div>
+  <script>
+  (function(){
+    var root=document.currentScript.previousElementSibling;
+    if(!root||!root.hasAttribute('data-ah'))return;
+    var tr=root.querySelector('[data-track]'),pv=root.querySelector('[data-prev]'),nx=root.querySelector('[data-next]');
+    function step(){var c=tr.querySelector('.ah-item');return c?c.getBoundingClientRect().width+24:tr.clientWidth}
+    function atEnd(){return tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4}
+    function next(){if(atEnd())tr.scrollTo({left:0,behavior:'smooth'});else tr.scrollBy({left:step(),behavior:'smooth'})}
+    function prev(){if(tr.scrollLeft<=4)tr.scrollTo({left:tr.scrollWidth,behavior:'smooth'});else tr.scrollBy({left:-step(),behavior:'smooth'})}
+    pv.addEventListener('click',function(){prev();restart()});
+    nx.addEventListener('click',function(){next();restart()});
+    tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();next()}else if(e.key==='ArrowLeft'){e.preventDefault();prev()}});
+    var secs=parseInt(root.getAttribute('data-autoplay'),10),t=null,hov=false,foc=false;
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function stop(){if(t){clearInterval(t);t=null}}
+    function start(){stop();if(secs&&!reduce&&!hov&&!foc)t=setInterval(next,secs*1000)}
+    function restart(){start()}
+    if(secs&&!reduce){
+      root.addEventListener('mouseenter',function(){hov=true;stop()});root.addEventListener('mouseleave',function(){hov=false;start()});
+      root.addEventListener('focusin',function(){foc=true;stop()});root.addEventListener('focusout',function(){foc=false;start()});
+      root.addEventListener('touchstart',function(){hov=true;stop()},{passive:true});root.addEventListener('touchend',function(){hov=false;start()},{passive:true});
+      start();
+    }
+  })();
+  </script>
   {%- endif -%}
 </section>
 {% schema %}
 {
-  "name": "About hero with photo strip",
+  "name": "About hero with photo carousel",
   "settings": [
     { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}], "default": "paper" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "New vision for a 80-year family legacy" },
     { "type": "textarea", "id": "lead", "label": "Intro text", "default": "With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home." },
     { "type": "text", "id": "logo_file", "label": "Logo file", "info": "File name in assets. Empty = no logo.", "default": "echo-stat-logo.png" },
-    { "type": "range", "id": "speed", "label": "Seconds per loop", "min": 30, "max": 180, "step": 10, "default": 90 },
+    { "type": "checkbox", "id": "autoplay", "label": "Move to the next photo by itself", "default": true },
+    { "type": "range", "id": "interval", "label": "Seconds per photo", "min": 3, "max": 10, "step": 1, "default": 5 },
     { "type": "text", "id": "strip_label", "label": "Description of the photo strip", "default": "Photos of the factory and the family" }
   ],
   "blocks": [
@@ -64,6 +96,6 @@
     ] }
   ],
   "max_blocks": 12,
-  "presets": [{ "name": "About hero with photo strip" }]
+  "presets": [{ "name": "About hero with photo carousel" }]
 }
 {% endschema %}
