@@ -22,7 +22,7 @@
   {%- assign n = 1 -%}
   {%- if section.settings.image2 != blank or section.settings.photo2 != blank and section.settings.photo2 != 'none' -%}{%- assign n = 2 -%}{%- endif -%}
   <div class="wrap">
-    <div class="ft{% if section.settings.media_side == 'left' %} media-left{% endif %}" style="--ft-tw:{{ section.settings.text_width }}px;--ft-gap:{{ section.settings.gap }}px;--ft-n:{{ n }}">
+    <div class="ft{% if section.settings.media_side == 'left' %} media-left{% endif %}" style="--ft-tw:{{ section.settings.text_width | default: 519 | at_least: 400 | at_most: 700 }}px;--ft-gap:{{ section.settings.gap }}px;--ft-n:{{ n }}">
       <div class="ft-text">
         {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
         {%- if section.settings.divider -%}<hr class="ft-hr">{%- endif -%}
@@ -55,7 +55,7 @@
     { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}], "default": "paper" },
     { "type": "select", "id": "media_side", "label": "Photos on", "options": [{"value": "right", "label": "Right"}, {"value": "left", "label": "Left"}], "default": "right" },
-    { "type": "range", "id": "text_width", "label": "Text column width", "min": 400, "max": 700, "step": 4, "default": 519, "unit": "px" },
+    { "type": "number", "id": "text_width", "label": "Text column width (px)", "info": "Between 400 and 700. The yarn passport block uses 519, the factory block 604.", "default": 519 },
     { "type": "range", "id": "gap", "label": "Space between text and photos", "min": 16, "max": 64, "step": 4, "default": 24, "unit": "px" },
     { "type": "text", "id": "heading", "label": "Heading" },
     { "type": "checkbox", "id": "divider", "label": "Line under the heading", "default": false },
