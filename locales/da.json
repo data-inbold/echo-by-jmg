@@ -736,6 +736,8 @@
       "under_dkk_700": "Under DKK 700"
     },
     "header": {
+      "about_heading": "Om",
+      "about_us": "Om os",
       "bag_html": "Kurv (<span data-bag-count>{{ count }}</span>)",
       "designs_from": {
         "one": "{{ count }} design · fra",
@@ -743,6 +745,7 @@
       },
       "editions": "Udgaver",
       "edits": "Edits",
+      "factory_certificates": "Fabrik & certifikater",
       "happy_habitat": "Happy Habitat",
       "happy_habitat_kids_rooms": "Happy Habitat (børneværelser)",
       "main": "Hovedmenu",
@@ -751,8 +754,11 @@
       "pillow_talk_sets": "Pillow Talk-sæt",
       "shop": "Shop ▾",
       "shop_by_category": "Køb efter kategori",
+      "stories": "Historier",
       "the_family_and_the_factory": "Familien og fabrikken",
-      "view_products": "Se produkter"
+      "view_products": "Se produkter",
+      "yarn_passport": "Garnpasset",
+      "yarn_tracker": "Reddet garn-tracker"
     },
     "help": {
       "all_topics": "Alle emner",

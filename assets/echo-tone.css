@@ -401,3 +401,6 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .mm-card:hover .mm-card-go{opacity:.8}
 @media(max-width:1380px){.mm-col{width:200px}.mm-col+.mm-col{width:240px}.mm-card{width:360px;height:232px}}
 @media(max-width:1180px){.mm-card{display:none}.mm-col+.mm-col{border-right:0}}
+/* About dropdown: a single "About" column (Figma "Mega Menu - About Us") */
+.mm-about{min-height:0}
+.mm-about .mm-col{border-right:0;padding-right:0}

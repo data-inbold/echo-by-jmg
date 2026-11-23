@@ -1,0 +1,16 @@
+{%- comment -%}
+  Dropdown for the About Us header item: one column "About" with the story pages.
+  Params: idx (panel number)
+{%- endcomment -%}
+<div class="mega" data-panel="dd-{{ idx }}" hidden>
+  <div class="wrap mm mm-about">
+    <div class="mm-col">
+      <h4>{{ 'echo.header.about_heading' | t }}</h4>
+      <a href="{% render 'echo-url', key: 'story' %}">{{ 'echo.header.about_us' | t }}</a>
+      <a href="{% render 'echo-url', key: 'passport' %}">{{ 'echo.header.yarn_passport' | t }}</a>
+      <a href="{% render 'echo-url', key: 'factory' %}">{{ 'echo.header.factory_certificates' | t }}</a>
+      <a href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.header.yarn_tracker' | t }}</a>
+      <a href="{% render 'echo-url', key: 'journal' %}">{{ 'echo.header.stories' | t }}</a>
+    </div>
+  </div>
+</div>

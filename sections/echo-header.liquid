@@ -65,6 +65,7 @@
 -%}
 {%- assign hm = section.settings.menu -%}
 {%- assign mega_t = section.settings.mega_item | strip | downcase -%}
+{%- assign about_t = section.settings.about_item | strip | downcase -%}
 <div class="util">
   {%- if section.settings.util_link != blank -%}<a href="{{ section.settings.util_link }}">{{ section.settings.util_text }}</a>{%- else -%}{{ section.settings.util_text }}{%- endif -%}
 </div>
@@ -80,6 +81,7 @@
         {%- assign l_t = l.title | downcase -%}
         {%- assign is_mega = false -%}
         {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
+        {%- if about_t != blank and l_t == about_t -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if l.links.size > 0 or is_mega -%}
           <button data-act="dd-{{ forloop.index }}" aria-expanded="false"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }} <span aria-hidden="true">▾</span></button>
         {%- else -%}
@@ -122,8 +124,10 @@
     {%- assign l_t = l.title | downcase -%}
     {%- assign is_mega = false -%}
     {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
-    {%- if is_mega -%}
+    {%- if mega_t != blank and l_t == mega_t -%}
       {%- render 'echo-mega', s: section.settings, idx: forloop.index -%}
+    {%- elsif about_t != blank and l_t == about_t -%}
+      {%- render 'echo-about-menu', idx: forloop.index -%}
     {%- elsif l.links.size > 0 -%}
   <div class="mega" data-panel="dd-{{ forloop.index }}" hidden>
     <div class="wrap dd">
@@ -273,6 +277,15 @@
               <a href="{% render 'echo-url', key: 'accessories' %}">{{ settings.echo_col_accessories.title | default: 'echo.common.accessories' | t }}</a>
             </div>
           {%- endif -%}
+          {%- if about_t != blank and l_t == about_t -%}
+            <div class="sub">
+              <a href="{% render 'echo-url', key: 'story' %}">{{ 'echo.header.about_us' | t }}</a>
+              <a href="{% render 'echo-url', key: 'passport' %}">{{ 'echo.header.yarn_passport' | t }}</a>
+              <a href="{% render 'echo-url', key: 'factory' %}">{{ 'echo.header.factory_certificates' | t }}</a>
+              <a href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.header.yarn_tracker' | t }}</a>
+              <a href="{% render 'echo-url', key: 'journal' %}">{{ 'echo.header.stories' | t }}</a>
+            </div>
+          {%- endif -%}
           {%- if l.links.size > 0 -%}<div class="sub">{%- for c in l.links -%}<a href="{{ c.url }}">{{ c.title }}</a>{%- for g in c.links -%}<a href="{{ g.url }}">{{ g.title }}</a>{%- endfor -%}{%- endfor -%}</div>{%- endif -%}
         {%- endfor -%}
         <a href="{{ routes.account_url }}">{{ 'echo.common.account' | t }}</a>
@@ -333,6 +346,7 @@
   "settings": [
     { "type": "link_list", "id": "menu", "label": "Menu", "info": "Content → Menus in Shopify admin. Items with sub-items open a dropdown. Empty = the built-in menu (Shop, Gifts, About us, Help)." },
     { "type": "text", "id": "mega_item", "label": "Menu item with the big dropdown", "info": "The menu item whose title matches this opens the Editions / Shop by category / Latest Design dropdown. Empty = none.", "default": "By Collections" },
+    { "type": "text", "id": "about_item", "label": "Menu item with the About dropdown", "info": "The menu item whose title matches this opens the About list (About Us, Yarn Passport, Factory, Tracker, Stories). Empty = none.", "default": "About Us" },
     { "type": "text", "id": "mega_card_label", "label": "Dropdown card: small label", "default": "Latest Design" },
     { "type": "text", "id": "mega_card_title", "label": "Dropdown card: product name", "default": "Twisted Rope Knitted Blanket" },
     { "type": "url", "id": "mega_card_link", "label": "Dropdown card: link", "info": "Empty = all products." },

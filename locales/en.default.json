@@ -779,6 +779,8 @@
       "under_dkk_700": "Under DKK 700"
     },
     "header": {
+      "about_heading": "About",
+      "about_us": "About Us",
       "bag_html": "Bag (<span data-bag-count>{{ count }}</span>)",
       "designs_from": {
         "one": "{{ count }} design · from",
@@ -786,6 +788,7 @@
       },
       "editions": "Editions",
       "edits": "Edits",
+      "factory_certificates": "Factory & Certificates",
       "happy_habitat": "Happy Habitat",
       "happy_habitat_kids_rooms": "Happy Habitat (kids’ rooms)",
       "main": "Main",
@@ -794,8 +797,11 @@
       "pillow_talk_sets": "Pillow Talk sets",
       "shop": "Shop ▾",
       "shop_by_category": "Shop by category",
+      "stories": "Stories",
       "the_family_and_the_factory": "The family and the factory",
-      "view_products": "View products"
+      "view_products": "View products",
+      "yarn_passport": "The Yarn Passport",
+      "yarn_tracker": "Rescued Yarn Tracker"
     },
     "help": {
       "all_topics": "All topics",
