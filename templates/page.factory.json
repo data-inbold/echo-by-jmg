@@ -1,44 +1,69 @@
-/* Factory & Certificates: blended logos added, 23 Nov 2026 */
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
     "hero": {
       "type": "echo-factory-hero",
-      "settings": {}
+      "settings": {
+        "crumb_label": "About Us",
+        "crumb_current": "Factory and certificates",
+        "heading": "Our Factory & Certificates",
+        "text": "Our products are made in our own family-run knitwear factory in Dongguan, China, owned and long-term managed by our parent company JM Group Limited. This gives us direct oversight of craftsmanship, quality control and responsible production.",
+        "photo": "shopify://shop_images/factory.png",
+        "photo_file": "echo-v2-story.jpg",
+        "alt": "Inside our knitwear factory in Dongguan",
+        "focus": "50% 40%",
+        "img_h": 360,
+        "img_h_mobile": 240,
+        "pad_top": 80,
+        "pad_bottom": 0
+      }
     },
     "certs": {
       "type": "echo-certs",
-      "settings": {},
       "blocks": {
         "cert_1": {
           "type": "cert",
           "settings": {
             "logo": "bsci",
+            "logo_file": "",
+            "logo_file_2": "",
             "title": "BSCI compliance",
             "text": "Our parent company JM Group Limited follows the BSCI framework, ensuring safe, fair and responsible working conditions in our manufacturing process. We uphold standards on worker wellbeing, health and safety, fair pay and ethical management. This is the foundation of how every EchoByJMG piece is made.",
-            "no": "Amfori ID 156-020420-000 · Applies to all products"
+            "no": "Amfori ID 156-020420-000 · Applies to all products",
+            "file": ""
           }
         },
         "cert_2": {
           "type": "cert",
           "settings": {
             "logo": "ocs",
+            "logo_file": "echo-cert-ocs.png",
+            "logo_file_2": "echo-cert-ocs-blended.png",
             "title": "Organic Content Standard (OCS)",
             "text": "Our OCS certification means every piece containing organic fibres is independently verified, from raw material to finished product. We choose organic cotton and sustainable wool sourced through trusted suppliers who follow ethical farming and manufacturing processes.",
             "no": "Certificate [no.] · Certified by [body] · Products in scope: [list]",
-            "logo_file": "echo-cert-ocs.png",
-            "logo_file_2": "echo-cert-ocs-blended.png"
+            "file": ""
           }
         },
         "cert_3": {
           "type": "cert",
           "settings": {
             "logo": "rcs",
+            "logo_file": "echo-cert-rcs.png",
+            "logo_file_2": "echo-cert-rcs-blended.png",
             "title": "Recycled Claim Standard (RCS)",
             "text": "We are certified under the Recycled Claim Standard, confirming that the yarns we use are made from verified recycled materials. Much of our collection is knitted from leftover yarn, which keeps good material out of landfill and reduces the need for new fibre.",
             "no": "Certificate [no.] · Certified by [body] · Products in scope: [list]",
-            "logo_file": "echo-cert-rcs.png",
-            "logo_file_2": "echo-cert-rcs-blended.png"
+            "file": ""
           }
         }
       },
@@ -46,7 +71,12 @@
         "cert_1",
         "cert_2",
         "cert_3"
-      ]
+      ],
+      "settings": {
+        "heading": "Certificates",
+        "intro": "BSCI covers the factory, so it applies to everything we make. OCS and RCS cover materials, so each product page shows only the certificates that apply to that product.",
+        "pad": 60
+      }
     },
     "illustration": {
       "type": "echo-illustration",
@@ -64,6 +94,7 @@
         "heading": "Join the Cozy Club",
         "text": "Get 10% off your first order, and be the first to hear about our new designs!",
         "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
       }
