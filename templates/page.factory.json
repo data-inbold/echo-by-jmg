@@ -1,4 +1,4 @@
-/* Factory & Certificates: Figma layout, re-sent after the sections synced, 23 Nov 2026 */
+/* Factory & Certificates: blended logos added, 23 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
@@ -25,7 +25,9 @@
             "logo": "ocs",
             "title": "Organic Content Standard (OCS)",
             "text": "Our OCS certification means every piece containing organic fibres is independently verified, from raw material to finished product. We choose organic cotton and sustainable wool sourced through trusted suppliers who follow ethical farming and manufacturing processes.",
-            "no": "Certificate [no.] · Certified by [body] · Products in scope: [list]"
+            "no": "Certificate [no.] · Certified by [body] · Products in scope: [list]",
+            "logo_file": "echo-cert-ocs.png",
+            "logo_file_2": "echo-cert-ocs-blended.png"
           }
         },
         "cert_3": {
@@ -34,7 +36,9 @@
             "logo": "rcs",
             "title": "Recycled Claim Standard (RCS)",
             "text": "We are certified under the Recycled Claim Standard, confirming that the yarns we use are made from verified recycled materials. Much of our collection is knitted from leftover yarn, which keeps good material out of landfill and reduces the need for new fibre.",
-            "no": "Certificate [no.] · Certified by [body] · Products in scope: [list]"
+            "no": "Certificate [no.] · Certified by [body] · Products in scope: [list]",
+            "logo_file": "echo-cert-rcs.png",
+            "logo_file_2": "echo-cert-rcs-blended.png"
           }
         }
       },
