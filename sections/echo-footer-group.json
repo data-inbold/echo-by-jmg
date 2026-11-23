@@ -15,9 +15,7 @@
       "type": "echo-footer",
       "settings": {
         "col2_menu": "footer",
-        "col3_menu": "info-footer-menu",
-        "col2_heading": "About",
-        "col3_heading": "Help"
+        "col3_menu": "info-footer-menu"
       }
     }
   },
