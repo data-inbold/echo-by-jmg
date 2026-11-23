@@ -1,33 +1,14 @@
+/* Factory & Certificates: Figma layout, 23 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
-    "crumbs": {
-      "type": "echo-breadcrumbs",
-      "settings": {
-        "p1_label": "About us",
-        "p1_link": "echo:story",
-        "current": "Factory and certificates"
-      }
-    },
-    "intro": {
-      "type": "echo-split",
-      "settings": {
-        "spacing": "tight",
-        "media_first": false,
-        "gap": 14,
-        "heading": "Our factory and certificates",
-        "heading_tag": true,
-        "heading_size": "h1",
-        "lead": "Our products are made in our own family-run knitwear factory in [city], China, owned and long-term managed by our parent company JM Group Limited. This gives us direct oversight of craftsmanship, quality control and responsible production.",
-        "label": "Photo: the factory building and the knitting hall",
-        "ar": "4/3"
-      }
+    "hero": {
+      "type": "echo-factory-hero",
+      "settings": {}
     },
     "certs": {
       "type": "echo-certs",
-      "settings": {
-        "bg": "alt"
-      },
+      "settings": {},
       "blocks": {
         "cert_1": {
           "type": "cert",
@@ -35,7 +16,7 @@
             "logo": "bsci",
             "title": "BSCI compliance",
             "text": "Our parent company JM Group Limited follows the BSCI framework, ensuring safe, fair and responsible working conditions in our manufacturing process. We uphold standards on worker wellbeing, health and safety, fair pay and ethical management. This is the foundation of how every EchoByJMG piece is made.",
-            "no": "amfori ID 156-020420-000 · applies to all products"
+            "no": "Amfori ID 156-020420-000 · Applies to all products"
           }
         },
         "cert_2": {
@@ -44,7 +25,7 @@
             "logo": "ocs",
             "title": "Organic Content Standard (OCS)",
             "text": "Our OCS certification means every piece containing organic fibres is independently verified, from raw material to finished product. We choose organic cotton and sustainable wool sourced through trusted suppliers who follow ethical farming and manufacturing processes.",
-            "no": "Certificate [no.] · certified by [body] · products in scope: [list]"
+            "no": "Certificate [no.] · Certified by [body] · Products in scope: [list]"
           }
         },
         "cert_3": {
@@ -53,7 +34,7 @@
             "logo": "rcs",
             "title": "Recycled Claim Standard (RCS)",
             "text": "We are certified under the Recycled Claim Standard, confirming that the yarns we use are made from verified recycled materials. Much of our collection is knitted from leftover yarn, which keeps good material out of landfill and reduces the need for new fibre.",
-            "no": "Certificate [no.] · certified by [body] · products in scope: [list]"
+            "no": "Certificate [no.] · Certified by [body] · Products in scope: [list]"
           }
         }
       },
@@ -63,22 +44,31 @@
         "cert_3"
       ]
     },
-    "beyond": {
-      "type": "echo-split",
+    "illustration": {
+      "type": "echo-illustration",
       "settings": {
-        "media_first": false,
-        "gap": 12,
-        "heading": "Beyond the factory",
-        "caption": "We support environmental initiatives in partnership with WWF Hong Kong. Our operations are designed to be responsible and continuously improving, with a focus on reducing our environmental impact over time. Our packaging is made from recycled materials and can be reused for returns.",
-        "label": "Photo: packaging",
-        "ar": "16/9"
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 20,
+        "space_below": 20
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
       }
     }
   },
   "order": [
-    "crumbs",
-    "intro",
+    "hero",
     "certs",
-    "beyond"
+    "illustration",
+    "club"
   ]
 }

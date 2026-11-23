@@ -1,30 +1,63 @@
-<section class="section {{ section.settings.spacing }} {{ section.settings.bg }}"><div class="wrap stack" style="gap:20px">
-  <h2 class="h2">{{ section.settings.heading }}</h2>
-  <p class="muted" style="margin:0;max-width:62ch">{{ section.settings.intro }}</p>
-  <div class="grid g3">
+{%- comment -%} Certificates: heading, intro and a bordered table of cards separated by thin lines. Logo = the built-in BSCI / OCS / RCS picture, or any files from assets. {%- endcomment -%}
+<style>
+  .cf{padding:{{ section.settings.pad }}px 16px}
+  @media(min-width:720px){.cf{padding-inline:max(80px,calc((100vw - var(--wrap)) / 2 + 80px))}}
+  .cf-h{margin:0 0 24px;font:300 clamp(28px,2.8vw,40px)/normal var(--display);color:var(--wine)}
+  .cf-intro{margin:0 0 24px;max-width:610px;font:400 14px/1.6 var(--body);color:#332C2A}
+  .cf-table{display:grid;grid-template-columns:1fr;border:1px solid #ABA499}
+  @media(min-width:900px){.cf-table{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .cf-card{display:flex;flex-direction:column;gap:24px;padding:24px 24px 40px;border-top:1px solid #ABA499}
+  .cf-card:first-child{border-top:0}
+  @media(min-width:900px){.cf-card{border-top:0;border-left:1px solid #ABA499}.cf-card:first-child{border-left:0}}
+  .cf-logos{display:flex;align-items:center;gap:10px;height:120px}
+  .cf-logos img{display:block;height:120px;width:auto;max-width:48%;object-fit:contain}
+  .cf-info{display:flex;flex-direction:column;gap:12px}
+  .cf-t{margin:0;font:600 18px/normal var(--body);color:#332C2A}
+  .cf-x{margin:0;font:400 14px/1.6 var(--body);color:#55524E}
+  .cf-m{margin:0;font:400 12px/normal var(--body);letter-spacing:.05em;color:#ABA499}
+  .cf-link{align-self:flex-start;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#332C2A;text-decoration:none;border-bottom:1px solid #332C2A;padding-bottom:2px}
+</style>
+<section class="cf">
+  <h2 class="cf-h">{{ section.settings.heading }}</h2>
+  <p class="cf-intro">{{ section.settings.intro }}</p>
+  <div class="cf-table">
     {%- for b in section.blocks -%}
-      <div class="cert" {{ b.shopify_attributes }}>{% render 'echo-cert-logo', k: b.settings.logo, h: 96 %}<b>{{ b.settings.title }}</b><span class="muted" style="font-size:14px">{{ b.settings.text }}</span><span class="mono" style="text-transform:none;letter-spacing:0">{{ b.settings.no }}</span>
-        {%- if b.settings.file != blank -%}<a class="link" href="{{ b.settings.file }}" target="_blank" rel="noopener" style="align-self:flex-start;font-size:13px">{{ 'echo.certs.view_certificate' | t }}</a>{%- else -%}<a class="link" href="#" data-toast="Certificate PDF coming soon." style="align-self:flex-start;font-size:13px">{{ 'echo.certs.view_certificate' | t }}</a>{%- endif -%}
+      <div class="cf-card" {{ b.shopify_attributes }}>
+        <div class="cf-logos">
+          {%- if b.settings.logo_file != blank -%}
+            <img src="{{ b.settings.logo_file | asset_url }}" alt="{{ b.settings.title | escape }}" height="120" loading="lazy">
+            {%- if b.settings.logo_file_2 != blank -%}<img src="{{ b.settings.logo_file_2 | asset_url }}" alt="" height="120" loading="lazy">{%- endif -%}
+          {%- else -%}
+            {%- render 'echo-cert-logo', k: b.settings.logo, h: 120 -%}
+          {%- endif -%}
+        </div>
+        <div class="cf-info">
+          <p class="cf-t">{{ b.settings.title }}</p>
+          <p class="cf-x">{{ b.settings.text }}</p>
+          {%- if b.settings.no != blank -%}<p class="cf-m">{{ b.settings.no }}</p>{%- endif -%}
+          {%- if b.settings.file != blank -%}<a class="cf-link" href="{{ b.settings.file }}" target="_blank" rel="noopener">{{ 'echo.certs.view_certificate' | t }}</a>{%- endif -%}
+        </div>
       </div>
     {%- endfor -%}
   </div>
-</div></section>
+</section>
 {% schema %}
 {
   "name": "Certificates",
   "settings": [
-    {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
-    {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
     { "type": "text", "id": "heading", "label": "Heading", "default": "Certificates" },
-    { "type": "textarea", "id": "intro", "label": "Intro", "default": "BSCI covers the factory, so it applies to everything we make. OCS and RCS cover materials, so each product page shows only the certificates that apply to that product." }
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "BSCI covers the factory, so it applies to everything we make. OCS and RCS cover materials, so each product page shows only the certificates that apply to that product." },
+    { "type": "range", "id": "pad", "label": "Space above and below", "min": 0, "max": 160, "step": 10, "default": 60, "unit": "px" }
   ],
   "blocks": [
     { "type": "cert", "name": "Certificate", "settings": [
       { "type": "select", "id": "logo", "label": "Logo", "options": [{ "value": "bsci", "label": "BSCI" }, { "value": "ocs", "label": "OCS" }, { "value": "rcs", "label": "RCS" }], "default": "bsci" },
+      { "type": "text", "id": "logo_file", "label": "Logo file in assets (optional)", "info": "Replaces the logo above. For example echo-cert-ocs.png." },
+      { "type": "text", "id": "logo_file_2", "label": "Second logo file in assets (optional)", "info": "Shown next to the first one, for example the blended logo." },
       { "type": "text", "id": "title", "label": "Name", "default": "BSCI compliance" },
       { "type": "textarea", "id": "text", "label": "Text" },
       { "type": "text", "id": "no", "label": "Number and scope" },
-      { "type": "url", "id": "file", "label": "Certificate PDF link", "info": "Upload the PDF in Content › Files and paste its link." }
+      { "type": "url", "id": "file", "label": "Certificate PDF link", "info": "Upload the PDF in Content › Files and paste its link. Empty = no link shown." }
     ] }
   ],
   "presets": [{ "name": "Certificates" }]
