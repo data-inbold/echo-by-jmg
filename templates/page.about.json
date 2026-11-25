@@ -1,4 +1,12 @@
-/* About Us: Yarn Passport picture without a background, 25 Nov 2026 */
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
@@ -18,6 +26,7 @@
         "photo_1": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel1.png",
             "file": "echo-ming-portrait.jpg",
             "alt": "Ming at the factory"
           }
@@ -25,6 +34,7 @@
         "photo_2": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel2.png",
             "file": "echo-v2-story.jpg",
             "alt": "Ming and a colleague going through yarn samples"
           }
@@ -32,6 +42,7 @@
         "photo_3": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel3.png",
             "file": "echo-v2-process.jpg",
             "alt": "A JM Group yarn label on a knitted fair-isle piece"
           }
@@ -39,6 +50,7 @@
         "photo_4": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel4.png",
             "file": "echo-v2-tile-blankets.jpg",
             "alt": "A knitted blanket on a sofa"
           }
@@ -46,22 +58,32 @@
         "photo_5": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel5.png",
             "file": "echo-v2-tile-cushions.jpg",
             "alt": "A knitted cushion cover on a sofa"
+          }
+        },
+        "photo_d8jFnh": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/carousel6.png",
+            "file": "",
+            "alt": ""
           }
         },
         "photo_6": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel7.png",
             "file": "echo-v2-tile-bags.jpg",
             "alt": "A knitted bag on a side table"
           }
         },
-        "photo_7": {
+        "photo_YHLU4F": {
           "type": "photo",
           "settings": {
-            "file": "echo-v2-tile-accessories.jpg",
-            "alt": "A knitted beanie"
+            "file": "",
+            "alt": ""
           }
         }
       },
@@ -71,8 +93,9 @@
         "photo_3",
         "photo_4",
         "photo_5",
+        "photo_d8jFnh",
         "photo_6",
-        "photo_7"
+        "photo_YHLU4F"
       ],
       "settings": {
         "bg": "paper",
@@ -286,11 +309,11 @@
         "icon_file": "echo-yarnknitting-ourstory.png",
         "ar": "787/443",
         "image": "shopify://shop_images/passport-yarn.png",
+        "clear_bg": true,
         "photo": "echo-v2-process.jpg",
         "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
         "photo2": "",
-        "alt2": "",
-        "clear_bg": true
+        "alt2": ""
       }
     },
     "factory": {
@@ -310,6 +333,7 @@
         "btn_link": "echo:factory",
         "icon_file": "",
         "ar": "302/480",
+        "clear_bg": false,
         "photo": "echo-v2-story.jpg",
         "alt": "The knitting hall",
         "photo2": "echo-v2-tile-blankets.jpg",
