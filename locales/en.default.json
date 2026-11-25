@@ -961,10 +961,13 @@
       "edition_left_html": "<b>Edition of {{ total }} · Only {{ left }} items left in stock</b> This colorway is limited strictly to this batch and cannot be restocked once sold out.",
       "faq_title": "Questions about this {{ item }}",
       "see_current": "See current {{ name }}",
-      "sold_out_html": "<b>Edition of {{ total }} · This colourway is sold out</b>"
+      "sold_out_html": "<b>Edition of {{ total }} · This colourway is sold out</b>",
+      "faq_title_common": "Questions about this {{ item }}"
     },
     "product_faq_reviews": {
-      "reviews": "From our customers"
+      "reviews": "From our customers",
+      "from_our_customers": "From our customers",
+      "denmark": "Denmark"
     },
     "product_passport": {
       "about_our_certificates": "About our certificates",

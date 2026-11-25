@@ -916,12 +916,15 @@
     },
     "product": {
       "edition_left_html": "<b>Udgave på {{ total }} · Kun {{ left }} tilbage på lager</b> Denne farvekombination findes kun i dette parti og kan ikke genopfyldes, når den er udsolgt.",
-      "faq_title": "Spørgsmål om dette produkt",
+      "faq_title": "Spørgsmål om dette {{ item }}",
       "see_current": "Se aktuelle {{ name }}",
-      "sold_out_html": "<b>Udgave på {{ total }} · Denne farvekombination er udsolgt</b>"
+      "sold_out_html": "<b>Udgave på {{ total }} · Denne farvekombination er udsolgt</b>",
+      "faq_title_common": "Spørgsmål om denne {{ item }}"
     },
     "product_faq_reviews": {
-      "reviews": "Fra vores kunder"
+      "reviews": "Fra vores kunder",
+      "from_our_customers": "Fra vores kunder",
+      "denmark": "Danmark"
     },
     "product_passport": {
       "about_our_certificates": "Om vores certificeringer",
