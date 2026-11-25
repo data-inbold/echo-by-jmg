@@ -1,79 +1,71 @@
 {% comment %}
   Yarn Passport block for the Order confirmation email.
   Design: Figma "yarn passport" node 728:3183.
-  Paste inside Settings > Notifications > Order confirmation > Edit code,
-  directly under the line-items table (or wherever the old passport block sits).
+  Replaces the previous passport block in
+  Settings > Notifications > Order confirmation > Edit code.
 
-  BEFORE PASTING
-  1. Upload the 2 PNGs in docs/emails/img (pillow, knit) to Shopify > Content > Files.
-     Keep the file names; the {{ '...' | file_url }} filter below finds them by name.
-     (SVG is NOT supported by Gmail/Outlook, so PNGs are used.)
-  2. Fields marked TODO need real data. Notification templates can only read
-     fields on the order/product (e.g. product metafields that are exposed to
-     notifications). Metaobject "Yarn batch" values used on the product page are
-     usually NOT readable here. Either expose them as product metafields, or
-     keep the placeholders and edit the text by hand.
+  BEFORE PASTING: upload docs/emails/img/yarn-passport-pillow.png and
+  yarn-passport-knit.png to Shopify > Content > Files (keep the file names).
+  PNG is used because Gmail/Outlook do not render SVG.
 {% endcomment %}
 
-{% for line in subtotal_line_items %}
-  {% if line.product.type != 'Gift Card' %}
-  {% assign pp_origin = line.product.metafields.custom.origin.value | default: 'Leftover from [season] knitwear run for a [luxury] fashion house' %}
-  {% assign pp_fibre  = line.product.metafields.custom.composition.value | default: '[Composition]' %}
-  {% assign pp_batch  = line.product.metafields.custom.batch.value | default: '[Batch] - [kg] rescued' %}
-  {% assign pp_made   = line.product.metafields.custom.made.value | default: 'JM Group knitwear factory, [city]' %}
+{% assign yp_made_by = 'JM Group knitwear factory' %}
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:24px 0;background:#ffffff;">
+{% for line in line_items %}
+  {% if line.product.metafields.custom.yp_batch_id != blank %}
+<table class="row section">
   <tr>
-    <td align="center" style="padding:24px 16px;">
+    <td class="section__cell">
+      <center>
+        <table class="container">
+          <tr>
+            <td align="center" style="padding:24px 0;">
 
-      <!-- pillow icon -->
-      <img src="{{ 'yarn-passport-pillow.png' | file_url }}" width="60" height="60" alt="" style="display:block;border:0;margin:0 auto 23px;">
+              <img src="{{ 'yarn-passport-pillow.png' | file_url }}" width="60" height="60" alt="" style="display:block;border:0;margin:0 auto 23px;">
 
-      <!-- passport card -->
-      <table role="presentation" width="476" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:476px;border-collapse:collapse;">
-        <tr>
-          <td width="50%" valign="top" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-            <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;">Product</p>
-            <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:20px;line-height:1.2;color:#000000;">
-              {{ line.product.title }}
-            </p>
-          </td>
-          <td width="50%" valign="top" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-            <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;">Color</p>
-            <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;">
-              {% if line.variant.title != 'Default Title' %}{{ line.variant.title }}{% else %}&nbsp;{% endif %}
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-            <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;">Origin</p>
-            <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;">{{ pp_origin }}</p>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-            <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;">Fibre</p>
-            <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;">{{ pp_fibre | newline_to_br }}</p>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-            <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;">Batch</p>
-            <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;">{{ pp_batch }}</p>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-            <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;">Made</p>
-            <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;">{{ pp_made }}</p>
-          </td>
-        </tr>
-      </table>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:476px;width:100%;border-collapse:collapse;">
+                <tr>
+                  <td width="50%" valign="top" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Product</p>
+                    <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:20px;line-height:1.2;color:#000000;text-align:left;">{{ line.product.title }}</p>
+                  </td>
+                  <td width="50%" valign="top" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Color</p>
+                    <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_colourway | default: '&nbsp;' }}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Origin</p>
+                    <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_origin }}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Fibre</p>
+                    <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_fibre }}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Batch</p>
+                    <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_batch_id }}{% if line.product.metafields.custom.yp_kg != blank %} - {{ line.product.metafields.custom.yp_kg }} kg rescued{% endif %}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Made</p>
+                    <p style="margin:0;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ yp_made_by }}</p>
+                  </td>
+                </tr>
+              </table>
 
-      <!-- knitting icon -->
-      <img src="{{ 'yarn-passport-knit.png' | file_url }}" width="64" height="68" alt="" style="display:block;border:0;margin:23px auto 0;">
+              <img src="{{ 'yarn-passport-knit.png' | file_url }}" width="64" height="68" alt="" style="display:block;border:0;margin:23px auto 0;">
 
+            </td>
+          </tr>
+        </table>
+      </center>
     </td>
   </tr>
 </table>
