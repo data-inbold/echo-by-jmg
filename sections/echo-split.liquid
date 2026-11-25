@@ -2,7 +2,21 @@
 {%- comment -%} Text + media side by side. The most used layout in the design. {%- endcomment -%}
 {%- capture media -%}
   {%- render 'echo-media', video: section.settings.video, image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.label, ar: section.settings.ar, eager: section.settings.heading_tag -%}
+  {%- case section.settings.img_thread -%}
+    {%- when 'loop' -%}{%- assign th_shape = 'loop' -%}{%- assign th_x = -70 -%}{%- assign th_y = 280 -%}{%- assign th_w = 373 -%}{%- assign th_W = 680 -%}{%- assign th_blue = false -%}
+    {%- when 'loop_pdp' -%}{%- assign th_shape = 'loop' -%}{%- assign th_x = -161 -%}{%- assign th_y = 280 -%}{%- assign th_w = 373 -%}{%- assign th_W = 519 -%}{%- assign th_blue = false -%}
+    {%- when 'gift' -%}{%- assign th_shape = 'gift' -%}{%- assign th_x = 487 -%}{%- assign th_y = -259 -%}{%- assign th_w = 463 -%}{%- assign th_W = 810 -%}{%- assign th_blue = true -%}
+  {%- endcase -%}
 {%- endcapture -%}
+{%- if section.settings.img_thread != 'none' and section.settings.img_thread != blank -%}
+  {%- capture media -%}
+    <div class="ethr-host">
+      {%- if th_blue -%}{%- render 'echo-thread', shape: th_shape, x: th_x, y: th_y, w: th_w, W: th_W -%}{%- endif -%}
+      {{ media }}
+      <div class="ethr-clip">{%- render 'echo-thread', shape: th_shape, x: th_x, y: th_y, w: th_w, W: th_W, color: '#fff' -%}</div>
+    </div>
+  {%- endcapture -%}
+{%- endif -%}
 {%- capture text -%}
   <div class="stack" style="gap:{{ section.settings.gap }}px">
     {%- if section.settings.eyebrow != blank -%}<span class="mono">{{ section.settings.eyebrow }}</span>{%- endif -%}
@@ -62,7 +76,7 @@
 {%- unless section.settings.hide_on_gift and product.gift_card? -%}
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}"{% if section.settings.focus != blank %} style="--focus:{{ section.settings.focus }}"{% endif %}>
   {%- if section.settings.outer_heading != blank -%}<div class="wrap" style="margin-bottom:28px"><h2 class="h2">{{ section.settings.outer_heading }}</h2></div>{%- endif -%}
-  {%- if section.settings.thread -%}<img class="split-thread" src="{{ 'echo-thread-ourstory.png' | asset_url }}" alt="" width="706" height="1494" loading="lazy">{%- endif -%}
+  {%- if section.settings.thread -%}{%- render 'echo-thread', shape: 'long', side: 'r', x: -14, y: -182, w: 366, cap: true, z: 3, mx: -24, my: -90, mw: 150 -%}{%- endif -%}
   {%- if section.settings.icon -%}<img class="split-ico" src="{{ 'echo-yarnknitting-ourstory.png' | asset_url }}" alt="" width="109" height="120" loading="lazy">{%- endif -%}
   <div class="wrap split{% if section.settings.rev %} rev{% endif %}{% if section.settings.panel != 'none' %} panel panel-{{ section.settings.panel }}{% if section.settings.media_first %} mf{% endif %}{% endif %}"{% if section.settings.top %} style="align-items:start"{% endif %}>
     {%- if section.settings.media_first -%}{{ media }}{{ text }}{%- else -%}{{ text }}{{ media }}{%- endif -%}
@@ -109,6 +123,12 @@
     { "type": "text", "id": "alt", "label": "Image description" },
     { "type": "checkbox", "id": "icon", "label": "Yarn and knitting icon in the bottom-right corner of the panel", "default": false },
     { "type": "checkbox", "id": "thread", "label": "Blue thread at the right edge of the page", "default": false },
+    { "type": "select", "id": "img_thread", "label": "Thread line on the photo", "default": "none", "options": [
+      { "value": "none", "label": "None" },
+      { "value": "loop", "label": "White loop (home: Our story)" },
+      { "value": "loop_pdp", "label": "White loop (product page: Our story)" },
+      { "value": "gift", "label": "Blue and white thread (gift with a story)" }
+    ] },
     { "type": "text", "id": "focus", "label": "Photo focus (CSS position)", "info": "Which part of the photo stays visible when it is cropped, for example 70% 60% = right and a little below centre. 50% 50% = centred.", "default": "50% 50%" },
     { "type": "textarea", "id": "label", "label": "Placeholder text (shown until media is added)", "default": "20 sec loop: Ming and the family on the factory floor, faces visible." },
     { "type": "text", "id": "ar", "label": "Media shape (aspect ratio)", "default": "4/3" },

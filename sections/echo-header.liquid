@@ -65,6 +65,7 @@
 -%}
 {%- assign hm = section.settings.menu -%}
 {%- assign mega_t = section.settings.mega_item | strip | downcase -%}
+{%- assign mega_set = ',' | append: mega_t | replace: ', ', ',' | replace: ' ,', ',' | append: ',' -%}
 {%- assign about_t = section.settings.about_item | strip | downcase -%}
 {%- assign help_t = section.settings.help_item | strip | downcase -%}
 <div class="util">
@@ -73,15 +74,16 @@
 <header class="site" id="hdr">
   <div class="wrap nav">
     <button class="burger x" aria-label="{{ 'echo.header.menu' | t | escape }}" aria-expanded="false" data-act="menu">☰</button>
-    <a class="logo" href="{{ u_home }}"{% if section.settings.logo != blank %} style="--logo-h:{{ section.settings.logo_height_mobile }}px;--logo-h-d:{{ section.settings.logo_height }}px"{% endif %}>{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 480 | image_tag: alt: shop.name, widths: '160, 240, 360, 480', sizes: '(min-width: 980px) 160px, 100px' }}{% else %}{{ section.settings.logo_text | default: shop.name }}{% endif %}</a>
+    <a class="logo" href="{{ u_home }}" style="--logo-h:{{ section.settings.logo_height_mobile }}px;--logo-h-d:{{ section.settings.logo_height }}px">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 480 | image_tag: alt: shop.name, widths: '160, 240, 360, 480', sizes: '(min-width: 980px) 160px, 100px' }}{% else %}<img src="{{ 'echo-logo.svg' | asset_url }}" alt="{{ shop.name | escape }}" width="142" height="32">{% endif %}</a>
     {%- if hm != blank -%}
     <nav class="main" aria-label="{{ 'echo.header.main' | t | escape }}">
       {%- for l in hm.links -%}
         {%- assign is_act = false -%}
         {%- if l.active or l.child_active -%}{%- assign is_act = true -%}{%- endif -%}
         {%- assign l_t = l.title | downcase -%}
+{%- assign l_key = ',' | append: l_t | append: ',' -%}
         {%- assign is_mega = false -%}
-        {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
+        {%- if mega_t != blank and mega_set contains l_key -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if about_t != blank and l_t == about_t -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if help_t != blank and l_t == help_t -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if l.links.size > 0 or is_mega -%}
@@ -115,18 +117,19 @@
           {%- endfor -%}
         {%- endform -%}
       {%- endif -%}
-      <button data-act="search">{{ 'echo.common.search' | t }}</button>
-      <a class="hide-s" href="{{ routes.account_url }}">{{ 'echo.common.account' | t }}</a>
-      <button data-act="bag" data-bag-label aria-label="{{ 'echo.bag.aria' | t: count: cart.item_count | escape }}"><b>{{ 'echo.header.bag_html' | t: count: cart.item_count }}</b></button>
+      <button data-act="search"><img class="hico" src="{{ 'echo-icon-search.png' | asset_url }}" alt="" width="24" height="24"><span class="hlbl">{{ 'echo.common.search' | t }}</span></button>
+      <a class="hide-s" href="{{ routes.account_url }}"><img class="hico" src="{{ 'echo-icon-account.png' | asset_url }}" alt="" width="24" height="24"><span class="hlbl">{{ 'echo.common.account' | t }}</span></a>
+      <button class="hcart" data-act="bag" data-bag-label aria-label="{{ 'echo.bag.aria' | t: count: cart.item_count | escape }}"><img class="hico" src="{{ 'echo-icon-cart.png' | asset_url }}" alt="" width="24" height="24"><span>{{ 'echo.header.bag_html' | t: count: cart.item_count }}</span></button>
     </div>
   </div>
 
   {%- if hm != blank -%}
   {%- for l in hm.links -%}
     {%- assign l_t = l.title | downcase -%}
+{%- assign l_key = ',' | append: l_t | append: ',' -%}
     {%- assign is_mega = false -%}
-    {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
-    {%- if mega_t != blank and l_t == mega_t -%}
+    {%- if mega_t != blank and mega_set contains l_key -%}{%- assign is_mega = true -%}{%- endif -%}
+    {%- if mega_t != blank and mega_set contains l_key -%}
       {%- render 'echo-mega', s: section.settings, idx: forloop.index -%}
     {%- elsif about_t != blank and l_t == about_t -%}
       {%- render 'echo-about-menu', idx: forloop.index -%}
@@ -269,7 +272,8 @@
         {%- for l in hm.links -%}
           {%- if l.url == '#' or l.url == blank -%}<span class="mm-h">{{ l.title }}</span>{%- else -%}<a href="{{ l.url }}">{{ l.title }}</a>{%- endif -%}
           {%- assign l_t = l.title | downcase -%}
-          {%- if mega_t != blank and l_t == mega_t -%}
+{%- assign l_key = ',' | append: l_t | append: ',' -%}
+          {%- if mega_t != blank and mega_set contains l_key -%}
             <div class="sub">
               <a href="{% render 'echo-url', key: 'sets' %}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
               <a href="{% render 'echo-url', key: 'happy-habitat' %}">{{ 'echo.header.happy_habitat' | t }}</a>
@@ -360,7 +364,7 @@
   "class": "echo-header",
   "settings": [
     { "type": "link_list", "id": "menu", "label": "Menu", "info": "Content → Menus in Shopify admin. Items with sub-items open a dropdown. Empty = the built-in menu (Shop, Gifts, About us, Help)." },
-    { "type": "text", "id": "mega_item", "label": "Menu item with the big dropdown", "info": "The menu item whose title matches this opens the Editions / Shop by category / Latest Design dropdown. Empty = none.", "default": "By Collections" },
+    { "type": "text", "id": "mega_item", "label": "Menu item with the big dropdown", "info": "The menu item whose title matches this opens the Editions / Shop by category / Latest Design dropdown. Separate several titles with a comma. Empty = none.", "default": "Shop" },
     { "type": "text", "id": "about_item", "label": "Menu item with the About dropdown", "info": "The menu item whose title matches this opens the About list (About Us, Yarn Passport, Factory, Tracker, Stories). Empty = none.", "default": "About Us" },
     { "type": "text", "id": "help_item", "label": "Menu item with the Help dropdown", "info": "The menu item whose title matches this opens the Help list (Questions & Answers, Track your order, Returns, and so on). Empty = none.", "default": "Help" },
     { "type": "text", "id": "mega_card_label", "label": "Dropdown card: small label", "default": "Latest Design" },
@@ -370,8 +374,8 @@
     { "type": "text", "id": "util_text", "label": "Top bar text", "default": "Free delivery in Denmark · Free 14-day returns to a Danish address · ★ 4.8 on Trustpilot" },
     { "type": "url", "id": "util_link", "label": "Top bar link" },
     { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to show the text logo, as in the design. The header is black, so use a white or light logo file." },
-    { "type": "range", "id": "logo_height", "label": "Logo image height, desktop", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 40 },
-    { "type": "range", "id": "logo_height_mobile", "label": "Logo image height, mobile", "min": 16, "max": 48, "step": 2, "unit": "px", "default": 28 },
+    { "type": "range", "id": "logo_height", "label": "Logo image height, desktop", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "logo_height_mobile", "label": "Logo image height, mobile", "min": 16, "max": 48, "step": 2, "unit": "px", "default": 24 },
     { "type": "text", "id": "logo_text", "label": "Text logo", "default": "EchoByJMG" },
     { "type": "checkbox", "id": "show_dropdowns", "label": "Show dropdown menus (mega menu)", "default": false, "info": "Off: Shop and About us are plain links to their overview pages (wireframe 4 Nov). On: the previous Shop and Our Story dropdowns." },
     { "type": "header", "content": "Shop menu tiles" },
