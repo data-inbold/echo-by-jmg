@@ -544,7 +544,7 @@
         "pad_top": 80,
         "pad_log": 60,
         "pad_bottom": 60,
-        "note": "[Example figures. The real log is kept by the factory team and updated per batch.]"
+        "note": ""
       }
     },
     "illustration": {

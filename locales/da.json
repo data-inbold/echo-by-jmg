@@ -818,7 +818,7 @@
       "all_colours": "Alle farver",
       "alpha_az": "Alfabetisk, A→Å",
       "alpha_za": "Alfabetisk, Å→A",
-      "available_stock": "På lager",
+      "available_stock": "Tilgængelig lagerbeholdning",
       "choose_your_piece": "Vælg dit stykke",
       "clear_all": "Ryd alle",
       "clear_filters": "Ryd filtre",
@@ -890,13 +890,13 @@
       "see_all_results": "Se alle resultater"
     },
     "product": {
-      "edition_left_html": "<b>Udgave på {{ total }}, {{ left }} tilbage.</b> Når dette parti garn er brugt, gentages designet ikke i denne farve.",
+      "edition_left_html": "<b>Udgave på {{ total }} · Kun {{ left }} tilbage på lager</b> Denne farvekombination findes kun i dette parti og kan ikke genopfyldes, når den er udsolgt.",
       "faq_title": "Spørgsmål om dette produkt",
       "see_current": "Se aktuelle {{ name }}",
-      "sold_out_html": "<b>Denne udgave er udsolgt.</b> Alle {{ total }} stykker har fundet et hjem. Designet bliver ikke gentaget i denne farve."
+      "sold_out_html": "<b>Udgave på {{ total }} · Denne farvekombination er udsolgt</b>"
     },
     "product_faq_reviews": {
-      "reviews": "Anmeldelser"
+      "reviews": "Fra vores kunder"
     },
     "product_passport": {
       "about_our_certificates": "Om vores certificeringer",

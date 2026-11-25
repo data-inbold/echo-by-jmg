@@ -724,7 +724,7 @@
       "message": "Message",
       "message_placeholder": "Input your message here",
       "name_placeholder": "Enter your full Name",
-      "order_number_optional": "Order number (optional)",
+      "order_number_optional": "Order Number (optional)",
       "order_placeholder": "Input your order number if you have",
       "send_message": "Send message",
       "send_your_message": "Send Your Message To Us",
@@ -756,16 +756,16 @@
     "footer": {
       "about": "About",
       "bsci_compliance_read_more": "BSCI compliance, read more",
-      "company_details": "Company details",
-      "cookie_policy": "Cookie policy",
+      "company_details": "Company Details",
+      "cookie_policy": "Cookie Policy",
       "gift_card_balance": "Gift card balance",
       "organic_content_standard_read_more": "Organic Content Standard, read more",
       "our_story": "Our Story",
-      "privacy_policy": "Privacy policy",
+      "privacy_policy": "Privacy Policy",
       "questions_and_answers": "Questions & Answers",
       "recycled_claim_standard_read_more": "Recycled Claim Standard, read more",
       "size_and_care_guide": "Size & Care Guide",
-      "terms_of_sale": "Terms of sale"
+      "terms_of_sale": "Terms of Sale"
     },
     "gc_balance": {
       "check_balance": "Check balance",
@@ -801,7 +801,7 @@
       "main": "Main",
       "menu": "Menu",
       "our_story": "Our Story ▾",
-      "pillow_talk_sets": "Pillow Talk sets",
+      "pillow_talk_sets": "Pillow Talk Sets",
       "shop": "Shop ▾",
       "shop_by_category": "Shop by category",
       "stories": "Stories",
@@ -811,7 +811,7 @@
       "yarn_tracker": "Rescued Yarn Tracker"
     },
     "help": {
-      "all_topics": "All topics",
+      "all_topics": "All Topics",
       "contact_us": "Contact us",
       "did_not_find_it": "Did not find it?",
       "for_example_delivery_wash_gift": "For example: Delivery, wash, gift,...",
@@ -861,7 +861,7 @@
       "all_colours": "All colours",
       "alpha_az": "Alphabetically, A→Z",
       "alpha_za": "Alphabetically, Z→A",
-      "available_stock": "Available stock",
+      "available_stock": "Available Stock",
       "choose_your_piece": "Choose Your Piece",
       "clear_all": "Clear all",
       "clear_filters": "Clear filters",
@@ -933,13 +933,13 @@
       "see_all_results": "See all results"
     },
     "product": {
-      "edition_left_html": "<b>Edition of {{ total }}, {{ left }} left.</b> Once this batch of yarn is used, the design is not repeated in this colour.",
+      "edition_left_html": "<b>Edition of {{ total }} · Only {{ left }} items left in stock</b> This colorway is limited strictly to this batch and cannot be restocked once sold out.",
       "faq_title": "Questions about this {{ item }}",
       "see_current": "See current {{ name }}",
-      "sold_out_html": "<b>This edition is sold out.</b> All {{ total }} pieces have found a home. The design will not be repeated in this colour."
+      "sold_out_html": "<b>Edition of {{ total }} · This colourway is sold out</b>"
     },
     "product_faq_reviews": {
-      "reviews": "Reviews"
+      "reviews": "From our customers"
     },
     "product_passport": {
       "about_our_certificates": "About our certificates",

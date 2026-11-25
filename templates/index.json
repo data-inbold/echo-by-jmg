@@ -86,7 +86,7 @@
           "settings": {
             "collection": "",
             "cat": "cushions",
-            "title": "Cushion covers",
+            "title": "Cushion Covers",
             "from": "from DKK 809",
             "image": "shopify://shop_images/Cushion_Covers.png",
             "photo": "echo-v2-tile-cushions.jpg"
@@ -221,7 +221,7 @@
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "Limited-edition drops",
+            "text": "Numbered pieces",
             "icon_file": "echo-stat-pillows.png"
           }
         },
@@ -368,7 +368,7 @@
         "gap": 16,
         "hide_on_gift": false,
         "eyebrow": "",
-        "heading": "A gift with a story",
+        "heading": "Gifts with a story",
         "heading_tag": false,
         "heading_size": "h2",
         "quote": "",
