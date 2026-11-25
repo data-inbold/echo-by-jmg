@@ -1,10 +1,17 @@
-/* Contact: Figma layout, 25 Nov 2026 */
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
     "main": {
       "type": "echo-contact",
-      "settings": {},
       "blocks": {
         "r1": {
           "type": "row",
@@ -35,7 +42,20 @@
         "r1",
         "r2",
         "r3"
-      ]
+      ],
+      "settings": {
+        "crumb_current": "Contact",
+        "heading": "Contact Us",
+        "info_heading": "Our Information",
+        "lead": "Questions about a product, an order or a gift.\nWe reply within 24 hours on weekdays.",
+        "ok": "Thank you. Your message is with customer support, and we reply within 24 hours.",
+        "photo": "shopify://shop_images/gift-image.png",
+        "photo_file": "echo-v2-gift.jpg",
+        "alt": "A wrapped EchoByJMG parcel with a handwritten card",
+        "focus": "50% 50%",
+        "pad_top": 80,
+        "pad_bottom": 0
+      }
     },
     "illustration": {
       "type": "echo-illustration",
@@ -53,6 +73,7 @@
         "heading": "Join the Cozy Club",
         "text": "Get 10% off your first order, and be the first to hear about our new designs!",
         "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
       }
