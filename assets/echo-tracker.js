@@ -35,6 +35,8 @@
     return p.join(DECIMAL);
   }
   function fmtKg(n) { return fmtNumber(n) + ' kg'; }
+  // the big number on the tracker page: whole kilograms, so it stays on one line
+  function fmtKgWhole(n) { return fmtNumber(Math.round(n)) + ' kg'; }
 
   /*
     Count-up: the number runs from 0 to its value when it is mostly in view (2.4 seconds by default, easing out
@@ -304,7 +306,7 @@
       tbody.textContent = '';
       tbody.appendChild(frag);
       var page = document.documentElement;
-      setStat(page, 'kg', res.stats.kg, fmtKg);
+      setStat(page, 'kg', res.stats.kg, fmtKgWhole);
       setStat(page, 'batches', res.stats.batches, fmtNumber);
       setStat(page, 'pieces', res.stats.pieces, fmtNumber);
       setStat(page, 'open', res.stats.open, fmtNumber);
@@ -323,7 +325,7 @@
   }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { aggregate: aggregate, merge: merge, totalsFrom: totalsFrom, parseNum: parseNum, dateKey: dateKey, showDate: showDate, fmtNumber: fmtNumber, fmtKg: fmtKg };
+    module.exports = { aggregate: aggregate, merge: merge, totalsFrom: totalsFrom, parseNum: parseNum, dateKey: dateKey, showDate: showDate, fmtNumber: fmtNumber, fmtKg: fmtKg, fmtKgWhole: fmtKgWhole };
   } else if (typeof document !== 'undefined') {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();

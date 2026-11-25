@@ -82,10 +82,7 @@
     endif
   endcapture
   if use_list
-    assign tkr = total_kg | round
-    if tkr == total_kg
-      assign total_kg = tkr
-    endif
+    assign total_kg = total_kg | round
     capture kg_fmt
       render 'echo-num', n: total_kg
     endcapture
@@ -127,7 +124,7 @@
   @media(min-width:900px){.yt-stat{flex:1}}
   .yt-stat img{width:68px;height:68px;object-fit:contain;flex:none;display:block}
   .yt-stat div{flex:1;min-width:0;text-align:center}
-  .yt-stat .n{font:italic 300 clamp(30px,3vw,40px)/normal var(--display);color:var(--wine)}
+  .yt-stat .n{font:italic 300 clamp(30px,3vw,40px)/normal var(--display);color:var(--wine);white-space:nowrap}
   .yt-stat p{margin:0;font:400 14px/1.6 var(--body);color:#332C2A}
   .yt-vr{display:none;width:0;border-left:1px solid #ABA499;align-self:stretch;flex:none}
   @media(min-width:900px){.yt-vr{display:block}}
