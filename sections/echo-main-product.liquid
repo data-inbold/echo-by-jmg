@@ -203,12 +203,52 @@
         </ul>
       {%- endif -%}
 
-      <div>
+      {%- liquid
+        assign pcomp = comp | default: i[13] | default: '[Composition]'
+        assign pcl = pcomp | downcase
+        assign porigin = i[12] | default: section.settings.origin
+        assign set_items = product.metafields['shopify--discovery--product_recommendation'].complementary_products.value
+      -%}
+      <div class="pdp-accs">
         <details class="acc" open><summary>{{ 'echo.main_product.description' | t }}</summary><div class="body rte">{{ product.description | default: '[Product description]' }}</div></details>
-        <details class="acc"><summary>{{ 'echo.main_product.material_and_care' | t }}</summary><div class="body">{{ comp | default: '[Composition]' | newline_to_br }}{% if care != blank %}<br>{{ care | newline_to_br }}{% endif %}</div></details>
+        {%- if set_items != blank -%}
+        <details class="acc" open><summary>{{ 'echo.main_product.complete_the_set' | t }}</summary><div class="body">
+          {%- for p in set_items limit: 2 -%}
+            <a class="pdp-set" href="{{ p.url }}">
+              {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: p.title, width: 80, height: 80 }}{%- endif -%}
+              <span><b>{{ p.title }}</b><span>{% render 'echo-money', price: p.price %}</span></span>
+            </a>
+          {%- endfor -%}
+        </div></details>
+        {%- endif -%}
         <details class="acc"><summary>{{ 'echo.main_product.dimensions' | t }}</summary><div class="body">{{ dims | default: '[Size]' | newline_to_br }}</div></details>
+        <details class="acc" open><summary>{{ 'echo.common.yarn_passport' | t }}</summary><div class="body pdp-pass">
+          <p>{{ 'echo.main_product.passport_intro' | t }}</p>
+          <a class="link mono" href="{% render 'echo-url', key: 'passport' %}">{{ 'echo.main_product.discover_more' | t }} ↗</a>
+          <div class="pdp-pass-row"><b>{{ 'echo.product_passport.where_it_came_from' | t }}</b><span>{{ porigin }}</span></div>
+          <div class="pdp-pass-row"><b>{{ 'echo.product_passport.fibre_and_batch' | t }}</b><span>{{ pcomp | newline_to_br }}<br>{{ 'echo.passport.batch_line' | t: batch: i[9], kg: i[10], total: i[2] }}</span></div>
+          <a class="link mono" href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.product_passport.see_it_in_the_tracker' | t }} ↗</a>
+        </div></details>
+        <details class="acc"><summary>{{ 'echo.main_product.certificates' | t }}</summary><div class="body pdp-certs">
+          <span class="it">{% render 'echo-cert-logo', k: 'bsci', h: 40 %}<span><b>{{ 'echo.product_passport.bsci_compliance' | t }}</b><br>{{ section.settings.bsci_no }}</span></span>
+          {%- if pcl contains 'organic' -%}<span class="it">{% render 'echo-cert-logo', k: 'ocs', h: 40 %}<span><b>{{ 'echo.product_passport.organic_content_standard' | t }}</b><br>{{ section.settings.ocs_no }}</span></span>{%- endif -%}
+          {%- if pcl contains 'recycl' -%}<span class="it">{% render 'echo-cert-logo', k: 'rcs', h: 40 %}<span><b>{{ 'echo.product_passport.recycled_claim_standard' | t }}</b><br>{{ section.settings.rcs_no }}</span></span>{%- endif -%}
+          <a class="link mono" href="{% render 'echo-url', key: 'factory' %}">{{ 'echo.main_product.our_certificates' | t }} ↗</a>
+        </div></details>
         <details class="acc"><summary>{{ 'echo.main_product.delivery_and_returns' | t }}</summary><div class="body">{{ section.settings.delivery }} <a class="link" href="{% render 'echo-url', key: 'help' %}#topic-Delivery%20and%20returns">{{ 'echo.main_product.more_about_delivery' | t }}</a></div></details>
       </div>
+      <style>
+        .pdp-set{display:flex;gap:16px;align-items:center;text-decoration:none;color:inherit;padding:6px 0}
+        .pdp-set img{width:80px;height:80px;object-fit:cover;background:#fff}
+        .pdp-set span{display:flex;flex-direction:column;gap:4px;font-size:14px}
+        .pdp-pass{display:flex;flex-direction:column;gap:14px}
+        .pdp-pass p{margin:0}
+        .pdp-pass-row{display:grid;grid-template-columns:150px 1fr;gap:16px;font-size:14px}
+        .pdp-pass-row b{color:var(--ink);font-weight:600}
+        .pdp-certs{display:flex;flex-direction:column;gap:14px;font-size:14px}
+        .pdp-certs .it{display:flex;gap:12px;align-items:center}
+        .pdp-accs .mono{text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+      </style>
     </div>
   </div>
 {%- endif -%}
@@ -219,6 +259,10 @@
   "settings": [
     { "type": "checkbox", "id": "show_mobilepay", "label": "Show 'Pay with MobilePay' button", "default": true, "info": "Adds the piece and goes straight to checkout." },
     { "type": "text", "id": "ticks", "label": "Ticks (separate with |)", "default": "Order by [cut-off time] on weekdays for delivery in 1 to 2 working days | Free 14-day returns to our Danish address | No price on the packing slip, ready to give" },
+    { "type": "textarea", "id": "origin", "label": "Yarn Passport: where it came from (default)", "info": "Shown when the product's yarn batch has no origin text.", "default": "Unused yarn rescued from a [season] production run for a [luxury or high-street] fashion house at our factory." },
+    { "type": "text", "id": "bsci_no", "label": "BSCI line", "default": "Amfori ID 156-020420-000 · Applies to all products" },
+    { "type": "text", "id": "ocs_no", "label": "OCS line", "default": "Certificate [no.] · [confirm this product is in scope]" },
+    { "type": "text", "id": "rcs_no", "label": "RCS line", "default": "Certificate [no.] · [confirm this product is in scope]" },
     { "type": "textarea", "id": "delivery", "label": "Delivery and returns text", "default": "Free delivery in Denmark in 1 to 2 working days from our Danish warehouse. Free returns within 14 days." },
     { "type": "textarea", "id": "care_wool", "label": "Care text for wool (when no care guide)", "default": "Hand wash cold. Do not bleach. Dry flat after washing. Iron at low temperature. Professional dry clean." },
     { "type": "textarea", "id": "care_cotton", "label": "Care text for cotton (when no care guide)", "default": "Machine wash cold on a gentle cycle. Do not bleach. Dry flat after washing. Iron at medium temperature. Professional dry clean." },

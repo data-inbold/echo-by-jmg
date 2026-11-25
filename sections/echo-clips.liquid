@@ -117,7 +117,7 @@
       <div class="cl-cards">
         {%- for b in cards -%}
           <a class="card" href="{{ b.settings.link | default: '#' }}" {{ b.shopify_attributes }}>
-            {%- render 'echo-pic', image: b.settings.image, alt: b.settings.title, label: b.settings.kind, ar: '4/3' -%}
+            {%- render 'echo-pic', image: b.settings.image, asset: b.settings.photo_file, alt: b.settings.title, label: b.settings.kind, ar: '4/3' -%}
             <div class="meta"><span class="mono">{{ b.settings.kind }}</span><span class="name" style="font-size:18px">{{ b.settings.title }}</span><span class="muted">{{ b.settings.dek }}</span><span class="cl-more">{{ 'echo.clips.read_more' | t }}</span></div>
           </a>
         {%- endfor -%}
@@ -205,7 +205,8 @@
       { "type": "text", "id": "title", "label": "Title" },
       { "type": "text", "id": "dek", "label": "Text" },
       { "type": "text", "id": "link", "label": "Link", "info": "Page address or echo:story, echo:tracker, echo:journal" },
-      { "type": "image_picker", "id": "image", "label": "Image" }
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "photo_file", "label": "Bundled photo file", "info": "Used when no image is picked. File name in assets." }
     ] }
   ],
   "presets": [{ "name": "Clips (phone films)" }]

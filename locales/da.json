@@ -838,6 +838,11 @@
       "sort": "Sortér"
     },
     "main_product": {
+      "complete_the_set": "Fuldend sættet",
+      "passport_intro": "Dit køb inkluderer et garnpas med oplysningerne nedenfor samt dit stykkes udgavenummer, som tildeles ved pakning.",
+      "discover_more": "Opdag mere",
+      "certificates": "Certifikater",
+      "our_certificates": "Vores certifikater",
       "add_to_bag": "Læg i kurv",
       "amount": "Beløb",
       "colour": "Farve:",

@@ -60,7 +60,7 @@
             assign nm = col.title
           endif
         -%}
-        <a class="mm-cat" href="{{ curl }}">
+        <a class="mm-cat" href="{{ curl }}" data-k="{{ key }}">
           {%- assign icon_file = 'echo-cat-' | append: key | append: '.svg' -%}<img src="{{ icon_file | asset_url }}" alt="" width="28" height="28" loading="lazy">
           <span>{{ nm }}</span>
         </a>
@@ -70,8 +70,29 @@
       {%- if s.mega_card_image != blank -%}
         {{ s.mega_card_image | image_url: width: 1440 | image_tag: alt: s.mega_card_title, loading: 'lazy', widths: "480, 960, 1440", sizes: "480px" }}
       {%- else -%}
-        <img src="{{ 'echo-twister-outdoor.jpg' | asset_url }}" alt="{{ s.mega_card_title | escape }}" width="480" height="232" loading="lazy">
+        <img src="{{ 'echo-fg-hero-knit.jpg' | asset_url }}" alt="{{ s.mega_card_title | escape }}" width="480" height="232" loading="lazy">
       {%- endif -%}
+      {%- for key in cat_keys -%}
+        {%- liquid
+          case key
+            when 'blankets'
+              assign timg = s.tile_blankets
+              assign tfb = 'echo-fg-mega-blankets.jpg'
+            when 'cushions'
+              assign timg = s.tile_cushions
+              assign tfb = 'echo-v2-tile-cushions.jpg'
+            when 'bags'
+              assign timg = s.tile_bags
+              assign tfb = 'echo-v2-tile-bags.jpg'
+            else
+              assign timg = s.tile_accessories
+              assign tfb = 'echo-v2-tile-accessories.jpg'
+          endcase
+        -%}
+        <span class="mm-swap" data-k="{{ key }}" aria-hidden="true">
+          {%- if timg != blank -%}{{ timg | image_url: width: 960 | image_tag: alt: '', loading: 'lazy' }}{%- else -%}<img src="{{ tfb | asset_url }}" alt="" width="480" height="232" loading="lazy">{%- endif -%}
+        </span>
+      {%- endfor -%}
       <span class="mm-card-label">{{ s.mega_card_label }}</span>
       <span class="mm-card-foot"><span class="mm-card-title">{{ s.mega_card_title }}</span><span class="mm-card-go">{{ 'echo.header.view_products' | t }}</span></span>
     </a>

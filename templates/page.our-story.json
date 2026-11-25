@@ -392,7 +392,8 @@
             "kind": "From the factory",
             "title": "A morning on the factory floor",
             "dek": "Short film and photos from the knitting hall. [From the summer shoot.]",
-            "link": "echo:journal"
+            "link": "echo:journal",
+            "photo_file": "echo-fg-journal-1.jpg"
           }
         },
         "card_2": {
@@ -401,7 +402,8 @@
             "kind": "Guide",
             "title": "What is leftover yarn?",
             "dek": "Unused yarn left after fashion production, and why it is not recycled fibre.",
-            "link": "echo:journal"
+            "link": "echo:journal",
+            "photo_file": "echo-fg-journal-2.jpg"
           }
         },
         "card_3": {
@@ -410,7 +412,18 @@
             "kind": "Guide",
             "title": "How to choose a knitted blanket",
             "dek": "Size, weight and yarn, and which one suits a sofa, a bed or a reading chair.",
-            "link": "echo:journal/how-to-choose-a-knitted-blanket"
+            "link": "echo:journal/how-to-choose-a-knitted-blanket",
+            "photo_file": "echo-fg-journal-3.jpg"
+          }
+        },
+        "card_fg4": {
+          "type": "card",
+          "settings": {
+            "kind": "Guide",
+            "title": "How to wash a lambswool blanket",
+            "dek": "Cold water, no wringing and a flat surface to dry.",
+            "link": "echo:journal/how-to-choose-a-knitted-blanket",
+            "photo_file": "echo-fg-journal-4.jpg"
           }
         }
       },
@@ -421,7 +434,8 @@
         "clip_4",
         "card_1",
         "card_2",
-        "card_3"
+        "card_3",
+        "card_fg4"
       ],
       "settings": {
         "spacing": "normal",

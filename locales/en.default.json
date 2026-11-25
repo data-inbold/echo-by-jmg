@@ -881,12 +881,17 @@
       "sort": "Sort"
     },
     "main_product": {
+      "complete_the_set": "Complete The Set",
+      "passport_intro": "Your purchase includes a Yarn Passport with the details shown below, plus your piece's edition number, assigned at packing.",
+      "discover_more": "Discover more",
+      "certificates": "Certificates",
+      "our_certificates": "Our certificates",
       "add_to_bag": "Add to cart",
       "amount": "Amount",
       "colour": "Colour:",
       "delivery_and_returns": "Delivery & Returns",
       "description": "Description",
-      "dimensions": "Dimensions",
+      "dimensions": "Dimension",
       "get_an_email_when_a_new_edition_from": "Get an email when a new edition from this yarn family is ready",
       "incl_vat_free_delivery": "incl. VAT · free delivery",
       "material_and_care": "Material and care",

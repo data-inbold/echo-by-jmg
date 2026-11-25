@@ -403,6 +403,13 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .mm-card-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 16px/22px var(--body);color:#fff}
 .mm-card-go{flex:none;font:500 11px/19px var(--body);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #fff}
 .mm-card:hover .mm-card-go{opacity:.8}
+.mm-swap{position:absolute;inset:0;z-index:2;opacity:0;transition:opacity .2s;pointer-events:none}
+.mm-swap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+*:has(> .mm-card):has(.mm-cat[data-k="blankets"]:hover) .mm-swap[data-k="blankets"]{opacity:1}
+*:has(> .mm-card):has(.mm-cat[data-k="cushions"]:hover) .mm-swap[data-k="cushions"]{opacity:1}
+*:has(> .mm-card):has(.mm-cat[data-k="bags"]:hover) .mm-swap[data-k="bags"]{opacity:1}
+*:has(> .mm-card):has(.mm-cat[data-k="accessories"]:hover) .mm-swap[data-k="accessories"]{opacity:1}
+*:has(> .mm-card):has(.mm-cat:hover) .mm-card::after,*:has(> .mm-card):has(.mm-cat:hover) .mm-card-label,*:has(> .mm-card):has(.mm-cat:hover) .mm-card-foot{opacity:0}
 @media(max-width:1380px){.mm-col{width:200px}.mm-col+.mm-col{width:240px}.mm-card{width:360px;height:232px}}
 @media(max-width:1180px){.mm-card{display:none}.mm-col+.mm-col{border-right:0}}
 /* About dropdown: a single "About" column (Figma "Mega Menu - About Us") */
