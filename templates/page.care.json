@@ -1,14 +1,7 @@
+/* Size and care guide: Figma layout, 25 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
-    "crumbs": {
-      "type": "echo-breadcrumbs",
-      "settings": {
-        "p1_label": "Help",
-        "p1_link": "echo:help",
-        "current": "Size and care guide"
-      }
-    },
     "sizes": {
       "type": "echo-size-table",
       "settings": {},
@@ -17,14 +10,16 @@
           "type": "row",
           "settings": {
             "product": "Blankets",
-            "size": "100 × 150 to 120 × 160 cm [confirm per design]",
+            "items": "",
+            "size": "120 × 160 cm [confirm per design]",
             "note": "[Weight]"
           }
         },
         "row_2": {
           "type": "row",
           "settings": {
-            "product": "Cushion covers",
+            "product": "Cushion Covers",
+            "items": "",
             "size": "45 × 45 cm",
             "note": "Inner not included"
           }
@@ -33,23 +28,26 @@
           "type": "row",
           "settings": {
             "product": "Bags",
-            "size": "[Size per design]",
-            "note": "[Strap length]"
+            "items": "Tote bag\nDumpling bag\nLunch bag\nPhone bag",
+            "size": "40 x 30 cm | Strap length: 54 cm\n22 x 26 cm | Bottom depth: 12 cm\n20 x 36 cm | Handle length: 14 cm\n14 x 21 cm | Shoulder strap: 104 cm",
+            "note": "Fits laptops up to 14” and daily essentials\nSmall shopper bag\nFits lunch boxes and small essentials\nFits even the largest iPhone models"
           }
         },
         "row_4": {
           "type": "row",
           "settings": {
             "product": "Beanies",
-            "size": "One size",
-            "note": "Bottom circumference 59 cm"
+            "items": "",
+            "size": "Bottom circumference: 59cm | Beanie height: 22cm | Pompom height: 9cm",
+            "note": "Fits head 54 to 60 cm"
           }
         },
         "row_5": {
           "type": "row",
           "settings": {
             "product": "Scarves",
-            "size": "160 × 40 cm",
+            "items": "",
+            "size": "160 x 40 cm [confirm per design]",
             "note": ""
           }
         }
@@ -63,56 +61,76 @@
       ]
     },
     "care": {
-      "type": "echo-steps",
+      "type": "echo-care-panel",
       "settings": {
-        "spacing": "tight",
-        "heading": "Care by yarn",
-        "heading_size": "h3",
-        "gap": 16,
-        "link_label": "How to wash a lambswool blanket",
         "link": "echo:journal/how-to-wash-a-lambswool-blanket"
       },
       "blocks": {
-        "step_1": {
-          "type": "step",
+        "row_1": {
+          "type": "row",
           "settings": {
-            "title": "Lambswool blends",
+            "label": "Lambswool blends",
+            "icon_file": "echo-stat-yarn.png",
             "text": "Hand wash cold, press the water out, dry flat. Do not tumble dry."
           }
         },
-        "step_2": {
-          "type": "step",
+        "row_2": {
+          "type": "row",
           "settings": {
-            "title": "Cotton blends",
+            "label": "Cotton blends",
+            "icon_file": "echo-stat-logo.png",
             "text": "[Machine wash 30°C on a wool cycle in a wash bag. Confirm.]"
           }
         },
-        "step_3": {
-          "type": "step",
+        "row_3": {
+          "type": "row",
           "settings": {
-            "title": "Wool",
+            "label": "Wool",
+            "icon_file": "echo-wool-icon.png",
             "text": "[Hand wash or dry clean. Confirm.]"
           }
         },
-        "step_4": {
-          "type": "step",
+        "row_4": {
+          "type": "row",
           "settings": {
-            "title": "Pilling",
+            "label": "Pilling",
+            "icon_file": "echo-stat-pillows.png",
             "text": "Small bobbles are normal on new knitwear. Remove them with a knit comb."
           }
         }
       },
       "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4"
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4"
       ]
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 0,
+        "space_below": 60
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
+      }
     }
   },
   "order": [
-    "crumbs",
     "sizes",
-    "care"
+    "care",
+    "illustration",
+    "club"
   ]
 }

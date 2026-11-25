@@ -1,0 +1,80 @@
+{%- comment -%} Care by yarn: a stone panel with four icon rows, and a photo card with a link to a journal article. {%- endcomment -%}
+{%- capture echo_out -%}
+<style>
+  .cp{padding:0 16px {{ section.settings.pad_bottom }}px}
+  @media(min-width:720px){.cp{padding-inline:max(80px,calc((100vw - var(--wrap)) / 2 + 80px))}}
+  .cp-box{display:grid;grid-template-columns:1fr;align-items:stretch}
+  @media(min-width:960px){.cp-box{grid-template-columns:minmax(0,761fr) minmax(0,519fr)}}
+  .cp-panel{background:#E9E2DA;padding:32px 20px;display:flex;flex-direction:column;gap:24px}
+  @media(min-width:960px){.cp-panel{padding:40px}}
+  .cp-h{margin:0;text-align:center;font:300 clamp(28px,2.8vw,40px)/normal var(--display);color:var(--wine)}
+  .cp-rows{display:flex;flex-direction:column;gap:24px;padding-block:20px}
+  .cp-row{display:flex;align-items:center;gap:24px}
+  .cp-ic{flex:none;width:68px;height:68px;object-fit:contain}
+  .cp-txt{display:flex;flex-direction:column;gap:8px;min-width:0;flex:1}
+  @media(min-width:720px){.cp-txt{flex-direction:row;align-items:center;gap:24px}}
+  .cp-lb{margin:0;font:italic 300 clamp(24px,2.2vw,32px)/normal var(--display);color:var(--wine)}
+  @media(min-width:720px){.cp-lb{flex:0 0 280px}}
+  .cp-tx{margin:0;font:400 14px/1.6 var(--body);color:#332C2A}
+  @media(min-width:720px){.cp-tx{flex:1;max-width:285px}}
+  .cp-hr{height:0;border:0;border-top:1px solid #ABA499;margin:0}
+  .cp-photo{position:relative;display:block;min-height:360px;background:#d8d0c6;color:#fff;text-decoration:none;overflow:hidden}
+  .cp-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ section.settings.focus }}}
+  .cp-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.85) 100%);pointer-events:none}
+  .cp-cap{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:24px;display:flex;flex-direction:column;gap:12px}
+  .cp-cap b{font:400 clamp(22px,2vw,28px)/1.3 var(--display);color:#fff}
+  .cp-cap span{font:400 14px/1.6 var(--body);color:#fff}
+  .cp-cap i{font:600 12px/1.6 var(--body);font-style:normal;letter-spacing:.1em;text-transform:uppercase;align-self:flex-start;border-bottom:1px solid #fff;padding-bottom:2px}
+</style>
+<section class="cp">
+  <div class="cp-box">
+    <div class="cp-panel">
+      <h2 class="cp-h">{{ section.settings.heading }}</h2>
+      <div class="cp-rows">
+        {%- for b in section.blocks -%}
+          <div class="cp-row" {{ b.shopify_attributes }}>
+            {%- if b.settings.icon_file != blank -%}<img class="cp-ic" src="{{ b.settings.icon_file | asset_url }}" alt="" width="68" height="68" loading="lazy">{%- endif -%}
+            <div class="cp-txt"><p class="cp-lb">{{ b.settings.label }}</p><p class="cp-tx">{{ b.settings.text }}</p></div>
+          </div>
+          {%- unless forloop.last -%}<hr class="cp-hr">{%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <a class="cp-photo" href="{{ section.settings.link | default: '#' }}">
+      {%- if section.settings.photo != blank -%}
+        {{ section.settings.photo | image_url: width: 1038 | image_tag: alt: section.settings.alt, loading: 'lazy', widths: '519, 780, 1038', sizes: '(min-width: 960px) 519px, 100vw' }}
+      {%- elsif section.settings.photo_file != blank -%}
+        <img src="{{ section.settings.photo_file | asset_url }}" alt="{{ section.settings.alt | escape }}" width="1100" height="810" loading="lazy">
+      {%- endif -%}
+      <span class="cp-cap"><b>{{ section.settings.card_title }}</b><span>{{ section.settings.card_text }}</span><i>{{ section.settings.card_link_label }}</i></span>
+    </a>
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Care by yarn",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Care By Yarn" },
+    { "type": "header", "content": "Photo card" },
+    { "type": "image_picker", "id": "photo", "label": "Photo", "info": "About 1040 x 1240 px. Empty = the file named below." },
+    { "type": "text", "id": "photo_file", "label": "Photo file in assets", "info": "Stand-in until the real photo is uploaded.", "default": "echo-twister-sofa-small.jpg" },
+    { "type": "text", "id": "alt", "label": "Photo description", "default": "Washing a lambswool blanket by hand" },
+    { "type": "text", "id": "focus", "label": "Photo focus", "default": "50% 50%" },
+    { "type": "text", "id": "card_title", "label": "Card title", "default": "How to wash a lambswool blanket" },
+    { "type": "text", "id": "card_text", "label": "Card text", "default": "Trimming pompoms for the joyful beanie." },
+    { "type": "text", "id": "card_link_label", "label": "Card link label", "default": "Read more" },
+    { "type": "url", "id": "link", "label": "Card link", "info": "The journal article. Empty = no link." },
+    { "type": "range", "id": "pad_bottom", "label": "Space below", "min": 0, "max": 160, "step": 10, "default": 80, "unit": "px" }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Yarn row", "limit": 6, "settings": [
+      { "type": "text", "id": "icon_file", "label": "Icon file in assets", "info": "For example echo-wool-icon.png." },
+      { "type": "text", "id": "label", "label": "Label", "default": "Lambswool blends" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [{ "name": "Care by yarn", "blocks": [{ "type": "row" }] }]
+}
+{% endschema %}

@@ -1,23 +1,81 @@
-<section class="section tight"><div class="wrap stack" style="gap:28px">
-  <div class="stack" style="gap:14px"><h1 class="h1">{{ section.settings.heading }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p></div>
-  <div><h2 class="h3" style="margin-bottom:12px">{{ 'echo.size_table.sizes' | t }}</h2><div class="tablewrap"><table class="plain" style="min-width:480px"><thead><tr><th>{{ 'echo.size_table.product' | t }}</th><th>{{ 'echo.size_table.size' | t }}</th><th>{{ 'echo.size_table.note' | t }}</th></tr></thead><tbody>
-    {%- for b in section.blocks -%}<tr {{ b.shopify_attributes }}><td>{{ b.settings.product }}</td><td>{{ b.settings.size }}</td><td class="muted">{{ b.settings.note }}</td></tr>{%- endfor -%}
-  </tbody></table></div></div>
-</div></section>
+{%- comment -%}
+  Size & care guide top: breadcrumbs, heading and intro, divider, then the "Sizes" table.
+  A row can list sub-products (one per line); then write one size / note line per sub-product, in the same order.
+{%- endcomment -%}
+{%- liquid
+  capture u_home
+    render 'echo-url', key: 'home'
+  endcapture
+  capture u_help
+    render 'echo-url', key: 'help'
+  endcapture
+  assign t_home = 'echo.common.home' | t
+  assign crumb_list = t_home | append: '::' | append: u_home | append: '||' | append: section.settings.crumb_label | append: '::' | append: u_help | append: '||' | append: section.settings.crumb_current
+-%}
+<style>
+  .sz{padding-block:{{ section.settings.pad_top }}px {{ section.settings.pad_bottom }}px}
+  .sz .crumbs{padding:0 0 20px}
+  .sz .wrap>.crumbs{max-width:none;margin:0}
+  .sz-h{margin:0;font:300 clamp(34px,3.9vw,56px)/1.36 var(--display);color:var(--wine)}
+  .sz-lead{margin:24px 0 0;max-width:519px;font:400 14px/1.6 var(--body);color:#332C2A}
+  .sz-hr{height:0;border:0;border-top:1px solid #ABA499;margin:40px 0 60px}
+  .sz-h2{margin:0 0 24px;font:300 clamp(28px,2.8vw,40px)/normal var(--display);color:var(--wine)}
+  .sz-table{width:100%;min-width:640px;border-collapse:collapse;table-layout:fixed}
+  .sz-table th{padding:8px;text-align:left;font:700 16px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#2E2D2C;border-bottom:1px solid #ABA499}
+  .sz-table td{padding:12px 8px;vertical-align:top;font:300 16px/26px var(--body);color:#2E2D2C;border-bottom:1px solid #ABA499}
+  .sz-table th:nth-child(1),.sz-table td:nth-child(1){width:25%}
+  .sz-table th:nth-child(2),.sz-table td:nth-child(2){width:50%}
+  .sz-table th:nth-child(3),.sz-table td:nth-child(3){width:25%}
+  .sz-table ul{margin:0;padding:0 0 0 12px;list-style:none}
+  .sz-table li{position:relative;padding-left:16px}
+  .sz-table li::before{content:"•";position:absolute;left:0}
+  .sz-table .sz-pad{height:26px}
+</style>
+<section class="sz">
+  <div class="wrap">
+    {%- render 'echo-crumbs', list: crumb_list -%}
+    <h1 class="sz-h">{{ section.settings.heading }}</h1>
+    <p class="sz-lead">{{ section.settings.lead }}</p>
+    <hr class="sz-hr">
+    <h2 class="sz-h2">{{ 'echo.size_table.sizes' | t }}</h2>
+    <div class="tablewrap">
+      <table class="sz-table">
+        <thead><tr><th>{{ 'echo.size_table.product' | t }}</th><th>{{ 'echo.size_table.size' | t }}</th><th>{{ 'echo.size_table.note' | t }}</th></tr></thead>
+        <tbody>
+          {%- for b in section.blocks -%}
+            {%- assign items = b.settings.items | strip | newline_to_br | split: '<br />' -%}
+            {%- assign has_items = false -%}
+            {%- if b.settings.items != blank -%}{%- assign has_items = true -%}{%- endif -%}
+            <tr {{ b.shopify_attributes }}>
+              <td>{{ b.settings.product }}{%- if has_items -%}<ul>{%- for it in items -%}{%- assign it_t = it | strip -%}{%- if it_t != blank -%}<li>{{ it_t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}</td>
+              <td>{%- if has_items -%}<div class="sz-pad"></div>{%- endif -%}{{ b.settings.size | strip | newline_to_br }}</td>
+              <td>{%- if has_items -%}<div class="sz-pad"></div>{%- endif -%}{{ b.settings.note | strip | newline_to_br }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 {% schema %}
 {
   "name": "Size table",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Size and care guide" },
-    { "type": "textarea", "id": "lead", "label": "Intro", "default": "Sizes for every product type, and how to look after each yarn so it lasts." }
+    { "type": "text", "id": "crumb_label", "label": "Breadcrumb: parent page", "default": "Help" },
+    { "type": "text", "id": "crumb_current", "label": "Breadcrumb: this page", "default": "Size and care guide" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Size & Care Guide" },
+    { "type": "textarea", "id": "lead", "label": "Intro", "default": "Sizes for every product type, and how to look after each yarn so it lasts." },
+    { "type": "range", "id": "pad_top", "label": "Space above", "min": 0, "max": 160, "step": 10, "default": 80, "unit": "px" },
+    { "type": "range", "id": "pad_bottom", "label": "Space below", "min": 0, "max": 160, "step": 10, "default": 60, "unit": "px" }
   ],
   "blocks": [
     { "type": "row", "name": "Row", "settings": [
       { "type": "text", "id": "product", "label": "Product", "default": "Blankets" },
-      { "type": "text", "id": "size", "label": "Size", "default": "100 × 150 to 120 × 160 cm" },
-      { "type": "text", "id": "note", "label": "Note" }
+      { "type": "textarea", "id": "items", "label": "Sub-products (optional)", "info": "One per line, shown as a bullet list under the product. Then give one size and one note per line below." },
+      { "type": "textarea", "id": "size", "label": "Size", "default": "100 × 150 to 120 × 160 cm" },
+      { "type": "textarea", "id": "note", "label": "Note" }
     ] }
   ],
-  "presets": [{ "name": "Size table" }]
+  "presets": [{ "name": "Size table", "blocks": [{ "type": "row" }] }]
 }
 {% endschema %}
