@@ -65,6 +65,7 @@
 -%}
 {%- assign hm = section.settings.menu -%}
 {%- assign mega_t = section.settings.mega_item | strip | downcase -%}
+{%- assign mega_set = ',' | append: mega_t | replace: ', ', ',' | replace: ' ,', ',' | append: ',' -%}
 {%- assign about_t = section.settings.about_item | strip | downcase -%}
 {%- assign help_t = section.settings.help_item | strip | downcase -%}
 <div class="util">
@@ -80,8 +81,9 @@
         {%- assign is_act = false -%}
         {%- if l.active or l.child_active -%}{%- assign is_act = true -%}{%- endif -%}
         {%- assign l_t = l.title | downcase -%}
+{%- assign l_key = ',' | append: l_t | append: ',' -%}
         {%- assign is_mega = false -%}
-        {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
+        {%- if mega_t != blank and mega_set contains l_key -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if about_t != blank and l_t == about_t -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if help_t != blank and l_t == help_t -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if l.links.size > 0 or is_mega -%}
@@ -124,9 +126,10 @@
   {%- if hm != blank -%}
   {%- for l in hm.links -%}
     {%- assign l_t = l.title | downcase -%}
+{%- assign l_key = ',' | append: l_t | append: ',' -%}
     {%- assign is_mega = false -%}
-    {%- if mega_t != blank and l_t == mega_t -%}{%- assign is_mega = true -%}{%- endif -%}
-    {%- if mega_t != blank and l_t == mega_t -%}
+    {%- if mega_t != blank and mega_set contains l_key -%}{%- assign is_mega = true -%}{%- endif -%}
+    {%- if mega_t != blank and mega_set contains l_key -%}
       {%- render 'echo-mega', s: section.settings, idx: forloop.index -%}
     {%- elsif about_t != blank and l_t == about_t -%}
       {%- render 'echo-about-menu', idx: forloop.index -%}
@@ -269,7 +272,8 @@
         {%- for l in hm.links -%}
           {%- if l.url == '#' or l.url == blank -%}<span class="mm-h">{{ l.title }}</span>{%- else -%}<a href="{{ l.url }}">{{ l.title }}</a>{%- endif -%}
           {%- assign l_t = l.title | downcase -%}
-          {%- if mega_t != blank and l_t == mega_t -%}
+{%- assign l_key = ',' | append: l_t | append: ',' -%}
+          {%- if mega_t != blank and mega_set contains l_key -%}
             <div class="sub">
               <a href="{% render 'echo-url', key: 'sets' %}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
               <a href="{% render 'echo-url', key: 'happy-habitat' %}">{{ 'echo.header.happy_habitat' | t }}</a>
@@ -360,7 +364,7 @@
   "class": "echo-header",
   "settings": [
     { "type": "link_list", "id": "menu", "label": "Menu", "info": "Content → Menus in Shopify admin. Items with sub-items open a dropdown. Empty = the built-in menu (Shop, Gifts, About us, Help)." },
-    { "type": "text", "id": "mega_item", "label": "Menu item with the big dropdown", "info": "The menu item whose title matches this opens the Editions / Shop by category / Latest Design dropdown. Empty = none.", "default": "By Collections" },
+    { "type": "text", "id": "mega_item", "label": "Menu item with the big dropdown", "info": "The menu item whose title matches this opens the Editions / Shop by category / Latest Design dropdown. Separate several titles with a comma. Empty = none.", "default": "Shop" },
     { "type": "text", "id": "about_item", "label": "Menu item with the About dropdown", "info": "The menu item whose title matches this opens the About list (About Us, Yarn Passport, Factory, Tracker, Stories). Empty = none.", "default": "About Us" },
     { "type": "text", "id": "help_item", "label": "Menu item with the Help dropdown", "info": "The menu item whose title matches this opens the Help list (Questions & Answers, Track your order, Returns, and so on). Empty = none.", "default": "Help" },
     { "type": "text", "id": "mega_card_label", "label": "Dropdown card: small label", "default": "Latest Design" },
