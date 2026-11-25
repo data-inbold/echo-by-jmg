@@ -78,17 +78,6 @@
   </div>
 </div></section>
 {%- endif -%}
-{%- endcapture -%}{{ 'echo.help.no_match_html' | t: contact_url: u_contact }}</div>
-  </div>
-</div></section>
-<section class="section alt"><div class="wrap grid g2">
-  <div class="stack"><h2 class="h3">{{ 'echo.help.did_not_find_it' | t }}</h2><p class="muted" style="margin:0">{{ section.settings.contact_text }}</p><div><a class="btn" href="{% render 'echo-url', key: 'contact' %}">{{ 'echo.help.contact_us' | t }}</a></div></div>
-  <div class="stack"><h2 class="h3">{{ 'echo.help.guides' | t }}</h2>
-    {%- if section.settings.g1_label != blank -%}<a class="link" href="{{ section.settings.g1_link }}" style="align-self:flex-start">{{ section.settings.g1_label }}</a>{%- endif -%}
-    {%- if section.settings.g2_label != blank -%}<a class="link" href="{{ section.settings.g2_link }}" style="align-self:flex-start">{{ section.settings.g2_label }}</a>{%- endif -%}
-    {%- if section.settings.g3_label != blank -%}<a class="link" href="{{ section.settings.g3_link }}" style="align-self:flex-start">{{ section.settings.g3_label }}</a>{%- endif -%}
-  </div>
-</div></section>
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
 {% schema %}
