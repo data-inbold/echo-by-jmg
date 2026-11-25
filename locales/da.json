@@ -571,7 +571,7 @@
       "your_bag_is_empty": "Din kurv er tom."
     },
     "card": {
-      "edition_of": "Udgave på {{ total }}",
+      "edition_of": "Oplag på {{ total }}",
       "last_pieces": "Sidste stykker · {{ left }} af {{ total }} tilbage",
       "sent_by_email_no_expiry": "Sendes på e-mail · ingen udløbsdato",
       "sold_out_get_notified_about_the_next": "Udsolgt · få besked om næste udgave"
@@ -626,7 +626,7 @@
         "other": "{{ count }} designs"
       },
       "email": "E-mail",
-      "factory_and_certificates": "Fabrik og certificeringer",
+      "factory_and_certificates": "Fabrik & certifikater",
       "fewer": "Færre",
       "fibre": "Fiber",
       "from": "fra",
@@ -722,7 +722,9 @@
       "questions_and_answers": "Spørgsmål & svar",
       "recycled_claim_standard_read_more": "Recycled Claim Standard, læs mere",
       "size_and_care_guide": "Størrelses- & plejeguide",
-      "terms_of_sale": "Salgsbetingelser"
+      "terms_of_sale": "Salgsbetingelser",
+      "ships_line": "Sendes fra Parcel Feeder, Brøndby · Gratis returnering i 14 dage · Support [tider] CET",
+      "legal_line": "EchoByJMG ejes af JM Group Limited, Hong Kong, som er den juridiske sælger."
     },
     "gc_balance": {
       "check_balance": "Tjek saldo",
@@ -892,10 +894,10 @@
       "return_an_item": "Returnér en vare",
       "steps": "Ordre modtaget,Pakket i Danmark,På vej,Leveret",
       "title": "Ordre {{ name }}",
-      "woven_label": "På den vævede label · udgave på {{ total }}"
+      "woven_label": "På den vævede label · oplag på {{ total }}"
     },
     "passport": {
-      "batch_line": "Batch {{ batch }} · {{ kg }} kg reddet · udgave på {{ total }}",
+      "batch_line": "Batch {{ batch }} · {{ kg }} kg reddet · oplag på {{ total }}",
       "factory_level": "{{ number }} · fabriksniveau",
       "woven_label": "Hvert stykke har en vævet label med “Udgave __ af {{ total }}”. Dit nummer tildeles ved pakning."
     },
@@ -915,10 +917,10 @@
       "see_all_results": "Se alle resultater"
     },
     "product": {
-      "edition_left_html": "<b>Udgave på {{ total }} · Kun {{ left }} tilbage på lager</b> Denne farvekombination findes kun i dette parti og kan ikke genopfyldes, når den er udsolgt.",
+      "edition_left_html": "<b>Oplag på {{ total }} · Kun {{ left }} tilbage på lager</b> Denne farvekombination findes kun i dette parti og kan ikke genopfyldes, når den er udsolgt.",
       "faq_title": "Spørgsmål om dette {{ item }}",
       "see_current": "Se aktuelle {{ name }}",
-      "sold_out_html": "<b>Udgave på {{ total }} · Denne farvekombination er udsolgt</b>",
+      "sold_out_html": "<b>Oplag på {{ total }} · Denne farvekombination er udsolgt</b>",
       "faq_title_common": "Spørgsmål om denne {{ item }}"
     },
     "product_faq_reviews": {
