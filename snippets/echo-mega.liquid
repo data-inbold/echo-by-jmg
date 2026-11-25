@@ -93,7 +93,8 @@
           {%- if timg != blank -%}{{ timg | image_url: width: 960 | image_tag: alt: '', loading: 'lazy' }}{%- else -%}<img src="{{ tfb | asset_url }}" alt="" width="480" height="232" loading="lazy">{%- endif -%}
         </span>
       {%- endfor -%}
-      <span class="mm-card-label">{{ s.mega_card_label }}</span>
+      {%- assign mcl = s.mega_card_label -%}{%- if mcl == blank -%}{%- assign mcl = 'echo.header.latest_design' | t -%}{%- endif -%}
+      <span class="mm-card-label">{{ mcl }}</span>
       <span class="mm-card-foot"><span class="mm-card-title">{{ s.mega_card_title }}</span><span class="mm-card-go">{{ 'echo.header.view_products' | t }}</span></span>
     </a>
   </div>

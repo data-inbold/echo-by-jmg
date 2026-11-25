@@ -752,7 +752,7 @@
         "one": "{{ count }} design · fra",
         "other": "{{ count }} designs · fra"
       },
-      "editions": "Udgaver",
+      "editions": "Editions",
       "edits": "Edits",
       "factory_certificates": "Fabrik & certifikater",
       "happy_habitat": "Happy Habitat",
@@ -760,7 +760,7 @@
       "main": "Hovedmenu",
       "menu": "Menu",
       "our_story": "Vores historie ▾",
-      "pillow_talk_sets": "Pillow Talk-sæt",
+      "pillow_talk_sets": "Pillow Talk Sets",
       "shop": "Shop ▾",
       "shop_by_category": "Shop efter kategori",
       "stories": "Historier",
@@ -768,7 +768,8 @@
       "view_products": "Se produkter",
       "yarn_passport": "Garnpasset",
       "yarn_tracker": "Tracker for reddet garn",
-      "util_text": "Gratis levering i Danmark · Gratis returnering i 14 dage til en dansk adresse · ★ 4,8 på Trustpilot"
+      "util_text": "Gratis levering i Danmark · Gratis returnering i 14 dage til en dansk adresse · ★ 4,8 på Trustpilot",
+      "latest_design": "Nyeste design"
     },
     "help": {
       "all_topics": "Alle emner",
