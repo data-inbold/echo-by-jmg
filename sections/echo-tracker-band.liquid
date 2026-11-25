@@ -26,11 +26,14 @@
   .echo-tband hr{border:0;border-top:1px solid #ABA499;margin:0;width:100%}
   .echo-tband-logl{margin:0 0 12px;font:600 16px/normal var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--wine)}
   .echo-tband-log{width:100%}
-  .echo-tband-log .r{display:grid;grid-template-columns:180px minmax(0,1fr) 120px 120px;align-items:center;border-bottom:1px solid #ABA499;font-size:16px;line-height:1.6;color:#2E2D2C}
+  .echo-tband-log .r{display:grid;grid-template-columns:150px minmax(0,1fr) 100px 120px;align-items:center;border-bottom:1px solid #ABA499;font-size:16px;line-height:1.6;color:#2E2D2C}
   .echo-tband-log .r:last-child{border-bottom:0}
-  .echo-tband-log .r>*{padding:8px;text-align:center}
+  .echo-tband-log .r>*{padding:8px;text-align:left}
+  .echo-tband-log .r>*:first-child{padding-left:0}
+  .echo-tband-log .r>*:nth-child(3),.echo-tband-log .r>*:nth-child(4){text-align:right}
+  .echo-tband-log .r>*:last-child{padding-right:0}
   .echo-tband-log .r .dt{font-weight:300;color:#7C7E64}
-  @media (max-width:749px){.echo-tband-log .r{grid-template-columns:90px minmax(0,1fr) 64px;font-size:14px}.echo-tband-log .r .dt{display:none}.echo-tband-log .r>*{padding:8px 4px}}
+  @media (max-width:749px){.echo-tband-log .r{grid-template-columns:90px minmax(0,1fr) 64px;font-size:14px}.echo-tband-log .r .dt{display:none}.echo-tband-log .r>*{padding:8px 4px}.echo-tband-log .r>*:first-child{padding-left:0}.echo-tband-log .r>*:nth-child(3){padding-right:0}}
 </style>
 <section class="section {{ section.settings.spacing }} band echo-tband">
   <div class="wrap stack" style="gap:40px">

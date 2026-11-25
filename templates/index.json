@@ -18,7 +18,7 @@
           "settings": {
             "title": "Twisted Rope Knitted Blanket",
             "link": "echo:shop-all",
-            "photo": "echo-twister-outdoor.jpg"
+            "photo": "echo-fg-hero-knit.jpg"
           }
         },
         "slide_2": {
@@ -53,6 +53,7 @@
         "slide_4"
       ],
       "settings": {
+        "show_thread": true,
         "heading": "Where luxury yarn finds a second life.",
         "lead": "Discover limited-edition pieces knit from surplus luxury yarn, brought to life by three generations of family craftsmanship.",
         "btn1_label": "See our products",
@@ -85,7 +86,7 @@
           "settings": {
             "collection": "",
             "cat": "cushions",
-            "title": "Cushion covers",
+            "title": "Cushion Covers",
             "from": "from DKK 809",
             "image": "shopify://shop_images/Cushion_Covers.png",
             "photo": "echo-v2-tile-cushions.jpg"
@@ -121,6 +122,7 @@
         "tile_4"
       ],
       "settings": {
+        "show_thread": true,
         "spacing": "normal",
         "bg": "paper",
         "heading": "Shop By Products",
@@ -219,7 +221,7 @@
           "type": "stat",
           "settings": {
             "n": "{batches}",
-            "text": "Limited-edition drops",
+            "text": "Numbered pieces",
             "icon_file": "echo-stat-pillows.png"
           }
         },
@@ -305,6 +307,7 @@
         "alt": "Ming and a colleague at the factory going through yarn samples",
         "icon": true,
         "thread": true,
+        "img_thread": "loop",
         "focus": "50% 50%",
         "label": "",
         "ar": "4/3",
@@ -337,7 +340,7 @@
             "quote": "My daughter favorite blanket.",
             "photo": "echo-v2-review-2.jpg",
             "alt": "A grey knitted blanket with a soft toy rabbit",
-            "product": "",
+            "product": "bonjour-pup-cushion-cover",
             "product_name": "Cotton Candy Cloud Knitted Throw",
             "product_price": "DKK 1,379"
           }
@@ -365,7 +368,7 @@
         "gap": 16,
         "hide_on_gift": false,
         "eyebrow": "",
-        "heading": "A gift with a story",
+        "heading": "Gifts with a story",
         "heading_tag": false,
         "heading_size": "h2",
         "quote": "",
@@ -388,12 +391,23 @@
         "alt": "A gift box tied with twine and a sprig of eucalyptus, next to a ball of yarn",
         "icon": false,
         "thread": false,
+        "img_thread": "gift",
         "focus": "45% 55%",
         "label": "",
         "ar": "5",
         "stat_text": "",
         "stat_link_label": "",
         "stat_link": ""
+      }
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 20,
+        "space_below": 20
       }
     },
     "club": {
@@ -405,16 +419,6 @@
         "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
-      }
-    },
-    "illustration": {
-      "type": "echo-illustration",
-      "settings": {
-        "photo": "echo-sofa-icon.png",
-        "alt": "",
-        "width": 126,
-        "space_above": 20,
-        "space_below": 20
       }
     }
   },

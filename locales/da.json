@@ -147,10 +147,10 @@
   "cart": {
     "title_basket": "Kurv",
     "title_cart": "Kurv",
-    "title_bag": "Taske",
+    "title_bag": "Kurv",
     "continue_shopping": "Fortsæt med at handle",
     "empty_cart": "Din indkøbskurv er tom",
-    "empty_bag": "Din taske er tom",
+    "empty_bag": "Din kurv er tom.",
     "empty_basket": "Din indkøbskurv er tom",
     "login": "Log ind",
     "item_added_cart": "Vare tilføjet til din indkøbskurv",
@@ -202,10 +202,10 @@
     "cart": {
       "title_cart": "Din indkøbskurv",
       "title_basket": "Din kurv",
-      "title_bag": "Din taske",
+      "title_bag": "Din kurv",
       "remove_title": "Fjern {{ title }}",
       "cart_total": "Kurvens total",
-      "bag_total": "Taske i alt",
+      "bag_total": "Kurv i alt",
       "basket_total": "Kurvens total",
       "saved": "Du gemte",
       "checkout": "Betalingsside",
@@ -567,7 +567,7 @@
       "could_not_add": "Kunne ikke lægges i kurven.",
       "invalid_code": "Den kode er ikke gyldig. Tjek stavningen, eller kontakt os.",
       "invalid_code_bag": "Den kode er ikke gyldig for denne kurv. Tjek stavningen, eller kontakt os.",
-      "title": "Kurv ({{ count }})",
+      "title": "Din kurv ({{ count }})",
       "your_bag_is_empty": "Din kurv er tom."
     },
     "card": {
@@ -719,9 +719,9 @@
       "organic_content_standard_read_more": "Organic Content Standard, læs mere",
       "our_story": "Vores historie",
       "privacy_policy": "Privatlivspolitik",
-      "questions_and_answers": "Spørgsmål og svar",
+      "questions_and_answers": "Spørgsmål & svar",
       "recycled_claim_standard_read_more": "Recycled Claim Standard, læs mere",
-      "size_and_care_guide": "Størrelses- og plejeguide",
+      "size_and_care_guide": "Størrelses- & plejeguide",
       "terms_of_sale": "Salgsbetingelser"
     },
     "gc_balance": {
@@ -771,7 +771,7 @@
       "all_topics": "Alle emner",
       "contact_us": "Kontakt os",
       "did_not_find_it": "Fandt du det ikke?",
-      "for_example_delivery_wash_gift": "For eksempel: levering, vask, gave",
+      "for_example_delivery_wash_gift": "F.eks.: levering, vask, gave,...",
       "guides": "Guider",
       "no_match_html": "Ingen svar matcher “<span data-faq-q></span>”. <a class=\"link\" href=\"{{ contact_url }}\">Spørg os direkte</a>",
       "search_the_answers": "Søg i svarene"
@@ -812,7 +812,7 @@
     "main_cart": {
       "continue_shopping": "Fortsæt med at handle",
       "order_summary": "Ordreoversigt",
-      "your_bag_is_empty": "Din kurv er tom"
+      "your_bag_is_empty": "Din kurv er tom."
     },
     "main_collection": {
       "all_colours": "Alle farver",
@@ -838,10 +838,15 @@
       "sort": "Sortér"
     },
     "main_product": {
+      "complete_the_set": "Fuldend sættet",
+      "passport_intro": "Dit køb inkluderer et garnpas med oplysningerne nedenfor samt dit stykkes oplagsnummer, som tildeles ved pakning.",
+      "discover_more": "Opdag mere",
+      "certificates": "Certifikater",
+      "our_certificates": "Vores certifikater",
       "add_to_bag": "Læg i kurv",
       "amount": "Beløb",
       "colour": "Farve:",
-      "delivery_and_returns": "Levering og returnering",
+      "delivery_and_returns": "Levering & returnering",
       "description": "Beskrivelse",
       "dimensions": "Mål",
       "get_an_email_when_a_new_edition_from": "Få en e-mail, når en ny edition fra denne garnfamilie er klar",
@@ -890,23 +895,23 @@
       "see_all_results": "Se alle resultater"
     },
     "product": {
-      "edition_left_html": "<b>Udgave på {{ total }}, {{ left }} tilbage.</b> Når dette parti garn er brugt, gentages designet ikke i denne farve.",
+      "edition_left_html": "<b>Udgave på {{ total }} · Kun {{ left }} tilbage på lager</b> Denne farvekombination findes kun i dette parti og kan ikke genopfyldes, når den er udsolgt.",
       "faq_title": "Spørgsmål om dette produkt",
       "see_current": "Se aktuelle {{ name }}",
-      "sold_out_html": "<b>Denne udgave er udsolgt.</b> Alle {{ total }} stykker har fundet et hjem. Designet bliver ikke gentaget i denne farve."
+      "sold_out_html": "<b>Udgave på {{ total }} · Denne farvekombination er udsolgt</b>"
     },
     "product_faq_reviews": {
-      "reviews": "Anmeldelser"
+      "reviews": "Fra vores kunder"
     },
     "product_passport": {
       "about_our_certificates": "Om vores certificeringer",
       "bsci_compliance": "BSCI-overholdelse",
       "certificates_for_this_product": "Certificeringer for dette produkt",
-      "fibre_and_batch": "Fiber og batch",
+      "fibre_and_batch": "Fiber & batch",
       "organic_content_standard": "Organic Content Standard",
       "recycled_claim_standard": "Recycled Claim Standard",
-      "see_it_in_the_tracker": "Se den i trackeren",
-      "what_is_the_yarn_passport": "Hvad er Yarn Passport?",
+      "see_it_in_the_tracker": "Se det i trackeren",
+      "what_is_the_yarn_passport": "Hvad er garnpasset?",
       "where_it_came_from": "Hvor det kommer fra"
     },
     "register": {
@@ -965,7 +970,7 @@
       "closed": "Lukket",
       "editions_still_open": "udgaver stadig åbne",
       "last_pieces": "Sidste stykker",
-      "logged": "Registreret",
+      "logged": "Dato",
       "numbered_pieces_made": "nummererede stykker lavet",
       "open_left": "Åben · {{ count }} tilbage",
       "pieces": "Stykker",

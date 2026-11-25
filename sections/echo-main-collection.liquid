@@ -96,6 +96,9 @@
   .pl-main{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
   @media(min-width:900px){.pl-main{grid-template-columns:302px minmax(0,1fr)}}
   .fl{background:#fff;padding:24px;display:flex;flex-direction:column;gap:16px}
+  .fl-tags{display:none;margin-top:12px}
+  .fl:has([data-last][aria-pressed="true"]) .fl-tags{display:flex;flex-wrap:wrap;gap:8px}
+  .fl-tag{display:inline-flex;gap:8px;align-items:center;border:1px solid #332C2A;border-radius:999px;background:transparent;padding:6px 14px;font:500 13px/1.4 var(--body);color:#332C2A;cursor:pointer}
   .fl-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:28px}
   .fl-head b{font:600 16px/1.6 var(--body);letter-spacing:.1em;color:var(--wine)}
   .fl-clear{display:none;border:0;background:transparent;padding:4px 0;border-bottom:1px solid #332C2A;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#332C2A;cursor:pointer;min-height:0}
@@ -125,6 +128,7 @@
   .pl .grid.g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}
   @media(min-width:720px){.pl .grid.g4{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}}
   .pl .card{gap:20px}
+  .pl .card[data-state="sold"]{opacity:1!important}
   .pl .card .ph.pack{background:#fff;aspect-ratio:302/360}
   .pl .card .ph.pack img{mix-blend-mode:normal;object-fit:contain;padding:8%}
   .pl .card .meta{display:flex;flex-direction:column;gap:8px;padding-top:0}
@@ -159,14 +163,7 @@
   <div class="wrap pl-main">
     <aside class="fl" aria-label="{{ 'echo.main_collection.filters_and_sort' | t | escape }}">
       <div class="fl-head"><b>{{ 'echo.main_collection.filters_and_sort' | t | upcase }}</b><button class="fl-clear" type="button" data-fam="">{{ 'echo.main_collection.clear_all' | t }}</button></div>
-      <hr>
-      <details>
-        <summary>{{ 'echo.main_collection.colour' | t }}<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"/></svg></summary>
-        <div class="fl-body"><div class="fl-chips">
-          {%- assign fams = 'green:#6E7559,neutral:#D8CCB4,blue:#3D5BA9,black:#2A2826,bright:#E0763C,pink:#D6A0B4' | split: ',' -%}
-          {%- for f in fams -%}{%- assign fp = f | split: ':' -%}<button class="fl-chip" type="button" data-fam="{{ fp[0] }}" aria-pressed="false"><span class="dot" style="background:{{ fp[1] }}"></span>{{ fp[0] | capitalize }}</button>{%- endfor -%}
-        </div></div>
-      </details>
+      <div class="fl-tags"><button class="fl-tag" type="button" onclick="this.closest('.fl').querySelector('[data-last]').click()">{{ 'echo.main_collection.final_pieces_only' | t }} <span aria-hidden="true">×</span></button></div>
       <hr>
       {%- if mode != 'last' -%}
       <details>
