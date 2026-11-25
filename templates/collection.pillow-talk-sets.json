@@ -9,9 +9,31 @@
         "h1": "Pillow Talk: blanket and cushion sets",
         "intro": "Designs that come as a blanket and matching cushion covers, knitted from the same yarn batch. [Set price to confirm.]"
       }
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 20,
+        "space_below": 20
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "illustration",
+    "club"
   ]
 }

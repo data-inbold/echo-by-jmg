@@ -23,9 +23,31 @@
         "h1": "Happy Habitat, for kids’ rooms",
         "intro": "From play corners to quiet evenings. Playful pieces for nurseries and kids’ rooms, made to belong wherever comfort grows."
       }
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 20,
+        "space_below": 20
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "illustration",
+    "club"
   ]
 }

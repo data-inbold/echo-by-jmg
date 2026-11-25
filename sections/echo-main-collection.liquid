@@ -14,14 +14,11 @@
   endcapture
   assign h1 = section.settings.h1 | default: collection.title
   if collection.handle == 'all' and section.settings.h1 == blank
-    assign h1 = 'echo.collection.everything' | t
+    assign h1 = 'echo.main_collection.choose_your_piece' | t
   endif
   assign intro = section.settings.intro
   if intro == blank
     assign intro = collection.description | strip_html
-  endif
-  if intro == blank and collection.handle == 'all'
-    assign intro = 'echo.collection.intro' | t
   endif
   assign title = collection.title
   if collection.handle == 'all'
@@ -55,38 +52,142 @@
   assign sort = collection.sort_by | default: collection.default_sort_by
 -%}
 {%- assign t_home = 'echo.common.home' | t -%}{%- assign t_shop = 'echo.common.shop' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_shop | append: '::' | append: u_all | append: '||' | append: title -%}
-{%- render 'echo-crumbs', list: cl -%}
-<section class="section tight">
-  <div class="wrap split" style="align-items:start">
-    <div class="stack" style="gap:14px"><h1 class="h1">{{ h1 }}</h1><p class="lead" style="margin:0">{{ intro }}</p></div>
-    {%- assign cimg = section.settings.image | default: collection.image -%}
-    {%- render 'echo-media', video: section.settings.video, image: cimg, asset: section.settings.photo, alt: collection.title, label: section.settings.label, ar: '16/9', eager: true -%}
-  </div>
-</section>
-
-<section class="section tight alt" style="padding-block:16px;position:sticky;top:66px;z-index:5;border-block:1px solid var(--line)">
-  <div class="wrap row" style="justify-content:space-between">
-    <div class="row" style="gap:6px">
-      <button class="chip" data-fam="" aria-pressed="true">{{ 'echo.main_collection.all_colours' | t }}</button>
-      {%- assign fams = 'green:#6E7559,neutral:#D8CCB4,blue:#3D5BA9,black:#2A2826,bright:#E0763C,pink:#D6A0B4' | split: ',' -%}
-      {%- for f in fams -%}
-        {%- assign fp = f | split: ':' -%}
-        <button class="chip" data-fam="{{ fp[0] }}" aria-pressed="false"><span class="dot" style="background:{{ fp[1] }}"></span>{{ fp[0] | capitalize }}</button>
-      {%- endfor -%}
-      {%- if mode != 'last' -%}<button class="chip" data-last aria-pressed="false">{{ 'echo.tracker.last_pieces' | t }}</button>{%- endif -%}
+{%- liquid
+  capture u_tab_blankets
+    render 'echo-url', key: 'blankets'
+  endcapture
+  capture u_tab_cushions
+    render 'echo-url', key: 'cushions'
+  endcapture
+  capture u_tab_bags
+    render 'echo-url', key: 'bags'
+  endcapture
+  capture u_tab_acc
+    render 'echo-url', key: 'accessories'
+  endcapture
+  assign cur_tab = only
+  if mode != 'all' or only == 'sets' or only == 'picks'
+    assign cur_tab = 'none'
+  endif
+  assign t_search = 'echo.main_collection.search' | t
+  assign t_sort_label = 'echo.main_collection.sort' | t
+-%}
+<style>
+  .pl-hero{padding-block:{{ section.settings.pad_top }}px 0}
+  .pl-hero .crumbs{padding:0 0 20px}
+  .pl-hero .wrap>.crumbs{max-width:none;margin:0}
+  .pl-top{display:grid;grid-template-columns:1fr;gap:20px;align-items:end}
+  @media(min-width:900px){.pl-top{grid-template-columns:minmax(0,1fr) minmax(0,519px);gap:24px}}
+  .pl-h{margin:0;font:300 clamp(34px,3.9vw,56px)/1.36 var(--display);color:var(--wine)}
+  .pl-search{display:flex;align-items:center;gap:10px;height:41px;border-bottom:1px solid #332C2A;margin:0}
+  .pl-search label{display:flex;align-items:center;gap:8px;flex:none;font:400 16px/normal var(--nav);color:#7C7E64}
+  .pl-search svg{width:24px;height:24px;flex:none}
+  .pl-search input{flex:1;min-width:0;border:0;background:transparent;outline:0;padding:0;font:400 16px/normal var(--body);color:#332C2A;min-height:0}
+  .pl-search input::placeholder{color:#ABA499}
+  .pl-search button{flex:none;border:0;background:transparent;padding:0;color:#332C2A;cursor:pointer;display:grid;place-items:center;min-height:0}
+  .pl-intro{margin:20px 0 0;max-width:62ch;font:400 14px/1.6 var(--body);color:#332C2A}
+  .pl-tabs{display:flex;gap:0;margin-top:40px;border-block:1px solid #ABA499;padding-block:12px;overflow-x:auto;scrollbar-width:none}
+  .pl-tabs::-webkit-scrollbar{display:none}
+  .pl-tabs a{flex:1 0 auto;display:flex;align-items:center;justify-content:center;padding:4px 24px;font:300 clamp(18px,1.7vw,24px)/normal var(--display);color:#918C8A;text-decoration:none;white-space:nowrap}
+  @media(min-width:900px){.pl-tabs a{padding-inline:40px}}
+  .pl-tabs a:hover{color:var(--wine)}
+  .pl-tabs a[aria-current="page"]{font-weight:400;color:var(--wine)}
+  .pl{padding-block:40px {{ section.settings.pad_bottom }}px}
+  .pl-main{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
+  @media(min-width:900px){.pl-main{grid-template-columns:302px minmax(0,1fr)}}
+  .fl{background:#fff;padding:24px;display:flex;flex-direction:column;gap:16px}
+  .fl-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:28px}
+  .fl-head b{font:600 16px/1.6 var(--body);letter-spacing:.1em;color:var(--wine)}
+  .fl-clear{display:none;border:0;background:transparent;padding:4px 0;border-bottom:1px solid #332C2A;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#332C2A;cursor:pointer;min-height:0}
+  .fl:has(.fl-chip[data-fam]:not([data-fam=""])[aria-pressed="true"],[data-last][aria-pressed="true"]) .fl-clear{display:inline-block}
+  .fl hr{height:0;border:0;border-top:1px solid #E2DDD6;margin:0}
+  .fl details>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;cursor:pointer;font:400 16px/normal var(--nav);color:#332C2A}
+  .fl details>summary::-webkit-details-marker{display:none}
+  .fl details>summary svg{width:16px;height:16px;flex:none;transition:transform .2s}
+  .fl details[open]>summary svg{transform:rotate(180deg)}
+  .fl-body{display:flex;flex-direction:column;gap:16px;padding-top:16px}
+  .fl-chips{display:flex;flex-wrap:wrap;gap:8px 16px}
+  .fl-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0;border:0;background:transparent;border-radius:0;font:400 14px/1.6 var(--body);color:#332C2A;cursor:pointer}
+  .fl-chip .dot{width:24px;height:24px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+  .fl-chip[aria-pressed="true"]{background:transparent;color:#332C2A;font-weight:600}
+  .fl-chip[aria-pressed="true"] .dot{box-shadow:0 0 0 2px #fff,0 0 0 3px #332C2A}
+  .fl-chk{display:flex;gap:12px;align-items:flex-start;text-align:left;border:0;background:transparent;padding:0;cursor:pointer;color:#332C2A;min-height:0}
+  .fl-chk .box{flex:none;width:20px;height:20px;border:1px solid #332C2A;display:grid;place-items:center;margin-top:0}
+  .fl-chk .box svg{width:14px;height:14px;opacity:0}
+  .fl-chk[aria-pressed="true"] .box{background:#332C2A;color:#fff}
+  .fl-chk[aria-pressed="true"] .box svg{opacity:1}
+  .fl-chk b{display:block;font:400 14px/1.6 var(--body)}
+  .fl-chk small{display:block;font:400 14px/1.6 var(--body);color:#7C7E64}
+  .fl-radio{display:flex;align-items:center;gap:12px;font:400 14px/1.6 var(--body);color:#332C2A;cursor:pointer}
+  .fl-radio input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin:0;border:1px solid #332C2A;border-radius:50%;display:grid;place-items:center;background:transparent;min-height:0;padding:0}
+  .fl-radio input::after{content:"";width:10px;height:10px;border-radius:50%;background:#332C2A;transform:scale(0)}
+  .fl-radio input:checked::after{transform:scale(1)}
+  .pl .grid.g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}
+  @media(min-width:720px){.pl .grid.g4{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}}
+  .pl .card{gap:20px}
+  .pl .card .ph.pack{background:#fff;aspect-ratio:302/360}
+  .pl .card .ph.pack img{mix-blend-mode:normal;object-fit:contain;padding:8%}
+  .pl .card .meta{display:flex;flex-direction:column;gap:8px;padding-top:0}
+  .pl .card .name{order:1;font:400 16px/normal var(--body);color:#7C7E64}
+  .pl .card .swatches{display:none}
+  .pl .card .ed{order:2;font:400 14px/1.6 var(--body);color:#ABA499}
+  .pl .card .meta>span:not([class]){order:3;font:600 16px/1.6 var(--body);color:#332C2A}
+</style>
+<section class="pl-hero">
+  <div class="wrap">
+    {%- render 'echo-crumbs', list: cl -%}
+    <div class="pl-top">
+      <h1 class="pl-h">{{ h1 }}</h1>
+      <form class="pl-search" action="{{ routes.search_url }}" method="get" role="search">
+        <label for="pl-q"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72 72.08 72.08 0 0 1-72-72Z"/></svg>{{ t_search }}</label>
+        <input id="pl-q" type="search" name="q" placeholder="{{ 'echo.main_collection.search_placeholder' | t | escape }}" autocomplete="off">
+        <button type="submit" aria-label="{{ t_search | escape }}"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+      </form>
     </div>
-    <label class="row" style="gap:8px;font-size:13px" for="sort">{{ 'echo.main_collection.sort' | t }}
-      <select id="sort" style="border:1px solid var(--line);background:#fff;min-height:36px;padding:0 8px">
-        <option value="created-descending"{% if sort == 'created-descending' %} selected{% endif %}>{{ 'echo.main_collection.newest_editions' | t }}</option>
-        <option value="price-ascending"{% if sort == 'price-ascending' %} selected{% endif %}>{{ 'echo.main_collection.price_low_to_high' | t }}</option>
-        <option value="price-descending"{% if sort == 'price-descending' %} selected{% endif %}>{{ 'echo.main_collection.price_high_to_low' | t }}</option>
-      </select>
-    </label>
+    {%- if intro != blank and collection.handle != 'all' -%}<p class="pl-intro">{{ intro }}</p>{%- endif -%}
+    <nav class="pl-tabs" aria-label="{{ 'echo.common.shop' | t | escape }}">
+      <a href="{{ routes.all_products_collection_url }}"{% if cur_tab == 'all' %} aria-current="page"{% endif %}>{{ 'echo.common.shop_all' | t }}</a>
+      <a href="{{ u_tab_blankets }}"{% if cur_tab == 'blankets' %} aria-current="page"{% endif %}>{{ 'echo.common.blankets' | t }}</a>
+      <a href="{{ u_tab_cushions }}"{% if cur_tab == 'cushions' %} aria-current="page"{% endif %}>{{ 'echo.common.cushion_covers' | t }}</a>
+      <a href="{{ u_tab_bags }}"{% if cur_tab == 'bags' %} aria-current="page"{% endif %}>{{ 'echo.common.bags' | t }}</a>
+      <a href="{{ u_tab_acc }}"{% if cur_tab == 'accessories' %} aria-current="page"{% endif %}>{{ 'echo.common.accessories' | t }}</a>
+    </nav>
   </div>
 </section>
 
-<section class="section tight">
-  <div class="wrap stack" style="gap:20px">
+<section class="pl">
+  <div class="wrap pl-main">
+    <aside class="fl" aria-label="{{ 'echo.main_collection.filters_and_sort' | t | escape }}">
+      <div class="fl-head"><b>{{ 'echo.main_collection.filters_and_sort' | t | upcase }}</b><button class="fl-clear" type="button" data-fam="">{{ 'echo.main_collection.clear_all' | t }}</button></div>
+      <hr>
+      <details>
+        <summary>{{ 'echo.main_collection.colour' | t }}<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"/></svg></summary>
+        <div class="fl-body"><div class="fl-chips">
+          {%- assign fams = 'green:#6E7559,neutral:#D8CCB4,blue:#3D5BA9,black:#2A2826,bright:#E0763C,pink:#D6A0B4' | split: ',' -%}
+          {%- for f in fams -%}{%- assign fp = f | split: ':' -%}<button class="fl-chip" type="button" data-fam="{{ fp[0] }}" aria-pressed="false"><span class="dot" style="background:{{ fp[1] }}"></span>{{ fp[0] | capitalize }}</button>{%- endfor -%}
+        </div></div>
+      </details>
+      <hr>
+      {%- if mode != 'last' -%}
+      <details>
+        <summary>{{ 'echo.main_collection.available_stock' | t }}<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"/></svg></summary>
+        <div class="fl-body"><button class="fl-chk" type="button" data-last aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></span><span><b>{{ 'echo.main_collection.final_pieces_only' | t }}</b><small>{{ 'echo.main_collection.final_pieces_hint' | t }}</small></span></button></div>
+      </details>
+      <hr>
+      {%- endif -%}
+      <details>
+        <summary>{{ t_sort_label }}<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"/></svg></summary>
+        <div class="fl-body" role="radiogroup" aria-label="{{ t_sort_label | escape }}">
+          {%- assign sort_opts = 'manual|price-ascending|price-descending|created-ascending|created-descending|title-ascending|title-descending' | split: '|' -%}
+          {%- assign sort_names = 'echo.main_collection.featured|echo.main_collection.price_low_to_high|echo.main_collection.price_high_to_low|echo.main_collection.date_old_to_new|echo.main_collection.date_new_to_old|echo.main_collection.alpha_az|echo.main_collection.alpha_za' | split: '|' -%}
+          {%- for o in sort_opts -%}
+            <label class="fl-radio"><input type="radio" name="pl-sort" data-sort-radio value="{{ o }}"{% if sort == o %} checked{% endif %}>{{ sort_names[forloop.index0] | t }}</label>
+          {%- endfor -%}
+        </div>
+      </details>
+      <hr>
+    </aside>
+    <div class="stack" style="gap:20px;min-width:0">
     {%- paginate collection.products by 96 -%}
       {%- liquid
         assign seen = ','
@@ -145,7 +246,6 @@
           endfor
         endcapture
       -%}
-      <span class="muted" style="font-size:14px" data-shop-count>{{ 'echo.common.designs_count' | t: count: n }}</span>
       <div class="grid g4" data-shop-grid{% if n == 0 %} hidden{% endif %}>
         {{ cards_last }}{{ cards }}
         {%- if section.settings.show_tile -%}
@@ -161,8 +261,15 @@
         </nav>
       {%- endif -%}
     {%- endpaginate -%}
+    </div>
   </div>
 </section>
+<script>
+  document.addEventListener('change', function (e) {
+    var t = e.target;
+    if (t && t.hasAttribute && t.hasAttribute('data-sort-radio')) { var u = new URL(location.href); u.searchParams.set('sort_by', t.value); location.href = u.toString(); }
+  });
+</script>
 
 {% schema %}
 {
@@ -186,12 +293,10 @@
     { "type": "text", "id": "crumb", "label": "Breadcrumb name", "info": "Empty = collection title" },
     { "type": "text", "id": "h1", "label": "Page heading", "info": "Empty = collection title" },
     { "type": "textarea", "id": "intro", "label": "Intro", "info": "Empty = collection description" },
-    { "type": "image_picker", "id": "image", "label": "Image", "info": "Empty = collection image" },
-    { "type": "video", "id": "video", "label": "Short clip (plays muted)" },
-    { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
-    { "type": "textarea", "id": "label", "label": "Placeholder text", "default": "Edit image or short clip" },
+    { "type": "range", "id": "pad_top", "label": "Space above", "min": 0, "max": 160, "step": 10, "default": 80, "unit": "px" },
+    { "type": "range", "id": "pad_bottom", "label": "Space below the list", "min": 0, "max": 160, "step": 10, "default": 40, "unit": "px" },
     { "type": "header", "content": "Yarn Passport tile" },
-    { "type": "checkbox", "id": "show_tile", "label": "Show tile after the 4th product", "default": true },
+    { "type": "checkbox", "id": "show_tile", "label": "Show tile after the 4th product", "default": false },
     { "type": "text", "id": "tile_eyebrow", "label": "Label", "default": "The Yarn Passport" },
     { "type": "text", "id": "tile_heading", "label": "Heading", "default": "Why is every piece numbered?" },
     { "type": "text", "id": "tile_text", "label": "Text", "default": "The yarn decides the edition size. Read how it works." },
