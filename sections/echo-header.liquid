@@ -119,9 +119,9 @@
     {%- endif -%}
     <div class="tools">
       {%- if localization.available_languages.size > 1 -%}
-        {%- form 'localization', class: 'hlang' -%}
+        {%- form 'localization', class: 'hlang lang-toggle' -%}
           {%- for lang in localization.available_languages -%}
-            <button type="submit" name="locale_code" value="{{ lang.iso_code }}" style="padding:10px 4px;{% if lang.iso_code == localization.language.iso_code %}font-weight:600;{% else %}opacity:.75;{% endif %}" aria-label="{{ lang.endonym_name }}">{{ lang.iso_code | upcase }}</button>{% unless forloop.last %}<span aria-hidden="true">/</span>{% endunless %}
+            <button type="submit" name="locale_code" value="{{ lang.iso_code }}" class="lt-opt"{% if lang.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} aria-label="{{ lang.endonym_name }}">{{ lang.iso_code | upcase }}</button>
           {%- endfor -%}
         {%- endform -%}
       {%- endif -%}
