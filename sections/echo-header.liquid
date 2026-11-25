@@ -117,9 +117,9 @@
           {%- endfor -%}
         {%- endform -%}
       {%- endif -%}
-      <button data-act="search">{{ 'echo.common.search' | t }}</button>
-      <a class="hide-s" href="{{ routes.account_url }}">{{ 'echo.common.account' | t }}</a>
-      <button data-act="bag" data-bag-label aria-label="{{ 'echo.bag.aria' | t: count: cart.item_count | escape }}"><b>{{ 'echo.header.bag_html' | t: count: cart.item_count }}</b></button>
+      <button data-act="search"><img class="hico" src="{{ 'echo-icon-search.png' | asset_url }}" alt="" width="24" height="24"><span class="hlbl">{{ 'echo.common.search' | t }}</span></button>
+      <a class="hide-s" href="{{ routes.account_url }}"><img class="hico" src="{{ 'echo-icon-account.png' | asset_url }}" alt="" width="24" height="24"><span class="hlbl">{{ 'echo.common.account' | t }}</span></a>
+      <button class="hcart" data-act="bag" data-bag-label aria-label="{{ 'echo.bag.aria' | t: count: cart.item_count | escape }}"><img class="hico" src="{{ 'echo-icon-cart.png' | asset_url }}" alt="" width="24" height="24"><span>{{ 'echo.header.bag_html' | t: count: cart.item_count }}</span></button>
     </div>
   </div>
 

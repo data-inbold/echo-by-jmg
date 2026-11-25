@@ -434,3 +434,9 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .section:has(>.ethr)>.wrap{position:relative;z-index:1}
 /* Yarn Passport page: the area behind all blocks is Figma's #F2EEEA (header and footer keep their own colours) */
 body.template-yarn-passport #app{background:#F2EEEA}
+/* header icons (Figma): 24px icon + label, 8px apart; the cart icon 4px */
+.nav .tools button[data-act],.nav .tools a{display:inline-flex;align-items:center;gap:8px}
+.nav .tools .hcart{gap:4px}
+.nav .tools .hico{display:block;width:24px;height:24px;object-fit:contain;flex:none}
+.nav .tools .hcart span{font-weight:400}
+@media(max-width:749px){.nav .tools button[data-act="search"] .hlbl{display:none}}

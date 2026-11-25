@@ -605,7 +605,7 @@
       "guide": "Guide"
     },
     "bag": {
-      "aria": "Bag, {{ count }} items",
+      "aria": "Cart, {{ count }} items",
       "close_bag": "Close bag",
       "could_not_add": "Could not add to bag.",
       "invalid_code": "That code is not valid. Check the spelling, or contact us.",
@@ -788,7 +788,7 @@
     "header": {
       "about_heading": "About",
       "about_us": "About Us",
-      "bag_html": "Bag (<span data-bag-count>{{ count }}</span>)",
+      "bag_html": "Cart (<span data-bag-count>{{ count }}</span>)",
       "designs_from": {
         "one": "{{ count }} design · from",
         "other": "{{ count }} designs · from"
