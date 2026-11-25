@@ -1,7 +1,7 @@
 {%- comment -%} (Shopify section names are limited to 25 characters.) Letter from the founders: photo, long italic letter on a pink panel, and a three-step timeline underneath. {%- endcomment -%}
 {%- assign marks = section.blocks | where: 'type', 'milestone' -%}
 <style>
-  .lt-panel{display:grid;background:#E9E2DA;overflow:hidden}
+  .lt-panel{display:grid;background:#E9E2DA}
   @media(min-width:880px){.lt-panel{grid-template-columns:600fr 680fr}}
   .lt-photo{background:#fff;padding:20px;display:flex}
   .lt-photo .ph{flex:1;min-height:320px;border:0;aspect-ratio:auto!important}
@@ -27,9 +27,9 @@
     {%- if section.settings.heading != blank -%}<h2 class="h2 lt-title" style="text-align:{{ section.settings.heading_align }}">{{ section.settings.heading }}</h2>{%- endif -%}
     <div class="lt-panel">
       <div class="lt-photo{% if section.settings.show_thread %} ethr-host{% endif %}">
-        {%- if section.settings.show_thread -%}{%- render 'echo-thread', shape: 'letter', x: -177, y: -249, w: 642, W: 600 -%}{%- endif -%}
+        {%- if section.settings.show_thread -%}<img class="ethr l" src="{{ 'echo-thread-letter-blue.png' | asset_url }}" alt="" width="642" height="626" style="--x:-177;--y:-249;--w:642;--W:600" aria-hidden="true">{%- endif -%}
         {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Founder photo', ar: '560/674', sizes: '(min-width: 880px) 560px, 100vw' -%}
-        {%- if section.settings.show_thread -%}<div class="ethr-clip">{%- render 'echo-thread', shape: 'loopr', x: 300, y: 359, w: 373, W: 600, color: '#fff' -%}</div>{%- endif -%}
+        {%- if section.settings.show_thread -%}<div class="ethr-clip"><img class="ethr l" src="{{ 'echo-thread-letter-white.png' | asset_url }}" alt="" width="373" height="441" style="--x:227;--y:300;--w:373;--W:600" aria-hidden="true"></div>{%- endif -%}
       </div>
       <div class="lt-text">
         <div class="lt-q">{{ section.settings.letter | newline_to_br | replace: '<br /><br />', '</p><p>' | prepend: '<p>' | append: '</p>' }}</div>
