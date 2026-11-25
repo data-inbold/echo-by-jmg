@@ -95,7 +95,9 @@
         {%- if is_mega -%}
           <button data-act="dd-{{ forloop.index }}" aria-expanded="false"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}<svg class="caret" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"/></svg></button>
         {%- else -%}
-          <a href="{{ l.url }}"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}</a>
+          {%- assign l_url = l.url -%}
+          {%- if l_t == 'gift' or l_t == 'gifts' -%}{%- capture l_url -%}{%- render 'echo-url', key: 'gifts' -%}{%- endcapture -%}{%- endif -%}
+          <a href="{{ l_url | strip }}"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}</a>
         {%- endif -%}
       {%- endfor -%}
     </nav>
@@ -276,7 +278,9 @@
     <div class="wrap">
       {%- if hm != blank -%}
         {%- for l in hm.links -%}
-          {%- if l.url == '#' or l.url == blank -%}<span class="mm-h">{{ l.title }}</span>{%- else -%}<a href="{{ l.url }}">{{ l.title }}</a>{%- endif -%}
+          {%- assign m_t = l.handle | replace: '-', ' ' -%}{%- assign m_url = l.url -%}
+          {%- if m_t == 'gift' or m_t == 'gifts' -%}{%- capture m_url -%}{%- render 'echo-url', key: 'gifts' -%}{%- endcapture -%}{%- endif -%}
+          {%- if l.url == '#' or l.url == blank -%}<span class="mm-h">{{ l.title }}</span>{%- else -%}<a href="{{ m_url | strip }}">{{ l.title }}</a>{%- endif -%}
           {%- assign l_t = l.handle | replace: '-', ' ' -%}
 {%- assign l_key = ',' | append: l_t | append: ',' -%}
           {%- if mega_t != blank and mega_set contains l_key -%}

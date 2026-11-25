@@ -34,7 +34,10 @@
     when 'gift-card'
       assign p = '/products/egift-card'
     when 'gifts'
-      assign p = '/pages/gifts'
+      comment
+        Not in the Figma design yet: 404 on purpose. Restore '/pages/gifts' when the page is designed.
+      endcomment
+      assign p = '/pages/gift-page-not-designed'
     when 'story'
       assign p = '/pages/about-us'
     when 'passport'
@@ -94,7 +97,11 @@
       when 'open'
         assign p = '/collections/all?view=open-editions'
       when 'gifts'
-        assign p = '/pages/' | append: base | append: '?view=gifts'
+        comment
+          The Gift page is not in the Figma design yet: send every Gift link to the 404 page so it is easy to spot.
+          To bring the wireframe page back: '/pages/' | append: base | append: '?view=gifts'
+        endcomment
+        assign p = '/pages/gift-page-not-designed'
       # story: the About Us page exists in the store, so it is not routed through ?view=
       when 'passport'
         assign p = '/pages/' | append: base | append: '?view=yarn-passport'
