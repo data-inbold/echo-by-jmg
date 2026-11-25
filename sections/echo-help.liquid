@@ -49,14 +49,14 @@
           assign tt = b.settings.title | escape
           echo '<div data-topic-group="' | append: tt | append: '" ' | append: b.shopify_attributes | append: '><h2>' | append: b.settings.title | append: '</h2>'
           assign open = true
-          assign first = true
+          assign is_first = true
         else
           assign ans = b.settings.a | replace: '[cut-off time]', settings.echo_cutoff
           assign op = ''
-          if first
+          if is_first
             assign op = ' open'
           endif
-          assign first = false
+          assign is_first = false
           echo '<details class="acc"' | append: op | append: ' ' | append: b.shopify_attributes | append: '><summary>' | append: b.settings.q | append: '</summary><div class="body">' | append: ans | append: '</div></details>'
         endif
       endfor
