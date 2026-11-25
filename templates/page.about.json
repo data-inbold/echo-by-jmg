@@ -449,6 +449,7 @@
         "heading": "Join the Cozy Club",
         "text": "Get 10% off your first order, and be the first to hear about our new designs!",
         "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
       }
