@@ -275,7 +275,7 @@
       var t = totalsFrom(batches, hist.rows);
       Array.prototype.forEach.call(els, function (el) {
         var kind = el.getAttribute('data-yarn-total');
-        if (kind === 'kg') showNumber(el, t.kg, fmtKg);
+        if (kind === 'kg') showNumber(el, t.kg, fmtKgWhole);
         else if (kind === 'batches') showNumber(el, t.batches, fmtNumber);
       });
     }).catch(function () { /* keep the server numbers */ });
