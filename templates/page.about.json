@@ -1,33 +1,27 @@
 /*
  * ------------------------------------------------------------
-  * IMPORTANT: The contents of this file are auto-generated.
+ * IMPORTANT: The contents of this file are auto-generated.
  *
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-/* Re-import 5 · 5 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
     "crumbs": {
       "type": "echo-breadcrumbs",
       "settings": {
+        "p1_label": "",
+        "p1_link": "",
+        "p2_label": "",
+        "p2_link": "",
         "current": "About Us"
       }
     },
     "hero": {
       "type": "echo-about-hero",
-      "settings": {
-        "bg": "paper",
-        "heading": "New vision for a 80-year family legacy",
-        "lead": "With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home.",
-        "logo_file": "echo-stat-logo.png",
-        "strip_label": "Photos of the factory and the family",
-        "autoplay": true,
-        "interval": 5
-      },
       "blocks": {
         "photo_1": {
           "type": "photo",
@@ -87,20 +81,19 @@
         "photo_5",
         "photo_6",
         "photo_7"
-      ]
+      ],
+      "settings": {
+        "bg": "paper",
+        "heading": "New vision for a 80-year family legacy",
+        "lead": "With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home.",
+        "logo_file": "echo-stat-logo.png",
+        "autoplay": true,
+        "interval": 5,
+        "strip_label": "Photos of the factory and the family"
+      }
     },
     "letter": {
       "type": "echo-letter",
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "heading": "Letter From Our Founders",
-        "letter": "“Knitting has been part of my family for generations. What began with my grandfather's knitting factory in 1946 has grown into decades of craftsmanship and a deep appreciation for beautiful yarns.\n\nOver the years, I've seen extraordinary materials left behind after production; beautiful, high-quality yarns that still have so much potential. I couldn't help thinking: surely, they deserve more than to be forgotten?\n\nThat thought became EchoByJMG. A brand born from my passion for giving beautiful yarns a new purpose, transforming what was once overlooked into something meaningful, playful and made to be loved.”",
-        "caption": "Ming, Founder of EchoByJMG",
-        "photo": "echo-ming-portrait.jpg",
-        "alt": "Ming, founder of EchoByJMG",
-        "icon_file": "echo-yarnknitting-ourstory.png"
-      },
       "blocks": {
         "m1": {
           "type": "milestone",
@@ -128,7 +121,18 @@
         "m1",
         "m2",
         "m3"
-      ]
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "Letter From Our Founders",
+        "letter": "“Knitting has been part of my family for generations. What began with my grandfather's knitting factory in 1946 has grown into decades of craftsmanship and a deep appreciation for beautiful yarns.\n\nOver the years, I've seen extraordinary materials left behind after production; beautiful, high-quality yarns that still have so much potential. I couldn't help thinking: surely, they deserve more than to be forgotten?\n\nThat thought became EchoByJMG. A brand born from my passion for giving beautiful yarns a new purpose, transforming what was once overlooked into something meaningful, playful and made to be loved.”",
+        "caption": "Ming, Founder of EchoByJMG",
+        "image": "shopify://shop_images/letter_from_our_founder.png",
+        "photo": "echo-ming-portrait.jpg",
+        "alt": "Ming, founder of EchoByJMG",
+        "icon_file": "echo-yarnknitting-ourstory.png"
+      }
     },
     "marquee": {
       "type": "echo-marquee",
@@ -190,13 +194,6 @@
     },
     "tracker": {
       "type": "echo-tracker-band",
-      "settings": {
-        "spacing": "normal",
-        "heading": "Our Rescue Journey, In Numbers",
-        "btn_label": "Open tracker",
-        "btn_link": "echo:tracker",
-        "log_label": "Latest batches"
-      },
       "blocks": {
         "stat_1": {
           "type": "stat",
@@ -266,7 +263,15 @@
         "batch_1",
         "batch_2",
         "batch_3"
-      ]
+      ],
+      "settings": {
+        "spacing": "normal",
+        "eyebrow": "03 · Rescued yarn tracker",
+        "heading": "Our Rescue Journey, In Numbers",
+        "btn_label": "Open tracker",
+        "btn_link": "echo:tracker",
+        "log_label": "Latest batches"
+      }
     },
     "track": {
       "type": "echo-feature",
@@ -285,7 +290,9 @@
         "icon_file": "echo-yarnknitting-ourstory.png",
         "ar": "787/443",
         "photo": "echo-v2-process.jpg",
-        "alt": "A JM Group yarn label lying on a knitted fair-isle piece"
+        "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
+        "photo2": "",
+        "alt2": ""
       }
     },
     "factory": {
@@ -313,18 +320,6 @@
     },
     "stories": {
       "type": "echo-clips",
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "eyebrow": "",
-        "heading": "Stories From Our Factory Floor",
-        "link_label": "Discover more",
-        "link": "echo:journal",
-        "kicker": "",
-        "text": "See our behind-the-scene as it is, with raw, unfiltered footages and honest stories shared by the very people who make your pieces.",
-        "note": "",
-        "cards_label": "Journals"
-      },
       "blocks": {
         "clip_1": {
           "type": "clip",
@@ -334,8 +329,8 @@
             "text": "The knitting machines warm up before the first shift.",
             "duration": "0:14",
             "by": "Filmed by [name], Knitting hall",
-            "placeholder": "Phone clip\nMorning start-up",
-            "file": "echo-clip-1.mp4"
+            "file": "echo-clip-1.mp4",
+            "placeholder": "Phone clip\nMorning start-up"
           }
         },
         "clip_2": {
@@ -346,8 +341,8 @@
             "text": "Leftover lambswool pulled for batch HV-2417.",
             "duration": "0:14",
             "by": "Filmed by [name], Yarn store",
-            "placeholder": "Phone clip\nCones off the shelf",
-            "file": "echo-clip-2.mp4"
+            "file": "echo-clip-2.mp4",
+            "placeholder": "Phone clip\nCones off the shelf"
           }
         },
         "clip_3": {
@@ -358,8 +353,8 @@
             "text": "Closing the seams of a cushion cover, stitch by stitch.",
             "duration": "0:14",
             "by": "Filmed by [name], Linking table",
-            "placeholder": "Phone clip\nLinking by hand",
-            "file": "echo-clip-3.mp4"
+            "file": "echo-clip-3.mp4",
+            "placeholder": "Phone clip\nLinking by hand"
           }
         },
         "clip_4": {
@@ -370,8 +365,8 @@
             "text": "Trimming pompoms for the joyful beanie.",
             "duration": "0:14",
             "by": "Filmed by [name], Finishing",
-            "placeholder": "Phone clip\nPompoms",
-            "file": "echo-clip-4.mp4"
+            "file": "echo-clip-4.mp4",
+            "placeholder": "Phone clip\nPompoms"
           }
         },
         "card_1": {
@@ -410,7 +405,19 @@
         "card_1",
         "card_2",
         "card_3"
-      ]
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "eyebrow": "",
+        "heading": "Stories From Our Factory Floor",
+        "link_label": "Discover more",
+        "link": "echo:journal",
+        "kicker": "",
+        "text": "See our behind-the-scene as it is, with raw, unfiltered footages and honest stories shared by the very people who make your pieces.",
+        "note": "",
+        "cards_label": "Journals"
+      }
     },
     "illustration": {
       "type": "echo-illustration",

@@ -23,7 +23,7 @@
 </style>
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap stack" style="gap:40px">
-    {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="h2 lt-title" style="text-align:{{ section.settings.heading_align }}">{{ section.settings.heading }}</h2>{%- endif -%}
     <div class="lt-panel">
       <div class="lt-photo{% if section.settings.show_thread %} ethr-host{% endif %}">
         {%- if section.settings.show_thread -%}{%- render 'echo-thread', shape: 'letter', x: -177, y: -249, w: 642, W: 600 -%}{%- endif -%}
@@ -54,6 +54,7 @@
     { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}], "default": "paper" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Letter From Our Founders" },
+    { "type": "select", "id": "heading_align", "label": "Heading alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" }, { "value": "right", "label": "Right" }], "default": "right" },
     { "type": "textarea", "id": "letter", "label": "Letter", "info": "Leave an empty line between paragraphs." },
     { "type": "text", "id": "caption", "label": "Signature", "default": "Ming, Founder of EchoByJMG" },
     { "type": "image_picker", "id": "image", "label": "Photo" },
