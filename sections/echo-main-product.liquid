@@ -365,9 +365,9 @@
     .pdp-certs .hd b{font-size:18px;font-weight:600;color:#332C2A}
     .pdp-certs .sub{color:#ABA499;letter-spacing:.05em}
     @media (max-width:899px){
-      .pdp-fg{grid-template-columns:1fr;gap:28px}
-      .pdp-fg .gallery{flex-direction:column}
-      .pdp-fg .thumbs{flex-direction:row;width:auto;max-height:none}
+      .pdp-fg{grid-template-columns:minmax(0,1fr);gap:28px}
+      .pdp-fg .gallery{flex-direction:column;min-width:0}
+      .pdp-fg .thumbs{flex-direction:row;width:auto;max-width:100%;max-height:none;overflow-x:auto}
       .pdp-fg .thumbs button{width:72px;height:96px}
       .pdp-title{font-size:32px}
       .buy-row{gap:12px}
