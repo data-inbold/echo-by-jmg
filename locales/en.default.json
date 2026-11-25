@@ -901,7 +901,26 @@
       "notify_me": "Notify me",
       "pay_with_mobilepay": "Pay with MobilePay",
       "sent_instantly_by_email": "Sent instantly by email",
-      "thank_you_we_will_email_you_when_the": "Thank you. We will email you when the next edition is ready."
+      "thank_you_we_will_email_you_when_the": "Thank you. We will email you when the next edition is ready.",
+      "including_vat": "Including VAT",
+      "free_delivery": "Free Delivery",
+      "edition_of": "Edition of {{ total }}",
+      "only_left_html": "Only <b>{{ count }} items</b> left in stock",
+      "colorway_note": "This colorway is limited strictly to this batch and cannot be restocked once sold out.",
+      "edition_sold_out": "This edition is sold out",
+      "pay_with": "Pay with",
+      "add_to_cart": "Add to cart",
+      "tick_1": "Order by 14:00 on weekdays for delivery in 1 to 2 working days",
+      "tick_2": "Free 14-day returns to our Danish address",
+      "tick_3": "No price on the packing slip, ready to give",
+      "origin_default": "Unused yarn rescued from a [season] production run at our factory on [rescue date].",
+      "bsci_line_html": "Amfori ID 156-020420-000<br>Applies to all products",
+      "delivery_text": "Free delivery in Denmark in 1 to 2 working days from our Danish warehouse. Free returns within 14 days.",
+      "dimension": "Dimension",
+      "delivery_and_return": "Delivery & Return",
+      "enter_your_email": "Enter your email",
+      "see_it_in_tracker": "See it in tracker",
+      "photo_n": "Photo {{ n }}"
     },
     "main_search": {
       "search_blankets_bags_colours": "Search blankets, bags, colours"

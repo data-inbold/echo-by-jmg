@@ -75,15 +75,19 @@
   </div>
 {%- else -%}
   {%- assign t_home = 'echo.common.home' | t -%}{%- assign t_shop = 'echo.common.shop' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_shop | append: '::' | append: u_all | append: '||' | append: catname | append: '::' | append: caturl | append: '||' | append: i[8] -%}
+  {%- capture ic_minus -%}<svg viewBox="0 0 256 256" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8H40a8 8 0 0 1 0-16h176a8 8 0 0 1 8 8Z"/></svg>{%- endcapture -%}
+  {%- capture ic_plus -%}<svg viewBox="0 0 256 256" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg>{%- endcapture -%}
+  {%- capture ic_check -%}<svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z"/></svg>{%- endcapture -%}
+  {%- capture ic_truck -%}<svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m255.42 117-14-35A15.93 15.93 0 0 0 226.58 72H192v-8a8 8 0 0 0-8-8H32a16 16 0 0 0-16 16v112a16 16 0 0 0 16 16h17a32 32 0 0 0 62 0h50a32 32 0 0 0 62 0h17a16 16 0 0 0 16-16v-64a7.94 7.94 0 0 0-.58-3ZM192 88h34.58l9.6 24H192ZM32 72h144v64H32Zm48 136a16 16 0 1 1 16-16 16 16 0 0 1-16 16Zm81-24h-50a32 32 0 0 0-62 0H32v-32h144v12.31A32.11 32.11 0 0 0 161 184Zm31 24a16 16 0 1 1 16-16 16 16 0 0 1-16 16Zm48-24h-17a32.06 32.06 0 0 0-31-24v-32h48Z"/></svg>{%- endcapture -%}
+  {%- capture ic_star -%}<svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m234.29 114.85-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76 22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08 59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>{%- endcapture -%}
   {%- render 'echo-crumbs', list: cl -%}
-  <div class="wrap pdp">
+  <div class="wrap pdp pdp-fg">
     <div class="gallery">
       {%- liquid
         assign media = product.media | where: 'media_type', 'image'
-        assign labels = section.settings.ph_labels | split: '|'
         assign total = media.size
-        if total < 5
-          assign total = 5
+        if total < 1
+          assign total = 1
         endif
         comment
           Packshot first: the square catalogue photo ending in -01 leads the gallery, the other photos keep their order.
@@ -99,6 +103,7 @@
           endif
         endfor
       -%}
+      <div class="gal-main">
       {%- for k in (1..total) -%}
         {%- assign idx = forloop.index0 -%}
         {%- liquid
@@ -118,139 +123,254 @@
         <div data-main="{{ idx }}"{% if idx > 0 %} hidden{% endif %}>
           {%- if media[sidx] -%}
             {%- assign malt = media[sidx].alt | default: i[8] -%}
-            {%- render 'echo-pic', image: media[sidx].preview_image, alt: malt, cls: mcls, eager: forloop.first, sizes: '(min-width: 900px) 55vw, 100vw' -%}
+            {%- render 'echo-pic', image: media[sidx].preview_image, alt: malt, cls: mcls, eager: forloop.first, sizes: '(min-width: 900px) 46vw, 100vw' -%}
           {%- else -%}
-            {%- assign li = idx | minus: media.size -%}
-            {%- if media.size > 0 -%}{%- assign li = li | plus: 1 -%}{%- endif -%}
-            {%- assign lbl = labels[li] | strip | replace: '[N]', i[2] | append: '<br><br>' | append: i[5] -%}
-            {%- render 'echo-ph', label: lbl, tint: i[6], cls: 'main' -%}
+            {%- render 'echo-ph', label: i[8], tint: i[6], cls: 'main' -%}
           {%- endif -%}
         </div>
       {%- endfor -%}
+      </div>
+      {%- if media.size > 1 -%}
       <div class="thumbs">
         {%- for k in (1..total) -%}
           {%- assign idx = forloop.index0 -%}
-        {%- liquid
-          assign sidx = idx
-          if pick_i >= 0
-            if idx == 0
-              assign sidx = pick_i
-            elsif idx <= pick_i
-              assign sidx = idx | minus: 1
+          {%- liquid
+            assign sidx = idx
+            if pick_i >= 0
+              if idx == 0
+                assign sidx = pick_i
+              elsif idx <= pick_i
+                assign sidx = idx | minus: 1
+              endif
             endif
-          endif
-        -%}
-          <button type="button" data-img="{{ idx }}" aria-pressed="{% if idx == 0 %}true{% else %}false{% endif %}" aria-label="Photo {{ forloop.index }}">
-            {%- if media[sidx] -%}{%- render 'echo-pic', image: media[sidx].preview_image, alt: '', sizes: '120px' -%}{%- else -%}{%- render 'echo-ph', label: forloop.index, tint: i[6] -%}{%- endif -%}
+          -%}
+          <button type="button" data-img="{{ idx }}" aria-pressed="{% if idx == 0 %}true{% else %}false{% endif %}" aria-label="{{ 'echo.main_product.photo_n' | t: n: forloop.index | escape }}">
+            {%- render 'echo-pic', image: media[sidx].preview_image, alt: '', sizes: '120px' -%}
           </button>
         {%- endfor -%}
       </div>
+      {%- endif -%}
     </div>
 
-    <div class="stack" style="gap:16px">
-      <h1 class="h2">{{ i[8] }}</h1>
-      {%- assign rating = product.metafields.reviews.rating.value -%}
-      {%- assign rcount = product.metafields.reviews.rating_count | default: 0 -%}
-      {%- if rating != blank -%}
-        <a href="#reviews" class="muted" style="font-size:14px;text-decoration:none">★★★★★ {{ rating.rating | round: 1 }} · {{ 'echo.common.reviews_count' | t: count: rcount }}</a>
-      {%- endif -%}
-      <div style="font-size:22px;font-weight:600">{% render 'echo-money', price: variant.price %} <span class="muted" style="font-size:13px;font-weight:400">{{ 'echo.main_product.incl_vat_free_delivery' | t }}</span></div>
-      <div>
-        <div style="font-size:14px;margin-bottom:10px">{{ 'echo.main_product.colour' | t }} <b>{{ i[5] }}</b></div>
-        <div class="row">
-          {%- assign sibs = product.metafields.custom.linked_products.value -%}
-          {%- if sibs != blank -%}
+    <div class="pdp-info">
+      <div class="pdp-top">
+        <div class="pdp-head">
+          <h1 class="pdp-title">{{ i[8] }}</h1>
+          {%- assign rating = product.metafields.reviews.rating.value -%}
+          {%- assign rcount = product.metafields.reviews.rating_count | default: 0 -%}
+          {%- if rating != blank -%}
+            <a href="#reviews" class="pdp-rating"><span class="stars" aria-hidden="true">{{ ic_star }}{{ ic_star }}{{ ic_star }}{{ ic_star }}{{ ic_star }}</span><b>{{ rating.rating | round: 1 }}</b> <span>(<u>{{ 'echo.common.reviews_count' | t: count: rcount }}</u>)</span></a>
+          {%- endif -%}
+        </div>
+        <div class="pdp-price">
+          <div class="pr-row"><span class="pr">{% render 'echo-money', price: variant.price %}</span><i class="dot" aria-hidden="true"></i><span>{{ 'echo.main_product.including_vat' | t }}</span></div>
+          <div class="pr-free">{{ ic_truck }}<span>{{ 'echo.main_product.free_delivery' | t }}</span></div>
+        </div>
+        <div class="pdp-colours">
+          <p><b>{{ 'echo.main_product.colour' | t }}</b> {{ i[5] }}</p>
+          <div class="sw-row">
+            {%- assign sibs = product.metafields.custom.linked_products.value -%}
+            {%- if sibs == blank -%}
+              <a class="sw-img" href="{{ product.url }}" aria-current="true" aria-label="{{ i[5] | escape }}" title="{{ i[5] | escape }}" style="background:{{ i[6] }}">{%- if product.featured_image -%}{{ product.featured_image | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 60, height: 60 }}{%- endif -%}</a>
+            {%- endif -%}
             {%- for s in sibs -%}
               {%- capture sraw -%}{%- render 'echo-pinfo', product: s -%}{%- endcapture -%}
               {%- assign si = sraw | strip | split: '~' -%}
-              <a class="swatch-btn" href="{{ s.url }}" style="background:{{ si[6] }};display:inline-block" aria-pressed="{% if s.id == product.id %}true{% else %}false{% endif %}" aria-label="{{ si[5] | escape }}" title="{{ si[5] | escape }}"></a>
+              <a class="sw-img" href="{{ s.url }}" aria-current="{% if s.id == product.id %}true{% else %}false{% endif %}" aria-label="{{ si[5] | escape }}" title="{{ si[5] | escape }}" style="background:{{ si[6] }}">
+                {%- if s.featured_image -%}{{ s.featured_image | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 60, height: 60 }}{%- endif -%}
+              </a>
             {%- endfor -%}
-          {%- else -%}
-            <span class="swatch-btn" style="background:{{ i[6] }};display:inline-block" aria-pressed="true" aria-label="{{ i[5] | escape }}"></span>
-          {%- endif -%}
+          </div>
+        </div>
+        {%- liquid
+          assign ed_total = i[2] | plus: 0
+          assign ed_left = i[3] | plus: 0
+          assign bar = 0
+          if ed_total > 0
+            assign bar = ed_left | times: 100 | divided_by: ed_total
+          endif
+        -%}
+        <div class="pdp-stock">
+          <div class="st-row"><span class="ed">{{ 'echo.main_product.edition_of' | t: total: i[2] }}</span><i class="dot" aria-hidden="true"></i>
+            {%- if i[4] == 'sold' -%}<span><b>{{ 'echo.main_product.edition_sold_out' | t }}</b></span>{%- else -%}<span>{{ 'echo.main_product.only_left_html' | t: count: i[3] }}</span>{%- endif -%}
+          </div>
+          {%- unless i[4] == 'sold' -%}
+            <div class="bar" role="presentation"><span style="width:{{ bar }}%"></span></div>
+            <p>{{ 'echo.main_product.colorway_note' | t }}</p>
+          {%- endunless -%}
         </div>
       </div>
 
       {%- if i[4] == 'sold' -%}
-        <div class="edition">{{ 'echo.product.sold_out_html' | t: total: i[2] }}</div>
-        {%- form 'contact', class: 'stack', style: 'gap:8px' -%}
+        <div class="pdp-actions">
+        {%- form 'contact', class: 'pdp-notify' -%}
           {%- if form.posted_successfully? -%}
             <div class="ok" role="status">{{ 'echo.main_product.thank_you_we_will_email_you_when_the' | t }}</div>
           {%- else -%}
             <input type="hidden" name="contact[Request]" value="Notify me: {{ product.title }}">
             <input type="hidden" name="contact[tags]" value="notify-next-edition">
-            <label for="n-email" style="font-size:14px;font-weight:600">{{ 'echo.main_product.get_an_email_when_a_new_edition_from' | t }}</label>
-            <div class="inline-form"><input id="n-email" type="email" name="contact[email]" required placeholder="{{ 'echo.common.your_email' | t | escape }}"><button class="btn" type="submit">{{ 'echo.main_product.notify_me' | t }}</button></div>
+            <label for="n-email">{{ 'echo.main_product.get_an_email_when_a_new_edition_from' | t }}</label>
+            <div class="nf-row"><input id="n-email" type="email" name="contact[email]" required placeholder="{{ 'echo.main_product.enter_your_email' | t | escape }}"><button class="btn" type="submit">{{ 'echo.main_product.notify_me' | t }}</button></div>
           {%- endif -%}
         {%- endform -%}
-        <a class="btn ghost block" href="{{ caturl }}">{% assign catname_l = catname | downcase %}{{ 'echo.product.see_current' | t: name: catname_l }}</a>
+        </div>
       {%- else -%}
-        <div class="edition">{{ 'echo.product.edition_left_html' | t: total: i[2], left: i[3] }}</div>
-        {%- form 'product', product, class: 'stack', style: 'gap:12px', data-pdp-form: '' -%}
-          <input type="hidden" name="id" value="{{ variant.id }}">
-          <input type="hidden" name="quantity" value="1">
-          <div class="row">
-            <div class="qty"><button type="button" data-qty="-1" aria-label="{{ 'echo.common.fewer' | t | escape }}">−</button><span data-qty-out>1</span><button type="button" data-qty="1" aria-label="{{ 'echo.common.more' | t | escape }}">+</button></div>
-            <button class="btn" style="flex:1" type="submit"{% unless variant.available %} disabled{% endunless %}>{{ 'echo.main_product.add_to_bag' | t }}</button>
-          </div>
-          {%- if section.settings.show_mobilepay -%}
-            <button class="btn mp block" type="submit" name="return_to" value="/checkout" data-buynow>{{ 'echo.main_product.pay_with_mobilepay' | t }}</button>
-          {%- endif -%}
-        {%- endform -%}
-        <ul class="ticks">
-          {%- assign ticks = section.settings.ticks | split: '|' -%}
-          {%- for t in ticks -%}<li>{{ t | strip | replace: '[cut-off time]', settings.echo_cutoff }}</li>{%- endfor -%}
-        </ul>
+        <div class="pdp-actions">
+          {%- form 'product', product, class: 'pdp-buy', data-pdp-form: '' -%}
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <div class="buy-row">
+              <div class="qty"><button type="button" data-qty="-1" aria-label="{{ 'echo.common.fewer' | t | escape }}">{{ ic_minus }}</button><span data-qty-out>1</span><button type="button" data-qty="1" aria-label="{{ 'echo.common.more' | t | escape }}">{{ ic_plus }}</button></div>
+              <button class="btn" type="submit"{% unless variant.available %} disabled{% endunless %}>{{ 'echo.main_product.add_to_cart' | t }}</button>
+            </div>
+            {%- if section.settings.show_mobilepay -%}
+              <button class="btn ghost mp-out" type="submit" name="return_to" value="/checkout" data-buynow>{{ 'echo.main_product.pay_with' | t }} <img src="{{ 'echo-pay-mobilepay.png' | asset_url }}" alt="MobilePay" width="81" height="16"></button>
+            {%- endif -%}
+          {%- endform -%}
+          <ul class="pdp-ticks">
+            {%- if section.settings.ticks != blank -%}
+              {%- assign ticks = section.settings.ticks | split: '|' -%}
+              {%- for t in ticks -%}<li>{{ ic_check }}<span>{{ t | strip | replace: '[cut-off time]', settings.echo_cutoff }}</span></li>{%- endfor -%}
+            {%- else -%}
+              <li>{{ ic_check }}<span>{{ 'echo.main_product.tick_1' | t }}</span></li>
+              <li>{{ ic_check }}<span>{{ 'echo.main_product.tick_2' | t }}</span></li>
+              <li>{{ ic_check }}<span>{{ 'echo.main_product.tick_3' | t }}</span></li>
+            {%- endif -%}
+          </ul>
+        </div>
       {%- endif -%}
 
       {%- liquid
         assign pcomp = comp | default: i[13] | default: '[Composition]'
         assign pcl = pcomp | downcase
-        assign porigin = i[12] | default: section.settings.origin
+        assign origin_default = 'echo.main_product.origin_default' | t
+        assign porigin = i[12] | default: section.settings.origin | default: origin_default
         assign set_items = product.metafields['shopify--discovery--product_recommendation'].complementary_products.value
+        assign bsci_line = section.settings.bsci_no
+        if bsci_line == blank
+          assign bsci_line = 'echo.main_product.bsci_line_html' | t
+        endif
+        assign delivery_text = section.settings.delivery
+        if delivery_text == blank
+          assign delivery_text = 'echo.main_product.delivery_text' | t
+        endif
       -%}
       <div class="pdp-accs">
-        <details class="acc" open><summary>{{ 'echo.main_product.description' | t }}</summary><div class="body rte">{{ product.description | default: '[Product description]' }}</div></details>
+        <details class="acc" open><summary>{{ 'echo.main_product.description' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body rte">{{ product.description | default: '[Product description]' }}</div></details>
         {%- if set_items != blank -%}
-        <details class="acc" open><summary>{{ 'echo.main_product.complete_the_set' | t }}</summary><div class="body">
+        <details class="acc" open><summary>{{ 'echo.main_product.complete_the_set' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body pdp-sets">
           {%- for p in set_items limit: 2 -%}
+            {%- capture praw -%}{%- render 'echo-pinfo', product: p -%}{%- endcapture -%}
+            {%- assign pi = praw | strip | split: '~' -%}
             <a class="pdp-set" href="{{ p.url }}">
-              {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: p.title, width: 80, height: 80 }}{%- endif -%}
-              <span><b>{{ p.title }}</b><span>{% render 'echo-money', price: p.price %}</span></span>
+              <span class="im">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: p.title, width: 100, height: 120 }}{%- endif -%}</span>
+              <span class="tx"><span class="nm">{{ p.title }}</span>{%- if pi[2] != blank and pi[2] != '0' -%}<span class="ed">{{ 'echo.main_product.edition_of' | t: total: pi[2] }}</span>{%- endif -%}<span class="pr">{% render 'echo-money', price: p.price %}</span></span>
             </a>
           {%- endfor -%}
         </div></details>
         {%- endif -%}
-        <details class="acc"><summary>{{ 'echo.main_product.dimensions' | t }}</summary><div class="body">{{ dims | default: '[Size]' | newline_to_br }}</div></details>
-        <details class="acc" open><summary>{{ 'echo.common.yarn_passport' | t }}</summary><div class="body pdp-pass">
-          <p>{{ 'echo.main_product.passport_intro' | t }}</p>
-          <a class="link mono" href="{% render 'echo-url', key: 'passport' %}">{{ 'echo.main_product.discover_more' | t }} ↗</a>
-          <div class="pdp-pass-row"><b>{{ 'echo.product_passport.where_it_came_from' | t }}</b><span>{{ porigin }}</span></div>
-          <div class="pdp-pass-row"><b>{{ 'echo.product_passport.fibre_and_batch' | t }}</b><span>{{ pcomp | newline_to_br }}<br>{{ 'echo.passport.batch_line' | t: batch: i[9], kg: i[10], total: i[2] }}</span></div>
-          <a class="link mono" href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.product_passport.see_it_in_the_tracker' | t }} ↗</a>
+        <details class="acc"><summary>{{ 'echo.main_product.dimension' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body">{{ dims | default: '[Size]' | newline_to_br }}</div></details>
+        <details class="acc" open><summary>{{ 'echo.common.yarn_passport' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body pdp-pass">
+          <div class="pp-intro"><p>{{ 'echo.main_product.passport_intro' | t }}</p><a class="ulink" href="{% render 'echo-url', key: 'passport' %}">{{ 'echo.main_product.discover_more' | t }}</a></div>
+          <div class="pp-row"><b>{{ 'echo.product_passport.where_it_came_from' | t }}</b><span>{{ porigin }}</span></div>
+          <div class="pp-row"><b>{{ 'echo.product_passport.fibre_and_batch' | t }}</b><span>{{ pcomp | newline_to_br }}<br>{{ 'echo.passport.batch_line' | t: batch: i[9], kg: i[10], total: i[2] }}</span><a class="ulink" href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.main_product.see_it_in_tracker' | t }}</a></div>
         </div></details>
-        <details class="acc"><summary>{{ 'echo.main_product.certificates' | t }}</summary><div class="body pdp-certs">
-          <span class="it">{% render 'echo-cert-logo', k: 'bsci', h: 40 %}<span><b>{{ 'echo.product_passport.bsci_compliance' | t }}</b><br>{{ section.settings.bsci_no }}</span></span>
-          {%- if pcl contains 'organic' -%}<span class="it">{% render 'echo-cert-logo', k: 'ocs', h: 40 %}<span><b>{{ 'echo.product_passport.organic_content_standard' | t }}</b><br>{{ section.settings.ocs_no }}</span></span>{%- endif -%}
-          {%- if pcl contains 'recycl' -%}<span class="it">{% render 'echo-cert-logo', k: 'rcs', h: 40 %}<span><b>{{ 'echo.product_passport.recycled_claim_standard' | t }}</b><br>{{ section.settings.rcs_no }}</span></span>{%- endif -%}
-          <a class="link mono" href="{% render 'echo-url', key: 'factory' %}">{{ 'echo.main_product.our_certificates' | t }} ↗</a>
+        <details class="acc" open><summary>{{ 'echo.main_product.certificates' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body pdp-certs">
+          <div class="it">{% render 'echo-cert-logo', k: 'bsci', h: 88 %}<div class="tx"><div class="hd"><b>{{ 'echo.product_passport.bsci_compliance' | t }}</b><a class="ulink" href="{% render 'echo-url', key: 'factory' %}">{{ 'echo.main_product.our_certificates' | t }}</a></div><span class="sub">{{ bsci_line }}</span></div></div>
+          {%- if pcl contains 'organic' and section.settings.ocs_no != blank -%}<div class="it">{% render 'echo-cert-logo', k: 'ocs', h: 88 %}<div class="tx"><div class="hd"><b>{{ 'echo.product_passport.organic_content_standard' | t }}</b></div><span class="sub">{{ section.settings.ocs_no }}</span></div></div>{%- endif -%}
+          {%- if pcl contains 'recycl' and section.settings.rcs_no != blank -%}<div class="it">{% render 'echo-cert-logo', k: 'rcs', h: 88 %}<div class="tx"><div class="hd"><b>{{ 'echo.product_passport.recycled_claim_standard' | t }}</b></div><span class="sub">{{ section.settings.rcs_no }}</span></div></div>{%- endif -%}
         </div></details>
-        <details class="acc"><summary>{{ 'echo.main_product.delivery_and_returns' | t }}</summary><div class="body">{{ section.settings.delivery }} <a class="link" href="{% render 'echo-url', key: 'help' %}#topic-Delivery%20and%20returns">{{ 'echo.main_product.more_about_delivery' | t }}</a></div></details>
+        <details class="acc"><summary>{{ 'echo.main_product.delivery_and_return' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body">{{ delivery_text }} <a class="link" href="{% render 'echo-url', key: 'help' %}#topic-Delivery%20and%20returns">{{ 'echo.main_product.more_about_delivery' | t }}</a></div></details>
       </div>
-      <style>
-        .pdp-set{display:flex;gap:16px;align-items:center;text-decoration:none;color:inherit;padding:6px 0}
-        .pdp-set img{width:80px;height:80px;object-fit:cover;background:#fff}
-        .pdp-set span{display:flex;flex-direction:column;gap:4px;font-size:14px}
-        .pdp-pass{display:flex;flex-direction:column;gap:14px}
-        .pdp-pass p{margin:0}
-        .pdp-pass-row{display:grid;grid-template-columns:150px 1fr;gap:16px;font-size:14px}
-        .pdp-pass-row b{color:var(--ink);font-weight:600}
-        .pdp-certs{display:flex;flex-direction:column;gap:14px;font-size:14px}
-        .pdp-certs .it{display:flex;gap:12px;align-items:center}
-        .pdp-accs .mono{text-transform:uppercase;letter-spacing:.08em;font-size:12px}
-      </style>
     </div>
   </div>
+  <style>
+    .pdp-fg{grid-template-columns:minmax(0,721fr) minmax(0,519fr);gap:40px;padding-block:8px 40px;align-items:start}
+    .pdp-fg .gallery{display:flex;gap:12px;padding-block:8px}
+    .pdp-fg .gal-main{flex:1 1 auto;min-width:0}
+    .pdp-fg .gallery .main{aspect-ratio:628/760}
+    .pdp-fg .thumbs{display:flex;flex-direction:column;gap:8px;width:81px;flex:none;margin:0;max-height:760px;overflow:auto;scrollbar-width:none}
+    .pdp-fg .thumbs button{border:2px solid transparent;height:120px;flex:none;outline:0}
+    .pdp-fg .thumbs button[aria-pressed="true"]{border-color:#ABA499;outline:0}
+    .pdp-fg .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+    .pdp-info{display:flex;flex-direction:column;gap:40px;min-width:0}
+    .pdp-top{display:flex;flex-direction:column;gap:24px}
+    .pdp-head{display:flex;flex-direction:column;gap:8px}
+    .pdp-title{font:300 40px/1.2 var(--head);color:var(--wine);margin:0}
+    .pdp-rating{display:flex;gap:4px;align-items:center;font-size:14px;color:#55524E;text-decoration:none}
+    .pdp-rating .stars{display:flex;gap:4px;color:#E2CFA8}
+    .pdp-rating b{font-weight:500;color:#332C2A}
+    .pdp-rating span{font-weight:300}
+    .pdp-price{display:flex;flex-direction:column;gap:8px}
+    .pr-row,.st-row{display:flex;align-items:center;gap:12px;font-size:14px;color:#332C2A}
+    .pr-row .pr{font-size:24px;font-weight:600;line-height:1.6}
+    .pdp-fg .dot{width:6px;height:6px;border-radius:50%;background:#332C2A;display:inline-block}
+    .pr-free{display:flex;gap:8px;align-items:center;font-size:14px;color:#7C7E64}
+    .pdp-colours{display:flex;flex-direction:column;gap:12px}
+    .pdp-colours p{margin:0;font-size:14px;color:#000}
+    .sw-row{display:flex;gap:15px;flex-wrap:wrap}
+    .sw-img{width:60px;height:60px;border-radius:50%;overflow:hidden;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+    .sw-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .sw-img[aria-current="true"]{box-shadow:0 0 0 2px var(--paper),0 0 0 3px #332C2A}
+    .pdp-stock{display:flex;flex-direction:column;gap:12px}
+    .pdp-stock .ed{color:#ABA499}
+    .pdp-stock .bar{background:#E7DCD0;border-radius:30px;height:8px;overflow:hidden}
+    .pdp-stock .bar span{display:block;height:100%;background:#332C2A;border-radius:30px}
+    .pdp-stock p{margin:0;font-size:14px;color:#332C2A}
+    .pdp-actions{display:flex;flex-direction:column;gap:24px}
+    .pdp-buy{display:flex;flex-direction:column;gap:24px}
+    .buy-row{display:flex;gap:24px;align-items:center}
+    .pdp-fg .qty{border:1px solid #ABA499;height:45px;padding:8px;gap:24px;display:flex;align-items:center}
+    .pdp-fg .qty button{width:24px;height:24px;padding:0;display:flex;color:#332C2A}
+    .pdp-fg .qty span{font-size:18px;min-width:12px}
+    .buy-row .btn{flex:1;min-height:45px;font-size:12px;letter-spacing:.1em;color:#F0DFD8}
+    .mp-out{width:100%;min-height:45px;font-size:12px;letter-spacing:.1em;gap:4px}
+    .mp-out img{height:16px;width:auto}
+    .pdp-ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:#332C2A}
+    .pdp-ticks li{display:flex;gap:8px;align-items:center}
+    .pdp-ticks svg{flex:none}
+    .pdp-notify{display:flex;flex-direction:column;gap:12px}
+    .pdp-notify label{font-size:14px;font-weight:600;color:#332C2A}
+    .nf-row{display:flex;gap:12px}
+    .nf-row input{flex:1;min-width:0;height:45px;border:1px solid #ABA499;background:transparent;padding:0 14px;font:inherit}
+    .nf-row .btn{min-height:45px;font-size:12px}
+    .pdp-fg .pdp-accs{display:flex;flex-direction:column;border-top:1px solid #D8CEC3}
+    .pdp-fg details.acc{border-top:0;border-bottom:1px solid #D8CEC3}
+    .pdp-fg details.acc summary{font:300 24px/1.6 var(--head);color:var(--wine);padding:16px 0;align-items:center}
+    .pdp-fg details.acc summary::after{content:none}
+    .pdp-fg details.acc .ic-minus,.pdp-fg details.acc[open] .ic-plus{display:none}
+    .pdp-fg details.acc[open] .ic-minus,.pdp-fg details.acc .ic-plus{display:flex;color:#332C2A}
+    .pdp-fg details.acc .body{color:#332C2A;font-size:14px;line-height:1.6;max-width:none;padding:0 0 16px}
+    .pdp-fg .rte ul{padding-left:21px;margin:12px 0 0}
+    .pdp-sets{display:flex;flex-direction:column;gap:12px}
+    .pdp-set{display:flex;gap:24px;align-items:center;background:#E9E2DA;padding:12px;text-decoration:none;color:inherit}
+    .pdp-set .im{width:100px;height:120px;background:#E7DCD0;flex:none}
+    .pdp-set .im img{width:100%;height:100%;object-fit:cover;display:block}
+    .pdp-set .tx{display:flex;flex-direction:column;gap:8px}
+    .pdp-set .nm{font-size:16px;font-weight:500;color:#7C7E64}
+    .pdp-set .ed{font-size:14px;color:#ABA499}
+    .pdp-set .pr{font-size:16px;font-weight:600;color:#332C2A}
+    .pdp-pass{display:flex;flex-direction:column;gap:16px}
+    .pdp-pass p{margin:0}
+    .pp-intro,.pp-row{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+    .pp-row b{font-size:16px;font-weight:700;color:#7C7E64}
+    .pdp-fg .ulink{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#332C2A;text-decoration:none;border-bottom:1px solid #332C2A;padding:4px 0}
+    .pdp-certs{display:flex;flex-direction:column;gap:16px}
+    .pdp-certs .it{display:flex;gap:24px;align-items:center}
+    .pdp-certs .it img,.pdp-certs .it svg{width:88px;height:88px;object-fit:contain;flex:none}
+    .pdp-certs .tx{flex:1;display:flex;flex-direction:column;gap:8px}
+    .pdp-certs .hd{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .pdp-certs .hd b{font-size:18px;font-weight:600;color:#332C2A}
+    .pdp-certs .sub{color:#ABA499;letter-spacing:.05em}
+    @media (max-width:899px){
+      .pdp-fg{grid-template-columns:1fr;gap:28px}
+      .pdp-fg .gallery{flex-direction:column}
+      .pdp-fg .thumbs{flex-direction:row;width:auto;max-height:none}
+      .pdp-fg .thumbs button{width:72px;height:96px}
+      .pdp-title{font-size:32px}
+      .buy-row{gap:12px}
+    }
+  </style>
 {%- endif -%}
 
 {% schema %}
@@ -258,12 +378,12 @@
   "name": "Product",
   "settings": [
     { "type": "checkbox", "id": "show_mobilepay", "label": "Show 'Pay with MobilePay' button", "default": true, "info": "Adds the piece and goes straight to checkout." },
-    { "type": "text", "id": "ticks", "label": "Ticks (separate with |)", "default": "Order by [cut-off time] on weekdays for delivery in 1 to 2 working days | Free 14-day returns to our Danish address | No price on the packing slip, ready to give" },
-    { "type": "textarea", "id": "origin", "label": "Yarn Passport: where it came from (default)", "info": "Shown when the product's yarn batch has no origin text.", "default": "Unused yarn rescued from a [season] production run for a [luxury or high-street] fashion house at our factory." },
-    { "type": "text", "id": "bsci_no", "label": "BSCI line", "default": "Amfori ID 156-020420-000 · Applies to all products" },
+    { "type": "text", "id": "ticks", "label": "Ticks (separate with |)", "info": "Leave empty to use the translated ticks (English and Danish)." },
+    { "type": "textarea", "id": "origin", "label": "Yarn Passport: where it came from (default)", "info": "Shown when the product's yarn batch has no origin text. Leave empty to use the translated default." },
+    { "type": "text", "id": "bsci_no", "label": "BSCI line", "info": "Leave empty to use the translated line." },
     { "type": "text", "id": "ocs_no", "label": "OCS line", "default": "Certificate [no.] · [confirm this product is in scope]" },
     { "type": "text", "id": "rcs_no", "label": "RCS line", "default": "Certificate [no.] · [confirm this product is in scope]" },
-    { "type": "textarea", "id": "delivery", "label": "Delivery and returns text", "default": "Free delivery in Denmark in 1 to 2 working days from our Danish warehouse. Free returns within 14 days." },
+    { "type": "textarea", "id": "delivery", "label": "Delivery and returns text", "info": "Leave empty to use the translated text." },
     { "type": "textarea", "id": "care_wool", "label": "Care text for wool (when no care guide)", "default": "Hand wash cold. Do not bleach. Dry flat after washing. Iron at low temperature. Professional dry clean." },
     { "type": "textarea", "id": "care_cotton", "label": "Care text for cotton (when no care guide)", "default": "Machine wash cold on a gentle cycle. Do not bleach. Dry flat after washing. Iron at medium temperature. Professional dry clean." },
     { "type": "textarea", "id": "ph_labels", "label": "Gallery placeholder labels (separate with |)", "info": "Shown in empty gallery slots until more photos are added. [N] = edition size.", "default": "In use: on a sofa, someone wrapped in it | Scale: on a double bed | 10 sec clip: this design on the knitting machine | Flat lay: full pattern | Woven label: “7 of [N]”" },

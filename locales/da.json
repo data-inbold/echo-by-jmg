@@ -858,7 +858,26 @@
       "notify_me": "Giv mig besked",
       "pay_with_mobilepay": "Betal med MobilePay",
       "sent_instantly_by_email": "Sendes med det samme på e-mail",
-      "thank_you_we_will_email_you_when_the": "Tak. Vi sender dig en e-mail, når næste udgave er klar."
+      "thank_you_we_will_email_you_when_the": "Tak. Vi sender dig en e-mail, når næste udgave er klar.",
+      "including_vat": "Inkl. moms",
+      "free_delivery": "Gratis levering",
+      "edition_of": "Oplag på {{ total }}",
+      "only_left_html": "Kun <b>{{ count }}</b> tilbage på lager",
+      "colorway_note": "Denne farvekombination findes kun i dette batch og kan ikke genopfyldes, når den er udsolgt.",
+      "edition_sold_out": "Denne edition er udsolgt",
+      "pay_with": "Betal med",
+      "add_to_cart": "Læg i kurv",
+      "tick_1": "Bestil inden kl. 14:00 på hverdage for levering på 1 til 2 hverdage",
+      "tick_2": "Gratis returnering i 14 dage til vores danske adresse",
+      "tick_3": "Ingen pris på følgesedlen, klar til at give",
+      "origin_default": "Ubrugt garn reddet fra en [sæson]-produktion på vores fabrik den [redningsdato].",
+      "bsci_line_html": "Amfori ID 156-020420-000<br>Gælder alle produkter",
+      "delivery_text": "Gratis levering i Danmark på 1 til 2 hverdage fra vores danske lager. Gratis returnering inden for 14 dage.",
+      "dimension": "Mål",
+      "delivery_and_return": "Levering & returnering",
+      "enter_your_email": "Indtast din e-mail",
+      "see_it_in_tracker": "Se det i trackeren",
+      "photo_n": "Foto {{ n }}"
     },
     "main_search": {
       "search_blankets_bags_colours": "Søg efter tæpper, tasker, farver"
