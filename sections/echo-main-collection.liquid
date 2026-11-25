@@ -66,6 +66,18 @@
     render 'echo-url', key: 'accessories'
   endcapture
   assign cur_tab = only
+  if only == 'all'
+    case collection.handle
+      when 'blankets'
+        assign cur_tab = 'blankets'
+      when 'cushion-covers', 'cushions'
+        assign cur_tab = 'cushions'
+      when 'bags'
+        assign cur_tab = 'bags'
+      when 'accessories'
+        assign cur_tab = 'accessories'
+    endcase
+  endif
   if mode != 'all' or only == 'sets' or only == 'picks'
     assign cur_tab = 'none'
   endif
