@@ -1,74 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
     "main": {
       "type": "echo-main-collection",
       "settings": {
-        "crumb": "Cushion covers",
+        "mode": "all",
         "only": "cushions",
+        "picks": [],
+        "crumb": "Cushion covers",
         "h1": "Knitted cushion covers from rescued yarn",
         "intro": "Cushion covers knitted from the same rescued yarn as our blankets, many in matching patterns. Covers are sold without inner cushions, so you can choose your own filling.",
-        "label": "8 sec clip: cushion covers coming off the machine"
-      }
-    },
-    "questions": {
-      "type": "echo-faq",
-      "settings": {
-        "heading": "Questions"
-      },
-      "blocks": {
-        "q_1": {
-          "type": "q",
-          "settings": {
-            "q": "Does leftover yarn mean lower quality?",
-            "a": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>"
-          }
-        },
-        "q_2": {
-          "type": "q",
-          "settings": {
-            "q": "What does limited edition mean?",
-            "a": "<p>Our pieces are made in small quantities from leftover yarn that exists in limited amounts. Once that yarn is used, the same design or colour may not be repeated.</p>"
-          }
-        },
-        "q_3": {
-          "type": "q",
-          "settings": {
-            "q": "Will items be restocked?",
-            "a": "<p>Some items may return in a new colourway or updated design, but once sold out they are not restocked exactly the same. If a piece speaks to you, it may be best to make it yours while it is available.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "q_1",
-        "q_2",
-        "q_3"
-      ]
-    },
-    "illustration": {
-      "type": "echo-illustration",
-      "settings": {
-        "photo": "echo-sofa-icon.png",
-        "alt": "",
-        "width": 126,
-        "space_above": 20,
-        "space_below": 20
-      }
-    },
-    "club": {
-      "type": "echo-club-band",
-      "settings": {
-        "heading": "Join the Cozy Club",
-        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
-        "button_label": "Join the club",
-        "photo": "echo-twister-outdoor.jpg",
-        "focus": "50% 50%"
+        "pad_top": 80,
+        "pad_bottom": 40,
+        "show_tile": false,
+        "tile_eyebrow": "The Yarn Passport",
+        "tile_heading": "Why is every piece numbered?",
+        "tile_text": "The yarn decides the edition size. Read how it works.",
+        "tile_link": ""
       }
     }
   },
   "order": [
-    "main",
-    "illustration",
-    "club"
+    "main"
   ]
 }
