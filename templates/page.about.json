@@ -159,7 +159,7 @@
           "type": "step",
           "settings": {
             "title": "Luxury yarn goes unused",
-            "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
+            "text": "From the floor of our family factory, we watch fashion houses leave behind beautiful, premium yarn at the end of every season.",
             "link_word": "",
             "link": ""
           }
@@ -194,7 +194,7 @@
         "show_thread": true,
         "show_icon": true,
         "anchor": "how",
-        "heading": "The EchoByJMG Process",
+        "heading": "How It Works",
         "image": "shopify://shop_images/how-it-works-yarn-image.png",
         "photo": "echo-v2-hero.jpg",
         "alt": "Cones of yarn in many colours",
