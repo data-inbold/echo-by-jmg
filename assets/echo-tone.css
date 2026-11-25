@@ -166,7 +166,8 @@ header.site :focus-visible{outline-color:var(--olive)}
 .card .name{font-weight:400;font-size:16px;line-height:1.3;color:var(--muted)}
 .card .ed{font-size:14px;color:var(--faint)}
 .card .meta>span:not([class]){font-size:16px;font-weight:600;color:var(--ink)}
-body.template-index .card .swatches{display:none}
+/* Figma: product cards show no colour dots (the colour picker is on the product page) */
+.card .swatches{display:none}
 
 /* hashtags */
 .mq-track{gap:40px}
