@@ -297,7 +297,8 @@
         "photo": "echo-v2-process.jpg",
         "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
         "photo2": "",
-        "alt2": ""
+        "alt2": "",
+        "clear_bg": true
       }
     },
     "factory": {
