@@ -69,7 +69,8 @@
 {%- assign about_t = section.settings.about_item | strip | downcase -%}
 {%- assign help_t = section.settings.help_item | strip | downcase -%}
 <div class="util">
-  {%- if section.settings.util_link != blank -%}<a href="{{ section.settings.util_link }}">{{ section.settings.util_text }}</a>{%- else -%}{{ section.settings.util_text }}{%- endif -%}
+  {%- assign util_text = section.settings.util_text -%}{%- if util_text == blank -%}{%- assign util_text = 'echo.header.util_text' | t -%}{%- endif -%}
+  {%- if section.settings.util_link != blank -%}<a href="{{ section.settings.util_link }}">{{ util_text }}</a>{%- else -%}{{ util_text }}{%- endif -%}
 </div>
 <header class="site" id="hdr">
   <div class="wrap nav">
@@ -371,7 +372,7 @@
     { "type": "text", "id": "mega_card_title", "label": "Dropdown card: product name", "default": "Twisted Rope Knitted Blanket" },
     { "type": "url", "id": "mega_card_link", "label": "Dropdown card: link", "info": "Empty = all products." },
     { "type": "image_picker", "id": "mega_card_image", "label": "Dropdown card: photo", "info": "About 960 x 464 px (shown at 480 x 232). Empty = a bundled photo." },
-    { "type": "text", "id": "util_text", "label": "Top bar text", "default": "Free delivery in Denmark · Free 14-day returns to a Danish address · ★ 4.8 on Trustpilot" },
+    { "type": "text", "id": "util_text", "label": "Top bar text", "info": "Leave empty to use the translated text from the theme language files (English and Danish)." },
     { "type": "url", "id": "util_link", "label": "Top bar link" },
     { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to show the text logo, as in the design. The header is black, so use a white or light logo file." },
     { "type": "range", "id": "logo_height", "label": "Logo image height, desktop", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 32 },
