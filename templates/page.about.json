@@ -325,9 +325,11 @@
         "btn_link": "echo:factory",
         "icon_file": "",
         "ar": "302/480",
+        "image": "shopify://shop_images/Screenshot_2026-11-25_at_15.04.03.png",
         "clear_bg": false,
         "photo": "echo-v2-story.jpg",
         "alt": "The knitting hall",
+        "image2": "shopify://shop_images/Image.png",
         "photo2": "echo-v2-tile-blankets.jpg",
         "alt2": "Finished blankets"
       }
