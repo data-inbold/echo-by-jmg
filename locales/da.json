@@ -154,7 +154,7 @@
     "title_bag": "Kurv",
     "continue_shopping": "Fortsæt med at handle",
     "empty_cart": "Din kurv er tom",
-    "empty_bag": "Din kurv er tom",
+    "empty_bag": "Din kurv er tom.",
     "empty_basket": "Din kurv er tom",
     "login": "Log ind",
     "item_added_cart": "Varen er lagt i kurven",
@@ -210,7 +210,7 @@
       "title_bag": "Din kurv",
       "remove_title": "Fjern {{ title }}",
       "cart_total": "I alt",
-      "bag_total": "I alt",
+      "bag_total": "Kurv i alt",
       "basket_total": "I alt",
       "saved": "Du sparer",
       "checkout": "Gå til kassen",
@@ -614,7 +614,7 @@
       "your_bag_is_empty": "Din kurv er tom."
     },
     "card": {
-      "edition_of": "Oplag på {{ total }} stk.",
+      "edition_of": "Oplag på {{ total }}",
       "last_pieces": "Få tilbage · {{ left }} af {{ total }}",
       "sent_by_email_no_expiry": "Sendes pr. e-mail · udløber ikke",
       "sold_out_get_notified_about_the_next": "Udsolgt · få besked om næste udgave"
@@ -669,7 +669,7 @@
         "other": "{{ count }} designs"
       },
       "email": "E-mail",
-      "factory_and_certificates": "Fabrik og certifikater",
+      "factory_and_certificates": "Fabrik & certifikater",
       "fewer": "Færre",
       "fibre": "Fiber",
       "from": "fra",
@@ -725,9 +725,9 @@
       "message_placeholder": "Skriv din besked her",
       "name_placeholder": "Indtast dit fulde navn",
       "order_number_optional": "Ordrenummer (valgfrit)",
-      "order_placeholder": "Skriv dit ordrenummer, hvis du har et",
+      "order_placeholder": "Indtast dit ordrenummer, hvis du har et",
       "send_message": "Send besked",
-      "send_your_message": "Skriv til os",
+      "send_your_message": "Send os din besked",
       "your_email": "Din e-mail",
       "your_name": "Dit navn"
     },
@@ -940,10 +940,10 @@
       "return_an_item": "Returnér en vare",
       "steps": "Ordre modtaget,Pakket i Danmark,På vej,Leveret",
       "title": "Ordre {{ name }}",
-      "woven_label": "På den vævede label · oplag på {{ total }} stk."
+      "woven_label": "På den vævede label · oplag på {{ total }}"
     },
     "passport": {
-      "batch_line": "Batch {{ batch }} · {{ kg }} kg reddet · oplag på {{ total }} stk.",
+      "batch_line": "Batch {{ batch }} · {{ kg }} kg reddet · oplag på {{ total }}",
       "factory_level": "{{ number }} · fabriksniveau",
       "woven_label": "Hvert stykke har en vævet label med “Nr. __ af {{ total }}”. Dit nummer får du, når vi pakker din ordre."
     },
@@ -963,10 +963,10 @@
       "see_all_results": "Se alle resultater"
     },
     "product": {
-      "edition_left_html": "<b>Oplag på {{ total }} stk., {{ left }} tilbage.</b> Når dette parti garn er brugt op, kommer designet ikke igen i denne farve.",
+      "edition_left_html": "<b>Oplag på {{ total }} · Kun {{ left }} tilbage på lager</b> Denne farvekombination findes kun i dette parti og kan ikke genopfyldes, når den er udsolgt.",
       "faq_title": "Spørgsmål om dette {{ item }}",
       "see_current": "Se aktuelle {{ name }}",
-      "sold_out_html": "<b>Denne udgave er udsolgt.</b> Alle {{ total }} stykker har fundet et nyt hjem. Designet kommer ikke igen i denne farve.",
+      "sold_out_html": "<b>Oplag på {{ total }} · Denne farvekombination er udsolgt</b>",
       "faq_title_common": "Spørgsmål om denne {{ item }}"
     },
     "product_faq_reviews": {
