@@ -123,9 +123,11 @@
         "m3"
       ],
       "settings": {
+        "show_thread": true,
         "spacing": "normal",
         "bg": "paper",
         "heading": "Letter From Our Founders",
+        "heading_align": "right",
         "letter": "“Knitting has been part of my family for generations. What began with my grandfather's knitting factory in 1946 has grown into decades of craftsmanship and a deep appreciation for beautiful yarns.\n\nOver the years, I've seen extraordinary materials left behind after production; beautiful, high-quality yarns that still have so much potential. I couldn't help thinking: surely, they deserve more than to be forgotten?\n\nThat thought became EchoByJMG. A brand born from my passion for giving beautiful yarns a new purpose, transforming what was once overlooked into something meaningful, playful and made to be loved.”",
         "caption": "Ming, Founder of EchoByJMG",
         "image": "shopify://shop_images/letter_from_our_founder.png",
@@ -186,6 +188,7 @@
         "show_icon": true,
         "anchor": "how",
         "heading": "The EchoByJMG Process",
+        "image": "shopify://shop_images/how-it-works-yarn-image.png",
         "photo": "echo-v2-hero.jpg",
         "alt": "Cones of yarn in many colours",
         "overlay": "",
@@ -276,6 +279,7 @@
     "track": {
       "type": "echo-feature",
       "settings": {
+        "show_thread": false,
         "spacing": "normal",
         "bg": "paper",
         "media_side": "right",
@@ -289,6 +293,7 @@
         "btn_link": "echo:passport",
         "icon_file": "echo-yarnknitting-ourstory.png",
         "ar": "787/443",
+        "image": "shopify://shop_images/passport-yarn.png",
         "photo": "echo-v2-process.jpg",
         "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
         "photo2": "",
@@ -298,6 +303,7 @@
     "factory": {
       "type": "echo-feature",
       "settings": {
+        "show_thread": true,
         "spacing": "normal",
         "bg": "paper",
         "media_side": "left",
@@ -314,8 +320,7 @@
         "photo": "echo-v2-story.jpg",
         "alt": "The knitting hall",
         "photo2": "echo-v2-tile-blankets.jpg",
-        "alt2": "Finished blankets",
-        "show_thread": true
+        "alt2": "Finished blankets"
       }
     },
     "stories": {
