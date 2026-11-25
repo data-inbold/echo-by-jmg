@@ -432,3 +432,5 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .ethr-clip{position:absolute;inset:0;overflow:hidden;z-index:2;pointer-events:none}
 .section:has(>.ethr),.section:has(.ethr-host){position:relative;overflow-x:clip}
 .section:has(>.ethr)>.wrap{position:relative;z-index:1}
+/* Yarn Passport page: the area behind all blocks is Figma's #F2EEEA (header and footer keep their own colours) */
+body.template-yarn-passport #app{background:#F2EEEA}
