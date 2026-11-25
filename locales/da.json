@@ -658,7 +658,7 @@
       },
       "search": "Søg",
       "shop": "Shop",
-      "shop_all": "Se alle",
+      "shop_all": "Shop alt",
       "shop_category": "Se {{ name }}",
       "shop_the_editions": "Se udgaverne",
       "single_accessory": "tilbehør",
@@ -669,22 +669,22 @@
       "skip_to_content": "Gå til indhold",
       "status": "Status",
       "subtotal": "Subtotal",
-      "the_yarn_passport": "The Yarn Passport",
+      "the_yarn_passport": "Garnpasset",
       "total_incl_vat": "Total inkl. moms",
       "track_your_order": "Følg din ordre",
-      "yarn_passport": "Yarn Passport",
+      "yarn_passport": "Garnpas",
       "your_email": "Din e-mail",
       "your_number": "Dit nummer"
     },
     "contact": {
-      "email_placeholder": "Skriv din e-mail",
+      "email_placeholder": "Indtast din e-mail",
       "message": "Besked",
       "message_placeholder": "Skriv din besked her",
-      "name_placeholder": "Skriv dit fulde navn",
+      "name_placeholder": "Indtast dit fulde navn",
       "order_number_optional": "Ordrenummer (valgfrit)",
-      "order_placeholder": "Skriv dit ordrenummer, hvis du har et",
+      "order_placeholder": "Indtast dit ordrenummer, hvis du har et",
       "send_message": "Send besked",
-      "send_your_message": "Send din besked til os",
+      "send_your_message": "Send os din besked",
       "your_email": "Din e-mail",
       "your_name": "Dit navn"
     },
@@ -760,12 +760,12 @@
       "our_story": "Vores historie ▾",
       "pillow_talk_sets": "Pillow Talk-sæt",
       "shop": "Shop ▾",
-      "shop_by_category": "Køb efter kategori",
+      "shop_by_category": "Shop efter kategori",
       "stories": "Historier",
       "the_family_and_the_factory": "Familien og fabrikken",
       "view_products": "Se produkter",
       "yarn_passport": "Garnpasset",
-      "yarn_tracker": "Reddet garn-tracker"
+      "yarn_tracker": "Tracker for reddet garn"
     },
     "help": {
       "all_topics": "Alle emner",
@@ -818,15 +818,15 @@
       "all_colours": "Alle farver",
       "alpha_az": "Alfabetisk, A→Å",
       "alpha_za": "Alfabetisk, Å→A",
-      "available_stock": "På lager",
+      "available_stock": "Tilgængelig lagerbeholdning",
       "choose_your_piece": "Vælg dit stykke",
       "clear_all": "Ryd alle",
       "clear_filters": "Ryd filtre",
       "colour": "Farve",
-      "date_new_to_old": "Dato, nyeste først",
-      "date_old_to_new": "Dato, ældste først",
+      "date_new_to_old": "Dato, ny til gammel",
+      "date_old_to_new": "Dato, gammel til ny",
       "featured": "Udvalgte",
-      "filters_and_sort": "Filtre og sortering",
+      "filters_and_sort": "Filtre & sortering",
       "final_pieces_hint": "Vis designs med færre end 5 stykker tilbage",
       "final_pieces_only": "Kun sidste stykker",
       "newest_editions": "Nyeste udgaver",
@@ -844,7 +844,7 @@
       "delivery_and_returns": "Levering og returnering",
       "description": "Beskrivelse",
       "dimensions": "Mål",
-      "get_an_email_when_a_new_edition_from": "Få en e-mail, når en ny udgave fra denne garnfamilie er klar",
+      "get_an_email_when_a_new_edition_from": "Få en e-mail, når en ny edition fra denne garnfamilie er klar",
       "incl_vat_free_delivery": "inkl. moms · fri fragt",
       "material_and_care": "Materiale og pleje",
       "more_about_delivery": "Mere om levering",
@@ -875,7 +875,7 @@
       "woven_label": "Hvert stykke har en vævet label med “Udgave __ af {{ total }}”. Dit nummer tildeles ved pakning."
     },
     "passport_hero": {
-      "made": "Fremstillet",
+      "made": "Lavet",
       "no": "Nr.",
       "origin": "Oprindelse"
     },
@@ -907,7 +907,7 @@
       "recycled_claim_standard": "Recycled Claim Standard",
       "see_it_in_the_tracker": "Se den i trackeren",
       "what_is_the_yarn_passport": "Hvad er Yarn Passport?",
-      "where_it_came_from": "Hvor det kom fra"
+      "where_it_came_from": "Hvor det kommer fra"
     },
     "register": {
       "join_the_cozy_club_for_10_off_your": "Bliv medlem af Cozy Club og få 10 % rabat på din første ordre",
@@ -970,7 +970,7 @@
       "open_left": "Åben · {{ count }} tilbage",
       "pieces": "Stykker",
       "shop_open_editions": "Se åbne udgaver",
-      "the_batch_log": "Batch-loggen",
+      "the_batch_log": "Batchloggen",
       "yarn": "Garn",
       "yarn_rescued_to_date": "garn reddet til dato"
     },
