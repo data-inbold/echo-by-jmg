@@ -448,3 +448,12 @@ body.template-yarn-passport #app{background:#F2EEEA}
 .nav .tools .hico{display:block;width:24px;height:24px;object-fit:contain;flex:none}
 .nav .tools .hcart span{font-weight:400}
 @media(max-width:749px){.nav .tools button[data-act="search"] .hlbl{display:none}}
+
+/* language switch: also in the mobile header bar (EN / DA), compact */
+@media(max-width:719px){
+  .nav .tools .hlang{padding-right:6px;margin-right:0;border-right:1px solid #CFCDC6}
+  .nav .tools .hlang button{padding:10px 3px!important;font-size:14px;min-height:44px}
+  .nav .tools .hlang span{font-size:12px;color:#ABA499}
+  .nav .tools{gap:0}
+  .nav .tools .hcart{padding-left:4px;padding-right:0}
+}
