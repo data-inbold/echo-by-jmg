@@ -290,7 +290,7 @@
       }
     },
     "breadcrumbs": {
-      "home": "Hjem",
+      "home": "Forside",
       "collections": "Samlinger"
     },
     "burger_menu": "Åbn burgermenu",
@@ -619,7 +619,7 @@
         "other": "{{ count }} farver"
       },
       "contact": "Kontakt",
-      "corporate_gifts": "Erhvervsgaver",
+      "corporate_gifts": "Firmagaver",
       "cushion_covers": "Pudebetræk",
       "designs_count": {
         "one": "{{ count }} design",
@@ -634,7 +634,7 @@
       "gifts": "Gaver",
       "go_to_checkout": "Gå til kassen",
       "help": "Hjælp",
-      "home": "Hjem",
+      "home": "Forside",
       "journal": "Journal",
       "more": "Flere",
       "name": "Navn",
@@ -651,7 +651,7 @@
         "one": "{{ count }} resultat",
         "other": "{{ count }} resultater"
       },
-      "returns": "Returneringer",
+      "returns": "Returnering",
       "reviews_count": {
         "one": "{{ count }} anmeldelse",
         "other": "{{ count }} anmeldelser"
@@ -671,7 +671,7 @@
       "subtotal": "Subtotal",
       "the_yarn_passport": "Garnpasset",
       "total_incl_vat": "Total inkl. moms",
-      "track_your_order": "Følg din ordre",
+      "track_your_order": "Spor din ordre",
       "yarn_passport": "Garnpas",
       "your_email": "Din e-mail",
       "your_number": "Dit nummer"
@@ -721,10 +721,11 @@
       "privacy_policy": "Privatlivspolitik",
       "questions_and_answers": "Spørgsmål & svar",
       "recycled_claim_standard_read_more": "Recycled Claim Standard, læs mere",
-      "size_and_care_guide": "Størrelses- & plejeguide",
+      "size_and_care_guide": "Størrelses- og plejeguide",
       "terms_of_sale": "Salgsbetingelser",
       "ships_line": "Sendes fra Parcel Feeder, Brøndby · Gratis returnering i 14 dage · Support [tider] CET",
-      "legal_line": "EchoByJMG ejes af JM Group Limited, Hong Kong, som er den juridiske sælger."
+      "legal_line": "EchoByJMG ejes af JM Group Limited, Hong Kong, som er den juridiske sælger.",
+      "factories_and_certificates": "Fabrikker & certifikater"
     },
     "gc_balance": {
       "check_balance": "Tjek saldo",

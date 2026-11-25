@@ -14,7 +14,7 @@
     <div class="f-brand">
       <a class="f-logo" href="{% render 'echo-url', key: 'home' %}" aria-label="{{ shop.name | escape }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 352 | image_tag: alt: shop.name, widths: '88, 176, 352', sizes: '88px', loading: 'lazy' }}{% else %}<img src="{{ 'echo-footer-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" width="88" height="88" loading="lazy">{% endif %}</a>
       <div class="f-certs">
-        <a href="{{ u_factory }}" class="f-certs-t">{{ 'echo.common.factory_and_certificates' | t }}</a>
+        <a href="{{ u_factory }}" class="f-certs-t">{{ 'echo.footer.factories_and_certificates' | t }}</a>
         <div class="certrow f-certlogos">
           <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-bsci.png' | asset_url }}" alt="{{ 'echo.certs.alt_bsci' | t | escape }}" width="44" height="44" loading="lazy"></a>
           <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-ocs-100.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs' | t | escape }}" width="39" height="44" loading="lazy"></a>
