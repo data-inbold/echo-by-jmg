@@ -38,7 +38,7 @@
         </div>
       {%- endfor -%}
     </div>
-    {%- if section.settings.icon -%}<span class="wool-ico" aria-hidden="true" style="--ico:url('{{ 'echo-wool-icon.png' | asset_url }}')"></span>{%- endif -%}
+    {%- if section.settings.icon -%}<img class="wool-ico-img" src="{{ 'echo-knitting-icon.svg' | asset_url }}" alt="" width="109" height="120" loading="lazy" style="display:block;width:109px;height:120px">{%- endif -%}
   </div>
 </section>
 {%- endcapture -%}
