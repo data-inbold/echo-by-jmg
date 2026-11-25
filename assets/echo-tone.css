@@ -455,5 +455,9 @@ body.template-yarn-passport #app{background:#F2EEEA}
   .nav .tools .hlang button{padding:10px 3px!important;font-size:14px;min-height:44px}
   .nav .tools .hlang span{font-size:12px;color:#ABA499}
   .nav .tools{gap:0}
-  .nav .tools .hcart{padding-left:4px;padding-right:0}
+  .nav .tools .hcart{padding-left:4px;padding-right:0;position:relative}
+  .nav .tools .hcart>span{font-size:0}
+  .nav .tools .hcart [data-bag-count]{font-size:12px;position:absolute;top:6px;right:-6px;min-width:16px;height:16px;line-height:16px;border-radius:8px;background:var(--wine);color:#F7EFE9;text-align:center;padding:0 3px}
+  .nav .tools .hlbl{display:none}
+  .nav .logo{flex-shrink:1;min-width:0}
 }
