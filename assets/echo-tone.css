@@ -385,7 +385,7 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .mm-cat span{position:relative;display:inline-flex;align-items:center;height:28px}
 .mm-col a:hover::after,.mm-col a:focus-visible::after,.mm-cat:hover span::after,.mm-cat:focus-visible span::after{transform:scaleX(1)}
 .mm .mm-all::after{display:none}
-.mm-cat svg{width:28px;height:28px;flex:none;color:#7A7467}
+.mm-cat img{width:28px;height:28px;flex:none;display:block}
 .mm .mm-all{align-self:flex-start;height:auto;margin-top:0;padding:4px 0;gap:10px;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#332C2A;border-bottom:1px solid #332C2A}
 .mm-all svg{width:24px;height:24px}
 .mm-card{position:relative;display:block;flex:none;width:480px;height:232px;margin-left:40px;overflow:hidden;background:#2b2523;text-decoration:none;color:#fff}

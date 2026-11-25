@@ -61,14 +61,7 @@
           endif
         -%}
         <a class="mm-cat" href="{{ curl }}">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            {%- case key -%}
-              {%- when 'blankets' -%}<path d="M3 8.5 12 5l9 3.5-9 3.5-9-3.5Z"/><path d="m3 12.5 9 3.5 9-3.5"/><path d="m3 16.5 9 3.5 9-3.5"/>
-              {%- when 'cushions' -%}<rect x="3.5" y="8" width="12.5" height="12.5" rx="1"/><path d="M8 8V4.5h12.5V17H16"/>
-              {%- when 'bags' -%}<path d="M6.5 8.5h11l1 12h-13l1-12Z"/><path d="M9.5 8.5V7a2.5 2.5 0 0 1 5 0v1.5"/>
-              {%- else -%}<path d="M9 3.5h6l1.2 6-2.2 11h-3.2L10 12.5 9 20.5H5.8L7.8 9.5 9 3.5Z"/>
-            {%- endcase -%}
-          </svg>
+          {%- assign icon_file = 'echo-cat-' | append: key | append: '.svg' -%}<img src="{{ icon_file | asset_url }}" alt="" width="28" height="28" loading="lazy">
           <span>{{ nm }}</span>
         </a>
       {%- endfor -%}
