@@ -27,7 +27,7 @@
         "q_3": {
           "type": "q",
           "settings": {
-            "q": "What does delivery cost?",
+            "q": "How much does delivery cost?",
             "a": "<p>Nothing. Delivery is free across Denmark, to a parcel shop, a locker or your door.</p>"
           }
         },
@@ -144,7 +144,7 @@
         "q_20": {
           "type": "q",
           "settings": {
-            "q": "Do cushion covers come with the inner cushion?",
+            "q": "Do your cushion covers come with the inner cushion?",
             "a": "<p>No. Covers are sold without inners, so you can choose your own filling and firmness.</p>"
           }
         },
@@ -157,14 +157,14 @@
         "q_22": {
           "type": "q",
           "settings": {
-            "q": "Why give EchoByJMG as a gift?",
+            "q": "Why give EchoByJMG as gifts?",
             "a": "<p>Every piece is made in limited quantities from premium leftover yarn, so each gift feels personal and unique, with beauty, comfort and meaning behind it.</p>"
           }
         },
         "q_23": {
           "type": "q",
           "settings": {
-            "q": "Is the price shown in the package?",
+            "q": "Will the price be shown on the packaging?",
             "a": "<p>No. No prices are printed in the order. Confirmations and receipts are sent to the buyer by email.</p>"
           }
         },

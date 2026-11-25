@@ -129,24 +129,24 @@
     "cart": {
       "title_cart": "Your cart",
       "title_basket": "Your basket",
-      "title_bag": "Your bag",
+      "title_bag": "Your cart",
       "remove_title": "Remove {{ title }}",
       "subtotal": "Subtotal",
       "cart_total": "Cart total",
-      "bag_total": "Bag total",
+      "bag_total": "Cart total",
       "basket_total": "Basket total",
       "saved": "You saved",
       "checkout": "Checkout",
       "cart_error": "There was an error while updating your cart. Please try again.",
-      "bag_error": "There was an error while updating your bag. Please try again.",
+      "bag_error": "There was an error while updating your cart. Please try again.",
       "basket_error": "There was an error while updating your basket. Please try again.",
-      "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your bag.",
-      "bag_quantity_error_html": "You can only add {{ quantity }} of this item to your basket.",
+      "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
+      "bag_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
       "basket_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
       "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a class=\"shipping-policy-link\" href=\"{{ link }}\">shipping</a> calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a class=\"shipping-policy-link\" href=\"{{ link }}\">Shipping</a> calculated at checkout.",
-      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout.",
       "estimate": "Estimate",
       "zip": "ZIP code",
       "zip_placeholder": "Enter Zip Code",
@@ -158,7 +158,7 @@
       },
       "update": "Update",
       "quick_add_to_cart": "Quick add to cart",
-      "quick_add_to_bag": "Quick add to bag",
+      "quick_add_to_bag": "Quick add to cart",
       "quick_add_to_basket": "Quick add to basket"
     },
     "featured_blog": {
@@ -247,7 +247,7 @@
       "title_placeholder": "Product title",
       "description_placeholder": "Once you add a product, the description will change.",
       "add_to_cart": "Add to cart",
-      "add_to_bag": "Add to bag",
+      "add_to_bag": "Add to cart",
       "add_to_basket": "Add to basket",
       "pre_order": "Pre-order",
       "color_swatch_tag": "Color",
@@ -507,14 +507,14 @@
   "cart": {
     "title_basket": "Basket",
     "title_cart": "Cart",
-    "title_bag": "Bag",
+    "title_bag": "Cart",
     "continue_shopping": "Continue shopping",
     "empty_cart": "Your cart is empty",
-    "empty_bag": "Your bag is empty",
+    "empty_bag": "Your cart is currently empty.",
     "empty_basket": "Your basket is empty",
     "login": "Log in",
     "item_added_cart": "Item added to your cart",
-    "item_added_bag": "Item added to your bag",
+    "item_added_bag": "Item added to your cart",
     "item_added_basket": "Item added to your basket",
     "free_shipping_minimum": ""
   },
@@ -522,7 +522,7 @@
     "product": "Product",
     "products": "Products",
     "view_cart": "View cart",
-    "view_bag": "View bag",
+    "view_bag": "View cart",
     "view_basket": "View basket",
     "quantity": "Quantity"
   },
@@ -605,13 +605,13 @@
       "guide": "Guide"
     },
     "bag": {
-      "aria": "Bag, {{ count }} items",
-      "close_bag": "Close bag",
-      "could_not_add": "Could not add to bag.",
+      "aria": "Cart, {{ count }} items",
+      "close_bag": "Close cart",
+      "could_not_add": "Could not add to cart.",
       "invalid_code": "That code is not valid. Check the spelling, or contact us.",
-      "invalid_code_bag": "That code is not valid for this bag. Check the spelling, or contact us.",
-      "title": "Bag ({{ count }})",
-      "your_bag_is_empty": "Your bag is empty."
+      "invalid_code_bag": "That code is not valid for this cart. Check the spelling, or contact us.",
+      "title": "Your Cart ({{ count }})",
+      "your_bag_is_empty": "Your cart is currently empty."
     },
     "card": {
       "edition_of": "Edition of {{ total }}",
@@ -762,9 +762,9 @@
       "organic_content_standard_read_more": "Organic Content Standard, read more",
       "our_story": "Our Story",
       "privacy_policy": "Privacy policy",
-      "questions_and_answers": "Questions and answers",
+      "questions_and_answers": "Questions & Answers",
       "recycled_claim_standard_read_more": "Recycled Claim Standard, read more",
-      "size_and_care_guide": "Size and care guide",
+      "size_and_care_guide": "Size & Care Guide",
       "terms_of_sale": "Terms of sale"
     },
     "gc_balance": {
@@ -788,7 +788,7 @@
     "header": {
       "about_heading": "About",
       "about_us": "About Us",
-      "bag_html": "Bag (<span data-bag-count>{{ count }}</span>)",
+      "bag_html": "Cart (<span data-bag-count>{{ count }}</span>)",
       "designs_from": {
         "one": "{{ count }} design · from",
         "other": "{{ count }} designs · from"
@@ -814,7 +814,7 @@
       "all_topics": "All topics",
       "contact_us": "Contact us",
       "did_not_find_it": "Did not find it?",
-      "for_example_delivery_wash_gift": "For example: delivery, wash, gift",
+      "for_example_delivery_wash_gift": "For example: Delivery, wash, gift,...",
       "guides": "Guides",
       "no_match_html": "No answers match “<span data-faq-q></span>”. <a class=\"link\" href=\"{{ contact_url }}\">Ask us directly</a>",
       "search_the_answers": "Search the answers"
@@ -855,7 +855,7 @@
     "main_cart": {
       "continue_shopping": "Continue shopping",
       "order_summary": "Order summary",
-      "your_bag_is_empty": "Your bag is empty"
+      "your_bag_is_empty": "Your cart is currently empty."
     },
     "main_collection": {
       "all_colours": "All colours",
@@ -881,10 +881,10 @@
       "sort": "Sort"
     },
     "main_product": {
-      "add_to_bag": "Add to bag",
+      "add_to_bag": "Add to cart",
       "amount": "Amount",
       "colour": "Colour:",
-      "delivery_and_returns": "Delivery and returns",
+      "delivery_and_returns": "Delivery & Returns",
       "description": "Description",
       "dimensions": "Dimensions",
       "get_an_email_when_a_new_edition_from": "Get an email when a new edition from this yarn family is ready",
@@ -945,10 +945,10 @@
       "about_our_certificates": "About our certificates",
       "bsci_compliance": "BSCI compliance",
       "certificates_for_this_product": "Certificates for this product",
-      "fibre_and_batch": "Fibre and batch",
+      "fibre_and_batch": "Fibre & batch",
       "organic_content_standard": "Organic Content Standard",
       "recycled_claim_standard": "Recycled Claim Standard",
-      "see_it_in_the_tracker": "See it in the tracker",
+      "see_it_in_the_tracker": "See it in tracker",
       "what_is_the_yarn_passport": "What is the Yarn Passport?",
       "where_it_came_from": "Where it came from"
     },

@@ -81,7 +81,7 @@
           "settings": {
             "label": "Cotton blends",
             "icon_file": "echo-care-washer.svg",
-            "text": "[Machine wash 30°C on a wool cycle in a wash bag. Confirm.]"
+            "text": "Machine wash 30°C on a wool cycle in a wash bag."
           }
         },
         "row_3": {
@@ -89,7 +89,7 @@
           "settings": {
             "label": "Wool",
             "icon_file": "echo-care-wool.svg",
-            "text": "[Hand wash or dry clean. Confirm.]"
+            "text": "Hand wash or dry clean."
           }
         },
         "row_4": {
