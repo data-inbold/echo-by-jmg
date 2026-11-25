@@ -4,8 +4,7 @@
   Replaces the previous passport block in
   Settings > Notifications > Order confirmation > Edit code.
 
-  BEFORE PASTING: upload docs/emails/img/yarn-passport-pillow.png and
-  yarn-passport-knit.png to Shopify > Content > Files (keep the file names).
+  BEFORE PASTING: upload the 4 PNGs in docs/emails/img (pillow, knit, swirl-top, swirl-bottom) to Shopify > Content > Files (keep the file names).
   PNG is used because Gmail/Outlook do not render SVG.
 {% endcomment %}
 
@@ -21,7 +20,18 @@
           <tr>
             <td align="center" style="padding:24px 0;">
 
-              <img src="{{ 'yarn-passport-pillow.png' | file_url }}" width="60" height="60" alt="" style="display:block;border:0;margin:0 auto 23px;">
+              <!-- top: pillow (centre) + blue swirl (right) -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:540px;width:100%;">
+                <tr>
+                  <td width="30%" style="font-size:0;line-height:0;">&nbsp;</td>
+                  <td width="40%" align="center" valign="top" style="padding-top:40px;font-size:0;line-height:0;">
+                    <img src="{{ 'yarn-passport-pillow.png' | file_url }}" width="60" height="60" alt="" style="display:block;border:0;margin:0 auto;">
+                  </td>
+                  <td width="30%" align="right" valign="top" style="font-size:0;line-height:0;">
+                    <img src="{{ 'yarn-passport-swirl-top.png' | file_url }}" width="165" alt="" style="display:block;border:0;margin:0 0 0 auto;max-width:100%;height:auto;">
+                  </td>
+                </tr>
+              </table>
 
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:476px;width:100%;border-collapse:collapse;">
                 <tr>
@@ -60,7 +70,18 @@
                 </tr>
               </table>
 
-              <img src="{{ 'yarn-passport-knit.png' | file_url }}" width="64" height="68" alt="" style="display:block;border:0;margin:23px auto 0;">
+              <!-- bottom: blue swirl (left) + knitting icon (centre) -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:540px;width:100%;">
+                <tr>
+                  <td width="36%" align="left" valign="top" style="font-size:0;line-height:0;">
+                    <img src="{{ 'yarn-passport-swirl-bottom.png' | file_url }}" width="195" alt="" style="display:block;border:0;max-width:100%;height:auto;">
+                  </td>
+                  <td width="28%" align="center" valign="top" style="padding-top:25px;font-size:0;line-height:0;">
+                    <img src="{{ 'yarn-passport-knit.png' | file_url }}" width="64" height="68" alt="" style="display:block;border:0;margin:0 auto;">
+                  </td>
+                  <td width="36%" style="font-size:0;line-height:0;">&nbsp;</td>
+                </tr>
+              </table>
 
             </td>
           </tr>
