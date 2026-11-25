@@ -80,7 +80,6 @@
   {%- capture ic_check -%}<svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z"/></svg>{%- endcapture -%}
   {%- capture ic_truck -%}<svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m255.42 117-14-35A15.93 15.93 0 0 0 226.58 72H192v-8a8 8 0 0 0-8-8H32a16 16 0 0 0-16 16v112a16 16 0 0 0 16 16h17a32 32 0 0 0 62 0h50a32 32 0 0 0 62 0h17a16 16 0 0 0 16-16v-64a7.94 7.94 0 0 0-.58-3ZM192 88h34.58l9.6 24H192ZM32 72h144v64H32Zm48 136a16 16 0 1 1 16-16 16 16 0 0 1-16 16Zm81-24h-50a32 32 0 0 0-62 0H32v-32h144v12.31A32.11 32.11 0 0 0 161 184Zm31 24a16 16 0 1 1 16-16 16 16 0 0 1-16 16Zm48-24h-17a32.06 32.06 0 0 0-31-24v-32h48Z"/></svg>{%- endcapture -%}
   {%- capture ic_star -%}<svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m234.29 114.85-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76 22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08 59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>{%- endcapture -%}
-  {%- render 'echo-crumbs', list: cl -%}
   <div class="wrap pdp pdp-fg">
     <div class="gallery">
       {%- liquid
@@ -155,6 +154,7 @@
     <div class="pdp-info">
       <div class="pdp-top">
         <div class="pdp-head">
+          {%- render 'echo-crumbs', list: cl, inline: true -%}
           <h1 class="pdp-title">{{ i[8] }}</h1>
           {%- assign rating = product.metafields.reviews.rating.value -%}
           {%- assign rcount = product.metafields.reviews.rating_count | default: 0 -%}
@@ -296,6 +296,8 @@
     .pdp-info{display:flex;flex-direction:column;gap:40px;min-width:0}
     .pdp-top{display:flex;flex-direction:column;gap:24px}
     .pdp-head{display:flex;flex-direction:column;gap:8px}
+    .pdp-head .crumbs{padding:0 0 4px;margin:0}
+    .pdp-fg{padding-top:40px}
     .pdp-title{font:300 40px/1.2 var(--head);color:var(--wine);margin:0}
     .pdp-rating{display:flex;gap:4px;align-items:center;font-size:14px;color:#55524E;text-decoration:none}
     .pdp-rating .stars{display:flex;gap:4px;color:#E2CFA8}

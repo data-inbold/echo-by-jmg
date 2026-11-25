@@ -56,6 +56,7 @@
     {%- if section.settings.badges != blank -%}
       <div class="certrow">{%- assign badge_keys = section.settings.badges | split: ',' -%}{%- for bk in badge_keys -%}{%- assign bk_key = bk | strip -%}{%- render 'echo-cert-logo', k: bk_key, h: 44 -%}{%- endfor -%}</div>
     {%- endif -%}
+    {%- if section.settings.rule -%}<hr class="split-rule">{%- endif -%}
     {%- if section.settings.btn1_label != blank or section.settings.btn2_label != blank -%}
       <div{% if section.settings.btn1_label != blank and section.settings.btn2_label != blank %} class="row"{% endif %}>
         {%- if section.settings.btn1_label != blank -%}<a class="btn{% if section.settings.btn1_ghost %} ghost{% endif %}" href="{{ section.settings.btn1_link }}">{{ section.settings.btn1_label }}</a>{%- endif -%}
@@ -67,6 +68,7 @@
 <style>
   .echo-points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--line,rgba(0,0,0,.15));padding-top:14px}
   .echo-points b{display:block;font-size:14px;margin-bottom:4px}.echo-points p{margin:0;font-size:13px;line-height:1.5}
+  .split-rule{border:0;border-top:1px solid #ABA499;margin:12px 0;width:100%}
   .echo-quote{font:500 italic 21px/1.5 var(--display)}
   .echo-statline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);padding:10px 12px;font-size:13px}
   .echo-stat-n{font:600 17px/1 var(--display)}
@@ -110,6 +112,7 @@
     { "type": "textarea", "id": "chips", "label": "Link chips", "info": "One per line: Label::link. For example: Yarn tracker::/pages/tracker" },
     { "type": "text", "id": "badges", "label": "Certificate badges", "info": "Comma separated: bsci, ocs, rcs" },
     { "type": "select", "id": "points_style", "label": "Point blocks layout", "options": [{"value": "cols3", "label": "Three columns, small titles"}, {"value": "years", "label": "Two columns, large titles (years)"}], "default": "cols3" },
+    { "type": "checkbox", "id": "rule", "label": "Line above the buttons", "default": false },
     { "type": "text", "id": "btn1_label", "label": "Button 1" },
     { "type": "text", "id": "btn1_link", "label": "Button 1 link" },
     { "type": "checkbox", "id": "btn1_ghost", "label": "Button 1 outlined", "default": true },

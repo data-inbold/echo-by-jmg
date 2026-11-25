@@ -95,7 +95,10 @@
         "img_thread": "loop_pdp",
         "photo": "echo-fg-pdp-factory.jpg",
         "panel": "blush",
-        "alt": "Hands on a grey knit at the factory"
+        "alt": "Hands on a grey knit at the factory",
+        "icon": true,
+        "top": true,
+        "rule": true
       }
     },
     "illustration": {
