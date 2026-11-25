@@ -464,3 +464,7 @@ body.template-yarn-passport #app{background:#F2EEEA}
   .nav .tools .hcart [data-bag-count]{font-size:11px;position:absolute;top:6px;right:-6px;min-width:16px;height:16px;line-height:16px;border-radius:8px;background:var(--wine);color:#F7EFE9;text-align:center;padding:0 3px}
   .nav .logo{flex-shrink:1;min-width:0}
 }
+
+/* long stat words (e.g. Danish) wrap instead of widening the page on phones */
+.stat .n,.stats .n{overflow-wrap:anywhere;min-width:0}
+.stats>*{min-width:0}
