@@ -677,9 +677,16 @@
       "your_number": "Dit nummer"
     },
     "contact": {
+      "email_placeholder": "Skriv din e-mail",
       "message": "Besked",
+      "message_placeholder": "Skriv din besked her",
+      "name_placeholder": "Skriv dit fulde navn",
       "order_number_optional": "Ordrenummer (valgfrit)",
-      "send_message": "Send besked"
+      "order_placeholder": "Skriv dit ordrenummer, hvis du har et",
+      "send_message": "Send besked",
+      "send_your_message": "Send din besked til os",
+      "your_email": "Din e-mail",
+      "your_name": "Dit navn"
     },
     "corporate_form": {
       "anything_else": "Noget andet",

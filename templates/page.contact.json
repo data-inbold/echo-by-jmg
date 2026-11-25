@@ -1,19 +1,66 @@
+/* Contact: Figma layout, 25 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
-    "crumbs": {
-      "type": "echo-breadcrumbs",
-      "settings": {
-        "current": "Contact"
-      }
-    },
     "main": {
       "type": "echo-contact",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "r1": {
+          "type": "row",
+          "settings": {
+            "label": "Email",
+            "value": "hello@echobyjmg.com",
+            "link": "mailto:hello@echobyjmg.com"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "label": "Support hours",
+            "value": "[Weekdays 9 to 16 CET], in [Danish and English]",
+            "link": ""
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "label": "Return address",
+            "value": "Parcel Feeder, Brøndby, [Street Address]",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ]
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 20,
+        "space_below": 20
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
+      }
     }
   },
   "order": [
-    "crumbs",
-    "main"
+    "main",
+    "illustration",
+    "club"
   ]
 }

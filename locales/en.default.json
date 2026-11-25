@@ -720,9 +720,16 @@
       "your_number": "Your number"
     },
     "contact": {
+      "email_placeholder": "Enter your email",
       "message": "Message",
+      "message_placeholder": "Input your message here",
+      "name_placeholder": "Enter your full Name",
       "order_number_optional": "Order number (optional)",
-      "send_message": "Send message"
+      "order_placeholder": "Input your order number if you have",
+      "send_message": "Send message",
+      "send_your_message": "Send Your Message To Us",
+      "your_email": "Your Email",
+      "your_name": "Your Name"
     },
     "corporate_form": {
       "anything_else": "Anything else",
