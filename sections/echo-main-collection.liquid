@@ -36,7 +36,7 @@
     assign bl_designs = ','
     assign cu_designs = ','
     for p in collection.products
-      assign dk = p.title | split: ' Knitted' | first | handle
+      assign dk = p.title | split: ' Knitted' | first | split: ' strikket' | first | split: ' Strikket' | first | handle
       capture pc
         render 'echo-cat', product: p
       endcapture
@@ -206,7 +206,7 @@
                 continue
               endunless
             elsif only == 'sets'
-              assign dk = p.title | split: ' Knitted' | first | handle
+              assign dk = p.title | split: ' Knitted' | first | split: ' strikket' | first | split: ' Strikket' | first | handle
               assign dkk = ',' | append: dk | append: ','
               unless bl_designs contains dkk and cu_designs contains dkk
                 continue
