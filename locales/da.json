@@ -329,7 +329,7 @@
       }
     },
     "breadcrumbs": {
-      "home": "Hjem",
+      "home": "Forside",
       "collections": "Samlinger"
     },
     "burger_menu": "Åbn burgermenu",
@@ -610,7 +610,7 @@
       "could_not_add": "Kunne ikke lægges i kurven.",
       "invalid_code": "Den kode er ikke gyldig. Tjek stavningen, eller kontakt os.",
       "invalid_code_bag": "Den kode er ikke gyldig for denne kurv. Tjek stavningen, eller kontakt os.",
-      "title": "Kurv ({{ count }})",
+      "title": "Din kurv ({{ count }})",
       "your_bag_is_empty": "Din kurv er tom."
     },
     "card": {
@@ -662,7 +662,7 @@
         "other": "{{ count }} farver"
       },
       "contact": "Kontakt",
-      "corporate_gifts": "Erhvervsgaver",
+      "corporate_gifts": "Firmagaver",
       "cushion_covers": "Pudebetræk",
       "designs_count": {
         "one": "{{ count }} design",
@@ -677,7 +677,7 @@
       "gifts": "Gaver",
       "go_to_checkout": "Gå til kassen",
       "help": "Hjælp",
-      "home": "Hjem",
+      "home": "Forside",
       "journal": "Journal",
       "more": "Mere",
       "name": "Navn",
@@ -694,14 +694,14 @@
         "one": "{{ count }} resultat",
         "other": "{{ count }} resultater"
       },
-      "returns": "Returneringer",
+      "returns": "Returnering",
       "reviews_count": {
         "one": "{{ count }} anmeldelse",
         "other": "{{ count }} anmeldelser"
       },
       "search": "Søg",
       "shop": "Shop",
-      "shop_all": "Se alle",
+      "shop_all": "Shop alt",
       "shop_category": "Se {{ name }}",
       "shop_the_editions": "Se udgaverne",
       "single_accessory": "tilbehør",
@@ -712,18 +712,18 @@
       "skip_to_content": "Gå til indhold",
       "status": "Status",
       "subtotal": "Subtotal",
-      "the_yarn_passport": "The Yarn Passport",
+      "the_yarn_passport": "Garnpasset",
       "total_incl_vat": "I alt inkl. moms",
-      "track_your_order": "Følg din ordre",
-      "yarn_passport": "Yarn Passport",
+      "track_your_order": "Spor din ordre",
+      "yarn_passport": "Garnpas",
       "your_email": "Din e-mail",
       "your_number": "Dit nummer"
     },
     "contact": {
-      "email_placeholder": "Skriv din e-mail",
+      "email_placeholder": "Indtast din e-mail",
       "message": "Besked",
       "message_placeholder": "Skriv din besked her",
-      "name_placeholder": "Skriv dit fulde navn",
+      "name_placeholder": "Indtast dit fulde navn",
       "order_number_optional": "Ordrenummer (valgfrit)",
       "order_placeholder": "Skriv dit ordrenummer, hvis du har et",
       "send_message": "Send besked",
@@ -762,10 +762,13 @@
       "organic_content_standard_read_more": "Organic Content Standard, læs mere",
       "our_story": "Vores historie",
       "privacy_policy": "Privatlivspolitik",
-      "questions_and_answers": "Spørgsmål og svar",
+      "questions_and_answers": "Spørgsmål & svar",
       "recycled_claim_standard_read_more": "Recycled Claim Standard, læs mere",
       "size_and_care_guide": "Størrelses- og plejeguide",
-      "terms_of_sale": "Salgsbetingelser"
+      "terms_of_sale": "Salgsbetingelser",
+      "ships_line": "Sendes fra Parcel Feeder, Brøndby · Gratis returnering i 14 dage · Support [tider] CET",
+      "legal_line": "EchoByJMG ejes af JM Group Limited, Hong Kong, som er den juridiske sælger.",
+      "factories_and_certificates": "Fabrikker & certifikater"
     },
     "gc_balance": {
       "check_balance": "Tjek saldo",
@@ -793,7 +796,7 @@
         "one": "{{ count }} design · fra",
         "other": "{{ count }} designs · fra"
       },
-      "editions": "Udgaver",
+      "editions": "Editions",
       "edits": "Edits",
       "factory_certificates": "Fabrik & certifikater",
       "happy_habitat": "Happy Habitat",
@@ -801,23 +804,26 @@
       "main": "Hovedmenu",
       "menu": "Menu",
       "our_story": "Vores historie ▾",
-      "pillow_talk_sets": "Pillow Talk-sæt",
+      "pillow_talk_sets": "Pillow Talk Sets",
       "shop": "Shop ▾",
       "shop_by_category": "Shop efter kategori",
       "stories": "Historier",
       "the_family_and_the_factory": "Familien og fabrikken",
       "view_products": "Se produkter",
       "yarn_passport": "The Yarn Passport",
-      "yarn_tracker": "Tracker for reddet garn"
+      "yarn_tracker": "Tracker for reddet garn",
+      "util_text": "Gratis levering i Danmark · Gratis returnering i 14 dage til en dansk adresse · ★ 4,8 på Trustpilot",
+      "latest_design": "Nyeste design"
     },
     "help": {
       "all_topics": "Alle emner",
       "contact_us": "Kontakt os",
       "did_not_find_it": "Fandt du det ikke?",
-      "for_example_delivery_wash_gift": "For eksempel: levering, vask, gave",
+      "for_example_delivery_wash_gift": "F.eks.: levering, vask, gave,...",
       "guides": "Guider",
       "no_match_html": "Ingen svar matcher “<span data-faq-q></span>”. <a class=\"link\" href=\"{{ contact_url }}\">Spørg os direkte</a>",
-      "search_the_answers": "Søg i svarene"
+      "search_the_answers": "Søg i svarene",
+      "questions_and_answers": "Spørgsmål & svar"
     },
     "hero": {
       "shown": "Vist: {{ name }}",
@@ -855,21 +861,21 @@
     "main_cart": {
       "continue_shopping": "Fortsæt med at handle",
       "order_summary": "Ordreoversigt",
-      "your_bag_is_empty": "Din kurv er tom"
+      "your_bag_is_empty": "Din kurv er tom."
     },
     "main_collection": {
       "all_colours": "Alle farver",
       "alpha_az": "Alfabetisk, A→Å",
       "alpha_za": "Alfabetisk, Å→A",
-      "available_stock": "På lager",
+      "available_stock": "Tilgængelig lagerbeholdning",
       "choose_your_piece": "Vælg dit stykke",
       "clear_all": "Ryd alt",
       "clear_filters": "Ryd filtre",
       "colour": "Farve",
-      "date_new_to_old": "Dato, nyeste først",
-      "date_old_to_new": "Dato, ældste først",
+      "date_new_to_old": "Dato, ny til gammel",
+      "date_old_to_new": "Dato, gammel til ny",
       "featured": "Anbefalede",
-      "filters_and_sort": "Filtre og sortering",
+      "filters_and_sort": "Filtre & sortering",
       "final_pieces_hint": "Vis designs med færre end 5 stykker tilbage",
       "final_pieces_only": "Kun de sidste stykker",
       "newest_editions": "Nyeste udgaver",
@@ -881,13 +887,18 @@
       "sort": "Sortér"
     },
     "main_product": {
+      "complete_the_set": "Fuldend sættet",
+      "passport_intro": "Dit køb inkluderer et garnpas med oplysningerne nedenfor samt dit stykkes oplagsnummer, som tildeles ved pakning.",
+      "discover_more": "Opdag mere",
+      "certificates": "Certifikater",
+      "our_certificates": "Vores certifikater",
       "add_to_bag": "Læg i kurv",
       "amount": "Beløb",
       "colour": "Farve:",
-      "delivery_and_returns": "Levering og returnering",
+      "delivery_and_returns": "Levering & returnering",
       "description": "Beskrivelse",
       "dimensions": "Mål",
-      "get_an_email_when_a_new_edition_from": "Få en e-mail, når en ny udgave fra denne garnfamilie er klar",
+      "get_an_email_when_a_new_edition_from": "Få en e-mail, når en ny edition fra denne garnfamilie er klar",
       "incl_vat_free_delivery": "inkl. moms · fri fragt",
       "material_and_care": "Materiale og pleje",
       "more_about_delivery": "Mere om levering",
@@ -895,7 +906,26 @@
       "notify_me": "Giv mig besked",
       "pay_with_mobilepay": "Betal med MobilePay",
       "sent_instantly_by_email": "Sendes straks pr. e-mail",
-      "thank_you_we_will_email_you_when_the": "Tak. Vi sender dig en e-mail, når næste udgave er klar."
+      "thank_you_we_will_email_you_when_the": "Tak. Vi sender dig en e-mail, når næste udgave er klar.",
+      "including_vat": "Inkl. moms",
+      "free_delivery": "Gratis levering",
+      "edition_of": "Oplag på {{ total }}",
+      "only_left_html": "Kun <b>{{ count }}</b> tilbage på lager",
+      "colorway_note": "Denne farvekombination findes kun i dette batch og kan ikke genopfyldes, når den er udsolgt.",
+      "edition_sold_out": "Denne edition er udsolgt",
+      "pay_with": "Betal med",
+      "add_to_cart": "Læg i kurv",
+      "tick_1": "Bestil inden kl. 14:00 på hverdage for levering på 1 til 2 hverdage",
+      "tick_2": "Gratis returnering i 14 dage til vores danske adresse",
+      "tick_3": "Ingen pris på følgesedlen, klar til at give",
+      "origin_default": "Ubrugt garn reddet fra en [sæson]-produktion på vores fabrik den [redningsdato].",
+      "bsci_line_html": "Amfori ID 156-020420-000<br>Gælder alle produkter",
+      "delivery_text": "Gratis levering i Danmark på 1 til 2 hverdage fra vores danske lager. Gratis returnering inden for 14 dage.",
+      "dimension": "Mål",
+      "delivery_and_return": "Levering & returnering",
+      "enter_your_email": "Indtast din e-mail",
+      "see_it_in_tracker": "Se det i trackeren",
+      "photo_n": "Foto {{ n }}"
     },
     "main_search": {
       "search_blankets_bags_colours": "Søg efter tæpper, tasker, farver"
@@ -918,7 +948,7 @@
       "woven_label": "Hvert stykke har en vævet label med “Nr. __ af {{ total }}”. Dit nummer får du, når vi pakker din ordre."
     },
     "passport_hero": {
-      "made": "Fremstillet",
+      "made": "Lavet",
       "no": "Nr.",
       "origin": "Oprindelse"
     },
@@ -934,22 +964,25 @@
     },
     "product": {
       "edition_left_html": "<b>Oplag på {{ total }} stk., {{ left }} tilbage.</b> Når dette parti garn er brugt op, kommer designet ikke igen i denne farve.",
-      "faq_title": "Spørgsmål om dette produkt",
+      "faq_title": "Spørgsmål om dette {{ item }}",
       "see_current": "Se aktuelle {{ name }}",
-      "sold_out_html": "<b>Denne udgave er udsolgt.</b> Alle {{ total }} stykker har fundet et nyt hjem. Designet kommer ikke igen i denne farve."
+      "sold_out_html": "<b>Denne udgave er udsolgt.</b> Alle {{ total }} stykker har fundet et nyt hjem. Designet kommer ikke igen i denne farve.",
+      "faq_title_common": "Spørgsmål om denne {{ item }}"
     },
     "product_faq_reviews": {
-      "reviews": "Anmeldelser"
+      "reviews": "Fra vores kunder",
+      "from_our_customers": "Fra vores kunder",
+      "denmark": "Danmark"
     },
     "product_passport": {
       "about_our_certificates": "Om vores certificeringer",
       "bsci_compliance": "BSCI-overholdelse",
       "certificates_for_this_product": "Certificeringer for dette produkt",
-      "fibre_and_batch": "Fiber og batch",
+      "fibre_and_batch": "Fiber & batch",
       "organic_content_standard": "Organic Content Standard",
       "recycled_claim_standard": "Recycled Claim Standard",
-      "see_it_in_the_tracker": "Se den i trackeren",
-      "what_is_the_yarn_passport": "Hvad er Yarn Passport?",
+      "see_it_in_the_tracker": "Se det i trackeren",
+      "what_is_the_yarn_passport": "Hvad er garnpasset?",
       "where_it_came_from": "Hvor det kommer fra"
     },
     "register": {
@@ -1008,12 +1041,12 @@
       "closed": "Lukket",
       "editions_still_open": "åbne udgaver",
       "last_pieces": "Sidste stykker",
-      "logged": "Registreret",
+      "logged": "Dato",
       "numbered_pieces_made": "nummererede stykker fremstillet",
       "open_left": "Åben · {{ count }} tilbage",
       "pieces": "Stykker",
       "shop_open_editions": "Se åbne udgaver",
-      "the_batch_log": "Batch-loggen",
+      "the_batch_log": "Batchloggen",
       "yarn": "Garn",
       "yarn_rescued_to_date": "garn reddet indtil nu"
     },

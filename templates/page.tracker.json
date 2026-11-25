@@ -7,15 +7,11 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-/* Rescued yarn tracker: Figma layout, 25 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
     "main": {
       "type": "echo-tracker",
-      "settings": {
-        "heading": "Rescued Yarn Tracker"
-      },
       "blocks": {
         "batch_1": {
           "type": "batch",
@@ -29,7 +25,11 @@
               "hills-valleys-throw-oat",
               "hills-valleys-knitted-cushion-cover-vertiver-green",
               "hills-valleys-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_2": {
@@ -44,7 +44,11 @@
               "twister-rope-blanket",
               "twister-rope-knitted-cushion-cover-doe",
               "twister-rope-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_3": {
@@ -59,7 +63,11 @@
               "rollercoaster-tracks-blanket-linen",
               "rollercoaster-tracks-knitted-cushion-cover-black",
               "rollercoaster-tracks-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_4": {
@@ -73,7 +81,11 @@
               "happy-sunshine-throw-cloud",
               "happy-sunshine-throw-cloud-smoky-mauve",
               "happy-sunshine-throw"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_5": {
@@ -88,7 +100,11 @@
               "carousel-stripes-throw",
               "carousel-stripes-knitted-cushion-cover-violet-blue",
               "carousel-stripes-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_6": {
@@ -101,7 +117,11 @@
             "products": [
               "stripey-spy-throw",
               "stripey-spy-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_7": {
@@ -114,7 +134,11 @@
             "products": [
               "bonjour-pup-throw",
               "bonjour-pup-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_8": {
@@ -126,7 +150,11 @@
             "kg": 10,
             "products": [
               "checkerboard-chase-blanket"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_9": {
@@ -139,7 +167,11 @@
             "products": [
               "bubble-pop-blanket",
               "bubble-pop-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_10": {
@@ -152,7 +184,11 @@
             "products": [
               "lucky-arrow-throw",
               "lucky-arrow-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_11": {
@@ -165,7 +201,11 @@
             "products": [
               "ticket-booth-throw-dk-royal",
               "ticket-booth-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_12": {
@@ -178,7 +218,11 @@
             "products": [
               "cotton-candy-cloud-throw-cloud",
               "cotton-candy-cloud-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_13": {
@@ -190,7 +234,11 @@
             "kg": 4,
             "products": [
               "puff-friends-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_14": {
@@ -202,7 +250,11 @@
             "kg": 4,
             "products": [
               "fluff-paws-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_15": {
@@ -214,7 +266,11 @@
             "kg": 4,
             "products": [
               "purrfect-peek-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_16": {
@@ -226,7 +282,11 @@
             "kg": 4,
             "products": [
               "sky-fence-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_17": {
@@ -238,7 +298,11 @@
             "kg": 4,
             "products": [
               "joyful-rainbow-knitted-cushion-cover"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_18": {
@@ -251,7 +315,11 @@
             "products": [
               "star-pop-knitted-bag-bottle-green",
               "star-pop-knitted-bag"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_19": {
@@ -265,7 +333,11 @@
               "happy-stripe-lunch-bag-tomato",
               "happy-stripe-lunch-bag-egg-yolk",
               "happy-stripe-lunch-bag"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_20": {
@@ -278,7 +350,11 @@
             "products": [
               "popcorn-dumpling-bag-pumpkin",
               "popcorn-dumpling-bag"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_21": {
@@ -291,7 +367,11 @@
             "products": [
               "wavetrack-dumpling-bag-olive",
               "wavetrack-dumpling-bag"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_22": {
@@ -304,7 +384,11 @@
             "products": [
               "textured-stripes-tote-black",
               "textured-stripes-tote"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_23": {
@@ -316,7 +400,11 @@
             "kg": 4,
             "products": [
               "denim-diamond-knitted-tote"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_24": {
@@ -328,7 +416,11 @@
             "kg": 4,
             "products": [
               "cable-rope-knitted-tote"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_25": {
@@ -346,7 +438,11 @@
               "booth-ticket-knitted-pcase-red",
               "booth-ticket-knitted-pcase",
               "geo-diamond-knitted-pcase"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_26": {
@@ -365,7 +461,11 @@
               "rainbow-crossing-knitted-scarf-after-rain",
               "rainbow-crossing-knitted-scarf-before-rain",
               "rainbow-crossing-knitted-scarf"
-            ]
+            ],
+            "pieces_override": 0,
+            "closed": false,
+            "closed_name": "",
+            "closed_pieces": 12
           }
         },
         "batch_27": {
@@ -375,6 +475,8 @@
             "date": "2024-04",
             "fibre": "80% lambswool, 20% nylon",
             "kg": 16,
+            "products": [],
+            "pieces_override": 0,
             "closed": true,
             "closed_name": "Midnight Cable blanket and cushion cover",
             "closed_pieces": 32
@@ -387,6 +489,8 @@
             "date": "2024-02",
             "fibre": "100% merino wool",
             "kg": 14,
+            "products": [],
+            "pieces_override": 0,
             "closed": true,
             "closed_name": "Sunday Rib blanket",
             "closed_pieces": 12
@@ -422,7 +526,26 @@
         "batch_26",
         "batch_27",
         "batch_28"
-      ]
+      ],
+      "settings": {
+        "crumb_label": "About Us",
+        "crumb_current": "Rescued Yarn Tracker",
+        "heading": "Rescued Yarn Tracker",
+        "lead": "See a complete record of every surplus yarn batch we’ve rescued, what it became, and its current availability. Each row corresponds directly to the batch ID on your Yarn Passport.",
+        "log_heading": "The Batch Log",
+        "icon_1": "echo-stat-yarn.png",
+        "label_1": "Yarn rescued",
+        "icon_2": "echo-stat-logo.png",
+        "label_2": "Batches",
+        "icon_3": "echo-stat-knit.png",
+        "label_3": "Numbered pieces",
+        "icon_4": "echo-stat-pillows.png",
+        "label_4": "Available designs",
+        "pad_top": 80,
+        "pad_log": 60,
+        "pad_bottom": 60,
+        "note": ""
+      }
     },
     "illustration": {
       "type": "echo-illustration",
@@ -440,6 +563,7 @@
         "heading": "Join the Cozy Club",
         "text": "Get 10% off your first order, and be the first to hear about our new designs!",
         "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
       }

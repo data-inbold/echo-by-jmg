@@ -67,6 +67,7 @@ body{font-family:var(--body);font-size:15px;line-height:1.6}
 .split.panel{gap:0;align-items:stretch}
 .split.panel>.stack{padding:clamp(28px,5vw,64px);justify-content:center;gap:20px}
 .split.panel .ph{height:100%;min-height:300px;aspect-ratio:auto!important;border:0}
+@media(max-width:879px){.split.panel .ph{height:auto;min-height:0;aspect-ratio:680/560!important}}
 @media(min-width:880px){.split.panel.mf{grid-template-columns:1fr 1fr}.split.panel:not(.mf){grid-template-columns:5fr 7fr}}
 .split.panel-blush>.stack{background:var(--blush)}
 .split.panel-wine>.stack{background:var(--wine);color:#F3EAE1}
@@ -165,7 +166,8 @@ header.site :focus-visible{outline-color:var(--olive)}
 .card .name{font-weight:400;font-size:16px;line-height:1.3;color:var(--muted)}
 .card .ed{font-size:14px;color:var(--faint)}
 .card .meta>span:not([class]){font-size:16px;font-weight:600;color:var(--ink)}
-body.template-index .card .swatches{display:none}
+/* Figma: product cards show no colour dots (the colour picker is on the product page) */
+.card .swatches{display:none}
 
 /* hashtags */
 .mq-track{gap:40px}
@@ -254,12 +256,8 @@ footer.site .btn:hover{background:#fff;color:#111}
 /* recolourable wool icon (the PNG is used as a mask) */
 .wool-ico{display:block;width:109px;height:120px;background:var(--thread);-webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}
 .split-ico{display:none;position:absolute;right:max(140px,calc((100% - 1440px)/2 + 140px));bottom:80px;width:109px;height:120px;z-index:3;pointer-events:none}
-.split-thread{display:none;position:absolute;right:0;top:-226px;height:745.8px;width:auto;max-width:none;pointer-events:none;z-index:4}
 @media(min-width:880px){.split-ico{display:block}}
-@media(min-width:900px){.split-thread{display:block}}
-.section:has(>.split-ico),.section:has(>.split-thread){position:relative}
-.section:has(>.split-thread){overflow-x:clip}
-.section:has(>.split-thread)>.wrap{position:relative;z-index:2}
+.section:has(>.split-ico){position:relative}
 
 /* shop by products: 24px between photo and label */
 .tiles.grid .card,.tiles .card{gap:24px}
@@ -353,8 +351,15 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .cl-arrows button{width:50px;height:50px;border:1px solid var(--wine);background:transparent;color:var(--wine)}
 .cl-arrows button:hover:not(:disabled){background:var(--wine);color:var(--pink);border-color:var(--wine)}
 .cl-arrows button:disabled{opacity:1;border-color:#ABA499;color:#ABA499}
-.cl-row{gap:24px}
-.cl-card{flex:0 0 clamp(248px,21vw,302px)}
+/* line + arrows row, four films that fill the width exactly, no fade and no progress bar */
+.cl-ctrl{display:flex;align-items:center;gap:24px}
+.cl-ctrl .cl-rule{flex:1;height:0;border-top:1px solid #ABA499}
+.cl-ctrl .cl-tools{gap:0}
+.cl-row{gap:24px;padding:0;-webkit-mask-image:none;mask-image:none;scroll-padding-inline:0}
+.cl-card{flex:0 0 calc((100% - 72px) / 4)}
+@media(max-width:899px){.cl-card{flex:0 0 calc((100% - 24px) / 2)}}
+@media(max-width:749px){.cl-card{flex:0 0 76vw}.cl-ctrl .cl-rule{display:none}}
+.cl-bar{display:none}
 .cl-frame{border-radius:24px;border:2px solid #7C7E64}
 .cl-cap strong{font:400 24px/1.2 var(--display)}
 .cl-bar i{background:var(--wine)}
@@ -388,7 +393,7 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .mm-cat span{position:relative;display:inline-flex;align-items:center;height:28px}
 .mm-col a:hover::after,.mm-col a:focus-visible::after,.mm-cat:hover span::after,.mm-cat:focus-visible span::after{transform:scaleX(1)}
 .mm .mm-all::after{display:none}
-.mm-cat svg{width:28px;height:28px;flex:none;color:#7A7467}
+.mm-cat img{width:28px;height:28px;flex:none;display:block}
 .mm .mm-all{align-self:flex-start;height:auto;margin-top:0;padding:4px 0;gap:10px;font:600 12px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#332C2A;border-bottom:1px solid #332C2A}
 .mm-all svg{width:24px;height:24px}
 .mm-card{position:relative;display:block;flex:none;width:480px;height:232px;margin-left:40px;overflow:hidden;background:#2b2523;text-decoration:none;color:#fff}
@@ -399,6 +404,13 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 .mm-card-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 16px/22px var(--body);color:#fff}
 .mm-card-go{flex:none;font:500 11px/19px var(--body);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #fff}
 .mm-card:hover .mm-card-go{opacity:.8}
+.mm-swap{position:absolute;inset:0;z-index:2;opacity:0;transition:opacity .2s;pointer-events:none}
+.mm-swap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+*:has(> .mm-card):has(.mm-cat[data-k="blankets"]:hover) .mm-swap[data-k="blankets"]{opacity:1}
+*:has(> .mm-card):has(.mm-cat[data-k="cushions"]:hover) .mm-swap[data-k="cushions"]{opacity:1}
+*:has(> .mm-card):has(.mm-cat[data-k="bags"]:hover) .mm-swap[data-k="bags"]{opacity:1}
+*:has(> .mm-card):has(.mm-cat[data-k="accessories"]:hover) .mm-swap[data-k="accessories"]{opacity:1}
+*:has(> .mm-card):has(.mm-cat:hover) .mm-card::after,*:has(> .mm-card):has(.mm-cat:hover) .mm-card-label,*:has(> .mm-card):has(.mm-cat:hover) .mm-card-foot{opacity:0}
 @media(max-width:1380px){.mm-col{width:200px}.mm-col+.mm-col{width:240px}.mm-card{width:360px;height:232px}}
 @media(max-width:1180px){.mm-card{display:none}.mm-col+.mm-col{border-right:0}}
 /* About dropdown: a single "About" column (Figma "Mega Menu - About Us") */
@@ -407,3 +419,32 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 /* dropdown caret: Figma CaretDown, 16px, 8px from the label, same colour as the label */
 .nav .main>button{display:inline-flex;align-items:center;gap:8px}
 .nav .main>button .caret{width:16px;height:16px;flex:none}
+
+/* ================= Thread lines (Figma "Vector" thread layers), desktop + phone ================= */
+:root{--thread-line:#97B5E1}
+.ethr{--u:min(calc(100cqw / var(--W)),var(--cap,100px));position:absolute;top:calc(var(--y) * var(--u));width:calc(var(--w) * var(--u));height:auto;max-width:none;overflow:visible;pointer-events:none;z-index:var(--z,0);color:var(--c,var(--thread-line))}
+.ethr.l{left:calc(var(--x) * var(--u))}
+.ethr.r{right:calc(var(--x) * var(--u))}
+.ethr.cap{--cap:1px}
+@media(max-width:749px){
+  .ethr.m{top:calc(var(--my) * 1px);width:calc(var(--mw) * 1px)}
+  .ethr.m.l{left:calc(var(--mx) * 1px)}
+  .ethr.m.r{right:calc(var(--mx) * 1px)}
+  .ethr.m.mr{left:auto;right:calc(var(--mx) * 1px)}
+  .ethr.m.mb{top:auto;bottom:calc(var(--my) * 1px)}
+}
+/* host that the thread is measured on (a photo box): blue runs under the photo, white copy shows on it */
+.ethr-host{position:relative;container-type:inline-size;isolation:isolate}
+.ethr-host>.ph,.ethr-host>.lbl{z-index:1}
+.ethr-host>.lbl{z-index:3}
+.ethr-clip{position:absolute;inset:0;overflow:hidden;z-index:2;pointer-events:none}
+.section:has(>.ethr),.section:has(.ethr-host){position:relative;overflow-x:clip}
+.section:has(>.ethr)>.wrap{position:relative;z-index:1}
+/* Yarn Passport page: the area behind all blocks is Figma's #F2EEEA (header and footer keep their own colours) */
+body.template-yarn-passport #app{background:#F2EEEA}
+/* header icons (Figma): 24px icon + label, 8px apart; the cart icon 4px */
+.nav .tools button[data-act],.nav .tools a{display:inline-flex;align-items:center;gap:8px}
+.nav .tools .hcart{gap:4px}
+.nav .tools .hico{display:block;width:24px;height:24px;object-fit:contain;flex:none}
+.nav .tools .hcart span{font-weight:400}
+@media(max-width:749px){.nav .tools button[data-act="search"] .hlbl{display:none}}

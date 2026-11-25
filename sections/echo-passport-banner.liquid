@@ -10,7 +10,7 @@
   assign crumb_list = t_home | append: '::' | append: u_home | append: '||' | append: section.settings.crumb_label | append: '::' | append: u_story | append: '||' | append: section.settings.crumb_current
 -%}
 <style>
-  .pb{background:#F0DFD8;padding-block:{{ section.settings.pad_top }}px {{ section.settings.pad_bottom }}px;overflow:hidden}
+  .pb{background:transparent;padding-block:{{ section.settings.pad_top }}px {{ section.settings.pad_bottom }}px;overflow:hidden}
   .pb .crumbs{padding:0 0 20px}
   .pb .wrap>.crumbs{max-width:none;margin:0}
   .pb-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}

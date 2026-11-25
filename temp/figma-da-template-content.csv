@@ -1,0 +1,272 @@
+file,setting,English,Danish (Figma)
+templates/index.json,sections.hero.settings.heading,Where luxury yarn finds a second life.,Hvor luksusgarn får et nyt liv.
+templates/index.json,sections.hero.settings.lead,"Discover limited-edition pieces knit from surplus luxury yarn, brought to life by three generations of family craftsmanship.","Oplev limited edition-stykker strikket af overskydende luksusgarn, skabt med tre generationers familiehåndværk."
+templates/index.json,sections.hero.settings.btn1_label,See our products,SE VORES PRODUKTER
+templates/index.json,sections.hero.settings.btn2_label,How it works,Sådan fungerer det
+templates/index.json,sections.shop_by.blocks.tile_1.settings.from,from DKK 809,fra DKK 809
+templates/index.json,sections.shop_by.blocks.tile_2.settings.from,from DKK 809,fra DKK 809
+templates/index.json,sections.shop_by.blocks.tile_3.settings.from,from DKK 809,fra DKK 809
+templates/index.json,sections.shop_by.blocks.tile_4.settings.from,from DKK 809,fra DKK 809
+templates/index.json,sections.shop_by.settings.heading,Shop By Products,Shop efter produkt
+templates/index.json,sections.how.blocks.step_1.settings.title,Luxury yarn goes unused,Luksusgarn går ubrugt
+templates/index.json,sections.how.blocks.step_1.settings.text,"From the floor of our family factory, we watch fashion houses leave behind beautiful, premium yarn at the end of every season.","I vores familiedrevne fabrik er vi vidne til det hver eneste sæson – modehusene smider smukt, førsteklasses garn ud."
+templates/index.json,sections.how.blocks.step_2.settings.title,We rescue and reimagine,Vi redder og gentænker
+templates/index.json,sections.how.blocks.step_3.settings.title,Traceable and exclusively yours,Sporbar og eksklusivt din
+templates/index.json,sections.how.settings.heading,How It Works,Sådan fungerer det
+templates/index.json,sections.numbers.blocks.stat_3.settings.n,Since 1946,Siden 1946
+templates/index.json,sections.numbers.blocks.stat_3.settings.text,To present,Til i dag
+templates/index.json,sections.numbers.blocks.stat_1.settings.text,Yarn rescued,Garn reddet
+templates/index.json,sections.numbers.blocks.stat_2.settings.text,Numbered pieces,Nummererede stykker
+templates/index.json,sections.numbers.blocks.stat_4.settings.n,0 restocks,0 genopfyldninger
+templates/index.json,sections.numbers.blocks.stat_4.settings.text,Once sold out,Når det er udsolgt
+templates/index.json,sections.numbers.settings.link_label,View rescued yarn tracker,SE TRACKEREN FOR REDDET GARN
+templates/index.json,sections.editions.settings.heading,Latest Designs,Nyeste designs
+templates/index.json,sections.editions.settings.link_label,See all,SE ALLE
+templates/index.json,sections.story.settings.quote,"“To me, EchoByJMG is more than a collection of knitted products. It's a continuation of our family's story, with a fresh purpose for the future.”","“For mig er EchoByJMG mere end en kollektion af strikvarer. Det er en fortsættelse af vores families historie, med et nyt formål for fremtiden.”"
+templates/index.json,sections.story.settings.caption,"Ming, founder of EchoByJMG","Ming, grundlægger af EchoByJMG"
+templates/index.json,sections.story.settings.btn1_label,Read our story,LÆS VORES HISTORIE
+templates/index.json,sections.quotes.blocks.review_1.settings.country,Denmark,Danmark
+templates/index.json,sections.quotes.blocks.review_1.settings.quote,"So soft, you felt it immediately. It feels like it’s always belonged in the room.","Så blødt, at man mærker det med det samme. Det føles, som om det altid har hørt til i rummet."
+templates/index.json,sections.quotes.blocks.review_2.settings.country,Denmark,Danmark
+templates/index.json,sections.quotes.blocks.review_2.settings.quote,My daughter favorite blanket.,Min datters yndlingstæppe.
+templates/index.json,sections.quotes.blocks.review_2.settings.product_price,"DKK 1,379",DKK 1.379
+templates/index.json,sections.quotes.settings.heading,What Our Customers Say,Det siger vores kunder
+templates/index.json,sections.gift.settings.heading,Gifts with a story,Gaver med en historie
+templates/index.json,sections.gift.settings.lead,"No price on the packing slip, wrapped in tissue, with a small surprise inside. Or let them choose with a gift card.","Ingen pris på følgesedlen, pakket i silkepapir, med en lille overraskelse indeni. Eller lad dem vælge selv med et gavekort."
+templates/index.json,sections.gift.settings.btn1_label,Gift guide,GAVEGUIDE
+templates/list-collections.json,sections.tiles.blocks.tile_1.settings.from,from DKK 809,fra DKK 809
+templates/list-collections.json,sections.tiles.blocks.tile_2.settings.from,from DKK 809,fra DKK 809
+templates/list-collections.json,sections.tiles.blocks.tile_3.settings.from,from DKK 809,fra DKK 809
+templates/list-collections.json,sections.tiles.blocks.tile_4.settings.from,from DKK 809,fra DKK 809
+templates/list-collections.json,sections.rescue.blocks.p1.settings.title,Never worn,Aldrig brugt
+templates/list-collections.json,sections.rescue.blocks.p1.settings.text,"Unused yarn, not recycled from clothing.","Ubrugt garn, ikke genanvendt fra tøj."
+templates/list-collections.json,sections.rescue.blocks.p2.settings.title,Same quality,Samme kvalitet
+templates/list-collections.json,sections.rescue.blocks.p2.settings.text,The same premium yarn used by fashion houses.,"Det samme premiumgarn, som modehusene bruger."
+templates/list-collections.json,sections.rescue.blocks.p3.settings.title,Limited by yarn,Begrænset af garnet
+templates/list-collections.json,sections.rescue.blocks.p3.settings.text,"Once a batch runs out, it won’t be restocked.","Når en batch slipper op, bliver den ikke genopfyldt."
+templates/list-collections.json,sections.editions.settings.heading,Latest Designs,Nyeste designs
+templates/list-collections.json,sections.editions.settings.link_label,See all,SE ALLE
+templates/page.about-long.json,sections.letter.settings.caption,"Ming, founder of EchoByJMG","Ming, grundlægger af EchoByJMG"
+templates/page.about.json,sections.hero.settings.heading,New vision for a 80-year family legacy,En ny vision for en 80 år gammel familiearv
+templates/page.about.json,sections.hero.settings.lead,"With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home.","Med over 80 års erfaring med strik til luksusmodehuse skabte vi EchoByJMG med ét enkelt mål: at redde det ubrugte overskudsgarn, som modebrands efterlader, og forvandle det til hyggelige stykker til dit hjem."
+templates/page.about.json,sections.letter.settings.heading,Letter From Our Founders,Brev fra vores grundlæggere
+templates/page.about.json,sections.letter.settings.letter,"“Knitting has been part of my family for generations. What began with my grandfather's knitting factory in 1946 has grown into decades of craftsmanship and a deep appreciation for beautiful yarns.
+
+Over the years, I've seen extraordinary materials left behind after production; beautiful, high-quality yarns that still have so much potential. I couldn't help thinking: surely, they deserve more than to be forgotten?
+
+That thought became EchoByJMG. A brand born from my passion for giving beautiful yarns a new purpose, transforming what was once overlooked into something meaningful, playful and made to be loved.”","“Strik har været en del af min familie i generationer. Det, der begyndte med min bedstefars strikkefabrik i 1946, er vokset til årtiers håndværk og en dyb kærlighed til smukt garn. Gennem årene har jeg set fantastiske materialer blive tilbage efter produktionen; smukt garn af høj kvalitet med stadig så meget potentiale. Jeg kunne ikke lade være med at tænke: Fortjener det ikke mere end at blive glemt? Den tanke blev til EchoByJMG. Et brand født af min passion for at give smukt garn et nyt formål og forvandle det oversete til noget meningsfuldt, legende og skabt til at blive elsket.”"
+templates/page.about.json,sections.letter.settings.caption,"Ming, Founder of EchoByJMG","Ming, grundlægger af EchoByJMG"
+templates/page.about.json,sections.letter.settings.alt,"Ming, founder of EchoByJMG","Ming, grundlægger af EchoByJMG"
+templates/page.about.json,sections.how.blocks.step_1.settings.title,Luxury yarn goes unused,Luksusgarn går ubrugt
+templates/page.about.json,sections.how.blocks.step_1.settings.text,"From the floor of our family factory, we watch fashion houses leave behind beautiful, premium yarn at the end of every season.","I vores familiedrevne fabrik er vi vidne til det hver eneste sæson – modehusene smider smukt, førsteklasses garn ud."
+templates/page.about.json,sections.how.blocks.step_2.settings.title,We rescue and reimagine,Vi redder og gentænker
+templates/page.about.json,sections.how.blocks.step_3.settings.title,Traceable and exclusively yours,Sporbar og eksklusivt din
+templates/page.about.json,sections.how.settings.heading,How It Works,Sådan fungerer det
+templates/page.about.json,sections.tracker.blocks.stat_1.settings.text,Yarn rescued,Garn reddet
+templates/page.about.json,sections.tracker.blocks.stat_3.settings.text,Numbered pieces,Nummererede stykker
+templates/page.about.json,sections.tracker.blocks.stat_4.settings.text,Available designs,Tilgængelige designs
+templates/page.about.json,sections.tracker.blocks.batch_1.settings.fibre,"80% lambswool, 20% nylon","80% lammeuld, 20% nylon"
+templates/page.about.json,sections.tracker.blocks.batch_2.settings.fibre,"80% lambswool, 20% nylon","80% lammeuld, 20% nylon"
+templates/page.about.json,sections.tracker.settings.heading,"Our Rescue Journey, In Numbers",Vores redningsrejse i tal
+templates/page.about.json,sections.tracker.settings.btn_label,Open tracker,ÅBN TRACKEREN
+templates/page.about.json,sections.track.settings.heading,How We Track Each Piece With Our Yarn Passport,Sådan sporer vi hvert stykke med vores garnpas
+templates/page.about.json,sections.track.settings.text,"Our Yarn Passport reveals the journey behind your piece — its origins, materials, amount of yarn rescued, and total number of pieces in the batch.","Vores garnpas viser rejsen bag dit stykke: oprindelse, materialer, mængden af reddet garn og det samlede antal stykker i batchen."
+templates/page.about.json,sections.factory.settings.heading,Our Factory & Certificates,Vores fabrik & certifikater
+templates/page.about.json,sections.factory.settings.text,"All of our products are crafted in our family-owned Dongguan factory, operating since 1946. We are proudly BSCI-audited and utilize RCS and OCS certified materials wherever applicable.","Alle vores produkter laves på vores familieejede fabrik i Dongguan, som har været i drift siden 1946. Vi er stolte af at være BSCI-auditeret og bruger RCS- og OCS-certificerede materialer, hvor det er muligt."
+templates/page.about.json,sections.stories.blocks.card_1.settings.kind,From the factory,FRA FABRIKKEN
+templates/page.about.json,sections.stories.blocks.card_1.settings.title,A morning on the factory floor,En morgen på fabriksgulvet
+templates/page.about.json,sections.stories.blocks.card_1.settings.dek,Short film and photos from the knitting hall. [From the summer shoot.],Kort film og fotos fra strikkehallen. [Fra sommeroptagelserne.]
+templates/page.about.json,sections.stories.blocks.card_2.settings.title,What is leftover yarn?,Hvad er overskudsgarn?
+templates/page.about.json,sections.stories.blocks.card_2.settings.dek,"Unused yarn left after fashion production, and why it is not recycled fibre.","Ubrugt garn fra modeproduktion, og hvorfor det ikke er genanvendt fiber."
+templates/page.about.json,sections.stories.blocks.card_3.settings.title,How to choose a knitted blanket,Sådan vælger du et strikket tæppe
+templates/page.about.json,sections.stories.blocks.card_3.settings.dek,"Size, weight and yarn, and which one suits a sofa, a bed or a reading chair.","Størrelse, vægt og garn, og hvilket der passer til en sofa, en seng eller en læsestol."
+templates/page.about.json,sections.stories.blocks.card_fg4.settings.title,How to wash a lambswool blanket,Sådan vasker du et tæppe i lammeuld
+templates/page.about.json,sections.stories.blocks.card_fg4.settings.dek,"Cold water, no wringing and a flat surface to dry.","Koldt vand, ingen vridning og en flad overflade til tørring."
+templates/page.about.json,sections.stories.settings.heading,Stories From Our Factory Floor,Historier fra fabriksgulvet
+templates/page.about.json,sections.stories.settings.text,"See our behind-the-scene as it is, with raw, unfiltered footages and honest stories shared by the very people who make your pieces.","Se vores kulisser, som de er, med rå, ufiltrerede optagelser og ærlige historier fortalt af de mennesker, der laver dine stykker."
+templates/page.about.json,sections.stories.settings.cards_label,Journals,Journal
+templates/page.care.json,sections.sizes.settings.lead,"Sizes for every product type, and how to look after each yarn so it lasts.","Størrelser for hver produkttype, og hvordan du passer på hvert garn, så det holder."
+templates/page.care.json,sections.care.blocks.row_1.settings.label,Lambswool blends,Lammeuldsblandinger
+templates/page.care.json,sections.care.blocks.row_1.settings.text,"Hand wash cold, press the water out, dry flat. Do not tumble dry.","Håndvask koldt, pres vandet ud, tør liggende. Må ikke tørretumbles."
+templates/page.care.json,sections.care.blocks.row_2.settings.label,Cotton blends,Bomuldsblandinger
+templates/page.care.json,sections.care.blocks.row_2.settings.text,Machine wash 30°C on a wool cycle in a wash bag.,Maskinvask ved 30°C på uldprogram i en vaskepose.
+templates/page.care.json,sections.care.blocks.row_3.settings.label,Wool,Uld
+templates/page.care.json,sections.care.blocks.row_3.settings.text,Hand wash or dry clean.,Håndvask eller kemisk rens.
+templates/page.care.json,sections.care.blocks.row_4.settings.label,Pilling,Fnuller
+templates/page.care.json,sections.care.blocks.row_4.settings.text,Small bobbles are normal on new knitwear. Remove them with a knit comb.,Små fnuller er normale på ny strik. Fjern dem med en strikkam.
+templates/page.care.json,sections.care.settings.heading,Care By Yarn,Pleje efter garn
+templates/page.care.json,sections.care.settings.card_title,How to wash a lambswool blanket,Sådan vasker du et tæppe i lammeuld
+templates/page.care.json,order.1,care,Pleje
+templates/page.company.json,sections.main.blocks.fact_6.settings.value,"Parcel Feeder, Brøndby, [street address]","Parcel Feeder, Brøndby, [Adresse]"
+templates/page.contact.json,sections.main.blocks.r2.settings.label,Support hours,Supporttider
+templates/page.contact.json,sections.main.blocks.r2.settings.value,"Weekdays 9 to 16 CET, in Danish and English","Hverdage kl. 9 til 16 CET, på dansk og engelsk"
+templates/page.contact.json,sections.main.blocks.r3.settings.label,Return address,Returadresse
+templates/page.contact.json,sections.main.blocks.r3.settings.value,"Parcel Feeder, Brøndby, [Street Address]","Parcel Feeder, Brøndby, [Adresse]"
+templates/page.contact.json,sections.main.settings.info_heading,Our Information,Vores oplysninger
+templates/page.factory.json,sections.hero.settings.heading,Our Factory & Certificates,Vores fabrik & certifikater
+templates/page.factory.json,sections.hero.settings.text,"Every piece is crafted in our family-owned knitwear factory in Dongguan, China, backed by our parent company JM Group Limited. Keeping production entirely in-house ensures our strict standards for craftsmanship, quality control, and responsible production.","Hvert stykke laves på vores familieejede strikfabrik i Dongguan, Kina, med opbakning fra vores moderselskab JM Group Limited. Når hele produktionen sker internt, sikrer vi vores strenge standarder for håndværk, kvalitetskontrol og ansvarlig produktion."
+templates/page.factory.json,sections.certs.blocks.cert_1.settings.text,"Our parent company JM Group Limited follows the BSCI framework, ensuring safe, fair and responsible working conditions in our manufacturing process. We uphold standards on worker wellbeing, health and safety, fair pay and ethical management. This is the foundation of how every EchoByJMG piece is made.","Vores moderselskab JM Group Limited følger BSCI-rammeværket og sikrer sikre, fair og ansvarlige arbejdsforhold i vores produktion. Vi overholder standarder for medarbejdertrivsel, sundhed og sikkerhed, fair løn og etisk ledelse. Det er fundamentet for, hvordan hvert EchoByJMG-stykke bliver lavet."
+templates/page.factory.json,sections.certs.blocks.cert_1.settings.no,Amfori ID 156-020420-000 · Applies to all products,Amfori ID 156-020420-000 · Gælder alle produkter
+templates/page.factory.json,sections.certs.blocks.cert_2.settings.text,"Our OCS certification means every piece containing organic fibres is independently verified, from raw material to finished product. We choose organic cotton and sustainable wool sourced through trusted suppliers who follow ethical farming and manufacturing processes.","Vores OCS-certificering betyder, at hvert stykke med økologiske fibre er uafhængigt verificeret, fra rå materiale til færdigt produkt. Vi vælger økologisk bomuld og bæredygtig uld fra pålidelige leverandører, der følger etiske landbrugs- og produktionsprocesser."
+templates/page.factory.json,sections.certs.blocks.cert_2.settings.no,Certificate [no.] · Certified by [body] · Products in scope: [list],Certifikat [nr.] · Certificeret af [organ] · Omfattede produkter: [liste]
+templates/page.factory.json,sections.certs.blocks.cert_3.settings.text,"We are certified under the Recycled Claim Standard, confirming that the yarns we use are made from verified recycled materials. Much of our collection is knitted from leftover yarn, which keeps good material out of landfill and reduces the need for new fibre.","Vi er certificeret efter Recycled Claim Standard, som bekræfter, at det garn, vi bruger, er lavet af verificerede genanvendte materialer. En stor del af vores kollektion er strikket af overskudsgarn, som holder gode materialer ude af lossepladsen og mindsker behovet for ny fiber."
+templates/page.factory.json,sections.certs.blocks.cert_3.settings.no,Certificate [no.] · Certified by [body] · Products in scope: [list],Certifikat [nr.] · Certificeret af [organ] · Omfattede produkter: [liste]
+templates/page.factory.json,sections.certs.settings.intro,"BSCI covers the factory, so it applies to everything we make. OCS and RCS cover materials, so each product page shows only the certificates that apply to that product.","BSCI dækker fabrikken og gælder derfor alt, vi laver. OCS og RCS dækker materialer, så hver produktside viser kun de certifikater, der gælder for det produkt."
+templates/page.faq.json,sections.main.blocks.q_2.settings.a,"<p>Deliveries across Denmark typically arrive within two working days. Place your order by 2 PM on weekdays, and we’ll ship it out the same day from Brøndby.</p>","Leverancer i hele Danmark ankommer typisk inden for to hverdage. Bestiller du inden kl. 14 på hverdage, sender vi din ordre samme dag fra Brøndby."
+templates/page.faq.json,sections.main.blocks.topic_9.settings.title,Yarn & Quality,Garn & kvalitet
+templates/page.faq.json,sections.main.blocks.q_10.settings.a,"<p>Rescued yarn is the pristine, luxury surplus left behind by fashion houses at the end of each season. This material is set aside strictly due to excess quantity, not a lack of quality. We rescue this premium surplus and reimagine it into exclusive new designs.</p>","Reddet garn er ubrugt luksusoverskud, som modehuse efterlader ved slutningen af hver sæson. Materialet lægges til side udelukkende på grund af overskydende mængde, ikke manglende kvalitet. Vi redder dette premiumoverskud og forvandler det til eksklusive nye designs."
+templates/page.faq.json,sections.main.blocks.topic_18.settings.title,Care,Pleje
+templates/page.faq.json,sections.main.blocks.topic_21.settings.title,Gifting,Gaver
+templates/page.help.json,sections.main.blocks.q_2.settings.a,"<p>Free delivery across Denmark, usually within 2 working days. Orders placed by [cut-off time] on weekdays ship the same day from our fulfilment partner in Brøndby, Copenhagen.</p>","Gratis levering i hele Danmark, normalt inden for 2 hverdage. Ordrer afgivet inden [deadline] på hverdage afsendes samme dag fra vores lagerpartner i Brøndby, København."
+templates/page.help.json,sections.main.blocks.topic_18.settings.title,Care,Pleje
+templates/page.help.json,sections.main.blocks.topic_21.settings.title,Gifting,Gaver
+templates/page.our-story.json,sections.hero.settings.heading,New vision for a 80-year family legacy,En ny vision for en 80 år gammel familiearv
+templates/page.our-story.json,sections.hero.settings.lead,"With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home.","Med over 80 års erfaring med strik til luksusmodehuse skabte vi EchoByJMG med ét enkelt mål: at redde det ubrugte overskudsgarn, som modebrands efterlader, og forvandle det til hyggelige stykker til dit hjem."
+templates/page.our-story.json,sections.letter.settings.heading,Letter From Our Founders,Brev fra vores grundlæggere
+templates/page.our-story.json,sections.letter.settings.letter,"“Knitting has been part of my family for generations. What began with my grandfather's knitting factory in 1946 has grown into decades of craftsmanship and a deep appreciation for beautiful yarns.
+
+Over the years, I've seen extraordinary materials left behind after production; beautiful, high-quality yarns that still have so much potential. I couldn't help thinking: surely, they deserve more than to be forgotten?
+
+That thought became EchoByJMG. A brand born from my passion for giving beautiful yarns a new purpose, transforming what was once overlooked into something meaningful, playful and made to be loved.”","“Strik har været en del af min familie i generationer. Det, der begyndte med min bedstefars strikkefabrik i 1946, er vokset til årtiers håndværk og en dyb kærlighed til smukt garn. Gennem årene har jeg set fantastiske materialer blive tilbage efter produktionen; smukt garn af høj kvalitet med stadig så meget potentiale. Jeg kunne ikke lade være med at tænke: Fortjener det ikke mere end at blive glemt? Den tanke blev til EchoByJMG. Et brand født af min passion for at give smukt garn et nyt formål og forvandle det oversete til noget meningsfuldt, legende og skabt til at blive elsket.”"
+templates/page.our-story.json,sections.letter.settings.caption,"Ming, Founder of EchoByJMG","Ming, grundlægger af EchoByJMG"
+templates/page.our-story.json,sections.letter.settings.alt,"Ming, founder of EchoByJMG","Ming, grundlægger af EchoByJMG"
+templates/page.our-story.json,sections.how.blocks.step_1.settings.title,Luxury yarn goes unused,Luksusgarn går ubrugt
+templates/page.our-story.json,sections.how.blocks.step_1.settings.text,"From the floor of our family factory, we watch fashion houses leave behind beautiful, premium yarn at the end of every season.","I vores familiedrevne fabrik er vi vidne til det hver eneste sæson – modehusene smider smukt, førsteklasses garn ud."
+templates/page.our-story.json,sections.how.blocks.step_2.settings.title,We rescue and reimagine,Vi redder og gentænker
+templates/page.our-story.json,sections.how.blocks.step_3.settings.title,Traceable and exclusively yours,Sporbar og eksklusivt din
+templates/page.our-story.json,sections.how.settings.heading,How It Works,Sådan fungerer det
+templates/page.our-story.json,sections.tracker.blocks.stat_1.settings.text,Yarn rescued,Garn reddet
+templates/page.our-story.json,sections.tracker.blocks.stat_3.settings.text,Numbered pieces,Nummererede stykker
+templates/page.our-story.json,sections.tracker.blocks.stat_4.settings.text,Available designs,Tilgængelige designs
+templates/page.our-story.json,sections.tracker.blocks.batch_1.settings.fibre,"80% lambswool, 20% nylon","80% lammeuld, 20% nylon"
+templates/page.our-story.json,sections.tracker.blocks.batch_2.settings.fibre,"80% lambswool, 20% nylon","80% lammeuld, 20% nylon"
+templates/page.our-story.json,sections.tracker.settings.heading,"Our Rescue Journey, In Numbers",Vores redningsrejse i tal
+templates/page.our-story.json,sections.tracker.settings.btn_label,Open tracker,ÅBN TRACKEREN
+templates/page.our-story.json,sections.track.settings.heading,How We Track Each Piece With Our Yarn Passport,Sådan sporer vi hvert stykke med vores garnpas
+templates/page.our-story.json,sections.track.settings.text,"Our Yarn Passport reveals the journey behind your piece — its origins, materials, amount of yarn rescued, and total number of pieces in the batch.","Vores garnpas viser rejsen bag dit stykke: oprindelse, materialer, mængden af reddet garn og det samlede antal stykker i batchen."
+templates/page.our-story.json,sections.factory.settings.heading,Our Factory & Certificates,Vores fabrik & certifikater
+templates/page.our-story.json,sections.factory.settings.text,"All of our products are crafted in our family-owned Dongguan factory, operating since 1946. We are proudly BSCI-audited and utilize RCS and OCS certified materials wherever applicable.","Alle vores produkter laves på vores familieejede fabrik i Dongguan, som har været i drift siden 1946. Vi er stolte af at være BSCI-auditeret og bruger RCS- og OCS-certificerede materialer, hvor det er muligt."
+templates/page.our-story.json,sections.stories.blocks.card_1.settings.kind,From the factory,FRA FABRIKKEN
+templates/page.our-story.json,sections.stories.blocks.card_1.settings.title,A morning on the factory floor,En morgen på fabriksgulvet
+templates/page.our-story.json,sections.stories.blocks.card_1.settings.dek,Short film and photos from the knitting hall. [From the summer shoot.],Kort film og fotos fra strikkehallen. [Fra sommeroptagelserne.]
+templates/page.our-story.json,sections.stories.blocks.card_2.settings.title,What is leftover yarn?,Hvad er overskudsgarn?
+templates/page.our-story.json,sections.stories.blocks.card_2.settings.dek,"Unused yarn left after fashion production, and why it is not recycled fibre.","Ubrugt garn fra modeproduktion, og hvorfor det ikke er genanvendt fiber."
+templates/page.our-story.json,sections.stories.blocks.card_3.settings.title,How to choose a knitted blanket,Sådan vælger du et strikket tæppe
+templates/page.our-story.json,sections.stories.blocks.card_3.settings.dek,"Size, weight and yarn, and which one suits a sofa, a bed or a reading chair.","Størrelse, vægt og garn, og hvilket der passer til en sofa, en seng eller en læsestol."
+templates/page.our-story.json,sections.stories.blocks.card_fg4.settings.title,How to wash a lambswool blanket,Sådan vasker du et tæppe i lammeuld
+templates/page.our-story.json,sections.stories.blocks.card_fg4.settings.dek,"Cold water, no wringing and a flat surface to dry.","Koldt vand, ingen vridning og en flad overflade til tørring."
+templates/page.our-story.json,sections.stories.settings.heading,Stories From Our Factory Floor,Historier fra fabriksgulvet
+templates/page.our-story.json,sections.stories.settings.text,"See our behind-the-scene as it is, with raw, unfiltered footages and honest stories shared by the very people who make your pieces.","Se vores kulisser, som de er, med rå, ufiltrerede optagelser og ærlige historier fortalt af de mennesker, der laver dine stykker."
+templates/page.our-story.json,sections.stories.settings.cards_label,Journals,Journal
+templates/page.the-yarn-passport.json,sections.read.blocks.col_1.settings.title,Origin,OPRINDELSE
+templates/page.the-yarn-passport.json,sections.read.blocks.col_2.settings.title,Fibre,FIBER
+templates/page.tracker.json,sections.main.blocks.batch_1.settings.fibre,"80% lambswool, 20% nylon","80% lammeuld, 20% nylon"
+templates/page.tracker.json,sections.main.blocks.batch_2.settings.fibre,"80% lambswool, 20% nylon","80% lammeuld, 20% nylon"
+templates/page.tracker.json,sections.main.blocks.batch_8.settings.fibre,"80% lambswool, 20% nylon","80% lammeuld, 20% nylon"
+templates/page.tracker.json,sections.main.blocks.batch_27.settings.fibre,"80% lambswool, 20% nylon","80% lammeuld, 20% nylon"
+templates/page.tracker.json,sections.main.settings.lead,"See a complete record of every surplus yarn batch we’ve rescued, what it became, and its current availability. Each row corresponds directly to the batch ID on your Yarn Passport.","Se en komplet oversigt over hver batch overskudsgarn, vi har reddet, hvad den blev til, og om den stadig fås. Hver række svarer direkte til batch-ID'et på dit garnpas."
+templates/page.tracker.json,sections.main.settings.label_1,Yarn rescued,Garn reddet
+templates/page.tracker.json,sections.main.settings.label_3,Numbered pieces,Nummererede stykker
+templates/page.tracker.json,sections.main.settings.label_4,Available designs,Tilgængelige designs
+templates/page.yarn-passport.json,sections.hero.settings.heading,"Every piece comes
+with its own passport",Hvert stykke har sit eget pas
+templates/page.yarn-passport.json,sections.hero.settings.text_1,"Our Yarn Passport reveals the journey behind your piece — its origins, materials, amount of yarn rescued, and total number of pieces in the batch.","Vores garnpas viser rejsen bag dit stykke: oprindelse, materialer, mængden af reddet garn og det samlede antal stykker i batchen."
+templates/page.yarn-passport.json,sections.hero.settings.text_2,View it on the product page and in your post-purchase email; or find each item’s unique number sewn directly into the physical label.,"Se det på produktsiden og i din e-mail efter købet, eller find hvert stykkes unikke nummer syet direkte ind i mærket."
+templates/page.yarn-passport.json,sections.read.blocks.row_1.settings.label,Origin,OPRINDELSE
+templates/page.yarn-passport.json,sections.read.blocks.row_1.settings.text,"Where the rescued yarn came from, including the original production season and its rescue date.","Hvor det reddede garn kommer fra, inklusive den oprindelige produktionssæson og redningsdatoen."
+templates/page.yarn-passport.json,sections.read.blocks.row_2.settings.label,Fibre,FIBER
+templates/page.yarn-passport.json,sections.read.blocks.row_2.settings.text,"The yarn's composition, showing exactly what your piece is made from.","Garnets sammensætning, som viser præcis, hvad dit stykke er lavet af."
+templates/page.yarn-passport.json,sections.read.blocks.row_3.settings.text,The reference number identifying the rescued yarn lot and its total weight in kilograms.,Referencenummeret for det reddede garnparti og dets samlede vægt i kilo.
+templates/page.yarn-passport.json,sections.read.blocks.row_4.settings.text,The total number of pieces created from this limited production run. Your individual piece number is sewn into the product label.,Det samlede antal stykker lavet i denne begrænsede produktion. Dit eget stykkenummer er syet ind i produktmærket.
+templates/page.yarn-passport.json,sections.read.settings.heading,How To Read Your Yarn Passport,Sådan læser du dit garnpas
+templates/product.json,sections.qa.blocks.review_4.settings.quote,"So soft, you felt it immediately. It feels like it’s always belonged in the room.","Så blødt, at man mærker det med det samme. Det føles, som om det altid har hørt til i rummet."
+templates/product.json,sections.qa.blocks.review_5.settings.quote,"Got the black and white pup cushion cover. It’s super cute, and thicker than I thought, which is good!","Fik det sort-hvide hundepudebetræk. Det er super sødt og tykkere, end jeg troede, hvilket er godt!"
+templates/product.json,sections.qa.blocks.q_f1.settings.a,"<p>Even though each piece is numbered by us during production, our fulfillment partner manages the final dispatch. Because of this, we aren't able to reserve or accept requests for a specific product number.</p>","elvom hvert eneste stykke nummereres af os under produktionen, er det vores logistikpartner, der håndterer den endelige afsendelse. Derfor har vi desværre ikke mulighed for at reservere eller imødekomme ønsker om et specifikt produktnummer."
+templates/product.json,sections.factory.settings.heading,Made From Luxury Materials By Luxury Knitwear Makers,Lavet af luksusmaterialer af luksusstrikkere
+templates/product.json,sections.factory.settings.caption,Discover how our family-owned luxury knitwear factory turn fashion houses' yarn surplus into cozy pieces for your home.,"Oplev, hvordan vores familieejede luksusstrikfabrik forvandler modehusenes overskudsgarn til hyggelige stykker til dit hjem."
+templates/product.json,sections.factory.settings.btn1_label,Read our story,LÆS VORES HISTORIE
+templates/product.preorder.json,sections.qa.blocks.review_4.settings.quote,"So soft, you felt it immediately. It feels like it’s always belonged in the room.","Så blødt, at man mærker det med det samme. Det føles, som om det altid har hørt til i rummet."
+templates/product.preorder.json,sections.qa.blocks.review_5.settings.quote,"Got the black and white pup cushion cover. It’s super cute, and thicker than I thought, which is good!","Fik det sort-hvide hundepudebetræk. Det er super sødt og tykkere, end jeg troede, hvilket er godt!"
+templates/product.preorder.json,sections.factory.settings.eyebrow,From the factory,FRA FABRIKKEN
+(not in theme files),,(8 Reviews),(8 anmeldelser)
+(not in theme files),,1. Can I choose a specific product number?,1. Kan jeg vælge et specifikt produktnummer?
+(not in theme files),,1. How should I care for my knitted piece?,1. Hvordan plejer jeg mit strikkede stykke?
+(not in theme files),,"1. What does ""rescued yarn"" mean?","1. Hvad betyder ""rescued yarn"" (reddet garn)?"
+(not in theme files),,1. When can I expect my order?,1. Hvornår kan jeg forvente at modtage min ordre?
+(not in theme files),,1. Why give EchoByJMG as gifts?,1. Hvorfor give EchoByJMG i gave?
+(not in theme files),,1342kg,1342 kg
+(not in theme files),,2. Can you share which fashion houses the yarn come from?,"2. Kan I oplyse, hvilke modehuse garnet stammer fra?"
+(not in theme files),,2. Do yourcushion covers come with the inner cushion?,2. Følger monteringspuden med til jeres pudebetræk?
+(not in theme files),,"2. Does using ""rescued yarn"" affect quality?","2. Påvirker brugen af ""rescued yarn"" kvaliteten?"
+(not in theme files),,2. How much does delivery cost?,2. Hvad koster levering?
+(not in theme files),,2. Will the price be shown on the packaging?,2. Fremgår prisen på emballagen?
+(not in theme files),,250kg,250 kg
+(not in theme files),,3. Do you offer gift wrapping?,3. Tilbyder I gaveindpakning?
+(not in theme files),,3. What happens if I lose my Yarn Passport?,"3. Hvad sker der, hvis jeg mister mit Yarn Passport?"
+(not in theme files),,3. What is your return policy?,3. Hvad er jeres returpolitik?
+(not in theme files),,3. Why are your pieces limited edition?,3. Hvorfor er jeres styles limited edition?
+(not in theme files),,4. Can I change or cancel my order?,4. Kan jeg ændre eller annullere min ordre?
+(not in theme files),,4. Can I send it straight to the recipient?,4. Kan jeg sende den direkte til modtageren?
+(not in theme files),,4. Can you restock a piece once it sells out?,"4. Kan I få en style på lager igen, når den er udsolgt?"
+(not in theme files),,4.9,"4,9"
+(not in theme files),,4.Do all products have a passport?,4. Har alle produkter et pas?
+(not in theme files),,5. Do you ship outside Denmark?,5. Sender I til lande uden for Danmark?
+(not in theme files),,5. What is the latest date I can order to ensure my gifts arrive before Christmas?,"5. Hvornår kan jeg senest bestille for at sikre, at mine gaver når frem inden jul?"
+(not in theme files),,5. Why are colours sometimes limited?,5. Hvorfor er udvalget af farver nogle gange begrænset?
+(not in theme files),,50% Organic Cotton 50% Recycled Cotton Batch FP-2523 · 4 kg rescued · edition of 20,50% økologisk bomuld 50% genanvendt bomuld Batch FP-2523 · 4 kg reddet · oplag på 20
+(not in theme files),,6. Is your packaging sustainable?,6. Er jeres emballage bæredygtig?
+(not in theme files),,6. Will the colours look exactly the same in person?,6. Ser farverne præcis ens ud i virkeligheden?
+(not in theme files),,7. Where are your products made?,7. Hvor bliver jeres produkter lavet?
+(not in theme files),,8. Are your products ethically made?,8. Er jeres produkter etisk fremstillet?
+(not in theme files),,Amfori ID 156-020420-000 Applies to all products,Amfori ID 156-020420-000 Gælder alle produkter
+(not in theme files),,Batch HV-2417 - 14 kg,Batch HV-2417 · 14 kg
+(not in theme files),,Black,Sort
+(not in theme files),,Blue,Blå
+(not in theme files),,Brown,Brun
+(not in theme files),,Colour: Oat,Farve: Havre
+(not in theme files),,Colour: Vertiver Green,Farve: Vetivergrøn
+(not in theme files),,"DKK 1,019",DKK 1.019
+(not in theme files),,"DKK 1,059",DKK 1.059
+(not in theme files),,"DKK 1,079",DKK 1.079
+(not in theme files),,Delivery & Return,Levering & returnering
+(not in theme files),,"EchoByJMG pieces are thoughtful gifts with beauty, comfort, and meaning behind them. All of our collections are made in limited quantities using premium leftover yarns, making each gift feel more personal and unique.","EchoByJMG-stykker er betænksomme gaver med skønhed, komfort og mening bag. Alle vores kollektioner laves i begrænsede mængder af premium overskudsgarn, så hver gave føles mere personlig og unik."
+(not in theme files),,Edition of 10,Oplag på 10
+(not in theme files),,Edition of 12,Oplag på 12
+(not in theme files),,Edition of 19,Oplag på 19
+(not in theme files),,Fine Knits From What Remains,"Fin strik af det, der er tilbage"
+(not in theme files),,Free 14-day returns to our Danish address,Gratis returnering i 14 dage til vores danske adresse
+(not in theme files),,Free Delivery,Gratis levering
+(not in theme files),,Free delivery in Denmark · Free 14-day returns to a Danish address · ★ 4.8 on Trustpilot,"Gratis levering i Danmark · Gratis returnering i 14 dage til en dansk adresse · ★ 4,8 på Trustpilot"
+(not in theme files),,Green,Grøn
+(not in theme files),,HOW IT WORKS,SÅDAN FUNGERER DET
+(not in theme files),,HV-2417 · 14 kg rescued,HV-2417 · 14 kg reddet
+(not in theme files),,Hills & Valleys Blanket,Hills & Valleys tæppe
+(not in theme files),,Including VAT,Inkl. moms
+(not in theme files),,"JM Group knitwear factory, [city]","JM Groups strikfabrik, [by]"
+(not in theme files),,Latest Design,Nyeste design
+(not in theme files),,Leftover from a [season] knitwear run for a [luxury] fashion house.,Overskud fra en [sæson]-strikproduktion for et [luksus]modehus.
+(not in theme files),,"Ming, Founder of EchoByJMG","Ming, grundlægger af EchoByJMG"
+(not in theme files),,No .7,Nr. 7
+(not in theme files),,"No price on the packing slip, ready to give","Ingen pris på følgesedlen, klar til at give"
+(not in theme files),,Only 5 items left in stock,Kun 5 tilbage på lager
+(not in theme files),,Order by 14:00 on weekdays for delivery in 1 to 2 working days,Bestil inden kl. 14:00 på hverdage for levering på 1 til 2 hverdage
+(not in theme files),,PAY WITH,BETAL MED
+(not in theme files),,PLACE HOLDER FOR Content,PLADS TIL INDHOLD
+(not in theme files),,PLACE HOLDER FOR VIDEO,PLADS TIL VIDEO
+(not in theme files),,Pink,Lyserød
+(not in theme files),,Purple,Lilla
+(not in theme files),,Questions about this blanket,Spørgsmål om dette tæppe
+(not in theme files),,Red,Rød
+(not in theme files),,SEE EVERY BATCH,SE ALLE BATCHES
+(not in theme files),,Show design which fewer than 5 pieces left,Vis designs med færre end 5 stykker tilbage
+(not in theme files),,"Textured knitted stripe pattern with alternating ridges Soft, durable lambswool and nylon blend, warm yet breathable Two nature-inspired shades that fit modern interiors Designed for layering across the bed, sofa or lounge chair Created entirely from surplus yarns","Struktureret strikket stribemønster med skiftende riller Blød, holdbar blanding af lammeuld og nylon, varm men åndbar To naturinspirerede nuancer, der passer til moderne indretning Designet til at lægges over seng, sofa eller lænestol Lavet udelukkende af overskudsgarn"
+(not in theme files),,This colorway is limited strictly to this batch and cannot be restocked once sold out.,"Denne farvekombination findes kun i dette batch og kan ikke genopfyldes, når den er udsolgt."
+(not in theme files),,This edition is sold out,Denne edition er udsolgt
+(not in theme files),,"This is the one that stole everyone’s heart. With its calm, grounded palette and rhythmic raised-stripe structure, it brings an understated beauty and soothing texture to any space. Designed to pair with the matching cushion covers, it offers warmth, harmony and quiet design confidence.","Det er denne, der har stjålet alles hjerter. Med sin rolige, jordnære palet og rytmiske, ophøjede striber giver den en afdæmpet skønhed og beroligende tekstur til ethvert rum. Designet til at matche de tilhørende pudebetræk giver den varme, harmoni og stille designselvtillid."
+(not in theme files),,Unused yarn rescued from a [season] production run at our factory on [rescue date].,Ubrugt garn reddet fra en [sæson]-produktion på vores fabrik den [redningsdato].
+(not in theme files),,Unused yarn rescued from a [season] production run for a [luxury or high-street] fashion house at our factory.,Ubrugt garn reddet fra en [sæson]-produktion for et [luksus- eller high street-]modehus på vores fabrik.
+(not in theme files),,Vertiver Green,Vetivergrøn
+(not in theme files),,"We recommend airing your knits often and washing them sparingly. When a wash is needed, gently hand wash in cold water and lay flat to dry to preserve the silhouette. You can explore our full Size & Care Guide for detailed rituals.","Vi anbefaler at lufte din strik ofte og vaske den sjældent. Når den skal vaskes, så håndvask forsigtigt i koldt vand og lad den tørre liggende for at bevare formen. Se vores fulde størrelses- og plejeguide for flere detaljer."
+(not in theme files),,What is RESCUED yarn?,Hvad er REDDET garn?
+(not in theme files),,"When these 12 are gone, this color way is not made again.","Når disse 12 er væk, laves denne farvekombination ikke igen."
+(not in theme files),,Yellow,Gul

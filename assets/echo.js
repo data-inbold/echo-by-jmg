@@ -91,7 +91,7 @@
         if (fresh && cur) { var wasOpen = !cur.hidden; cur.innerHTML = fresh.innerHTML; cur.hidden = !(open || wasOpen); }
         var cnt = fresh ? fresh.getAttribute('data-count') : null;
         if (cnt !== null) $$('[data-bag-count]').forEach(function (el) { el.textContent = cnt; });
-        $$('[data-bag-label]').forEach(function (el) { el.setAttribute('aria-label', tr('bagAria', 'Bag, __COUNT__ items', cnt)); });
+        $$('[data-bag-label]').forEach(function (el) { el.setAttribute('aria-label', tr('bagAria', 'Cart, __COUNT__ items', cnt)); });
         if (open) openBag();
         if (document.body.classList.contains('template-cart')) location.reload();
       });

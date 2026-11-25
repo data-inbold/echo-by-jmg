@@ -5,26 +5,75 @@
     render 'echo-pinfo', product: product
   endcapture
   assign i = raw | strip | split: '~'
-  assign rcount = product.metafields.reviews.rating_count | default: 0
   assign qs = section.blocks | where: 'type', 'q'
   assign apps = section.blocks | where: 'type', '@app'
   assign quotes = section.blocks | where: 'type', 'review'
+  assign t_country = 'echo.product_faq_reviews.denmark' | t
 -%}
-<section class="section">
-  <div class="wrap grid g2" style="align-items:start">
-    <div><h2 class="h2" style="margin-bottom:16px">{{ 'echo.product.faq_title' | t: item: i[1] }}</h2>
-      {%- for b in qs -%}<details class="acc" {{ b.shopify_attributes }}><summary>{{ b.settings.q }}</summary><div class="body">{{ b.settings.a }}</div></details>{%- endfor -%}
+{%- capture ic_plus -%}<svg viewBox="0 0 256 256" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg>{%- endcapture -%}
+{%- capture ic_x -%}<svg viewBox="0 0 256 256" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128 50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/></svg>{%- endcapture -%}
+{%- capture ic_star -%}<svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m234.29 114.85-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76 22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08 59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>{%- endcapture -%}
+<section class="pqa">
+  <div class="wrap pqa-in">
+    <div class="pqa-col">
+      {%- if i[0] == 'bags' -%}{%- assign fq = 'echo.product.faq_title_common' | t: item: i[1] -%}{%- else -%}{%- assign fq = 'echo.product.faq_title' | t: item: i[1] -%}{%- endif -%}
+      <h2 class="pqa-h">{{ fq }}</h2>
+      <div class="pqa-list">
+      {%- for b in qs -%}
+        <details class="pqa-q"{% if forloop.first %} open{% endif %} {{ b.shopify_attributes }}><summary><span>{{ forloop.index }}. {{ b.settings.q }}</span><span class="i-plus">{{ ic_plus }}</span><span class="i-x">{{ ic_x }}</span></summary><div class="pqa-a">{{ b.settings.a }}</div></details>
+      {%- endfor -%}
+      </div>
     </div>
-    <div id="reviews"><h2 class="h2" style="margin-bottom:16px">{{ 'echo.product_faq_reviews.reviews' | t }}{% if rcount > 0 %} ({{ rcount }}){% endif %}</h2>
-      <div class="stack">
+    <div class="pqa-sep" aria-hidden="true"></div>
+    <div class="pqa-col" id="reviews">
+      <h2 class="pqa-h">{{ 'echo.product_faq_reviews.from_our_customers' | t }}</h2>
+      <div class="pqa-revs">
         {%- for b in apps -%}{% render b %}{%- endfor -%}
         {%- if apps.size == 0 -%}
-          {%- for b in quotes -%}<div class="review" {{ b.shopify_attributes }}>★★★★★ “{{ b.settings.quote }}”<br><span class="muted">{{ b.settings.name }}</span></div>{%- endfor -%}
+          {%- for b in quotes -%}
+          <figure class="pqa-rev" {{ b.shopify_attributes }}>
+            <blockquote><svg class="qm" width="25" height="20" viewBox="0 0 25 20" fill="currentColor" aria-hidden="true"><path d="M0 20V12.2C0 9.5.6 7.1 1.9 4.9 3.2 2.7 5.1 1.1 7.6 0l1.9 2.8C8 3.6 6.8 4.6 6 5.9c-.8 1.3-1.2 2.7-1.2 4.2h4.8V20H0Zm14.8 0V12.2c0-2.7.6-5.1 1.9-7.3C18 2.7 19.9 1.1 22.4 0l1.9 2.8c-1.5.8-2.7 1.8-3.5 3.1-.8 1.3-1.2 2.7-1.2 4.2h4.8V20h-9.6Z"/></svg><p>{{ b.settings.quote }}</p></blockquote>
+            <figcaption>
+              <span class="av">{%- if b.settings.avatar -%}{{ b.settings.avatar | image_url: width: 96, height: 96, crop: 'center' | image_tag: alt: '', width: 48, height: 48, loading: 'lazy' }}{%- else -%}{{ b.settings.name | slice: 0 }}{%- endif -%}</span>
+              <span class="who"><b>{{ b.settings.name }}</b><small>{{ b.settings.country | default: t_country }}</small></span>
+              <span class="stars" aria-label="5/5">{{ ic_star }}{{ ic_star }}{{ ic_star }}{{ ic_star }}{{ ic_star }}</span>
+            </figcaption>
+          </figure>
+          {%- endfor -%}
         {%- endif -%}
       </div>
     </div>
   </div>
 </section>
+<style>
+  .pqa{padding:40px 0}
+  .pqa-in{display:flex;gap:80px;align-items:stretch}
+  .pqa-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:40px}
+  .pqa-sep{width:1px;background:#ABA499;flex:none}
+  .pqa-h{font:300 40px/1.2 var(--head);color:var(--wine);margin:0}
+  .pqa-list{display:flex;flex-direction:column;border-top:1px solid #ABA499}
+  .pqa-q{border-bottom:1px solid #ABA499;padding:16px 0}
+  .pqa-q summary{list-style:none;display:flex;gap:12px;align-items:center;cursor:pointer;font-size:16px;font-weight:600;line-height:1.6;color:#332C2A}
+  .pqa-q summary::-webkit-details-marker{display:none}
+  .pqa-q summary>span:first-child{flex:1}
+  .pqa-q .i-x,.pqa-q[open] .i-plus{display:none}
+  .pqa-q[open] .i-x,.pqa-q .i-plus{display:flex}
+  .pqa-a{font-size:14px;line-height:1.6;color:#332C2A;padding-top:8px}
+  .pqa-a p{margin:0}
+  .pqa-revs{display:flex;flex-direction:column;gap:24px}
+  .pqa-rev{background:#fff;padding:20px;margin:0;display:flex;flex-direction:column;gap:16px}
+  .pqa-rev blockquote{margin:0;display:flex;gap:16px;min-height:80px}
+  .pqa-rev .qm{flex:none;color:#7C7E64}
+  .pqa-rev blockquote p{margin:0;font-size:16px;font-weight:300;letter-spacing:.04em;color:#000;line-height:1.4}
+  .pqa-rev figcaption{display:flex;gap:12px;align-items:center;border-top:1px solid #E7DCD0;padding-top:16px}
+  .pqa-rev .av{width:48px;height:48px;border-radius:50%;overflow:hidden;background:#E7DCD0;color:var(--wine);display:flex;align-items:center;justify-content:center;font:300 20px var(--head);flex:none}
+  .pqa-rev .av img{width:100%;height:100%;object-fit:cover}
+  .pqa-rev .who{flex:1;display:flex;flex-direction:column}
+  .pqa-rev .who b{font:300 20px/1.3 var(--head);color:#332C2A}
+  .pqa-rev .who small{font-size:12px;font-weight:300;letter-spacing:.04em;color:#61686A}
+  .pqa-rev .stars{display:flex;gap:4px;color:#E2CFA8}
+  @media (max-width:899px){.pqa-in{flex-direction:column;gap:40px}.pqa-sep{display:none}.pqa-h{font-size:32px}}
+</style>
 {%- endunless -%}
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
@@ -40,7 +89,9 @@
     { "type": "review", "name": "Quote", "settings": [
       { "type": "paragraph", "content": "Shown until a reviews app block is added." },
       { "type": "textarea", "id": "quote", "label": "Quote", "default": "So soft, you felt it immediately." },
-      { "type": "text", "id": "name", "label": "Name", "default": "Aija" }
+      { "type": "text", "id": "name", "label": "Name", "default": "Aija" },
+      { "type": "text", "id": "country", "label": "Country", "info": "Leave empty for Denmark (translated)." },
+      { "type": "image_picker", "id": "avatar", "label": "Photo" }
     ] },
     { "type": "@app" }
   ]

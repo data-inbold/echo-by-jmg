@@ -1,0 +1,52 @@
+{%- comment -%}
+  Decorative thread line from the Figma design (layers "Vector 2/3/7/8/9/10/12").
+  Params:
+    shape  loop | loop2 | hook | wave | swirl | long | gift | letter | loopr
+    x, y, w  position and width in design px, measured on a host W px wide (default 1440)
+    W      design width of the host; units scale with the host width (container units)
+    side   l (default) or r: which edge x is measured from
+    cap    true = never grow past the design size (use on full-width sections)
+    mx, my, mw  optional phone values in px (below 750px); without them the thread just scales
+    mside  r = on phones measure mx from the right edge; mvert b = my from the bottom edge
+    color  CSS colour (default: the blue thread colour)
+    z      stacking order inside the host (default 0)
+{%- endcomment -%}
+{%- liquid
+  case shape
+    when 'loop'
+      assign vb = '0 0 373 355'
+      assign d = 'M0 43C75.5 4 227.8 -43.8 233.2 77.2C238.6 198.2 133.3 271.5 151.3 199.1C169.4 126.8 421.7 43 364.6 355'
+    when 'loopr'
+      assign vb = '0 0 373 355'
+      assign d = 'M373 43C297.5 4 145.2 -43.8 139.8 77.2C134.4 198.2 239.7 271.5 221.7 199.1C203.6 126.8 -48.7 43 8.4 355'
+    when 'loop2'
+      assign vb = '0 0 348 332'
+      assign d = 'M0 40.2C70.4 3.8 212.5 -41 217.6 72.2C222.6 185.3 124.3 253.9 141.2 186.2C158 118.6 393.4 40.2 340.2 332'
+    when 'looptilt'
+      assign vb = '0 0 452 439'
+      assign d = 'M371.4 397.9C288.4 416 128.9 422.8 155 304.5C181.1 186.3 301.8 142.7 265.7 207.9C229.5 273.1 -35.9 288.7 100 2.2'
+    when 'hook'
+      assign vb = '0 0 275 256'
+      assign d = 'M0 0C0 102.5 101.7 188.5 183.7 115C356.3 -39.7 -137.8 263.5 274.7 255.5'
+    when 'wave'
+      assign vb = '0 0 928 431'
+      assign d = 'M928.4 17.3C632.9 -16.7 -192.1 -6.6 40.9 101.5C273.9 209.6 577.2 108 419.4 128.9C249.9 151.4 200.9 431.3 928.4 431.3'
+    when 'swirl'
+      assign vb = '0 0 427 502'
+      assign d = 'M85.5 0C85.5 131 229 175 391 120C553 65 109.2 57.5 168 231.5C194 308.5 183 539.5 0 497'
+    when 'long'
+      assign vb = '0 0 366 746'
+      assign d = 'M366 0C314 302 219.5 348 46 348C-127.5 348 241 275 305 348C369 421 195.5 848 366 723'
+    when 'gift'
+      assign vb = '0 0 463 718'
+      assign d = 'M462.5 0C444.5 188 0 99 0 188C0 277 368.3 223.5 333.5 188C298.7 152.5 72 449.5 414.5 717.5'
+    when 'letter'
+      assign vb = '0 0 642 626'
+      assign d = 'M28.1 0C228.2 59.5 190.7 300.5 28.1 224.5C-108.3 160.8 281.2 280 574.2 133.5C762.4 39.4 552.5 580 28.1 626'
+  endcase
+  assign hw = vb | split: ' ' | last
+  assign ww = vb | split: ' '
+-%}
+{%- if d != blank -%}
+<svg class="ethr {{ side | default: 'l' }}{% if cap %} cap{% endif %}{% if mw != blank %} m{% if mside == 'r' %} mr{% endif %}{% if mvert == 'b' %} mb{% endif %}{% endif %}{% if cls != blank %} {{ cls }}{% endif %}" viewBox="{{ vb }}" width="{{ ww[2] }}" height="{{ hw }}" fill="none" aria-hidden="true" focusable="false" style="--W:{{ W | default: 1440 }};--x:{{ x | default: 0 }};--y:{{ y | default: 0 }};--w:{{ w | default: ww[2] }};{% if mw != blank %}--mx:{{ mx | default: 0 }};--my:{{ my | default: 0 }};--mw:{{ mw }};{% endif %}{% if z != blank %}--z:{{ z }};{% endif %}{% if color != blank %}--c:{{ color }};{% endif %}"><path d="{{ d }}" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
+{%- endif -%}

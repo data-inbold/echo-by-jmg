@@ -50,7 +50,8 @@
         "text": "Get 10% off your first order, and be the first to hear about our new designs!",
         "button_label": "Join the club",
         "photo": "echo-twister-outdoor.jpg",
-        "focus": "50% 50%"
+        "focus": "50% 50%",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png"
       }
     }
   },
