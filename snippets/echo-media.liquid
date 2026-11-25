@@ -1,5 +1,5 @@
 {%- comment -%}
-  Section media slot: video (Shopify-hosted) > image > bundled photo > placeholder label.
+  Section media slot: video (Shopify-hosted) > image > bundled photo or bundled .mp4 (poster: same name + -poster.jpg) > placeholder label.
   Params: video, image, asset, alt, label, ar, h, eager
 {%- endcomment -%}
 {%- if video != blank -%}
@@ -14,6 +14,17 @@
   -%}
   <div class="ph pic" style="{{ st }}">
     {{- video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, image_size: '1600x' -}}
+  </div>
+{%- elsif image == blank and asset contains '.mp4' -%}
+  {%- liquid
+    assign st = ''
+    if ar != blank
+      assign st = 'aspect-ratio:' | append: ar | append: ';min-height:0;'
+    endif
+    assign poster = asset | replace: '.mp4', '-poster.jpg'
+  -%}
+  <div class="ph pic" style="{{ st }}">
+    <video src="{{ asset | asset_url }}" poster="{{ poster | asset_url }}" autoplay loop muted playsinline preload="metadata" aria-label="{{ alt | escape }}" style="width:100%;height:100%;object-fit:cover;display:block"></video>
   </div>
 {%- else -%}
   {%- render 'echo-pic', image: image, asset: asset, alt: alt, label: label, ar: ar, h: h, eager: eager -%}
