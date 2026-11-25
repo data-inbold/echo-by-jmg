@@ -82,6 +82,11 @@
         {%- assign is_act = false -%}
         {%- if l.active or l.child_active -%}{%- assign is_act = true -%}{%- endif -%}
         {%- assign l_t = l.handle | replace: '-', ' ' -%}
+        {%- comment -%} Pages served from About Us with ?view= would light up About; follow the page family instead. {%- endcomment -%}
+        {%- assign help_family = ',help,faq,contact,care,track,returns,gift-card-balance,corporate,' -%}
+        {%- assign sfx_key = ',' | append: template.suffix | append: ',' -%}
+        {%- if l_t == 'about us' -%}{%- assign is_act = story_cur -%}{%- endif -%}
+        {%- if l_t == 'help' and help_family contains sfx_key -%}{%- assign is_act = true -%}{%- endif -%}
 {%- assign l_key = ',' | append: l_t | append: ',' -%}
         {%- assign is_mega = false -%}
         {%- if mega_t != blank and mega_set contains l_key -%}{%- assign is_mega = true -%}{%- endif -%}
