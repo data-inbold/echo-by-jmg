@@ -78,13 +78,6 @@
             "file": "echo-v2-tile-bags.jpg",
             "alt": "A knitted bag on a side table"
           }
-        },
-        "photo_YHLU4F": {
-          "type": "photo",
-          "settings": {
-            "file": "",
-            "alt": ""
-          }
         }
       },
       "block_order": [
@@ -94,8 +87,7 @@
         "photo_4",
         "photo_5",
         "photo_d8jFnh",
-        "photo_6",
-        "photo_YHLU4F"
+        "photo_6"
       ],
       "settings": {
         "bg": "paper",
