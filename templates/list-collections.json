@@ -4,7 +4,10 @@
   "sections": {
     "top": {
       "type": "echo-page-top",
-      "settings": {}
+      "settings": {
+        "heading": "Shop",
+        "crumb_current": "Shop"
+      }
     },
     "tiles": {
       "type": "echo-category-tiles",
@@ -82,7 +85,17 @@
       "settings": {
         "stat_link": "/pages/rescued-yarn-tracker",
         "btn1_link": "/pages/about-us",
-        "btn2_link": "/pages/yarn-passport"
+        "btn2_link": "/pages/yarn-passport",
+        "heading": "Fine Knits From What Remains",
+        "text": "When a luxury fashion production run ends, there's often some perfectly good yarn left unused. Rather than letting it go to waste, we turn it into knitted pieces for your home and beyond. Each batch of rescued yarn is limited, so once it's gone, the designs made from it won't be restocked.",
+        "stat_mid": "rescued in",
+        "stat_end": "batches so far.",
+        "stat_link_label": "See every batch",
+        "btn1_label": "What is rescued yarn?",
+        "btn2_label": "The Yarn Passport",
+        "photo_file": "echo-fg-rescue-cushions.jpg",
+        "alt": "Striped knitted cushion covers on a sofa",
+        "focus": "52% 50%"
       },
       "blocks": {
         "p1": {
