@@ -9,6 +9,18 @@
 {% endcomment %}
 
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@250&family=Literata:wght@400&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<style>
+  :root { color-scheme: light; supported-color-schemes: light; }
+  @media (prefers-color-scheme: dark) {
+    .yp-frame, .yp-pad { background-color:#F2EEEA !important; background-image:linear-gradient(#F2EEEA,#F2EEEA) !important; }
+    .yp-lbl   { color:#380f1c !important; }
+    .yp-title { color:#000000 !important; }
+    .yp-val   { color:#7c7e64 !important; }
+    .yp-cell  { border-color:#380f1c !important; }
+  }
+</style>
 {% assign yp_made_by = 'JM Group knitwear factory' %}
 
 {% for line in line_items %}
@@ -23,54 +35,54 @@
 
               <!-- frame: warm grey (Figma #F2EEEA). The decoration strips are full-width images that
                    scale together with the frame, so they stay aligned on mobile -->
-              <table role="presentation" width="540" cellpadding="0" cellspacing="0" border="0" bgcolor="#F2EEEA" style="max-width:540px;width:100%;background:#F2EEEA;">
+              <table role="presentation" class="yp-frame" width="540" cellpadding="0" cellspacing="0" border="0" bgcolor="#F2EEEA" style="max-width:540px;width:100%;background-color:#F2EEEA;background-image:linear-gradient(#F2EEEA,#F2EEEA);">
                 <tr>
-                  <td style="padding:0;font-size:0;line-height:0;">
+                  <td class="yp-pad" style="padding:0;font-size:0;line-height:0;">
                     <img src="{{ 'yarn-passport-top.png' | file_url }}" width="540" alt="" style="display:block;border:0;width:100%;max-width:540px;height:auto;">
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding:0 32px;">
+                  <td class="yp-pad" style="padding:0 32px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:476px;width:100%;border-collapse:collapse;">
                 <tr>
-                  <td width="50%" valign="top" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Product</p>
-                    <p style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:20px;line-height:1.2;color:#000000;text-align:left;">{{ line.product.title }}</p>
+                  <td width="50%" valign="top" class="yp-cell" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p class="yp-lbl" style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Product</p>
+                    <p class="yp-title" style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:20px;line-height:1.2;color:#000000;text-align:left;">{{ line.product.title }}</p>
                   </td>
-                  <td width="50%" valign="top" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Color</p>
-                    <p style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_colourway | default: '&nbsp;' }}</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Origin</p>
-                    <p style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_origin }}</p>
+                  <td width="50%" valign="top" class="yp-cell" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p class="yp-lbl" style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Color</p>
+                    <p class="yp-val" style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_colourway | default: '&nbsp;' }}</p>
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Fibre</p>
-                    <p style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_fibre }}</p>
+                  <td colspan="2" class="yp-cell" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p class="yp-lbl" style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Origin</p>
+                    <p class="yp-val" style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_origin }}</p>
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Batch</p>
-                    <p style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_batch_id }}{% if line.product.metafields.custom.yp_kg != blank %} - {{ line.product.metafields.custom.yp_kg }} kg rescued{% endif %}</p>
+                  <td colspan="2" class="yp-cell" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p class="yp-lbl" style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Fibre</p>
+                    <p class="yp-val" style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_fibre }}</p>
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="2" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
-                    <p style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Made</p>
-                    <p style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ yp_made_by }}</p>
+                  <td colspan="2" class="yp-cell" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p class="yp-lbl" style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Batch</p>
+                    <p class="yp-val" style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ line.product.metafields.custom.yp_batch_id }}{% if line.product.metafields.custom.yp_kg != blank %} - {{ line.product.metafields.custom.yp_kg }} kg rescued{% endif %}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="yp-cell" style="border:1px solid #380f1c;padding:4px 12px 20px 8px;">
+                    <p class="yp-lbl" style="margin:0 0 12px;font-family:Literata,Georgia,'Times New Roman',serif;font-weight:400;font-size:12px;line-height:normal;text-transform:uppercase;color:#380f1c;text-align:left;">Made</p>
+                    <p class="yp-val" style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:250;font-size:16px;line-height:normal;color:#7c7e64;text-align:left;">{{ yp_made_by }}</p>
                   </td>
                 </tr>
               </table>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding:0;font-size:0;line-height:0;">
+                  <td class="yp-pad" style="padding:0;font-size:0;line-height:0;">
                     <img src="{{ 'yarn-passport-bottom.png' | file_url }}" width="540" alt="" style="display:block;border:0;width:100%;max-width:540px;height:auto;">
                   </td>
                 </tr>
