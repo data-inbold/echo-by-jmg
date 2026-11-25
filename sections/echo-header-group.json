@@ -17,7 +17,8 @@
         "menu": "header-menu",
         "logo_height": 32,
         "logo_height_mobile": 24,
-        "show_dropdowns": true
+        "show_dropdowns": true,
+        "help_item": ""
       }
     }
   },

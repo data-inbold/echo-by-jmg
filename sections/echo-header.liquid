@@ -81,13 +81,13 @@
       {%- for l in hm.links -%}
         {%- assign is_act = false -%}
         {%- if l.active or l.child_active -%}{%- assign is_act = true -%}{%- endif -%}
-        {%- assign l_t = l.title | downcase -%}
+        {%- assign l_t = l.handle | replace: '-', ' ' -%}
 {%- assign l_key = ',' | append: l_t | append: ',' -%}
         {%- assign is_mega = false -%}
         {%- if mega_t != blank and mega_set contains l_key -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if about_t != blank and l_t == about_t -%}{%- assign is_mega = true -%}{%- endif -%}
         {%- if help_t != blank and l_t == help_t -%}{%- assign is_mega = true -%}{%- endif -%}
-        {%- if l.links.size > 0 or is_mega -%}
+        {%- if is_mega -%}
           <button data-act="dd-{{ forloop.index }}" aria-expanded="false"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}<svg class="caret" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"/></svg></button>
         {%- else -%}
           <a href="{{ l.url }}"{% if is_act %} aria-current="page"{% endif %}>{{ l.title }}</a>
@@ -126,7 +126,7 @@
 
   {%- if hm != blank -%}
   {%- for l in hm.links -%}
-    {%- assign l_t = l.title | downcase -%}
+    {%- assign l_t = l.handle | replace: '-', ' ' -%}
 {%- assign l_key = ',' | append: l_t | append: ',' -%}
     {%- assign is_mega = false -%}
     {%- if mega_t != blank and mega_set contains l_key -%}{%- assign is_mega = true -%}{%- endif -%}
@@ -272,7 +272,7 @@
       {%- if hm != blank -%}
         {%- for l in hm.links -%}
           {%- if l.url == '#' or l.url == blank -%}<span class="mm-h">{{ l.title }}</span>{%- else -%}<a href="{{ l.url }}">{{ l.title }}</a>{%- endif -%}
-          {%- assign l_t = l.title | downcase -%}
+          {%- assign l_t = l.handle | replace: '-', ' ' -%}
 {%- assign l_key = ',' | append: l_t | append: ',' -%}
           {%- if mega_t != blank and mega_set contains l_key -%}
             <div class="sub">
