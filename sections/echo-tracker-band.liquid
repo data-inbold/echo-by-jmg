@@ -11,6 +11,10 @@
   assign tok_ed = '{' | append: 'batches' | append: '}'
   assign kg_out = '<span data-yarn-total="kg">' | append: totp[0] | append: '</span>'
   assign ed_out = '<span data-yarn-total="batches">' | append: totp[1] | append: '</span>'
+  assign tok_pc = '{' | append: 'pieces' | append: '}'
+  assign tok_op = '{' | append: 'open' | append: '}'
+  assign pc_out = '<span data-yarn-total="pieces">–</span>'
+  assign op_out = '<span data-yarn-total="open">–</span>'
   assign stats = section.blocks | where: 'type', 'stat'
   assign batches = section.blocks | where: 'type', 'batch'
 -%}
@@ -35,7 +39,8 @@
   .echo-tband-log .r .dt{font-weight:300;color:#7C7E64}
   @media (max-width:749px){.echo-tband-log .r{grid-template-columns:90px minmax(0,1fr) 64px;font-size:14px}.echo-tband-log .r .dt{display:none}.echo-tband-log .r>*{padding:8px 4px}.echo-tband-log .r>*:first-child{padding-left:0}.echo-tband-log .r>*:nth-child(3){padding-right:0}}
 </style>
-<section class="section {{ section.settings.spacing }} band echo-tband">
+{%- capture u_trk -%}{%- render 'echo-url', key: 'tracker' -%}{%- endcapture -%}
+<section class="section {{ section.settings.spacing }} band echo-tband" data-yarn-band="{{ u_trk | strip | escape }}">
   <div class="wrap stack" style="gap:40px">
     <div class="echo-tband-head">
       {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
@@ -45,7 +50,7 @@
       {%- if stats.size > 0 -%}
         <div class="stats">
           {%- for b in stats -%}
-            {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out -%}
+            {%- assign n = b.settings.n | replace: tok_kg, kg_out | replace: tok_ed, ed_out | replace: tok_pc, pc_out | replace: tok_op, op_out -%}
             <div class="stat" {{ b.shopify_attributes }}>{% if b.settings.icon_file != blank %}<img class="stat-img" src="{{ b.settings.icon_file | asset_url }}" alt="" width="68" height="68" loading="lazy">{% endif %}<div class="n">{{ n }}</div><p>{{ b.settings.text }}</p></div>
           {%- endfor -%}
         </div>
@@ -54,7 +59,7 @@
         <hr>
         <div style="width:100%">
           {%- if section.settings.log_label != blank -%}<p class="echo-tband-logl">{{ section.settings.log_label }}</p>{%- endif -%}
-          <div class="echo-tband-log">
+          <div class="echo-tband-log" data-yarn-log="{{ batches.size }}">
             {%- for b in batches -%}
               <div class="r" {{ b.shopify_attributes }}><span class="id">{{ b.settings.id }}</span><span>{{ b.settings.fibre }}</span><span class="kg">{{ b.settings.kg }}</span><span class="dt">{{ b.settings.date }}</span></div>
             {%- endfor -%}
@@ -80,7 +85,7 @@
   ],
   "blocks": [
     { "type": "stat", "name": "Number", "settings": [
-      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, calculated from the Yarn Passport fields on the products plus older batches in the Yarn batch list." },
+      { "type": "text", "id": "n", "label": "Number", "default": "{kg}", "info": "{kg} = total yarn rescued, {batches} = number of batches, {pieces} = numbered pieces, {open} = available designs, calculated the same way as the tracker page from the Yarn Passport fields on the products plus older batches in the Yarn batch list." },
       { "type": "text", "id": "text", "label": "Text", "default": "yarn rescued" },
       { "type": "text", "id": "icon_file", "label": "Icon file", "info": "File name in assets, for example echo-stat-yarn.png. Empty = no icon." }
     ] },

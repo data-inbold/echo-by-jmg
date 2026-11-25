@@ -156,7 +156,7 @@
       '<td>' + links + '</td>' +
       '<td class="num">' + b.pieces + '</td>' +
       '<td>' + statusHtml(b) + '</td></tr>';
-    return { src: 'live', bid: b.id, logged: logged, kg: b.kg, pieces: b.pieces, left: b.left, html: html };
+    return { src: 'live', bid: b.id, logged: logged, kg: b.kg, pieces: b.pieces, left: b.left, fibre: b.fibre, html: html };
   }
 
   /*
@@ -208,6 +208,7 @@
         kg: isNaN(kg) ? 0 : kg,
         pieces: isNaN(pieces) ? 0 : pieces,
         left: isNaN(left) ? 0 : left,
+        fibre: tr.cells && tr.cells[2] ? tr.cells[2].textContent.trim() : '',
         el: tr
       };
     });
@@ -274,9 +275,58 @@
       if (!batches.length) return; // nothing on the products yet: keep the server numbers
       var t = totalsFrom(batches, hist.rows);
       Array.prototype.forEach.call(els, function (el) {
+        if (el.closest && el.closest('[data-yarn-band]')) return; // the band uses the tracker calculation
         var kind = el.getAttribute('data-yarn-total');
         if (kind === 'kg') showNumber(el, t.kg, fmtKgWhole);
         else if (kind === 'batches') showNumber(el, t.batches, fmtNumber);
+      });
+    }).catch(function () { /* keep the server numbers */ });
+  }
+
+
+  /*
+    Summary blocks on other pages (Tracker band on About us): the same calculation as the tracker page.
+    Loads the tracker page, reads its server rows, adds the live product feed with merge(), and fills
+    [data-yarn-total="kg|batches|pieces|open"] and the latest rows in [data-yarn-log] inside [data-yarn-band].
+  */
+  function summaryFrom(url) {
+    return fetch(url, { credentials: 'same-origin' }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.text();
+    }).then(function (html) {
+      var doc = new root.DOMParser().parseFromString(html, 'text/html');
+      var host = doc.getElementById('yarn-tracker');
+      var tbody = host && host.querySelector('table.tracker tbody');
+      if (!host || !tbody) throw new Error('no tracker');
+      var rows = readRows(tbody);
+      return loadItems(host.getAttribute('data-src')).then(function (items) {
+        return merge(rows, aggregate(items));
+      });
+    });
+  }
+
+  function initBands() {
+    var bands = document.querySelectorAll('[data-yarn-band]');
+    if (!bands.length) return;
+    var url = bands[0].getAttribute('data-yarn-band');
+    if (!url) return;
+    summaryFrom(url).then(function (res) {
+      Array.prototype.forEach.call(bands, function (band) {
+        var st = res.stats;
+        var map = { kg: [st.kg, fmtKgWhole], batches: [st.batches, fmtNumber], pieces: [st.pieces, fmtNumber], open: [st.open, fmtNumber] };
+        Array.prototype.forEach.call(band.querySelectorAll('[data-yarn-total]'), function (el) {
+          var m = map[el.getAttribute('data-yarn-total')];
+          if (m) { el.setAttribute('data-band', '1'); showNumber(el, m[0], m[1]); }
+        });
+        var log = band.querySelector('[data-yarn-log]');
+        if (!log) return;
+        var n = parseInt(log.getAttribute('data-yarn-log'), 10) || 3;
+        var real = res.rows.filter(function (r) { return r.src !== 'block'; }).slice(0, n);
+        if (!real.length) return;
+        log.innerHTML = real.map(function (r) {
+          return '<div class="r"><span class="id">' + esc(r.bid) + '</span><span>' + esc(r.fibre || '') + '</span><span class="kg">' +
+            fmtKg(r.kg) + '</span><span class="dt">' + (esc(showDate(r.logged)) || '') + '</span></div>';
+        }).join('');
       });
     }).catch(function () { /* keep the server numbers */ });
   }
@@ -322,6 +372,7 @@
     root.__echoYarnStarted = true;
     init();
     initTotals();
+    initBands();
   }
 
   if (typeof module !== 'undefined' && module.exports) {

@@ -224,7 +224,7 @@
         "stat_3": {
           "type": "stat",
           "settings": {
-            "n": "738",
+            "n": "{pieces}",
             "text": "Numbered pieces",
             "icon_file": "echo-stat-knit.png"
           }
@@ -232,7 +232,7 @@
         "stat_4": {
           "type": "stat",
           "settings": {
-            "n": "26",
+            "n": "{open}",
             "text": "Available designs",
             "icon_file": "echo-stat-pillows.png"
           }
