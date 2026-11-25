@@ -2,9 +2,6 @@
 {%- comment -%} "How it works" (option 2): accordion of steps on the left, photo or video on the right. {%- endcomment -%}
 <style>
   .how-panel{display:grid;background:#fff;align-items:stretch;position:relative}
-  .section:has(.how-thread-blue){overflow-x:clip}
-  .how-thread-blue{display:none;position:absolute;left:62.3%;top:-28%;width:42.3%;height:auto;max-width:none;pointer-events:none;z-index:3}
-  @media(min-width:880px){.how-thread-blue{display:block}}
   @media(min-width:880px){.how-panel{grid-template-columns:600fr 680fr;min-height:556px}}
   .how-acc{padding:clamp(24px,4.5vw,40px) clamp(20px,4.5vw,60px);display:flex;flex-direction:column;gap:24px}
   .how-i{margin:0;padding:0 0 24px;border:0;border-bottom:1px solid #D7D5CB}
@@ -16,7 +13,7 @@
   .how-i .b{margin-top:24px}
   .how-i p{margin:0;font-size:14px;line-height:1.6;color:var(--ink);max-width:480px}
   .how-i p a{color:var(--olive);text-decoration:underline;text-underline-offset:3px}
-  .how-media{position:relative;min-height:320px;overflow:hidden}
+  .how-media{position:relative;min-height:320px}
   .how-media .ph img{object-position:50% 0}
   .how-media .ph{position:absolute;inset:0;border:0;min-height:0!important;aspect-ratio:auto!important;height:100%}
   @media(max-width:879px){.how-media{min-height:0}.how-media .ph{position:relative;aspect-ratio:4/3!important;height:auto}}
@@ -41,8 +38,11 @@
         {%- endfor -%}
         {%- if section.settings.show_icon -%}<span class="how-icon wool-ico" aria-hidden="true" style="--ico:url('{{ 'echo-wool-icon.png' | asset_url }}')"></span>{%- endif -%}
       </div>
-      {%- if section.settings.show_thread -%}<img class="how-thread-blue" src="{{ 'echo-thread-howitworks.png' | asset_url }}" alt="" width="1129" height="824" loading="lazy">{%- endif -%}
-      <div class="how-media">
+      <div class="how-media{% if section.settings.show_thread %} ethr-host{% endif %}">
+        {%- if section.settings.show_thread -%}
+          {%- render 'echo-thread', shape: 'wave', x: 206, y: -158, w: 928, W: 680 -%}
+          <div class="ethr-clip">{%- render 'echo-thread', shape: 'wave', x: 206, y: -158, w: 928, W: 680, color: '#F2EEEA' -%}</div>
+        {%- endif -%}
         {%- render 'echo-media', video: section.settings.video, image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.media_label, ar: '680/556' -%}
         {%- if section.settings.overlay != blank -%}<span class="lbl">{{ section.settings.overlay }}</span>{%- endif -%}
       </div>

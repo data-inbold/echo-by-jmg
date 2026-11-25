@@ -19,6 +19,7 @@
   @media(max-width:559px){.ft-media{grid-template-columns:1fr}}
 </style>
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
+  {%- if section.settings.show_thread -%}{%- render 'echo-thread', shape: 'long', side: 'r', x: -14, y: -353, w: 366, cap: true, z: 3, mx: -24, my: -110, mw: 150 -%}{%- endif -%}
   {%- assign n = 1 -%}
   {%- if section.settings.image2 != blank or section.settings.photo2 != blank and section.settings.photo2 != 'none' -%}{%- assign n = 2 -%}{%- endif -%}
   <div class="wrap">
@@ -52,6 +53,7 @@
 {
   "name": "Feature: text and photos",
   "settings": [
+    { "type": "checkbox", "id": "show_thread", "label": "Blue thread at the right edge of the page", "default": false },
     { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}], "default": "paper" },
     { "type": "select", "id": "media_side", "label": "Photos on", "options": [{"value": "right", "label": "Right"}, {"value": "left", "label": "Left"}], "default": "right" },

@@ -254,12 +254,8 @@ footer.site .btn:hover{background:#fff;color:#111}
 /* recolourable wool icon (the PNG is used as a mask) */
 .wool-ico{display:block;width:109px;height:120px;background:var(--thread);-webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}
 .split-ico{display:none;position:absolute;right:max(140px,calc((100% - 1440px)/2 + 140px));bottom:80px;width:109px;height:120px;z-index:3;pointer-events:none}
-.split-thread{display:none;position:absolute;right:0;top:-226px;height:745.8px;width:auto;max-width:none;pointer-events:none;z-index:4}
 @media(min-width:880px){.split-ico{display:block}}
-@media(min-width:900px){.split-thread{display:block}}
-.section:has(>.split-ico),.section:has(>.split-thread){position:relative}
-.section:has(>.split-thread){overflow-x:clip}
-.section:has(>.split-thread)>.wrap{position:relative;z-index:2}
+.section:has(>.split-ico){position:relative}
 
 /* shop by products: 24px between photo and label */
 .tiles.grid .card,.tiles .card{gap:24px}
@@ -407,3 +403,22 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
 /* dropdown caret: Figma CaretDown, 16px, 8px from the label, same colour as the label */
 .nav .main>button{display:inline-flex;align-items:center;gap:8px}
 .nav .main>button .caret{width:16px;height:16px;flex:none}
+
+/* ================= Thread lines (Figma "Vector" thread layers), desktop + phone ================= */
+:root{--thread-line:#97B5E1}
+.ethr{--u:min(calc(100cqw / var(--W)),var(--cap,100px));position:absolute;top:calc(var(--y) * var(--u));width:calc(var(--w) * var(--u));height:auto;max-width:none;overflow:visible;pointer-events:none;z-index:var(--z,0);color:var(--c,var(--thread-line))}
+.ethr.l{left:calc(var(--x) * var(--u))}
+.ethr.r{right:calc(var(--x) * var(--u))}
+.ethr.cap{--cap:1px}
+@media(max-width:749px){
+  .ethr.m{top:calc(var(--my) * 1px);width:calc(var(--mw) * 1px)}
+  .ethr.m.l{left:calc(var(--mx) * 1px)}
+  .ethr.m.r{right:calc(var(--mx) * 1px)}
+}
+/* host that the thread is measured on (a photo box): blue runs under the photo, white copy shows on it */
+.ethr-host{position:relative;container-type:inline-size;isolation:isolate}
+.ethr-host>.ph,.ethr-host>.lbl{z-index:1}
+.ethr-host>.lbl{z-index:3}
+.ethr-clip{position:absolute;inset:0;overflow:hidden;z-index:2;pointer-events:none}
+.section:has(>.ethr),.section:has(.ethr-host){position:relative;overflow-x:clip}
+.section:has(>.ethr)>.wrap{position:relative;z-index:1}

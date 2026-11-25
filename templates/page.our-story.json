@@ -307,7 +307,8 @@
         "photo": "echo-v2-story.jpg",
         "alt": "The knitting hall",
         "photo2": "echo-v2-tile-blankets.jpg",
-        "alt2": "Finished blankets"
+        "alt2": "Finished blankets",
+        "show_thread": true
       }
     },
     "stories": {

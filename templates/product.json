@@ -73,7 +73,8 @@
         "btn1_label": "Meet the people",
         "btn1_link": "echo:story",
         "label": "15 sec clip: this design on the knitting machine, from the factory shoot",
-        "ar": "16/9"
+        "ar": "16/9",
+        "img_thread": "loop_pdp"
       }
     }
   },

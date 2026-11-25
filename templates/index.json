@@ -310,7 +310,8 @@
         "ar": "4/3",
         "stat_text": "",
         "stat_link_label": "",
-        "stat_link": ""
+        "stat_link": "",
+        "img_thread": "loop"
       }
     },
     "quotes": {
@@ -393,7 +394,8 @@
         "ar": "5",
         "stat_text": "",
         "stat_link_label": "",
-        "stat_link": ""
+        "stat_link": "",
+        "img_thread": "gift"
       }
     },
     "club": {
