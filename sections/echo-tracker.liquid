@@ -102,24 +102,93 @@
     render 'echo-num', n: open_count
   endcapture
 -%}
-<section class="section tight"><div class="wrap stack" style="gap:14px"><span class="mono">{{ section.settings.eyebrow }}</span><h1 class="h1">{{ section.settings.heading }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p></div></section>
-<section class="section band tight"><div class="wrap stats">
-  <div class="stat"><div class="n" data-stat="kg">{{ kg_label }}</div><p>{{ 'echo.tracker.yarn_rescued_to_date' | t }}</p></div>
-  <div class="stat"><div class="n" data-stat="batches">{{ ed_label }}</div><p>{{ 'echo.tracker.batches_and_editions' | t }}</p></div>
-  <div class="stat"><div class="n" data-stat="pieces">{{ pieces_fmt | strip }}</div><p>{{ 'echo.tracker.numbered_pieces_made' | t }}</p></div>
-  <div class="stat"><div class="n" data-stat="open">{{ open_fmt | strip }}</div><p>{{ 'echo.tracker.editions_still_open' | t }}</p></div>
+{%- liquid
+  capture u_home
+    render 'echo-url', key: 'home'
+  endcapture
+  capture u_story
+    render 'echo-url', key: 'story'
+  endcapture
+  assign t_home = 'echo.common.home' | t
+  assign crumb_list = t_home | append: '::' | append: u_home | append: '||' | append: section.settings.crumb_label | append: '::' | append: u_story | append: '||' | append: section.settings.crumb_current
+-%}
+<style>
+  .yt-hero{padding-block:{{ section.settings.pad_top }}px 0}
+  .yt-hero .crumbs{padding:0 0 20px}
+  .yt-hero .wrap>.crumbs{max-width:none;margin:0}
+  .yt-top{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+  @media(min-width:900px){.yt-top{grid-template-columns:minmax(0,1fr) minmax(0,519px);gap:40px}}
+  .yt-h{margin:0;font:300 clamp(34px,3.9vw,56px)/1.36 var(--display);color:var(--wine)}
+  .yt-top p{margin:0;font:400 14px/1.6 var(--body);color:#332C2A}
+  .yt-hr{height:0;border:0;border-top:1px solid #ABA499;margin:40px 0}
+  .yt-stats{background:#E9E2DA;padding:20px 16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+  @media(min-width:900px){.yt-stats{display:flex;gap:40px;padding:20px 40px}}
+  .yt-stat{display:flex;align-items:center;gap:0;min-width:0}
+  @media(min-width:900px){.yt-stat{flex:1}}
+  .yt-stat img{width:68px;height:68px;object-fit:contain;flex:none;display:block}
+  .yt-stat div{flex:1;min-width:0;text-align:center}
+  .yt-stat .n{font:italic 300 clamp(30px,3vw,40px)/normal var(--display);color:var(--wine)}
+  .yt-stat p{margin:0;font:400 14px/1.6 var(--body);color:#332C2A}
+  .yt-vr{display:none;width:0;border-left:1px solid #ABA499;align-self:stretch;flex:none}
+  @media(min-width:900px){.yt-vr{display:block}}
+  .yt-log{padding-block:{{ section.settings.pad_log }}px {{ section.settings.pad_bottom }}px}
+  .yt-h2{margin:0;font:300 clamp(28px,2.8vw,40px)/normal var(--display);color:var(--wine)}
+  .yt-log .tracker{table-layout:fixed;min-width:1000px;font-size:16px}
+  .yt-log .tracker th{padding:8px;text-align:center;font:700 16px/1.6 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#2E2D2C;border-bottom:1px solid #ABA499}
+  .yt-log .tracker th:nth-child(3),.yt-log .tracker th:nth-child(5){text-align:left}
+  .yt-log .tracker td{padding:8px;text-align:center;font:300 16px/1.6 var(--body);color:#2E2D2C;border-bottom:1px solid #ABA499;vertical-align:top}
+  .yt-log .tracker td.mono{font:300 16px/1.6 var(--body)}
+  .yt-log .tracker td:nth-child(2){color:#ABA499}
+  .yt-log .tracker td:nth-child(3),.yt-log .tracker td:nth-child(5){text-align:left}
+  .yt-log .tracker th:nth-child(1){width:14.06%}.yt-log .tracker th:nth-child(2){width:9.38%}.yt-log .tracker th:nth-child(3){width:24.22%}.yt-log .tracker th:nth-child(4){width:7.8%}.yt-log .tracker th:nth-child(5){width:24.22%}.yt-log .tracker th:nth-child(6){width:9.38%}.yt-log .tracker th:nth-child(7){width:10.94%}
+  .yt-log .tracker td br{display:none}
+  .yt-log .tracker td .link{position:relative;display:block;padding-right:36px;font-weight:300;color:#2E2D2C;text-decoration:underline;text-underline-offset:3px;border-bottom:0;box-shadow:none}
+  .yt-log .tracker td .link+.link{margin-top:12px}
+  .yt-log .tracker td .link::after{content:"";position:absolute;right:0;top:50%;width:24px;height:24px;margin-top:-12px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M8 7h9v9'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M8 7h9v9'/%3E%3C/svg%3E") center/contain no-repeat}
+  .yt-log .tstat{display:block;width:124px;max-width:100%;margin-inline:auto;box-sizing:border-box;padding:4px 8px;border:1px solid #332C2A;text-align:center;font:300 14px/1.6 var(--body);color:#332C2A;white-space:nowrap}
+  .yt-log .tstat.last{background:#332C2A;color:#fff}
+  .yt-log .tstat.closed{background:#ABA499;border-color:#ABA499;color:#fff}
+</style>
+<section class="yt-hero"><div class="wrap">
+  {%- render 'echo-crumbs', list: crumb_list -%}
+  <div class="yt-top"><h1 class="yt-h">{{ section.settings.heading }}</h1><p>{{ section.settings.lead }}</p></div>
+  <hr class="yt-hr">
+  <div class="yt-stats">
+    <div class="yt-stat">{% if section.settings.icon_1 != blank %}<img src="{{ section.settings.icon_1 | asset_url }}" alt="" width="68" height="68" loading="lazy">{% endif %}<div><div class="n" data-stat="kg">{{ kg_label }}</div><p>{{ section.settings.label_1 }}</p></div></div>
+    <span class="yt-vr" aria-hidden="true"></span>
+    <div class="yt-stat">{% if section.settings.icon_2 != blank %}<img src="{{ section.settings.icon_2 | asset_url }}" alt="" width="68" height="68" loading="lazy">{% endif %}<div><div class="n" data-stat="batches">{{ ed_label }}</div><p>{{ section.settings.label_2 }}</p></div></div>
+    <span class="yt-vr" aria-hidden="true"></span>
+    <div class="yt-stat">{% if section.settings.icon_3 != blank %}<img src="{{ section.settings.icon_3 | asset_url }}" alt="" width="68" height="68" loading="lazy">{% endif %}<div><div class="n" data-stat="pieces">{{ pieces_fmt | strip }}</div><p>{{ section.settings.label_3 }}</p></div></div>
+    <span class="yt-vr" aria-hidden="true"></span>
+    <div class="yt-stat">{% if section.settings.icon_4 != blank %}<img src="{{ section.settings.icon_4 | asset_url }}" alt="" width="68" height="68" loading="lazy">{% endif %}<div><div class="n" data-stat="open">{{ open_fmt | strip }}</div><p>{{ section.settings.label_4 }}</p></div></div>
+  </div>
 </div></section>
-<section class="section"><div class="wrap stack" style="gap:16px" id="yarn-tracker" data-src="{{ routes.all_products_collection_url }}?view=yarn-data">
-  <div class="row" style="justify-content:space-between"><h2 class="h2">{{ 'echo.tracker.the_batch_log' | t }}</h2><a class="btn" href="{% render 'echo-url', key: 'open' %}">{{ 'echo.tracker.shop_open_editions' | t }}</a></div>
+<section class="yt-log"><div class="wrap stack" style="gap:24px" id="yarn-tracker" data-src="{{ routes.all_products_collection_url }}?view=yarn-data">
+  <h2 class="yt-h2">{{ section.settings.log_heading }}</h2>
   <div class="tablewrap"><table class="tracker"><thead><tr><th>{{ 'echo.common.batch' | t }}</th><th>{{ 'echo.tracker.logged' | t }}</th><th>{{ 'echo.common.fibre' | t }}</th><th class="num">{{ 'echo.tracker.yarn' | t }}</th><th>{{ 'echo.tracker.became' | t }}</th><th class="num">{{ 'echo.tracker.pieces' | t }}</th><th>{{ 'echo.common.status' | t }}</th></tr></thead><tbody>{{ rows }}</tbody></table></div>
   {%- if section.settings.note != blank -%}<p class="muted" style="font-size:13px;margin:0">{{ section.settings.note }}</p>{%- endif -%}
 </div></section>{% schema %}
 {
   "name": "Rescued yarn tracker",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Updated each time a batch is logged" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Rescued yarn tracker" },
-    { "type": "textarea", "id": "lead", "label": "Intro", "default": "Every batch of leftover yarn we have saved, what it became and whether you can still buy it. Each row matches the batch ID on a Yarn Passport." },
+    { "type": "text", "id": "crumb_label", "label": "Breadcrumb: parent page", "default": "About Us" },
+    { "type": "text", "id": "crumb_current", "label": "Breadcrumb: this page", "default": "Rescued Yarn Tracker" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Rescued Yarn Tracker" },
+    { "type": "textarea", "id": "lead", "label": "Intro", "default": "See a complete record of every surplus yarn batch we’ve rescued, what it became, and its current availability. Each row corresponds directly to the batch ID on your Yarn Passport." },
+    { "type": "text", "id": "log_heading", "label": "Table heading", "default": "The Batch Log" },
+    { "type": "header", "content": "The four numbers" },
+    { "type": "text", "id": "icon_1", "label": "Icon 1 (assets)", "default": "echo-stat-yarn.png" },
+    { "type": "text", "id": "label_1", "label": "Label 1", "default": "Yarn rescued" },
+    { "type": "text", "id": "icon_2", "label": "Icon 2 (assets)", "default": "echo-stat-logo.png" },
+    { "type": "text", "id": "label_2", "label": "Label 2", "default": "Batches" },
+    { "type": "text", "id": "icon_3", "label": "Icon 3 (assets)", "default": "echo-stat-knit.png" },
+    { "type": "text", "id": "label_3", "label": "Label 3", "default": "Numbered pieces" },
+    { "type": "text", "id": "icon_4", "label": "Icon 4 (assets)", "default": "echo-stat-pillows.png" },
+    { "type": "text", "id": "label_4", "label": "Label 4", "default": "Available designs" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "pad_top", "label": "Space above", "min": 0, "max": 160, "step": 10, "default": 80, "unit": "px" },
+    { "type": "range", "id": "pad_log", "label": "Space above the table", "min": 0, "max": 160, "step": 10, "default": 60, "unit": "px" },
+    { "type": "range", "id": "pad_bottom", "label": "Space below the table", "min": 0, "max": 160, "step": 10, "default": 60, "unit": "px" },
     { "type": "text", "id": "note", "label": "Note under table", "default": "[Example figures. The real log is kept by the factory team and updated per batch.]" },
     { "type": "paragraph", "content": "Batches with products come from the Yarn Passport fields on each product (batch ID, kg, pieces, fibre; optional Logged date), added up per batch and shown live. Older batches whose products are gone are kept in Shopify admin › Content › Metaobjects › Yarn batch. The batch blocks below are only used while that list is empty." }
   ],
