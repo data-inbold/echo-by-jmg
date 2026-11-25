@@ -822,7 +822,8 @@
       "for_example_delivery_wash_gift": "For example: Delivery, wash, gift,...",
       "guides": "Guides",
       "no_match_html": "No answers match “<span data-faq-q></span>”. <a class=\"link\" href=\"{{ contact_url }}\">Ask us directly</a>",
-      "search_the_answers": "Search the answers"
+      "search_the_answers": "Search the answers",
+      "questions_and_answers": "Questions & Answers"
     },
     "hero": {
       "shown": "Shown: {{ name }}",

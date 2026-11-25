@@ -779,7 +779,8 @@
       "for_example_delivery_wash_gift": "F.eks.: levering, vask, gave,...",
       "guides": "Guider",
       "no_match_html": "Ingen svar matcher “<span data-faq-q></span>”. <a class=\"link\" href=\"{{ contact_url }}\">Spørg os direkte</a>",
-      "search_the_answers": "Søg i svarene"
+      "search_the_answers": "Søg i svarene",
+      "questions_and_answers": "Spørgsmål & svar"
     },
     "hero": {
       "shown": "Vist: {{ name }}",
@@ -977,7 +978,7 @@
       "popular": "Populære"
     },
     "size_table": {
-      "note": "Note",
+      "note": "Bemærk",
       "product": "Produkt",
       "size": "Størrelse",
       "sizes": "Størrelser"

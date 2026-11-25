@@ -28,7 +28,8 @@
 </style>
 <section class="hp"><div class="wrap">
   <div class="hp-top">
-    <h1 class="h1" style="margin:0">{{ section.settings.heading }}</h1>
+    {%- assign hh = section.settings.heading -%}{%- if hh == blank -%}{%- assign hh = 'echo.help.questions_and_answers' | t -%}{%- endif -%}
+    <h1 class="h1" style="margin:0">{{ hh }}</h1>
     <label class="hp-search" for="faq-q">
       <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72 72.08 72.08 0 0 1-72-72Z"/></svg>
       <span class="visually-hidden">{{ 'echo.help.search_the_answers' | t }}</span>
@@ -84,7 +85,7 @@
 {
   "name": "Questions and answers",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions & Answers" },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Leave empty to use the translated heading." },
     { "type": "checkbox", "id": "show_alt", "label": "Show 'Did not find it?' band", "default": false },
     { "type": "textarea", "id": "contact_text", "label": "Contact text", "default": "Chat [weekdays 9 to 16 CET], or write to hello@echobyjmg.com. We reply within 24 hours." },
     { "type": "text", "id": "g1_label", "label": "Guide 1", "default": "How to wash a lambswool blanket" },
