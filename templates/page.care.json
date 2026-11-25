@@ -1,4 +1,4 @@
-/* Size and care guide: Figma layout, re-sent after the sections synced, 25 Nov 2026 */
+/* Size and care guide: care icons and photo, 25 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
@@ -63,14 +63,16 @@
     "care": {
       "type": "echo-care-panel",
       "settings": {
-        "link": "echo:journal/how-to-wash-a-lambswool-blanket"
+        "link": "echo:journal/how-to-wash-a-lambswool-blanket",
+        "photo_file": "echo-care-wash.jpg",
+        "focus": "60% 50%"
       },
       "blocks": {
         "row_1": {
           "type": "row",
           "settings": {
             "label": "Lambswool blends",
-            "icon_file": "echo-stat-yarn.png",
+            "icon_file": "echo-care-hand.svg",
             "text": "Hand wash cold, press the water out, dry flat. Do not tumble dry."
           }
         },
@@ -78,7 +80,7 @@
           "type": "row",
           "settings": {
             "label": "Cotton blends",
-            "icon_file": "echo-stat-logo.png",
+            "icon_file": "echo-care-washer.svg",
             "text": "[Machine wash 30°C on a wool cycle in a wash bag. Confirm.]"
           }
         },
@@ -86,7 +88,7 @@
           "type": "row",
           "settings": {
             "label": "Wool",
-            "icon_file": "echo-wool-icon.png",
+            "icon_file": "echo-care-wool.svg",
             "text": "[Hand wash or dry clean. Confirm.]"
           }
         },
@@ -94,7 +96,7 @@
           "type": "row",
           "settings": {
             "label": "Pilling",
-            "icon_file": "echo-stat-pillows.png",
+            "icon_file": "echo-care-pilling.svg",
             "text": "Small bobbles are normal on new knitwear. Remove them with a knit comb."
           }
         }

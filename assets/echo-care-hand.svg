@@ -1,0 +1,31 @@
+<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_g_9271_8121)">
+<g clip-path="url(#clip0_9271_8121)">
+<path d="M25.9992 36.5C15.0992 37.4 6.19922 40.2 6.19922 44.2C6.19922 49.2 19.0992 52.8 34.9992 52.8C50.8992 52.8 63.7992 49.2 63.7992 44.2C63.7992 40.5 56.3992 37.7 46.6992 36.7" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M6.19922 44.2L11.5992 58C13.2992 62.3 23.0992 64 34.9992 64C46.8992 64 56.6992 62.3 58.3992 58L63.7992 44.2" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M32.3008 32.7998C35.3008 34.1998 38.1008 33.5998 40.1008 31.7998C40.9008 36.0998 43.2008 40.8998 45.4008 44.7998C43.2008 44.9998 42.6008 47.3998 39.7008 47.1998C36.5008 46.8998 35.1008 48.3998 32.6008 46.6998C30.7008 45.4998 28.6008 46.2998 26.8008 44.6998L30.0008 35.6998" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M29.5 43.0996C33.2 44.8996 38.8 45.3996 42.3 43.4996" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M42.5992 6.1001L51.3992 13.0001L47.5992 18.0001L38.6992 11.2001L42.5992 6.1001Z" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M40.1009 14.1001C37.8009 16.2001 34.4009 18.2001 31.5009 21.0001C28.8009 23.6001 26.7009 27.1001 24.7009 30.9001C23.5009 33.3001 26.3009 35.0001 27.9009 32.9001L32.9009 26.4001" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M29.5021 31.0003C28.2021 33.0003 28.2021 34.7003 29.7021 35.3003C31.3021 36.0003 32.3021 34.4003 33.2021 32.9003L35.9021 28.3003" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M46.4007 17.1001C45.9007 19.2001 45.8007 22.1001 44.8007 24.4001C43.7007 26.9001 41.7007 28.7001 39.4007 30.6001L37.2007 32.6001C35.2007 34.3001 33.2007 32.1001 34.6007 30.2001L38.4007 25.7001" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M22.7992 41.6001C17.0992 41.9001 13.1992 43.0001 13.1992 44.4001C13.1992 45.6001 16.2992 46.7001 20.7992 47.3001" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M47.6992 41.7001C53.1992 42.3001 56.7992 43.3001 56.7992 44.5001C56.7992 45.9001 52.9992 46.9001 48.6992 47.5001" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+<path d="M23.3008 49.1001C29.9008 50.1001 39.9008 50.3001 45.9008 49.1001" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke="#7C7E64"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_g_9271_8121" x="0" y="0" width="70" height="70" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.05000000074505806 0.05000000074505806" numOctaves="3" seed="1901" />
+<feDisplacementMap in="shape" scale="2" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_9271_8121">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+<clipPath id="clip0_9271_8121">
+<rect width="68" height="68" fill="white" transform="translate(1 1)"/>
+</clipPath>
+</defs>
+</svg>
