@@ -1,0 +1,18 @@
+{%- comment -%}
+  Dropdown for the Help header item: one column "Help" with the customer service pages (same layout as the About dropdown).
+  Params: idx (panel number)
+{%- endcomment -%}
+<div class="mega" data-panel="dd-{{ idx }}" hidden>
+  <div class="wrap mm mm-about">
+    <div class="mm-col">
+      <h4>{{ 'echo.common.help' | t }}</h4>
+      <a href="{% render 'echo-url', key: 'help' %}">{{ 'echo.footer.questions_and_answers' | t }}</a>
+      <a href="{% render 'echo-url', key: 'track' %}">{{ 'echo.common.track_your_order' | t }}</a>
+      <a href="{% render 'echo-url', key: 'returns' %}">{{ 'echo.common.returns' | t }}</a>
+      <a href="{% render 'echo-url', key: 'care' %}">{{ 'echo.footer.size_and_care_guide' | t }}</a>
+      <a href="{% render 'echo-url', key: 'gc-balance' %}">{{ 'echo.footer.gift_card_balance' | t }}</a>
+      <a href="{% render 'echo-url', key: 'corporate' %}">{{ 'echo.common.corporate_gifts' | t }}</a>
+      <a href="{% render 'echo-url', key: 'contact' %}">{{ 'echo.common.contact' | t }}</a>
+    </div>
+  </div>
+</div>

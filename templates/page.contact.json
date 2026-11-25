@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
+/* Contact: sofa spacing and Help dropdown, 25 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
@@ -54,7 +46,7 @@
         "alt": "A wrapped EchoByJMG parcel with a handwritten card",
         "focus": "50% 50%",
         "pad_top": 80,
-        "pad_bottom": 0
+        "pad_bottom": 80
       }
     },
     "illustration": {
@@ -63,8 +55,8 @@
         "photo": "echo-sofa-icon.png",
         "alt": "",
         "width": 126,
-        "space_above": 20,
-        "space_below": 20
+        "space_above": 0,
+        "space_below": 60
       }
     },
     "club": {
