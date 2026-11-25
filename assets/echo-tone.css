@@ -67,6 +67,7 @@ body{font-family:var(--body);font-size:15px;line-height:1.6}
 .split.panel{gap:0;align-items:stretch}
 .split.panel>.stack{padding:clamp(28px,5vw,64px);justify-content:center;gap:20px}
 .split.panel .ph{height:100%;min-height:300px;aspect-ratio:auto!important;border:0}
+@media(max-width:879px){.split.panel .ph{height:auto;min-height:0;aspect-ratio:680/560!important}}
 @media(min-width:880px){.split.panel.mf{grid-template-columns:1fr 1fr}.split.panel:not(.mf){grid-template-columns:5fr 7fr}}
 .split.panel-blush>.stack{background:var(--blush)}
 .split.panel-wine>.stack{background:var(--wine);color:#F3EAE1}
@@ -414,6 +415,8 @@ footer.site .fgrid a,footer.site .f-info,footer.site .f-legal a,footer.site .f-c
   .ethr.m{top:calc(var(--my) * 1px);width:calc(var(--mw) * 1px)}
   .ethr.m.l{left:calc(var(--mx) * 1px)}
   .ethr.m.r{right:calc(var(--mx) * 1px)}
+  .ethr.m.mr{left:auto;right:calc(var(--mx) * 1px)}
+  .ethr.m.mb{top:auto;bottom:calc(var(--my) * 1px)}
 }
 /* host that the thread is measured on (a photo box): blue runs under the photo, white copy shows on it */
 .ethr-host{position:relative;container-type:inline-size;isolation:isolate}

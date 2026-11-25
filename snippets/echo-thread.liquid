@@ -7,6 +7,7 @@
     side   l (default) or r: which edge x is measured from
     cap    true = never grow past the design size (use on full-width sections)
     mx, my, mw  optional phone values in px (below 750px); without them the thread just scales
+    mside  r = on phones measure mx from the right edge; mvert b = my from the bottom edge
     color  CSS colour (default: the blue thread colour)
     z      stacking order inside the host (default 0)
 {%- endcomment -%}
@@ -47,5 +48,5 @@
   assign ww = vb | split: ' '
 -%}
 {%- if d != blank -%}
-<svg class="ethr {{ side | default: 'l' }}{% if cap %} cap{% endif %}{% if mw != blank %} m{% endif %}{% if cls != blank %} {{ cls }}{% endif %}" viewBox="{{ vb }}" width="{{ ww[2] }}" height="{{ hw }}" fill="none" aria-hidden="true" focusable="false" style="--W:{{ W | default: 1440 }};--x:{{ x | default: 0 }};--y:{{ y | default: 0 }};--w:{{ w | default: ww[2] }};{% if mw != blank %}--mx:{{ mx | default: 0 }};--my:{{ my | default: 0 }};--mw:{{ mw }};{% endif %}{% if z != blank %}--z:{{ z }};{% endif %}{% if color != blank %}--c:{{ color }};{% endif %}"><path d="{{ d }}" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
+<svg class="ethr {{ side | default: 'l' }}{% if cap %} cap{% endif %}{% if mw != blank %} m{% if mside == 'r' %} mr{% endif %}{% if mvert == 'b' %} mb{% endif %}{% endif %}{% if cls != blank %} {{ cls }}{% endif %}" viewBox="{{ vb }}" width="{{ ww[2] }}" height="{{ hw }}" fill="none" aria-hidden="true" focusable="false" style="--W:{{ W | default: 1440 }};--x:{{ x | default: 0 }};--y:{{ y | default: 0 }};--w:{{ w | default: ww[2] }};{% if mw != blank %}--mx:{{ mx | default: 0 }};--my:{{ my | default: 0 }};--mw:{{ mw }};{% endif %}{% if z != blank %}--z:{{ z }};{% endif %}{% if color != blank %}--c:{{ color }};{% endif %}"><path d="{{ d }}" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
 {%- endif -%}
