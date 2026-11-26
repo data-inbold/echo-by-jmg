@@ -10,6 +10,20 @@
 {
   "layout": "echo",
   "sections": {
+    "banner": {
+      "type": "echo-xmas-banner",
+      "settings": {
+        "photo": "echo-happy-habitat-banner.jpg",
+        "alt": "Playful knitted throws and cushion covers for kids' rooms",
+        "bg": "#2F6E9E",
+        "fg": "#FFFFFF",
+        "sub": "#E3F1FA",
+        "heading": "Happy Habitat",
+        "lead": "Rainbows, clouds, cats and pups. Playful knitted pieces for nurseries and kids' rooms.",
+        "btn_label": "Shop Happy Habitat",
+        "btn_link": "#shopify-section-template--main"
+      }
+    },
     "main": {
       "type": "echo-main-collection",
       "settings": {
@@ -30,7 +44,8 @@
           "fluff-paws-cushion-cover"
         ],
         "h1": "Happy Habitat, for kids’ rooms",
-        "intro": "From play corners to quiet evenings. Playful pieces for nurseries and kids’ rooms, made to belong wherever comfort grows."
+        "intro": "From play corners to quiet evenings. Playful pieces for nurseries and kids’ rooms, made to belong wherever comfort grows.",
+        "pad_top": 40
       }
     },
     "illustration": {
@@ -56,6 +71,7 @@
     }
   },
   "order": [
+    "banner",
     "main",
     "illustration",
     "club"

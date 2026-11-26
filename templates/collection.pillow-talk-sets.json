@@ -10,13 +10,28 @@
 {
   "layout": "echo",
   "sections": {
+    "banner": {
+      "type": "echo-xmas-banner",
+      "settings": {
+        "photo": "echo-pillow-talk-banner.jpg",
+        "alt": "Knitted throws shown with their matching cushion covers",
+        "bg": "#EAE0D2",
+        "fg": "#5A1620",
+        "sub": "#3B2A22",
+        "heading": "Pillow Talk sets",
+        "lead": "A throw and its matching cushion covers, knitted from the same yarn batch so the colours belong together.",
+        "btn_label": "Shop the sets",
+        "btn_link": "#shopify-section-template--main"
+      }
+    },
     "main": {
       "type": "echo-main-collection",
       "settings": {
         "crumb": "Pillow Talk sets",
         "only": "sets",
         "h1": "Pillow Talk: blanket and cushion sets",
-        "intro": "Designs that come as a blanket and matching cushion covers, knitted from the same yarn batch. [Set price to confirm.]"
+        "intro": "Designs that come as a blanket and matching cushion covers, knitted from the same yarn batch. [Set price to confirm.]",
+        "pad_top": 40
       }
     },
     "illustration": {
@@ -42,6 +57,7 @@
     }
   },
   "order": [
+    "banner",
     "main",
     "illustration",
     "club"
