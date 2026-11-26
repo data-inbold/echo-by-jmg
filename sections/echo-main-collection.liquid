@@ -90,6 +90,7 @@
   .pl-hero .wrap>.crumbs{max-width:none;margin:0}
   .pl-top{display:grid;grid-template-columns:1fr;gap:20px;align-items:end}
   @media(min-width:900px){.pl-top{grid-template-columns:minmax(0,1fr) minmax(0,519px);gap:24px}}
+  @media(min-width:900px){.pl-top--nohead .pl-search{grid-column:2}}
   .pl-h{margin:0;font:300 clamp(34px,3.9vw,56px)/1.36 var(--display);color:var(--wine)}
   .pl-search{display:flex;align-items:center;gap:10px;height:41px;border-bottom:1px solid #332C2A;margin:0}
   .pl-search label{display:flex;align-items:center;gap:8px;flex:none;font:400 16px/normal var(--nav);color:#7C7E64}
@@ -152,7 +153,7 @@
 <section class="pl-hero">
   <div class="wrap">
     {%- render 'echo-crumbs', list: cl -%}
-    <div class="pl-top"{% if section.settings.hide_heading %} style="justify-content:flex-end"{% endif %}>
+    <div class="pl-top{% if section.settings.hide_heading %} pl-top--nohead{% endif %}">
       {%- unless section.settings.hide_heading -%}<h1 class="pl-h">{{ h1 }}</h1>{%- endunless -%}
       <form class="pl-search" action="{{ routes.search_url }}" method="get" role="search">
         <label for="pl-q"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72 72.08 72.08 0 0 1-72-72Z"/></svg>{{ t_search }}</label>
