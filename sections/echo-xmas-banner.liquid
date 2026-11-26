@@ -1,0 +1,40 @@
+{%- capture echo_out -%}
+{%- comment -%} Seasonal horizontal banner: wide photo strip with a heading band below. {%- endcomment -%}
+<style>
+  .xbn{background:#7A1E28;color:#FBF6F1}
+  .xbn .ph{aspect-ratio:8/3;border:0;border-radius:0;background:#7A1E28}
+  .xbn .ph img{width:100%;height:100%;object-fit:cover;object-position:{{ section.settings.focus }}}
+  .xbn-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-block:28px 36px}
+  .xbn-h{font:400 clamp(30px,4vw,52px)/1.1 var(--display);margin:0;color:#FBF6F1}
+  .xbn-in p{margin:6px 0 0;max-width:60ch;font-size:16px;line-height:1.6;color:#F1E7E0}
+  .xbn .btn{background:#FBF6F1;color:#7A1E28;border-color:#FBF6F1}
+  @media (max-width:749px){.xbn .ph{aspect-ratio:4/3}}
+</style>
+<section class="xbn">
+  {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Banner photo', eager: true, sizes: '100vw' -%}
+  <div class="wrap xbn-in">
+    <div>
+      <h1 class="xbn-h">{{ section.settings.heading }}</h1>
+      {%- if section.settings.lead != blank -%}<p>{{ section.settings.lead }}</p>{%- endif -%}
+    </div>
+    {%- if section.settings.btn_label != blank -%}<a class="btn" href="{{ section.settings.btn_link }}">{{ section.settings.btn_label }}</a>{%- endif -%}
+  </div>
+</section>
+{%- endcapture -%}
+{%- render 'echo-links', html: echo_out -%}
+{% schema %}
+{
+  "name": "Seasonal banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Banner photo", "info": "About 2400 x 900 px. Empty = the bundled photo." },
+    { "type": "text", "id": "photo", "label": "Bundled photo file", "default": "echo-xmas-banner.jpg" },
+    { "type": "text", "id": "alt", "label": "Photo description", "default": "Festive knitted throws and cushion covers in front of a Christmas tree" },
+    { "type": "text", "id": "focus", "label": "Photo focus (CSS position)", "default": "50% 50%" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The X'mas Collection" },
+    { "type": "textarea", "id": "lead", "label": "Text" },
+    { "type": "text", "id": "btn_label", "label": "Button" },
+    { "type": "text", "id": "btn_link", "label": "Button link", "default": "" }
+  ],
+  "presets": [{ "name": "Seasonal banner" }]
+}
+{% endschema %}

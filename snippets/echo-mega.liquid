@@ -15,6 +15,9 @@
   capture u_last
     render 'echo-url', key: 'last-pieces'
   endcapture
+  capture u_xmas
+    render 'echo-url', key: 'xmas'
+  endcapture
   capture u_gc
     render 'echo-url', key: 'gift-card'
   endcapture
@@ -27,6 +30,7 @@
   <div class="wrap mm">
     <div class="mm-col">
       <h4>{{ 'echo.header.editions' | t }}</h4>
+      <a href="{{ u_xmas }}">{{ 'echo.header.xmas' | t }}</a>
       <a href="{{ u_sets }}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
       <a href="{{ u_happy }}">{{ 'echo.header.happy_habitat' | t }}</a>
       <a href="{{ u_last }}">{{ 'echo.tracker.last_pieces' | t }}</a>

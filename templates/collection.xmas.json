@@ -1,0 +1,29 @@
+{
+  "layout": "echo",
+  "sections": {
+    "banner": {
+      "type": "echo-xmas-banner",
+      "settings": {
+        "photo": "echo-xmas-banner.jpg",
+        "heading": "The X'mas Collection",
+        "lead": "Festive throws, cushion covers and cosy accessories, knitted from rescued premium yarn in numbered editions. Wrap someone you love in something that lasts.",
+        "btn_label": "Shop the collection",
+        "btn_link": "#shopify-section-template--main"
+      }
+    },
+    "main": {
+      "type": "echo-main-collection",
+      "settings": {
+        "mode": "all",
+        "picks": [],
+        "crumb": "X'mas Collection",
+        "h1": "Gifts for a cosy Christmas",
+        "intro": "",
+        "pad_top": 40,
+        "pad_bottom": 40,
+        "show_tile": false
+      }
+    }
+  },
+  "order": ["banner", "main"]
+}

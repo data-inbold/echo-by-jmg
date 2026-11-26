@@ -242,6 +242,7 @@
       </div>
       <div class="mside">
         <h4 class="mono">{{ 'echo.header.edits' | t }}</h4>
+        <a href="{% render 'echo-url', key: 'xmas' %}">{{ 'echo.header.xmas' | t }}</a>
         <a href="{{ u_sets }}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
         <a href="{{ u_happy }}">{{ 'echo.header.happy_habitat_kids_rooms' | t }}</a>
         <a href="{{ u_last }}">{{ 'echo.tracker.last_pieces' | t }}</a>
@@ -271,6 +272,7 @@
           {%- assign l_t = l.title | downcase -%}
           {%- if mega_t != blank and l_t == mega_t -%}
             <div class="sub">
+              <a href="{% render 'echo-url', key: 'xmas' %}">{{ 'echo.header.xmas' | t }}</a>
               <a href="{% render 'echo-url', key: 'sets' %}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
               <a href="{% render 'echo-url', key: 'happy-habitat' %}">{{ 'echo.header.happy_habitat' | t }}</a>
               <a href="{% render 'echo-url', key: 'last-pieces' %}">{{ 'echo.tracker.last_pieces' | t }}</a>
