@@ -10,8 +10,15 @@
   .xbn-in p{margin:6px 0 0;max-width:60ch;font-size:16px;line-height:1.6;color:var(--xs)}
   .xbn .btn{background:var(--xt);color:var(--xb);border-color:var(--xt)}
   @media (max-width:749px){.xbn .ph{aspect-ratio:4/3}}
+  .xbn-stage{position:relative}
+  @media (min-width:750px){
+    .xbn--ov .xbn-in{position:absolute;inset:0;padding-block:0;align-content:center;align-items:center;justify-content:flex-start}
+    .xbn--ov .xbn-in>div{max-width:min(40%,520px)}
+    .xbn--ov .xbn-h{font-size:clamp(36px,4.2vw,64px)}
+  }
 </style>
-<section class="xbn">
+<section class="xbn{% if section.settings.layout == 'overlay' %} xbn--ov{% endif %}">
+  <div class="xbn-stage">
   {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Banner photo', eager: true, sizes: '100vw' -%}
   <div class="wrap xbn-in">
     <div>
@@ -19,6 +26,7 @@
       {%- if section.settings.lead != blank -%}<p>{{ section.settings.lead }}</p>{%- endif -%}
     </div>
     {%- if section.settings.btn_label != blank -%}<a class="btn" href="{{ section.settings.btn_link | default: '#products' }}"{% if section.settings.btn_link == blank or section.settings.btn_link == '#products' %} data-xbn-jump{% endif %}>{{ section.settings.btn_label }}</a>{%- endif -%}
+  </div>
   </div>
 </section>
 <script>
@@ -43,6 +51,10 @@
 {
   "name": "Seasonal banner",
   "settings": [
+    { "type": "select", "id": "layout", "label": "Text position", "options": [
+      { "value": "below", "label": "In a band below the photo" },
+      { "value": "overlay", "label": "On the photo, left side (desktop)" }
+    ], "default": "below" },
     { "type": "image_picker", "id": "image", "label": "Banner photo", "info": "About 2400 x 900 px. Empty = the bundled photo." },
     { "type": "text", "id": "photo", "label": "Bundled photo file", "default": "echo-xmas-banner.jpg" },
     { "type": "text", "id": "alt", "label": "Photo description", "default": "Festive knitted throws and cushion covers in front of a Christmas tree" },
