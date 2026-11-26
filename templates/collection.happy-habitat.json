@@ -46,7 +46,8 @@
         ],
         "h1": "Happy Habitat, for kids’ rooms",
         "intro": "From play corners to quiet evenings. Playful pieces for nurseries and kids’ rooms, made to belong wherever comfort grows.",
-        "pad_top": 40
+        "pad_top": 40,
+        "hide_heading": true
       }
     },
     "illustration": {

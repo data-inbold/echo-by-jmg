@@ -21,9 +21,13 @@
         "intro": "",
         "pad_top": 40,
         "pad_bottom": 40,
-        "show_tile": false
+        "show_tile": false,
+        "hide_heading": true
       }
     }
   },
-  "order": ["banner", "main"]
+  "order": [
+    "banner",
+    "main"
+  ]
 }
