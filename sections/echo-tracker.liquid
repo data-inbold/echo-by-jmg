@@ -139,7 +139,8 @@
   .yt-log .tracker td:nth-child(3),.yt-log .tracker td:nth-child(5){text-align:left}
   .yt-log .tracker th:nth-child(1){width:14.06%}.yt-log .tracker th:nth-child(2){width:9.38%}.yt-log .tracker th:nth-child(3){width:24.22%}.yt-log .tracker th:nth-child(4){width:7.8%}.yt-log .tracker th:nth-child(5){width:24.22%}.yt-log .tracker th:nth-child(6){width:9.38%}.yt-log .tracker th:nth-child(7){width:10.94%}
   /* phones/tablets: the table scrolls sideways inside its box, the Batch column stays frozen like a spreadsheet */
-  .yt-log .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;max-width:100%}
+  .yt-log .wrap,.yt-log .stack,.yt-log .stack>*{min-width:0}
+  .yt-log .tablewrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;max-width:100%}
   .yt-log .tracker .tstat{white-space:nowrap}
   @media (max-width:1023px){
     .yt-log .tracker{min-width:940px;font-size:14px}
