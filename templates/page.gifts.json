@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
@@ -6,15 +15,14 @@
       "settings": {
         "layout": "overlay",
         "photo": "echo-gift-banner.jpg",
-        "alt": "Knitted throws and a scarf, ready to give",
+        "alt": "Knitted throws tied with a ribbon like gift tags",
         "focus": "50% 50%",
         "bg": "#F3E6DF",
         "photo_bg": "#F3E6DF",
         "fg": "#5A1620",
         "sub": "#332C2A",
         "heading": "A gift that tells its own story",
-        "lead": "Every piece arrives with its edition number and where its yarn came from, so you never have to explain why you chose it.",
-        "photo_mobile": "echo-gift-banner-m.jpg"
+        "lead": "Every piece arrives with its edition number and where its yarn came from, so you never have to explain why you chose it."
       }
     },
     "crumbs": {
