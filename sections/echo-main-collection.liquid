@@ -152,15 +152,15 @@
 <section class="pl-hero">
   <div class="wrap">
     {%- render 'echo-crumbs', list: cl -%}
-    <div class="pl-top">
-      <h1 class="pl-h">{{ h1 }}</h1>
+    <div class="pl-top"{% if section.settings.hide_heading %} style="justify-content:flex-end"{% endif %}>
+      {%- unless section.settings.hide_heading -%}<h1 class="pl-h">{{ h1 }}</h1>{%- endunless -%}
       <form class="pl-search" action="{{ routes.search_url }}" method="get" role="search">
         <label for="pl-q"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72 72.08 72.08 0 0 1-72-72Z"/></svg>{{ t_search }}</label>
         <input id="pl-q" type="search" name="q" placeholder="{{ 'echo.main_collection.search_placeholder' | t | escape }}" autocomplete="off">
         <button type="submit" aria-label="{{ t_search | escape }}"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
       </form>
     </div>
-    {%- if intro != blank and collection.handle != 'all' -%}<p class="pl-intro">{{ intro }}</p>{%- endif -%}
+    {%- if intro != blank and collection.handle != 'all' and section.settings.hide_heading != true -%}<p class="pl-intro">{{ intro }}</p>{%- endif -%}
     <nav class="pl-tabs" aria-label="{{ 'echo.common.shop' | t | escape }}">
       <a href="{{ routes.all_products_collection_url }}"{% if cur_tab == 'all' %} aria-current="page"{% endif %}>{{ 'echo.common.shop_all' | t }}</a>
       <a href="{{ u_tab_blankets }}"{% if cur_tab == 'blankets' %} aria-current="page"{% endif %}>{{ 'echo.common.blankets' | t }}</a>
@@ -300,6 +300,7 @@
     ], "default": "all", "info": "Lets the page work on /collections/all without creating collections." },
     { "type": "product_list", "id": "picks", "label": "Picked products", "limit": 50 },
     { "type": "text", "id": "crumb", "label": "Breadcrumb name", "info": "Empty = collection title" },
+    { "type": "checkbox", "id": "hide_heading", "label": "Hide heading and intro", "default": false, "info": "Use when a banner above already shows the page title." },
     { "type": "text", "id": "h1", "label": "Page heading", "info": "Empty = collection title" },
     { "type": "textarea", "id": "intro", "label": "Intro", "info": "Empty = collection description" },
     { "type": "range", "id": "pad_top", "label": "Space above", "min": 0, "max": 160, "step": 10, "default": 80, "unit": "px" },
