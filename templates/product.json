@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
@@ -7,33 +16,13 @@
     },
     "passport": {
       "type": "echo-product-passport",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     },
     "qa": {
       "type": "echo-product-faq-reviews",
       "settings": {},
       "blocks": {
-        "q_1": {
-          "type": "q",
-          "settings": {
-            "q": "What do you mean by leftover yarn?",
-            "a": "<p>Premium, unused yarn left over from earlier production runs for fashion brands. It is not waste and not used fibre. It is high-quality yarn that was never worn or used, simply left in limited quantities.</p>"
-          }
-        },
-        "q_2": {
-          "type": "q",
-          "settings": {
-            "q": "Does leftover yarn mean lower quality?",
-            "a": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>"
-          }
-        },
-        "q_3": {
-          "type": "q",
-          "settings": {
-            "q": "Will items be restocked?",
-            "a": "<p>Some items may return in a new colourway or updated design, but once sold out they are not restocked exactly the same. If a piece speaks to you, it may be best to make it yours while it is available.</p>"
-          }
-        },
         "review_4": {
           "type": "review",
           "settings": {
@@ -47,19 +36,49 @@
             "quote": "Got the black and white pup cushion cover. It’s super cute, and thicker than I thought, which is good!",
             "name": "Aneta"
           }
+        },
+        "q_f1": {
+          "type": "q",
+          "settings": {
+            "q": "Can I choose a specific product number?",
+            "a": "<p>Even though each piece is numbered by us during production, our fulfillment partner manages the final dispatch. Because of this, we aren't able to reserve or accept requests for a specific product number.</p>"
+          }
+        },
+        "q_f2": {
+          "type": "q",
+          "settings": {
+            "q": "Can you share which fashion houses the yarn come from?",
+            "a": "<p>[Answer to confirm.]</p>"
+          }
+        },
+        "q_f3": {
+          "type": "q",
+          "settings": {
+            "q": "What happens if I lose my Yarn Passport?",
+            "a": "<p>[Answer to confirm.]</p>"
+          }
+        },
+        "q_f4": {
+          "type": "q",
+          "settings": {
+            "q": "Do all products have a passport?",
+            "a": "<p>Yes. Every blanket, cushion cover, bag and accessory has one. Gift cards do not.</p>"
+          }
         }
       },
       "block_order": [
-        "q_1",
-        "q_2",
-        "q_3",
+        "q_f1",
+        "q_f2",
+        "q_f3",
+        "q_f4",
         "review_4",
         "review_5"
       ]
     },
     "related": {
       "type": "echo-product-related",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     },
     "factory": {
       "type": "echo-split",
@@ -67,21 +86,49 @@
         "hide_on_gift": true,
         "media_first": true,
         "gap": 12,
-        "eyebrow": "From the factory",
-        "heading": "Made where it was always made",
-        "caption": "Knitted in our family factory, on the machines that made it for fashion brands.",
-        "btn1_label": "Meet the people",
+        "eyebrow": "",
+        "heading": "Made From Luxury Materials By Luxury Knitwear Makers",
+        "caption": "Discover how our family-owned luxury knitwear factory turn fashion houses' yarn surplus into cozy pieces for your home.",
+        "btn1_label": "Read our story",
         "btn1_link": "echo:story",
-        "label": "15 sec clip: this design on the knitting machine, from the factory shoot",
-        "ar": "16/9"
+        "ar": "519/560",
+        "img_thread": "none",
+        "photo": "echo-fg-pdp-factory.jpg",
+        "panel": "blush",
+        "alt": "Hands on a grey knit at the factory",
+        "icon": true,
+        "rule": true
+      }
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 20,
+        "space_below": 20
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png"
       }
     }
   },
   "order": [
     "main",
-    "passport",
     "qa",
-    "related",
-    "factory"
+    "factory",
+    "illustration",
+    "club",
+    "passport",
+    "related"
   ]
 }

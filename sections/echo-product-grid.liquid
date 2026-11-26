@@ -18,12 +18,9 @@
   .pg-sec .card .meta .name{order:0;color:#7C7E64}
   .pg-sec .card .meta .ed{order:1}
   .pg-sec .card .meta>span:not([class]){order:2}
-  .pg-thread{display:none;position:absolute;left:0;top:-162px;height:502px;width:auto;max-width:none;pointer-events:none;z-index:1}
-  @media(min-width:900px){.pg-thread{display:block}}
-  .section:has(>.pg-thread){overflow-x:clip}
 </style>
 <section class="section pg-sec {{ section.settings.spacing }} {{ section.settings.bg }}">
-  {%- if section.settings.show_thread -%}<img class="pg-thread" src="{{ 'echo-thread-latestdesign.png' | asset_url }}" alt="" width="449" height="755" loading="lazy">{%- endif -%}
+  {%- if section.settings.show_thread -%}{%- render 'echo-thread', shape: 'swirl', x: -129, y: -116, w: 427, cap: true, mx: -70, my: -56, mw: 180 -%}{%- endif -%}
   <div class="wrap stack" style="gap:20px">
     <div class="pg-head{% unless section.settings.link_inline or section.settings.carousel %} apart{% endunless %}">
       <div class="pg-left"><h2 class="h2">{{ section.settings.heading }}</h2>{% if section.settings.link_label != blank %}<a class="link{% if section.settings.link_inline or section.settings.carousel %} arrow{% endif %}" href="{% if section.settings.link != blank %}{{ section.settings.link }}{% else %}{% render 'echo-url', key: 'shop-all' %}{% endif %}">{{ section.settings.link_label }}</a>{% endif %}</div>

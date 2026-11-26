@@ -2,7 +2,21 @@
 {%- comment -%} Text + media side by side. The most used layout in the design. {%- endcomment -%}
 {%- capture media -%}
   {%- render 'echo-media', video: section.settings.video, image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.label, ar: section.settings.ar, eager: section.settings.heading_tag -%}
+  {%- case section.settings.img_thread -%}
+    {%- when 'loop' -%}{%- assign th_shape = 'loop' -%}{%- assign th_x = -70 -%}{%- assign th_y = 280 -%}{%- assign th_w = 373 -%}{%- assign th_W = 680 -%}{%- assign th_blue = false -%}
+    {%- when 'loop_pdp' -%}{%- assign th_shape = 'loop' -%}{%- assign th_x = -161 -%}{%- assign th_y = 280 -%}{%- assign th_w = 373 -%}{%- assign th_W = 519 -%}{%- assign th_blue = false -%}
+    {%- when 'gift' -%}{%- assign th_shape = 'gift' -%}{%- assign th_x = 487 -%}{%- assign th_y = -259 -%}{%- assign th_w = 463 -%}{%- assign th_W = 810 -%}{%- assign th_blue = true -%}
+  {%- endcase -%}
 {%- endcapture -%}
+{%- if section.settings.img_thread != 'none' and section.settings.img_thread != blank -%}
+  {%- capture media -%}
+    <div class="ethr-host">
+      {%- if th_blue -%}{%- render 'echo-thread', shape: th_shape, x: th_x, y: th_y, w: th_w, W: th_W -%}{%- endif -%}
+      {{ media }}
+      <div class="ethr-clip">{%- render 'echo-thread', shape: th_shape, x: th_x, y: th_y, w: th_w, W: th_W, color: '#fff' -%}</div>
+    </div>
+  {%- endcapture -%}
+{%- endif -%}
 {%- capture text -%}
   <div class="stack" style="gap:{{ section.settings.gap }}px">
     {%- if section.settings.eyebrow != blank -%}<span class="mono">{{ section.settings.eyebrow }}</span>{%- endif -%}
@@ -42,6 +56,7 @@
     {%- if section.settings.badges != blank -%}
       <div class="certrow">{%- assign badge_keys = section.settings.badges | split: ',' -%}{%- for bk in badge_keys -%}{%- assign bk_key = bk | strip -%}{%- render 'echo-cert-logo', k: bk_key, h: 44 -%}{%- endfor -%}</div>
     {%- endif -%}
+    {%- if section.settings.rule -%}<hr class="split-rule">{%- endif -%}
     {%- if section.settings.btn1_label != blank or section.settings.btn2_label != blank -%}
       <div{% if section.settings.btn1_label != blank and section.settings.btn2_label != blank %} class="row"{% endif %}>
         {%- if section.settings.btn1_label != blank -%}<a class="btn{% if section.settings.btn1_ghost %} ghost{% endif %}" href="{{ section.settings.btn1_link }}">{{ section.settings.btn1_label }}</a>{%- endif -%}
@@ -53,6 +68,7 @@
 <style>
   .echo-points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--line,rgba(0,0,0,.15));padding-top:14px}
   .echo-points b{display:block;font-size:14px;margin-bottom:4px}.echo-points p{margin:0;font-size:13px;line-height:1.5}
+  .split-rule{border:0;border-top:1px solid #ABA499;margin:12px 0;width:100%}
   .echo-quote{font:500 italic 21px/1.5 var(--display)}
   .echo-statline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);padding:10px 12px;font-size:13px}
   .echo-stat-n{font:600 17px/1 var(--display)}
@@ -62,7 +78,7 @@
 {%- unless section.settings.hide_on_gift and product.gift_card? -%}
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}"{% if section.settings.focus != blank %} style="--focus:{{ section.settings.focus }}"{% endif %}>
   {%- if section.settings.outer_heading != blank -%}<div class="wrap" style="margin-bottom:28px"><h2 class="h2">{{ section.settings.outer_heading }}</h2></div>{%- endif -%}
-  {%- if section.settings.thread -%}<img class="split-thread" src="{{ 'echo-thread-ourstory.png' | asset_url }}" alt="" width="706" height="1494" loading="lazy">{%- endif -%}
+  {%- if section.settings.thread -%}{%- render 'echo-thread', shape: 'long', side: 'r', x: -14, y: -182, w: 366, cap: true, z: 3, mx: -24, my: -90, mw: 150 -%}{%- endif -%}
   {%- if section.settings.icon -%}<img class="split-ico" src="{{ 'echo-yarnknitting-ourstory.png' | asset_url }}" alt="" width="109" height="120" loading="lazy">{%- endif -%}
   <div class="wrap split{% if section.settings.rev %} rev{% endif %}{% if section.settings.panel != 'none' %} panel panel-{{ section.settings.panel }}{% if section.settings.media_first %} mf{% endif %}{% endif %}"{% if section.settings.top %} style="align-items:start"{% endif %}>
     {%- if section.settings.media_first -%}{{ media }}{{ text }}{%- else -%}{{ text }}{{ media }}{%- endif -%}
@@ -96,6 +112,7 @@
     { "type": "textarea", "id": "chips", "label": "Link chips", "info": "One per line: Label::link. For example: Yarn tracker::/pages/tracker" },
     { "type": "text", "id": "badges", "label": "Certificate badges", "info": "Comma separated: bsci, ocs, rcs" },
     { "type": "select", "id": "points_style", "label": "Point blocks layout", "options": [{"value": "cols3", "label": "Three columns, small titles"}, {"value": "years", "label": "Two columns, large titles (years)"}], "default": "cols3" },
+    { "type": "checkbox", "id": "rule", "label": "Line above the buttons", "default": false },
     { "type": "text", "id": "btn1_label", "label": "Button 1" },
     { "type": "text", "id": "btn1_link", "label": "Button 1 link" },
     { "type": "checkbox", "id": "btn1_ghost", "label": "Button 1 outlined", "default": true },
@@ -105,10 +122,16 @@
     { "type": "header", "content": "Media" },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "video", "id": "video", "label": "Video (plays muted, looped)" },
-    { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-ming-portrait.jpg", "label": "Ming at the factory, portrait"}, {"value": "echo-v2-hero.jpg", "label": "New design: yarn cones hero"}, {"value": "echo-v2-process.jpg", "label": "New design: yarn label process"}, {"value": "echo-v2-tile-blankets.jpg", "label": "New design: blanket on sofa"}, {"value": "echo-v2-tile-cushions.jpg", "label": "New design: cushion on sofa"}, {"value": "echo-v2-tile-bags.jpg", "label": "New design: bag on side table"}, {"value": "echo-v2-tile-accessories.jpg", "label": "New design: beanie, portrait"}, {"value": "echo-v2-story.jpg", "label": "New design: Ming at the factory (b/w)"}, {"value": "echo-v2-review-1.jpg", "label": "New design: customer, blue blanket"}, {"value": "echo-v2-review-2.jpg", "label": "New design: customer, grey blanket"}, {"value": "echo-v2-gift.jpg", "label": "New design: gift box with yarn"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
+    { "type": "select", "id": "photo", "label": "Bundled photo", "options": [{"value": "none", "label": "None (show placeholder)"}, {"value": "echo-our-story.mp4", "label": "Video: Our Story (home page mockup)"}, {"value": "echo-fg-pdp-factory.jpg", "label": "Figma: hands on grey knit"}, {"value": "echo-ming-portrait.jpg", "label": "Ming at the factory, portrait"}, {"value": "echo-v2-hero.jpg", "label": "New design: yarn cones hero"}, {"value": "echo-v2-process.jpg", "label": "New design: yarn label process"}, {"value": "echo-v2-tile-blankets.jpg", "label": "New design: blanket on sofa"}, {"value": "echo-v2-tile-cushions.jpg", "label": "New design: cushion on sofa"}, {"value": "echo-v2-tile-bags.jpg", "label": "New design: bag on side table"}, {"value": "echo-v2-tile-accessories.jpg", "label": "New design: beanie, portrait"}, {"value": "echo-v2-story.jpg", "label": "New design: Ming at the factory (b/w)"}, {"value": "echo-v2-review-1.jpg", "label": "New design: customer, blue blanket"}, {"value": "echo-v2-review-2.jpg", "label": "New design: customer, grey blanket"}, {"value": "echo-v2-gift.jpg", "label": "New design: gift box with yarn"}, {"value": "echo-twister-outdoor.jpg", "label": "Twister Rope, outdoor lounger"}, {"value": "echo-twister-doe.jpg", "label": "Twister Rope, doe"}, {"value": "echo-twister-sofa-small.jpg", "label": "Twister Rope, cable close-up"}, {"value": "echo-twister-chair.jpg", "label": "Twister Rope, chair"}, {"value": "echo-hills-valleys-green.jpg", "label": "Hills & Valleys, green"}, {"value": "echo-hv-cushion-oat.jpg", "label": "Hills & Valleys cushion, oat"}, {"value": "echo-cushion-brown.jpg", "label": "Cushion cover on sofa"}, {"value": "echo-carousel-violet.jpg", "label": "Carousel Stripes, violet"}, {"value": "echo-rollercoaster-black.jpg", "label": "Rollercoaster Tracks, black"}, {"value": "echo-happy-sunshine-mauve.jpg", "label": "Happy Sunshine, mauve"}, {"value": "echo-puff-friends.jpg", "label": "Puff Friends cushion"}, {"value": "echo-bag-cable.jpg", "label": "Cable Rope tote"}, {"value": "echo-acc-scarf.jpg", "label": "Rainbow Crossing scarf"}, {"value": "echo-beanie-pink.jpg", "label": "Pompom beanie, pink"}], "default": "none" },
     { "type": "text", "id": "alt", "label": "Image description" },
     { "type": "checkbox", "id": "icon", "label": "Yarn and knitting icon in the bottom-right corner of the panel", "default": false },
     { "type": "checkbox", "id": "thread", "label": "Blue thread at the right edge of the page", "default": false },
+    { "type": "select", "id": "img_thread", "label": "Thread line on the photo", "default": "none", "options": [
+      { "value": "none", "label": "None" },
+      { "value": "loop", "label": "White loop (home: Our story)" },
+      { "value": "loop_pdp", "label": "White loop (product page: Our story)" },
+      { "value": "gift", "label": "Blue and white thread (gift with a story)" }
+    ] },
     { "type": "text", "id": "focus", "label": "Photo focus (CSS position)", "info": "Which part of the photo stays visible when it is cropped, for example 70% 60% = right and a little below centre. 50% 50% = centred.", "default": "50% 50%" },
     { "type": "textarea", "id": "label", "label": "Placeholder text (shown until media is added)", "default": "20 sec loop: Ming and the family on the factory floor, faces visible." },
     { "type": "text", "id": "ar", "label": "Media shape (aspect ratio)", "default": "4/3" },

@@ -1,37 +1,32 @@
 /*
  * ------------------------------------------------------------
-  * IMPORTANT: The contents of this file are auto-generated.
+ * IMPORTANT: The contents of this file are auto-generated.
  *
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-/* Re-import 5 · 5 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
     "crumbs": {
       "type": "echo-breadcrumbs",
       "settings": {
+        "p1_label": "",
+        "p1_link": "",
+        "p2_label": "",
+        "p2_link": "",
         "current": "About Us"
       }
     },
     "hero": {
       "type": "echo-about-hero",
-      "settings": {
-        "bg": "paper",
-        "heading": "New vision for a 80-year family legacy",
-        "lead": "With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home.",
-        "logo_file": "echo-stat-logo.png",
-        "strip_label": "Photos of the factory and the family",
-        "autoplay": true,
-        "interval": 5
-      },
       "blocks": {
         "photo_1": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel1.png",
             "file": "echo-ming-portrait.jpg",
             "alt": "Ming at the factory"
           }
@@ -39,6 +34,7 @@
         "photo_2": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel2.png",
             "file": "echo-v2-story.jpg",
             "alt": "Ming and a colleague going through yarn samples"
           }
@@ -46,6 +42,7 @@
         "photo_3": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel3.png",
             "file": "echo-v2-process.jpg",
             "alt": "A JM Group yarn label on a knitted fair-isle piece"
           }
@@ -53,6 +50,7 @@
         "photo_4": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel4.png",
             "file": "echo-v2-tile-blankets.jpg",
             "alt": "A knitted blanket on a sofa"
           }
@@ -60,22 +58,25 @@
         "photo_5": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel5.png",
             "file": "echo-v2-tile-cushions.jpg",
             "alt": "A knitted cushion cover on a sofa"
+          }
+        },
+        "photo_d8jFnh": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/carousel6.png",
+            "file": "",
+            "alt": ""
           }
         },
         "photo_6": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/carousel7.png",
             "file": "echo-v2-tile-bags.jpg",
             "alt": "A knitted bag on a side table"
-          }
-        },
-        "photo_7": {
-          "type": "photo",
-          "settings": {
-            "file": "echo-v2-tile-accessories.jpg",
-            "alt": "A knitted beanie"
           }
         }
       },
@@ -85,22 +86,21 @@
         "photo_3",
         "photo_4",
         "photo_5",
-        "photo_6",
-        "photo_7"
-      ]
+        "photo_d8jFnh",
+        "photo_6"
+      ],
+      "settings": {
+        "bg": "paper",
+        "heading": "New vision for a 80-year family legacy",
+        "lead": "With over 80-year of experience knitting for luxury fashion houses, we created EchoByJMG with one simple goal: to rescue the pristine surplus yarn left behind by fashion labels and reimagine it into cozy pieces for your home.",
+        "logo_file": "echo-stat-logo.png",
+        "autoplay": true,
+        "interval": 5,
+        "strip_label": "Photos of the factory and the family"
+      }
     },
     "letter": {
       "type": "echo-letter",
-      "settings": {
-        "spacing": "normal",
-        "bg": "paper",
-        "heading": "Letter From Our Founders",
-        "letter": "“Knitting has been part of my family for generations. What began with my grandfather's knitting factory in 1946 has grown into decades of craftsmanship and a deep appreciation for beautiful yarns.\n\nOver the years, I've seen extraordinary materials left behind after production; beautiful, high-quality yarns that still have so much potential. I couldn't help thinking: surely, they deserve more than to be forgotten?\n\nThat thought became EchoByJMG. A brand born from my passion for giving beautiful yarns a new purpose, transforming what was once overlooked into something meaningful, playful and made to be loved.”",
-        "caption": "Ming, Founder of EchoByJMG",
-        "photo": "echo-ming-portrait.jpg",
-        "alt": "Ming, founder of EchoByJMG",
-        "icon_file": "echo-yarnknitting-ourstory.png"
-      },
       "blocks": {
         "m1": {
           "type": "milestone",
@@ -128,7 +128,20 @@
         "m1",
         "m2",
         "m3"
-      ]
+      ],
+      "settings": {
+        "show_thread": true,
+        "spacing": "normal",
+        "bg": "paper",
+        "heading": "Letter From Our Founders",
+        "heading_align": "right",
+        "letter": "“Knitting has been part of my family for generations. What began with my grandfather's knitting factory in 1946 has grown into decades of craftsmanship and a deep appreciation for beautiful yarns.\n\nOver the years, I've seen extraordinary materials left behind after production; beautiful, high-quality yarns that still have so much potential. I couldn't help thinking: surely, they deserve more than to be forgotten?\n\nThat thought became EchoByJMG. A brand born from my passion for giving beautiful yarns a new purpose, transforming what was once overlooked into something meaningful, playful and made to be loved.”",
+        "caption": "Ming, Founder of EchoByJMG",
+        "image": "shopify://shop_images/letter_from_our_founder.png",
+        "photo": "echo-ming-portrait.jpg",
+        "alt": "Ming, founder of EchoByJMG",
+        "icon_file": "echo-yarnknitting-ourstory.png"
+      }
     },
     "marquee": {
       "type": "echo-marquee",
@@ -146,7 +159,7 @@
           "type": "step",
           "settings": {
             "title": "Luxury yarn goes unused",
-            "text": "Inside our own factory, we see dozens of kilograms of quality yarn left behind by fashion houses every season.",
+            "text": "From the floor of our family factory, we watch fashion houses leave behind beautiful, premium yarn at the end of every season.",
             "link_word": "",
             "link": ""
           }
@@ -181,7 +194,8 @@
         "show_thread": true,
         "show_icon": true,
         "anchor": "how",
-        "heading": "The EchoByJMG Process",
+        "heading": "How It Works",
+        "image": "shopify://shop_images/how-it-works-yarn-image.png",
         "photo": "echo-v2-hero.jpg",
         "alt": "Cones of yarn in many colours",
         "overlay": "",
@@ -190,13 +204,6 @@
     },
     "tracker": {
       "type": "echo-tracker-band",
-      "settings": {
-        "spacing": "normal",
-        "heading": "Our Rescue Journey, In Numbers",
-        "btn_label": "Open tracker",
-        "btn_link": "echo:tracker",
-        "log_label": "Latest batches"
-      },
       "blocks": {
         "stat_1": {
           "type": "stat",
@@ -217,7 +224,7 @@
         "stat_3": {
           "type": "stat",
           "settings": {
-            "n": "738",
+            "n": "{pieces}",
             "text": "Numbered pieces",
             "icon_file": "echo-stat-knit.png"
           }
@@ -225,7 +232,7 @@
         "stat_4": {
           "type": "stat",
           "settings": {
-            "n": "26",
+            "n": "{open}",
             "text": "Available designs",
             "icon_file": "echo-stat-pillows.png"
           }
@@ -266,11 +273,20 @@
         "batch_1",
         "batch_2",
         "batch_3"
-      ]
+      ],
+      "settings": {
+        "spacing": "normal",
+        "eyebrow": "03 · Rescued yarn tracker",
+        "heading": "Our Rescue Journey, In Numbers",
+        "btn_label": "Open tracker",
+        "btn_link": "echo:tracker",
+        "log_label": "Latest batches"
+      }
     },
     "track": {
       "type": "echo-feature",
       "settings": {
+        "show_thread": false,
         "spacing": "normal",
         "bg": "paper",
         "media_side": "right",
@@ -284,13 +300,18 @@
         "btn_link": "echo:passport",
         "icon_file": "echo-yarnknitting-ourstory.png",
         "ar": "787/443",
+        "image": "shopify://shop_images/passport-yarn.png",
+        "clear_bg": true,
         "photo": "echo-v2-process.jpg",
-        "alt": "A JM Group yarn label lying on a knitted fair-isle piece"
+        "alt": "A JM Group yarn label lying on a knitted fair-isle piece",
+        "photo2": "",
+        "alt2": ""
       }
     },
     "factory": {
       "type": "echo-feature",
       "settings": {
+        "show_thread": true,
         "spacing": "normal",
         "bg": "paper",
         "media_side": "left",
@@ -304,14 +325,117 @@
         "btn_link": "echo:factory",
         "icon_file": "",
         "ar": "302/480",
+        "image": "shopify://shop_images/Screenshot_2026-11-25_at_15.04.03.png",
+        "clear_bg": false,
         "photo": "echo-v2-story.jpg",
         "alt": "The knitting hall",
+        "image2": "shopify://shop_images/Image.png",
         "photo2": "echo-v2-tile-blankets.jpg",
         "alt2": "Finished blankets"
       }
     },
     "stories": {
       "type": "echo-clips",
+      "blocks": {
+        "clip_1": {
+          "type": "clip",
+          "settings": {
+            "time": "07:32",
+            "title": "From left over yarn",
+            "text": "The knitting machines warm up before the first shift.",
+            "duration": "0:27",
+            "by": "Filmed by [name], Knitting hall",
+            "file": "echo-clip-1.mp4",
+            "placeholder": "Phone clip\nMorning start-up"
+          }
+        },
+        "clip_2": {
+          "type": "clip",
+          "settings": {
+            "time": "08:10",
+            "title": "Cones off the shelf",
+            "text": "Leftover lambswool pulled for batch HV-2417.",
+            "duration": "0:22",
+            "by": "Filmed by [name], Yarn store",
+            "file": "echo-clip-2.mp4",
+            "placeholder": "Phone clip\nCones off the shelf"
+          }
+        },
+        "clip_3": {
+          "type": "clip",
+          "settings": {
+            "time": "10:45",
+            "title": "Linking by hand",
+            "text": "Closing the seams of a cushion cover, stitch by stitch.",
+            "duration": "0:28",
+            "by": "Filmed by [name], Linking table",
+            "file": "echo-clip-3.mp4",
+            "placeholder": "Phone clip\nLinking by hand"
+          }
+        },
+        "clip_4": {
+          "type": "clip",
+          "settings": {
+            "time": "13:20",
+            "title": "Select Pompoms",
+            "text": "Trimming pompoms for the joyful beanie.",
+            "duration": "0:28",
+            "by": "Filmed by [name], Finishing",
+            "file": "echo-clip-4.mp4",
+            "placeholder": "Phone clip\nPompoms"
+          }
+        },
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "kind": "From the factory",
+            "title": "A morning on the factory floor",
+            "dek": "Short film and photos from the knitting hall. [From the summer shoot.]",
+            "link": "echo:journal",
+            "photo_file": "echo-fg-journal-1.jpg"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "kind": "Guide",
+            "title": "What is leftover yarn?",
+            "dek": "Unused yarn left after fashion production, and why it is not recycled fibre.",
+            "link": "echo:journal",
+            "photo_file": "echo-fg-journal-2.jpg"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "kind": "Guide",
+            "title": "How to choose a knitted blanket",
+            "dek": "Size, weight and yarn, and which one suits a sofa, a bed or a reading chair.",
+            "link": "echo:journal/how-to-choose-a-knitted-blanket",
+            "photo_file": "echo-fg-journal-3.jpg"
+          }
+        },
+        "card_fg4": {
+          "type": "card",
+          "settings": {
+            "kind": "Guide",
+            "title": "How to wash a lambswool blanket",
+            "dek": "Cold water, no wringing and a flat surface to dry.",
+            "link": "echo:journal/how-to-choose-a-knitted-blanket",
+            "photo_file": "echo-fg-journal-4.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "clip_1",
+        "clip_2",
+        "clip_3",
+        "clip_4",
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_fg4"
+      ],
       "settings": {
         "spacing": "normal",
         "bg": "paper",
@@ -323,93 +447,7 @@
         "text": "See our behind-the-scene as it is, with raw, unfiltered footages and honest stories shared by the very people who make your pieces.",
         "note": "",
         "cards_label": "Journals"
-      },
-      "blocks": {
-        "clip_1": {
-          "type": "clip",
-          "settings": {
-            "time": "07:32",
-            "title": "From left over yarn",
-            "text": "The knitting machines warm up before the first shift.",
-            "duration": "0:14",
-            "by": "Filmed by [name], Knitting hall",
-            "placeholder": "Phone clip\nMorning start-up",
-            "file": "echo-clip-1.mp4"
-          }
-        },
-        "clip_2": {
-          "type": "clip",
-          "settings": {
-            "time": "08:10",
-            "title": "Cones off the shelf",
-            "text": "Leftover lambswool pulled for batch HV-2417.",
-            "duration": "0:14",
-            "by": "Filmed by [name], Yarn store",
-            "placeholder": "Phone clip\nCones off the shelf",
-            "file": "echo-clip-2.mp4"
-          }
-        },
-        "clip_3": {
-          "type": "clip",
-          "settings": {
-            "time": "10:45",
-            "title": "Linking by hand",
-            "text": "Closing the seams of a cushion cover, stitch by stitch.",
-            "duration": "0:14",
-            "by": "Filmed by [name], Linking table",
-            "placeholder": "Phone clip\nLinking by hand",
-            "file": "echo-clip-3.mp4"
-          }
-        },
-        "clip_4": {
-          "type": "clip",
-          "settings": {
-            "time": "13:20",
-            "title": "Select Pompoms",
-            "text": "Trimming pompoms for the joyful beanie.",
-            "duration": "0:14",
-            "by": "Filmed by [name], Finishing",
-            "placeholder": "Phone clip\nPompoms",
-            "file": "echo-clip-4.mp4"
-          }
-        },
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "kind": "From the factory",
-            "title": "A morning on the factory floor",
-            "dek": "Short film and photos from the knitting hall. [From the summer shoot.]",
-            "link": "echo:journal"
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "kind": "Guide",
-            "title": "What is leftover yarn?",
-            "dek": "Unused yarn left after fashion production, and why it is not recycled fibre.",
-            "link": "echo:journal"
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "kind": "Guide",
-            "title": "How to choose a knitted blanket",
-            "dek": "Size, weight and yarn, and which one suits a sofa, a bed or a reading chair.",
-            "link": "echo:journal/how-to-choose-a-knitted-blanket"
-          }
-        }
-      },
-      "block_order": [
-        "clip_1",
-        "clip_2",
-        "clip_3",
-        "clip_4",
-        "card_1",
-        "card_2",
-        "card_3"
-      ]
+      }
     },
     "illustration": {
       "type": "echo-illustration",
@@ -427,6 +465,7 @@
         "heading": "Join the Cozy Club",
         "text": "Get 10% off your first order, and be the first to hear about our new designs!",
         "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
       }

@@ -40,12 +40,37 @@
   .cl-cap small{font-size:12px;letter-spacing:.02em;color:rgba(255,255,255,.62)}
   .cl-bar{height:3px;border-radius:2px;background:var(--line);overflow:hidden}
   .cl-bar i{display:block;height:100%;width:30%;background:var(--wine);border-radius:2px;transition:width .15s linear}
-  .cl-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .cl-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media (min-width:1100px){.cl-cards{grid-template-columns:repeat(4,1fr);gap:24px}}
   .cl-dlg{border:0;padding:0;background:transparent;max-width:min(94vw,520px);width:100%;overflow:visible}
   .cl-dlg::backdrop{background:rgba(20,8,12,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
   .cl-dlg video{display:block;width:100%;max-height:88vh;border-radius:22px;background:#000;margin:auto}
   .cl-dlg button{position:absolute;right:-6px;top:-52px;height:40px;padding:0 16px;border-radius:20px;border:0;background:rgba(255,255,255,.16);color:#fff;font:600 12px var(--body);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
   @media (max-width:749px){.cl-cards{grid-template-columns:1fr}.cl-card{flex-basis:76vw}.cl-arrows{display:none}.cl-play{width:58px;height:58px;margin:-29px 0 0 -29px}}
+  /* Figma: line + round arrows, four 302px film cards that fill the width, no fade, no progress bar */
+  .cl-ctrl{display:flex;align-items:center;gap:24px}
+  .cl-ctrl .cl-rule{flex:1;height:0;border-top:1px solid #ABA499}
+  .cl-ctrl .cl-tools{gap:0}
+  .cl-arrows{gap:24px}
+  .cl-arrows button{width:50px;height:50px;border:1px solid var(--wine);background:transparent;color:var(--wine)}
+  .cl-arrows button:hover:not(:disabled){background:var(--wine);color:var(--pink);border-color:var(--wine)}
+  .cl-arrows button:disabled{opacity:1;border-color:#ABA499;color:#ABA499}
+  .cl-row{gap:24px;padding:0;-webkit-mask-image:none;mask-image:none;scroll-padding-inline:0}
+  .cl-card{flex:0 0 calc((100% - 72px) / 4)}
+  .cl-frame{border-radius:24px;border:2px solid #7C7E64;aspect-ratio:302/537;box-shadow:none}
+  .cl-frame:hover,.cl-frame:focus-visible{transform:none;box-shadow:none}
+  .cl-media,.cl-frame.on .cl-media{filter:none}
+  .cl-frame::after{background:linear-gradient(180deg,transparent calc(100% - 240px),#000 100%)}
+  .cl-cap{padding:24px;gap:8px}
+  .cl-cap strong{font:400 24px/1.2 var(--display)}
+  .cl-cap span{font-size:14px;color:#fff;line-height:1.3}
+  .cl-meta{display:flex;gap:8px;align-items:center}
+  .cl-meta small{flex:1;min-width:0;font-size:12px;letter-spacing:.01em;color:#ABA499;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cl-meta em{font:600 10px/10px var(--body);font-style:normal;background:rgba(0,0,0,.5);border-radius:3px;padding:2px 6px;color:#fff}
+  .cl-cap strong{font:400 24px/1.2 var(--display)}
+  .cl-bar{display:none}
+  @media(max-width:899px){.cl-card{flex:0 0 calc((100% - 24px) / 2)}}
+  @media(max-width:749px){.cl-card{flex:0 0 76vw}.cl-ctrl .cl-rule{display:none}.cl-ctrl{justify-content:flex-end}}
   @media (prefers-reduced-motion:reduce){.cl-frame,.cl-play{transition:none}.cl-pill i{animation:none}}
 </style>
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}" id="clips-{{ section.id }}">
@@ -62,11 +87,10 @@
         {%- if section.settings.kicker != blank -%}<span class="mono">{{ section.settings.kicker }}</span>{%- endif -%}
         {%- if section.settings.text != blank -%}<p class="lead" style="margin:0">{{ section.settings.text }}</p>{%- endif -%}
       </div>
-      {%- if clips.size > 0 -%}
-        <div class="cl-tools">{{ section.settings.note }}<span class="cl-arrows"><button type="button" data-dir="-1" aria-label="{{ 'echo.clips.previous_clips' | t | escape }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" data-dir="1" aria-label="{{ 'echo.clips.next_clips' | t | escape }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></span></div>
-      {%- endif -%}
+
     </div>
     {%- if clips.size > 0 -%}
+      <div class="cl-ctrl"><span class="cl-rule" aria-hidden="true"></span><div class="cl-tools">{{ section.settings.note }}<span class="cl-arrows"><button type="button" data-dir="-1" aria-label="{{ 'echo.clips.previous_clips' | t | escape }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" data-dir="1" aria-label="{{ 'echo.clips.next_clips' | t | escape }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></span></div></div>
       {%- assign grads = '#380F1C,#4B5233,#7A4A3A,#8A5C6E,#2F3A44' | split: ',' -%}
       <div class="cl-row" data-row>
         {%- for b in clips -%}
@@ -88,14 +112,11 @@
               <div class="cl-media"{% if vposter != blank %} style="background-image:url('{{ vposter }}')"{% endif %}>
                 {%- if b.settings.video != blank -%}{{ b.settings.video | video_tag: image_size: '600x', controls: false, muted: true, loop: true, playsinline: true, preload: 'none' }}{%- elsif b.settings.file != blank -%}<video src="{{ vsrc }}" muted loop playsinline preload="none"></video>{%- else -%}<div class="cl-ph"><span>{{ b.settings.placeholder }}</span></div>{%- endif -%}
               </div>
-              <div class="cl-top"><span class="cl-pill"><i></i>REC{% if b.settings.time != blank %} · {{ b.settings.time }}{% endif %}</span>{% if b.settings.duration != blank %}<span class="cl-pill">{{ b.settings.duration }}</span>{% endif %}</div>
-              <span class="cl-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
-              <div class="cl-cap"><strong>{{ b.settings.title }}</strong><span>{{ b.settings.text }}</span>{% if b.settings.by != blank %}<small>{{ b.settings.by }}</small>{% endif %}</div>
+              <div class="cl-cap"><strong>{{ b.settings.title }}</strong><span>{{ b.settings.text }}</span><div class="cl-meta"><small>{{ b.settings.by }}</small>{% if b.settings.duration != blank %}<em>{{ b.settings.duration }}</em>{% endif %}</div></div>
             </div>
           </article>
         {%- endfor -%}
       </div>
-      <div class="cl-bar" aria-hidden="true"><i data-bar></i></div>
       <dialog class="cl-dlg" data-dlg><button type="button" data-close>{{ 'echo.clips.close' | t }}</button><video controls playsinline></video></dialog>
     {%- endif -%}
     {%- if cards.size > 0 -%}
@@ -104,7 +125,7 @@
       <div class="cl-cards">
         {%- for b in cards -%}
           <a class="card" href="{{ b.settings.link | default: '#' }}" {{ b.shopify_attributes }}>
-            {%- render 'echo-pic', image: b.settings.image, alt: b.settings.title, label: b.settings.kind, ar: '4/3' -%}
+            {%- render 'echo-pic', image: b.settings.image, asset: b.settings.photo_file, alt: b.settings.title, label: b.settings.kind, ar: '4/3' -%}
             <div class="meta"><span class="mono">{{ b.settings.kind }}</span><span class="name" style="font-size:18px">{{ b.settings.title }}</span><span class="muted">{{ b.settings.dek }}</span><span class="cl-more">{{ 'echo.clips.read_more' | t }}</span></div>
           </a>
         {%- endfor -%}
@@ -192,7 +213,8 @@
       { "type": "text", "id": "title", "label": "Title" },
       { "type": "text", "id": "dek", "label": "Text" },
       { "type": "text", "id": "link", "label": "Link", "info": "Page address or echo:story, echo:tracker, echo:journal" },
-      { "type": "image_picker", "id": "image", "label": "Image" }
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "photo_file", "label": "Bundled photo file", "info": "Used when no image is picked. File name in assets." }
     ] }
   ],
   "presets": [{ "name": "Clips (phone films)" }]
