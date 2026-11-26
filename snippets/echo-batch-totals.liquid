@@ -1,4 +1,4 @@
-{%- comment -%} Outputs "KG|COUNT" from the Yarn batch list, or the Theme settings fallbacks when the list is empty.
+{%- comment -%} Outputs "KG|COUNT" (kg rounded to a whole number) from the Yarn batch list, or the Theme settings fallbacks when the list is empty.
   This is the first paint only: assets/echo-tracker.js then recalculates the numbers from the Yarn Passport fields on the
   products (feed templates/collection.yarn-totals.liquid), with the list entries that have no products still counted.
   See snippets/echo-yarn-history.liquid. {%- endcomment -%}
@@ -10,10 +10,7 @@
       assign kgv = yb.kg.value | default: 0
       assign t = t | plus: kgv
     endfor
-    assign tr = t | round
-    if tr == t
-      assign t = tr
-    endif
+    assign t = t | round
     capture kg_fmt
       render 'echo-num', n: t
     endcapture

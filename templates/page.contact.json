@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 /* Contact: sofa spacing and Help dropdown, 25 Nov 2026 */
 {
   "layout": "echo",
@@ -17,7 +26,7 @@
           "type": "row",
           "settings": {
             "label": "Support hours",
-            "value": "[Weekdays 9 to 16 CET], in [Danish and English]",
+            "value": "Weekdays 9 to 16 CET, in Danish and English",
             "link": ""
           }
         },
@@ -39,7 +48,7 @@
         "crumb_current": "Contact",
         "heading": "Contact Us",
         "info_heading": "Our Information",
-        "lead": "Questions about a product, an order or a gift.\nWe reply within 24 hours on weekdays.",
+        "lead": "We’d love to hear from you. Whether it’s an inquiry or feedback, we personally review every message and reply within 24 hours on weekdays.",
         "ok": "Thank you. Your message is with customer support, and we reply within 24 hours.",
         "photo": "shopify://shop_images/gift-image.png",
         "photo_file": "echo-v2-gift.jpg",

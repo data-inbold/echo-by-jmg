@@ -1,10 +1,11 @@
 {%- comment -%} (Shopify section names are limited to 25 characters.) Letter from the founders: photo, long italic letter on a pink panel, and a three-step timeline underneath. {%- endcomment -%}
 {%- assign marks = section.blocks | where: 'type', 'milestone' -%}
 <style>
-  .lt-panel{display:grid;background:#E9E2DA;overflow:hidden}
+  .lt-panel{display:grid;background:#E9E2DA}
   @media(min-width:880px){.lt-panel{grid-template-columns:600fr 680fr}}
   .lt-photo{background:#fff;padding:20px;display:flex}
   .lt-photo .ph{flex:1;min-height:320px;border:0;aspect-ratio:auto!important}
+  @media(max-width:879px){.lt-photo .ph{aspect-ratio:560/674!important}}
   .lt-text{background:var(--pink);padding:clamp(28px,5vw,40px) clamp(24px,5vw,60px);display:flex;flex-direction:column;gap:24px;position:relative}
   .lt-q{font:italic 300 20px/normal var(--display);color:var(--wine)}
   .lt-q p{margin:0 0 1.4em}
@@ -23,9 +24,13 @@
 </style>
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   <div class="wrap stack" style="gap:40px">
-    {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="h2 lt-title" style="text-align:{{ section.settings.heading_align }}">{{ section.settings.heading }}</h2>{%- endif -%}
     <div class="lt-panel">
-      <div class="lt-photo">{%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Founder photo', ar: '560/674', sizes: '(min-width: 880px) 560px, 100vw' -%}</div>
+      <div class="lt-photo{% if section.settings.show_thread %} ethr-host{% endif %}">
+        {%- if section.settings.show_thread -%}<img class="ethr l" src="{{ 'echo-thread-letter-blue.png' | asset_url }}" alt="" width="642" height="626" style="--x:-177;--y:-249;--w:642;--W:600" aria-hidden="true">{%- endif -%}
+        {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Founder photo', ar: '560/674', sizes: '(min-width: 880px) 560px, 100vw' -%}
+        {%- if section.settings.show_thread -%}<div class="ethr-clip"><img class="ethr l" src="{{ 'echo-thread-letter-white.png' | asset_url }}" alt="" width="430" height="509" style="--x:210;--y:260;--w:430;--W:600" aria-hidden="true"></div>{%- endif -%}
+      </div>
       <div class="lt-text">
         <div class="lt-q">{{ section.settings.letter | newline_to_br | replace: '<br /><br />', '</p><p>' | prepend: '<p>' | append: '</p>' }}</div>
         <hr class="lt-hr">
@@ -46,9 +51,11 @@
 {
   "name": "Founder letter",
   "settings": [
+    { "type": "checkbox", "id": "show_thread", "label": "Show the thread lines around the photo", "default": true },
     { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}], "default": "paper" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Letter From Our Founders" },
+    { "type": "select", "id": "heading_align", "label": "Heading alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" }, { "value": "right", "label": "Right" }], "default": "right" },
     { "type": "textarea", "id": "letter", "label": "Letter", "info": "Leave an empty line between paragraphs." },
     { "type": "text", "id": "caption", "label": "Signature", "default": "Ming, Founder of EchoByJMG" },
     { "type": "image_picker", "id": "image", "label": "Photo" },

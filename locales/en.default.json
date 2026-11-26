@@ -129,24 +129,24 @@
     "cart": {
       "title_cart": "Your cart",
       "title_basket": "Your basket",
-      "title_bag": "Your bag",
+      "title_bag": "Your cart",
       "remove_title": "Remove {{ title }}",
       "subtotal": "Subtotal",
       "cart_total": "Cart total",
-      "bag_total": "Bag total",
+      "bag_total": "Cart total",
       "basket_total": "Basket total",
       "saved": "You saved",
       "checkout": "Checkout",
       "cart_error": "There was an error while updating your cart. Please try again.",
-      "bag_error": "There was an error while updating your bag. Please try again.",
+      "bag_error": "There was an error while updating your cart. Please try again.",
       "basket_error": "There was an error while updating your basket. Please try again.",
-      "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your bag.",
-      "bag_quantity_error_html": "You can only add {{ quantity }} of this item to your basket.",
+      "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
+      "bag_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
       "basket_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
       "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a class=\"shipping-policy-link\" href=\"{{ link }}\">shipping</a> calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a class=\"shipping-policy-link\" href=\"{{ link }}\">Shipping</a> calculated at checkout.",
-      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout.",
       "estimate": "Estimate",
       "zip": "ZIP code",
       "zip_placeholder": "Enter Zip Code",
@@ -158,7 +158,7 @@
       },
       "update": "Update",
       "quick_add_to_cart": "Quick add to cart",
-      "quick_add_to_bag": "Quick add to bag",
+      "quick_add_to_bag": "Quick add to cart",
       "quick_add_to_basket": "Quick add to basket"
     },
     "featured_blog": {
@@ -247,7 +247,7 @@
       "title_placeholder": "Product title",
       "description_placeholder": "Once you add a product, the description will change.",
       "add_to_cart": "Add to cart",
-      "add_to_bag": "Add to bag",
+      "add_to_bag": "Add to cart",
       "add_to_basket": "Add to basket",
       "pre_order": "Pre-order",
       "color_swatch_tag": "Color",
@@ -507,14 +507,14 @@
   "cart": {
     "title_basket": "Basket",
     "title_cart": "Cart",
-    "title_bag": "Bag",
+    "title_bag": "Cart",
     "continue_shopping": "Continue shopping",
     "empty_cart": "Your cart is empty",
-    "empty_bag": "Your bag is empty",
+    "empty_bag": "Your cart is currently empty.",
     "empty_basket": "Your basket is empty",
     "login": "Log in",
     "item_added_cart": "Item added to your cart",
-    "item_added_bag": "Item added to your bag",
+    "item_added_bag": "Item added to your cart",
     "item_added_basket": "Item added to your basket",
     "free_shipping_minimum": ""
   },
@@ -522,7 +522,7 @@
     "product": "Product",
     "products": "Products",
     "view_cart": "View cart",
-    "view_bag": "View bag",
+    "view_bag": "View cart",
     "view_basket": "View basket",
     "quantity": "Quantity"
   },
@@ -605,13 +605,13 @@
       "guide": "Guide"
     },
     "bag": {
-      "aria": "Bag, {{ count }} items",
-      "close_bag": "Close bag",
-      "could_not_add": "Could not add to bag.",
+      "aria": "Cart, {{ count }} items",
+      "close_bag": "Close cart",
+      "could_not_add": "Could not add to cart.",
       "invalid_code": "That code is not valid. Check the spelling, or contact us.",
-      "invalid_code_bag": "That code is not valid for this bag. Check the spelling, or contact us.",
-      "title": "Bag ({{ count }})",
-      "your_bag_is_empty": "Your bag is empty."
+      "invalid_code_bag": "That code is not valid for this cart. Check the spelling, or contact us.",
+      "title": "Your Cart ({{ count }})",
+      "your_bag_is_empty": "Your cart is currently empty."
     },
     "card": {
       "edition_of": "Edition of {{ total }}",
@@ -724,7 +724,7 @@
       "message": "Message",
       "message_placeholder": "Input your message here",
       "name_placeholder": "Enter your full Name",
-      "order_number_optional": "Order number (optional)",
+      "order_number_optional": "Order Number (optional)",
       "order_placeholder": "Input your order number if you have",
       "send_message": "Send message",
       "send_your_message": "Send Your Message To Us",
@@ -756,16 +756,19 @@
     "footer": {
       "about": "About",
       "bsci_compliance_read_more": "BSCI compliance, read more",
-      "company_details": "Company details",
-      "cookie_policy": "Cookie policy",
+      "company_details": "Company Details",
+      "cookie_policy": "Cookie Policy",
       "gift_card_balance": "Gift card balance",
       "organic_content_standard_read_more": "Organic Content Standard, read more",
       "our_story": "Our Story",
-      "privacy_policy": "Privacy policy",
-      "questions_and_answers": "Questions and answers",
+      "privacy_policy": "Privacy Policy",
+      "questions_and_answers": "Questions & Answers",
       "recycled_claim_standard_read_more": "Recycled Claim Standard, read more",
-      "size_and_care_guide": "Size and care guide",
-      "terms_of_sale": "Terms of sale"
+      "size_and_care_guide": "Size & Care Guide",
+      "terms_of_sale": "Terms of Sale",
+      "ships_line": "Ships from Parcel Feeder, Brøndby · Free 14-day returns · Support [hours] CET",
+      "legal_line": "EchoByJMG is owned by JM Group Limited, Hong Kong, the legal seller.",
+      "factories_and_certificates": "Factory and certificates"
     },
     "gc_balance": {
       "check_balance": "Check balance",
@@ -788,7 +791,7 @@
     "header": {
       "about_heading": "About",
       "about_us": "About Us",
-      "bag_html": "Bag (<span data-bag-count>{{ count }}</span>)",
+      "bag_html": "Cart (<span data-bag-count>{{ count }}</span>)",
       "designs_from": {
         "one": "{{ count }} design · from",
         "other": "{{ count }} designs · from"
@@ -802,23 +805,27 @@
       "main": "Main",
       "menu": "Menu",
       "our_story": "Our Story ▾",
-      "pillow_talk_sets": "Pillow Talk sets",
+      "pillow_talk_sets": "Pillow Talk Sets",
       "shop": "Shop ▾",
       "shop_by_category": "Shop by category",
       "stories": "Stories",
       "the_family_and_the_factory": "The family and the factory",
       "view_products": "View products",
       "yarn_passport": "The Yarn Passport",
-      "yarn_tracker": "Rescued Yarn Tracker"
+      "yarn_tracker": "Rescued Yarn Tracker",
+      "util_text": "Free delivery in Denmark · Free 14-day returns to a Danish address · ★ 4.8 on Trustpilot",
+      "latest_design": "Latest Design",
+      "language": "Language"
     },
     "help": {
-      "all_topics": "All topics",
+      "all_topics": "All Topics",
       "contact_us": "Contact us",
       "did_not_find_it": "Did not find it?",
-      "for_example_delivery_wash_gift": "For example: delivery, wash, gift",
+      "for_example_delivery_wash_gift": "For example: Delivery, wash, gift,...",
       "guides": "Guides",
       "no_match_html": "No answers match “<span data-faq-q></span>”. <a class=\"link\" href=\"{{ contact_url }}\">Ask us directly</a>",
-      "search_the_answers": "Search the answers"
+      "search_the_answers": "Search the answers",
+      "questions_and_answers": "Questions & Answers"
     },
     "hero": {
       "shown": "Shown: {{ name }}",
@@ -856,13 +863,13 @@
     "main_cart": {
       "continue_shopping": "Continue shopping",
       "order_summary": "Order summary",
-      "your_bag_is_empty": "Your bag is empty"
+      "your_bag_is_empty": "Your cart is currently empty."
     },
     "main_collection": {
       "all_colours": "All colours",
       "alpha_az": "Alphabetically, A→Z",
       "alpha_za": "Alphabetically, Z→A",
-      "available_stock": "Available stock",
+      "available_stock": "Available Stock",
       "choose_your_piece": "Choose Your Piece",
       "clear_all": "Clear all",
       "clear_filters": "Clear filters",
@@ -882,12 +889,17 @@
       "sort": "Sort"
     },
     "main_product": {
-      "add_to_bag": "Add to bag",
+      "complete_the_set": "Complete The Set",
+      "passport_intro": "Your purchase includes a Yarn Passport with the details shown below, plus your piece's edition number, assigned at packing.",
+      "discover_more": "Discover more",
+      "certificates": "Certificates",
+      "our_certificates": "Our certificates",
+      "add_to_bag": "Add to cart",
       "amount": "Amount",
       "colour": "Colour:",
-      "delivery_and_returns": "Delivery and returns",
+      "delivery_and_returns": "Delivery & Returns",
       "description": "Description",
-      "dimensions": "Dimensions",
+      "dimensions": "Dimension",
       "get_an_email_when_a_new_edition_from": "Get an email when a new edition from this yarn family is ready",
       "incl_vat_free_delivery": "incl. VAT · free delivery",
       "material_and_care": "Material and care",
@@ -896,7 +908,26 @@
       "notify_me": "Notify me",
       "pay_with_mobilepay": "Pay with MobilePay",
       "sent_instantly_by_email": "Sent instantly by email",
-      "thank_you_we_will_email_you_when_the": "Thank you. We will email you when the next edition is ready."
+      "thank_you_we_will_email_you_when_the": "Thank you. We will email you when the next edition is ready.",
+      "including_vat": "Including VAT",
+      "free_delivery": "Free Delivery",
+      "edition_of": "Edition of {{ total }}",
+      "only_left_html": "Only <b>{{ count }} items</b> left in stock",
+      "colorway_note": "This colorway is limited strictly to this batch and cannot be restocked once sold out.",
+      "edition_sold_out": "This edition is sold out",
+      "pay_with": "Pay with",
+      "add_to_cart": "Add to cart",
+      "tick_1": "Order by 14:00 on weekdays for delivery in 1 to 2 working days",
+      "tick_2": "Free 14-day returns to our Danish address",
+      "tick_3": "No price on the packing slip, ready to give",
+      "origin_default": "Unused yarn rescued from a [season] production run at our factory on [rescue date].",
+      "bsci_line_html": "Amfori ID 156-020420-000<br>Applies to all products",
+      "delivery_text": "Free delivery in Denmark in 1 to 2 working days from our Danish warehouse. Free returns within 14 days.",
+      "dimension": "Dimension",
+      "delivery_and_return": "Delivery & Return",
+      "enter_your_email": "Enter your email",
+      "see_it_in_tracker": "See it in tracker",
+      "photo_n": "Photo {{ n }}"
     },
     "main_search": {
       "search_blankets_bags_colours": "Search blankets, bags, colours"
@@ -934,22 +965,25 @@
       "see_all_results": "See all results"
     },
     "product": {
-      "edition_left_html": "<b>Edition of {{ total }}, {{ left }} left.</b> Once this batch of yarn is used, the design is not repeated in this colour.",
+      "edition_left_html": "<b>Edition of {{ total }} · Only {{ left }} items left in stock</b> This colorway is limited strictly to this batch and cannot be restocked once sold out.",
       "faq_title": "Questions about this {{ item }}",
       "see_current": "See current {{ name }}",
-      "sold_out_html": "<b>This edition is sold out.</b> All {{ total }} pieces have found a home. The design will not be repeated in this colour."
+      "sold_out_html": "<b>Edition of {{ total }} · This colourway is sold out</b>",
+      "faq_title_common": "Questions about this {{ item }}"
     },
     "product_faq_reviews": {
-      "reviews": "Reviews"
+      "reviews": "From our customers",
+      "from_our_customers": "From our customers",
+      "denmark": "Denmark"
     },
     "product_passport": {
       "about_our_certificates": "About our certificates",
       "bsci_compliance": "BSCI compliance",
       "certificates_for_this_product": "Certificates for this product",
-      "fibre_and_batch": "Fibre and batch",
+      "fibre_and_batch": "Fibre & batch",
       "organic_content_standard": "Organic Content Standard",
       "recycled_claim_standard": "Recycled Claim Standard",
-      "see_it_in_the_tracker": "See it in the tracker",
+      "see_it_in_the_tracker": "See it in tracker",
       "what_is_the_yarn_passport": "What is the Yarn Passport?",
       "where_it_came_from": "Where it came from"
     },
@@ -1016,7 +1050,9 @@
       "shop_open_editions": "Shop open editions",
       "the_batch_log": "The batch log",
       "yarn": "Yarn",
-      "yarn_rescued_to_date": "yarn rescued to date"
+      "yarn_rescued_to_date": "yarn rescued to date",
+      "swipe_hint": "Swipe to see more",
+      "next_columns": "Show the next columns"
     },
     "product_grid": {
       "next": "Next designs",

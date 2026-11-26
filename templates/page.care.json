@@ -1,10 +1,17 @@
-/* Size and care guide: Figma layout, re-sent after the section synced, 25 Nov 2026 (2) */
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
     "sizes": {
       "type": "echo-size-table",
-      "settings": {},
       "blocks": {
         "row_1": {
           "type": "row",
@@ -58,45 +65,48 @@
         "row_3",
         "row_4",
         "row_5"
-      ]
+      ],
+      "settings": {
+        "crumb_label": "Help",
+        "crumb_current": "Size and care guide",
+        "heading": "Size & Care Guide",
+        "lead": "Sizes for every product type, and how to look after each yarn so it lasts.",
+        "pad_top": 80,
+        "pad_bottom": 60
+      }
     },
     "care": {
       "type": "echo-care-panel",
-      "settings": {
-        "link": "echo:journal/how-to-wash-a-lambswool-blanket",
-        "photo_file": "echo-care-wash.jpg",
-        "focus": "60% 50%"
-      },
       "blocks": {
         "row_1": {
           "type": "row",
           "settings": {
-            "label": "Lambswool blends",
             "icon_file": "echo-care-hand.svg",
+            "label": "Lambswool blends",
             "text": "Hand wash cold, press the water out, dry flat. Do not tumble dry."
           }
         },
         "row_2": {
           "type": "row",
           "settings": {
-            "label": "Cotton blends",
             "icon_file": "echo-care-washer.svg",
-            "text": "[Machine wash 30°C on a wool cycle in a wash bag. Confirm.]"
+            "label": "Cotton blends",
+            "text": "Machine wash 30°C on a wool cycle in a wash bag."
           }
         },
         "row_3": {
           "type": "row",
           "settings": {
-            "label": "Wool",
             "icon_file": "echo-care-wool.svg",
-            "text": "[Hand wash or dry clean. Confirm.]"
+            "label": "Wool",
+            "text": "Hand wash or dry clean."
           }
         },
         "row_4": {
           "type": "row",
           "settings": {
-            "label": "Pilling",
             "icon_file": "echo-care-pilling.svg",
+            "label": "Pilling",
             "text": "Small bobbles are normal on new knitwear. Remove them with a knit comb."
           }
         }
@@ -106,7 +116,18 @@
         "row_2",
         "row_3",
         "row_4"
-      ]
+      ],
+      "settings": {
+        "heading": "Care By Yarn",
+        "photo_file": "echo-care-wash.jpg",
+        "alt": "Washing a lambswool blanket by hand",
+        "focus": "60% 50%",
+        "card_title": "How to wash a lambswool blanket",
+        "card_text": "Trimming pompoms for the joyful beanie.",
+        "card_link_label": "Read more",
+        "link": "echo:journal/how-to-wash-a-lambswool-blanket",
+        "pad_bottom": 80
+      }
     },
     "illustration": {
       "type": "echo-illustration",
@@ -124,6 +145,7 @@
         "heading": "Join the Cozy Club",
         "text": "Get 10% off your first order, and be the first to hear about our new designs!",
         "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
         "photo": "echo-twister-outdoor.jpg",
         "focus": "50% 50%"
       }

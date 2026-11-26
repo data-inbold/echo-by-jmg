@@ -2,13 +2,18 @@
 {%- liquid
   assign t = product.type | downcase
   assign c = product.category.name | downcase
+  comment
+    The category name follows the storefront language (Danish: Tæpper, Pudebetræk...), so match the
+    Shopify taxonomy id first; it is the same in every language. Names stay as a fallback.
+  endcomment
+  assign cid = '/' | append: product.category.id | append: '-'
   if product.gift_card?
     echo 'gift'
-  elsif t contains 'blanket' or t contains 'throw' or c contains 'blanket'
+  elsif cid contains '/hg-15-1-4-' or t contains 'blanket' or t contains 'throw' or c contains 'blanket'
     echo 'blankets'
-  elsif t contains 'cushion' or c contains 'cushion'
+  elsif cid contains '/hg-3-14-' or t contains 'cushion' or c contains 'cushion'
     echo 'cushions'
-  elsif t contains 'bag' or t contains 'pouch' or t contains 'tote' or c contains 'bag' or c contains 'case' or c contains 'tote'
+  elsif cid contains '/aa-5-4-' or cid contains '/lb-13-' or cid contains '/hg-11-3-7-' or cid contains '/el-4-8-4-2-' or cid contains '/aa-4-8-' or t contains 'bag' or t contains 'pouch' or t contains 'tote' or c contains 'bag' or c contains 'case' or c contains 'tote'
     echo 'bags'
   else
     echo 'accessories'
