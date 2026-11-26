@@ -16,6 +16,7 @@
         "photo": "echo-happy-habitat-banner.jpg",
         "alt": "Playful knitted throws and cushion covers for kids' rooms",
         "bg": "#2F6E9E",
+        "photo_bg": "#C4E2F0",
         "fg": "#FFFFFF",
         "sub": "#E3F1FA",
         "heading": "Happy Habitat",
