@@ -119,11 +119,32 @@
     {%- endif -%}
     <div class="tools">
       {%- if localization.available_languages.size > 1 -%}
-        {%- form 'localization', class: 'hlang lang-toggle' -%}
+        {%- comment -%} Plain links to the same page in the other language: one request, no POST/redirect, cacheable. echo.js keeps ?query on click. {%- endcomment -%}
+        {%- liquid
+          assign cur_root = routes.root_url
+          assign lp = request.path
+          if cur_root != '/'
+            assign lp = lp | remove_first: cur_root
+          endif
+          if lp == blank
+            assign lp = '/'
+          endif
+        -%}
+        <nav class="hlang lang-toggle" aria-label="{{ 'echo.header.language' | t | escape }}">
           {%- for lang in localization.available_languages -%}
-            <button type="submit" name="locale_code" value="{{ lang.iso_code }}" class="lt-opt"{% if lang.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} aria-label="{{ lang.endonym_name }}">{{ lang.iso_code | upcase }}</button>
+            {%- liquid
+              assign lroot = lang.root_url
+              if lroot == '/'
+                assign lhref = lp
+              elsif lp == '/'
+                assign lhref = lroot
+              else
+                assign lhref = lroot | append: lp
+              endif
+            -%}
+            <a class="lt-opt" href="{{ lhref }}" hreflang="{{ lang.iso_code }}" lang="{{ lang.iso_code }}" data-lang-link{% if lang.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} aria-label="{{ lang.endonym_name | escape }}">{{ lang.iso_code | upcase }}</a>
           {%- endfor -%}
-        {%- endform -%}
+        </nav>
       {%- endif -%}
       <button data-act="search"><img class="hico" src="{{ 'echo-icon-search.png' | asset_url }}" alt="" width="24" height="24"><span class="hlbl">{{ 'echo.common.search' | t }}</span></button>
       <a class="hide-s" href="{{ routes.account_url }}"><img class="hico" src="{{ 'echo-icon-account.png' | asset_url }}" alt="" width="24" height="24"><span class="hlbl">{{ 'echo.common.account' | t }}</span></a>

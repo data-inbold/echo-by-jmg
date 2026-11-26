@@ -451,7 +451,7 @@ body.template-yarn-passport #app{background:#F2EEEA}
 
 /* language switch: pill toggle EN | DA, the active language filled (desktop and mobile header) */
 .nav .tools .lang-toggle{display:inline-flex;align-items:center;gap:0;padding:2px;margin-right:12px;border:1px solid #CFCDC6;border-radius:999px;background:#fff;border-right:1px solid #CFCDC6}
-.nav .tools .lang-toggle .lt-opt{min-height:0;padding:4px 10px!important;border-radius:999px;font:600 12px/1.2 var(--body)!important;letter-spacing:.06em;color:#777873;transition:background-color .2s,color .2s}
+.nav .tools .lang-toggle .lt-opt{display:inline-block;text-decoration:none;min-height:0;padding:4px 10px!important;border-radius:999px;font:600 12px/1.2 var(--body)!important;letter-spacing:.06em;color:#777873;transition:background-color .2s,color .2s}
 .nav .tools .lang-toggle .lt-opt[aria-current="true"]{background:var(--wine);color:#F7EFE9}
 .nav .tools .lang-toggle .lt-opt:not([aria-current="true"]):hover{color:var(--wine)}
 @media(max-width:719px){

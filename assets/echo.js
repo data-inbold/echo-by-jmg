@@ -292,6 +292,14 @@
     if (b.hasAttribute('data-retreset')) { retStep(0); return; }
   });
 
+  /* language links: keep the query string (?view=...) when switching language */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-lang-link]');
+    if (!a || !location.search || a.getAttribute('aria-current') === 'true') return;
+    e.preventDefault();
+    location.href = a.getAttribute('href') + location.search;
+  });
+
   document.addEventListener('submit', function (e) {
     var f = e.target;
     if (f.hasAttribute('data-pdp-form')) {
