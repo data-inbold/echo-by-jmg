@@ -138,6 +138,17 @@
   .yt-log .tracker td:nth-child(2){color:#ABA499}
   .yt-log .tracker td:nth-child(3),.yt-log .tracker td:nth-child(5){text-align:left}
   .yt-log .tracker th:nth-child(1){width:14.06%}.yt-log .tracker th:nth-child(2){width:9.38%}.yt-log .tracker th:nth-child(3){width:24.22%}.yt-log .tracker th:nth-child(4){width:7.8%}.yt-log .tracker th:nth-child(5){width:24.22%}.yt-log .tracker th:nth-child(6){width:9.38%}.yt-log .tracker th:nth-child(7){width:10.94%}
+  /* phones/tablets: the table scrolls sideways inside its box, the Batch column stays frozen like a spreadsheet */
+  .yt-log .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;max-width:100%}
+  .yt-log .tracker .tstat{white-space:nowrap}
+  @media (max-width:1023px){
+    .yt-log .tracker{min-width:940px;font-size:14px}
+    .yt-log .tracker th,.yt-log .tracker td{font-size:14px}
+    .yt-log .tracker th{letter-spacing:.06em}
+    .yt-log .tracker th:nth-child(1){width:128px}.yt-log .tracker th:nth-child(2){width:88px}.yt-log .tracker th:nth-child(3){width:190px}.yt-log .tracker th:nth-child(4){width:80px}.yt-log .tracker th:nth-child(5){width:220px}.yt-log .tracker th:nth-child(6){width:84px}.yt-log .tracker th:nth-child(7){width:150px}
+    .yt-log .tracker th:first-child,.yt-log .tracker td:first-child{position:sticky;left:0;z-index:1;background:var(--paper);text-align:left;word-break:break-all;box-shadow:6px 0 8px -6px rgba(46,45,44,.25)}
+    .yt-log .tracker th:first-child{z-index:2}
+  }
   .yt-log .tracker td br{display:none}
   .yt-log .tracker td .link{position:relative;display:block;padding-right:36px;font-weight:300;color:#2E2D2C;text-decoration:underline;text-underline-offset:3px;border-bottom:0;box-shadow:none}
   .yt-log .tracker td .link+.link{margin-top:12px}
