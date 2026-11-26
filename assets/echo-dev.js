@@ -4,13 +4,63 @@
   if (!dataEl) return;
   var data;
   try { data = JSON.parse(dataEl.textContent); } catch (e) { return; }
-  var role = window.Shopify && Shopify.theme && Shopify.theme.role;
-  if (role === 'main' && !data.designMode) return;
-
   var store = {
     get: function (k) { try { return localStorage.getItem('echoDev.' + k) || ''; } catch (e) { return ''; } },
     set: function (k, v) { try { localStorage.setItem('echoDev.' + k, v); } catch (e) {} }
   };
+
+  /* On the live theme: ?dev asks for the password, ?dev=0 locks again. */
+  var role = window.Shopify && Shopify.theme && Shopify.theme.role;
+  if (role === 'main' && !data.designMode) {
+    var q = new URLSearchParams(location.search);
+    var hash = (data.pwHash || '').trim();
+    if (q.get('dev') === '0' || !hash) { store.set('unlock', ''); return; }
+    if (store.get('unlock') === hash) return init();
+    if (q.has('dev')) askPassword(hash);
+    return;
+  }
+  init();
+
+  function sha256(text) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+    });
+  }
+  function askPassword(hash) {
+    var dlg = document.createElement('dialog');
+    dlg.className = 'edev-pw';
+    dlg.innerHTML =
+      '<form method="dialog" class="edev-form">' +
+        '<b>Dev menu</b>' +
+        '<label>Password<input type="password" name="pw" autocomplete="current-password" required></label>' +
+        '<p class="edev-msg" role="status" aria-live="polite"></p>' +
+        '<div class="edev-pw-btns"><button type="button" class="edev-ghost" value="cancel">Cancel</button><button type="submit" class="edev-send">Unlock</button></div>' +
+      '</form>';
+    document.body.appendChild(dlg);
+    var f = dlg.querySelector('form'), m = dlg.querySelector('.edev-msg'), tries = 0;
+    dlg.querySelector('[value=cancel]').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('close', function () { dlg.remove(); });
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      sha256(f.pw.value).then(function (h) {
+        if (h === hash) {
+          store.set('unlock', hash);
+          dlg.close();
+          store.set('open', '1');
+          init();
+        } else {
+          tries++;
+          m.textContent = 'Wrong password.';
+          f.pw.value = '';
+          f.pw.focus();
+          if (tries >= 5) dlg.close();
+        }
+      });
+    });
+    dlg.showModal();
+  }
+
+  function init() {
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -271,4 +321,5 @@
 
   showTab(currentTab);
   if (store.get('open') === '1') open(true);
+  }
 })();

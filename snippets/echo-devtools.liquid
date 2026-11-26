@@ -1,6 +1,7 @@
 {%- comment -%}
   Dev menu: dev log + feedback form. Rendered only when Theme settings › EchoByJMG › Show dev menu is on.
-  echo-dev.js then shows the DEV button only on unpublished themes (previews) and in the theme editor.
+  echo-dev.js shows the DEV button on unpublished themes (previews) and in the theme editor.
+  On the live theme it appears after ?dev plus the password (checked against echo_dev_password_hash).
 {%- endcomment -%}
 {%- if settings.echo_dev_menu -%}
   {%- capture devlog -%}{%- render 'echo-devlog' -%}{%- endcapture -%}
@@ -8,6 +9,7 @@
     {
       "feedbackUrl": {{ settings.echo_feedback_url | strip | json }},
       "template": {{ template | append: '' | json }},
+      "pwHash": {{ settings.echo_dev_password_hash | strip | downcase | json }},
       "designMode": {% if request.design_mode %}true{% else %}false{% endif %},
       "log": {{ devlog | strip }}
     }
