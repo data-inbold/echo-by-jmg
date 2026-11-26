@@ -1050,7 +1050,8 @@
       "the_batch_log": "Batchloggen",
       "yarn": "Garn",
       "yarn_rescued_to_date": "garn reddet indtil nu",
-      "swipe_hint": "Stryg for at se mere"
+      "swipe_hint": "Stryg for at se mere",
+      "next_columns": "Vis de næste kolonner"
     },
     "product_grid": {
       "next": "Næste designs",

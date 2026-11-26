@@ -1050,7 +1050,8 @@
       "the_batch_log": "The batch log",
       "yarn": "Yarn",
       "yarn_rescued_to_date": "yarn rescued to date",
-      "swipe_hint": "Swipe to see more"
+      "swipe_hint": "Swipe to see more",
+      "next_columns": "Show the next columns"
     },
     "product_grid": {
       "next": "Next designs",
