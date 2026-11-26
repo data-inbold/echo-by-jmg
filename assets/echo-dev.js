@@ -99,6 +99,14 @@
         '</div>' +
         '<label>Type<select name="type"><option>Bug</option><option>Design</option><option>Content</option><option>Idea</option><option>Question</option></select></label>' +
         '<label>Comment<textarea name="message" rows="4" required maxlength="2000" placeholder="What should change, and where on the page?"></textarea></label>' +
+        '<div class="edev-att">' +
+          '<span class="edev-att-l">Attachments <span class="edev-muted">(images or PDF, up to 5 files, 10 MB in total)</span></span>' +
+          '<div class="edev-att-btns">' +
+            '<button type="button" class="edev-ghost" data-shot>Take screenshot</button>' +
+            '<label class="edev-ghost edev-file">Add files<input type="file" multiple accept="image/*,application/pdf" data-files></label>' +
+          '</div>' +
+          '<ul class="edev-chips"></ul>' +
+        '</div>' +
         '<input name="website" tabindex="-1" autocomplete="off" class="edev-hp" aria-hidden="true">' +
         '<div class="edev-page">Page: <code>' + esc(pagePath) + '</code></div>' +
         '<button type="submit" class="edev-send">Send feedback</button>' +
@@ -115,6 +123,79 @@
     thisPage.checked = store.get('thisPage') === '1';
     thisPage.addEventListener('change', function () { store.set('thisPage', thisPage.checked ? '1' : ''); renderList(); });
 
+    /* ---------- attachments ---------- */
+    var MAX_FILES = 5, MAX_BYTES = 10 * 1024 * 1024;
+    var atts = [];
+    var chips = fbPane.querySelector('.edev-chips');
+    function attBytes() { return atts.reduce(function (n, a) { return n + a.size; }, 0); }
+    function renderChips() {
+      chips.innerHTML = atts.map(function (a, i) {
+        var thumb = /^image\//.test(a.type) ? '<img alt="" src="data:' + a.type + ';base64,' + a.data + '">' : '<span class="edev-pdf">PDF</span>';
+        return '<li>' + thumb + '<span>' + esc(a.name) + ' · ' + Math.max(1, Math.round(a.size / 1024)) + ' KB</span>' +
+          '<button type="button" aria-label="Remove ' + esc(a.name) + '" data-rm="' + i + '">×</button></li>';
+      }).join('');
+    }
+    chips.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-rm]');
+      if (b) { atts.splice(+b.dataset.rm, 1); renderChips(); }
+    });
+    function addAtt(name, type, dataUrl) {
+      var b64 = dataUrl.slice(dataUrl.indexOf(',') + 1);
+      var size = Math.floor(b64.length * 3 / 4);
+      if (atts.length >= MAX_FILES) { msg.textContent = 'Up to ' + MAX_FILES + ' attachments.'; return; }
+      if (attBytes() + size > MAX_BYTES) { msg.textContent = name + ' is too big: attachments can be 10 MB in total.'; return; }
+      atts.push({ name: name, type: type, data: b64, size: size });
+      renderChips();
+    }
+    fbPane.querySelector('[data-files]').addEventListener('change', function (e) {
+      msg.textContent = '';
+      Array.prototype.forEach.call(e.target.files, function (f) {
+        if (!/^image\/|^application\/pdf$/.test(f.type)) { msg.textContent = f.name + ': only images and PDF files.'; return; }
+        var r = new FileReader();
+        r.onload = function () { addAtt(f.name, f.type, r.result); };
+        r.readAsDataURL(f);
+      });
+      e.target.value = '';
+    });
+
+    var h2c = null;
+    function loadH2C() {
+      if (window.html2canvas) return Promise.resolve(window.html2canvas);
+      if (h2c) return h2c;
+      h2c = new Promise(function (ok, fail) {
+        var s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        s.onload = function () { ok(window.html2canvas); };
+        s.onerror = function () { h2c = null; fail(); };
+        document.head.appendChild(s);
+      });
+      return h2c;
+    }
+    var shotBtn = fbPane.querySelector('[data-shot]');
+    shotBtn.addEventListener('click', function () {
+      msg.textContent = '';
+      shotBtn.disabled = true;
+      shotBtn.textContent = 'Capturing…';
+      loadH2C().then(function (html2canvas) {
+        panel.style.visibility = btn.style.visibility = 'hidden';
+        return html2canvas(document.body, {
+          x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight,
+          windowWidth: document.documentElement.clientWidth,
+          scale: Math.min(window.devicePixelRatio || 1, 1.5), useCORS: true, logging: false,
+          ignoreElements: function (el) { return el === panel || el === btn; }
+        });
+      }).then(function (canvas) {
+        var stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '');
+        addAtt('screenshot-' + stamp + '.jpg', 'image/jpeg', canvas.toDataURL('image/jpeg', 0.82));
+      }).catch(function () {
+        msg.textContent = 'Screenshot failed. Take one with your device and use Add files.';
+      }).then(function () {
+        panel.style.visibility = btn.style.visibility = '';
+        shotBtn.disabled = false;
+        shotBtn.textContent = 'Take screenshot';
+      });
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       msg.textContent = '';
@@ -130,16 +211,18 @@
         message: form.message.value.trim(), page: pagePath, website: form.website.value,
         viewport: window.innerWidth + '×' + window.innerHeight,
         theme: String((window.Shopify && Shopify.theme && Shopify.theme.id) || ''),
-        template: data.template || ''
+        template: data.template || '',
+        attachments: atts.map(function (a) { return { name: a.name, type: a.type, data: a.data }; })
       });
       var send = form.querySelector('.edev-send');
       send.disabled = true;
-      send.textContent = 'Sending…';
+      send.textContent = atts.length ? 'Uploading…' : 'Sending…';
       function done(ok) {
         send.disabled = false;
         send.textContent = 'Send feedback';
         if (ok) {
           form.message.value = '';
+          atts = []; renderChips();
           msg.textContent = 'Thanks, sent. It appears in the list below.';
           setTimeout(loadList, 800);
         } else {
@@ -176,6 +259,9 @@
         '<div class="edev-item-h"><b>' + esc(i.name) + '</b> <span class="edev-muted">' + esc(i.team) + ' · ' + esc(i.type) + '</span>' +
         '<span class="edev-status edev-st-' + esc(st.toLowerCase().replace(/[^a-z]+/g, '-')) + '">' + esc(st) + '</span></div>' +
         '<p>' + esc(i.message) + '</p>' +
+        (i.attachments && i.attachments.length ? '<div class="edev-files">' + i.attachments.map(function (a, n) {
+          return '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.name || ('Attachment ' + (n + 1))) + '</a>';
+        }).join('') + '</div>' : '') +
         (i.reply ? '<p class="edev-reply"><b>Reply:</b> ' + esc(i.reply) + '</p>' : '') +
         '<div class="edev-muted edev-meta">' + fmtDate(i.date) + ' · <a href="' + esc(i.page) + '">' + esc(i.page) + '</a></div>' +
         '</article>';
