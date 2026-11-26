@@ -11,6 +11,8 @@
   .xbn .btn{background:var(--xt);color:var(--xb);border-color:var(--xt)}
   @media (max-width:749px){.xbn .ph{aspect-ratio:4/3}}
   .xbn-stage{position:relative}
+  .xbn .ph.xbn-m{display:none}
+  @media (max-width:749px){.xbn .ph.xbn-d{display:none}.xbn .ph.xbn-m{display:block}}
   @media (min-width:750px){
     .xbn--ov .xbn-in{position:absolute;inset:0;padding-block:0;align-content:center;align-items:center;justify-content:flex-start}
     .xbn--ov .xbn-in>div{max-width:min(40%,520px)}
@@ -19,7 +21,12 @@
 </style>
 <section class="xbn{% if section.settings.layout == 'overlay' %} xbn--ov{% endif %}">
   <div class="xbn-stage">
+  {%- if section.settings.photo_mobile != blank or section.settings.image_mobile != blank -%}
+    {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Banner photo', eager: true, sizes: '100vw', cls: 'xbn-d' -%}
+    {%- render 'echo-pic', image: section.settings.image_mobile, asset: section.settings.photo_mobile, alt: section.settings.alt, label: 'Banner photo', eager: true, sizes: '100vw', cls: 'xbn-m' -%}
+  {%- else -%}
   {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Banner photo', eager: true, sizes: '100vw' -%}
+  {%- endif -%}
   <div class="wrap xbn-in">
     <div>
       <h1 class="xbn-h">{{ section.settings.heading }}</h1>
@@ -57,6 +64,8 @@
     ], "default": "below" },
     { "type": "image_picker", "id": "image", "label": "Banner photo", "info": "About 2400 x 900 px. Empty = the bundled photo." },
     { "type": "text", "id": "photo", "label": "Bundled photo file", "default": "echo-xmas-banner.jpg" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Mobile photo", "info": "About 1200 x 900 px. Empty = the bundled mobile photo, or the desktop photo." },
+    { "type": "text", "id": "photo_mobile", "label": "Bundled mobile photo file" },
     { "type": "text", "id": "alt", "label": "Photo description", "default": "Festive knitted throws and cushion covers in front of a Christmas tree" },
     { "type": "text", "id": "focus", "label": "Photo focus (CSS position)", "default": "50% 50%" },
     { "type": "color", "id": "bg", "label": "Band colour", "default": "#7A1E28" },
