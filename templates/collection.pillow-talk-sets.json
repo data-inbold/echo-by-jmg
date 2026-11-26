@@ -22,7 +22,8 @@
         "lead": "A throw and its matching cushion covers, knitted from the same yarn batch so the colours belong together.",
         "btn_label": "Shop the sets",
         "btn_link": "#products",
-        "photo_mobile": "echo-pillow-talk-banner-m.jpg"
+        "photo_mobile": "echo-pillow-talk-banner-m.jpg",
+        "focus": "50% 50%"
       }
     },
     "main": {

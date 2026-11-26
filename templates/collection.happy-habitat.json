@@ -23,7 +23,8 @@
         "lead": "Rainbows, clouds, cats and pups. Playful knitted pieces for nurseries and kids' rooms.",
         "btn_label": "Shop Happy Habitat",
         "btn_link": "#products",
-        "photo_mobile": "echo-happy-habitat-banner-m.jpg"
+        "photo_mobile": "echo-happy-habitat-banner-m.jpg",
+        "focus": "50% 50%"
       }
     },
     "main": {
