@@ -17,9 +17,25 @@
       <h1 class="xbn-h">{{ section.settings.heading }}</h1>
       {%- if section.settings.lead != blank -%}<p>{{ section.settings.lead }}</p>{%- endif -%}
     </div>
-    {%- if section.settings.btn_label != blank -%}<a class="btn" href="{{ section.settings.btn_link }}">{{ section.settings.btn_label }}</a>{%- endif -%}
+    {%- if section.settings.btn_label != blank -%}<a class="btn" href="{{ section.settings.btn_link | default: '#products' }}"{% if section.settings.btn_link == blank or section.settings.btn_link == '#products' %} data-xbn-jump{% endif %}>{{ section.settings.btn_label }}</a>{%- endif -%}
   </div>
 </section>
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-xbn-jump]');
+    if (!a) return;
+    var items = document.querySelectorAll('[data-shop-grid] > *');
+    var first = null;
+    for (var i = 0; i < items.length; i++) { if (items[i].offsetParent !== null) { first = items[i]; break; } }
+    if (!first) first = document.querySelector('[data-shop-grid]');
+    if (!first) return;
+    e.preventDefault();
+    var hd = document.querySelector('header, .echo-header, [data-header]');
+    var off = 16;
+    if (hd) { var st = getComputedStyle(hd).position; if (st === 'sticky' || st === 'fixed') off += hd.getBoundingClientRect().height; }
+    window.scrollTo({ top: first.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
+  });
+</script>
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
 {% schema %}
@@ -36,7 +52,7 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "The X'mas Collection" },
     { "type": "textarea", "id": "lead", "label": "Text" },
     { "type": "text", "id": "btn_label", "label": "Button" },
-    { "type": "text", "id": "btn_link", "label": "Button link" }
+    { "type": "text", "id": "btn_link", "label": "Button link", "info": "Empty = scroll to the first product below." }
   ],
   "presets": [{ "name": "Seasonal banner" }]
 }
