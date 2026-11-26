@@ -292,12 +292,35 @@
     if (b.hasAttribute('data-retreset')) { retStep(0); return; }
   });
 
-  /* language links: keep the query string (?view=...) when switching language */
+  /* language links: instant visual switch, keep the query string (?view=...) */
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[data-lang-link]');
-    if (!a || !location.search || a.getAttribute('aria-current') === 'true') return;
+    if (!a) return;
     e.preventDefault();
-    location.href = a.getAttribute('href') + location.search;
+    if (a.getAttribute('aria-current') === 'true') return;
+    var code = a.getAttribute('hreflang');
+    /* show the new state at once in every toggle on the page, and block repeat clicks */
+    Array.prototype.forEach.call(document.querySelectorAll('.lang-toggle'), function (t) {
+      t.classList.add('is-switching');
+      Array.prototype.forEach.call(t.querySelectorAll('a[data-lang-link]'), function (o) {
+        if (o.getAttribute('hreflang') === code) o.setAttribute('aria-current', 'true'); else o.removeAttribute('aria-current');
+      });
+    });
+    var go = a.getAttribute('href') + location.search;
+    /* let the browser paint the new state before navigating */
+    requestAnimationFrame(function () { setTimeout(function () { location.href = go; }, 0); });
+  });
+
+  /* back/forward cache: restore the toggle to the page's own language */
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    var lang = (document.documentElement.lang || '').slice(0, 2);
+    Array.prototype.forEach.call(document.querySelectorAll('.lang-toggle'), function (t) {
+      t.classList.remove('is-switching');
+      Array.prototype.forEach.call(t.querySelectorAll('a[data-lang-link]'), function (o) {
+        if (o.getAttribute('hreflang') === lang) o.setAttribute('aria-current', 'true'); else o.removeAttribute('aria-current');
+      });
+    });
   });
 
   document.addEventListener('submit', function (e) {

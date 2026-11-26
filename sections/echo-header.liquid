@@ -72,6 +72,34 @@
   {%- assign util_text = section.settings.util_text -%}{%- if util_text == blank -%}{%- assign util_text = 'echo.header.util_text' | t -%}{%- endif -%}
   {%- if section.settings.util_link != blank -%}<a href="{{ section.settings.util_link }}">{{ util_text }}</a>{%- else -%}{{ util_text }}{%- endif -%}
 </div>
+{%- capture lang_toggle -%}
+        {%- comment -%} Plain links to the same page in the other language: one request, no POST/redirect, cacheable. echo.js keeps ?query on click. {%- endcomment -%}
+        {%- liquid
+          assign cur_root = routes.root_url
+          assign lp = request.path
+          if cur_root != '/'
+            assign lp = lp | remove_first: cur_root
+          endif
+          if lp == blank
+            assign lp = '/'
+          endif
+        -%}
+        <nav class="hlang lang-toggle" aria-label="{{ 'echo.header.language' | t | escape }}">
+          {%- for lang in localization.available_languages -%}
+            {%- liquid
+              assign lroot = lang.root_url
+              if lroot == '/'
+                assign lhref = lp
+              elsif lp == '/'
+                assign lhref = lroot
+              else
+                assign lhref = lroot | append: lp
+              endif
+            -%}
+            <a class="lt-opt" href="{{ lhref }}" hreflang="{{ lang.iso_code }}" lang="{{ lang.iso_code }}" data-lang-link{% if lang.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} aria-label="{{ lang.endonym_name | escape }}">{{ lang.iso_code | upcase }}</a>
+          {%- endfor -%}
+        </nav>
+{%- endcapture -%}
 <header class="site" id="hdr">
   <div class="wrap nav">
     <button class="burger x" aria-label="{{ 'echo.header.menu' | t | escape }}" aria-expanded="false" data-act="menu">☰</button>
@@ -119,32 +147,7 @@
     {%- endif -%}
     <div class="tools">
       {%- if localization.available_languages.size > 1 -%}
-        {%- comment -%} Plain links to the same page in the other language: one request, no POST/redirect, cacheable. echo.js keeps ?query on click. {%- endcomment -%}
-        {%- liquid
-          assign cur_root = routes.root_url
-          assign lp = request.path
-          if cur_root != '/'
-            assign lp = lp | remove_first: cur_root
-          endif
-          if lp == blank
-            assign lp = '/'
-          endif
-        -%}
-        <nav class="hlang lang-toggle" aria-label="{{ 'echo.header.language' | t | escape }}">
-          {%- for lang in localization.available_languages -%}
-            {%- liquid
-              assign lroot = lang.root_url
-              if lroot == '/'
-                assign lhref = lp
-              elsif lp == '/'
-                assign lhref = lroot
-              else
-                assign lhref = lroot | append: lp
-              endif
-            -%}
-            <a class="lt-opt" href="{{ lhref }}" hreflang="{{ lang.iso_code }}" lang="{{ lang.iso_code }}" data-lang-link{% if lang.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} aria-label="{{ lang.endonym_name | escape }}">{{ lang.iso_code | upcase }}</a>
-          {%- endfor -%}
-        </nav>
+        {{ lang_toggle }}
       {%- endif -%}
       <button data-act="search"><img class="hico" src="{{ 'echo-icon-search.png' | asset_url }}" alt="" width="24" height="24"><span class="hlbl">{{ 'echo.common.search' | t }}</span></button>
       <a class="hide-s" href="{{ routes.account_url }}"><img class="hico" src="{{ 'echo-icon-account.png' | asset_url }}" alt="" width="24" height="24"><span class="hlbl">{{ 'echo.common.account' | t }}</span></a>
@@ -377,13 +380,7 @@
       <a href="{{ u_help }}">{{ 'echo.common.help' | t }}</a><a href="{{ u_contact }}">{{ 'echo.common.contact' | t }}</a><a href="{{ routes.account_url }}">{{ 'echo.common.account' | t }}</a><a href="{{ u_track }}">{{ 'echo.common.track_your_order' | t }}</a><a href="{{ u_returns }}">{{ 'echo.common.returns' | t }}</a>
       {%- endif -%}
       {%- if localization.available_languages.size > 1 -%}
-        {%- form 'localization' -%}
-          <div class="row" style="padding:12px 0;gap:14px">
-            {%- for lang in localization.available_languages -%}
-              <button type="submit" name="locale_code" value="{{ lang.iso_code }}" style="background:none;border:0;padding:0;font-size:13px;letter-spacing:.04em;{% if lang.iso_code == localization.language.iso_code %}font-weight:600{% else %}opacity:.7{% endif %}">{{ lang.endonym_name }}</button>
-            {%- endfor -%}
-          </div>
-        {%- endform -%}
+        <div class="mm-lang">{{ lang_toggle }}</div>
       {%- endif -%}
     </div>
   </div>

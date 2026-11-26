@@ -450,14 +450,14 @@ body.template-yarn-passport #app{background:#F2EEEA}
 @media(max-width:749px){.nav .tools button[data-act="search"] .hlbl{display:none}}
 
 /* language switch: pill toggle EN | DA, the active language filled (desktop and mobile header) */
-.nav .tools .lang-toggle{display:inline-flex;align-items:center;gap:0;padding:2px;margin-right:12px;border:1px solid #CFCDC6;border-radius:999px;background:#fff;border-right:1px solid #CFCDC6}
-.nav .tools .lang-toggle .lt-opt{display:inline-block;text-decoration:none;min-height:0;padding:4px 10px!important;border-radius:999px;font:600 12px/1.2 var(--body)!important;letter-spacing:.06em;color:#777873;transition:background-color .2s,color .2s}
-.nav .tools .lang-toggle .lt-opt[aria-current="true"]{background:var(--wine);color:#F7EFE9}
-.nav .tools .lang-toggle .lt-opt:not([aria-current="true"]):hover{color:var(--wine)}
+.lang-toggle{display:inline-flex;align-items:center;gap:0;padding:2px;margin-right:12px;border:1px solid #CFCDC6;border-radius:999px;background:#fff;border-right:1px solid #CFCDC6}
+.lang-toggle .lt-opt{display:inline-block;text-decoration:none;min-height:0;padding:4px 10px!important;border-radius:999px;font:600 12px/1.2 var(--body)!important;letter-spacing:.06em;color:#777873;transition:background-color .2s,color .2s}
+.lang-toggle .lt-opt[aria-current="true"]{background:var(--wine);color:#F7EFE9}
+.lang-toggle .lt-opt:not([aria-current="true"]):hover{color:var(--wine)}
 @media(max-width:719px){
   .nav .tools{gap:0}
   .nav .tools .lang-toggle{margin-right:2px}
-  .nav .tools .lang-toggle .lt-opt{padding:4px 8px!important;font-size:11px!important}
+  .lang-toggle .lt-opt{padding:4px 8px!important;font-size:11px!important}
   .nav .tools .hlbl{display:none}
   .nav .tools .hcart{padding-left:4px;padding-right:0;position:relative}
   .nav .tools .hcart>span{font-size:0}
@@ -468,3 +468,11 @@ body.template-yarn-passport #app{background:#F2EEEA}
 /* long stat words (e.g. Danish) wrap instead of widening the page on phones */
 .stat .n,.stats .n{overflow-wrap:anywhere;min-width:0}
 .stats>*{min-width:0}
+
+/* language toggle: instant feedback while the new page loads */
+.lang-toggle.is-switching{pointer-events:none}
+.lang-toggle.is-switching .lt-opt[aria-current="true"]{animation:lt-pulse .9s ease-in-out infinite}
+@keyframes lt-pulse{50%{opacity:.6}}
+.mm-lang{padding:16px 0}
+.mm-lang .lang-toggle{margin:0}
+.mobile-menu .mm-lang a{border-bottom:0}
