@@ -7,14 +7,13 @@
         "layout": "overlay",
         "photo": "echo-gift-banner.jpg",
         "alt": "Knitted throws and a scarf, ready to give",
-        "focus": "50% 50%",
+        "focus": "90% 50%",
         "bg": "#F3E6DF",
         "photo_bg": "#F3E6DF",
         "fg": "#5A1620",
         "sub": "#332C2A",
         "heading": "A gift that tells its own story",
-        "lead": "Every piece arrives with its edition number and where its yarn came from, so you never have to explain why you chose it.",
-        "photo_mobile": "echo-gift-banner-m.jpg"
+        "lead": "Every piece arrives with its edition number and where its yarn came from, so you never have to explain why you chose it."
       }
     },
     "crumbs": {
