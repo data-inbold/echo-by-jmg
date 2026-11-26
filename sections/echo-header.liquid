@@ -280,7 +280,7 @@
         <a href="{% render 'echo-url', key: 'xmas' %}">{{ 'echo.header.xmas' | t }}</a>
         <a href="{{ u_sets }}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
         <a href="{{ u_happy }}">{{ 'echo.header.happy_habitat_kids_rooms' | t }}</a>
-        <a href="{{ u_last }}">{{ 'echo.tracker.last_pieces' | t }}</a>
+        {%- comment -%}Last pieces hidden for now{%- endcomment -%}
         <a href="{{ u_gc }}">{{ 'echo.common.gift_card' | t }}</a>
         <a class="link" href="{{ u_all }}" style="display:inline-block;margin-top:14px;padding:0">{{ 'echo.common.shop_all' | t }}{% if design_total > 0 %} {{ 'echo.common.designs_count' | t: count: design_total }}{% endif %}</a>
       </div>
@@ -313,7 +313,7 @@
               <a href="{% render 'echo-url', key: 'xmas' %}">{{ 'echo.header.xmas' | t }}</a>
               <a href="{% render 'echo-url', key: 'sets' %}">{{ 'echo.header.pillow_talk_sets' | t }}</a>
               <a href="{% render 'echo-url', key: 'happy-habitat' %}">{{ 'echo.header.happy_habitat' | t }}</a>
-              <a href="{% render 'echo-url', key: 'last-pieces' %}">{{ 'echo.tracker.last_pieces' | t }}</a>
+              {%- comment -%}Last pieces hidden for now{%- endcomment -%}
               <a href="{% render 'echo-url', key: 'gift-card' %}">{{ 'echo.common.gift_card' | t }}</a>
               <a href="{% render 'echo-url', key: 'blankets' %}">{{ settings.echo_col_blankets.title | default: 'echo.common.blankets' | t }}</a>
               <a href="{% render 'echo-url', key: 'cushions' %}">{{ settings.echo_col_cushions.title | default: 'echo.common.cushion_covers' | t }}</a>
@@ -374,7 +374,7 @@
           -%}
           <a href="{{ curl }}">{{ nm }}</a>
         {%- endfor -%}
-        <a href="{{ u_sets }}">{{ 'echo.header.pillow_talk_sets' | t }}</a><a href="{{ u_happy }}">{{ 'echo.header.happy_habitat' | t }}</a><a href="{{ u_last }}">{{ 'echo.tracker.last_pieces' | t }}</a><a href="{{ u_gc }}">{{ 'echo.common.gift_card' | t }}</a>
+        <a href="{{ u_sets }}">{{ 'echo.header.pillow_talk_sets' | t }}</a><a href="{{ u_happy }}">{{ 'echo.header.happy_habitat' | t }}</a>{%- comment -%}Last pieces hidden for now{%- endcomment -%}<a href="{{ u_gc }}">{{ 'echo.common.gift_card' | t }}</a>
       </div>
       <a href="{{ u_gifts }}">{{ 'echo.common.gifts' | t }}</a>
       <a href="{{ u_story }}">{{ 'echo.common.about_us' | t }}</a>

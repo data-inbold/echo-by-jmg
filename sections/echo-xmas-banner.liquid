@@ -1,13 +1,13 @@
 {%- capture echo_out -%}
 {%- comment -%} Seasonal horizontal banner: wide photo strip with a heading band below. {%- endcomment -%}
 <style>
-  .xbn{background:#7A1E28;color:#FBF6F1}
-  .xbn .ph{aspect-ratio:8/3;border:0;border-radius:0;background:#7A1E28}
+  .xbn{--xb:{{ section.settings.bg }};--xt:{{ section.settings.fg }};--xs:{{ section.settings.sub }};background:var(--xb);color:var(--xt)}
+  .xbn .ph{aspect-ratio:8/3;border:0;border-radius:0;background:var(--xb)}
   .xbn .ph img{width:100%;height:100%;object-fit:cover;object-position:{{ section.settings.focus }}}
   .xbn-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-block:28px 36px}
-  .xbn-h{font:400 clamp(30px,4vw,52px)/1.1 var(--display);margin:0;color:#FBF6F1}
-  .xbn-in p{margin:6px 0 0;max-width:60ch;font-size:16px;line-height:1.6;color:#F1E7E0}
-  .xbn .btn{background:#FBF6F1;color:#7A1E28;border-color:#FBF6F1}
+  .xbn-h{font:400 clamp(30px,4vw,52px)/1.1 var(--display);margin:0;color:var(--xt)}
+  .xbn-in p{margin:6px 0 0;max-width:60ch;font-size:16px;line-height:1.6;color:var(--xs)}
+  .xbn .btn{background:var(--xt);color:var(--xb);border-color:var(--xt)}
   @media (max-width:749px){.xbn .ph{aspect-ratio:4/3}}
 </style>
 <section class="xbn">
@@ -30,6 +30,9 @@
     { "type": "text", "id": "photo", "label": "Bundled photo file", "default": "echo-xmas-banner.jpg" },
     { "type": "text", "id": "alt", "label": "Photo description", "default": "Festive knitted throws and cushion covers in front of a Christmas tree" },
     { "type": "text", "id": "focus", "label": "Photo focus (CSS position)", "default": "50% 50%" },
+    { "type": "color", "id": "bg", "label": "Band colour", "default": "#7A1E28" },
+    { "type": "color", "id": "fg", "label": "Heading and button colour", "default": "#FBF6F1" },
+    { "type": "color", "id": "sub", "label": "Text colour", "default": "#F1E7E0" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "The X'mas Collection" },
     { "type": "textarea", "id": "lead", "label": "Text" },
     { "type": "text", "id": "btn_label", "label": "Button" },
