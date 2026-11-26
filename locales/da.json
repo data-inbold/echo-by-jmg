@@ -1049,7 +1049,8 @@
       "shop_open_editions": "Se åbne udgaver",
       "the_batch_log": "Batchloggen",
       "yarn": "Garn",
-      "yarn_rescued_to_date": "garn reddet indtil nu"
+      "yarn_rescued_to_date": "garn reddet indtil nu",
+      "swipe_hint": "Stryg for at se mere"
     },
     "product_grid": {
       "next": "Næste designs",

@@ -1049,7 +1049,8 @@
       "shop_open_editions": "Shop open editions",
       "the_batch_log": "The batch log",
       "yarn": "Yarn",
-      "yarn_rescued_to_date": "yarn rescued to date"
+      "yarn_rescued_to_date": "yarn rescued to date",
+      "swipe_hint": "Swipe to see more"
     },
     "product_grid": {
       "next": "Next designs",

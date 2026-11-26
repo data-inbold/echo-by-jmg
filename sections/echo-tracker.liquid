@@ -150,6 +150,15 @@
     .yt-log .tracker th:first-child,.yt-log .tracker td:first-child{position:sticky;left:0;z-index:1;background:var(--paper);text-align:left;word-break:break-all;box-shadow:6px 0 8px -6px rgba(46,45,44,.25)}
     .yt-log .tracker th:first-child{z-index:2}
   }
+  /* scroll cue on small screens: hint line, right fade with arrow, gone at the last column */
+  .yt-log .tw-hint{display:none;margin:0 0 8px;font-size:13px;color:#7C7E64;letter-spacing:.02em}
+  .yt-log .tw-hint span{display:inline-block;animation:tw-nudge 1.4s ease-in-out infinite}
+  @keyframes tw-nudge{50%{transform:translateX(4px)}}
+  .yt-log .tw-outer{position:relative}
+  .yt-log .tw-outer::after{content:"";position:absolute;top:0;right:0;bottom:0;width:56px;pointer-events:none;opacity:0;transition:opacity .25s;background:linear-gradient(90deg,rgba(245,243,239,0),var(--paper) 85%)}
+  .yt-log .tw-outer::before{content:"\2192";position:absolute;right:6px;top:10px;z-index:3;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--wine);color:#F7EFE9;font-size:15px;pointer-events:none;opacity:0;transition:opacity .25s}
+  .yt-log .tw-outer.can-scroll:not(.at-end)::after,.yt-log .tw-outer.can-scroll:not(.at-end)::before{opacity:1}
+  @media (max-width:1023px){.yt-log .tw-hint{display:block}}
   .yt-log .tracker td br{display:none}
   .yt-log .tracker td .link{position:relative;display:block;padding-right:36px;font-weight:300;color:#2E2D2C;text-decoration:underline;text-underline-offset:3px;border-bottom:0;box-shadow:none}
   .yt-log .tracker td .link+.link{margin-top:12px}
@@ -174,7 +183,9 @@
 </div></section>
 <section class="yt-log"><div class="wrap stack" style="gap:24px" id="yarn-tracker" data-src="{{ routes.all_products_collection_url }}?view=yarn-data">
   <h2 class="yt-h2">{{ section.settings.log_heading }}</h2>
-  <div class="tablewrap"><table class="tracker"><thead><tr><th>{{ 'echo.common.batch' | t }}</th><th>{{ 'echo.tracker.logged' | t }}</th><th>{{ 'echo.common.fibre' | t }}</th><th class="num">{{ 'echo.tracker.yarn' | t }}</th><th>{{ 'echo.tracker.became' | t }}</th><th class="num">{{ 'echo.tracker.pieces' | t }}</th><th>{{ 'echo.common.status' | t }}</th></tr></thead><tbody>{{ rows }}</tbody></table></div>
+  <p class="tw-hint" aria-hidden="true">{{ 'echo.tracker.swipe_hint' | t }} <span>→</span></p>
+  <div class="tw-outer" data-tw><div class="tablewrap"><table class="tracker"><thead><tr><th>{{ 'echo.common.batch' | t }}</th><th>{{ 'echo.tracker.logged' | t }}</th><th>{{ 'echo.common.fibre' | t }}</th><th class="num">{{ 'echo.tracker.yarn' | t }}</th><th>{{ 'echo.tracker.became' | t }}</th><th class="num">{{ 'echo.tracker.pieces' | t }}</th><th>{{ 'echo.common.status' | t }}</th></tr></thead><tbody>{{ rows }}</tbody></table></div></div>
+  <script>(function(){var o=document.querySelector("[data-tw]");if(!o)return;var w=o.querySelector(".tablewrap");function u(){var max=w.scrollWidth-w.clientWidth;o.classList.toggle("can-scroll",max>4);o.classList.toggle("at-end",w.scrollLeft>=max-4);o.classList.toggle("scrolled",w.scrollLeft>4)}w.addEventListener("scroll",u,{passive:true});window.addEventListener("resize",u);u();})();</script>
   {%- if section.settings.note != blank -%}<p class="muted" style="font-size:13px;margin:0">{{ section.settings.note }}</p>{%- endif -%}
 </div></section>{% schema %}
 {
