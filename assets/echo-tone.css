@@ -479,3 +479,7 @@ body.template-yarn-passport #app{background:#F2EEEA}
 
 /* mobile menu: scrolls inside the screen so the last links and the language toggle are reachable */
 .mobile-menu{max-height:calc(100dvh - var(--mm-top,120px));overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+
+/* toggle segments: override the 44px header button height so both halves sit inside the pill */
+.nav .tools .lang-toggle .lt-opt,.mobile-menu .lang-toggle .lt-opt{min-height:0;height:auto;display:inline-flex;align-items:center;line-height:1.2;border:0}
+.nav .tools .lang-toggle{min-height:0;align-self:center}
