@@ -14,6 +14,9 @@ Website/
     Factory/
     Yarn-Passport/
   Shared/            (ảnh dùng ở nhiều trang)
+
+Email/
+  Yarn-Passport/     (ảnh dùng trong email, ngoài theme)
 ```
 
 | File | Folder | Dùng ở |
@@ -30,7 +33,8 @@ Website/
 | Join_the_Cozy_Club.png | Website/Shared | index, contact, factory, yarn-passport |
 | gift-image.png | Website/Pages/Contact | page.contact.json |
 | factory.png | Website/Pages/Factory | page.factory.json |
-| read_your_yarn_passport.png, yarn-passport-*.png (6 file) | Website/Pages/Yarn-Passport | page.yarn-passport.json |
+| read_your_yarn_passport.png | Website/Pages/Yarn-Passport | page.yarn-passport.json |
+| yarn-passport-*.png (6 file: top, bottom, swirl-top, swirl-bottom, pillow, knit) | Email/Yarn-Passport | email template (không thuộc theme) |
 | carousel1..7.png | Website/Pages/About | page.about.json, page.our-story.json |
 | Image.png, Screenshot_2026-11-25_at_15.04.03.png | Không dùng trong theme: xác nhận rồi xoá | |
 
