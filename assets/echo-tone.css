@@ -476,3 +476,6 @@ body.template-yarn-passport #app{background:#F2EEEA}
 .mm-lang{padding:16px 0}
 .mm-lang .lang-toggle{margin:0}
 .mobile-menu .mm-lang a{border-bottom:0}
+
+/* mobile menu: scrolls inside the screen so the last links and the language toggle are reachable */
+.mobile-menu{max-height:calc(100dvh - var(--mm-top,120px));overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}

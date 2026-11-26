@@ -261,7 +261,9 @@
       e.preventDefault();
       // A click right after hover opened this menu should keep it open, not toggle it shut.
       if (act !== 'menu' && Date.now() - hoverOpenedAt < 600) return;
-      setMenu(act); return;
+      setMenu(act);
+      if (act === 'menu') { var mp = $('[data-panel="menu"]', hdr); if (mp && !mp.hidden) mp.style.setProperty('--mm-top', Math.max(0, mp.getBoundingClientRect().top) + 'px'); }
+      return;
     }
     if (act === 'bag') { e.preventDefault(); openBag(); return; }
     if (act === 'search') { e.preventDefault(); openSearch(); return; }
