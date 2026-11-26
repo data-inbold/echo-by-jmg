@@ -3,12 +3,18 @@
 <style>
   .hd{display:grid;grid-template-columns:1fr;background:#fff}
   @media(min-width:980px){.hd{grid-template-columns:800fr 640fr;min-height:620px}}
-  .hd-l{position:relative;overflow:hidden;background:#EDEAE1;min-height:420px;display:flex;align-items:center}
+  .hd-l{position:relative;overflow:hidden;container-type:inline-size;background:#EDEAE1;min-height:420px;display:flex;align-items:center}
   .hd-l .ph{position:absolute;inset:0;border:0;background:transparent}
   .hd-l .ph img{object-position:{{ section.settings.focus }}}
   .hd-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:22px;padding:clamp(32px,6vw,80px);max-width:640px}
   .hd-h{font:300 clamp(36px,3.9vw,56px)/1.36 var(--display);color:var(--wine);margin:0}
   .hd-in p{margin:0;max-width:411px;font-size:14px;line-height:1.6;color:var(--ink)}
+  /* phones: both buttons on one row (Danish labels are longer) */
+  @media (max-width:599px){
+    .hd-in{padding:28px 20px}
+    .hd-in .row{flex-wrap:nowrap;gap:8px;width:100%}
+    .hd-in .row .btn{flex:1 1 0;min-width:0;padding:0 8px;min-height:44px;font-size:clamp(10px,2.9vw,12px);letter-spacing:.05em;white-space:nowrap}
+  }
   .hd-r{position:relative;background:#fff;padding:24px;display:flex;flex-direction:column;gap:24px;min-width:0}
   .hd-stage{position:relative;aspect-ratio:592/480;overflow:hidden;background:var(--soft)}
   .hd-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;pointer-events:none}
@@ -32,6 +38,10 @@
 <section class="hd" data-hd>
   <div class="hd-l">
     {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: 'Hero photo', eager: true, sizes: '(min-width: 980px) 56vw, 100vw' -%}
+    {%- if section.settings.show_thread -%}
+      {%- render 'echo-thread', shape: 'loop2', x: -120, y: 379, w: 348, W: 800, mx: -70, my: 250, mw: 200, color: 'var(--wine)', z: 1 -%}
+      {%- render 'echo-thread', shape: 'looptilt', x: 472, y: -140, w: 452, W: 800, mx: -30, my: -54, mw: 120, mside: 'r', color: 'var(--wine)', z: 1 -%}
+    {%- endif -%}
     <div class="hd-in">
       <h1 class="hd-h">{{ section.settings.heading }}</h1>
       {%- if section.settings.lead != blank -%}<p>{{ section.settings.lead | newline_to_br }}</p>{%- endif -%}
@@ -90,6 +100,7 @@
 {
   "name": "Hero split with slider",
   "settings": [
+    { "type": "checkbox", "id": "show_thread", "label": "Show the wine thread lines on the photo", "default": true },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Where luxury yarn finds a second life." },
     { "type": "textarea", "id": "lead", "label": "Intro", "default": "Zero waste, 100% luxury quality. Discover limited-edition pieces born from surplus designer yarn." },
     { "type": "text", "id": "btn1_label", "label": "Button 1", "default": "Shop now" },

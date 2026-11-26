@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
@@ -73,7 +82,8 @@
         "btn1_label": "Meet the people",
         "btn1_link": "echo:story",
         "label": "15 sec clip: this design on the knitting machine, from the factory shoot",
-        "ar": "16/9"
+        "ar": "16/9",
+        "img_thread": "none"
       }
     }
   },

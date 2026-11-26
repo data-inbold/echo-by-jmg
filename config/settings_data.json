@@ -10,7 +10,8 @@
 {
   "current": {
     "echo_gift_card": "egift-card",
-    "echo_feedback_url": "https://script.google.com/macros/s/AKfycbxA-wMXg_-fDxRVYCE1eJyP6UVskb-8SPCEvAtVIfbROL_488qE9A0eVjJ8T30nqWNIXA/exec",
+    "echo_dev_password_hash": "e7b2d06431d8e55f43b504e34146e4c9e80197bc0bfb9c69bd3000511870c0d0",
+    "echo_feedback_url": "https://script.google.com/macros/s/AKfycbzWC1tZpBodO0xEDXF4174WRhZuw8_BrH1srCM4iYiCHHwt06OvyX8Lx7Y_KE3liOv9/exec",
     "navigation_layout": "header_based",
     "sidebar_template": "main_xs_with_secondary",
     "show_header": true,

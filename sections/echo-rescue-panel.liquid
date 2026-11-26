@@ -53,6 +53,7 @@
         {%- endfor -%}
       </div>
       <hr class="rp-hr">
+      {%- render 'echo-yarn-history' -%}
       <div class="rp-stat">
         <i data-yarn-total="kg">{{ bp[0] }}</i><span>{{ section.settings.stat_mid }}</span><i data-yarn-total="batches">{{ bp[1] }}</i><span>{{ section.settings.stat_end }}</span>
         <span class="rp-sp"></span>

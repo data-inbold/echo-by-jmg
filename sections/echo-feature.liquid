@@ -1,5 +1,6 @@
 {%- comment -%} Text next to one or two photos: heading, optional divider, text, certificate logos, button and an icon. {%- endcomment -%}
 {%- capture echo_out -%}
+{%- assign pic_cls = '' -%}{%- if section.settings.clear_bg -%}{%- assign pic_cls = 'clear' -%}{%- endif -%}
 <style>
   .ft{display:grid;gap:28px;align-items:start}
   @media(min-width:900px){
@@ -16,9 +17,13 @@
   .ft-ico{display:block;width:109px;height:120px}
   .ft-media{display:grid;gap:24px;grid-template-columns:repeat(var(--ft-n,1),minmax(0,1fr))}
   .ft-media .ph{border:0;min-height:0!important;width:100%}
+  .ft-media .ph.clear{background:transparent!important}
+  .ft-media .ph.clear::before,.ft-media .ph.clear::after{display:none}
+  .ft-media .ph.clear img{object-fit:contain;mix-blend-mode:normal}
   @media(max-width:559px){.ft-media{grid-template-columns:1fr}}
 </style>
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
+  {%- if section.settings.show_thread -%}{%- render 'echo-thread', shape: 'long', side: 'r', x: -14, y: -353, w: 366, cap: true, z: 3, mx: -24, my: -110, mw: 150 -%}{%- endif -%}
   {%- assign n = 1 -%}
   {%- if section.settings.image2 != blank or section.settings.photo2 != blank and section.settings.photo2 != 'none' -%}{%- assign n = 2 -%}{%- endif -%}
   <div class="wrap">
@@ -40,7 +45,7 @@
         {%- if section.settings.icon_file != blank -%}<img class="ft-ico" src="{{ section.settings.icon_file | asset_url }}" alt="" width="109" height="120" loading="lazy">{%- endif -%}
       </div>
       <div class="ft-media">
-        {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.heading, ar: section.settings.ar, sizes: '(min-width: 900px) 55vw, 100vw' -%}
+        {%- render 'echo-pic', image: section.settings.image, asset: section.settings.photo, alt: section.settings.alt, label: section.settings.heading, ar: section.settings.ar, cls: pic_cls, sizes: '(min-width: 900px) 55vw, 100vw' -%}
         {%- if n == 2 -%}{%- render 'echo-pic', image: section.settings.image2, asset: section.settings.photo2, alt: section.settings.alt2, label: section.settings.heading, ar: section.settings.ar, sizes: '(min-width: 900px) 25vw, 100vw' -%}{%- endif -%}
       </div>
     </div>
@@ -52,6 +57,7 @@
 {
   "name": "Feature: text and photos",
   "settings": [
+    { "type": "checkbox", "id": "show_thread", "label": "Blue thread at the right edge of the page", "default": false },
     { "type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}], "default": "paper" },
     { "type": "select", "id": "media_side", "label": "Photos on", "options": [{"value": "right", "label": "Right"}, {"value": "left", "label": "Left"}], "default": "right" },
@@ -67,6 +73,7 @@
     { "type": "header", "content": "Photos" },
     { "type": "text", "id": "ar", "label": "Photo shape (aspect ratio)", "default": "787/443" },
     { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "checkbox", "id": "clear_bg", "label": "No background behind the photo", "info": "For cut-out pictures with a transparent background (for example the Yarn Passport).", "default": false },
     { "type": "text", "id": "photo", "label": "Bundled photo file", "info": "Used when no photo is picked. File name in assets." },
     { "type": "text", "id": "alt", "label": "Photo description" },
     { "type": "image_picker", "id": "image2", "label": "Second photo (optional)" },

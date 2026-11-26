@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
@@ -9,25 +18,27 @@
     },
     "main": {
       "type": "echo-help",
-      "settings": {},
+      "settings": {
+        "heading": "Questions & Answers"
+      },
       "blocks": {
         "topic_1": {
           "type": "topic",
           "settings": {
-            "title": "Delivery and returns"
+            "title": "Delivery & Returns"
           }
         },
         "q_2": {
           "type": "q",
           "settings": {
-            "q": "How fast do you deliver?",
-            "a": "<p>Free delivery across Denmark, usually within 2 working days. Orders placed by [cut-off time] on weekdays ship the same day from our fulfilment partner in Brøndby, Copenhagen.</p>"
+            "q": "When can I expect my order?",
+            "a": "<p>Deliveries across Denmark typically arrive within two working days. Place your order by 2 PM on weekdays, and we’ll ship it out the same day from Brøndby.</p>"
           }
         },
         "q_3": {
           "type": "q",
           "settings": {
-            "q": "What does delivery cost?",
+            "q": "How much does delivery cost?",
             "a": "<p>Nothing. Delivery is free across Denmark, to a parcel shop, a locker or your door.</p>"
           }
         },
@@ -59,44 +70,37 @@
             "a": "<p>Our packaging is made from recycled materials and kept minimal. It is designed to be reused, including as the bag for a return.</p>"
           }
         },
-        "q_8": {
-          "type": "q",
-          "settings": {
-            "q": "Who is behind the shop?",
-            "a": "<p>EchoByJMG is owned by JM Group Limited in Hong Kong, a family knitwear maker since 1946. Orders ship from Denmark through our local fulfilment partner.</p>"
-          }
-        },
         "topic_9": {
           "type": "topic",
           "settings": {
-            "title": "Yarn and quality"
+            "title": "Yarn & Quality"
           }
         },
         "q_10": {
           "type": "q",
           "settings": {
-            "q": "What do you mean by leftover yarn?",
-            "a": "<p>Premium, unused yarn left over from earlier production runs for fashion brands. It is not waste and not used fibre. It is high-quality yarn that was never worn or used, simply left in limited quantities.</p>"
+            "q": "What does \"rescued yarn\" mean?",
+            "a": "<p>Rescued yarn is the pristine, luxury surplus left behind by fashion houses at the end of each season. This material is set aside strictly due to excess quantity, not a lack of quality. We rescue this premium surplus and reimagine it into exclusive new designs.</p>"
           }
         },
         "q_11": {
           "type": "q",
           "settings": {
-            "q": "Does leftover yarn mean lower quality?",
+            "q": "Does using \"rescued yarn\" affect quality?",
             "a": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>"
           }
         },
         "q_12": {
           "type": "q",
           "settings": {
-            "q": "What does limited edition mean?",
+            "q": "Why are your pieces limited edition?",
             "a": "<p>Our pieces are made in small quantities from leftover yarn that exists in limited amounts. Once that yarn is used, the same design or colour may not be repeated.</p>"
           }
         },
         "q_13": {
           "type": "q",
           "settings": {
-            "q": "Will items be restocked?",
+            "q": "Can you restock a piece once it sells out?",
             "a": "<p>Some items may return in a new colourway or updated design, but once sold out they are not restocked exactly the same. If a piece speaks to you, it may be best to make it yours while it is available.</p>"
           }
         },
@@ -138,13 +142,13 @@
           "type": "q",
           "settings": {
             "q": "How should I care for my knitted piece?",
-            "a": "<p>Care depends on the yarn, and the care label on each piece has the details. Lambswool pieces are hand wash cold and dry flat. For machine-washable pieces, use a wash bag so they do not rub against other clothes.</p>"
+            "a": "<p>We recommend airing your knits often and washing them sparingly. When a wash is needed, gently hand wash in cold water and lay flat to dry to preserve the silhouette. You can explore our full Size &amp; Care Guide for detailed rituals.</p>"
           }
         },
         "q_20": {
           "type": "q",
           "settings": {
-            "q": "Do cushion covers come with the inner cushion?",
+            "q": "Do your cushion covers come with the inner cushion?",
             "a": "<p>No. Covers are sold without inners, so you can choose your own filling and firmness.</p>"
           }
         },
@@ -157,14 +161,14 @@
         "q_22": {
           "type": "q",
           "settings": {
-            "q": "Why give EchoByJMG as a gift?",
-            "a": "<p>Every piece is made in limited quantities from premium leftover yarn, so each gift feels personal and unique, with beauty, comfort and meaning behind it.</p>"
+            "q": "Why give EchoByJMG as gifts?",
+            "a": "<p>EchoByJMG pieces are thoughtful gifts with beauty, comfort, and meaning behind them.</p><p>All of our collections are made in limited quantities using premium leftover yarns, making each gift feel more personal and unique.</p>"
           }
         },
         "q_23": {
           "type": "q",
           "settings": {
-            "q": "Is the price shown in the package?",
+            "q": "Will the price be shown on the packaging?",
             "a": "<p>No. No prices are printed in the order. Confirmations and receipts are sent to the buyer by email.</p>"
           }
         },
@@ -185,7 +189,7 @@
         "q_26": {
           "type": "q",
           "settings": {
-            "q": "When do I need to order for Christmas?",
+            "q": "What is the latest date I can order to ensure my gifts arrive before Christmas?",
             "a": "<p>Order by [date] for delivery before Christmas Eve.</p>"
           }
         }
@@ -198,7 +202,6 @@
         "q_5",
         "q_6",
         "q_7",
-        "q_8",
         "topic_9",
         "q_10",
         "q_11",
@@ -218,10 +221,33 @@
         "q_25",
         "q_26"
       ]
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 0,
+        "space_below": 60
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
+      }
     }
   },
   "order": [
     "crumbs",
-    "main"
+    "main",
+    "illustration",
+    "club"
   ]
 }

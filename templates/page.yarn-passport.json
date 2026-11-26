@@ -93,7 +93,8 @@
         "alt": "",
         "width": 126,
         "space_above": 20,
-        "space_below": 20
+        "space_below": 20,
+        "bg": "blush"
       }
     },
     "club": {

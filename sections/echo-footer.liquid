@@ -14,7 +14,7 @@
     <div class="f-brand">
       <a class="f-logo" href="{% render 'echo-url', key: 'home' %}" aria-label="{{ shop.name | escape }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 352 | image_tag: alt: shop.name, widths: '88, 176, 352', sizes: '88px', loading: 'lazy' }}{% else %}<img src="{{ 'echo-footer-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" width="88" height="88" loading="lazy">{% endif %}</a>
       <div class="f-certs">
-        <a href="{{ u_factory }}" class="f-certs-t">{{ 'echo.common.factory_and_certificates' | t }}</a>
+        <a href="{{ u_factory }}" class="f-certs-t">{{ 'echo.footer.factories_and_certificates' | t }}</a>
         <div class="certrow f-certlogos">
           <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-bsci.png' | asset_url }}" alt="{{ 'echo.certs.alt_bsci' | t | escape }}" width="44" height="44" loading="lazy"></a>
           <a href="{{ u_factory }}"><img src="{{ 'echo-footer-cert-ocs-100.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs' | t | escape }}" width="39" height="44" loading="lazy"></a>
@@ -92,7 +92,9 @@
       <img src="{{ 'echo-pay-klarna.png' | asset_url }}" alt="Klarna" width="55" height="16" loading="lazy">
     </div>
     <div class="f-row">
-      <div class="f-info"><span>{{ section.settings.ships_text }}</span><span>{{ section.settings.legal_text }}</span></div>
+      {%- assign f_ships = section.settings.ships_text -%}{%- if f_ships == blank -%}{%- assign f_ships = 'echo.footer.ships_line' | t -%}{%- endif -%}
+      {%- assign f_legal = section.settings.legal_text -%}{%- if f_legal == blank -%}{%- assign f_legal = 'echo.footer.legal_line' | t -%}{%- endif -%}
+      <div class="f-info"><span>{{ f_ships }}</span><span>{{ f_legal }}</span></div>
       <div class="f-right">
         <div class="f-social">
           {%- if section.settings.instagram != blank -%}<a href="{{ section.settings.instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5.3-3.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg></a>{%- endif -%}
@@ -124,8 +126,8 @@
     { "type": "link_list", "id": "col3_menu", "label": "Column 3 menu" },
     { "type": "text", "id": "col3_heading", "label": "Column 3 heading", "info": "Empty = Help" },
     { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Empty = the bundled EchoByJMG circle logo." },
-    { "type": "text", "id": "ships_text", "label": "Shipping line", "default": "Ships from Parcel Feeder, Brøndby · Free 14-day returns · Support [hours] CET" },
-    { "type": "text", "id": "legal_text", "label": "Legal seller line", "default": "EchoByJMG is owned by JM Group Limited, Hong Kong, the legal seller." },
+    { "type": "text", "id": "ships_text", "label": "Shipping line", "info": "Leave empty to use the translated line." },
+    { "type": "text", "id": "legal_text", "label": "Legal seller line", "info": "Leave empty to use the translated line." },
     { "type": "header", "content": "Social" },
     { "type": "text", "id": "instagram", "label": "Instagram URL", "default": "https://instagram.com/echobyjmg_official" },
     { "type": "text", "id": "pinterest", "label": "Pinterest URL", "default": "https://pinterest.com/echobyjmg" },
