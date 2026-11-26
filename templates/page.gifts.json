@@ -1,24 +1,25 @@
 {
   "layout": "echo",
   "sections": {
+    "banner": {
+      "type": "echo-xmas-banner",
+      "settings": {
+        "layout": "overlay",
+        "photo": "echo-gift-banner.jpg",
+        "alt": "Knitted throws tied with a ribbon like gift tags",
+        "focus": "50% 50%",
+        "bg": "#F3E6DF",
+        "photo_bg": "#F3E6DF",
+        "fg": "#5A1620",
+        "sub": "#332C2A",
+        "heading": "A gift that tells its own story",
+        "lead": "Every piece arrives with its edition number and where its yarn came from, so you never have to explain why you chose it."
+      }
+    },
     "crumbs": {
       "type": "echo-breadcrumbs",
       "settings": {
         "current": "Gifts"
-      }
-    },
-    "intro": {
-      "type": "echo-split",
-      "settings": {
-        "spacing": "tight",
-        "media_first": false,
-        "gap": 14,
-        "heading": "A gift that tells its own story",
-        "heading_tag": true,
-        "heading_size": "h1",
-        "lead": "Every piece arrives with its edition number and where its yarn came from, so you never have to explain why you chose it.",
-        "label": "Unboxing: tissue paper, edition card, small surprise inside",
-        "ar": "4/3"
       }
     },
     "finder": {
@@ -44,10 +45,16 @@
             "products": [
               "hills-valleys-throw",
               "twister-rope-blanket-doe",
+              "rollercoaster-tracks-blanket-linen",
+              "willow-lace-knitted-throw-linen",
+              "verdant-plume-knitted-throw-mortar",
               "hills-valleys-cushion-cover",
-              "twister-rope-knitted-cushion-cover-doe",
-              "textured-stripes-tote"
-            ]
+              "retro-bloom-knitted-cushion-cover",
+              "rollercoaster-tracks-knitted-cushion-cover",
+              "geoplay-crochet-coaster-set",
+              "zigzag-crochet-coaster-set"
+            ],
+            "photo": "echo-occ-housewarming.jpg"
           }
         },
         "occasion_2": {
@@ -56,26 +63,37 @@
             "title": "New baby",
             "ph": "nursery",
             "products": [
+              "soft-heritage-baby-cable-knitted-throw-antique-rose",
+              "happy-sunshine-throw-cloud",
               "bonjour-pup-throw",
               "bubble-pop-blanket",
-              "happy-sunshine-throw-cloud",
+              "cotton-candy-cloud-throw-cloud",
+              "little-explorers-knitted-cushion-cover",
               "puff-friends-cushion-cover",
-              "bonjour-pup-cushion-cover"
-            ]
+              "joyful-rainbow-knitted-cushion-cover",
+              "sky-fence-knitted-cushion-cover",
+              "purrfect-peek-cushion-cover"
+            ],
+            "photo": "echo-occ-new-baby.jpg"
           }
         },
         "occasion_3": {
           "type": "occasion",
           "settings": {
-            "title": "Host gift",
+            "title": "Hot gift",
             "ph": "table",
             "products": [
+              "joyful-pompom-beanie-candy-pink",
+              "rainbow-crossing-knitted-scarf",
               "star-pop-knitted-bag",
-              "happy-stripe-lunch-bag",
-              "popcorn-dumpling-bag",
-              "carousel-stripes-knitted-cushion-cover-violet-blue",
-              "lucky-arrow-knitted-cushion-cover"
-            ]
+              "denim-diamond-knitted-tote",
+              "booth-ticket-knitted-pcase-red",
+              "fun-stripes-knitted-pcase-seaweed",
+              "popcorn-dumpling-knitted-bag-pumpkin",
+              "happy-stripe-knitted-lunch-bag-tomato",
+              "cable-rope-knitted-tote"
+            ],
+            "photo": "echo-occ-hot-gift.jpg"
           }
         },
         "occasion_4": {
@@ -84,12 +102,14 @@
             "title": "Christmas",
             "ph": "winter",
             "products": [
-              "joyful-pompom-beanie-candy-pink",
-              "rainbow-crossing-knitted-scarf",
-              "cotton-candy-cloud-throw-cloud",
-              "rollercoaster-tracks-blanket-black",
-              "wavetrack-dumpling-bag"
-            ]
+              "starlight-ornament-knitted-throw",
+              "winter-nest-knitted-blanket-carrot",
+              "festive-baubles-knitted-cushion-cover-ginger",
+              "nordic-forest-knitted-cushion-cover",
+              "festive-pompom-knitted-beanie-oat",
+              "willow-lace-knitted-throw-dark-cherry"
+            ],
+            "photo": "echo-occ-christmas.jpg"
           }
         }
       },
@@ -203,8 +223,8 @@
     }
   },
   "order": [
+    "banner",
     "crumbs",
-    "intro",
     "finder",
     "why",
     "giftcard",
