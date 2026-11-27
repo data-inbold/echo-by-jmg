@@ -39,14 +39,14 @@
   function fmtKgWhole(n) { return fmtNumber(Math.round(n)) + ' kg'; }
 
   /*
-    Count-up: the number runs from 0 to its value when it is mostly in view (2.4 seconds by default, easing out
-    gently so the climb stays visible the whole time). The speed can be changed per number with
+    Count-up: the number runs from 0 to its value as it comes into view (1.5 seconds by default, fast at the
+    start and slowing into the final value, like the common CountUp.js default). The speed can be changed per number with
     data-yarn-duration="3000" (milliseconds) on the element.
     No animation (final number straight away) for visitors who prefer reduced motion, browsers without
     IntersectionObserver, and zero values. While counting only whole numbers are shown, the exact value
     (for example 1,380.5) appears at the end. Each element animates once per value.
   */
-  var DURATION = 2400;
+  var DURATION = 1500;
   function durationOf(el) {
     var d = parseInt(el.getAttribute('data-yarn-duration'), 10);
     return d >= 300 && d <= 10000 ? d : DURATION;
@@ -60,7 +60,7 @@
     function frame(ts) {
       if (start === null) start = ts;
       var p = Math.min(1, (ts - start) / duration);
-      var eased = 1 - Math.pow(1 - p, 2);
+      var eased = p >= 1 ? 1 : 1 - Math.pow(2, -10 * p);
       el.textContent = p >= 1 ? format(to) : format(Math.floor(to * eased));
       if (p < 1) root.requestAnimationFrame(frame);
     }
@@ -85,7 +85,7 @@
         runCount(el, to, format);
         return;
       }
-    }, { threshold: 0.6 });
+    }, { threshold: 0.3 });
     io.observe(el);
   }
   function normId(s) { return String(s == null ? '' : s).trim().toLowerCase(); }
