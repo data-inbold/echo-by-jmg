@@ -1,10 +1,36 @@
 {%- capture echo_out -%}
 {%- comment -%} Accordion questions. Layout "single" (narrow column) or "side" (heading left, questions right). {%- endcomment -%}
+<style>
+  .fq-fg{padding:40px 16px {{ section.settings.pad_bottom }}px}
+  @media(min-width:720px){.fq-fg{padding-inline:max(80px,calc((100vw - var(--wrap)) / 2 + 80px))}}
+  .fq-fg .fq-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
+  @media(min-width:960px){.fq-fg .fq-grid{grid-template-columns:minmax(0,302px) minmax(0,838px);justify-content:space-between}}
+  .fq-fg h2{margin:0;font:300 clamp(28px,2.8vw,40px)/normal var(--display);color:var(--wine)}
+  .fq-list{border-top:1px solid #ABA499}
+  .fq-list details{border-bottom:1px solid #ABA499;padding:16px 0}
+  .fq-list summary{display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;cursor:pointer;padding:8px 0;font:400 18px/26px var(--body);color:#332C2A}
+  .fq-list summary::-webkit-details-marker{display:none}
+  .fq-list summary::after{content:none!important}
+  .fq-list .fq-ic{flex:none;width:24px;height:24px}
+  .fq-list .fq-x{display:none}
+  .fq-list details[open] .fq-x{display:block}
+  .fq-list details[open] .fq-p{display:none}
+  .fq-list .body{max-width:621px;padding:8px 0 0;font:400 14px/1.6 var(--body);color:#332C2A}
+  .fq-list .body p{margin:0}
+</style>
+{%- capture acc_fg -%}
+  {%- for b in section.blocks -%}
+    <details {{ b.shopify_attributes }}{% if forloop.first %} open{% endif %}><summary>{{ b.settings.q }}<svg class="fq-ic fq-p" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg><svg class="fq-ic fq-x" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128 50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/></svg></summary><div class="body">{{ b.settings.a }}</div></details>
+  {%- endfor -%}
+{%- endcapture -%}
 {%- capture acc -%}
   {%- for b in section.blocks -%}
     <details class="acc" {{ b.shopify_attributes }}><summary>{{ b.settings.q }}</summary><div class="body">{{ b.settings.a }}</div></details>
   {%- endfor -%}
 {%- endcapture -%}
+{%- if section.settings.figma -%}
+<section class="fq-fg"><div class="fq-grid"><h2>{{ section.settings.heading }}</h2><div class="fq-list">{{ acc_fg }}</div></div></section>
+{%- else -%}
 <section class="section {{ section.settings.spacing }} {{ section.settings.bg }}">
   {%- if section.settings.layout == 'side' -%}
     <div class="wrap grid g2" style="align-items:start">
@@ -15,6 +41,7 @@
     <div class="wrap" style="max-width:860px"><h2 class="h2" style="margin-bottom:16px">{{ section.settings.heading }}</h2>{{ acc }}</div>
   {%- endif -%}
 </section>
+{%- endif -%}
 {%- endcapture -%}
 {%- render 'echo-links', html: echo_out -%}
 {% schema %}
@@ -24,6 +51,8 @@
     {"type": "select", "id": "spacing", "label": "Spacing", "options": [{"value": "normal", "label": "Normal"}, {"value": "tight", "label": "Tight"}], "default": "normal"},
     {"type": "select", "id": "bg", "label": "Background", "options": [{"value": "paper", "label": "Off-white"}, {"value": "alt", "label": "White"}, {"value": "band", "label": "Grey band"}, {"value": "dark", "label": "Black"}], "default": "paper"},
     { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "single", "label": "Single column" }, { "value": "side", "label": "Heading beside questions" }], "default": "single" },
+    { "type": "checkbox", "id": "figma", "label": "Use the new look (heading left, lines between questions)", "default": false },
+    { "type": "range", "id": "pad_bottom", "label": "Space below (new look)", "min": 0, "max": 160, "step": 10, "default": 40, "unit": "px" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Questions" },
     { "type": "textarea", "id": "intro", "label": "Text under heading (side layout)" }
   ],

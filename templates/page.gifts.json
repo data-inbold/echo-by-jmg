@@ -1,25 +1,18 @@
+/* Gifts: Figma layout, 27 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
-    "banner": {
-      "type": "echo-xmas-banner",
-      "settings": {
-        "layout": "overlay",
-        "photo": "echo-gift-banner.jpg",
-        "alt": "Knitted throws and a scarf, ready to give",
-        "focus": "90% 50%",
-        "bg": "#F3E6DF",
-        "photo_bg": "#F3E6DF",
-        "fg": "#5A1620",
-        "sub": "#332C2A",
-        "heading": "A gift that tells its own story",
-        "lead": "Every piece arrives with its edition number and where its yarn came from, so you never have to explain why you chose it."
-      }
+    "hero": {
+      "type": "echo-page-hero",
+      "settings": {}
     },
-    "crumbs": {
-      "type": "echo-breadcrumbs",
+    "marquee": {
+      "type": "echo-marquee",
       "settings": {
-        "current": "Gifts"
+        "words": "#Limited Editions | #EchoByJMG | #Rescue The Yarn",
+        "speed": 40,
+        "pad": 40,
+        "bg": ""
       }
     },
     "finder": {
@@ -34,7 +27,10 @@
           "puff-friends-cushion-cover",
           "joyful-pompom-beanie-candy-pink",
           "happy-sunshine-throw-cloud-smoky-mauve"
-        ]
+        ],
+        "show_thread": true,
+        "pad_bottom": 80,
+        "show_promo": true
       },
       "blocks": {
         "occasion_1": {
@@ -60,7 +56,7 @@
         "occasion_2": {
           "type": "occasion",
           "settings": {
-            "title": "New baby",
+            "title": "New Baby",
             "ph": "nursery",
             "products": [
               "soft-heritage-baby-cable-knitted-throw-antique-rose",
@@ -80,7 +76,7 @@
         "occasion_3": {
           "type": "occasion",
           "settings": {
-            "title": "Hot gift",
+            "title": "Hot Gift",
             "ph": "table",
             "products": [
               "joyful-pompom-beanie-candy-pink",
@@ -120,96 +116,40 @@
         "occasion_4"
       ]
     },
-    "why": {
-      "type": "echo-steps",
-      "settings": {
-        "bg": "alt",
-        "heading": "Why it makes a good gift",
-        "gap": 24
-      },
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "No price on the slip",
-            "text": "Receipts go to you, by email."
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Wrapped already",
-            "text": "In our own tissue paper, with a small surprise."
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "A number and a story",
-            "text": "Edition card and Yarn Passport in the box."
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "title": "[Gift exchanges]",
-            "text": "[Confirm: can the recipient exchange?]"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4"
-      ]
-    },
-    "giftcard": {
-      "type": "echo-split",
-      "settings": {
-        "media_first": true,
-        "gap": 12,
-        "heading": "Let them choose",
-        "caption": "Sent by email, no expiry. DKK 100, 250, 500 or 1,000.",
-        "btn1_label": "Buy a gift card",
-        "btn1_link": "echo:gift-card",
-        "btn1_ghost": false,
-        "label": "eGift card visual",
-        "ar": "16/10"
-      }
-    },
     "faq": {
       "type": "echo-faq",
       "settings": {
-        "bg": "alt",
-        "heading": "Gift questions"
+        "figma": true,
+        "heading": "Gift Questions",
+        "pad_bottom": 40,
+        "layout": "side"
       },
       "blocks": {
         "q_1": {
           "type": "q",
           "settings": {
-            "q": "Is the price shown in the package?",
-            "a": "<p>No. No prices are printed in the order. Confirmations and receipts are sent to the buyer by email.</p>"
+            "q": "1. Will the price be shown on the packaging?",
+            "a": "<p>No printed price are included in the order. Order confirmations and receipts are sent digitally to the purchaser only. This means your recipient can enjoy the surprise fully without having to worry about price.</p>"
           }
         },
         "q_2": {
           "type": "q",
           "settings": {
-            "q": "Do you offer gift wrapping?",
+            "q": "2. Do you offer gift wrapping?",
             "a": "<p>Every order is wrapped in our own tissue paper, with a little surprise gift inside.</p>"
           }
         },
         "q_3": {
           "type": "q",
           "settings": {
-            "q": "Can I send it straight to the recipient?",
+            "q": "3. Can I send it straight to the recipient?",
             "a": "<p>Yes. Enter their address at checkout. [Gift message option to confirm.]</p>"
           }
         },
         "q_4": {
           "type": "q",
           "settings": {
-            "q": "When do I need to order for Christmas?",
+            "q": "4. What is the latest date I can order to ensure my gifts arrive before Christmas?",
             "a": "<p>Order by [date] for delivery before Christmas Eve.</p>"
           }
         }
@@ -220,14 +160,35 @@
         "q_3",
         "q_4"
       ]
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 0,
+        "space_below": 60
+      }
+    },
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
+      }
     }
   },
   "order": [
-    "banner",
-    "crumbs",
+    "hero",
+    "marquee",
     "finder",
-    "why",
-    "giftcard",
-    "faq"
+    "faq",
+    "illustration",
+    "club"
   ]
 }
