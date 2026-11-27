@@ -164,7 +164,7 @@
           "type": "step",
           "settings": {
             "title": "Traceable and exclusively yours",
-            "text": "Every limited-edition piece you purchase will include a custom woven label and a Yarn Passport that details your yarn's journey.",
+            "text": "Every limited-edition piece you purchase will include a custom woven label and a digital Yarn Passport that details your yarn's journey.",
             "link_word": "Yarn Passport",
             "link": "echo:passport"
           }
