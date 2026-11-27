@@ -946,6 +946,7 @@
     },
     "passport": {
       "batch_line": "Batch {{ batch }} · {{ kg }} kg rescued · edition of {{ total }}",
+      "edition_line": "Edition of {{ total }}",
       "factory_level": "{{ number }} · factory level",
       "woven_label": "Every piece carries a woven label “Edition __ of {{ total }}”. Your number is assigned at packing."
     },

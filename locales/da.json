@@ -946,6 +946,7 @@
     },
     "passport": {
       "batch_line": "Batch {{ batch }} · {{ kg }} kg reddet · oplag på {{ total }}",
+      "edition_line": "Oplag på {{ total }}",
       "factory_level": "{{ number }} · fabriksniveau",
       "woven_label": "Hvert stykke har en vævet label med “Nr. __ af {{ total }}”. Dit nummer får du, når vi pakker din ordre."
     },
