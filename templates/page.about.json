@@ -344,7 +344,7 @@
             "title": "From left over yarn",
             "text": "The knitting machines warm up before the first shift.",
             "duration": "0:27",
-            "by": "Filmed by [name], Knitting hall",
+            "by": "Knitting hall",
             "file": "echo-clip-1.mp4",
             "placeholder": "Phone clip\nMorning start-up"
           }
@@ -356,7 +356,7 @@
             "title": "Cones off the shelf",
             "text": "Leftover lambswool pulled for batch HV-2417.",
             "duration": "0:22",
-            "by": "Filmed by [name], Yarn store",
+            "by": "Yarn store",
             "file": "echo-clip-2.mp4",
             "placeholder": "Phone clip\nCones off the shelf"
           }
@@ -368,7 +368,7 @@
             "title": "Linking by hand",
             "text": "Closing the seams of a cushion cover, stitch by stitch.",
             "duration": "0:28",
-            "by": "Filmed by [name], Linking table",
+            "by": "Linking table",
             "file": "echo-clip-3.mp4",
             "placeholder": "Phone clip\nLinking by hand"
           }
@@ -380,7 +380,7 @@
             "title": "Select Pompoms",
             "text": "Trimming pompoms for the joyful beanie.",
             "duration": "0:28",
-            "by": "Filmed by [name], Finishing",
+            "by": "Finishing",
             "file": "echo-clip-4.mp4",
             "placeholder": "Phone clip\nPompoms"
           }
@@ -390,7 +390,7 @@
           "settings": {
             "kind": "From the factory",
             "title": "A morning on the factory floor",
-            "dek": "Short film and photos from the knitting hall. [From the summer shoot.]",
+            "dek": "Short film and photos from the knitting hall.",
             "link": "echo:journal",
             "photo_file": "echo-fg-journal-1.jpg"
           }

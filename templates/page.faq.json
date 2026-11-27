@@ -183,14 +183,14 @@
           "type": "q",
           "settings": {
             "q": "Can I send it straight to the recipient?",
-            "a": "<p>Yes. Enter their address at checkout. [Gift message option to confirm.]</p>"
+            "a": "<p>Yes. Enter their address at checkout. The receipt is emailed to you, not to them.</p>"
           }
         },
         "q_26": {
           "type": "q",
           "settings": {
             "q": "What is the latest date I can order to ensure my gifts arrive before Christmas?",
-            "a": "<p>Order by [date] for delivery before Christmas Eve.</p>"
+            "a": "<p>Order by 19 December for delivery before Christmas Eve.</p>"
           }
         }
       },

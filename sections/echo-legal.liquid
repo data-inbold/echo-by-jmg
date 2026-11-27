@@ -1,6 +1,6 @@
 {%- capture echo_out -%}
 <section class="section tight"><div class="wrap" style="max-width:860px">
-  <div class="stack" style="gap:14px"><span class="mono">{{ 'echo.legal.last_updated' | t: date: section.settings.updated }}</span><h1 class="h1">{{ section.settings.heading | default: page.title }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p>
+  <div class="stack" style="gap:14px">{%- unless section.settings.updated == blank or section.settings.updated contains '[' -%}<span class="mono">{{ 'echo.legal.last_updated' | t: date: section.settings.updated }}</span>{%- endunless -%}<h1 class="h1">{{ section.settings.heading | default: page.title }}</h1><p class="lead" style="margin:0">{{ section.settings.lead }}</p>
     {%- if section.settings.note != blank -%}<div class="review" style="font-size:13px">{{ section.settings.note }}</div>{%- endif -%}
   </div>
   <nav class="stack" style="gap:6px;margin:28px 0;font-size:14px" aria-label="{{ 'echo.legal.on_this_page' | t | escape }}">
@@ -17,7 +17,7 @@
 {
   "name": "Legal page",
   "settings": [
-    { "type": "text", "id": "updated", "label": "Last updated", "default": "[date]" },
+    { "type": "text", "id": "updated", "label": "Last updated" },
     { "type": "text", "id": "heading", "label": "Heading", "info": "Empty = page title" },
     { "type": "textarea", "id": "lead", "label": "Intro" },
     { "type": "text", "id": "note", "label": "Draft note (remove when final)", "default": "Draft structure. Final wording to be written and checked by a lawyer." },

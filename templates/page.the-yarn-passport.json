@@ -163,14 +163,14 @@
           "type": "q",
           "settings": {
             "q": "Can I choose my number?",
-            "a": "<p>Numbers are given at packing, in the order pieces are sent. [Confirm with Ming: can customers request a number?]</p>"
+            "a": "<p>Numbers are given at packing, in the order pieces are sent, so we cannot reserve a specific number.</p>"
           }
         },
         "q_2": {
           "type": "q",
           "settings": {
             "q": "Why don’t you name the fashion house?",
-            "a": "<p>[Confirm with Ming: reason the brand is not named.] The season, the fibre and the batch are all on the passport.</p>"
+            "a": "<p>We do not name the fashion houses we knit for. The season, the fibre and the batch are all on the passport.</p>"
           }
         },
         "q_3": {

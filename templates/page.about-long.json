@@ -40,8 +40,8 @@
         "step_2": {
           "type": "step",
           "settings": {
-            "title": "[Year]",
-            "text": "Our own family-run factory opens in [city], China."
+            "title": "1985",
+            "text": "Our family-run knitwear factory moves from Hong Kong to Dongguan, China."
           }
         },
         "step_3": {
@@ -89,7 +89,7 @@
           "type": "step",
           "settings": {
             "title": "The leftover is logged",
-            "text": "Fibre, colour, weight and batch. [How it is tracked today, to confirm with Ming.]"
+            "text": "Fibre, colour, weight and batch."
           }
         },
         "step_3": {

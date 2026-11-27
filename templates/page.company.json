@@ -27,6 +27,7 @@
         },
         "fact_3": {
           "type": "fact",
+          "disabled": true,
           "settings": {
             "label": "Company registration no.",
             "value": "[No.]"
@@ -34,6 +35,7 @@
         },
         "fact_4": {
           "type": "fact",
+          "disabled": true,
           "settings": {
             "label": "VAT registration",
             "value": "[Danish or EU VAT number]"
@@ -50,7 +52,7 @@
           "type": "fact",
           "settings": {
             "label": "Warehouse and returns in Denmark",
-            "value": "Parcel Feeder, Brøndby, [street address]"
+            "value": "Parcel Feeder, Brøndby"
           }
         }
       },
