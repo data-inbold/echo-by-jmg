@@ -34,7 +34,7 @@
         <div class="cf-info">
           <p class="cf-t">{{ b.settings.title }}</p>
           <p class="cf-x">{{ b.settings.text }}</p>
-          {%- if b.settings.no != blank -%}<p class="cf-m">{{ b.settings.no }}</p>{%- endif -%}
+          {%- unless b.settings.no == blank or b.settings.no contains '[no.]' -%}<p class="cf-m">{{ b.settings.no }}</p>{%- endunless -%}
           {%- if b.settings.file != blank -%}<a class="cf-link" href="{{ b.settings.file }}" target="_blank" rel="noopener">{{ 'echo.certs.view_certificate' | t }}</a>{%- endif -%}
         </div>
       </div>
