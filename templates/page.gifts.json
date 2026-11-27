@@ -1,10 +1,30 @@
-/* Gifts: Figma layout, 27 Nov 2026 */
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "echo",
   "sections": {
     "hero": {
       "type": "echo-page-hero",
-      "settings": {}
+      "settings": {
+        "crumb_current": "Gifts",
+        "heading": "Gifts",
+        "text": "From cozy blankets to everyday accessories, discover beautifully knitted gifts that bring comfort to the people who mean the most to you.",
+        "photo": "shopify://shop_images/gifts-banner.png",
+        "photo_file": "echo-v2-gift.jpg",
+        "alt": "A wrapped EchoByJMG gift with a handwritten card",
+        "focus": "50% 50%",
+        "img_h": 360,
+        "img_h_mobile": 240,
+        "pad_top": 80,
+        "pad_bottom": 0
+      }
     },
     "marquee": {
       "type": "echo-marquee",
@@ -17,26 +37,12 @@
     },
     "finder": {
       "type": "echo-gift-finder",
-      "settings": {
-        "popular": [
-          "hills-valleys-throw",
-          "twister-rope-blanket-doe",
-          "hills-valleys-cushion-cover",
-          "cable-rope-knitted-tote-1",
-          "carousel-stripes-knitted-throw-violet-blue",
-          "puff-friends-cushion-cover",
-          "joyful-pompom-beanie-candy-pink",
-          "happy-sunshine-throw-cloud-smoky-mauve"
-        ],
-        "show_thread": true,
-        "pad_bottom": 80,
-        "show_promo": true
-      },
       "blocks": {
         "occasion_1": {
           "type": "occasion",
           "settings": {
             "title": "Housewarming",
+            "photo": "echo-occ-housewarming.jpg",
             "ph": "new home",
             "products": [
               "hills-valleys-throw",
@@ -49,14 +55,14 @@
               "rollercoaster-tracks-knitted-cushion-cover",
               "geoplay-crochet-coaster-set",
               "zigzag-crochet-coaster-set"
-            ],
-            "photo": "echo-occ-housewarming.jpg"
+            ]
           }
         },
         "occasion_2": {
           "type": "occasion",
           "settings": {
             "title": "New Baby",
+            "photo": "echo-occ-new-baby.jpg",
             "ph": "nursery",
             "products": [
               "soft-heritage-baby-cable-knitted-throw-antique-rose",
@@ -69,14 +75,14 @@
               "joyful-rainbow-knitted-cushion-cover",
               "sky-fence-knitted-cushion-cover",
               "purrfect-peek-cushion-cover"
-            ],
-            "photo": "echo-occ-new-baby.jpg"
+            ]
           }
         },
         "occasion_3": {
           "type": "occasion",
           "settings": {
             "title": "Hot Gift",
+            "photo": "echo-occ-hot-gift.jpg",
             "ph": "table",
             "products": [
               "joyful-pompom-beanie-candy-pink",
@@ -88,14 +94,14 @@
               "popcorn-dumpling-knitted-bag-pumpkin",
               "happy-stripe-knitted-lunch-bag-tomato",
               "cable-rope-knitted-tote-1"
-            ],
-            "photo": "echo-occ-hot-gift.jpg"
+            ]
           }
         },
         "occasion_4": {
           "type": "occasion",
           "settings": {
             "title": "Christmas",
+            "photo": "echo-occ-christmas.jpg",
             "ph": "winter",
             "products": [
               "starlight-ornament-knitted-throw",
@@ -104,8 +110,7 @@
               "nordic-forest-knitted-cushion-cover",
               "festive-pompom-knitted-beanie-oat",
               "willow-lace-knitted-throw-dark-cherry"
-            ],
-            "photo": "echo-occ-christmas.jpg"
+            ]
           }
         }
       },
@@ -114,16 +119,29 @@
         "occasion_2",
         "occasion_3",
         "occasion_4"
-      ]
+      ],
+      "settings": {
+        "collection": "",
+        "popular": [
+          "hills-valleys-throw",
+          "twister-rope-blanket-doe",
+          "hills-valleys-cushion-cover",
+          "cable-rope-knitted-tote-1",
+          "carousel-stripes-knitted-throw-violet-blue",
+          "puff-friends-cushion-cover",
+          "joyful-pompom-beanie-candy-pink",
+          "happy-sunshine-throw-cloud-smoky-mauve"
+        ],
+        "show_thread": true,
+        "pad_bottom": 80,
+        "show_promo": true,
+        "promo_title": "eGift Card",
+        "promo_text": "Not sure what to get them? Let them pick out their favorites instead. Sent by email, with no expiry date. Available in DKK 100, 250, 500, or 1,000.",
+        "promo_link_label": "Buy a gift card"
+      }
     },
     "faq": {
       "type": "echo-faq",
-      "settings": {
-        "figma": true,
-        "heading": "Gift Questions",
-        "pad_bottom": 40,
-        "layout": "side"
-      },
       "blocks": {
         "q_1": {
           "type": "q",
@@ -159,13 +177,23 @@
         "q_2",
         "q_3",
         "q_4"
-      ]
+      ],
+      "settings": {
+        "spacing": "normal",
+        "bg": "paper",
+        "layout": "side",
+        "figma": true,
+        "pad_bottom": 40,
+        "heading": "Gift Questions",
+        "intro": ""
+      }
     },
     "illustration": {
       "type": "echo-illustration",
       "settings": {
         "photo": "echo-sofa-icon.png",
         "alt": "",
+        "bg": "none",
         "width": 126,
         "space_above": 0,
         "space_below": 60
