@@ -322,7 +322,7 @@
         "review_1": {
           "type": "review",
           "settings": {
-            "name": "Jane Doe",
+            "name": "Maja",
             "country": "Denmark",
             "quote": "So soft, you felt it immediately. It feels like it’s always belonged in the room.",
             "photo": "echo-v2-review-1.jpg",
@@ -335,7 +335,7 @@
         "review_2": {
           "type": "review",
           "settings": {
-            "name": "John Doe",
+            "name": "Carsten Vigh",
             "country": "Denmark",
             "quote": "My daughter favorite blanket.",
             "photo": "echo-v2-review-2.jpg",
