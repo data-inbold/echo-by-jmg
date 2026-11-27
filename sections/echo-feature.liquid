@@ -34,11 +34,11 @@
         {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
         {%- if section.settings.certs -%}
           <div class="ft-certs">
-            <img src="{{ 'echo-footer-cert-bsci.png' | asset_url }}" alt="{{ 'echo.certs.alt_bsci' | t | escape }}" loading="lazy">
-            <img src="{{ 'echo-footer-cert-ocs-100.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs' | t | escape }}" loading="lazy">
-            <img src="{{ 'echo-footer-cert-ocs-blended.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs_blended' | t | escape }}" loading="lazy">
-            <img src="{{ 'echo-footer-cert-rcs-100.png' | asset_url }}" alt="{{ 'echo.certs.alt_rcs' | t | escape }}" loading="lazy">
-            <img src="{{ 'echo-footer-cert-rcs-blended.png' | asset_url }}" alt="{{ 'echo.certs.alt_rcs_blended' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-cert-bsci.png' | asset_url }}" alt="{{ 'echo.certs.alt_bsci' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-cert-ocs.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-cert-ocs-blended.png' | asset_url }}" alt="{{ 'echo.certs.alt_ocs_blended' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-cert-rcs.png' | asset_url }}" alt="{{ 'echo.certs.alt_rcs' | t | escape }}" loading="lazy">
+            <img src="{{ 'echo-cert-rcs-blended.png' | asset_url }}" alt="{{ 'echo.certs.alt_rcs_blended' | t | escape }}" loading="lazy">
           </div>
         {%- endif -%}
         {%- if section.settings.btn_label != blank -%}<a class="btn ghost arrow" href="{{ section.settings.btn_link }}">{{ section.settings.btn_label }}</a>{%- endif -%}

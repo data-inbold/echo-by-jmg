@@ -287,6 +287,7 @@
   <style>
     .pdp-fg{grid-template-columns:minmax(0,721fr) minmax(0,519fr);gap:40px;padding-block:8px 40px;align-items:start}
     .pdp-fg .gallery{display:flex;gap:12px;padding-block:8px}
+    @media (min-width:900px){.pdp-fg .gallery{position:sticky;top:calc(var(--echo-header-h,88px) + 16px)}}
     .pdp-fg .gal-main{flex:1 1 auto;min-width:0}
     .pdp-fg .gallery .main{aspect-ratio:628/760}
     .pdp-fg .thumbs{display:flex;flex-direction:column;gap:8px;width:81px;flex:none;margin:0;max-height:760px;overflow:auto;scrollbar-width:none}
