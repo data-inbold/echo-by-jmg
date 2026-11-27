@@ -42,6 +42,7 @@
           "type": "occasion",
           "settings": {
             "title": "Housewarming",
+            "image": "shopify://shop_images/Blankets.png",
             "photo": "echo-occ-housewarming.jpg",
             "ph": "new home",
             "products": [
@@ -62,6 +63,7 @@
           "type": "occasion",
           "settings": {
             "title": "New Baby",
+            "image": "shopify://shop_images/Cushion_Covers.png",
             "photo": "echo-occ-new-baby.jpg",
             "ph": "nursery",
             "products": [
@@ -82,6 +84,7 @@
           "type": "occasion",
           "settings": {
             "title": "Hot Gift",
+            "image": "shopify://shop_images/hotgift.png",
             "photo": "echo-occ-hot-gift.jpg",
             "ph": "table",
             "products": [
@@ -101,6 +104,7 @@
           "type": "occasion",
           "settings": {
             "title": "Christmas",
+            "image": "shopify://shop_images/christmas.png",
             "photo": "echo-occ-christmas.jpg",
             "ph": "winter",
             "products": [
@@ -121,7 +125,7 @@
         "occasion_4"
       ],
       "settings": {
-        "collection": "",
+        "collection": "accessories",
         "popular": [
           "hills-valleys-throw",
           "twister-rope-blanket-doe",
