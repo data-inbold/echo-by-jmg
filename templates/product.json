@@ -46,18 +46,16 @@
         },
         "q_f2": {
           "type": "q",
-          "disabled": true,
           "settings": {
             "q": "Can you share which fashion houses the yarn come from?",
-            "a": "<p>[Answer to confirm.]</p>"
+            "a": "<p>To protect our partners' design rights and confidentiality, we cannot disclose brand names. We do, however, share the yarn’s exact composition, production season, and the total amount rescued.</p>"
           }
         },
         "q_f3": {
           "type": "q",
-          "disabled": true,
           "settings": {
             "q": "What happens if I lose my Yarn Passport?",
-            "a": "<p>[Answer to confirm.]</p>"
+            "a": "<p>Not a problem. Your Yarn Passport is digital, so we can resend it to your inbox anytime. Plus, your knit's woven label will always display its unique edition number as a lasting physical record.</p>"
           }
         },
         "q_f4": {
