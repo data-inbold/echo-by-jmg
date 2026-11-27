@@ -49,148 +49,13 @@
   endif
 -%}
 
-  <style>
-    .pdp-fg{grid-template-columns:minmax(0,721fr) minmax(0,519fr);gap:40px;padding-block:8px 40px;align-items:start}
-    .pdp-fg .gallery{display:flex;gap:12px;padding-block:8px}
-    .pdp-fg .gal-main{flex:1 1 auto;min-width:0}
-    .pdp-fg .gallery .main{aspect-ratio:628/760}
-    .pdp-fg .thumbs{display:flex;flex-direction:column;gap:8px;width:81px;flex:none;margin:0;max-height:760px;overflow:auto;scrollbar-width:none}
-    .pdp-fg .thumbs button{border:2px solid transparent;height:120px;flex:none;outline:0}
-    .pdp-fg .thumbs button[aria-pressed="true"]{border-color:#ABA499;outline:0}
-    .pdp-fg .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
-    .pdp-info{display:flex;flex-direction:column;gap:40px;min-width:0}
-    .pdp-top{display:flex;flex-direction:column;gap:24px}
-    .pdp-head{display:flex;flex-direction:column;gap:8px}
-    .pdp-head .crumbs{padding:0 0 4px;margin:0}
-    .pdp-fg{padding-top:40px}
-    .pdp-title{font:300 40px/1.2 var(--head);color:var(--wine);margin:0}
-    .pdp-rating{display:flex;gap:4px;align-items:center;font-size:14px;color:#55524E;text-decoration:none}
-    .pdp-rating .stars{display:flex;gap:4px;color:#E2CFA8}
-    .pdp-rating b{font-weight:500;color:#332C2A}
-    .pdp-rating span{font-weight:300}
-    .pdp-price{display:flex;flex-direction:column;gap:8px}
-    .pr-row,.st-row{display:flex;align-items:center;gap:12px;font-size:14px;color:#332C2A}
-    .pr-row .pr{font-size:24px;font-weight:600;line-height:1.6}
-    .pdp-fg .dot{width:6px;height:6px;border-radius:50%;background:#332C2A;display:inline-block}
-    .pr-free{display:flex;gap:8px;align-items:center;font-size:14px;color:#7C7E64}
-    .pdp-colours{display:flex;flex-direction:column;gap:12px}
-    .pdp-colours p{margin:0;font-size:14px;color:#000}
-    .sw-row{display:flex;gap:15px;flex-wrap:wrap}
-    .sw-img{width:60px;height:60px;border-radius:50%;overflow:hidden;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
-    .sw-img img{width:100%;height:100%;object-fit:cover;display:block}
-    .sw-img[aria-current="true"]{box-shadow:0 0 0 2px var(--paper),0 0 0 3px #332C2A}
-    .pdp-stock{display:flex;flex-direction:column;gap:12px}
-    .pdp-stock .ed{color:#ABA499}
-    .pdp-stock .bar{background:#E7DCD0;border-radius:30px;height:8px;overflow:hidden}
-    .pdp-stock .bar span{display:block;height:100%;background:#332C2A;border-radius:30px}
-    .pdp-stock p{margin:0;font-size:14px;color:#332C2A}
-    .pdp-actions{display:flex;flex-direction:column;gap:24px}
-    .pdp-buy{display:flex;flex-direction:column;gap:24px}
-    .buy-row{display:flex;gap:24px;align-items:center}
-    .pdp-fg .qty{border:1px solid #ABA499;height:45px;padding:8px;gap:24px;display:flex;align-items:center}
-    .pdp-fg .qty button{width:24px;height:24px;padding:0;display:flex;color:#332C2A}
-    .pdp-fg .qty span{font-size:18px;min-width:12px}
-    .buy-row .btn{flex:1;min-height:45px;font-size:12px;letter-spacing:.1em;color:#F0DFD8}
-    .mp-out{width:100%;min-height:45px;font-size:12px;letter-spacing:.1em;gap:4px}
-    .mp-out img{height:16px;width:auto}
-    .pdp-ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:#332C2A}
-    .pdp-ticks li{display:flex;gap:8px;align-items:center}
-    .pdp-ticks svg{flex:none}
-    .pdp-notify{display:flex;flex-direction:column;gap:12px}
-    .pdp-notify label{font-size:14px;font-weight:600;color:#332C2A}
-    .nf-row{display:flex;gap:12px}
-    .nf-row input{flex:1;min-width:0;height:45px;border:1px solid #ABA499;background:transparent;padding:0 14px;font:inherit}
-    .nf-row .btn{min-height:45px;font-size:12px}
-    .pdp-fg .pdp-accs{display:flex;flex-direction:column;border-top:1px solid #D8CEC3}
-    .pdp-fg details.acc{border-top:0;border-bottom:1px solid #D8CEC3}
-    .pdp-fg details.acc summary{font:300 24px/1.6 var(--head);color:var(--wine);padding:16px 0;align-items:center}
-    .pdp-fg details.acc summary::after{content:none}
-    .pdp-fg details.acc .ic-minus,.pdp-fg details.acc[open] .ic-plus{display:none}
-    .pdp-fg details.acc[open] .ic-minus,.pdp-fg details.acc .ic-plus{display:flex;color:#332C2A}
-    .pdp-fg details.acc .body{color:#332C2A;font-size:14px;line-height:1.6;max-width:none;padding:0 0 16px}
-    .pdp-fg .rte ul{padding-left:21px;margin:12px 0 0}
-    .pdp-sets{display:flex;flex-direction:column;gap:12px}
-    .pdp-set{display:flex;gap:24px;align-items:center;background:#E9E2DA;padding:12px;text-decoration:none;color:inherit}
-    .pdp-set .im{width:100px;height:120px;background:#E7DCD0;flex:none}
-    .pdp-set .im img{width:100%;height:100%;object-fit:cover;display:block}
-    .pdp-set .tx{display:flex;flex-direction:column;gap:8px}
-    .pdp-set .nm{font-size:16px;font-weight:500;color:#7C7E64}
-    .pdp-set .ed{font-size:14px;color:#ABA499}
-    .pdp-set .pr{font-size:16px;font-weight:600;color:#332C2A}
-    .pdp-pass{display:flex;flex-direction:column;gap:16px}
-    .pdp-pass p{margin:0}
-    .pp-intro,.pp-row{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
-    .pp-row b{font-size:16px;font-weight:700;color:#7C7E64}
-    .pdp-fg .ulink{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#332C2A;text-decoration:none;border-bottom:1px solid #332C2A;padding:4px 0}
-    .pdp-certs{display:flex;flex-direction:column;gap:16px}
-    .pdp-certs .it{display:flex;gap:24px;align-items:center}
-    .pdp-certs .it img,.pdp-certs .it svg{width:88px;height:88px;object-fit:contain;flex:none}
-    .pdp-certs .tx{flex:1;display:flex;flex-direction:column;gap:8px}
-    .pdp-certs .hd{display:flex;justify-content:space-between;align-items:center;gap:4px 12px;flex-wrap:wrap}
-    .pdp-certs .tx{min-width:0}
-    .pdp-certs .hd b{font-size:18px;font-weight:600;color:#332C2A}
-    .pdp-certs .sub{color:#ABA499;letter-spacing:.05em}
-    @media (max-width:899px){
-      .pdp-fg{grid-template-columns:minmax(0,1fr);gap:28px}
-      .pdp-fg .gallery{flex-direction:column;min-width:0}
-      .pdp-fg .thumbs{flex-direction:row;width:auto;max-width:100%;max-height:none;overflow-x:auto}
-      .pdp-fg .thumbs button{width:72px;height:96px}
-      .pdp-title{font-size:32px}
-      .buy-row{gap:12px}
-    }
-  
-    .pdp-gc .gallery .main{aspect-ratio:721/760;background:#fff}
-    .pdp-gc .gallery .main img{object-fit:contain}
-    .pdp-gc .gc-amount{display:flex;flex-direction:column;gap:12px}
-    .pdp-gc .gc-amount>b{font:600 14px/1.6 var(--body);color:#332C2A}
-    .pdp-gc .gc-chips{display:flex;gap:12px;flex-wrap:wrap}
-    .pdp-gc .chip{min-height:32px;padding:0 16px;border:1px solid #332C2A;border-radius:100px;background:transparent;color:#332C2A;font:400 14px/1.6 var(--body)}
-    .pdp-gc .chip[aria-pressed="true"]{background:#332C2A;border-color:#332C2A;color:#F0DFD8}
-    .pdp-gc .chip:disabled{opacity:.4}
-    .pdp-gc .gc-text{margin:0;font:400 14px/1.6 var(--body);color:#332C2A}
-    .pdp-gc .gc-text p{margin:0}
-  </style>
 {%- if product.gift_card? -%}
   {%- capture u_gifts -%}{%- render 'echo-url', key: 'gifts' -%}{%- endcapture -%}
   {%- assign t_home = 'echo.common.home' | t -%}{%- assign t_gifts = 'echo.common.gifts' | t -%}{%- assign cl = t_home | append: '::' | append: u_home | append: '||' | append: t_gifts | append: '::' | append: u_gifts | append: '||' | append: product.title -%}
-  {%- capture ic_minus -%}<svg viewBox="0 0 256 256" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8H40a8 8 0 0 1 0-16h176a8 8 0 0 1 8 8Z"/></svg>{%- endcapture -%}
-  {%- capture ic_plus -%}<svg viewBox="0 0 256 256" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg>{%- endcapture -%}
-  {%- capture ic_check -%}<svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z"/></svg>{%- endcapture -%}
-  <div class="wrap pdp pdp-fg pdp-gc">
+  {%- render 'echo-crumbs', list: cl -%}
+  <div class="wrap pdp">
     <div class="gallery">
-      <div class="gal-main">
-        {%- if product.featured_media -%}{%- render 'echo-pic', image: product.featured_media.preview_image, alt: product.title, cls: 'main', eager: true, sizes: '(min-width: 900px) 56vw, 100vw' -%}{%- else -%}{%- render 'echo-ph', label: 'eGift card visual', cls: 'main' -%}{%- endif -%}
-      </div>
-    </div>
-    <div class="pdp-info">
-      {%- form 'product', product, class: 'pdp-buy', data-pdp-form: '' -%}
-        <div class="pdp-top">
-          <div class="pdp-head">
-            {%- render 'echo-crumbs', list: cl, inline: true -%}
-            <h1 class="pdp-title">{{ product.title }}</h1>
-          </div>
-          <div class="pdp-price"><div class="pr-row"><span class="pr" data-gc-price>{% render 'echo-money', price: variant.price %}</span></div></div>
-          <div class="gc-text rte">{{ product.description | default: section.settings.gc_text }}</div>
-          <input type="hidden" name="id" value="{{ variant.id }}">
-          <div class="gc-amount"><b>{{ 'echo.main_product.amount' | t }}</b><div class="gc-chips">
-            {%- for v in product.variants -%}
-              {%- capture lbl -%}{%- render 'echo-money', price: v.price -%}{%- endcapture -%}
-              <button type="button" class="chip" data-amount="{{ v.id }}" data-label="{{ lbl | strip }}" aria-pressed="{% if v.id == variant.id %}true{% else %}false{% endif %}"{% unless v.available %} disabled{% endunless %}>{{ lbl | strip }}</button>
-            {%- endfor -%}
-          </div></div>
-        </div>
-        <div class="pdp-actions">
-          <input type="hidden" name="quantity" value="1">
-          <div class="buy-row">
-            <div class="qty"><button type="button" data-qty="-1" aria-label="{{ 'echo.common.fewer' | t | escape }}">{{ ic_minus }}</button><span data-qty-out>1</span><button type="button" data-qty="1" aria-label="{{ 'echo.common.more' | t | escape }}">{{ ic_plus }}</button></div>
-            <button class="btn" type="submit">{{ 'echo.main_product.add_to_cart' | t }}</button>
-          </div>
-          <ul class="pdp-ticks"><li>{{ ic_check }}<span>{{ 'echo.main_product.sent_instantly_by_email' | t }}</span></li><li>{{ ic_check }}<span>{{ 'echo.main_product.no_expiry' | t }}</span></li></ul>
-        </div>
-      {%- endform -%}
-    </div>
-  </div>
-{%- else -%}{%- render 'echo-ph', label: 'eGift card visual', cls: 'main' -%}{%- endif -%}
+      {%- if product.featured_media -%}{%- render 'echo-pic', image: product.featured_media.preview_image, alt: product.title, cls: 'main', eager: true -%}{%- else -%}{%- render 'echo-ph', label: 'eGift card visual', cls: 'main' -%}{%- endif -%}
     </div>
     {%- form 'product', product, class: 'stack', style: 'gap:16px', data-pdp-form: '' -%}
       <h1 class="h2">{{ product.title }}</h1>
@@ -419,7 +284,96 @@
       </div>
     </div>
   </div>
-
+  <style>
+    .pdp-fg{grid-template-columns:minmax(0,721fr) minmax(0,519fr);gap:40px;padding-block:8px 40px;align-items:start}
+    .pdp-fg .gallery{display:flex;gap:12px;padding-block:8px}
+    .pdp-fg .gal-main{flex:1 1 auto;min-width:0}
+    .pdp-fg .gallery .main{aspect-ratio:628/760}
+    .pdp-fg .thumbs{display:flex;flex-direction:column;gap:8px;width:81px;flex:none;margin:0;max-height:760px;overflow:auto;scrollbar-width:none}
+    .pdp-fg .thumbs button{border:2px solid transparent;height:120px;flex:none;outline:0}
+    .pdp-fg .thumbs button[aria-pressed="true"]{border-color:#ABA499;outline:0}
+    .pdp-fg .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+    .pdp-info{display:flex;flex-direction:column;gap:40px;min-width:0}
+    .pdp-top{display:flex;flex-direction:column;gap:24px}
+    .pdp-head{display:flex;flex-direction:column;gap:8px}
+    .pdp-head .crumbs{padding:0 0 4px;margin:0}
+    .pdp-fg{padding-top:40px}
+    .pdp-title{font:300 40px/1.2 var(--head);color:var(--wine);margin:0}
+    .pdp-rating{display:flex;gap:4px;align-items:center;font-size:14px;color:#55524E;text-decoration:none}
+    .pdp-rating .stars{display:flex;gap:4px;color:#E2CFA8}
+    .pdp-rating b{font-weight:500;color:#332C2A}
+    .pdp-rating span{font-weight:300}
+    .pdp-price{display:flex;flex-direction:column;gap:8px}
+    .pr-row,.st-row{display:flex;align-items:center;gap:12px;font-size:14px;color:#332C2A}
+    .pr-row .pr{font-size:24px;font-weight:600;line-height:1.6}
+    .pdp-fg .dot{width:6px;height:6px;border-radius:50%;background:#332C2A;display:inline-block}
+    .pr-free{display:flex;gap:8px;align-items:center;font-size:14px;color:#7C7E64}
+    .pdp-colours{display:flex;flex-direction:column;gap:12px}
+    .pdp-colours p{margin:0;font-size:14px;color:#000}
+    .sw-row{display:flex;gap:15px;flex-wrap:wrap}
+    .sw-img{width:60px;height:60px;border-radius:50%;overflow:hidden;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+    .sw-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .sw-img[aria-current="true"]{box-shadow:0 0 0 2px var(--paper),0 0 0 3px #332C2A}
+    .pdp-stock{display:flex;flex-direction:column;gap:12px}
+    .pdp-stock .ed{color:#ABA499}
+    .pdp-stock .bar{background:#E7DCD0;border-radius:30px;height:8px;overflow:hidden}
+    .pdp-stock .bar span{display:block;height:100%;background:#332C2A;border-radius:30px}
+    .pdp-stock p{margin:0;font-size:14px;color:#332C2A}
+    .pdp-actions{display:flex;flex-direction:column;gap:24px}
+    .pdp-buy{display:flex;flex-direction:column;gap:24px}
+    .buy-row{display:flex;gap:24px;align-items:center}
+    .pdp-fg .qty{border:1px solid #ABA499;height:45px;padding:8px;gap:24px;display:flex;align-items:center}
+    .pdp-fg .qty button{width:24px;height:24px;padding:0;display:flex;color:#332C2A}
+    .pdp-fg .qty span{font-size:18px;min-width:12px}
+    .buy-row .btn{flex:1;min-height:45px;font-size:12px;letter-spacing:.1em;color:#F0DFD8}
+    .mp-out{width:100%;min-height:45px;font-size:12px;letter-spacing:.1em;gap:4px}
+    .mp-out img{height:16px;width:auto}
+    .pdp-ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:#332C2A}
+    .pdp-ticks li{display:flex;gap:8px;align-items:center}
+    .pdp-ticks svg{flex:none}
+    .pdp-notify{display:flex;flex-direction:column;gap:12px}
+    .pdp-notify label{font-size:14px;font-weight:600;color:#332C2A}
+    .nf-row{display:flex;gap:12px}
+    .nf-row input{flex:1;min-width:0;height:45px;border:1px solid #ABA499;background:transparent;padding:0 14px;font:inherit}
+    .nf-row .btn{min-height:45px;font-size:12px}
+    .pdp-fg .pdp-accs{display:flex;flex-direction:column;border-top:1px solid #D8CEC3}
+    .pdp-fg details.acc{border-top:0;border-bottom:1px solid #D8CEC3}
+    .pdp-fg details.acc summary{font:300 24px/1.6 var(--head);color:var(--wine);padding:16px 0;align-items:center}
+    .pdp-fg details.acc summary::after{content:none}
+    .pdp-fg details.acc .ic-minus,.pdp-fg details.acc[open] .ic-plus{display:none}
+    .pdp-fg details.acc[open] .ic-minus,.pdp-fg details.acc .ic-plus{display:flex;color:#332C2A}
+    .pdp-fg details.acc .body{color:#332C2A;font-size:14px;line-height:1.6;max-width:none;padding:0 0 16px}
+    .pdp-fg .rte ul{padding-left:21px;margin:12px 0 0}
+    .pdp-sets{display:flex;flex-direction:column;gap:12px}
+    .pdp-set{display:flex;gap:24px;align-items:center;background:#E9E2DA;padding:12px;text-decoration:none;color:inherit}
+    .pdp-set .im{width:100px;height:120px;background:#E7DCD0;flex:none}
+    .pdp-set .im img{width:100%;height:100%;object-fit:cover;display:block}
+    .pdp-set .tx{display:flex;flex-direction:column;gap:8px}
+    .pdp-set .nm{font-size:16px;font-weight:500;color:#7C7E64}
+    .pdp-set .ed{font-size:14px;color:#ABA499}
+    .pdp-set .pr{font-size:16px;font-weight:600;color:#332C2A}
+    .pdp-pass{display:flex;flex-direction:column;gap:16px}
+    .pdp-pass p{margin:0}
+    .pp-intro,.pp-row{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+    .pp-row b{font-size:16px;font-weight:700;color:#7C7E64}
+    .pdp-fg .ulink{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#332C2A;text-decoration:none;border-bottom:1px solid #332C2A;padding:4px 0}
+    .pdp-certs{display:flex;flex-direction:column;gap:16px}
+    .pdp-certs .it{display:flex;gap:24px;align-items:center}
+    .pdp-certs .it img,.pdp-certs .it svg{width:88px;height:88px;object-fit:contain;flex:none}
+    .pdp-certs .tx{flex:1;display:flex;flex-direction:column;gap:8px}
+    .pdp-certs .hd{display:flex;justify-content:space-between;align-items:center;gap:4px 12px;flex-wrap:wrap}
+    .pdp-certs .tx{min-width:0}
+    .pdp-certs .hd b{font-size:18px;font-weight:600;color:#332C2A}
+    .pdp-certs .sub{color:#ABA499;letter-spacing:.05em}
+    @media (max-width:899px){
+      .pdp-fg{grid-template-columns:minmax(0,1fr);gap:28px}
+      .pdp-fg .gallery{flex-direction:column;min-width:0}
+      .pdp-fg .thumbs{flex-direction:row;width:auto;max-width:100%;max-height:none;overflow-x:auto}
+      .pdp-fg .thumbs button{width:72px;height:96px}
+      .pdp-title{font-size:32px}
+      .buy-row{gap:12px}
+    }
+  </style>
 {%- endif -%}
 
 {% schema %}
