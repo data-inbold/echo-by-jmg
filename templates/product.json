@@ -46,6 +46,7 @@
         },
         "q_f2": {
           "type": "q",
+          "disabled": true,
           "settings": {
             "q": "Can you share which fashion houses the yarn come from?",
             "a": "<p>[Answer to confirm.]</p>"
@@ -53,6 +54,7 @@
         },
         "q_f3": {
           "type": "q",
+          "disabled": true,
           "settings": {
             "q": "What happens if I lose my Yarn Passport?",
             "a": "<p>[Answer to confirm.]</p>"
