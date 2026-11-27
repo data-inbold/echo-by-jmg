@@ -37,35 +37,35 @@
           "type": "q",
           "settings": {
             "q": "How much does delivery cost?",
-            "a": "<p>Nothing. Delivery is free across Denmark, to a parcel shop, a locker or your door.</p>"
+            "a": "<p>Nothing at all! Our delivery is completely free across Denmark, whether it is to a parcel shop, a locker, or directly to your door.</p>"
           }
         },
         "q_4": {
           "type": "q",
           "settings": {
             "q": "What is your return policy?",
-            "a": "<p>If you are not completely happy, you can return your order within 14 days. Items should be unused and in their original condition. New, unused items are refunded to the original payment method. Lightly tested items may be eligible for store credit. Final-sale items cannot be returned.</p>"
+            "a": "<p>You are welcome to return your items within 14 days for a refund. We simply ask that the pieces remain unused and in their original condition.</p>"
           }
         },
         "q_5": {
           "type": "q",
           "settings": {
             "q": "Can I change or cancel my order?",
-            "a": "<p>There is a short window of about 60 minutes after you order. Contact us straight away. Once an order is packed or shipped, it cannot be changed, but you can use our free returns.</p>"
+            "a": "<p>If you happen to change your mind on a purchase, please contact us straight away at hello@echobyjmg.com.</p><p>We can still process changes or cancellations as long as your order hasn't been packed, which is usually within one hour of placement.</p>"
           }
         },
         "q_6": {
           "type": "q",
           "settings": {
             "q": "Do you ship outside Denmark?",
-            "a": "<p>We start our journey in Denmark, so at launch we ship only within Denmark. We are preparing to deliver to the other Scandinavian countries and across the EU. Join the Cozy Club to hear first.</p>"
+            "a": "<p>EchoByJMG is proud to begin our journey in Denmark. At launch, we ship exclusively within Denmark, allowing us to deliver your order quickly and with care.</p><p>We’re preparing to extend delivery to other Scandinavian countries and across the EU in the near future. Join our Cozy Club or follow us for updates!</p>"
           }
         },
         "q_7": {
           "type": "q",
           "settings": {
             "q": "Is your packaging sustainable?",
-            "a": "<p>Our packaging is made from recycled materials and kept minimal. It is designed to be reused, including as the bag for a return.</p>"
+            "a": "<p>Our packaging is thoughtfully crafted from recycled materials. It is designed to be easily reused, such as for a return shipment, while ensuring your pieces arrive beautifully and safely.</p>"
           }
         },
         "topic_9": {
@@ -85,49 +85,49 @@
           "type": "q",
           "settings": {
             "q": "Does using \"rescued yarn\" affect quality?",
-            "a": "<p>Not at all. Many of our yarns were made for premium fashion and retail brands, including cotton, wool and specialist blends. The only reason they remain is quantity, not quality.</p>"
+            "a": "<p>Not at all. This yarn was spun for premium fashion brands and meets the highest industry standards. It is left behind solely because of excess quantity, never quality.</p>"
           }
         },
         "q_12": {
           "type": "q",
           "settings": {
             "q": "Why are your pieces limited edition?",
-            "a": "<p>Our pieces are made in small quantities from leftover yarn that exists in limited amounts. Once that yarn is used, the same design or colour may not be repeated.</p>"
+            "a": "<p>Because we only knit with rescued yarn, our production is naturally capped by the exact weight of each batch we recover. Once that yarn is gone, the design can never be reproduced. Every piece is individually numbered on its label, such as 7 of 12, marking its unique place in that single batch.</p>"
           }
         },
         "q_13": {
           "type": "q",
           "settings": {
             "q": "Can you restock a piece once it sells out?",
-            "a": "<p>Some items may return in a new colourway or updated design, but once sold out they are not restocked exactly the same. If a piece speaks to you, it may be best to make it yours while it is available.</p>"
+            "a": "<p>Exact restocks are rarely possible, as our production depends entirely on what is available. We might occasionally re-release the same design in a different colorway, but if that's not your thing, then be sure to secure your favorite piece before it's gone.</p>"
           }
         },
         "q_14": {
           "type": "q",
           "settings": {
             "q": "Why are colours sometimes limited?",
-            "a": "<p>Because many collections are made from limited yarn quantities, some colours come in small runs only. Once a yarn is used, we may not be able to find the exact shade again.</p>"
+            "a": "<p>We only knit with the rescued yarn available, so small batches naturally mean small runs. Once a shade is finished, we may never find that exact colour again.</p>"
           }
         },
         "q_15": {
           "type": "q",
           "settings": {
             "q": "Will the colours look exactly the same in person?",
-            "a": "<p>We photograph colours as accurately as we can. Small differences can come from lighting, screens and the natural character of yarn blends.</p>"
+            "a": "<p>We photograph as accurately as we can; small differences can come from lighting, screens, and yarn blends.</p>"
           }
         },
         "q_16": {
           "type": "q",
           "settings": {
             "q": "Where are your products made?",
-            "a": "<p>In our own family-run knitwear factory in China, owned and managed by our parent company JM Group Limited, a family business founded in 1946 and based in Hong Kong. This gives us direct oversight of craftsmanship, quality and responsible production.</p>"
+            "a": "<p>Every piece is crafted in our family-owned knitwear factory in Dongguan, China, backed by our parent company JM Group Limited. Keeping production entirely in-house ensures our strict standards for craftsmanship, quality control, and responsible production.</p>"
           }
         },
         "q_17": {
           "type": "q",
           "settings": {
             "q": "Are your products ethically made?",
-            "a": "<p>Yes. We work in line with BSCI social compliance principles for fair working conditions, and with OCS and RCS certified materials where they apply. We also support WWF Hong Kong.</p>"
+            "a": "<p>Yes! We believe beautiful products should be made responsibly.</p><p>Our production is supported by recognised standards and ongoing accountability. We work in line with BSCI social compliance principles, helping promote fair working conditions and responsible manufacturing practices.</p><p>We also work with certified material standards including OCS (Organic Content Standard) and RCS (Recycled Claim Standard) where applicable, supporting greater transparency and traceability in our supply chain.</p><p>Beyond production, we are proud to support WWF Hong Kong as part of our wider commitment to environmental responsibility.</p><p>We continue to improve our practices across materials, production, and packaging as we grow.</p>"
           }
         },
         "topic_18": {
@@ -147,7 +147,7 @@
           "type": "q",
           "settings": {
             "q": "Do your cushion covers come with the inner cushion?",
-            "a": "<p>No. Covers are sold without inners, so you can choose your own filling and firmness.</p>"
+            "a": "<p>We offer our knitted covers individually so you can pair them with your preferred filling and level of firmness. All covers are tailored to fit a 45 x 45 cm inner cushion.</p>"
           }
         },
         "topic_21": {
@@ -167,28 +167,28 @@
           "type": "q",
           "settings": {
             "q": "Will the price be shown on the packaging?",
-            "a": "<p>No. No prices are printed in the order. Confirmations and receipts are sent to the buyer by email.</p>"
+            "a": "<p>No printed prices are included in the order. Order confirmations and receipts are sent digitally to the purchaser only. This means your recipient can enjoy the surprise fully without having to worry about price.</p>"
           }
         },
         "q_24": {
           "type": "q",
           "settings": {
             "q": "Do you offer gift wrapping?",
-            "a": "<p>Every order is wrapped in our own tissue paper, with a little surprise gift inside.</p>"
+            "a": "<p>Every order is thoughtfully wrapped in our custom-designed tissue paper and includes a small surprise from us. Whether you are gifting a piece to someone else or treating yourself, we ensure every EchoByJMG unboxing feels truly special.</p>"
           }
         },
         "q_25": {
           "type": "q",
           "settings": {
             "q": "Can I send it straight to the recipient?",
-            "a": "<p>Yes. Enter their address at checkout. The receipt is emailed to you, not to them.</p>"
+            "a": "<p>Yes, you can. Simply put your desired address into the form as you check out, and your order will be delivered accordingly.</p>"
           }
         },
         "q_26": {
           "type": "q",
           "settings": {
             "q": "What is the latest date I can order to ensure my gifts arrive before Christmas?",
-            "a": "<p>Order by 19 December for delivery before Christmas Eve.</p>"
+            "a": "<p>To ensure your pieces arrive in time for the holidays, please place your order by December 19th. During the festive season, carrier volumes are exceptionally high, so we recommend ordering early to avoid any delivery delays.</p>"
           }
         }
       },

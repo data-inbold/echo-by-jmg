@@ -151,28 +151,28 @@
           "type": "q",
           "settings": {
             "q": "1. Will the price be shown on the packaging?",
-            "a": "<p>No printed price are included in the order. Order confirmations and receipts are sent digitally to the purchaser only. This means your recipient can enjoy the surprise fully without having to worry about price.</p>"
+            "a": "<p>No printed prices are included in the order. Order confirmations and receipts are sent digitally to the purchaser only. This means your recipient can enjoy the surprise fully without having to worry about price.</p>"
           }
         },
         "q_2": {
           "type": "q",
           "settings": {
             "q": "2. Do you offer gift wrapping?",
-            "a": "<p>Every order is wrapped in our own tissue paper, with a little surprise gift inside.</p>"
+            "a": "<p>Every order is thoughtfully wrapped in our custom-designed tissue paper and includes a small surprise from us. Whether you are gifting a piece to someone else or treating yourself, we ensure every EchoByJMG unboxing feels truly special.</p>"
           }
         },
         "q_3": {
           "type": "q",
           "settings": {
             "q": "3. Can I send it straight to the recipient?",
-            "a": "<p>Yes. Enter their address at checkout. The receipt is emailed to you, not to them.</p>"
+            "a": "<p>Yes, you can. Simply put your desired address into the form as you check out, and your order will be delivered accordingly.</p>"
           }
         },
         "q_4": {
           "type": "q",
           "settings": {
             "q": "4. What is the latest date I can order to ensure my gifts arrive before Christmas?",
-            "a": "<p>Order by 19 December for delivery before Christmas Eve.</p>"
+            "a": "<p>To ensure your pieces arrive in time for the holidays, please place your order by December 19th. During the festive season, carrier volumes are exceptionally high, so we recommend ordering early to avoid any delivery delays.</p>"
           }
         }
       },
