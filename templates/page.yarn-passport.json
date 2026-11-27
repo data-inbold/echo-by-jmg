@@ -92,8 +92,8 @@
         "photo": "echo-sofa-icon.png",
         "alt": "",
         "width": 126,
-        "space_above": 20,
-        "space_below": 20,
+        "space_above": 0,
+        "space_below": 40,
         "bg": "blush"
       }
     },

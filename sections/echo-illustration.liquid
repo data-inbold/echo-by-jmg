@@ -1,9 +1,10 @@
 {%- comment -%} A small centred illustration between two sections (the sofa above the Cozy Club band). {%- endcomment -%}
 <style>
   .illus{display:flex;justify-content:center;padding-inline:16px;padding-top:{{ section.settings.space_above }}px;padding-bottom:{{ section.settings.space_below }}px}
+  .shopify-section:has(.illus--blush) + .shopify-section .cb{margin-top:0}
   .illus img{display:block;width:{{ section.settings.width }}px;max-width:100%;height:auto}
 </style>
-<section class="illus"{% if section.settings.bg == 'blush' %} style="background:#F0DFD8"{% endif %}>
+<section class="illus{% if section.settings.bg == 'blush' %} illus--blush{% endif %}"{% if section.settings.bg == 'blush' %} style="background:#F0DFD8"{% endif %}>
   {%- if section.settings.image != blank -%}
     {{ section.settings.image | image_url: width: 600 | image_tag: alt: section.settings.alt, loading: 'lazy', widths: '126, 252, 378, 504, 600', sizes: '(min-width: 720px) 300px, 50vw' }}
   {%- elsif section.settings.photo != blank and section.settings.photo != 'none' -%}
