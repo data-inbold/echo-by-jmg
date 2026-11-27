@@ -1,19 +1,90 @@
+/* Returns: Figma layout, 27 Nov 2026 */
 {
   "layout": "echo",
   "sections": {
-    "crumbs": {
-      "type": "echo-breadcrumbs",
+    "main": {
+      "type": "echo-policy-page",
       "settings": {
-        "current": "Returns"
+        "intro": "Changed your mind? No worries. You have 14 days after receiving your order to request a return. To be eligible for a return, your item must be in its original condition, unworn or unused, with tags attached and in its original packaging. You'll also need your receipt or proof of purchase."
+      },
+      "blocks": {
+        "q_1": {
+          "type": "item",
+          "settings": {
+            "q": "How to return an item",
+            "a": "<p>Simply email us at <strong>hello@echobyjmg.com</strong> to request a return. If approved, we'll send you a return shipping label and instructions.</p><p>Once you've received the instructions, you can send your return to:<br><strong>Parcel Feeder A/S</strong><br>Midtager 29<br>DK-2605 Brøndby<br>Denmark</p><p>Please note that we cannot accept returns sent without prior approval.</p>"
+          }
+        },
+        "q_2": {
+          "type": "item",
+          "settings": {
+            "q": "Exceptions and non-returnable items",
+            "a": "<p>We cannot accept returns of perishable goods (such as food, flowers or plants), custom or personalized products, personal care products, hazardous materials, flammable liquids or gases.</p><p>Sale items and gift cards are also non-returnable.</p><p>Not sure if your item is eligible? Feel free to contact us via <strong>hello@echobyjmg.com</strong>.</p>"
+          }
+        },
+        "q_3": {
+          "type": "item",
+          "settings": {
+            "q": "Damaged or incorrect items",
+            "a": "<p>Something not quite right with your order? Please check your items when they arrive and contact us immediately if anything is damaged, defective or incorrect. We'll look into it and help make things right.</p>"
+          }
+        },
+        "q_4": {
+          "type": "item",
+          "settings": {
+            "q": "Exchanges",
+            "a": "<p>Want something else instead? The quickest way is to return your original item and place a new order once your return is accepted.</p>"
+          }
+        },
+        "q_5": {
+          "type": "item",
+          "settings": {
+            "q": "European Union 14-day cooling-off period",
+            "a": "<p>For orders shipped into the European Union, you have the right to cancel or return your order within 14 days, for any reason and without providing a justification.</p><p>The item condition and proof-of-purchase requirements mentioned above also apply.</p>"
+          }
+        },
+        "q_6": {
+          "type": "item",
+          "settings": {
+            "q": "Refunds",
+            "a": "<p>We'll let you know once we've received and inspected your return, and whether your refund has been approved.</p><p>If approved, your refund will be issued to your original payment method within 10 business days. Your bank or credit card provider may take additional time to process it.</p><p>If more than 15 business days have passed since your refund was approved, please contact us at <strong>hello@echobyjmg.com</strong>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q_1",
+        "q_2",
+        "q_3",
+        "q_4",
+        "q_5",
+        "q_6"
+      ]
+    },
+    "illustration": {
+      "type": "echo-illustration",
+      "settings": {
+        "photo": "echo-sofa-icon.png",
+        "alt": "",
+        "width": 126,
+        "space_above": 0,
+        "space_below": 60
       }
     },
-    "main": {
-      "type": "echo-returns",
-      "settings": {}
+    "club": {
+      "type": "echo-club-band",
+      "settings": {
+        "heading": "Join the Cozy Club",
+        "text": "Get 10% off your first order, and be the first to hear about our new designs!",
+        "button_label": "Join the club",
+        "image": "shopify://shop_images/Join_the_Cozy_Club.png",
+        "photo": "echo-twister-outdoor.jpg",
+        "focus": "50% 50%"
+      }
     }
   },
   "order": [
-    "crumbs",
-    "main"
+    "main",
+    "illustration",
+    "club"
   ]
 }
