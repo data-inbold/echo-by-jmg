@@ -18,7 +18,7 @@
     <h2 class="serif" style="font:500 italic clamp(24px,3vw,32px)/1.25 var(--display);margin:14px 0 0;max-width:30ch">{{ section.settings.heading }}</h2>
     <div class="passport">
       <div><b>{{ 'echo.product_passport.where_it_came_from' | t }}</b><span>{{ origin }}</span></div>
-      <div><b>{{ 'echo.product_passport.fibre_and_batch' | t }}</b><span>{{ comp | newline_to_br }}<br>{{ 'echo.passport.batch_line' | t: batch: i[9], kg: i[10], total: i[2] }}<br><a href="{% render 'echo-url', key: 'tracker' %}" style="color:#CFC9BF;font-size:13px">{{ 'echo.product_passport.see_it_in_the_tracker' | t }}</a></span></div>
+      <div><b>{{ 'echo.product_passport.fibre_and_batch' | t }}</b><span>{%- unless comp == '[Composition]' -%}{{ comp | newline_to_br }}<br>{%- endunless -%}{%- if i[9] == '[ID]' or i[10] == '[x]' -%}{{ 'echo.passport.edition_line' | t: total: i[2] }}{%- else -%}{{ 'echo.passport.batch_line' | t: batch: i[9], kg: i[10], total: i[2] }}{%- endif -%}<br><a href="{% render 'echo-url', key: 'tracker' %}" style="color:#CFC9BF;font-size:13px">{{ 'echo.product_passport.see_it_in_the_tracker' | t }}</a></span></div>
       <div><b>{{ 'echo.common.your_number' | t }}</b><span>{{ 'echo.passport.woven_label' | t: total: i[2] }}</span></div>
       <div><b>{{ 'echo.product_passport.certificates_for_this_product' | t }}</b><span class="pcerts">
         <span class="it">{% render 'echo-cert-logo', k: 'bsci', h: 40 %}<span>{{ 'echo.product_passport.bsci_compliance' | t }}<br><span style="opacity:.75;font-size:13px">{{ 'echo.passport.factory_level' | t: number: section.settings.bsci_no }}</span></span></span>
@@ -36,7 +36,7 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Label", "default": "Yarn Passport" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "This yarn was headed for waste. Here is the batch it came from." },
-    { "type": "textarea", "id": "origin", "label": "Where it came from (default)", "info": "Shown when the product's Yarn batch entry (Content > Metaobjects) has no 'Where it came from' text.", "default": "Left over from a [season] production run for a [luxury or high-street] fashion house, knitted in our factory. Never worn, never recycled fibre." },
+    { "type": "textarea", "id": "origin", "label": "Where it came from (default)", "info": "Shown when the product's Yarn batch entry (Content > Metaobjects) has no 'Where it came from' text.", "default": "Left over from a fashion production run, knitted in our factory. Never worn, never recycled fibre." },
     { "type": "text", "id": "bsci_no", "label": "BSCI number", "default": "amfori ID 156-020420-000" },
     { "type": "text", "id": "ocs_no", "label": "OCS line", "default": "Certificate [no.] · [confirm this product is in scope]" },
     { "type": "text", "id": "rcs_no", "label": "RCS line", "default": "Certificate [no.] · [confirm this product is in scope]" }

@@ -241,7 +241,7 @@
       {%- endif -%}
 
       {%- liquid
-        assign pcomp = comp | default: i[13] | default: '[Composition]'
+        assign pcomp = comp | default: i[13]
         assign pcl = pcomp | downcase
         assign origin_default = 'echo.main_product.origin_default' | t
         assign porigin = i[12] | default: section.settings.origin | default: origin_default
@@ -269,11 +269,11 @@
           {%- endfor -%}
         </div></details>
         {%- endif -%}
-        <details class="acc"><summary>{{ 'echo.main_product.dimension' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body">{{ dims | default: '[Size]' | newline_to_br }}</div></details>
+        {%- if dims != blank -%}<details class="acc"><summary>{{ 'echo.main_product.dimension' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body">{{ dims | newline_to_br }}</div></details>{%- endif -%}
         <details class="acc" open><summary>{{ 'echo.common.yarn_passport' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body pdp-pass">
           <div class="pp-intro"><p>{{ 'echo.main_product.passport_intro' | t }}</p><a class="ulink" href="{% render 'echo-url', key: 'passport' %}">{{ 'echo.main_product.discover_more' | t }}</a></div>
           <div class="pp-row"><b>{{ 'echo.product_passport.where_it_came_from' | t }}</b><span>{{ porigin }}</span></div>
-          <div class="pp-row"><b>{{ 'echo.product_passport.fibre_and_batch' | t }}</b><span>{{ pcomp | newline_to_br }}<br>{{ 'echo.passport.batch_line' | t: batch: i[9], kg: i[10], total: i[2] }}</span><a class="ulink" href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.main_product.see_it_in_tracker' | t }}</a></div>
+          <div class="pp-row"><b>{{ 'echo.product_passport.fibre_and_batch' | t }}</b><span>{%- if pcomp != blank -%}{{ pcomp | newline_to_br }}<br>{%- endif -%}{%- if i[9] == '[ID]' or i[10] == '[x]' -%}{{ 'echo.passport.edition_line' | t: total: i[2] }}{%- else -%}{{ 'echo.passport.batch_line' | t: batch: i[9], kg: i[10], total: i[2] }}{%- endif -%}</span><a class="ulink" href="{% render 'echo-url', key: 'tracker' %}">{{ 'echo.main_product.see_it_in_tracker' | t }}</a></div>
         </div></details>
         <details class="acc" open><summary>{{ 'echo.main_product.certificates' | t }}<span class="ic-plus">{{ ic_plus }}</span><span class="ic-minus">{{ ic_minus }}</span></summary><div class="body pdp-certs">
           <div class="it">{% render 'echo-cert-logo', k: 'bsci', h: 88 %}<div class="tx"><div class="hd"><b>{{ 'echo.product_passport.bsci_compliance' | t }}</b><a class="ulink" href="{% render 'echo-url', key: 'factory' %}">{{ 'echo.main_product.our_certificates' | t }}</a></div><span class="sub">{{ bsci_line }}</span></div></div>

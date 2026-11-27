@@ -32,15 +32,15 @@
         "step_1": {
           "type": "step",
           "settings": {
-            "title": "From [10] pieces",
-            "text": "Mix blankets, cushions and bags. [Volume prices to confirm.]"
+            "title": "Larger orders",
+            "text": "Mix blankets, cushions and bags. Ask us for volume prices."
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
             "title": "Your card in the box",
-            "text": "A printed card with your message next to the Yarn Passport. [Confirm.]"
+            "text": "A printed card with your message next to the Yarn Passport."
           }
         },
         "step_3": {

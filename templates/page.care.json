@@ -18,8 +18,8 @@
           "settings": {
             "product": "Blankets",
             "items": "",
-            "size": "120 × 160 cm [confirm per design]",
-            "note": "[Weight]"
+            "size": "120 × 160 cm",
+            "note": ""
           }
         },
         "row_2": {
@@ -54,7 +54,7 @@
           "settings": {
             "product": "Scarves",
             "items": "",
-            "size": "160 x 40 cm [confirm per design]",
+            "size": "160 x 40 cm",
             "note": ""
           }
         }

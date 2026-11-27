@@ -18,7 +18,7 @@
           "type": "part",
           "settings": {
             "title": "Data controller",
-            "text": "<p>JM Group Limited, Suite F, 4th Floor, Yip Cheung Centre, 10 Fung Yip Street, Chai Wan, Hong Kong. Contact for data questions: hello@echobyjmg.com. [EU representative, if required: name and address.]</p>"
+            "text": "<p>JM Group Limited, Suite F, 4th Floor, Yip Cheung Centre, 10 Fung Yip Street, Chai Wan, Hong Kong. Contact for data questions: hello@echobyjmg.com.</p>"
           }
         },
         "part_2": {
@@ -39,21 +39,21 @@
           "type": "part",
           "settings": {
             "title": "Who we share it with",
-            "text": "<p>Shopify (shop platform), payment providers, our Danish warehouse and carriers, our email platform and our review service. [Confirm the full list of processors.]</p>"
+            "text": "<p>Shopify (shop platform), payment providers, our Danish warehouse and carriers, our email platform and our review service.</p>"
           }
         },
         "part_5": {
           "type": "part",
           "settings": {
             "title": "How long we keep it",
-            "text": "<p>Order data for 5 years after the end of the financial year, as Danish bookkeeping rules require. Newsletter data until you unsubscribe. [Confirm.]</p>"
+            "text": "<p>Order data for 5 years after the end of the financial year, as Danish bookkeeping rules require. Newsletter data until you unsubscribe.</p>"
           }
         },
         "part_6": {
           "type": "part",
           "settings": {
             "title": "Your rights",
-            "text": "<p>You can ask to see, correct or delete your data, object to its use, and take it with you. Write to [email].</p>"
+            "text": "<p>You can ask to see, correct or delete your data, object to its use, and take it with you. Write to hello@echobyjmg.com.</p>"
           }
         },
         "part_7": {
